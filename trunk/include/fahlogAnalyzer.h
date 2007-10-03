@@ -36,7 +36,8 @@ protected:
         LLT_FINISHED,           // [13:25:00] Finished a frame (1)
         LLT_EMPTY,              // An empty line (excluding the timestamp)
         LLT_SHUTDOWN,           // Folding@Home Client Shutdown.
-        LLT_WU_COMPLETE,    // A WU has been completed
+        LLT_WU_COMPLETE,        // A WU has been completed
+        LLT_WU_STARTED,         // A WU has been started
         LLT_UNKNOWN             // Any other type of line
     } LogLineType;
 

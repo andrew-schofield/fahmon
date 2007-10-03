@@ -30,12 +30,22 @@ typedef enum _ETA_DISPLAY_STYLE
     ETADS_LEFT_TIME
 } ETA_DisplayStyle;
 
+typedef enum _PPD_DISPLAY_STYLE
+{
+    PPDDS_ALL_FRAMES,
+    PPDDS_LAST_FRAME,
+    PPDDS_THREE_FRAMES
+} ETA_PPDStyle;
+
 
 /**
  * Preferences used by this class
 **/
 #define PREF_ETA_DISPLAYSTYLE    wxT("ETA.DisplayStyle")
 #define PREF_ETA_DISPLAYSTYLE_DV ETADS_LEFT_TIME
+
+#define PREF_PPD_DISPLAYSTYLE  wxT("ETA.PPDStyle")
+#define PREF_PPD_DISPLAYSTYLE_DV PPDDS_ALL_FRAMES
 
 
 // This class handles an estimated time of arrival

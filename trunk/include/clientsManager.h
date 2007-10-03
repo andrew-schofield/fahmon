@@ -22,6 +22,7 @@
 
 
 #define CM_LOADALL FMC_INTMAX
+#define CM_LOADALLF FMC_INTMAX2
 
 
 WX_DEFINE_ARRAY_PTR(Client*, ArrayOfClients);

@@ -43,6 +43,7 @@ public:
         GROSMP,
         GROGPU,
         GROST,
+        GROSIMT,
         CORE_ID_COUNT
     };
 

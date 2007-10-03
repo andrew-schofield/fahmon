@@ -13,7 +13,7 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
- 
+
 #ifndef _MAINDIALOG_H
 #define _MAINDIALOG_H
 
@@ -52,10 +52,13 @@
 #define PREF_MAINDIALOG_SHOWLOG_DV false
 
 #define PREF_MAINDIALOG_AUTOUPDATEPROJECTS    wxT("MainDialog.AutoUpdateProjects")
-#define PREF_MAINDIALOG_AUTOUPDATEPROJECTS_DV false
+#define PREF_MAINDIALOG_AUTOUPDATEPROJECTS_DV true
 
 #define PREF_MAINDIALOG_AUTORELOAD    wxT("MainDialog.AutoReload")
 #define PREF_MAINDIALOG_AUTORELOAD_DV true
+
+#define PREF_MAINDIALOG_ADVANCEDRELOAD    wxT("MainDialog.AdvancedReload")
+#define PREF_MAINDIALOG_ADVANCEDRELOAD_DV false
 
 #define PREF_MAINDIALOG_AUTORELOADFREQUENCY    wxT("MainDialog.AutoReloadFrequency")
 #define PREF_MAINDIALOG_AUTORELOADFREQUENCY_DV 5
@@ -63,8 +66,23 @@
 #define PREF_MAINDIALOG_ENABLE_TRAY_ICON    wxT("MainDialog.EnableTrayIcon")
 #define PREF_MAINDIALOG_ENABLE_TRAY_ICON_DV false
 
+#define PREF_MAINDIALOG_START_MINIMISED    wxT("MainDialog.StartMinimised")
+#define PREF_MAINDIALOG_START_MINIMISED_DV false
+
 #define PREF_LISTCLIENTS_KEEP_DEAD_LAST  wxT("MainDialog.KeepDeadClientsLast")
 #define PREF_LISTCLIENTS_KEEP_DEAD_LAST_DV true
+
+#define PREF_MAINDIALOG_DEADLINE_DAYS  wxT("MainDialog.ShowDeadlinesDays")
+#define PREF_MAINDIALOG_DEADLINE_DAYS_DV false
+
+#define PREF_OVERRIDE_TIMEZONE wxT("MainDialog.OverrideTimezone")
+#define PREF_OVERRIDE_TIMEZONE_DV false
+
+#define PREF_TZ wxT("MainDialog.TZ")
+#define PREF_TZ_DV 0
+
+#define PREF_IGNORE_ASYNCHRONY wxT("MainDialog.IgnoreClockAsynchrony")
+#define PREF_IGNORE_ASYNCHRONY_DV false
 
 #define PREF_TOOLS_FILEMANAGER   wxT("MainDialog.FileManager")
 
@@ -107,7 +125,7 @@ protected:
     wxStaticText     *mFinalDeadline;
     ListViewClients  *mClientsList;
     wxSplitterWindow *mSplitterWindow;
-    
+
     // Misc
     wxTimer       mAutoReloadTimer;
     wxTaskBarIcon mSystemTray;
@@ -160,6 +178,8 @@ public:
     void OnAutoReloadPrefChanged(void);
     void OnETAStylePrefChanged(void);
     void OnTrayIconPrefChanged(void);
+    void OnPPDStylePrefChanged(void);
+    void OnDeadlinePrefChanged(void);
 
 
 private:

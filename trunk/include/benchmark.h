@@ -13,7 +13,7 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
- 
+
 #ifndef _BENCHMARK_H
 #define _BENCHMARK_H
 
@@ -38,6 +38,11 @@ protected:
     ClientId      mClientId;
     FrameDuration mMinDuration;
     FrameDuration mAvgDuration;
+    FrameDuration mInstantDuration;
+    FrameDuration m3FrameDuration;
+    FrameDuration mFrameDuration1;
+    FrameDuration mFrameDuration2;
+    FrameDuration mFrameDuration3;
 
 
 public:
@@ -50,9 +55,11 @@ public:
     void AddDuration(FrameDuration duration);
 
     // --- Getters
-    ClientId      GetClientId(void)    const {return mClientId;}
-    FrameDuration GetMinDuration(void) const {return mMinDuration;}
-    FrameDuration GetAvgDuration(void) const {return mAvgDuration;}
+    ClientId      GetClientId(void)        const {return mClientId;}
+    FrameDuration GetMinDuration(void)     const {return mMinDuration;}
+    FrameDuration GetAvgDuration(void)     const {return mAvgDuration;}
+    FrameDuration GetInstantDuration(void) const {return mInstantDuration;}
+    FrameDuration Get3FrameDuration(void)  const {return m3FrameDuration;}
 };
 
 

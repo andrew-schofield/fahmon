@@ -45,6 +45,8 @@ END_EVENT_TABLE()
 **/
 bool FahMonApp::OnInit(void)
 {
+    bool    startMinimised;
+
     // Check for another instance
     mInstanceChecker = new wxSingleInstanceChecker(wxT(FMC_UID));
     if(mInstanceChecker->IsAnotherRunning() == true)
@@ -84,7 +86,9 @@ bool FahMonApp::OnInit(void)
     }
 
     // Let's start with the main dialog box
-    MainDialog::GetInstance()->Show(true);
+    _PrefsGetBool(PREF_MAINDIALOG_START_MINIMISED,    startMinimised);
+    if (startMinimised != true)
+        MainDialog::GetInstance()->Show(true);
 
     return true;
 }

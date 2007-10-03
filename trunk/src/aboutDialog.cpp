@@ -51,8 +51,6 @@ AboutDialog::AboutDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, wxString
     authorHomepageSizer->Add(new wxStaticText(this, wxID_ANY, wxT(" Andrew Schofield")), 0, wxALIGN_LEFT);
     authorHomepageSizer->Add(new StaticBoldedText(this, wxID_ANY, wxT("Homepage:")), 0, wxALIGN_RIGHT);
     authorHomepageSizer->Add(new StaticUrl(this, wxT(FMC_URL_FAHMON), wxT(FMC_URL_FAHMON)), 0, wxALIGN_LEFT);
-    //authorHomepageSizer->Add(new StaticBoldedText(this, wxID_ANY, wxT("Development Blog:")), 0, wxALIGN_RIGHT);
-    //authorHomepageSizer->Add(new StaticUrl(this, wxT("http://fahmon.fahinfo.org/"), wxT("http://fahmon.fahinfo.org/")), 0, wxALIGN_LEFT);
     authorHomepageSizer->AddSpacer(FMC_GUI_SPACING_LOW);
     authorHomepageSizer->AddSpacer(FMC_GUI_SPACING_LOW);
     authorHomepageSizer->Add(new StaticBoldedText(this, wxID_ANY, wxT("Library:")), 0, wxALIGN_RIGHT);

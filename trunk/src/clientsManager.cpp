@@ -54,7 +54,7 @@ ClientsManager::~ClientsManager(void)
 void ClientsManager::CreateInstance(void)
 {
     wxASSERT(mInstance == NULL);
-	
+
     mInstance = new ClientsManager();
     mInstance->Load();
 }
@@ -91,7 +91,7 @@ ClientsManager* ClientsManager::GetInstance(void)
 wxUint32 ClientsManager::Add(const wxString& name, const wxString& location)
 {
     mClients.Add(new Client(name, location));
-    
+
     return mClients.GetCount()-1;
 }
 
@@ -196,18 +196,18 @@ inline void ClientsManager::Save(void)
     {
         Tools::ErrorMsgBox(wxString::Format(wxT("Could not open file <%s> for writing!\nThe list of clients will not be saved!"), (PathManager::GetCfgPath() + wxT(FMC_FILE_CLIENTS)).c_str()));
         return;
-    }    
-    
+    }
+
     // Write a small header
     textOS.WriteString(wxString::Format(wxT("# %s : contains the list of clients\n#\n# \"Name\"          \"Location\"\n\n"), (PathManager::GetCfgPath() + wxT(FMC_FILE_CLIENTS)).c_str()));
-    
+
     // And then each client
     for(i=0; i<GetCount(); ++i)
     {
         client    = Get(i);
         textOS.WriteString(wxString::Format(wxT("\"%s\"    \"%s\"\n"), client->GetName().c_str(), client->GetLocation().c_str()));
     }
-    
+
     fileOS.Close();
 }
 
@@ -221,12 +221,22 @@ void ClientsManager::ReloadThreaded(wxUint32 clientId)
 {
     wxUint32 i;
 
-    if(clientId != CM_LOADALL)
+    if(clientId != CM_LOADALL && clientId != CM_LOADALLF)
         new ClientHelperThread(clientId);
     else
     {
         for(i=0; i<GetCount(); ++i)
-            new ClientHelperThread(i);
+        {
+            if(clientId == CM_LOADALL)
+            {
+                if(mClients.Item(i)->ReloadNeeded() == true)
+                    new ClientHelperThread(i);
+            }
+            if(clientId == CM_LOADALLF)
+            {
+                new ClientHelperThread(i);
+            }
+        }
     }
 }
 

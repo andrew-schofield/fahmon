@@ -125,7 +125,14 @@ void TrayManager::UninstallIcon(void)
 **/
 void TrayManager::SetTooltip(const wxString& tooltip)
 {
-    mTooltip = wxString::Format(wxT("%s / %s"), wxT(FMC_PRODUCT), tooltip.c_str());
+    double  TotalPPD;
+    wxInt32  ClientCount;
+
+    ClientCount = MainDialog::GetInstance()->GetClientCount();
+
+    TotalPPD = MainDialog::GetInstance()->GetTotalPPD();
+
+    mTooltip = wxString::Format(wxT("%s / %s\n%i clients for %.2fPPD"), wxT(FMC_PRODUCT), tooltip.c_str(), ClientCount, TotalPPD);
 
     if(IsIconInstalled() == true)
     {

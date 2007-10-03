@@ -3,18 +3,41 @@
 
 
 
+v2.2.1
+[+] Added "Start Minimized" option
+[+] Added the blue color for unsynched clients, please check the help file for more information
+[+] Added experimental auto-reload code (thanks to athropos_666)
+[+] Added option to base ETA and PPD on instantaneous frame time and rolling 3 frame average
+[+] Added ability to override timezone detected by wxwidgets (whole hours only)
+[+] Message manager now writes out messages to messages.log
+[+] Added Simulated Tempering Gromacs (GROSIMT) core support
+[+] Added Dolphin as a filemanager option for Linux user in preparation for it being the default FM in KDE4
+[+/-] Added option to partially override state detection for clients with unsynced clocks
+[-] Fixed empty log crash bug
+[-] Fixed state detection bug for verbose clients trying to upload results periodically
+[-] Fixed projects database to handle non-integer deadlines correctly
+[ ] Worked around bug in wxwidgets breaking DST timezones, see above
+[ ] Download times and deadlines are now displayed in local time instead of UTC
+[ ] ETA times in the message log now displayed as HH:MM:SS instead of seconds
+[ ] Projects database now versioned
+[ ] Deadline and download dates can also be displayed as time elapsed or remaining, in days
+[ ] Added missing declaration to allow compilation against wxWidgets 2.8
+[ ] Switched win32 version to wxWidgets 2.8.4
+
+
+
 v2.2.0
 [+] Added full monitoring support for GPU and SMP clients
 [+] Added SREM Gromacs (GROST) core support
 [+] Added PPD display per client, and total
-[-] Fixed bug which caused all unsaved settings to be lost when client was left running on an OS shutdown or logoff.
-[-] Fixed bugs which prevented code working correctly with gcc > 4 (thanks to ck_wong and goober_dvd for the patches)
 [+] A local file can now be used as a project data source, and the download parameters can be changed
 [+] Added a tray menu showing number of clients and PPD
 [+] Right click menu for clients now allows you to open the client folder in your file manager
 [+] Client list can be sorted by PPD and Status
 [+] Inaccessible clients can be included in sorting, by default they are always displayed last.
 [+] Web menu now includes a link to fahinfo.org, pointing to the relevant project information page
+[-] Fixed bug which caused all unsaved settings to be lost when client was left running on an OS shutdown or logoff.
+[-] Fixed bugs which prevented code working correctly with gcc > 4 (thanks to ck_wong and goober_dvd for the patches)
 
 
 

@@ -117,11 +117,11 @@ BEGIN_EVENT_TABLE(MainDialog, wxFrame)
     EVT_TIMER   (wxID_ANY,  MainDialog::OnAutoReloadTimer)
 
     // --- Custom
-    EVT_COMMAND    (wxID_ANY, EVT_CLIENTRELOADED,               MainDialog::OnClientReloaded)
-    EVT_COMMAND    (wxID_ANY, EVT_NEWCLIENTADDED,               MainDialog::OnNewClientAdded)
-    EVT_COMMAND    (wxID_ANY, EVT_CLIENTDELETED,                MainDialog::OnClientDeleted)
-    EVT_COMMAND    (wxID_ANY, EVT_PROJECTS_DATABASE_UPDATED,    MainDialog::OnProjectsDatabaseUpdated)
-    EVT_COMMAND    (wxID_ANY, EVT_NEW_MESSAGE_LOGGED,           MainDialog::OnNewMessageLogged)
+    EVT_COMMAND    (wxID_ANY, EVT_CLIENTRELOADED,            MainDialog::OnClientReloaded)
+    EVT_COMMAND    (wxID_ANY, EVT_NEWCLIENTADDED,            MainDialog::OnNewClientAdded)
+    EVT_COMMAND    (wxID_ANY, EVT_CLIENTDELETED,             MainDialog::OnClientDeleted)
+    EVT_COMMAND    (wxID_ANY, EVT_PROJECTS_DATABASE_UPDATED, MainDialog::OnProjectsDatabaseUpdated)
+    EVT_COMMAND    (wxID_ANY, EVT_NEW_MESSAGE_LOGGED,        MainDialog::OnNewMessageLogged)
 END_EVENT_TABLE()
 
 
@@ -242,6 +242,7 @@ bool MainDialog::Show(bool show)
 void MainDialog::SetAutoReloadTimer(void)
 {
     bool     isAutoReloadOn;
+    bool     isAdvancedReloadOn;
     wxUint32 autoReloadFrequency;
 
     // First, we have to stop the timer if it is running, because preferences may be different from the last time
@@ -250,11 +251,21 @@ void MainDialog::SetAutoReloadTimer(void)
 
     // Then, retrieve the (perhaps new) preferences
     _PrefsGetBool(PREF_MAINDIALOG_AUTORELOAD,          isAutoReloadOn);
+    _PrefsGetBool(PREF_MAINDIALOG_ADVANCEDRELOAD,      isAdvancedReloadOn); //this is actually the experimental system
     _PrefsGetUint(PREF_MAINDIALOG_AUTORELOADFREQUENCY, autoReloadFrequency);
 
     // Ok, now we can start the timer if needed but we need to convert minutes to milliseconds
     if(isAutoReloadOn)
-        mAutoReloadTimer.Start(autoReloadFrequency * 60 * 1000);
+    {
+        if(isAdvancedReloadOn)
+        {
+            mAutoReloadTimer.Start(10 * 1000/*autoReloadFrequency * 60 * 1000*/); //experimental updates
+        }
+        else
+        {
+            mAutoReloadTimer.Start(autoReloadFrequency * 60 * 1000); //regular update system
+        }
+    }
 }
 
 
@@ -278,11 +289,22 @@ void MainDialog::ShowClientInformation(ClientId clientId)
 **/
 void MainDialog::UpdateClientInformation(ClientId clientId)
 {
-    bool           autoUpdateProjects;
-    wxDateTime     preferredDeadline;
-    wxDateTime     finalDeadline;
+    bool          autoUpdateProjects;
+    bool          overrideTZ;
+    bool          deadlineDays;
+    wxInt32       TZ;
+    wxDateTime    preferredDeadline;
+    wxDateTime    finalDeadline;
+    wxDateTime    downloadTime;
+    wxDateTime    timeNow;
+    wxTimeSpan    timeDiff;
     const Client  *client;
     const Project *project;
+    float         tempFloat;
+
+    _PrefsGetBool(PREF_OVERRIDE_TIMEZONE, overrideTZ);
+    _PrefsGetInt (PREF_TZ,                TZ);
+    _PrefsGetBool(PREF_MAINDIALOG_DEADLINE_DAYS, deadlineDays);
 
     // Clear information for invalid clients
     if(clientId == INVALID_CLIENT_ID)
@@ -352,7 +374,28 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
     mTeamNumber->SetURL(client->GetTeamStatsURL());
 
     if(client->GetDownloadDate().IsValid())
-        mDownloaded->SetLabel(client->GetDownloadDate().Format(wxT(FMC_DATE_MAIN_FORMAT)));
+    {
+        if(overrideTZ)
+        {
+            downloadTime = client->GetDownloadDate().Add(wxTimeSpan::Hours(TZ));
+            timeNow = wxDateTime::Now()/*.Add(wxTimeSpan::Hours(TZ))*/;
+        }
+        else
+        {
+            downloadTime = client->GetDownloadDate().FromTimezone(wxDateTime::UTC);
+            timeNow = wxDateTime::Now()/*.FromTimezone(wxDateTime::UTC)*/;
+        }
+        if(deadlineDays == true)
+        {
+            timeDiff = timeNow.Subtract(downloadTime);
+            tempFloat = timeDiff.GetMinutes();
+            mDownloaded->SetLabel(wxString::Format(wxT("%.2f days ago"), tempFloat / 1440));
+        }
+        else
+        {
+            mDownloaded->SetLabel(wxString::Format(wxT("%s"), downloadTime.Format(wxT(FMC_DATE_MAIN_FORMAT)).c_str()));
+        }
+    }
     else
         mDownloaded->SetLabel(wxT("N/A"));
 
@@ -413,9 +456,18 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
     // Preferred deadline: if it is equal to 0 day, there is no preferred deadline
     if(client->GetDownloadDate().IsValid() && project->GetPreferredDeadlineInDays() != 0)
     {
-        preferredDeadline = client->GetDownloadDate();
-        preferredDeadline.Add(wxTimeSpan::Days(project->GetPreferredDeadlineInDays()));
-        mPreferredDeadline->SetLabel(preferredDeadline.Format(wxT(FMC_DATE_MAIN_FORMAT)));
+        preferredDeadline = downloadTime;
+        preferredDeadline.Add(wxTimeSpan::Seconds(project->GetPreferredDeadlineInDays() * 864));
+        if(deadlineDays == true)
+        {
+            timeDiff = preferredDeadline.Subtract(timeNow);
+            tempFloat = timeDiff.GetMinutes();
+            mPreferredDeadline->SetLabel(wxString::Format(wxT("In %.2f days"), tempFloat / 1440));
+        }
+        else
+        {
+            mPreferredDeadline->SetLabel(wxString::Format(wxT("%s"), preferredDeadline.Format(wxT(FMC_DATE_MAIN_FORMAT)).c_str()));
+        }
     }
     else
         mPreferredDeadline->SetLabel(wxT("N/A"));
@@ -423,9 +475,18 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
     // Final deadline: if it is equal to 0 day, there is no final deadline
     if(client->GetDownloadDate().IsValid() && project->GetFinalDeadlineInDays() != 0)
     {
-        finalDeadline = client->GetDownloadDate();
-        finalDeadline.Add(wxTimeSpan::Days(project->GetFinalDeadlineInDays()));
-        mFinalDeadline->SetLabel(finalDeadline.Format(wxT(FMC_DATE_MAIN_FORMAT)));
+        finalDeadline = downloadTime;
+        finalDeadline.Add(wxTimeSpan::Seconds(project->GetFinalDeadlineInDays() * 864));
+        if(deadlineDays == true)
+        {
+            timeDiff = finalDeadline.Subtract(timeNow);
+            tempFloat = timeDiff.GetMinutes();
+            mFinalDeadline->SetLabel(wxString::Format(wxT("In %.2f days"), tempFloat / 1440));
+        }
+        else
+        {
+            mFinalDeadline->SetLabel(wxString::Format(wxT("%s"), finalDeadline.Format(wxT(FMC_DATE_MAIN_FORMAT)).c_str()));
+        }
     }
     else
         mFinalDeadline->SetLabel(wxT("N/A"));
@@ -716,7 +777,7 @@ void MainDialog::OnMenuReload(wxCommandEvent& event)
 **/
 void MainDialog::OnMenuReloadAll(wxCommandEvent& event)
 {
-    ClientsManager::GetInstance()->ReloadThreaded(CM_LOADALL);
+    ClientsManager::GetInstance()->ReloadThreaded(CM_LOADALLF);
 }
 
 
@@ -732,7 +793,7 @@ void MainDialog::OnMenuUpdateProjects(wxCommandEvent& event)
 
     // If no error occurred while updating the database, we can then update the displayed information about clients
     if(updateResult == true)
-        ClientsManager::GetInstance()->ReloadThreaded(CM_LOADALL);
+        ClientsManager::GetInstance()->ReloadThreaded(CM_LOADALLF);
 }
 
 
@@ -1014,7 +1075,7 @@ void MainDialog::OnClientDeleted(wxCommandEvent& event)
 void MainDialog::OnProjectsDatabaseUpdated(wxCommandEvent& event)
 {
     // New projects are perhaps available, so we reload all clients to update the displayed information
-    ClientsManager::GetInstance()->ReloadThreaded(CM_LOADALL);
+    ClientsManager::GetInstance()->ReloadThreaded(CM_LOADALLF);
 }
 
 
@@ -1036,8 +1097,21 @@ void MainDialog::OnNewMessageLogged(wxCommandEvent& event)
 **/
 void MainDialog::OnAutoReloadTimer(wxTimerEvent& event)
 {
-    // For now, we have only one timer (auto-reload), so we don't have to test which one fired the event
-    ClientsManager::GetInstance()->ReloadThreaded(CM_LOADALL);
+    bool isAdvancedReloadOn;
+
+    _PrefsGetBool(PREF_MAINDIALOG_ADVANCEDRELOAD,          isAdvancedReloadOn); 
+
+    if(isAdvancedReloadOn == true)
+    {
+        // For now, we have only one timer (auto-reload), so we don't have to test which one fired the event
+        // Reload using experimental method testing last update time
+        ClientsManager::GetInstance()->ReloadThreaded(CM_LOADALL);
+    }
+    else
+    {
+        // Reload using old method - forces an upload regardless of changes
+        ClientsManager::GetInstance()->ReloadThreaded(CM_LOADALLF);
+    }
 }
 
 
@@ -1080,6 +1154,18 @@ void MainDialog::OnTrayIconPrefChanged(void)
         TrayManager::GetInstance()->UninstallIcon();
 }
 
+void MainDialog::OnPPDStylePrefChanged(void)
+{
+    ClientsManager::GetInstance()->ReloadThreaded(CM_LOADALLF);
+}
+
+void MainDialog::OnDeadlinePrefChanged(void)
+{
+    ClientId selectedClientId = mClientsList->GetSelectedClientId();
+
+    if(selectedClientId != INVALID_CLIENT_ID)
+        ClientsManager::GetInstance()->ReloadThreaded(selectedClientId);
+}
 
 /**
  * Calculate total PPD from all active/inactive clients

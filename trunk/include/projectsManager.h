@@ -52,6 +52,8 @@ protected:
     void Save(void);
     void Load(void);
 
+    void UpdateToV2(void);
+
     void AddProject(Project* project);
     bool ShouldPerformUpdate(void);
 

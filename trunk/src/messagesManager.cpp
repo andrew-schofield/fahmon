@@ -16,9 +16,14 @@
  
 #include "fahmon.h"
 #include "messagesManager.h"
+#include "pathManager.h"
 
 #include "mainDialog.h"
 #include "wx/datetime.h"
+#include "wx/txtstrm.h"
+#include "wx/textfile.h"
+#include "wx/wfstream.h"
+#include "tools.h"
 
 
 // This mutex is there to ensure that two threads won't try to log something at the same time
@@ -87,12 +92,28 @@ void MessagesManager::Log(const wxString& msg)
     wxMutexLocker  mutexLocker(mMutexLog);        // --- Lock the access to this method
     wxString       currentDate;
     wxCommandEvent event(EVT_NEW_MESSAGE_LOGGED);
+    wxFileOutputStream   fileOS(wxT("./messages.log"));
+    wxTextOutputStream   textOS(fileOS);
 
     // Format the current time correctly
     currentDate = wxDateTime::Now().Format(wxT("%d/%m/%y - %H:%M:%S"));
 
     // Add the new message
     mMessages += wxT("[") + currentDate + wxT("] ") + msg + wxT("\n");
+
+    // Write a small header
+
+    // Could the file be opened?
+    if(fileOS.Ok() == false)
+    {
+        Tools::ErrorMsgBox(wxString::Format(wxT("Could not open file for writing!\nThe log will not be saved!")));
+        return;
+    }
+    else
+    {
+        textOS.WriteString(mMessages);
+        fileOS.Close();
+    }
 
     // Warn the main dialog about this message
     // We can't directly call methods of MessagesFrame, we must use the main dialog to transfer the warning

@@ -17,14 +17,18 @@
 #ifndef _FAHMONCONSTS_H
 #define _FAHMONCONSTS_H
 
+// --- Versions
+#define FMC_PROJECTS_VERSION 2
+
 
 // --- Limits
 #define FMC_INTMAX  2147483647l
+#define FMC_INTMAX2 2147483646l
 
 
 // --- Strings
 #define FMC_APPNAME 	"FahMon"
-#define FMC_VERSION 	"2.2.0"
+#define FMC_VERSION 	"2.2.1"
 #define FMC_PRODUCT 	FMC_APPNAME" "FMC_VERSION
 #define FMC_UID         "."FMC_APPNAME"__LOCK__"
 
@@ -72,6 +76,7 @@
 #define FMC_FILE_IMG_LIST_STOPPED      "list_client_stopped.png"
 #define FMC_FILE_IMG_LIST_INACTIVE     "list_client_inactive.png"
 #define FMC_FILE_IMG_LIST_INACCESSIBLE "list_client_inaccessible.png"
+#define FMC_FILE_IMG_LIST_ASYNCH       "list_client_asynch.png"
 
 #define FMC_FILE_IMG_LIST_ARROW_UP   "list_up_arrow.png"
 #define FMC_FILE_IMG_LIST_ARROW_DOWN "list_down_arrow.png"

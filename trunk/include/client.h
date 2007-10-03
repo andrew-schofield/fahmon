@@ -40,13 +40,15 @@ protected:
         ST_INACCESSIBLE,
         ST_STOPPED,
         ST_INACTIVE,
-        ST_RUNNING
+        ST_RUNNING,
+        ST_ASYNCH
     } State;
 
     static wxMutex mMutexXYZFiles;
 
     ETA        mETA;
     State      mState;
+    time_t     mLastModification;
     FrameId    mPreviouslyAnalyzedFrameId;
     wxString   mName;
     wxString   mLocation;
@@ -78,7 +80,7 @@ public:
     wxString GetUserStatsURL(void) const;
     wxString GetTeamStatsURL(void) const;
     wxString GetJmolURL(void)      const;
-    wxString GetFahinfoURL(void)      const;
+    wxString GetFahinfoURL(void)   const;
 
     // -- 'Setters' --
     void SetName(const wxString& name) {mName = name;}
@@ -89,6 +91,7 @@ public:
     bool              IsStopped(void)         const {return mState == ST_STOPPED;}
     bool              IsInactive(void)        const {return mState == ST_INACTIVE;}
     bool              IsRunning(void)         const {return mState == ST_RUNNING;}
+    bool              IsAsynch(void)          const {return mState == ST_ASYNCH;}
     wxString          GetName(void)           const {return mName;}
     wxString          GetLocation(void)       const {return mLocation;}
     wxString          GetLog(void)            const {return mLog;}
@@ -98,8 +101,10 @@ public:
     wxString          GetUserName(void)       const {return mUserName;}
     wxUint32          GetTeamNumber(void)     const {return mTeamNumber;}
     ProjectId         GetProjectId(void)      const {return mProjectId;}
-    double         GetPPD(void)      const {return mPPD;}
+    double            GetPPD(void)            const {return mPPD;}
     const wxDateTime& GetDownloadDate(void)   const {return mDownloadDate;}
+
+    bool ReloadNeeded(void) const;
 
     const ETA* GetETA(void) const {return &mETA;}
 };

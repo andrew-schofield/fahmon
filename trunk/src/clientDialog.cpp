@@ -19,6 +19,7 @@
 
 #include "tools.h"
 #include "wx/dirdlg.h"
+#include "wx/button.h"
 #include "mainDialog.h"
 #include "clientsManager.h"
 #include "staticBoldedText.h"
@@ -76,24 +77,24 @@ ClientDialog::ClientDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, wxStri
     clientInfoSizer->Add(new StaticBoldedText(this, wxID_ANY, wxT("Location:")), 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
     clientInfoSizer->Add(locationSizer, 0, wxALIGN_CENTER_VERTICAL);
     groupSizer->Add(clientInfoSizer, 1, wxEXPAND | wxALL, FMC_GUI_BORDER);
-    
+
     // The bottom part contains the Ok and Cancel buttons
     buttonsSizer = new wxBoxSizer(wxHORIZONTAL);
 
     buttonsSizer->Add(new wxButton(this, wxID_CANCEL), 0, wxALIGN_RIGHT);
     buttonsSizer->AddSpacer(FMC_GUI_SPACING_LOW);
     buttonsSizer->Add(new wxButton(this, wxID_OK), 0, wxALIGN_RIGHT);
-    
+
     // Construct the main sizer
     mainSizer = new wxBoxSizer(wxVERTICAL);
-    
+
     mainSizer->Add(groupSizer, 1, wxEXPAND);
     mainSizer->AddSpacer(FMC_GUI_SPACING_HIGH);
     mainSizer->Add(buttonsSizer, 0, wxALIGN_RIGHT);
-    
+
     // And the top level sizer
     topLevelSizer = new wxBoxSizer(wxVERTICAL);
-    
+
     topLevelSizer->Add(mainSizer, 1, wxEXPAND | wxALL, FMC_GUI_BORDER);
     SetSizer(topLevelSizer);
     topLevelSizer->Fit(this);
@@ -115,7 +116,7 @@ ClientDialog* ClientDialog::GetInstance(wxWindow* parent)
 {
     if(mInstance == NULL)
         mInstance = new ClientDialog(parent);
-    
+
     return mInstance;
 }
 
@@ -140,7 +141,7 @@ void ClientDialog::DestroyInstance(void)
 int ClientDialog::ShowModal(wxUint32 clientId)
 {
     const Client* clientToEdit;
-    
+
     // Store the client we are going to edit
     mClientId = clientId;
 
@@ -173,10 +174,10 @@ int ClientDialog::ShowModal(wxUint32 clientId)
 void ClientDialog::OnBrowseButton(wxCommandEvent& event)
 {
     wxString selectedPath;
-    
+
     // Pop up the directory selector, starting from the current path
     selectedPath = wxDirSelector(wxT("Choose a folder"), mClientLocationCtrl->GetValue());
-    
+
     // Check if 'Ok' button was hit
     if(selectedPath.empty() == false)
         mClientLocationCtrl->SetValue(selectedPath);
@@ -192,7 +193,7 @@ void ClientDialog::OnOkButton(wxCommandEvent& event)
     wxString       clientName;
     wxString       clientLocation;
     wxCommandEvent newClientEvent(EVT_NEWCLIENTADDED);
-    
+
     // Retrieve the fields value
     clientName     = mClientNameCtrl->GetValue();
     clientLocation = mClientLocationCtrl->GetValue();
@@ -217,12 +218,12 @@ void ClientDialog::OnOkButton(wxCommandEvent& event)
     {
         // Add the new client to the list
         newClientId = ClientsManager::GetInstance()->Add(clientName, clientLocation);
-        
+
         // And warn the main dialog
         newClientEvent.SetInt(newClientId);
         MainDialog::GetInstance()->AddPendingEvent(newClientEvent);
     }
-    
+
     // Let the default handler do its job
     event.Skip();
 }

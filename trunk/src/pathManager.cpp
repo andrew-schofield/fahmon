@@ -39,16 +39,18 @@ PathManager::PathManager(void)
     if(homeDir.Last() != '/')
         homeDir += wxT("/");
 
-    mImgPath = wxT("./images/"); 
-    mCfgPath = homeDir + wxT(".fahmon/"); 
-    mXYZPath = homeDir + wxT(".fahmon/xyz/"); 
+    mImgPath = wxT("./images/");
+    mCfgPath = homeDir + wxT(".fahmon/");
+    mXYZPath = homeDir + wxT(".fahmon/xyz/");
+    mMsgPath = homeDir + wxT(".fahmon/");
 
 #else
 
     // On Win32 systems, we simply use the current directory
-    mXYZPath = wxT("./xyz/"); 
-    mImgPath = wxT("./images/"); 
-    mCfgPath = wxT("./config/"); 
+    mXYZPath = wxT("./xyz/");
+    mImgPath = wxT("./images/");
+    mCfgPath = wxT("./config/");
+    mMsgPath = wxT("./");
 
 #endif
 }

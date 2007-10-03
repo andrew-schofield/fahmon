@@ -31,6 +31,7 @@ protected:
     wxString mXYZPath;
     wxString mImgPath;
     wxString mCfgPath;
+    wxString mMsgPath;
 
     // Constructor/Destructor
      PathManager(void);
@@ -44,6 +45,7 @@ public:
     static wxString GetXYZPath(void) {return GetInstance()->mXYZPath;}
     static wxString GetImgPath(void) {return GetInstance()->mImgPath;}
     static wxString GetCfgPath(void) {return GetInstance()->mCfgPath;}
+    static wxString GetMsgPath(void) {return GetInstance()->mMsgPath;}
 };
 
 

@@ -99,7 +99,7 @@ ProjectsManager* ProjectsManager::GetInstance(void)
 inline void ProjectsManager::Load(void)
 {
     Project         *currentProject;
-    wxUint32         nbProjects, i;
+    wxUint32         nbProjects, i, version;
     DataInputStream  in(PathManager::GetCfgPath() + wxT(FMC_FILE_PROJECTS));
 
     // Could the file be opened ?
@@ -109,7 +109,7 @@ inline void ProjectsManager::Load(void)
         return;
     }
 
-    // Find how many projects are present, and read them one by one
+    // Find how many projects are present, get the version number, and read them one by one
     in.ReadUint(nbProjects);
     for(i=0; i<nbProjects; ++i)
     {
@@ -117,6 +117,12 @@ inline void ProjectsManager::Load(void)
         currentProject->Read(in);
         AddProject(currentProject);
     }
+    in.ReadUint(version);
+    if(version == 135456360) //why is it this number?
+        version = 1;
+
+    if(version == 1)
+        UpdateToV2();
 }
 
 
@@ -140,6 +146,8 @@ inline void ProjectsManager::Save(void)
     out.WriteUint(mProjectsHashMap.size());
     for(iterator=mProjectsHashMap.begin(); iterator!=mProjectsHashMap.end(); ++iterator)
         iterator->second->Write(out);
+    // write projects database version
+    out.WriteUint(FMC_PROJECTS_VERSION);
 }
 
 
@@ -293,11 +301,11 @@ bool ProjectsManager::Update_DownloadProjectsFile(wxString& fileName, ProgressMa
 
     HTTPDownloader::DownloadStatus downloadStatus;
 
-    _PrefsGetBool        (PREF_HTTPDOWNLOADER_USEALTERNATEUPDATE,                   useAlternate);
-    _PrefsGetString      (PREF_HTTPDOWNLOADER_ALTERNATEUPDATELOCATIONSERVER,               projectLocationServer);
-    _PrefsGetUint      (PREF_HTTPDOWNLOADER_ALTERNATEUPDATELOCATIONPORT,               projectLocationPort);
-    _PrefsGetString      (PREF_HTTPDOWNLOADER_ALTERNATEUPDATELOCATIONRESOURCE,               projectLocationResource);
-    _PrefsGetBool        (PREF_HTTPDOWNLOADER_USELOCALFILE,                   useLocalFile);
+    _PrefsGetBool        (PREF_HTTPDOWNLOADER_USEALTERNATEUPDATE,              useAlternate);
+    _PrefsGetString      (PREF_HTTPDOWNLOADER_ALTERNATEUPDATELOCATIONSERVER,   projectLocationServer);
+    _PrefsGetUint        (PREF_HTTPDOWNLOADER_ALTERNATEUPDATELOCATIONPORT,     projectLocationPort);
+    _PrefsGetString      (PREF_HTTPDOWNLOADER_ALTERNATEUPDATELOCATIONRESOURCE, projectLocationResource);
+    _PrefsGetBool        (PREF_HTTPDOWNLOADER_USELOCALFILE,                    useLocalFile);
     _PrefsGetString      (PREF_HTTPDOWNLOADER_LOCALFILELOCATION,               projectLocalFile);
 
     //Initialise the port number
@@ -477,7 +485,7 @@ Project* ProjectsManager::Update_ParseProjectInfo(const wxString& projectInfo) c
     {
         if(parser.GetCurrentText().ToDouble(&tmpDouble) == false)
             return NULL;
-        preferredDeadlineInDays = (wxUint32)tmpDouble;
+        preferredDeadlineInDays = (wxUint32)tmpDouble * 100;
     }
 
     // Final deadline in days
@@ -489,7 +497,7 @@ Project* ProjectsManager::Update_ParseProjectInfo(const wxString& projectInfo) c
     {
         if(parser.GetCurrentText().ToDouble(&tmpDouble) == false)
             return NULL;
-        finalDeadlineInDays = (wxUint32)tmpDouble;
+        finalDeadlineInDays = (wxUint32)tmpDouble * 100;
     }
 
     // Credit
@@ -514,4 +522,29 @@ Project* ProjectsManager::Update_ParseProjectInfo(const wxString& projectInfo) c
     coreId = Core::ShortNameToId(parser.GetCurrentText());
 
     return new Project(projectId, preferredDeadlineInDays, finalDeadlineInDays, nbFrames, credit, coreId);
+}
+
+/**
+ * Update all deadlines to be deadline*100 to allow storing of non integer deadlines
+**/
+void ProjectsManager::UpdateToV2(void)
+{
+    ProjectsListHashMap::iterator  iterator;
+    const Project     *editingProject;
+    Project    *editedProject;
+    wxUint32   preferredDeadlineInDays;
+    wxUint32   finalDeadlineInDays;
+
+    for(iterator=mProjectsHashMap.begin(); iterator!=mProjectsHashMap.end(); ++iterator)
+    {
+        editingProject = iterator->second;
+        if(editingProject != NULL)
+        {
+            preferredDeadlineInDays = editingProject->GetPreferredDeadlineInDays() * 100;
+            finalDeadlineInDays = editingProject->GetFinalDeadlineInDays() * 100;
+            editedProject = new Project(editingProject->GetProjectId(), preferredDeadlineInDays, finalDeadlineInDays, editingProject->GetNbFrames(), editingProject->GetCredit(), editingProject->GetCoreId());
+            AddProject(editedProject);
+        }
+    }
+
 }

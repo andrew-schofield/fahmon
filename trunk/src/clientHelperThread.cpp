@@ -27,7 +27,7 @@
 ClientHelperThread::ClientHelperThread(wxUint32 clientId) : wxThread(wxTHREAD_DETACHED)
 {
     mClientId = clientId;
-    
+
     Create();
     Run();
 }

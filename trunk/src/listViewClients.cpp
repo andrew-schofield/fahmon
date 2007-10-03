@@ -51,6 +51,7 @@ enum _LISTVIEW_ICON
     LVI_CLIENT_INACTIVE,
     LVI_CLIENT_INACCESSIBLE,
     LVI_CLIENT_OK,
+    LVI_CLIENT_ASYNCH,
     LVI_UP_ARROW,
     LVI_DOWN_ARROW
 };
@@ -132,6 +133,7 @@ ListViewClients::ListViewClients(wxWindow* parent, wxWindowID id, wxUint32 nbCli
     imageList->Add(wxImage(PathManager::GetImgPath() + wxT(FMC_FILE_IMG_LIST_INACTIVE), wxBITMAP_TYPE_PNG));
     imageList->Add(wxImage(PathManager::GetImgPath() + wxT(FMC_FILE_IMG_LIST_INACCESSIBLE), wxBITMAP_TYPE_PNG));
     imageList->Add(wxImage(PathManager::GetImgPath() + wxT(FMC_FILE_IMG_LIST_OK), wxBITMAP_TYPE_PNG));
+    imageList->Add(wxImage(PathManager::GetImgPath() + wxT(FMC_FILE_IMG_LIST_ASYNCH), wxBITMAP_TYPE_PNG));
     imageList->Add(wxImage(PathManager::GetImgPath() + wxT(FMC_FILE_IMG_LIST_ARROW_UP), wxBITMAP_TYPE_PNG));
     imageList->Add(wxImage(PathManager::GetImgPath() + wxT(FMC_FILE_IMG_LIST_ARROW_DOWN), wxBITMAP_TYPE_PNG));
     AssignImageList(imageList, wxIMAGE_LIST_SMALL);
@@ -173,7 +175,7 @@ int ListViewClients::CompareClients(wxUint32 clientId1, wxUint32 clientId2) cons
 {
     const Client  *client1;
     const Client  *client2;
-          wxInt32  comparisonResult;
+    wxInt32  comparisonResult;
     int Client1State;
     int Client2State;
     bool keepDeadLast;
@@ -369,11 +371,27 @@ void ListViewClients::UpdateClient(wxUint32 clientId)
     else if(!client->GetETA()->IsOk())                          SetItem(clientIndex, LVC_ETA, wxT("N/A"));
     else                                                        SetItem(clientIndex, LVC_ETA, client->GetETA()->GetString());
 
-    // We use leading icons to indicate the status of the client
-         if(!client->IsAccessible())     SetItemImage(clientIndex, LVI_CLIENT_INACCESSIBLE);
-    else if(client->IsStopped())         SetItemImage(clientIndex, LVI_CLIENT_STOPPED);
-    else if(client->IsInactive())        SetItemImage(clientIndex, LVI_CLIENT_INACTIVE);
-    else                                 SetItemImage(clientIndex, LVI_CLIENT_OK);
+     // We use leading icons to indicate the status of the client
+    if(!client->IsAccessible())
+    {
+        SetItemImage(clientIndex, LVI_CLIENT_INACCESSIBLE);
+    }
+    else if(client->IsStopped())
+    {
+        SetItemImage(clientIndex, LVI_CLIENT_STOPPED);
+    }
+    else if(client->IsInactive())
+    {
+        SetItemImage(clientIndex, LVI_CLIENT_INACTIVE);
+    }
+    else if(client->IsAsynch())
+    {
+        SetItemImage(clientIndex, LVI_CLIENT_ASYNCH);
+    }
+    else
+    {
+        SetItemImage(clientIndex, LVI_CLIENT_OK);
+    }
 
     // Re-enable refresh
     Thaw();
@@ -406,7 +424,9 @@ void ListViewClients::Sort(void)
         mClientIdToIndex[GetItemData(i)] = i;
 
         if((i&1) != 0)
+        {
             SetItemBackgroundColour(i, FMC_COLOR_LIST_ODD_LINES);
+        }
         else
             SetItemBackgroundColour(i, *wxWHITE);
     }

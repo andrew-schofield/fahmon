@@ -17,6 +17,8 @@
 #include "fahmon.h"
 #include "fahlogAnalyzer.h"
 #include "messagesManager.h"
+#include "preferencesManager.h"
+#include "mainDialog.h"
 
 
 /**
@@ -44,12 +46,14 @@
 **/
 WorkUnitFrame* FahLogAnalyzer::AnalyzeLastFrame(const wxString& fahlogComplete)
 {
-    bool      completeRunFound, emptyLineFound, endOfLogReached, clientIsStopped;
+    bool      completeRunFound, emptyLineFound, endOfLogReached, clientIsStopped, newWUStarted;
     bool      endFrame1Found, endFrame2Found;
+    bool      overrideTimezone, ignoreAsynchrony;
     wxInt32   endOfLine;
     wxInt32   elapsedSeconds, runDuration;
+    wxInt32   timezoneoffset;
     LogLine   endFrame1, endFrame2, endFrame3;
-    LogLine  *currentLogLine;
+    LogLine   *currentLogLine;
     wxString  lineToParse;
     wxString  fahlog;
 
@@ -60,15 +64,17 @@ WorkUnitFrame* FahLogAnalyzer::AnalyzeLastFrame(const wxString& fahlogComplete)
     endOfLogReached  = false;
     clientIsStopped  = false;
     completeRunFound = false;
+    newWUStarted     = false;
 
     // Remove empty lines (if any) located at the end of the log
     while(fahlog.Last() == '\n' || fahlog.Last() == '\r')
         fahlog.RemoveLast();
 
     // An empty line means that we've reached the time where the client was started, therefore we won't be able to find a complete run
-    while(!completeRunFound && !emptyLineFound && !endOfLogReached && !clientIsStopped)
+    // actually this is wrong, since -verbosity 9 when periodically trying to return a finished WU inserts blank lines.
+    while(!completeRunFound && !endOfLogReached && !clientIsStopped )
     {
-             if(endFrame1Found == false) currentLogLine = &endFrame1;
+        if(endFrame1Found == false) currentLogLine = &endFrame1;
         else if(endFrame2Found == false) currentLogLine = &endFrame2;
         else                             currentLogLine = &endFrame3;
 
@@ -88,7 +94,7 @@ WorkUnitFrame* FahLogAnalyzer::AnalyzeLastFrame(const wxString& fahlogComplete)
         // Parse it
         ParseLogLine(lineToParse, *currentLogLine);
 
-        // What do we found ?
+        // What did we find ?
         switch(currentLogLine->type)
         {
             case LLT_SHUTDOWN:
@@ -99,15 +105,19 @@ WorkUnitFrame* FahLogAnalyzer::AnalyzeLastFrame(const wxString& fahlogComplete)
                 emptyLineFound = true;
                 break;
 
+            case LLT_WU_STARTED:
+                endOfLogReached = true;
+                break;
+
             case LLT_COMPLETED:
-                     if(endFrame1Found == false) endFrame1Found   = true;
+                if(endFrame1Found == false)      endFrame1Found   = true;
                 else if(endFrame2Found == false) endFrame2Found   = true;
                 else                             completeRunFound = true;
                 break;
 
             case LLT_FINISHED:
-                     if(endFrame1Found == false) endFrame1Found   = true;
-                else                             completeRunFound = true;
+                if(endFrame1Found == false) endFrame1Found   = true;
+                else                        completeRunFound = true;
                 break;
 
             default:
@@ -136,9 +146,33 @@ WorkUnitFrame* FahLogAnalyzer::AnalyzeLastFrame(const wxString& fahlogComplete)
         // Compute the elapsed seconds since this frame has been completed
         // If wxDateTime::Now() is before endFrame1.timestamp, we don't use elapsed time because if FahMon is running on a different machine
         // than the client, we can't assume that they are sufficiently synchronized
-        elapsedSeconds = wxDateTime::Now().ToUTC().Subtract(endFrame1.timestamp).GetSeconds().ToLong();
+
+        _PrefsGetBool(PREF_OVERRIDE_TIMEZONE, overrideTimezone);
+        _PrefsGetBool(PREF_IGNORE_ASYNCHRONY, ignoreAsynchrony);
+        if(overrideTimezone != true)
+        {
+            elapsedSeconds = wxDateTime::Now().ToUTC().Subtract(endFrame1.timestamp).GetSeconds().ToLong();
+        }
+        else
+        {
+            _PrefsGetInt(PREF_TZ, timezoneoffset);
+            elapsedSeconds = wxDateTime::Now().Subtract(endFrame1.timestamp + wxTimeSpan::Hours(timezoneoffset)).GetSeconds().ToLong();
+        }
+        // asynchronous clocks
         if(elapsedSeconds < 0)
-            elapsedSeconds = 0;
+        {
+            _LogMsgInfo(wxString::Format(wxT("Possible clock asynchrony detected!")));
+            if(ignoreAsynchrony)
+            {
+            // forces the client to be detected as still active (may break other detection routines though)
+                //maybe a bit risky doing this
+                elapsedSeconds = 65535;
+            }
+            else
+            {
+                elapsedSeconds = 0;
+            }
+        }
 
         return new WorkUnitFrame(endFrame1.frameId, false, runDuration, elapsedSeconds);
     }
@@ -176,13 +210,15 @@ void FahLogAnalyzer::ParseLogLine(wxString& lineToParse, LogLine& logLine)
     lineToParse.Trim(false);
 
     // Find the type of the line
-         if(lineToParse.IsEmpty())                                        logLine.type = LLT_EMPTY;
-    else if(lineToParse.StartsWith(wxT("Completed ")))                    logLine.type = LLT_COMPLETED;
-    else if(lineToParse.StartsWith(wxT("Finished a frame")))              logLine.type = LLT_FINISHED;
-    else if(lineToParse.StartsWith(wxT("Folding@Home Client Shutdown."))) logLine.type = LLT_SHUTDOWN;
+    if(lineToParse.IsEmpty())                                                         logLine.type = LLT_EMPTY;
+    else if(lineToParse.StartsWith(wxT("Completed ")))                                logLine.type = LLT_COMPLETED;
+    else if(lineToParse.StartsWith(wxT("Finished a frame")))                          logLine.type = LLT_FINISHED;
+    else if(lineToParse.StartsWith(wxT("Folding@Home Client Shutdown.")))             logLine.type = LLT_SHUTDOWN;
     // not used yet:
     else if(lineToParse.StartsWith(wxT("Folding@home Core Shutdown: FINISHED_UNIT"))) logLine.type = LLT_WU_COMPLETE;
-    else                                                                  logLine.type = LLT_UNKNOWN;
+    else if(lineToParse.StartsWith(wxT("Protein")))                                   logLine.type = LLT_WU_STARTED;
+    else if(lineToParse.StartsWith(wxT("Project")))                                   logLine.type = LLT_WU_STARTED;
+    else                                                                              logLine.type = LLT_UNKNOWN;
 
     // When a frame is finished, extract its identifier and the timestamp
     if(logLine.type == LLT_COMPLETED || logLine.type == LLT_FINISHED)
@@ -196,7 +232,7 @@ void FahLogAnalyzer::ParseLogLine(wxString& lineToParse, LogLine& logLine)
             logLine.frameId = (FrameId)convertedNumber;
         }
 	//extra bit for GPU WUs
-	else if(lineToParse.Mid(10, lineToParse.Len()-1).ToULong(&convertedNumber) == true)
+	else if(lineToParse.Mid(10, lineToParse.Len()-10).ToULong(&convertedNumber) == true)
 	{
 	    logLine.frameId = (FrameId)convertedNumber;
 	}

@@ -51,7 +51,7 @@ void SortArrayOfProjectId(ProjectId array[], wxInt32 lowerBound, wxInt32 upperBo
     {
         while(lo < upperBound && array[lo] < pivot)
             ++lo;
-        
+
         while(hi > lowerBound && array[hi] > pivot)
             --hi;
 
@@ -64,10 +64,10 @@ void SortArrayOfProjectId(ProjectId array[], wxInt32 lowerBound, wxInt32 upperBo
             --hi;
         }
     }
-    
+
     if(hi > lowerBound)
         SortArrayOfProjectId(array, lowerBound, hi);
-    
+
     if(lo < upperBound)
         SortArrayOfProjectId(array, lo, upperBound);
 }
@@ -96,7 +96,7 @@ BenchmarksManager::~BenchmarksManager(void)
 void BenchmarksManager::CreateInstance(void)
 {
     wxASSERT(mInstance == NULL);
-	
+
     mInstance = new BenchmarksManager();
     mInstance->Load();
 }
@@ -138,7 +138,7 @@ void BenchmarksManager::Save(void)
     BenchmarkHashMap::iterator       iteratorBenchmark;
     BenchmarksListHashMap::iterator  iteratorBenchmarksList;
 
-    
+
     if(out.Ok() == false)
     {
         Tools::ErrorMsgBox(wxString::Format(wxT("Could not open file <%s> for writing!"), (PathManager::GetCfgPath() + wxT(FMC_FILE_BENCHMARKS)).c_str()));
@@ -152,15 +152,15 @@ void BenchmarksManager::Save(void)
         out.WriteString(iteratorClientId->first);
         out.Write(&iteratorClientId->second, sizeof(ClientId));
     }
-    
-    
+
+
     // Then for all projects, and all clients, the associated benchmark
     out.WriteUint(mProjectIdToBenchmarks.size());
     for(iteratorBenchmarksList=mProjectIdToBenchmarks.begin(); iteratorBenchmarksList!=mProjectIdToBenchmarks.end(); ++iteratorBenchmarksList)
     {
         out.Write(&iteratorBenchmarksList->first, sizeof(ProjectId));
         listOfBenchmarks = iteratorBenchmarksList->second;
-        
+
         out.WriteUint(listOfBenchmarks->size());
         for(iteratorBenchmark=listOfBenchmarks->begin(); iteratorBenchmark!=listOfBenchmarks->end(); ++iteratorBenchmark)
         {
@@ -187,12 +187,12 @@ void BenchmarksManager::Load(void)
     Benchmark        *benchmark;
     DataInputStream   in(PathManager::GetCfgPath() + wxT(FMC_FILE_BENCHMARKS));
     BenchmarkHashMap *listOfBenchmarks;
-    
+
     // Could the file be opened ?
     if(in.Ok() == false)
         return;
-    
-    
+
+
     // The registered clients
     in.ReadUint(nbRegisteredClients);
     for(i=0; i<nbRegisteredClients; ++i)
@@ -214,28 +214,28 @@ void BenchmarksManager::Load(void)
                 mNextAvailableClientId = MAX_CLIENT_ID;
         }
     }
-    
-    
+
+
     // The known projects and each benchmark
     in.ReadUint(nbProjects);
     for(i=0; i<nbProjects; ++i)
     {
         listOfBenchmarks = new BenchmarkHashMap();
-        
+
         in.Read(&projectId, sizeof(projectId));
         in.ReadUint(nbBenchmarks);
-        
+
         for(j=0; j<nbBenchmarks; ++j)
         {
             in.Read(&clientId, sizeof(clientId));
             benchmark = new Benchmark(clientId);
             benchmark->Read(in);
-            
+
             (*listOfBenchmarks)[clientId] = benchmark;
         }
-        
+
         mProjectIdToBenchmarks[projectId] = listOfBenchmarks;
-    }   
+    }
 }
 
 
@@ -245,7 +245,7 @@ void BenchmarksManager::Load(void)
 const Benchmark* BenchmarksManager::GetBenchmark(ProjectId projectId, const Client* client)
 {
     wxMutexLocker mutexLocker(mMutexBenchmarksAccess);  // Lock access to this method
-    
+
     ClientId                         clientId;
     BenchmarkHashMap                *listOfBenchmarks;
     ClientIdHashMap::iterator        iteratorClientId;
@@ -279,7 +279,7 @@ const Benchmark* BenchmarksManager::GetBenchmark(ProjectId projectId, const Clie
 void BenchmarksManager::Add(ProjectId projectId, const Client* client, const WorkUnitFrame* frame)
 {
     wxMutexLocker mutexLocker(mMutexBenchmarksAccess);  // Lock access to this method
-    
+
     ClientId                         clientId;
     Benchmark                       *benchmark;
     BenchmarkHashMap                *listOfBenchmarks;
@@ -304,7 +304,7 @@ void BenchmarksManager::Add(ProjectId projectId, const Client* client, const Wor
         clientId                                         = mNextAvailableClientId;
         mClientLocationToClientId[client->GetLocation()] = clientId;
         mClientIdToClientLocation[clientId]              = client->GetLocation();
-        
+
         ++mNextAvailableClientId;
     }
 
@@ -327,11 +327,11 @@ void BenchmarksManager::Add(ProjectId projectId, const Client* client, const Wor
         benchmark        = new Benchmark(clientId);
     }
 
-    
+
     // --- Add the new benchmarked frame
     benchmark->AddDuration(frame->GetDuration());
 
-    
+
     // --- So far, so good
     // Store the modified benchmark back into the hashtable, and the hashtable itself into the main hashtable
     (*listOfBenchmarks)[clientId]     = benchmark;
@@ -350,7 +350,7 @@ void BenchmarksManager::Add(ProjectId projectId, const Client* client, const Wor
 ProjectId* BenchmarksManager::GetBenchmarkedProjects(wxUint32 &nbProjects)
 {
     wxMutexLocker mutexLocker(mMutexBenchmarksAccess);  // Lock access to this method
-    
+
     wxUint32                         currentIndex;
     ProjectId                       *projects;
     BenchmarksListHashMap::iterator  iterator;
@@ -369,7 +369,7 @@ ProjectId* BenchmarksManager::GetBenchmarkedProjects(wxUint32 &nbProjects)
         projects[currentIndex] = iterator->first;
         ++currentIndex;
     }
- 
+
     SortArrayOfProjectId(projects, 0, nbProjects-1);
 
     return projects;
@@ -386,7 +386,7 @@ ProjectId* BenchmarksManager::GetBenchmarkedProjects(wxUint32 &nbProjects)
 const Benchmark** BenchmarksManager::GetBenchmarksList(ProjectId projectId, wxUint32 &nbBenchmarks)
 {
     wxMutexLocker mutexLocker(mMutexBenchmarksAccess);  // Lock access to this method
-    
+
     wxUint32                          currentBenchmark;
     const Benchmark                 **benchmarks;
     BenchmarkHashMap                 *listOfBenchmarks;
@@ -431,15 +431,15 @@ const Benchmark** BenchmarksManager::GetBenchmarksList(ProjectId projectId, wxUi
 wxString BenchmarksManager::GetClientLocationFromClientId(ClientId clientId)
 {
     wxMutexLocker mutexLocker(mMutexBenchmarksAccess);  // Lock access to this method
-    
+
     ClientLocationHashMap::iterator iterator = mClientIdToClientLocation.find(clientId);
-    
+
     // This should not happen!
     if(iterator == mClientIdToClientLocation.end())
     {
         wxASSERT(false);
         return wxT("Unknown client");
     }
-    
+
     return iterator->second;
 }

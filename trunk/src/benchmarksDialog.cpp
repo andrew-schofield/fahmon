@@ -68,22 +68,22 @@ BenchmarksDialog::BenchmarksDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY
     mSplitter              = new wxSplitterWindow(this, wxID_ANY);
     mListOfProjects        = new wxListView(mSplitter, LST_PROJECTS, wxDefaultPosition, wxDefaultSize, wxLC_REPORT | wxLC_SINGLE_SEL);
     mBenchmarksInformation = new wxTextCtrl(mSplitter, wxID_ANY, wxT(""), wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE | wxTE_READONLY | wxTE_DONTWRAP);
-    
+
     _PrefsGetUint(PREF_BENCHMARKSDIALOG_SASHPOSITION, sashPosition);
     mSplitter->SplitVertically(mListOfProjects, mBenchmarksInformation);
     mSplitter->SetSashPosition(sashPosition);
     mSplitter->SetMinimumPaneSize(20);
-    
+
     mBenchmarksInformation->SetFont(wxFont(8, wxFONTFAMILY_TELETYPE, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL));
 
     _PrefsGetUint(PREF_BENCHMARKSDIALOG_COLUMNWIDTH, columnWidth);
     mListOfProjects->InsertColumn(LC_PROJECT, wxT("Projects"));
     mListOfProjects->SetColumnWidth(LC_PROJECT, columnWidth);
-    
+
 
     // ---
     mainSizer = new wxBoxSizer(wxVERTICAL);
-    
+
     mainSizer->Add(mSplitter, 1, wxEXPAND);
     mainSizer->AddSpacer(FMC_GUI_SPACING_HIGH);
     mainSizer->Add(new wxButton(this, wxID_CLOSE), 0, wxALIGN_CENTER_HORIZONTAL);
@@ -121,7 +121,7 @@ BenchmarksDialog* BenchmarksDialog::GetInstance(wxWindow* parent)
 {
     if(mInstance == NULL)
         mInstance = new BenchmarksDialog(parent);
-    
+
     return mInstance;
 }
 
@@ -153,9 +153,9 @@ int BenchmarksDialog::ShowModal(ProjectId projectIdToSelect)
 {
     // Fill the ListView with the correct list of known projects
     PopulateProjectsList(projectIdToSelect);
-    
+
     Center();
-    
+
     return wxDialog::ShowModal();
 }
 
@@ -200,11 +200,11 @@ void BenchmarksDialog::PopulateProjectsList(ProjectId projectIdToSelect)
         else
             mListOfProjects->SetItemBackgroundColour(i, *wxWHITE);
     }
-    
+
     // No memory leak
     delete[] projectsList;
 
-    
+
     // Select the correct entry
     mListOfProjects->Select(entryToSelect);
     mListOfProjects->EnsureVisible(entryToSelect);
@@ -219,6 +219,8 @@ void BenchmarksDialog::ShowBenchmarks(ProjectId projectIdToShow)
 {
     double            minPPD;
     double            avgPPD;
+    double            instantPPD;
+    double            tFramePPD;
     wxUint32          i;
     wxUint32          nbBenchmarks;
     wxString          infoString;
@@ -269,7 +271,7 @@ void BenchmarksDialog::ShowBenchmarks(ProjectId projectIdToShow)
         if(benchmarks[i]->GetMinDuration() != 0)
         {
             infoString += wxString::Format(wxT("Min. Time / Frame : %s"), Tools::FormatSeconds(benchmarks[i]->GetMinDuration()).c_str());
-            
+
             // Compute points per day if possible
             if(project != NULL)
             {
@@ -279,15 +281,15 @@ void BenchmarksDialog::ShowBenchmarks(ProjectId projectIdToShow)
         }
         else
             infoString += wxT("No Min. Time / Frame");
-        
+
         infoString += wxT("\n");
 
-        
+
         // Average time
         if(benchmarks[i]->GetAvgDuration() != 0)
         {
             infoString += wxString::Format(wxT("Avg. Time / Frame : %s"), Tools::FormatSeconds(benchmarks[i]->GetAvgDuration()).c_str());
-            
+
             // Compute points per day if possible
             if(project != NULL)
             {
@@ -297,7 +299,43 @@ void BenchmarksDialog::ShowBenchmarks(ProjectId projectIdToShow)
         }
         else
             infoString += wxT("No Avg. Time / Frame");
-        
+
+        infoString += wxT("\n");
+
+
+        // Instantaneous time
+        if(benchmarks[i]->GetInstantDuration() != 0)
+        {
+            infoString += wxString::Format(wxT("Cur. Time / Frame : %s"), Tools::FormatSeconds(benchmarks[i]->GetInstantDuration()).c_str());
+
+            // Compute points per day if possible
+            if(project != NULL)
+            {
+                instantPPD = (project->GetCredit() * 86400.0) / ((double)benchmarks[i]->GetInstantDuration() * (double)project->GetNbFrames());    // There are 86400 seconds in a day
+                infoString += wxString::Format(wxT(" - %.2f ppd"), instantPPD);
+            }
+        }
+        else
+            infoString += wxT("No Cur. Time / Frame");
+
+        infoString += wxT("\n");
+
+
+        // 3 frame rolling time
+        if(benchmarks[i]->GetInstantDuration() != 0)
+        {
+            infoString += wxString::Format(wxT("R3F. Time / Frame : %s"), Tools::FormatSeconds(benchmarks[i]->Get3FrameDuration()).c_str());
+
+            // Compute points per day if possible
+            if(project != NULL)
+            {
+                tFramePPD = (project->GetCredit() * 86400.0) / ((double)benchmarks[i]->Get3FrameDuration() * (double)project->GetNbFrames());    // There are 86400 seconds in a day
+                infoString += wxString::Format(wxT(" - %.2f ppd"), tFramePPD);
+            }
+        }
+        else
+            infoString += wxT("No R3F. Time / Frame");
+
         infoString += wxT("\n");
     }
 
@@ -314,7 +352,7 @@ void BenchmarksDialog::ShowBenchmarks(ProjectId projectIdToShow)
 void BenchmarksDialog::OnProjectChanged(wxListEvent& event)
 {
     long selection = mListOfProjects->GetFirstSelected();
-    
+
     if(selection == -1)
         ShowBenchmarks(INVALID_PROJECT_ID);
     else

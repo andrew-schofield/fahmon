@@ -13,7 +13,7 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
- 
+
 #ifndef _PREFERENCESDIALOG_H
 #define _PREFERENCESDIALOG_H
 
@@ -43,11 +43,17 @@ protected:
     wxCheckBox *mGeneralAutoUpdateProjectsDatabase;
     wxCheckBox *mGeneralCollectXYZFiles;
     wxCheckBox *mGeneralKeepInaccessibleClientsLast;
+    wxCheckBox *mGeneralStartMinimised;
+    wxCheckBox *mGeneralShowDeadlineInDays;
 
     // Widgets for the monitoring tab
-    wxChoice   *mMonitoringETADisplayStyle;
-    wxCheckBox *mMonitoringAutoReload;
-    wxSpinCtrl *mMonitoringAutoReloadFrequency;
+    wxChoice     *mMonitoringETADisplayStyle;
+    wxCheckBox   *mMonitoringAdvancedReload;
+    wxCheckBox   *mMonitoringAutoReload;
+    wxStaticText *mMonitoringAutoReloadInt;
+    wxSpinCtrl   *mMonitoringAutoReloadFrequency;
+    wxChoice     *mMonitoringPPDType;
+    wxCheckBox   *mMonitoringIgnoreAsynchrony;
 
     // Widgets for the networking tab
     wxCheckBox   *mNetworkingUseProxy;
@@ -62,33 +68,39 @@ protected:
     wxStaticText *mNetworkingLabelPassword;
 
     // Widgets for the advanced tab
-    wxCheckBox  *mAdvancedUseAlternateProjectSource;
-    wxTextCtrl  *mAdvancedAlternateProjectSourceLocationServer;
-    wxStaticText  *mAdvancedLabelLocationServer;
-    wxTextCtrl  *mAdvancedAlternateProjectSourceLocationPort;
-    wxStaticText  *mAdvancedLabelLocationPort;
-    wxTextCtrl  *mAdvancedAlternateProjectSourceLocationResource;
-    wxStaticText  *mAdvancedLabelLocationResource;
-    wxCheckBox  *mAdvancedUseLocalFile;
-    wxTextCtrl  *mAdvancedLocalFileLocation;
-    wxStaticText  *mAdvancedLabelLocalFile;
-    wxButton  *mAdvancedLocationChooser;
+    wxCheckBox   *mAdvancedUseAlternateProjectSource;
+    wxTextCtrl   *mAdvancedAlternateProjectSourceLocationServer;
+    wxStaticText *mAdvancedLabelLocationServer;
+    wxTextCtrl   *mAdvancedAlternateProjectSourceLocationPort;
+    wxStaticText *mAdvancedLabelLocationPort;
+    wxTextCtrl   *mAdvancedAlternateProjectSourceLocationResource;
+    wxStaticText *mAdvancedLabelLocationResource;
+    wxCheckBox   *mAdvancedUseLocalFile;
+    wxTextCtrl   *mAdvancedLocalFileLocation;
+    wxStaticText *mAdvancedLabelLocalFile;
+    wxButton     *mAdvancedLocationChooser;
 
     // Widgets for the system tab
-    wxTextCtrl *mSystemBrowser;
+    wxTextCtrl   *mSystemBrowser;
     wxStaticText *mSystemBrowserLabel;
-    wxChoice *mSystemFileManager;
+    wxChoice     *mSystemFileManager;
     wxStaticText *mSystemFileManagerLabel;
-    wxTextCtrl *mSystemOtherFM;
+    wxTextCtrl   *mSystemOtherFM;
     wxStaticText *mSystemOtherFMLabel;
+    wxCheckBox   *mSystemOverrideTimezone;
+    wxSpinCtrl   *mSystemTZ;
 
     // Storage for the initial value of some important preferences
     // This is needed to detect when one of them has changed, so that the concerned component can be warned
+    bool     mInitAdvancedReload;
     bool     mInitAutoReload;
     bool     mInitEnableTrayIcon;
+    bool     mInstantFrames;
+    bool     mInitDeadlineDays;
     wxUint32 mInitAutoReloadFrequency;
     wxUint32 mInitETADisplayStyle;
-    
+    wxUint32 mInitPPDDisplayStyle;
+
 
      PreferencesDialog(wxWindow* parent);
     ~PreferencesDialog(void);
@@ -98,10 +110,10 @@ protected:
     wxPanel* CreateNetworkingTab(wxNotebook* parent);
     wxPanel* CreateAdvancedTab(wxNotebook* parent);
     wxPanel* CreateSystemTab(wxNotebook* parent);
-    
+
     void LoadPreferences(void);
     void SavePreferences(void);
-    
+
     void OnOkButton(wxCommandEvent& event);
     void OnBrowseButton(wxCommandEvent& event);
     void OnCheckboxes(wxCommandEvent& event);
