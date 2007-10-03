@@ -3,6 +3,14 @@
 
 
 
+v2.1.2
+[-] Fixed the window size bug that occurred when FahMon was closed when minimized (win32)
+[-] Fixed operator precedence warnings for the alternating shading in list controls (thanks to Mihail Boev for the patch)
+[-] Fixed visual bug with resizing when showing/hidng the log window (thanks again to Mihail Boev)
+[+] Added a browser preference in Linux version (thanks to mdickinson for the patch, sorry for the delay :-)
+
+
+
 v2.1.1
 [+] Added support for Gromacs33 core (thanks to uncle_fungus for the patch)
 

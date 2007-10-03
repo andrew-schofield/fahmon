@@ -195,7 +195,7 @@ void BenchmarksDialog::PopulateProjectsList(ProjectId projectIdToSelect)
             entryToSelect = i;
 
         // Give a different color to odd lines
-        if(i&1 != 0)
+        if((i&1) != 0)
             mListOfProjects->SetItemBackgroundColour(i, FMC_COLOR_LIST_ODD_LINES);
         else
             mListOfProjects->SetItemBackgroundColour(i, *wxWHITE);

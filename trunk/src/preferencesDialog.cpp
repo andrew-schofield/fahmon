@@ -22,6 +22,7 @@
 #include "mainDialog.h"
 #include "httpDownloader.h"
 #include "preferencesManager.h"
+#include "tools.h"
 
 
 // Identifiers for the controls
@@ -131,14 +132,18 @@ inline wxPanel* PreferencesDialog::CreateGeneralTab(wxNotebook* parent)
 {
     wxPanel    *panel;
     wxBoxSizer *sizer;
+    wxBoxSizer *browserSizer;
     wxBoxSizer *topLevelSizer;
 
     panel                              = new wxPanel(parent);
     sizer                              = new wxBoxSizer(wxVERTICAL);
+    browserSizer                       = new wxBoxSizer(wxHORIZONTAL);
     topLevelSizer                      = new wxBoxSizer(wxVERTICAL);
     mGeneralEnableTrayIcon             = new wxCheckBox(panel, wxID_ANY, wxT("Enable system tray icon"));
     mGeneralCollectXYZFiles            = new wxCheckBox(panel, wxID_ANY, wxT("Collect .xyz files"));
     mGeneralAutoUpdateProjectsDatabase = new wxCheckBox(panel, wxID_ANY, wxT("Auto update projects database when needed"));
+    mGeneralBrowser                    = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
+    mGeneralBrowserLabel               = new wxStaticText(panel, wxID_ANY, wxT("Browser:"));
 
     sizer->AddStretchSpacer();
     sizer->Add(mGeneralEnableTrayIcon, 0, wxALIGN_LEFT);
@@ -147,6 +152,21 @@ inline wxPanel* PreferencesDialog::CreateGeneralTab(wxNotebook* parent)
     sizer->AddStretchSpacer();
     sizer->Add(mGeneralAutoUpdateProjectsDatabase, 0, wxALIGN_LEFT);
     sizer->AddStretchSpacer();
+
+#ifdef _FAHMON_LINUX_
+
+    browserSizer->Add(mGeneralBrowserLabel, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_LEFT);
+    browserSizer->Add(mGeneralBrowser, 1, wxALIGN_CENTER_VERTICAL | wxEXPAND);
+
+    sizer->Add(browserSizer, 0, wxALIGN_LEFT | wxEXPAND);
+    sizer->AddStretchSpacer();
+
+#else 
+
+    mGeneralBrowser->Hide();
+    mGeneralBrowserLabel->Hide();
+
+#endif
 
     topLevelSizer->Add(sizer, 1, wxEXPAND | wxALL, FMC_GUI_BORDER);
     panel->SetSizer(topLevelSizer);
@@ -277,15 +297,18 @@ inline void PreferencesDialog::LoadPreferences(void)
     wxString proxyAddress;
     wxString proxyUsername;
     wxString proxyPassword;
+    wxString browser;
     
     // -----===== General preferences =====-----
     _PrefsGetBool(PREF_FAHCLIENT_COLLECTXYZFILES,     isCollectingXYZFiles);
     _PrefsGetBool(PREF_MAINDIALOG_AUTOUPDATEPROJECTS, autoUpdateProjects);
     _PrefsGetBool(PREF_MAINDIALOG_ENABLE_TRAY_ICON,   mInitEnableTrayIcon);
+    _PrefsGetString(PREF_TOOLS_BROWSER,               browser);
 
     mGeneralCollectXYZFiles->SetValue(isCollectingXYZFiles);
     mGeneralEnableTrayIcon->SetValue(mInitEnableTrayIcon);
     mGeneralAutoUpdateProjectsDatabase->SetValue(autoUpdateProjects);
+    mGeneralBrowser->SetValue(browser);
 
     // -----===== Monitoring preferences =====-----
     _PrefsGetBool(PREF_MAINDIALOG_AUTORELOAD,          mInitAutoReload);
@@ -354,6 +377,7 @@ inline void PreferencesDialog::SavePreferences(void)
     _PrefsSetBool(PREF_FAHCLIENT_COLLECTXYZFILES,     mGeneralCollectXYZFiles->GetValue());
     _PrefsSetBool(PREF_MAINDIALOG_ENABLE_TRAY_ICON,   mGeneralEnableTrayIcon->GetValue());
     _PrefsSetBool(PREF_MAINDIALOG_AUTOUPDATEPROJECTS, mGeneralAutoUpdateProjectsDatabase->GetValue());
+    _PrefsSetString(PREF_TOOLS_BROWSER,               mGeneralBrowser->GetValue());
 
     
     // -----===== Monitoring preferences =====-----

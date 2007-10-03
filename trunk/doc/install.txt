@@ -40,7 +40,7 @@ athropos@ruby$ BROWSER="firefox"
 4) Launching FahMon
 -------------------
 
-FahMon searches for the images in the current directory. To be able to launch it from any location (e.g. with a shortcut from the gnome-panel), you should write a little script like this one:
+FahMon searches for the images in the current directory. To be able to launch it from any location (e.g., with a shortcut from the gnome-panel), you should write a little script like this one:
 
 --
 #!/bin/sh

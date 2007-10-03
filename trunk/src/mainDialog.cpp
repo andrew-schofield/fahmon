@@ -673,7 +673,9 @@ void MainDialog::OnMenuToggleLog(wxCommandEvent& event)
     bool          isLogShown;
     ClientId      selectedClientId;
     const Client *selectedClient;
-    
+    //mb The frame border at the bottom of the log control must also be taken into account when resizing
+    const wxUint32 frameResizingOffset = FMC_GUI_LOG_HEIGHT + FMC_GUI_SPACING_LOW;
+
     // Show/Hide the log area
     isLogShown = !mLogFile->IsShown();
     mLogFile->Show(isLogShown);
@@ -681,10 +683,10 @@ void MainDialog::OnMenuToggleLog(wxCommandEvent& event)
     mTopLevelSizer->Layout();
 
     // Resize the frame
-    if(isLogShown == true)
-        SetSize(-1, GetSize().GetHeight() + FMC_GUI_LOG_HEIGHT);
+    if(isLogShown)
+        SetSize(-1, GetSize().GetHeight() + frameResizingOffset);
     else
-        SetSize(-1, GetSize().GetHeight() - FMC_GUI_LOG_HEIGHT);
+        SetSize(-1, GetSize().GetHeight() - frameResizingOffset);
 
     // Load the correct log file (if any) when we are going to show the wxTextCtrl
     selectedClientId = mClientsList->GetSelectedClientId();
@@ -817,13 +819,17 @@ void MainDialog::OnMenuAbout(wxCommandEvent& event)
 **/
 void MainDialog::OnClose(wxCloseEvent& event)
 {
-    // Save the size of the frame
-    _PrefsSetInt(PREF_MAINDIALOG_FRAMEWIDTH,  GetSize().GetWidth());
-    _PrefsSetInt(PREF_MAINDIALOG_FRAMEHEIGHT, GetSize().GetHeight());
-    
-    // Save the position of the frame
-    _PrefsSetInt(PREF_MAINDIALOG_FRAME_POS_X, GetPosition().x);
-    _PrefsSetInt(PREF_MAINDIALOG_FRAME_POS_Y, GetPosition().y);
+    // Don't save window size if it is iconized (win32 bug)
+    if(!IsIconized())
+    {
+        // Save the size of the frame
+        _PrefsSetInt(PREF_MAINDIALOG_FRAMEWIDTH,  GetSize().GetWidth());
+        _PrefsSetInt(PREF_MAINDIALOG_FRAMEHEIGHT, GetSize().GetHeight());
+        
+        // Save the position of the frame
+        _PrefsSetInt(PREF_MAINDIALOG_FRAME_POS_X, GetPosition().x);
+        _PrefsSetInt(PREF_MAINDIALOG_FRAME_POS_Y, GetPosition().y);
+    }
     
     // Save the position of the sash
     _PrefsSetUint(PREF_MAINDIALOG_SASHPOSITION, mSplitterWindow->GetSashPosition());

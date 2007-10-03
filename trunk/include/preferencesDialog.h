@@ -41,6 +41,8 @@ protected:
     wxCheckBox *mGeneralEnableTrayIcon;
     wxCheckBox *mGeneralAutoUpdateProjectsDatabase;
     wxCheckBox *mGeneralCollectXYZFiles;
+    wxTextCtrl *mGeneralBrowser;
+    wxStaticText *mGeneralBrowserLabel;
 
     // Widgets for the monitoring tab
     wxChoice   *mMonitoringETADisplayStyle;

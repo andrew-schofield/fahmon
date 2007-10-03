@@ -21,6 +21,8 @@
 #include "wx/msgdlg.h"
 #include "fahmonConsts.h"
 
+#define PREF_TOOLS_BROWSER    wxT("Tools.Browser")
+#define PREF_TOOLS_BROWSER_DV wxT("")
 
 class Tools
 {

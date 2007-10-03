@@ -243,7 +243,7 @@ void ListViewClients::Reset(wxUint32 nbClients)
         SetItem(i, LVC_NAME, wxT("Loading..."));
 
         // Give a slightly darker color to odd lines
-        if(i&1 != 0)
+        if((i&1) != 0)
             SetItemBackgroundColour(i, FMC_COLOR_LIST_ODD_LINES);
         else
             SetItemBackgroundColour(i, *wxWHITE);
@@ -338,7 +338,7 @@ void ListViewClients::Sort(void)
     {
         mClientIdToIndex[GetItemData(i)] = i;
         
-        if(i&1 != 0)
+        if((i&1) != 0)
             SetItemBackgroundColour(i, FMC_COLOR_LIST_ODD_LINES);
         else
             SetItemBackgroundColour(i, *wxWHITE);

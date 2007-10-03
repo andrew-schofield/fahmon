@@ -18,6 +18,7 @@
 #include "tools.h"
 
 #include "wx/wfstream.h"
+#include "preferencesManager.h"
 
 
 /**
@@ -47,10 +48,16 @@ void Tools::OpenURLInBrowser(const wxString& url)
 
 #elif _FAHMON_LINUX_
 
-    wxString browser = wxGetenv(wxT("BROWSER"));
+    wxString browser;
+
+    // Use first the preference
+    // If the latter is not set, use the environment variable 'BROWSER'
+    _PrefsGetString(PREF_TOOLS_BROWSER, browser);
+    if(browser.IsEmpty())
+        browser = wxGetenv(wxT("BROWSER"));
 
     if(browser.IsEmpty() || wxExecute(browser + wxT(" ") + url) == false)
-		ErrorMsgBox(wxT("Unable to launch the default browser.\n\nPlease check that the environment variable BROWSER is defined."));
+		ErrorMsgBox(wxT("Unable to launch the default browser.\n\nPlease check that the environment variable BROWSER is defined or set it in Preferences."));
 
 #else
 
