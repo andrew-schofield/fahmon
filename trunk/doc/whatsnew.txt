@@ -3,6 +3,12 @@
 
 
 
+v2.1.5
+[+] Added links to user's stats page in the right panel of the main window
+[+] When tray icon is enabled, hide the main window when it is minimized (thanks to Mihail Boev for the patch)
+
+
+
 v2.1.4
 [-] Fixed refresh bug when changing selection
 [ ] When psummary file is corrupted, don't abort on first error and continue to parse remaining lines

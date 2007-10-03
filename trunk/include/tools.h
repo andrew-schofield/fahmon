@@ -18,6 +18,7 @@
 #define _TOOLS_H
 
 
+#include "client.h"
 #include "wx/msgdlg.h"
 #include "fahmonConsts.h"
 

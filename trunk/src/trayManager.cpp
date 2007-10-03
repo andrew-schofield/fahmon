@@ -125,8 +125,19 @@ void TrayManager::SetTooltip(const wxString& tooltip)
 **/
 void TrayManager::OnClick(wxTaskBarIconEvent& event)
 {
-    bool mainDialogIsShown = MainDialog::GetInstance()->IsShown();
-    
-    // Toggle the visibility of the main dialog
-    MainDialog::GetInstance()->Show(!mainDialogIsShown);
+    if(MainDialog::GetInstance()->IsShown())
+    {
+        // Must minimize to the task bar first so that we get the minimize animation :)
+        MainDialog::GetInstance()->Iconize();
+        MainDialog::GetInstance()->Hide();
+    }
+    else
+    {
+        MainDialog::GetInstance()->Show();
+        MainDialog::GetInstance()->Raise();
+
+        // Fortunately, this function seems to keep track of the previous maximize state of the window;
+        // otherwise, we would have to do that
+        MainDialog::GetInstance()->Maximize(false);
+    }
 }

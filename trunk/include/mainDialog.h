@@ -27,6 +27,7 @@
 #include "wx/textctrl.h"
 #include "wx/stattext.h"
 #include "listViewClients.h"
+#include "staticUrl.h"
 
 
 /**
@@ -36,7 +37,7 @@
 #define PREF_MAINDIALOG_FRAMEWIDTH_DV 650
 
 #define PREF_MAINDIALOG_FRAMEHEIGHT    wxT("MainDialog.FrameHeight")
-#define PREF_MAINDIALOG_FRAMEHEIGHT_DV 250
+#define PREF_MAINDIALOG_FRAMEHEIGHT_DV 260
 
 #define PREF_MAINDIALOG_FRAME_POS_X    wxT("MainDialog.FramePosX")
 #define PREF_MAINDIALOG_FRAME_POS_X_DV -1
@@ -82,6 +83,8 @@ protected:
 
     // Widgets used in the frame
     wxGauge          *mWUProgressGauge;
+    StaticUrl        *mUsername;
+    StaticUrl        *mTeamNumber;
     wxBoxSizer       *mTopLevelSizer;
     wxTextCtrl       *mLogFile;
     wxStaticText     *mWUProgressText;
@@ -120,6 +123,7 @@ protected:
     void OnMenuWeb(wxCommandEvent& event);
     void OnMenuAbout(wxCommandEvent& event);
     void OnClose(wxCloseEvent& event);
+    void OnIconize(wxIconizeEvent& event);
     void OnMenuQuit(wxCommandEvent& event);
     void OnListSelectionChanged(wxListEvent& event);
     void OnClientReloaded(wxCommandEvent& event);

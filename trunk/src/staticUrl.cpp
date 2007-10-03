@@ -30,20 +30,19 @@ END_EVENT_TABLE()
 
 /**
  * Constructor
- * If text is an empty string, the url is used
+ * The URL is enabled by default
 **/
-StaticUrl::StaticUrl(wxWindow* parent, const wxString& url, const wxString& text) : wxWindow(parent, wxID_ANY)
+StaticUrl::StaticUrl(wxWindow* parent, const wxString& url, const wxString& label) : wxWindow(parent, wxID_ANY)
 {
     wxBoxSizer *topLevelSizer;
 
-    mUrl          = url;
+    mEnabled      = true;
+    mLabel        = new wxStaticText(this, wxID_ANY, wxT(""));
     topLevelSizer = new wxBoxSizer(wxHORIZONTAL);
     mHandCursor   = new wxCursor(wxCURSOR_HAND);
-    
-    if(text.IsEmpty() == true)
-        mLabel = new wxStaticText(this, wxID_ANY, wxT(" ") + mUrl);
-    else
-        mLabel = new wxStaticText(this, wxID_ANY, wxT(" ") + text);
+
+    SetURL(url);
+    SetLabel(label);
 
     topLevelSizer->Add(mLabel);
     SetSizer(topLevelSizer);
@@ -63,14 +62,35 @@ StaticUrl::~StaticUrl(void)
 
 
 /**
+ * Change the label
+**/
+void StaticUrl::SetLabel(const wxString& label)
+{
+    mLabel->SetLabel(wxT(" ") + label);
+}
+
+
+/**
+ * Change the URL
+**/
+void StaticUrl::SetURL(const wxString& url)
+{
+    mURL = url;
+}
+
+
+/**
  * Called when the mouse enters the window
 **/
 void StaticUrl::OnMouseEnter(wxMouseEvent& event)
 {
-    mLabel->SetForegroundColour(*wxRED);
-    mLabel->Refresh();
+    if(mEnabled)
+    {
+        mLabel->SetForegroundColour(*wxRED);
+        mLabel->Refresh();
     
-    SetCursor(*mHandCursor);
+        SetCursor(*mHandCursor);
+    }
 }
 
 
@@ -79,10 +99,13 @@ void StaticUrl::OnMouseEnter(wxMouseEvent& event)
 **/
 void StaticUrl::OnMouseLeave(wxMouseEvent& event)
 {
-    mLabel->SetForegroundColour(*wxBLUE);
-    mLabel->Refresh();
+    if(mEnabled)
+    {
+        mLabel->SetForegroundColour(*wxBLUE);
+        mLabel->Refresh();
     
-    SetCursor(wxNullCursor);
+        SetCursor(wxNullCursor);
+    }
 }
 
 
@@ -91,5 +114,6 @@ void StaticUrl::OnMouseLeave(wxMouseEvent& event)
 **/
 void StaticUrl::OnLeftClick(wxMouseEvent& event)
 {
-    Tools::OpenURLInBrowser(mUrl);
+    if(mEnabled)
+        Tools::OpenURLInBrowser(mURL);
 }

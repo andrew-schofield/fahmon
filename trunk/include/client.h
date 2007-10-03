@@ -74,6 +74,10 @@ public:
 
     void Reload(void);
 
+    wxString GetUserStatsURL(void) const;
+    wxString GetTeamStatsURL(void) const;
+    wxString GetJmolURL(void)      const;
+
     // -- 'Setters' --
     void SetName(const wxString& name) {mName = name;}
     void SetLocation(const wxString& location);

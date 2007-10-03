@@ -31,18 +31,27 @@
 class StaticUrl : public wxWindow
 {
 protected:
-    wxStaticText *mLabel;
+    bool          mEnabled;
+    wxString      mURL;
     wxCursor     *mHandCursor;
-    wxString      mUrl;
+    wxStaticText *mLabel;
 
     void OnMouseEnter(wxMouseEvent& event);
     void OnMouseLeave(wxMouseEvent& event);
     void OnLeftClick(wxMouseEvent& event);
 
-    
+
 public:
-     StaticUrl(wxWindow* parent, const wxString& url, const wxString& text = wxT(""));
+     StaticUrl(wxWindow* parent, const wxString& url = wxT(""), const wxString& label = wxT(""));
     ~StaticUrl(void);
+
+    void SetURL(const wxString& url);
+    void SetLabel(const wxString& label);
+
+    void Disable(void) {mEnabled = false;}
+    void Enable(void)  {mEnabled = true;}
+
+    void ClearAndDisable(void) {SetLabel(wxT("")); Disable();}
 
 
 private:

@@ -595,3 +595,30 @@ void Client::FindCurrentState(WorkUnitFrame* lastFrame)
         _LogMsgInfo(wxString::Format(wxT("%s seems to be inactive : Elapsed time is %us and limit is %us"), mName.c_str(), lastFrame->GetElapsedSeconds(), trigger));
     }
 }
+
+
+/**
+ * Return the URL of the user's stats
+**/
+wxString Client::GetUserStatsURL(void) const
+{
+    return wxString::Format(wxT("%s&teamnum=%u&username=%s"), wxT(FMC_URL_MYSTATS), mTeamNumber, mUserName.c_str());
+}
+
+
+/**
+ * Return the URL of the user's team stats
+**/
+wxString Client::GetTeamStatsURL(void) const
+{
+    return wxString::Format(wxT("%s&teamnum=%u"), wxT(FMC_URL_TEAMSTATS), mTeamNumber);
+}
+
+
+/**
+ * Returns the URL of the project page on Jmol website
+**/
+wxString Client::GetJmolURL(void) const
+{
+    return wxString::Format(wxT("%s%u"), wxT(FMC_URL_JMOL), GetProjectId());
+}

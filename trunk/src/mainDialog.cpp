@@ -97,6 +97,7 @@ BEGIN_EVENT_TABLE(MainDialog, wxFrame)
 
     // --- Frame
     EVT_CLOSE   (MainDialog::OnClose)
+    EVT_ICONIZE (MainDialog::OnIconize)
 
     // --- List
     EVT_LIST_ITEM_SELECTED  (LST_CLIENTS, MainDialog::OnListSelectionChanged)
@@ -214,6 +215,8 @@ bool MainDialog::Show(bool show)
         // Of course, in the case of only one client, we can still select it
         if(ClientsManager::GetInstance()->GetCount() == 1)
             mClientsList->Select(0);
+        else
+            ShowClientInformation(INVALID_CLIENT_ID);
 
         ClientsManager::GetInstance()->ReloadThreaded(CM_LOADALL);
     }
@@ -230,8 +233,8 @@ void MainDialog::SetAutoReloadTimer(void)
     bool     isAutoReloadOn;
     wxUint32 autoReloadFrequency;
 
-    // First, we have to stop the timer if it is running, because preferences can be different from the last time
-    if(mAutoReloadTimer.IsRunning() == true)
+    // First, we have to stop the timer if it is running, because preferences may be different from the last time
+    if(mAutoReloadTimer.IsRunning())
         mAutoReloadTimer.Stop();
 
     // Then, retrieve the (perhaps new) preferences
@@ -239,7 +242,7 @@ void MainDialog::SetAutoReloadTimer(void)
     _PrefsGetUint(PREF_MAINDIALOG_AUTORELOADFREQUENCY, autoReloadFrequency);
 
     // Ok, now we can start the timer if needed but we need to convert minutes to milliseconds
-    if(isAutoReloadOn == true)
+    if(isAutoReloadOn)
         mAutoReloadTimer.Start(autoReloadFrequency * 60 * 1000);
 }
 
@@ -251,6 +254,10 @@ void MainDialog::ShowClientInformation(ClientId clientId)
 {
     UpdateClientInformation(clientId);
     mTopLevelSizer->Layout();
+
+    // win32: The layout of the sizer which contains the two StaticUrl objects does not seem
+    // to be updated by the previous Layout() call, so we need to do it ourselves
+    mUsername->GetContainingSizer()->Layout();
 }
 
 
@@ -269,6 +276,9 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
     // Clear information for invalid clients
     if(clientId == INVALID_CLIENT_ID)
     {
+        mUsername->ClearAndDisable();
+        mTeamNumber->ClearAndDisable();
+
         mCoreName->SetLabel(wxT(""));
         mProjectId->SetLabel(wxT(""));
         mCredit->SetLabel(wxT(""));
@@ -295,6 +305,9 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
     // Clear information if this client is not a valid one
     if(!client->IsAccessible())
     {
+        mUsername->ClearAndDisable();
+        mTeamNumber->ClearAndDisable();
+
         mCoreName->SetLabel(wxT(""));
         mProjectId->SetLabel(wxT(""));
         mCredit->SetLabel(wxT(""));
@@ -318,6 +331,14 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 
     mWUProgressText->SetLabel(wxT("  ") + client->GetProgressString());
     mWUProgressGauge->SetValue(client->GetProgress());
+
+    mUsername->Enable();
+    mUsername->SetLabel(client->GetUserName());
+    mUsername->SetURL(client->GetUserStatsURL());
+
+    mTeamNumber->Enable();
+    mTeamNumber->SetLabel(wxString::Format(wxT("(%u)"), client->GetTeamNumber()));
+    mTeamNumber->SetURL(client->GetTeamStatsURL());
     
     if(client->GetDownloadDate().IsValid())
         mDownloaded->SetLabel(client->GetDownloadDate().Format(wxT(FMC_DATE_MAIN_FORMAT)));
@@ -456,6 +477,7 @@ inline void MainDialog::CreateLayout(void)
     wxBoxSizer       *mainSizer;
     wxBoxSizer       *topSizer;
     wxBoxSizer       *midSizer;
+    wxBoxSizer       *userinfoSizer;
     wxGridSizer      *infoSizer;
     wxStaticBoxSizer *topRightSizer;
 
@@ -486,6 +508,15 @@ inline void MainDialog::CreateLayout(void)
     mPreferredDeadline = new wxStaticText(topRightPanel, wxID_ANY, wxT(""));
     mFinalDeadline     = new wxStaticText(topRightPanel, wxID_ANY, wxT(""));
 
+    // User's information: username and team number
+    userinfoSizer = new wxBoxSizer(wxHORIZONTAL);
+    mUsername     = new StaticUrl(topRightPanel);
+    mTeamNumber   = new StaticUrl(topRightPanel);
+
+    userinfoSizer->Add(mUsername);
+    userinfoSizer->AddSpacer(FMC_GUI_SPACING_LOW);
+    userinfoSizer->Add(mTeamNumber);
+
     // Emphasize the name of the core
     mCoreName->SetForegroundColour(*wxRED);
 
@@ -496,6 +527,8 @@ inline void MainDialog::CreateLayout(void)
     infoSizer->Add(mProjectId, 0, wxALIGN_LEFT);
     infoSizer->Add(new StaticBoldedText(topRightPanel, wxID_ANY, wxT("Credit:")), 0, wxALIGN_RIGHT);
     infoSizer->Add(mCredit, 0, wxALIGN_LEFT);
+    infoSizer->Add(new StaticBoldedText(topRightPanel, wxID_ANY, wxT("Username:")), 0, wxALIGN_RIGHT);
+    infoSizer->Add(userinfoSizer, 0, wxALIGN_LEFT);
     infoSizer->Add(new StaticBoldedText(topRightPanel, wxID_ANY, wxT("Downloaded:")), 0, wxALIGN_RIGHT);
     infoSizer->Add(mDownloaded, 0, wxALIGN_LEFT);    
     infoSizer->Add(new StaticBoldedText(topRightPanel, wxID_ANY, wxT("Preferred Deadline:")), 0, wxALIGN_RIGHT);
@@ -519,7 +552,7 @@ inline void MainDialog::CreateLayout(void)
     topSizer = new wxBoxSizer(wxHORIZONTAL);
 
     topSizer->Add(mSplitterWindow, 1, wxEXPAND);
-    mSplitterWindow->SplitVertically(mClientsList,topRightPanel);
+    mSplitterWindow->SplitVertically(mClientsList, topRightPanel);
 
 
     // --- The middle part
@@ -755,9 +788,7 @@ void MainDialog::OnMenuPreferences(wxCommandEvent& event)
 **/
 void MainDialog::OnMenuWeb(wxCommandEvent& event)
 {
-    wxString      webAddress;
-    ClientId      selectedClientId;
-    const Client *selectedClient;
+    ClientId selectedClientId;
 
     // Determine the url to go to
     switch(event.GetId())
@@ -765,18 +796,14 @@ void MainDialog::OnMenuWeb(wxCommandEvent& event)
         //--
         case MID_WWWJMOL:
         case MID_WWWMYSTATS:
-            // For these two menus, a client MUST be selected
+            // For these two menus, a client must be selected
             selectedClientId = mClientsList->GetSelectedClientId();
             if(selectedClientId != INVALID_CLIENT_ID)
             {
-                selectedClient = ClientsManager::GetInstance()->Get(selectedClientId);
-                
                 if(event.GetId() == MID_WWWJMOL)
-                    webAddress = wxString::Format(wxT("%s%u"), wxT(FMC_URL_JMOL), selectedClient->GetProjectId());
+                    Tools::OpenURLInBrowser(ClientsManager::GetInstance()->Get(selectedClientId)->GetJmolURL());
                 else
-                    webAddress = wxString::Format(wxT("%s&teamnum=%u&username=%s"), wxT(FMC_URL_MYSTATS), selectedClient->GetTeamNumber(), selectedClient->GetUserName().c_str());
-                
-                Tools::OpenURLInBrowser(webAddress);
+                    Tools::OpenURLInBrowser(ClientsManager::GetInstance()->Get(selectedClientId)->GetUserStatsURL());
             }
             else
                 Tools::ErrorMsgBox(wxT("You must first select a client!"));
@@ -858,6 +885,22 @@ void MainDialog::OnClose(wxCloseEvent& event)
 
     // Stop the application
     Destroy();
+}
+
+/**
+ * Main dialog has been minimized or restored
+**/
+void MainDialog::OnIconize(wxIconizeEvent& event)
+{
+    if(event.Iconized())
+    {
+        bool isTrayIconEnabled;
+
+        _PrefsGetBool(PREF_MAINDIALOG_ENABLE_TRAY_ICON, isTrayIconEnabled);
+
+        if(isTrayIconEnabled)
+            Hide();
+    }
 }
 
 
@@ -993,13 +1036,13 @@ void MainDialog::OnETAStylePrefChanged(void)
 **/
 void MainDialog::OnTrayIconPrefChanged(void)
 {
-    bool trayIconEnabled;
+    bool isTrayIconEnabled;
 
     // Check the new value of the preference
-    _PrefsGetBool(PREF_MAINDIALOG_ENABLE_TRAY_ICON, trayIconEnabled);
+    _PrefsGetBool(PREF_MAINDIALOG_ENABLE_TRAY_ICON, isTrayIconEnabled);
 
     // And install/uninstall the icon as needed
-    if(trayIconEnabled == true)
+    if(isTrayIconEnabled)
         TrayManager::GetInstance()->InstallIcon();
     else
         TrayManager::GetInstance()->UninstallIcon();
