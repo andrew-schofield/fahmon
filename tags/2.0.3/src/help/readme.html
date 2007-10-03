@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=iso-8859-1" />
+  <title>FahMon</title>
+  <link href="./style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+<div id="mainBox">
+
+<h1>FahMon - Help file</h1>
+
+<br />
+
+<!--<h2>1. Description</h2>-->
+<p>
+<a href="http://fahmon.silent-blade.org">FahMon</a> is a small open-source tool (<a href="http://www.gnu.org/copyleft/gpl.html">GPL license</a>) that allows you to quickly know the progress of your <a href="http://www.stanford.edu/group/pandegroup/folding/">Folding@Home</a> client (or clients if you have multiple ones), avoiding you to open different files and/or to go to the Internet (for example to know how much is worth your current work unit). There exists other monitoring tools (such as <a href="http://home.comcast.net/~wxdude1/emsite/em3.html">Electron Microscope</a> or <a href="http://fahstats.sourceforge.net">FahLogStats</a>), so if you don't like FahMon, have a look at them!
+</p>
+
+<p>
+FahMon is entirely coded in C++ and uses the wonderful <a href="http://www.wxwidgets.org">wxWidgets</a> library, which allows FahMon to exists both for Windows and Linux. It is designed to be really easy to use, and you should thus not encounter any major problem.
+</p>
+
+<hr />
+
+<h2>1. First launch</h2>
+<p>
+When you launch FahMon for the first time, you should get a dialog like this one:
+</p>
+
+<div class="screenshot"><img src="./img/firsttimedialog.png" /></div>
+
+<p>
+It suggests that you should download the new projects definition from the Stanford website, which will allow you to know miscellaneous information about these projects (e.g. deadlines). Beware that if you need to use a proxy for HTTP connections, you should not immediately download the new definition as it will fail. You will have to first change the proxy preferences before retrieving the file.
+</p>
+
+<hr />
+
+<h2>2. Configuring the clients to monitor</h2>
+<p>
+After the previous dialog you will see the main dialog box, which should be currently empty and should look like this: 
+</p>
+
+<div class="screenshot"><img src="./img/maindialog.png" /></div>
+
+<p>
+To add a new client, just right-click in the empty area of the list, and choose "Add a new client". You will get this dialog box:
+</p>
+
+<div class="screenshot"><img src="./img/addnewclient.png" /></div>
+
+<p>
+There, you can tell FahMon where the new client is located, and which name you want to give to it. This name can be anything you want, it's just like a nickname for this client. After that, this new client will appear in the list and FahMon will display what information it knows about the project being processed (e.g. deadlines) and what it has guessed about it (e.g. estimated time of arrival):
+</p>
+
+<div class="screenshot"><img src="./img/maindialog1client.png" /></div>
+
+<hr />
+
+<h2>3. Usage</h2>
+
+<div class="screenshot"><img src="./img/maindialogcolors.png" /></div>
+
+<p>
+You can notice that there is a small colored square at the left of each line in the list. There are 3 different colors:
+
+<ul>
+  <li><b>Red</b><br />Something is seriously wrong with this client. For example, the path can be invalid, or some files can be missing.</li>
+  <li><b>Orange</b><br />The client has been found, but it seems to be inactive. The client can be stopped, or perhaps the elapsed time since the last frame is too high: this can happen if another process is using the processor.</li>
+  <li><b>Green</b><br />Everything is Ok, FahMon should display all information about this client, as long as the projects database is up to date..</li>
+</ul>
+</p>
+
+<p>
+On the right side, you will see which core is being used by the selected client, and which project is being processed. You will also see the preferred and the final deadline. The former is the date by which Stanford would like to get the result back. The latter is the date after which you will get no point, because it's simply too late. If you see N/A instead of a date, this simply means that there is no deadline.
+</p>
+
+<p>
+The ETA (Estimated Time of Arrival) is the date by which FahMon thinks that the current work unit will be finished. It is based on the average time per frame for this client and this particular project, so you will sometimes see no ETA when FahMon does not know the average duration of a frame (e.g. when the work unit has just been downloaded for the first time by this client). Keep in mind that this is just an estimation!
+</p>
+
+<hr />
+
+<h2>4. Configuration</h2>
+
+<div class="screenshot"><img src="./img/preferences.png" /></div>
+
+<p>
+<ul>
+  <li><b>Enable system tray icon</b><br />If enabled, FahMon will display an icon in the system tray that will allow you to show/hide the main window.</li>
+  <li><b>Collect .xyz files</b><br />These files are generated by the client and allow third-party tools to display proteins in 3D (see <a href="http://jmol.sourceforge.net/fah/">Jmol</a> website for example). If you select this option, the .xyz files will automatically be collected in a directory named "xyz".</li>
+  <li><b>Auto update projects database when needed</b><br />When a new unknown project is downloaded by a monitored client, you will have to update the projects database to obtain information about this project. If you select this, FahMon will try to automatically download the new definitions when needed.</li>
+  <li><b>Auto reload every ...</b><br />If you select this option, FahMon will automatilly reload the monitored clients at the desired frequency.</li>
+  <li><b>Display ETA as ...</b><br />This allows you to change the format used to display the ETA.</li>
+  <li><b>Use a proxy for HTTP connections</b><br />Select this option if you need to use a proxy for HTTP connections.</li>
+  <li><b>Proxy requires authentication</b><br />Select this if you need to authenticate yourself when using a proxy.</li>
+</ul>
+</p>
+
+<hr />
+
+<h2>5. Benchmarks</h2>
+
+<div class="screenshot"><img src="./img/benchmarks.png" /></div>
+
+<p>
+This dialog box allows you to see average and minimum durations for a frame, as computed by FahMon. Each benchmark is specific to a couple {client / project}.
+</p>
+
+<hr />
+
+<h2>6. The author</h2>
+
+<p>
+My name is François Ingelrest and my website is <a href="http://silent-blade.org">http://silent-blade.org</a>. For any remark/suggestion, you can find me on:
+</p>
+
+<ul>
+  <li><a href="http://folding.mesdiscussions.net/forum2.php?config=foldinghome.inc&post=486&cat=3">The board of my team Alliance Francophone</a><br /><span class="comment">French speaking board, username Athropos</span></li>
+  <li><a href="http://forum.folding-community.org/viewtopic.php?t=8505">The official Folding@Home board</a><br /><span class="comment">English speaking board, username athropos_666</span></li>
+</ul>
+
+</div>
+
+</body>
+
+</html>
