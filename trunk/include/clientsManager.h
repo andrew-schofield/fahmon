@@ -34,8 +34,9 @@ WX_DEFINE_ARRAY_PTR(Client*, ArrayOfClients);
 class ClientsManager
 {
 protected:
-	static ClientsManager *mInstance;
-           ArrayOfClients  mClients;
+    static ClientsManager *mInstance;
+
+    ArrayOfClients mClients;
 
      ClientsManager(void);
     ~ClientsManager(void);
@@ -45,7 +46,7 @@ protected:
 
 
 public:
-	// Singleton pattern
+    // Singleton pattern
     static void CreateInstance(void);
     static void DestroyInstance(void);
     static ClientsManager* GetInstance(void);
@@ -53,12 +54,14 @@ public:
     void ReloadThreaded(wxUint32 clientId);
     void Reload(wxUint32 clientId);
 
-    wxUint32 Add(const wxString& name, const wxString& location);
     void     Edit(wxUint32 clientId, const wxString& name, const wxString& location);
     void     Delete(wxUint32 clientId) {mClients.RemoveAt(clientId);}
+    wxUint32 Add(const wxString& name, const wxString& location);
     
-    const Client*  Get(wxUint32 clientId) const {return mClients.Item(clientId);}
-          wxUint32 GetCount(void)         const {return mClients.GetCount();}
+    // --- Getters
+    wxUint32      GetCount(void)                                const {return mClients.GetCount();}
+    wxString      GetNameFromLocation(const wxString& location) const;
+    const Client* Get(wxUint32 clientId)                        const {return mClients.Item(clientId);}
 };
 
 

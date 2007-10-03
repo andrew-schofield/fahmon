@@ -44,7 +44,7 @@ MessagesFrame::MessagesFrame(wxWindow *parent) : wxFrame(parent, wxID_ANY, wxStr
     wxBoxSizer *mainSizer;
 
     // This frame does not inherit the icon of the main dialog
-    SetIcon(wxIcon(wxT(FMC_PATH_IMG_DIALOG)));
+    SetIcon(FMC_ICON_DIALOG);
 
     // --- We don't really need a status bar, but with it under Windows a 'grip sizer' appears, so that users can see that the frame is resizable
     CreateStatusBar();

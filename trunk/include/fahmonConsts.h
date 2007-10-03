@@ -24,7 +24,7 @@
 
 // --- Strings
 #define FMC_APPNAME 	"FahMon"
-#define FMC_VERSION 	"2.0.0"
+#define FMC_VERSION 	"2.0.1"
 #define FMC_PRODUCT 	FMC_APPNAME" "FMC_VERSION
 #define FMC_UID         FMC_APPNAME"__LOCK__"
 
@@ -42,7 +42,11 @@
 
 
 // --- Dates format
-#define FMC_DATE_MAIN_FORMAT "%B %d, %H:%M"
+#define FMC_DATE_MAIN_FORMAT      "%B %d, %H:%M"
+
+
+// --- Colors
+#define FMC_COLOR_LIST_ODD_LINES  wxColour(228, 228, 228)
 
 
 // --- Directories
@@ -57,7 +61,7 @@
 #define FMC_FILE_PROJECTS   "projects.dat"
 #define FMC_FILE_BENCHMARKS "benchmarks.dat"
 
-#define FMC_FILE_IMG_ABOUT              "about_icon.png"
+#define FMC_FILE_IMG_ABOUT              "main_icon.png"
 #define FMC_FILE_IMG_DIALOG             "dialog_icon.png"
 #define FMC_FILE_IMG_LIST_OK            "list_client_ok.png"
 #define FMC_FILE_IMG_LIST_ERROR         "list_client_error.png"
@@ -72,6 +76,7 @@
 #define FMC_PATH_PROJECTS   FMC_DIR_CONFIG""FMC_FILE_PROJECTS
 #define FMC_PATH_BENCHMARKS FMC_DIR_CONFIG""FMC_FILE_BENCHMARKS
 
+#define FMC_PATH_IMG_TRAY               FMC_DIR_IMAGES""FMC_FILE_IMG_DIALOG
 #define FMC_PATH_IMG_ABOUT              FMC_DIR_IMAGES""FMC_FILE_IMG_ABOUT
 #define FMC_PATH_IMG_DIALOG             FMC_DIR_IMAGES""FMC_FILE_IMG_DIALOG
 #define FMC_PATH_IMG_LIST_OK            FMC_DIR_IMAGES""FMC_FILE_IMG_LIST_OK
@@ -79,6 +84,14 @@
 #define FMC_PATH_IMG_LIST_INACTIVE      FMC_DIR_IMAGES""FMC_FILE_IMG_LIST_INACTIVE
 #define FMC_PATH_IMG_LIST_ARROW_UP      FMC_DIR_IMAGES""FMC_FILE_IMG_LIST_ARROW_UP
 #define FMC_PATH_IMG_LIST_ARROW_DOWN    FMC_DIR_IMAGES""FMC_FILE_IMG_LIST_ARROW_DOWN
+
+
+// --- Icons
+#ifdef _FAHMON_LINUX_
+#define FMC_ICON_DIALOG wxIcon(wxT(FMC_PATH_IMG_DIALOG))
+#else
+#define FMC_ICON_DIALOG wxICON(dialog_icon)     // The icon is loaded from the resources under Windows
+#endif
 
 
 // --- GUI

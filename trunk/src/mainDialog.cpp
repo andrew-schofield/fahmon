@@ -98,7 +98,9 @@ BEGIN_EVENT_TABLE(MainDialog, wxFrame)
     EVT_MENU    (wxID_ABOUT,                MainDialog::OnMenuAbout)
 
     // --- Frame
-    EVT_CLOSE   (MainDialog::OnClose)
+    EVT_CLOSE               (MainDialog::OnClose)
+    EVT_ICONIZE             (MainDialog::OnIconize)
+//    EVT_TASKBAR_LEFT_DCLICK (MainDialog::OnTrayDblClick)
     
     // --- List
     EVT_LIST_ITEM_SELECTED  (LST_CLIENTS, MainDialog::OnListSelectionChanged)
@@ -125,7 +127,7 @@ MainDialog* MainDialog::mInstance = NULL;
 MainDialog::MainDialog(void) : wxFrame(NULL, wxID_ANY, wxT(FMC_PRODUCT))
 {
     // Setting the icon for the main dialog will allows child frames and dialog to inherit from it
-    SetIcon(wxIcon(wxT(FMC_PATH_IMG_DIALOG)));
+    SetIcon(FMC_ICON_DIALOG);
 
     CreateMenuBar();
     CreateStatusBar(2);
@@ -926,3 +928,38 @@ void MainDialog::OnETAStylePrefChanged(void)
 {
     mClientsList->UpdateAllClients();
 }
+
+
+/**
+ * Called when the frame is iconized
+ * Depending on the preferences, FahMon will either hide it and use a tray icon, or let it be iconized as usual
+**/
+void MainDialog::OnIconize(wxIconizeEvent& event)
+{
+    /*
+    bool shouldMinimizeToTray;
+
+    _PrefsGetBool(PREF_MAINDIALOG_MINIMIZE_TO_TRAY, shouldMinimizeToTray);
+
+    // Hide the window if the user asked for it
+    if(shouldMinimizeToTray == true)
+    {
+        mSystemTray.SetIcon(wxIcon(wxT(FMC_PATH_IMG_TRAY)), wxT(FMC_PRODUCT));
+        mSystemTray.SetNextHandler(this);
+        Show(false);
+        Show(true);
+    }
+    */
+}
+
+
+/**
+ * Double-clicks show the window and remove the icon from the tray
+**/
+/*
+void MainDialog::OnTrayDblClick(wxTaskBarIconEvent& event)
+{
+    mSystemTray.RemoveIcon();
+    Show(true);
+}
+*/

@@ -332,12 +332,8 @@ void BenchmarksManager::Add(ProjectId projectId, const Client* client, const Wor
     }
 
     
-    // --- Add the new frame
-    // Don't use it for the best time if it has been extrapolated
-    if(frame->DurationIsExtrapolated() == true)
-        benchmark->AddDuration(frame->GetDuration(), false);
-    else
-        benchmark->AddDuration(frame->GetDuration(), true);
+    // --- Add the new benchmarked frame
+    benchmark->AddDuration(frame->GetDuration());
 
     
     // --- So far, so good

@@ -235,3 +235,19 @@ void ClientsManager::Reload(wxUint32 clientId)
 {
     mClients.Item(clientId)->Reload();
 }
+
+
+/**
+ * Find what is the name of the client found at the given location
+ * Return an empty string if there is no client at this location
+**/
+wxString ClientsManager::GetNameFromLocation(const wxString& location) const
+{
+    wxUint32 i;
+
+    for(i=0; i<GetCount(); ++i)
+        if(location.Cmp(mClients[i]->GetLocation()) == 0)
+            return mClients[i]->GetName();
+
+    return wxT("");
+}

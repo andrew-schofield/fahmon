@@ -47,7 +47,7 @@ public:
     void Write(DataOutputStream& out) const;
     void Read(DataInputStream& in);
 
-    void AddDuration(FrameDuration duration, bool canBeUsedForMimimum);
+    void AddDuration(FrameDuration duration);
 
     // --- Getters
     ClientId      GetClientId(void)    const {return mClientId;}

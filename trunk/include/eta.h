@@ -61,8 +61,9 @@ public:
     void SetLeftTimeInMinutes(wxUint32 leftTime);
 
     // --- Getters
-    bool     IsOk(void) const {return mIsOk;}
-    wxString GetString(void) const;
+    bool     IsOk(void)               const {return mIsOk;}
+    bool     IsBefore(const ETA* eta) const {return mLeftTimeInMinutes < eta->mLeftTimeInMinutes;}
+    wxString GetString(void)          const;
 };
 
 

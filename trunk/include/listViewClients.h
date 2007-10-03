@@ -49,7 +49,6 @@ class ListViewClients : public wxListView
 protected:
     bool           mSortAscending;          // 'false' means descending order
     wxUint32       mSortColumn;
-    wxColour       mOddBackgroundColour;
     ArrayOfIndexes mClientIdToIndex;
 
     void Sort(void);

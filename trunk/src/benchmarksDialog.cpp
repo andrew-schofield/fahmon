@@ -19,6 +19,7 @@
 
 #include "tools.h"
 #include "wx/sizer.h"
+#include "clientsManager.h"
 #include "projectsManager.h"
 #include "benchmarksManager.h"
 #include "preferencesManager.h"
@@ -59,11 +60,6 @@ BenchmarksDialog::BenchmarksDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY
     wxUint32    sashPosition;
     wxBoxSizer *topLevelSizer;
     wxBoxSizer *mainSizer;
-
-    // TODO
-    // Put this in constants
-    // This color is used every odd lines, this is easier to read the list this way
-    mOddBackgroundColour.Set(228, 228, 228);
 
     // ---
     mSplitter              = new wxSplitterWindow(this, wxID_ANY);
@@ -190,10 +186,10 @@ void BenchmarksDialog::PopulateProjectsList(ProjectId projectIdToSelect)
         // Is this the projecy we should select?
         if(projectsList[i] == projectIdToSelect)
             entryToSelect = i;
-        
-        // Give a slightly darker color to odd lines
+
+        // Give a different color to odd lines
         if(i&1 != 0)
-            mListOfProjects->SetItemBackgroundColour(i, mOddBackgroundColour);
+            mListOfProjects->SetItemBackgroundColour(i, FMC_COLOR_LIST_ODD_LINES);
         else
             mListOfProjects->SetItemBackgroundColour(i, *wxWHITE);
     }
@@ -218,6 +214,8 @@ void BenchmarksDialog::ShowBenchmarks(ProjectId projectIdToShow)
     wxUint32          i;
     wxUint32          nbBenchmarks;
     wxString          infoString;
+    wxString          clientLocation;
+    wxString          clientName;
     const Project    *project;
     const Benchmark **benchmarks;
 
@@ -250,7 +248,14 @@ void BenchmarksDialog::ShowBenchmarks(ProjectId projectIdToShow)
 
     for(i=0; i<nbBenchmarks; ++i)
     {
-        infoString += wxString::Format(wxT("\n\n -- %s --\n\n"), BenchmarksManager::GetInstance()->GetClientLocationFromClientId(benchmarks[i]->GetClientId()).c_str());
+        // Use the name of the client if found, its location otherwise
+        clientLocation = BenchmarksManager::GetInstance()->GetClientLocationFromClientId(benchmarks[i]->GetClientId());
+        clientName     = ClientsManager::GetInstance()->GetNameFromLocation(clientLocation);
+
+        if(clientName.IsEmpty() == false)
+            infoString += wxString::Format(wxT("\n\n -- %s --\n\n"), clientName.c_str());
+        else
+            infoString += wxString::Format(wxT("\n\n -- %s --\n\n"), clientLocation.c_str());
 
         // Best time
         // Display points per day if possible

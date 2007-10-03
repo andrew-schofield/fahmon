@@ -47,7 +47,6 @@ class BenchmarksDialog : public wxDialog
 protected:
     static BenchmarksDialog *mInstance;
 
-    wxColour          mOddBackgroundColour;
     wxListView       *mListOfProjects;
     wxTextCtrl       *mBenchmarksInformation;
     wxSplitterWindow *mSplitter;
@@ -58,19 +57,20 @@ protected:
     void PopulateProjectsList(ProjectId projectIdToSelect);
     void ShowBenchmarks(ProjectId projectIdToShow);
 
+    // Events
     void OnProjectChanged(wxListEvent& event);
 
 
 public:
-	// Singleton pattern
-	static BenchmarksDialog* GetInstance(wxWindow* parent);
-	static void DestroyInstance(void);
+    // Singleton pattern
+    static BenchmarksDialog* GetInstance(wxWindow* parent);
+    static void DestroyInstance(void);
 
     int ShowModal(ProjectId projectIdToSelect);
 
 
 private:
-	DECLARE_EVENT_TABLE()
+    DECLARE_EVENT_TABLE()
 };
 
 #endif /* _BENCHMARKSDIALOG_H */

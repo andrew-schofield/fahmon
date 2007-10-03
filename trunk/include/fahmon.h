@@ -22,5 +22,9 @@
 #include "fahmonTypes.h"
 #include "fahmonConsts.h"
 
+#ifndef _FAHMON_LINUX_
+#include "resource.h"
+#endif
+
 
 #endif /* _FAHMON_H */

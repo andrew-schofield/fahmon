@@ -25,6 +25,10 @@
 #include "clientsManager.h"
 #include "preferencesManager.h"
 
+// TODO
+// FMC_COLOR_LIST_ODD_LINES creates a new wxColour object each time it is used
+// Why not create it once for all in a fahmonConsts.cpp, using a 'extern ...' in the header file?
+
 
 // The columns
 enum _LISTVIEW_COLUMN
@@ -94,9 +98,6 @@ ListViewClients::ListViewClients(wxWindow* parent, wxWindowID id, wxUint32 nbCli
     wxUint32     etaColumnWidth;
     wxImageList *imageList;
 
-    // This color is used every odd lines, this is easier to read the list this way
-    mOddBackgroundColour.Set(228, 228, 228);
-
     // --- Create the columns and restore their size
     InsertColumn(LVC_PROGRESS, wxT("Progress"));
     InsertColumn(LVC_NAME,     wxT("Name"));
@@ -161,7 +162,7 @@ int ListViewClients::CompareClients(wxUint32 clientId1, wxUint32 clientId2) cons
     client1 = ClientsManager::GetInstance()->Get(clientId1);
     client2 = ClientsManager::GetInstance()->Get(clientId2);
 
-    // Invalid clients must always be at then end of the list
+    // Invalid clients must always be at the end of the list
     if(client1->IsOk() == false)
         return 1;
     else if(client2->IsOk() == false)
@@ -182,7 +183,10 @@ int ListViewClients::CompareClients(wxUint32 clientId1, wxUint32 clientId2) cons
 
         // ---
         case LVC_ETA:
-            comparisonResult = 0;
+            if(client1->GetETA()->IsBefore(client2->GetETA()) == true)
+                comparisonResult = -1;
+            else
+                comparisonResult = 1;
             break;
 
         // We should never fall here
@@ -236,7 +240,7 @@ void ListViewClients::Reset(wxUint32 nbClients)
 
         // Give a slightly darker color to odd lines
         if(i&1 != 0)
-            SetItemBackgroundColour(i, mOddBackgroundColour);
+            SetItemBackgroundColour(i, FMC_COLOR_LIST_ODD_LINES);
         else
             SetItemBackgroundColour(i, *wxWHITE);
 
@@ -335,7 +339,7 @@ void ListViewClients::Sort(void)
         mClientIdToIndex[GetItemData(i)] = i;
         
         if(i&1 != 0)
-            SetItemBackgroundColour(i, mOddBackgroundColour);
+            SetItemBackgroundColour(i, FMC_COLOR_LIST_ODD_LINES);
         else
             SetItemBackgroundColour(i, *wxWHITE);
     }

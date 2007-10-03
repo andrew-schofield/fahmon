@@ -32,39 +32,39 @@ AboutDialog* AboutDialog::mInstance = NULL;
 /**
  * Constructor
 **/
-AboutDialog::AboutDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, wxT("About"))
+AboutDialog::AboutDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, wxString(wxT("About")))
 {
     wxBoxSizer      *topLevelSizer;
     wxBoxSizer      *infoSizer;
     wxFlexGridSizer *mainSizer;
     wxFlexGridSizer *authorHomepageSizer;
 
-
+    
     // ---
     authorHomepageSizer = new wxFlexGridSizer(2, FMC_GUI_SPACING_LOW, FMC_GUI_SPACING_LOW);
-
+    
     authorHomepageSizer->Add(new StaticBoldedText(this, wxID_ANY, wxT("Author:")), 0, wxALIGN_RIGHT);
     authorHomepageSizer->Add(new wxStaticText(this, wxID_ANY, wxT(" Francois Ingelrest")), 0, wxALIGN_LEFT);
     authorHomepageSizer->Add(new StaticBoldedText(this, wxID_ANY, wxT("Homepage:")), 0, wxALIGN_RIGHT);
     authorHomepageSizer->Add(new StaticUrl(this, wxT("http://fahmon.silent-blade.org")), 0, wxALIGN_LEFT);
-
-
+    
+    
     // ---
     infoSizer = new wxBoxSizer(wxVERTICAL);
-
+    
     infoSizer->Add(new StaticBoldedText(this, wxID_ANY, wxT(FMC_PRODUCT)), 0, wxALIGN_CENTER);
     infoSizer->AddSpacer(FMC_GUI_SPACING_HIGH);
     infoSizer->Add(new wxStaticLine(this, wxID_ANY, wxDefaultPosition, wxSize(65, -1)), 0, wxALIGN_CENTER);
     infoSizer->AddSpacer(FMC_GUI_SPACING_HIGH);
     infoSizer->Add(authorHomepageSizer);
-
-
+    
+    
     // ---
     mainSizer = new wxFlexGridSizer(2, FMC_GUI_SPACING_LOW, FMC_GUI_SPACING_LOW);
-
+    
     mainSizer->Add(new wxStaticBitmap(this, wxID_ANY, wxBitmap(wxImage(wxT(FMC_PATH_IMG_ABOUT), wxBITMAP_TYPE_PNG))), 0, wxALIGN_CENTER_VERTICAL | wxRIGHT, FMC_GUI_SPACING_HIGH);
     mainSizer->Add(infoSizer);
-
+    
     // ---
     topLevelSizer = new wxBoxSizer(wxVERTICAL);
 
@@ -89,7 +89,7 @@ AboutDialog* AboutDialog::GetInstance(wxWindow* parent)
 {
     if(mInstance == NULL)
         mInstance = new AboutDialog(parent);
-
+    
     return mInstance;
 }
 
@@ -113,6 +113,6 @@ void AboutDialog::DestroyInstance(void)
 int AboutDialog::ShowModal(void)
 {
     Center();
-
+    
     return wxDialog::ShowModal();
 }

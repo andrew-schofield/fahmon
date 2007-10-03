@@ -22,6 +22,7 @@
 #include "wx/timer.h"
 #include "wx/sizer.h"
 #include "wx/gauge.h"
+//#include "wx/taskbar.h"
 #include "wx/splitter.h"
 #include "wx/textctrl.h"
 #include "wx/stattext.h"
@@ -51,6 +52,9 @@
 
 #define PREF_MAINDIALOG_AUTORELOADFREQUENCY    wxT("MainDialog.AutoReloadFrequency")
 #define PREF_MAINDIALOG_AUTORELOADFREQUENCY_DV 5
+
+#define PREF_MAINDIALOG_MINIMIZE_TO_TRAY    wxT("MainDialog.MinimizeToTray")
+#define PREF_MAINDIALOG_MINIMIZE_TO_TRAY_DV false
 
 
 // Custom events
@@ -85,7 +89,8 @@ protected:
     wxSplitterWindow *mSplitterWindow;
     
     // Misc
-    wxTimer          mAutoReloadTimer;
+    wxTimer       mAutoReloadTimer;
+//    wxTaskBarIcon mSystemTray;
 
      MainDialog(void);
     ~MainDialog(void);
@@ -108,6 +113,8 @@ protected:
     void OnMenuWeb(wxCommandEvent& event);
     void OnMenuAbout(wxCommandEvent& event);
     void OnClose(wxCloseEvent& event);
+    void OnIconize(wxIconizeEvent& event);
+//    void OnTrayDblClick(wxTaskBarIconEvent& event);
     void OnMenuQuit(wxCommandEvent& event);
     void OnListSelectionChanged(wxListEvent& event);
     void OnClientReloaded(wxCommandEvent& event);

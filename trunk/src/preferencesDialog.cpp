@@ -131,9 +131,6 @@ inline wxPanel* PreferencesDialog::CreateGeneralTab(wxNotebook* parent)
     wxBoxSizer *sizer;
     wxBoxSizer *topLevelSizer;
     
-    // TODO
-    // Minimize to tray
-
     panel                              = new wxPanel(parent);
     sizer                              = new wxBoxSizer(wxVERTICAL);
     topLevelSizer                      = new wxBoxSizer(wxVERTICAL);
@@ -141,10 +138,8 @@ inline wxPanel* PreferencesDialog::CreateGeneralTab(wxNotebook* parent)
     mGeneralCollectXYZFiles            = new wxCheckBox(panel, wxID_ANY, wxT("Collect .xyz files"));
     mGeneralAutoUpdateProjectsDatabase = new wxCheckBox(panel, wxID_ANY, wxT("Auto update projects database when needed"));
 
-    /*
     sizer->AddStretchSpacer();
-    sizer->Add(mGeneralMinimizeToTray, 0, wxALIGN_LEFT);
-    */
+//    sizer->Add(mGeneralMinimizeToTray, 0, wxALIGN_LEFT);
     sizer->AddStretchSpacer();
     sizer->Add(mGeneralCollectXYZFiles, 0, wxALIGN_LEFT);
     sizer->AddStretchSpacer();
@@ -254,14 +249,17 @@ inline void PreferencesDialog::LoadPreferences(void)
     bool     isUsingProxy;
     bool     isCollectingXYZFiles;
     bool     autoUpdateProjects;
+    bool     minimizeToTray;
     wxUint32 proxyPort;
     wxString proxyAddress;
     
     // -----===== General preferences =====-----
     _PrefsGetBool(PREF_FAHCLIENT_COLLECTXYZFILES,     isCollectingXYZFiles);
     _PrefsGetBool(PREF_MAINDIALOG_AUTOUPDATEPROJECTS, autoUpdateProjects);
+    _PrefsGetBool(PREF_MAINDIALOG_MINIMIZE_TO_TRAY,   minimizeToTray);
 
     mGeneralCollectXYZFiles->SetValue(isCollectingXYZFiles);
+//    mGeneralMinimizeToTray->SetValue(minimizeToTray);
     mGeneralAutoUpdateProjectsDatabase->SetValue(autoUpdateProjects);
 
     // -----===== Monitoring preferences =====-----
@@ -308,6 +306,7 @@ inline void PreferencesDialog::SavePreferences(void)
     
     // -----===== General preferences =====-----
     _PrefsSetBool(PREF_FAHCLIENT_COLLECTXYZFILES,     mGeneralCollectXYZFiles->GetValue());
+//    _PrefsSetBool(PREF_MAINDIALOG_MINIMIZE_TO_TRAY,   mGeneralMinimizeToTray->GetValue());
     _PrefsSetBool(PREF_MAINDIALOG_AUTOUPDATEPROJECTS, mGeneralAutoUpdateProjectsDatabase->GetValue());
 
     

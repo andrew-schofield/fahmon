@@ -40,7 +40,7 @@ ProgressManager::ProgressManager(bool isInSilentMode)
     if(mIsInSilentMode == false)
     {
         mProgressDlg = new wxProgressDialog(wxT(FMC_PRODUCT), wxT("                                                                    "), 100, NULL, wxPD_AUTO_HIDE | wxPD_APP_MODAL | wxPD_CAN_ABORT | wxPD_ELAPSED_TIME);
-        mProgressDlg->SetIcon(wxIcon(wxT(FMC_PATH_IMG_DIALOG)));
+        mProgressDlg->SetIcon(FMC_ICON_DIALOG);
     }
 }
 

@@ -1,11 +1,25 @@
-v2.0
+[-] Bug fix
+[+] New feature
 
-- FahMon can be compiled for Linux (needs wxGTK >= 2.6.0 and scons)
-- The main frame can be fully resized
-- The FAHLog file can be easily shown/hidden as needed
-- Both preferred and final deadlines are displayed
-- Each client is reloaded in its own thread (instead of one thread for all clients)
-- The clients list can be sorted by using the column headers
-- .xyz files can be automatically collected
-- A first-time dialog is displayed when launching FahMon for the first time
-- Small miscellaneous other changes
+
+
+v2.0.1
+
+[-] Fixed the inability to sort the list of clients using the ETA as the sorting criterion
+[-] Fixed the case where min. time / frame could be smaller than avg. time / frame
+[-] The correct dialog icon is now used in the win32 version
+[ ] The name of a client is displayed instead of its location in the benchmarks dialog, if possible
+
+
+
+v2.0.0
+
+[+] The main frame can be fully resized
+[+] The FAHLog file can be easily shown/hidden as needed
+[+] Both preferred and final deadlines are displayed
+[+] Each client is reloaded in its own thread (instead of one thread for all clients)
+[+] The clients list can be sorted by using the column headers
+[+] .xyz files can be automatically collected
+[+] A first-time dialog is displayed when launching FahMon for the first time
+[ ] FahMon can be compiled for Linux (needs wxGTK >= 2.6.0 and scons)
+[ ] Small miscellaneous other changes

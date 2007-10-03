@@ -61,9 +61,9 @@ void Benchmark::Read(DataInputStream& in)
 
 
 /**
- * Update the average duration (and the minimum one too if the boolean is true)
+ * Update the average and minimum durations
 **/
-void Benchmark::AddDuration(FrameDuration duration, bool canBeUsedForMimimum)
+void Benchmark::AddDuration(FrameDuration duration)
 {
     wxUint32 sumOfSamples;
     
@@ -82,6 +82,6 @@ void Benchmark::AddDuration(FrameDuration duration, bool canBeUsedForMimimum)
     }
 
     // 2) Update the minimum duration
-    if(canBeUsedForMimimum == true && duration < mMinDuration)
+    if(duration < mMinDuration)
         mMinDuration = duration;
 }

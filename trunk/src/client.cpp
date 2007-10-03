@@ -146,16 +146,17 @@ void Client::Reload(void)
         SaveXYZFile();
 
     // 6) Extract the duration of the last frame
-    //    Don't store twice the same frame
+    //     - Don't store it if it has been extrapolated, as the value can be very different from 'real' durations
+    //     - Don't store the same frame twice, it would give wrong average durations
     lastFrame = FahLogAnalyzer::AnalyzeLastFrame(mLog);
-    if(lastFrame != NULL && lastFrame->GetId() != mPreviouslyAnalyzedFrameId)
+    if(lastFrame != NULL && lastFrame->DurationIsExtrapolated() == false && lastFrame->GetId() != mPreviouslyAnalyzedFrameId)
     {
         mPreviouslyAnalyzedFrameId = lastFrame->GetId();
         BenchmarksManager::GetInstance()->Add(mProjectId, this, lastFrame);
     }
 
     // 7) Compute ETA
-    // Fields are not valid when the client is stopped, in this case we don't give them to the this method
+    // Fields are not valid when the client is stopped, in this case we don't give them to this method
     if(lastFrame != NULL && lastFrame->ClientIsStopped() == false)
         ComputeETA(lastFrame);
     else

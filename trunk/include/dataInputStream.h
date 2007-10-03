@@ -36,7 +36,7 @@ public:
 
     void Read(void *buffer, wxUint32 size) {mDataIS->Read8((wxUint8*)buffer, size);}
 
-    void ReadBool(bool& value)              {value = mDataIS->Read8();}
+    void ReadBool(bool& value)              {value = (mDataIS->Read8() == 1 ? true : false);}
     void ReadUint(wxUint32& value)          {value = mDataIS->Read32();}
     void ReadInt(wxInt32& value)            {value = mDataIS->Read32();}
     void ReadDouble(double& value)          {value = mDataIS->ReadDouble();}
