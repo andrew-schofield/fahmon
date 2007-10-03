@@ -3,6 +3,11 @@
 
 
 
+v2.1.0c
+[-] When client was stopped, best benchmark was deleted
+
+
+
 v2.1.0b
 [-] Clients were sometimes falsely detected as stopped
 

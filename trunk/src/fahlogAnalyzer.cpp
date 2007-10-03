@@ -22,6 +22,8 @@
  * Return a pointer to a valid WorkUnitFrame object if information could be extracted, NULL otherwhise
  * It's up to the caller to free the WorkUnitFrame object when needed
  *
+ * 
+ *
  * We are searching for a pattern like this one :
  *
  * [16:04:36] Completed 6900000 out of 12500000 steps  (55%)   <-- We now the run below is complete because of this line
@@ -29,6 +31,15 @@
  * [16:25:32] Completed 7000000 out of 12500000 steps  (56%)   <-+
  * ...                                                           |-- Complete run
  * [16:52:12] Completed 7125000 out of 12500000 steps  (57%)   <-+
+ *
+ *
+ *
+ * For Tinker units, this pattern is sufficient :
+ *
+ * [16:26:42] Finished a frame (2) <-+
+ * ...                               |-- Complete run
+ * [16:38:42] Finished a frame (3) <-+
+ *
 **/
 WorkUnitFrame* FahLogAnalyzer::AnalyzeLastFrame(const wxString& fahlogComplete)
 {
@@ -88,9 +99,13 @@ WorkUnitFrame* FahLogAnalyzer::AnalyzeLastFrame(const wxString& fahlogComplete)
                 break;
 
             case LLT_COMPLETED:
-            case LLT_FINISHED:
                      if(endFrame1Found == false) endFrame1Found   = true;
                 else if(endFrame2Found == false) endFrame2Found   = true;
+                else                             completeRunFound = true;
+                break;
+
+            case LLT_FINISHED:
+                     if(endFrame1Found == false) endFrame1Found   = true;
                 else                             completeRunFound = true;
                 break;
 

@@ -136,7 +136,7 @@ void Client::Reload(void)
     lastFrame = FahLogAnalyzer::AnalyzeLastFrame(mLog);
 
     // Add this duration to the benchmarks for valid projects, but don't store twice the same frame
-    if(mProjectId != INVALID_PROJECT_ID && lastFrame != NULL && lastFrame->GetId() != mPreviouslyAnalyzedFrameId)
+    if(mProjectId != INVALID_PROJECT_ID && lastFrame != NULL && !lastFrame->ClientIsStopped() && lastFrame->GetId() != mPreviouslyAnalyzedFrameId)
     {
         mPreviouslyAnalyzedFrameId = lastFrame->GetId();
         BenchmarksManager::GetInstance()->Add(mProjectId, this, lastFrame);

@@ -82,6 +82,6 @@ void Benchmark::AddDuration(FrameDuration duration)
     }
 
     // 2) Update the minimum duration
-    if(duration < mMinDuration)
+    if(mMinDuration == 0 || duration < mMinDuration)
         mMinDuration = duration;
 }
