@@ -1,0 +1,52 @@
+1) Requirements
+---------------
+
+To compile FahMon on Linux, you will need:
+ - g++ (either 3.x or 4.x)
+ - wxGTK >= 2.6.0 (runtime and headers)
+ - scons
+
+If wxGTK is correctly installed on your system, you should be able to execute the command wx-config from any directory:
+athropos@ruby$ wx-config --list
+
+Default config is gtk2-unicode-release-2.6
+Default config will be used for output
+Alternate matches:
+  gtk2-unicode-debug-2.6
+
+
+
+2) Compilation
+--------------
+
+If you have no problem with wx-config, you should be able to compile FahMon:
+athropos@ruby$ cd src
+athropos@ruby$ scons
+
+If everything went OK, you can execute FahMon:
+athropos@ruby$ ./fahmon
+
+
+
+3) Choosing the browser to use
+------------------------------
+
+FahMon can open miscellaneous webpages for you, but you have to tell it which browser to use. To do that, you will need to define an environment variable named 'BROWSER' that will contain the command to use to launch the browser. For example with bash and firefox:
+
+athropos@ruby$ BROWSER="firefox"
+
+
+
+4) Launching FahMon
+-------------------
+
+FahMon searches for the images in the current directory. To be able to launch it from any location (e.g., with a shortcut from the gnome-panel), you should write a little script like this one:
+
+--
+#!/bin/sh
+
+export BROWSER="firefox"
+
+cd /path/to/fahmon/src
+./fahmon
+--
