@@ -9,7 +9,7 @@
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 m4_include(m4/wxwin.m4)
 AC_INIT([FahMon],
-        [2.3.0],
+        [2.3.1],
         [Andrew Schofield the.uncle.fungus@gmail.com],
         [FahMon])
 AC_PREFIX
@@ -45,7 +45,7 @@ CXXFLAGS="$CXXFLAGS $WX_CXXFLAGS_ONLY"
 CFLAGS="$CFLAGS $WX_CFLAGS_ONLY"
 LIBS="$LIBS $WX_LIBS"
 
-ALL_LINGUAS="en_GB fr_FR pt_PT ru_RU pl sv_SE"
+ALL_LINGUAS="en_GB fr_FR pt_PT ru_RU pl sv_SE cs_CZ"
 
 AM_GNU_GETTEXT([external])
 

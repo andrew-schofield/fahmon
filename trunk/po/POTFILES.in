@@ -32,4 +32,5 @@
 ./src/staticUrl.cpp
 ./src/tools.cpp
 ./src/trayManager.cpp
+./src/webMonitor.cpp
 ./src/workUnitFrame.cpp

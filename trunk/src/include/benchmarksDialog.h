@@ -1,19 +1,19 @@
 /*
- *  This program is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
- *  This program is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU Library General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with this program; if not, write to the Free Software
- *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
- */
- 
+*  This program is free software; you can redistribute it and/or modify
+*  it under the terms of the GNU General Public License as published by
+*  the Free Software Foundation; either version 2 of the License, or
+*  (at your option) any later version.
+*
+*  This program is distributed in the hope that it will be useful,
+*  but WITHOUT ANY WARRANTY; without even the implied warranty of
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*  GNU Library General Public License for more details.
+*
+*  You should have received a copy of the GNU General Public License
+*  along with this program; if not, write to the Free Software
+*  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+*/
+
 #ifndef _BENCHMARKSDIALOG_H
 #define _BENCHMARKSDIALOG_H
 
@@ -25,7 +25,7 @@
 
 
 /**
- * Preferences used by this class
+* Preferences used by this class
 **/
 #define PREF_BENCHMARKSDIALOG_FRAMEWIDTH    wxT("BenchmarksDialog.FrameWidth")
 #define PREF_BENCHMARKSDIALOG_FRAMEWIDTH_DV 550
@@ -45,33 +45,33 @@
 class BenchmarksDialog : public wxDialog
 {
 protected:
-    static BenchmarksDialog *mInstance;
+	static BenchmarksDialog *mInstance;
 
-    wxListView       *mListOfProjects;
-    wxTextCtrl       *mBenchmarksInformation;
-    wxSplitterWindow *mSplitter;
+	wxListView       *mListOfProjects;
+	wxTextCtrl       *mBenchmarksInformation;
+	wxSplitterWindow *mSplitter;
 
-     BenchmarksDialog(wxWindow* parent);
-    ~BenchmarksDialog(void);
+	BenchmarksDialog(wxWindow* parent);
+	~BenchmarksDialog(void);
 
-    void PopulateProjectsList(ProjectId projectIdToSelect);
-    void ShowBenchmarks(ProjectId projectIdToShow);
+	void PopulateProjectsList(ProjectId projectIdToSelect);
+	void ShowBenchmarks(ProjectId projectIdToShow);
 
-    // Events
-    void OnProjectChanged(wxListEvent& event);
-    void OnCloseButton(wxCommandEvent& event);
+	// Events
+	void OnProjectChanged(wxListEvent& event);
+	void OnCloseButton(wxCommandEvent& event);
 
 
 public:
-    // Singleton pattern
-    static BenchmarksDialog* GetInstance(wxWindow* parent);
-    static void DestroyInstance(void);
+	// Singleton pattern
+	static BenchmarksDialog* GetInstance(wxWindow* parent);
+	static void DestroyInstance(void);
 
-    int ShowModal(ProjectId projectIdToSelect);
+	int ShowModal(ProjectId projectIdToSelect);
 
 
 private:
-    DECLARE_EVENT_TABLE()
+	DECLARE_EVENT_TABLE()
 };
 
 #endif /* _BENCHMARKSDIALOG_H */

@@ -1,5 +1,32 @@
 FahMon: The Folding@home client monitoring program
 
+v2.3.1
+
+    General
+
+    * Updated and improved documentation (this is still "Work in Progress").
+    * Added Czech translation.
+    * Preferences dialog and client list now save changes immediately, which
+      should help in situations where FahMon crashes, like fast-user-switching
+      or closing RDP/VNC sessions.
+    * Added Drag-and-Drop function to the client list to allow new clients to be
+      added more easily.
+    * Add Gromacs SMP CVS (GROCVS) core support.
+    * Adjusted margin on the benchmarks dialog.
+    * Fixed bug in "Effective Duration" code that produced incorrect results
+      when calculating values for WUs with less than 100 frames.
+    * Detailed instructions on how to compile fahmon using the MS Free Tools are
+      now provided.
+    * Altered progress detection method to use FAHlog.txt, this should help with
+      cores that don't update unitinfo.txt in a timely fashion, or at all.
+      Unitinfo.txt is still used as a fallback if 1) The projectId is unknown, 2)
+      The WU is still in the "startup" phase (i.e. yellow).
+    * Added WebApp module. You can now export the monitoring status to 3 different
+      formats, WebApp - a fancy jscript powered web page that mimics the FahMon
+      interface; Simple Web - a simple web page containing useful data arranged in
+      a simple table; Simple Text - similar to Simple Web, but optimised for
+      shell based viewing - useful for monitoring over SSH.
+
 v2.3.0 (10/09/07)
 
     Linux
@@ -52,6 +79,8 @@ v2.3.0 (10/09/07)
     * Source package now contains all files necessary to build on Linux, MS
       Windows and OSX. However, they are only guaranteed to compile sucessfully
       on Linux. MS Windows can be made to work, OSX is unknown at this point.
+    * FahMon is now internationalised, and comes with translations for: British
+      English, French, Polish, Portuguese, Russian and Swedish.
 
 v2.2.2 (07/07/07)
 
@@ -70,13 +99,13 @@ v2.2.2 (07/07/07)
     * Fixed another bug relating to window size not restoring correctly. If the
       frame is ever detected to be 0x0, default values are used instead
     * Client list colour scheme now follows system on both Windows and Linux
-    * Made more code compatible with newer versions of wxWidgets (Win32) 
+    * Made more code compatible with newer versions of wxWidgets (Win32)
 
 v2.2.1a (13/06/07)
 
     * Reverted Win32 build back to wxWidgets 2.6.3 as 2.8.4 appeared to cause
       file access problems for some users
-    * Altered projects database conversion system to work correctly 
+    * Altered projects database conversion system to work correctly
 
 v2.2.1 (13/06/07)
 
@@ -107,7 +136,7 @@ v2.2.1 (13/06/07)
     * Deadline and download dates can also be displayed as time elapsed or
       remaining, in days
     * Added missing declaration to allow compilation against wxWidgets 2.8
-    * Switched win32 version to wxWidgets 2.8.4 
+    * Switched win32 version to wxWidgets 2.8.4
 
 v2.2.0 (25/03/07)
 
@@ -127,25 +156,25 @@ v2.2.0 (25/03/07)
     * Inaccessible clients can be included in sorting, by default they are
       always displayed last.
     * Web menu now includes a link to fahinfo.org, pointing to the relevant
-      project information page 
+      project information page
 
 v2.1.5 (26/11/06)
 
     * Added links to user's stats page in the right panel of the main window
     * When tray icon is enabled, hide the main window when it is minimized
-      (thanks to Mihail Boev for the patch) 
+      (thanks to Mihail Boev for the patch)
 
 v2.1.4 (13/11/06)
 
     * Fixed refresh bug when changing selection
     * When psummary file is corrupted, don't abort on first error and continue
       to parse remaining lines
-    * Added preliminary support for the new cores (GPU and SMP) 
+    * Added preliminary support for the new cores (GPU and SMP)
 
 v2.1.3 (01/11/06)
 
     * Fixed a GMT date management bug (Linux)
-    * Switched win32 version to wxWidgets 2.6.3 
+    * Switched win32 version to wxWidgets 2.6.3
 
 v2.1.2 (29/10/06)
 
@@ -156,19 +185,19 @@ v2.1.2 (29/10/06)
     * Fixed visual bug with resizing when showing/hiding the log window (thanks
       again to Mihail Boev)
     * Added a browser preference in Linux version (thanks to mdickinson for the
-      patch, sorry for the delay :-)) 
+      patch, sorry for the delay :-))
 
 v2.1.1 (18/07/06)
 
-    * Added support for Gromacs33 core (thanks to uncle_fungus for the patch) 
+    * Added support for Gromacs33 core (thanks to uncle_fungus for the patch)
 
 v2.1.0c (08/03/06)
 
-    * When client was stopped, best benchmark was deleted 
+    * When client was stopped, best benchmark was deleted
 
 v2.1.0b (01/03/06)
 
-    * Clients were sometimes falsely detected as stopped 
+    * Clients were sometimes falsely detected as stopped
 
 v2.1.0 (25/02/06)
 
@@ -182,20 +211,20 @@ v2.1.0 (25/02/06)
     * Rewrote main parts of the benchmarking code, it should be more reliable
     * Improved error handling when loading client information
     * Improved the way inactivity is detected
-    * Miscellaneous small fixes 
+    * Miscellaneous small fixes
 
 v2.0.4 (12/02/06)
 
     * FahMon was unusable on some non-english Linux systems
     * Percentage of completion near the progress bar was not displayed until the
       window was resized
-    * Fixed the 'Feburary' bug caused by some F@H cores 
+    * Fixed the 'Feburary' bug caused by some F@H cores
 
 v2.0.3 (30/10/05)
 
     * The position of the frame is now saved and restored across sessions
     * Updated Stanford web addresses (vspx27.stanford.edu is now
-      fah-web.stanford.edu) 
+      fah-web.stanford.edu)
 
 v2.0.2 (15/10/05)
 
@@ -203,7 +232,7 @@ v2.0.2 (15/10/05)
     * Added support for a system tray icon
     * Fixed the bug that caused a blank window of Internet Explorer to appear in
       the win32 version
-    * Miscellaneous small changes 
+    * Miscellaneous small changes
 
 v2.0.1 (29/09/05)
 
@@ -213,10 +242,10 @@ v2.0.1 (29/09/05)
       frame
     * The correct dialog icon is now used in the win32 version
     * The name of a client is displayed instead of its location in the
-      benchmarks dialog, if possible 
+      benchmarks dialog, if possible
 
 v2.0.0 (24/09/05)
 
     * FahMon has been entirely rewritten and now works also with Linux. A lot of
       changes have been done, just check them! (Beware that file formats have
-      changed and are not compatible with previous ones!) 
+      changed and are not compatible with previous ones!)

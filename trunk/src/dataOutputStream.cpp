@@ -1,18 +1,18 @@
 /*
- *  This program is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
- *  This program is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU Library General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with this program; if not, write to the Free Software
- *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
- */
+*  This program is free software; you can redistribute it and/or modify
+*  it under the terms of the GNU General Public License as published by
+*  the Free Software Foundation; either version 2 of the License, or
+*  (at your option) any later version.
+*
+*  This program is distributed in the hope that it will be useful,
+*  but WITHOUT ANY WARRANTY; without even the implied warranty of
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*  GNU Library General Public License for more details.
+*
+*  You should have received a copy of the GNU General Public License
+*  along with this program; if not, write to the Free Software
+*  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+*/
 
 #include "fahmon.h"
 #include "dataOutputStream.h"
@@ -21,46 +21,46 @@
 
 
 /**
- * Constructor
+* Constructor
 **/
 DataOutputStream::DataOutputStream(const wxString& filename)
 {
-    mDataOS = NULL;
+	mDataOS = NULL;
 
-    mFileOS = new wxFileOutputStream(filename);
-    if(mFileOS != NULL)
-    {
-        mBufferedOS = new wxBufferedOutputStream(*mFileOS);
-        if(mBufferedOS != NULL)
-            mDataOS = new wxDataOutputStream(*mBufferedOS);
-    }
+	mFileOS = new wxFileOutputStream(filename);
+	if(mFileOS != NULL)
+	{
+		mBufferedOS = new wxBufferedOutputStream(*mFileOS);
+		if(mBufferedOS != NULL)
+			mDataOS = new wxDataOutputStream(*mBufferedOS);
+	}
 }
 
 
 /**
- * Destructor
+* Destructor
 **/
 DataOutputStream::~DataOutputStream(void)
 {
-    if(mDataOS != NULL)
-        delete mDataOS;
+	if(mDataOS != NULL)
+		delete mDataOS;
 
-    if(mBufferedOS != NULL)
-    {
-        mBufferedOS->Close();
-        delete mBufferedOS;
-    }
+	if(mBufferedOS != NULL)
+	{
+		mBufferedOS->Close();
+		delete mBufferedOS;
+	}
 
-    if(mFileOS != NULL)
-        delete mFileOS;
+	if(mFileOS != NULL)
+		delete mFileOS;
 }
 
 
 /**
- * Hidden strings are not directly "human readable" from the disk
+* Hidden strings are not directly "human readable" from the disk
 **/
 void DataOutputStream::WriteHiddenString(const wxString& value)
 {
-    // The string is written in base64
-    WriteString(Base64Codec::Encode(value));
+	// The string is written in base64
+	WriteString(Base64Codec::Encode(value));
 }

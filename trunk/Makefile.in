@@ -221,7 +221,8 @@ EXTRA_DIST = config.rpath  \
         REQUIRES \
         fahmon.sln \
         fahmon.vcproj \
-        FahMon.nsi
+        FahMon.nsi \
+        README.win32.txt
 
 SUBDIRS = m4 src doc po src/include src/images resources
 appsdir = $(datadir)/applications

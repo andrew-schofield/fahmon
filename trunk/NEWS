@@ -6,7 +6,7 @@ See the end for copying conditions.
 
 Please send FahMon bug reports to the.uncle.fungus@gmail.com.
 
-Version 2.2.3
+Version 2.3.0
 
 * First ever NEWS entry thanks to the GNU build system. The scons installation
   system has been removed completely from the source package, so now you should

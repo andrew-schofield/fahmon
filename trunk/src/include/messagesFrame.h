@@ -1,19 +1,19 @@
 /*
- *  This program is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
- *  This program is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU Library General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with this program; if not, write to the Free Software
- *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
- */
- 
+*  This program is free software; you can redistribute it and/or modify
+*  it under the terms of the GNU General Public License as published by
+*  the Free Software Foundation; either version 2 of the License, or
+*  (at your option) any later version.
+*
+*  This program is distributed in the hope that it will be useful,
+*  but WITHOUT ANY WARRANTY; without even the implied warranty of
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*  GNU Library General Public License for more details.
+*
+*  You should have received a copy of the GNU General Public License
+*  along with this program; if not, write to the Free Software
+*  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+*/
+
 #ifndef _MESSAGESFRAME_H
 #define _MESSAGESFRAME_H
 
@@ -23,7 +23,7 @@
 
 
 /**
- * Preferences used by this class
+* Preferences used by this class
 **/
 #define PREF_MESSAGESFRAME_FRAMEWIDTH    wxT("MessagesFrame.FrameWidth")
 #define PREF_MESSAGESFRAME_FRAMEWIDTH_DV 500
@@ -37,30 +37,30 @@
 class MessagesFrame : public wxFrame
 {
 protected:
-    static MessagesFrame *mInstance;
+	static MessagesFrame *mInstance;
 
-    wxTextCtrl *mTextCtrl;
-
-
-     MessagesFrame(wxWindow *parent);
-    ~MessagesFrame(void);
+	wxTextCtrl *mTextCtrl;
 
 
-    // --- Events
-    void OnClose(wxCloseEvent& event);
+	MessagesFrame(wxWindow *parent);
+	~MessagesFrame(void);
+
+
+	// --- Events
+	void OnClose(wxCloseEvent& event);
 
 
 public:
-    // Singleton pattern
-    static MessagesFrame* GetInstance(wxWindow* parent);
-    static void           DestroyInstance(void);
+	// Singleton pattern
+	static MessagesFrame* GetInstance(wxWindow* parent);
+	static void           DestroyInstance(void);
 
-           void Toggle(void);
-    static void OnNewMessage(void);
+		void Toggle(void);
+	static void OnNewMessage(void);
 
 
 private:
-    DECLARE_EVENT_TABLE()
+	DECLARE_EVENT_TABLE()
 };
 
 
