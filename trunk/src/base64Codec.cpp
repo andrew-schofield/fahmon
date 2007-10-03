@@ -72,13 +72,13 @@ wxString Base64Codec::Encode(const wxString& string)
     char     c1;
     char     c2;
     char     c3;
-    wxInt32  i;			// Must NOT be Uint, because 'string.length()-2' can be smaller than 0
+    wxInt32  i;			// Must NOT be Uint, because 'string.Len()-2' can be smaller than 0
     wxString result;
 
     result = wxT("");
 
     // Consider each block of 3 8-bits blocks and transform them in 4 6-bits blocks
-    for(i=0; i<(wxInt32)string.length()-2; i+=3)
+    for(i=0; i<(wxInt32)string.Len()-2; i+=3)
     {
         c1 = string[i];
         c2 = string[i+1];
@@ -95,7 +95,7 @@ wxString Base64Codec::Encode(const wxString& string)
     // The length of the base64 encoded string must be a multiple of 4, so '=' characters are used for padding
 
     // 1 character left
-    if(i == (wxInt32)string.length()-1)
+    if(i == (wxInt32)string.Len()-1)
     {
         c1 = string[i];
         
@@ -105,7 +105,7 @@ wxString Base64Codec::Encode(const wxString& string)
         result += '=';
     }
     // 2 characters left
-    else if(i == (wxInt32)string.length()-2)
+    else if(i == (wxInt32)string.Len()-2)
     {
         c1 = string[i];
         c2 = string[i+1];
@@ -135,14 +135,14 @@ wxString Base64Codec::Decode(const wxString& string)
     result = wxT("");
 
     // Base64 encoded strings must have a length multiple of 4
-    if(string.Length()%4 != 0)
+    if(string.Len()%4 != 0)
     {
         _LogMsgError(wxT("Base64Codec: The base64 encoded string has an incorrect length!"));
         return result;
     }
 
     // Each group of 4 base64 characters provides 3 decoded characters
-    for(i=0; i<string.length(); i+=4)
+    for(i=0; i<string.Len(); i+=4)
     {
         // The first two characters of a group always provide a valid decoded character
         base64Index1 = CharToBase64Index(string[i]);

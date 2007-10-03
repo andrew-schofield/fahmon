@@ -33,10 +33,10 @@
  * Preferences used by this class
 **/
 #define PREF_MAINDIALOG_FRAMEWIDTH    wxT("MainDialog.FrameWidth")
-#define PREF_MAINDIALOG_FRAMEWIDTH_DV -1
+#define PREF_MAINDIALOG_FRAMEWIDTH_DV 650
 
 #define PREF_MAINDIALOG_FRAMEHEIGHT    wxT("MainDialog.FrameHeight")
-#define PREF_MAINDIALOG_FRAMEHEIGHT_DV -1
+#define PREF_MAINDIALOG_FRAMEHEIGHT_DV 250
 
 #define PREF_MAINDIALOG_FRAME_POS_X    wxT("MainDialog.FramePosX")
 #define PREF_MAINDIALOG_FRAME_POS_X_DV -1
@@ -106,9 +106,9 @@ protected:
     void RestoreFrameState(void);
 
     void SetAutoReloadTimer(void);
-    void ShowClientInformation(wxUint32 clientId);
+    void ShowClientInformation(ClientId clientId);
 
-	// Events
+    // Events
     void OnMenuReload(wxCommandEvent& event);
     void OnMenuReloadAll(wxCommandEvent& event);
     void OnMenuUpdateProjects(wxCommandEvent& event);
@@ -131,10 +131,10 @@ protected:
 
 public:
 	// Singleton pattern
-	static void CreateInstance(void);
-	static void DestroyInstance(void);
+    static void CreateInstance(void);
+    static void DestroyInstance(void);
     static bool HasBeenInstanciated(void);
-	static MainDialog* GetInstance(void);
+    static MainDialog* GetInstance(void);
 
     bool Show(bool show = true);
 

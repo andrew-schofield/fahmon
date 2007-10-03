@@ -18,6 +18,7 @@
 #include "preferencesManager.h"
 
 #include "tools.h"
+#include "pathManager.h"
 #include "messagesManager.h"
 #include "dataInputStream.h"
 #include "dataOutputStream.h"
@@ -222,7 +223,7 @@ inline void PreferencesManager::Load(void)
 {
     wxUint32         nbPrefs, i;
     Preference      *currentPrefValue;
-    DataInputStream  in(wxT(FMC_PATH_PREFS));
+    DataInputStream  in(PathManager::GetCfgPath() + wxT(FMC_FILE_PREFS));
     
     // Could the file be opened ?
     if(in.Ok() == false)
@@ -247,12 +248,12 @@ inline void PreferencesManager::Load(void)
 **/
 inline void PreferencesManager::Save(void)
 {
-    DataOutputStream             out(wxT(FMC_PATH_PREFS));
+    DataOutputStream             out(PathManager::GetCfgPath() + wxT(FMC_FILE_PREFS));
     PreferencesHashMap::iterator iterator;
     
     if(out.Ok() == false)
     {
-        Tools::ErrorMsgBox(wxString::Format(wxT("Could not open file <%s> for writing!"), wxT(FMC_PATH_PREFS)));
+        Tools::ErrorMsgBox(wxString::Format(wxT("Could not open file <%s> for writing!"), (PathManager::GetCfgPath() + wxT(FMC_FILE_PREFS)).c_str()));
         return;
     }
 

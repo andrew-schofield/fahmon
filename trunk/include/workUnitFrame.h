@@ -34,7 +34,6 @@
 class WorkUnitFrame
 {
 protected:
-    bool     mDurationExtrapolated;   // Is this the duration of a complete frame, or an extrapolated time based on elapsed steps?
     bool     mClientIsStopped;        // true if the message 'Folding@Home Client Shutdown.' was found. In this case, other information is not valid!
     FrameId  mId;
     wxUint32 mDuration;               // In seconds
@@ -42,21 +41,20 @@ protected:
 
 
 public:
-     WorkUnitFrame(FrameId id = 0);
+     WorkUnitFrame(FrameId id = 0, bool clientIsStopped = true, wxUint32 duration = 0, wxUint32 elapsedSeconds = 0);
     ~WorkUnitFrame(void);
 
     // --- Getters
-    bool     DurationIsExtrapolated(void) const {return mDurationExtrapolated;}
     bool     ClientIsStopped(void)        const {return mClientIsStopped;}
     FrameId  GetId(void)                  const {return mId;}
     wxUint32 GetDuration(void)            const {return mDuration;}
     wxUint32 GetElapsedSeconds(void)      const {return mElapsedSeconds;}
 
     // --- Setters
-    void SetId(FrameId id)                                 {mId = id;}
-    void SetClientIsStopped(bool isStopped)                {mClientIsStopped = isStopped;}
-    void SetDuration(wxUint32 duration, bool extrapolated) {mDuration = duration;  mDurationExtrapolated = extrapolated;}
-    void SetElapsedSeconds(wxUint32 seconds)               {mElapsedSeconds = seconds;}
+    void SetId(FrameId id)                   {mId = id;}
+    void SetClientIsStopped(bool isStopped)  {mClientIsStopped = isStopped;}
+    void SetDuration(wxUint32 duration)      {mDuration = duration;}
+    void SetElapsedSeconds(wxUint32 seconds) {mElapsedSeconds = seconds;}
 };
 
 

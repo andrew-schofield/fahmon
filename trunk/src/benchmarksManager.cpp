@@ -18,6 +18,7 @@
 #include "benchmarksManager.h"
 
 #include "tools.h"
+#include "pathManager.h"
 #include "clientsManager.h"
 #include "messagesManager.h"
 #include "dataInputStream.h"
@@ -131,7 +132,7 @@ BenchmarksManager* BenchmarksManager::GetInstance(void)
 **/
 void BenchmarksManager::Save(void)
 {
-    DataOutputStream                 out(wxT(FMC_PATH_BENCHMARKS));
+    DataOutputStream                 out(PathManager::GetCfgPath() + wxT(FMC_FILE_BENCHMARKS));
     BenchmarkHashMap                *listOfBenchmarks;
     ClientIdHashMap::iterator        iteratorClientId;
     BenchmarkHashMap::iterator       iteratorBenchmark;
@@ -140,7 +141,7 @@ void BenchmarksManager::Save(void)
     
     if(out.Ok() == false)
     {
-        Tools::ErrorMsgBox(wxString::Format(wxT("Could not open file <%s> for writing!"), wxT(FMC_PATH_BENCHMARKS)));
+        Tools::ErrorMsgBox(wxString::Format(wxT("Could not open file <%s> for writing!"), (PathManager::GetCfgPath() + wxT(FMC_FILE_BENCHMARKS)).c_str()));
         return;
     }
 
@@ -184,7 +185,7 @@ void BenchmarksManager::Load(void)
     ClientId          clientId;
     ProjectId         projectId;
     Benchmark        *benchmark;
-    DataInputStream   in(wxT(FMC_PATH_BENCHMARKS));
+    DataInputStream   in(PathManager::GetCfgPath() + wxT(FMC_FILE_BENCHMARKS));
     BenchmarkHashMap *listOfBenchmarks;
     
     // Could the file be opened ?
@@ -286,11 +287,6 @@ void BenchmarksManager::Add(ProjectId projectId, const Client* client, const Wor
     BenchmarkHashMap::iterator       iteratorBenchmark;
     BenchmarksListHashMap::iterator  iteratorBenchmarksList;
 
-    // We won't deal with too large durations, so stop now if it is the case with this one
-    if(frame->GetDuration() > MAX_FRAME_DURATION)
-        return;
-
-    
     // --- Retrieve the identifier associated to the given client, create a new one if needed
     iteratorClientId = mClientLocationToClientId.find(client->GetLocation());
     if(iteratorClientId != mClientLocationToClientId.end())

@@ -33,11 +33,12 @@ typedef wxUint16 FrameDuration;
 
 // --- Identifier (Integer) of a client, especially used to store benchmarks
 typedef wxUint16 ClientId;
-#define MAX_CLIENT_ID 65535
+#define MAX_CLIENT_ID     65535
+#define INVALID_CLIENT_ID 65535
 
 
 // --- Identifier of a Folding@Home core
-// One byte should be enough, there are currently only 6 known cores
+// One byte should be enough, there are currently less than 6 known cores
 typedef wxByte CoreId;
 #define MAX_CORE_ID 255
 
@@ -45,7 +46,8 @@ typedef wxByte CoreId;
 // --- Identifier of a Folding@Home project
 // There are currently around 4000 projects, so 65535 should be enough for some times
 typedef wxUint16 ProjectId;
-#define MAX_PROJECT_ID 65535
+#define MAX_PROJECT_ID     65535
+#define INVALID_PROJECT_ID 0
 
 
 // --- Credit (stats) given for a work unit

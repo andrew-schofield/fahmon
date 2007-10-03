@@ -395,7 +395,6 @@ inline void PreferencesDialog::SavePreferences(void)
 void PreferencesDialog::OnOkButton(wxCommandEvent& event)
 {
     SavePreferences();
-    
     event.Skip();
 }
 

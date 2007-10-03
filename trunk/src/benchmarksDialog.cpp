@@ -87,7 +87,11 @@ BenchmarksDialog::BenchmarksDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY
     mainSizer->Add(mSplitter, 1, wxEXPAND);
     mainSizer->AddSpacer(FMC_GUI_SPACING_HIGH);
     mainSizer->Add(new wxButton(this, wxID_CLOSE), 0, wxALIGN_CENTER_HORIZONTAL);
-
+/*
+    wxButton *cancelButton = new wxButton(this, wxID_CANCEL);
+    mainSizer->Add(cancelButton, 0, wxALIGN_CENTER_HORIZONTAL);
+    cancelButton->Show(false);
+*/
     // ---
     topLevelSizer = new wxBoxSizer(wxVERTICAL);
 
@@ -143,7 +147,7 @@ void BenchmarksDialog::DestroyInstance(void)
 
 /**
  * Show the window and automatically select the given project
- * If projectId is equal to MAX_PROJECT_ID, the first project is selected
+ * If projectId is equal to INVALID_PROJECT_ID, the first available project is selected
 **/
 int BenchmarksDialog::ShowModal(ProjectId projectIdToSelect)
 {
@@ -203,12 +207,13 @@ void BenchmarksDialog::PopulateProjectsList(ProjectId projectIdToSelect)
     
     // Select the correct entry
     mListOfProjects->Select(entryToSelect);
+    mListOfProjects->EnsureVisible(entryToSelect);
 }
 
 
 /**
  * Show the known benchmark for the given project
- * If projectId is equal to MAX_PROJECT_ID, clear information
+ * If projectId is equal to INVALID_PROJECT_ID, clear information
 **/
 void BenchmarksDialog::ShowBenchmarks(ProjectId projectIdToShow)
 {
@@ -223,7 +228,7 @@ void BenchmarksDialog::ShowBenchmarks(ProjectId projectIdToShow)
     const Benchmark **benchmarks;
 
     // Clear the text area if needed
-    if(projectIdToShow == MAX_PROJECT_ID)
+    if(projectIdToShow == INVALID_PROJECT_ID)
     {
         mBenchmarksInformation->SetValue(wxT(""));
         return;
@@ -311,7 +316,7 @@ void BenchmarksDialog::OnProjectChanged(wxListEvent& event)
     long selection = mListOfProjects->GetFirstSelected();
     
     if(selection == -1)
-        ShowBenchmarks(MAX_PROJECT_ID);
+        ShowBenchmarks(INVALID_PROJECT_ID);
     else
         ShowBenchmarks(mListOfProjects->GetItemData(selection));
 }

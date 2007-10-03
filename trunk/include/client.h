@@ -34,25 +34,33 @@
 class Client
 {
 protected:
+
+    typedef enum _STATE
+    {
+        ST_INACCESSIBLE,
+        ST_STOPPED,
+        ST_INACTIVE,
+        ST_RUNNING
+    } State;
+
     static wxMutex mMutexXYZFiles;
 
     ETA        mETA;
-    bool       mIsOk;             // Is the client valid?
-    bool       mIsRunning;        // Is it running?
+    State      mState;
     FrameId    mPreviouslyAnalyzedFrameId;
     wxString   mName;
     wxString   mLocation;
     wxString   mLog;
-    wxUint32   mProjectId;
     wxString   mProjectString;
     wxUint32   mProgress;
     wxString   mProgressString;
     wxString   mUserName;
     wxUint32   mTeamNumber;
+    ProjectId  mProjectId;
     wxDateTime mDownloadDate;
 
     void ComputeETA(WorkUnitFrame* lastFrame);
-    void DetectInactivity(WorkUnitFrame* lastFrame);
+    void FindCurrentState(WorkUnitFrame* lastFrame);
     bool LoadLogFile(const wxString& filename);
     bool LoadUnitInfoFile(const wxString& filename);
     bool LoadClientCfg(const wxString& filename);
@@ -71,17 +79,19 @@ public:
     void SetLocation(const wxString& location);
 
     // -- 'Getters' --
-    bool       IsOk(void)              const {return mIsOk;}
-    bool       IsRunning(void)         const {return mIsRunning;}
+    bool       IsAccessible(void)      const {return mState != ST_INACCESSIBLE;}
+    bool       IsStopped(void)         const {return mState == ST_STOPPED;}
+    bool       IsInactive(void)        const {return mState == ST_INACTIVE;}
+    bool       IsRunning(void)         const {return mState == ST_RUNNING;}
     wxString   GetName(void)           const {return mName;}
     wxString   GetLocation(void)       const {return mLocation;}
     wxString   GetLog(void)            const {return mLog;}
-    wxUint32   GetProjectId(void)      const {return mProjectId;}
     wxString   GetProjectString(void)  const {return mProjectString;}
     wxUint32   GetProgress(void)       const {return mProgress;}
     wxString   GetProgressString(void) const {return mProgressString;}
     wxString   GetUserName(void)       const {return mUserName;}
     wxUint32   GetTeamNumber(void)     const {return mTeamNumber;}
+    ProjectId  GetProjectId(void)      const {return mProjectId;}
     wxDateTime GetDownloadDate(void)   const {return mDownloadDate;}
     
     const ETA* GetETA(void) const {return &mETA;}

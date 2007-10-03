@@ -23,6 +23,7 @@
 #include "mainDialog.h"
 #include "wx/textfile.h"
 #include "wx/wfstream.h"
+#include "pathManager.h"
 #include "messagesManager.h"
 #include "clientHelperThread.h"
 
@@ -118,11 +119,13 @@ inline void ClientsManager::Load(void)
     wxString   currentLine;
     wxString   clientName;
     wxString   clientLocation;
+    wxString   inputFilename;
     wxTextFile in;
 
 
     // Try to open the file, check if it exists
-    if(wxFileExists(wxT(FMC_PATH_CLIENTS)) == false || in.Open(wxT(FMC_PATH_CLIENTS)) == false)
+    inputFilename = PathManager::GetCfgPath() + wxT(FMC_FILE_CLIENTS);
+    if(wxFileExists(inputFilename) == false || in.Open(inputFilename) == false)
         return;
 
     // Retrieve each client, one by line
@@ -169,7 +172,7 @@ inline void ClientsManager::Load(void)
             if(isNameOk == true && isLocationOk == true)
                 Add(clientName, clientLocation);
             else
-                _LogMsgError(wxString::Format(wxT("Error while parsing %s on line %u"), wxT(FMC_FILE_CLIENTS), i+1));
+                _LogMsgError(wxString::Format(wxT("Error while parsing %s on line %u"), inputFilename.c_str(), i+1));
         }
     }
 
@@ -185,18 +188,18 @@ inline void ClientsManager::Save(void)
     wxUint32             i;
     wxString             outString;
     const Client        *client;
-    wxFileOutputStream   fileOS(wxT(FMC_PATH_CLIENTS));
+    wxFileOutputStream   fileOS(PathManager::GetCfgPath() + wxT(FMC_FILE_CLIENTS));
     wxTextOutputStream   textOS(fileOS);
 
     // Could the file be opened?
     if(fileOS.Ok() == false)
     {
-        Tools::ErrorMsgBox(wxString::Format(wxT("Could not open file <%s> for writing!\nThe list of clients will not be saved!"), wxT(FMC_PATH_CLIENTS)));
+        Tools::ErrorMsgBox(wxString::Format(wxT("Could not open file <%s> for writing!\nThe list of clients will not be saved!"), (PathManager::GetCfgPath() + wxT(FMC_FILE_CLIENTS)).c_str()));
         return;
     }    
     
     // Write a small header
-    textOS.WriteString(wxString::Format(wxT("# %s : contains the list of clients\n#\n# \"Name\"          \"Location\"\n\n"), wxT(FMC_FILE_CLIENTS)));
+    textOS.WriteString(wxString::Format(wxT("# %s : contains the list of clients\n#\n# \"Name\"          \"Location\"\n\n"), (PathManager::GetCfgPath() + wxT(FMC_FILE_CLIENTS)).c_str()));
     
     // And then each client
     for(i=0; i<GetCount(); ++i)

@@ -1,10 +1,10 @@
 1) Requirements
 ---------------
 
-To compile FahMon under Linux, you will need:
+To compile FahMon on Linux, you will need:
  - g++ (either 3.x or 4.x)
  - wxGTK >= 2.6.0 (runtime and headers)
- - scons (which is a make replacement)
+ - scons
 
 If wxGTK is correctly installed on your system, you should be able to execute the command wx-config from any directory:
 athropos@ruby$ wx-config --list
@@ -40,15 +40,13 @@ athropos@ruby$ BROWSER="firefox"
 4) Launching FahMon
 -------------------
 
-FahMon stores its configuration in the current directory. If you intend to launch it from another directory (e.g. with a shortcut from the gnome-panel), you should write a little script like this one:
+FahMon searches for the images in the current directory. To be able to launch it from any location (e.g. with a shortcut from the gnome-panel), you should write a little script like this one:
 
 --
 #!/bin/sh
 
 export BROWSER="firefox"
 
-cd /path/to/fahmon/
+cd /path/to/fahmon/src
 ./fahmon
 --
-
-This way, fahmon will use the correct directory to store data.

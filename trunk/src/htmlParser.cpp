@@ -88,7 +88,7 @@ bool HTMLParser::NextToken(void)
         if(endTagPos == -1)
         {
             // Ensure that there is some characters after '<'
-            if(mParsedContent.Length() > 1)
+            if(mParsedContent.Len() > 1)
                 currentTag = mParsedContent.Mid(1);
             else
                 currentTag = wxT("");

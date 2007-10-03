@@ -40,21 +40,19 @@ protected:
     } LogLineType;
 
     // Information that can be extracted from a line
-    typedef struct _LOG_LINE_INFO
+    typedef struct _LOG_LINE
     {
         LogLineType type;
+        FrameId     frameId;       // Valid when (type == LLT_FINISHED) or (type == LLT_COMPLETED)
         wxDateTime  timestamp;
-        wxUint32    nbSteps;        // This is valid only for LLT_COMPLETED lines (Gromacs, DGromacs, QMD...)
-        wxUint32    totalSteps;     // ----------------------------------------------------------------------
-        FrameId     frameId;        // Identifier of the frame, valid only for LLT_COMPLETED and LLT_FINISHED lines
-    } LogLineInfo;
+    } LogLine;
 
 
-    static void ParseLogLine(const wxString& completeLineToParse, LogLineInfo& logLineInfo);
+    static void ParseLogLine(wxString& lineToParse, LogLine& logLine);
 
 
 public:
-    static WorkUnitFrame* AnalyzeLastFrame(const wxString& fahlog);
+    static WorkUnitFrame* AnalyzeLastFrame(const wxString& fahlogComplete);
 };
 
 

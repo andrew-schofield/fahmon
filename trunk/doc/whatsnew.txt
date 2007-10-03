@@ -3,8 +3,20 @@
 
 
 
-v2.0.4
+v2.1.0
+[+] Made Linux version more standard: configuration and .xyz files are now stored in ~/.fahmon/
+    If you want to keep your current configuration, just copy the current files to ~/.fahmon/
+[+] Added the black color for inaccessible clients, please check the help file for more information
+[-] The download date (and thus preferred/final deadlines) was sometimes corrupted
+[-] The selected entry in the benchmarks dialog was not always visible
+[ ] Rewrote main parts of the benchmarking code, it should be more reliable
+[ ] Improved error handling when loading client information
+[ ] Improved the way inactivity is detected
+[ ] Miscellaneous small fixes
 
+
+
+v2.0.4
 [-] FahMon was unusable on some non-english Linux systems
 [-] Percentage of completion near the progress bar was not displayed until the window was resized
 [-] Fixed the 'Feburary' bug caused by some F@H cores

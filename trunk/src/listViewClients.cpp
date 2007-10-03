@@ -21,6 +21,7 @@
 #include "client.h"
 #include "wx/image.h"
 #include "mainDialog.h"
+#include "pathManager.h"
 #include "clientDialog.h"
 #include "clientsManager.h"
 #include "preferencesManager.h"
@@ -42,8 +43,9 @@ enum _LISTVIEW_COLUMN
 // The icons used in the list
 enum _LISTVIEW_ICON
 {
-    LVI_CLIENT_ERROR,
+    LVI_CLIENT_STOPPED,
     LVI_CLIENT_INACTIVE,
+    LVI_CLIENT_INACCESSIBLE,
     LVI_CLIENT_OK,
     LVI_UP_ARROW,
     LVI_DOWN_ARROW
@@ -112,12 +114,14 @@ ListViewClients::ListViewClients(wxWindow* parent, wxWindowID id, wxUint32 nbCli
     SetColumnWidth(LVC_ETA,      etaColumnWidth);
 
     // --- Create the ImageList associated with this ListView
+    //     Images must be loaded in the order defined by the enum _LISTVIEW_ICON
     imageList = new wxImageList(16, 16);
-    imageList->Add(wxImage(wxT(FMC_PATH_IMG_LIST_ERROR), wxBITMAP_TYPE_PNG));
-    imageList->Add(wxImage(wxT(FMC_PATH_IMG_LIST_INACTIVE), wxBITMAP_TYPE_PNG));
-    imageList->Add(wxImage(wxT(FMC_PATH_IMG_LIST_OK), wxBITMAP_TYPE_PNG));
-    imageList->Add(wxImage(wxT(FMC_PATH_IMG_LIST_ARROW_UP), wxBITMAP_TYPE_PNG));
-    imageList->Add(wxImage(wxT(FMC_PATH_IMG_LIST_ARROW_DOWN), wxBITMAP_TYPE_PNG));
+    imageList->Add(wxImage(PathManager::GetImgPath() + wxT(FMC_FILE_IMG_LIST_STOPPED), wxBITMAP_TYPE_PNG));
+    imageList->Add(wxImage(PathManager::GetImgPath() + wxT(FMC_FILE_IMG_LIST_INACTIVE), wxBITMAP_TYPE_PNG));
+    imageList->Add(wxImage(PathManager::GetImgPath() + wxT(FMC_FILE_IMG_LIST_INACCESSIBLE), wxBITMAP_TYPE_PNG));
+    imageList->Add(wxImage(PathManager::GetImgPath() + wxT(FMC_FILE_IMG_LIST_OK), wxBITMAP_TYPE_PNG));
+    imageList->Add(wxImage(PathManager::GetImgPath() + wxT(FMC_FILE_IMG_LIST_ARROW_UP), wxBITMAP_TYPE_PNG));
+    imageList->Add(wxImage(PathManager::GetImgPath() + wxT(FMC_FILE_IMG_LIST_ARROW_DOWN), wxBITMAP_TYPE_PNG));
     AssignImageList(imageList, wxIMAGE_LIST_SMALL);
 
     // --- Restore sorting order
@@ -163,9 +167,9 @@ int ListViewClients::CompareClients(wxUint32 clientId1, wxUint32 clientId2) cons
     client2 = ClientsManager::GetInstance()->Get(clientId2);
 
     // Invalid clients must always be at the end of the list
-    if(client1->IsOk() == false)
+    if(!client1->IsAccessible())
         return 1;
-    else if(client2->IsOk() == false)
+    else if(!client2->IsAccessible())
         return -1;
 
     // If the two clients are valid, then we compare them using the correct sorting criterion
@@ -213,7 +217,7 @@ wxUint32 ListViewClients::GetSelectedClientId(void) const
 
     // Check that something is really selected!
     if(selectedItemIndex == -1)
-        return FMC_INTMAX;
+        return INVALID_CLIENT_ID;
 
     // Return the associated client identifier
     return GetItemData(selectedItemIndex);
@@ -235,7 +239,7 @@ void ListViewClients::Reset(wxUint32 nbClients)
     // Insert dummy entries in the list, one for each client
     for(i=0; i<nbClients; ++i)
     {
-        InsertItem(i, wxT(""), LVI_CLIENT_ERROR);
+        InsertItem(i, wxT(""), LVI_CLIENT_STOPPED);
         SetItem(i, LVC_NAME, wxT("Loading..."));
 
         // Give a slightly darker color to odd lines
@@ -280,35 +284,31 @@ void ListViewClients::UpdateClient(wxUint32 clientId)
     wxASSERT(clientId < mClientIdToIndex.GetCount());
     
     // Retrieve the correct index and the corresponding client
-    clientIndex = mClientIdToIndex.Item(clientId);
     client      = ClientsManager::GetInstance()->Get(clientId);
+    clientIndex = mClientIdToIndex.Item(clientId);
     
     // If the index is greater than the number of items, then our translation table is really broken
     wxASSERT(clientIndex < (wxUint32)GetItemCount());
 
-    // Update the entry
+    // Prevent refresh while updating entry
     Freeze();
+
     SetItem(clientIndex, LVC_PROGRESS, client->GetProgressString());
     SetItem(clientIndex, LVC_NAME, client->GetName());
     
     // ETA
-    if(client->GetProgress() == 100)
-        SetItem(clientIndex, LVC_ETA, wxT("Finished"));
-    else if(client->GetETA()->IsOk() == true)
-        SetItem(clientIndex, LVC_ETA, client->GetETA()->GetString());
-    else
-        SetItem(clientIndex, LVC_ETA, wxT("No Estimation"));
+         if(client->GetProgress() == 100)                       SetItem(clientIndex, LVC_ETA, wxT("Finished"));
+    else if(!client->IsAccessible() || client->IsStopped())     SetItem(clientIndex, LVC_ETA, wxT("N/A"));
+    else if(!client->GetETA()->IsOk())                          SetItem(clientIndex, LVC_ETA, wxT("N/A"));
+    else                                                        SetItem(clientIndex, LVC_ETA, client->GetETA()->GetString());
 
     // We use leading icons to indicate the status of the client
-    if(client->IsOk() == true)
-    {
-        if(client->IsRunning() == true)
-            SetItemImage(clientIndex, LVI_CLIENT_OK);
-        else
-            SetItemImage(clientIndex, LVI_CLIENT_INACTIVE);
-    }
-    else
-        SetItemImage(clientIndex, LVI_CLIENT_ERROR);
+         if(!client->IsAccessible())     SetItemImage(clientIndex, LVI_CLIENT_INACCESSIBLE);
+    else if(client->IsStopped())         SetItemImage(clientIndex, LVI_CLIENT_STOPPED);
+    else if(client->IsInactive())        SetItemImage(clientIndex, LVI_CLIENT_INACTIVE);
+    else                                 SetItemImage(clientIndex, LVI_CLIENT_OK);
+
+    // Re-enable refresh
     Thaw();
 
     // Sort the list: perhaps the value of the sorting criterion has changed!
@@ -346,7 +346,7 @@ void ListViewClients::Sort(void)
 
     // Select() does not seem to generate a LIST_ITEM_SELECTED event
     // This is good because from an external point of view, nothing has changed (the selected client is the same)
-    if(selectedClientId != FMC_INTMAX)
+    if(selectedClientId != INVALID_CLIENT_ID)
     {
         selectedClientIndex = mClientIdToIndex[selectedClientId];
         
@@ -442,7 +442,7 @@ void ListViewClients::OnMenuReloadClient(wxCommandEvent& event)
     wxUint32 selectedClientId = GetSelectedClientId();
     
     // Ensure that something is really selected
-    if(selectedClientId != FMC_INTMAX)
+    if(selectedClientId != INVALID_CLIENT_ID)
         ClientsManager::GetInstance()->ReloadThreaded(selectedClientId);
 }
 
@@ -452,8 +452,8 @@ void ListViewClients::OnMenuReloadClient(wxCommandEvent& event)
 **/
 void ListViewClients::OnMenuAddClient(wxCommandEvent& event)
 {
-    // FMC_INTMAX means that we want to create a new client, not to edit an existing one
-    ClientDialog::GetInstance(this)->ShowModal(FMC_INTMAX);
+    // INVALID_CLIENT_ID means that we want to create a new client, not to edit an existing one
+    ClientDialog::GetInstance(this)->ShowModal(INVALID_CLIENT_ID);
 }
 
 
@@ -465,7 +465,7 @@ void ListViewClients::OnMenuEditClient(wxCommandEvent& event)
     wxUint32 selectedClientId = GetSelectedClientId();
     
     // Ensure that something is really selected
-    if(selectedClientId == FMC_INTMAX)
+    if(selectedClientId == INVALID_CLIENT_ID)
         return;
     
     // Ask the main dialog to edit this client
@@ -483,7 +483,7 @@ void ListViewClients::OnMenuDeleteClient(wxCommandEvent& event)
 
     // Ensure that something is really selected
     selectedClientId = GetSelectedClientId();
-    if(selectedClientId == FMC_INTMAX)
+    if(selectedClientId == INVALID_CLIENT_ID)
         return;
 
     // Ensure that the user did not ask for deletion by error

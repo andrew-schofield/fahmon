@@ -19,217 +19,165 @@
 
 
 /**
- * Return a pointer to a valid FrameDuration object if information could be extracted, NULL otherwhise
- * It's up to the caller to free the FrameDuration object when needed
+ * Return a pointer to a valid WorkUnitFrame object if information could be extracted, NULL otherwhise
+ * It's up to the caller to free the WorkUnitFrame object when needed
+ *
+ * We are searching for a pattern like this one :
+ *
+ * [16:04:36] Completed 6900000 out of 12500000 steps  (55%)   <-- We now the run below is complete because of this line
+ * ...
+ * [16:25:32] Completed 7000000 out of 12500000 steps  (56%)   <-+
+ * ...                                                           |-- Complete run
+ * [16:52:12] Completed 7125000 out of 12500000 steps  (57%)   <-+
 **/
-WorkUnitFrame* FahLogAnalyzer::AnalyzeLastFrame(const wxString& fahlog)
+WorkUnitFrame* FahLogAnalyzer::AnalyzeLastFrame(const wxString& fahlogComplete)
 {
-    bool           shouldStopParsing;
-    bool           endOfFrameFound;
-    bool           startOfFrameFound;
-    bool           clientIsStopped;
-    wxInt32        endOfLinePos;
-    wxInt32        elapsedSeconds;
-    wxInt32        duration;
-    wxUint32       stepsPerFrame;
-    wxUint32       elapsedSteps;
-    wxString       currentLine;
-    wxString       partOfLogNotParsed;
-    LogLineInfo    endOfFrameInfo;
-    LogLineInfo    startOfFrameInfo;
-    LogLineInfo   *lineInfo;
-    WorkUnitFrame *lastFrame;
-    
+    bool      completeRunFound, emptyLineFound, endOfLogReached, clientIsStopped;
+    bool      endFrame1Found, endFrame2Found;
+    wxInt32   endOfLine;
+    wxInt32   elapsedSeconds, runDuration;
+    LogLine   endFrame1, endFrame2, endFrame3;
+    LogLine  *currentLogLine;
+    wxString  lineToParse;
+    wxString  fahlog;
 
-    // --- We first remove empty lines (if any) located at the end of the log
-    endOfLinePos = fahlog.Length();
+    fahlog           = fahlogComplete;
+    endFrame1Found   = false;
+    endFrame2Found   = false;
+    emptyLineFound   = false;
+    endOfLogReached  = false;
+    clientIsStopped  = false;
+    completeRunFound = false;
+
+    // Remove empty lines (if any) located at the end of the log
     while(fahlog.Last() == '\n' || fahlog.Last() == '\r')
-        --endOfLinePos;
-    partOfLogNotParsed = fahlog.Mid(0, endOfLinePos);
+        fahlog.RemoveLast();
 
-
-    // --- Check each line, starting from the end of the log
-    clientIsStopped   = false;
-    endOfFrameFound   = false;
-    shouldStopParsing = false;
-    startOfFrameFound = false;
-
-    while(shouldStopParsing == false)
+    // An empty line means that we've reached the time where the client was started, therefore we won't be able to find a complete run
+    while(!completeRunFound && !emptyLineFound && !endOfLogReached && !clientIsStopped)
     {
-        // 1) Extract the last line from the part of the log we are considering
-        endOfLinePos = partOfLogNotParsed.Find('\n', true);
-        if(endOfLinePos == -1)
+             if(endFrame1Found == false) currentLogLine = &endFrame1;
+        else if(endFrame2Found == false) currentLogLine = &endFrame2;
+        else                             currentLogLine = &endFrame3;
+
+        // Extract the next line to parse
+        endOfLine = fahlog.Find('\n', true);
+        if(endOfLine == -1)
         {
-            // No more lines after this one, we should stop parsing the file
-            currentLine       = partOfLogNotParsed;
-            shouldStopParsing = true;
+            lineToParse     = fahlog;
+            endOfLogReached = true;
         }
         else
         {
-            currentLine        = partOfLogNotParsed.Mid(endOfLinePos + 1);
-            partOfLogNotParsed = partOfLogNotParsed.Mid(0, endOfLinePos);
+            lineToParse = fahlog.Mid(endOfLine + 1);
+            fahlog      = fahlog.Mid(0, endOfLine);
         }
 
-        // 2) Determine what we are searching for
-        if(endOfFrameFound == false)
-            lineInfo = &endOfFrameInfo;
-        else
-            lineInfo = &startOfFrameInfo;
+        // Parse it
+        ParseLogLine(lineToParse, *currentLogLine);
 
-        // 3) Extract needed information from this line
-        ParseLogLine(currentLine, *lineInfo);
+        // What do we found ?
+        switch(currentLogLine->type)
+        {
+            case LLT_SHUTDOWN:
+                clientIsStopped = true;
+                break;
 
-        // 4) Keep only completed frames, stop when an empty line is found
-        if(lineInfo->type == LLT_SHUTDOWN)
-        {
-            clientIsStopped   = true;
-            shouldStopParsing = true;
-        }
-        else if(lineInfo->type == LLT_EMPTY)
-            shouldStopParsing = true;
-        else if(lineInfo->type == LLT_COMPLETED || lineInfo->type == LLT_FINISHED)
-        {
-            if(endOfFrameFound == false)
-                endOfFrameFound = true;
-            else
-            {
-                startOfFrameFound = true;
-                shouldStopParsing = true;
-            }
+            case LLT_EMPTY:
+                emptyLineFound = true;
+                break;
+
+            case LLT_COMPLETED:
+            case LLT_FINISHED:
+                     if(endFrame1Found == false) endFrame1Found   = true;
+                else if(endFrame2Found == false) endFrame2Found   = true;
+                else                             completeRunFound = true;
+                break;
+
+            default:
+                break;
         }
     }
-    
-    
+
+    // A stopped client is not analyzed
     if(clientIsStopped == true)
-    {
-        lastFrame = new WorkUnitFrame();
-        
-        lastFrame->SetClientIsStopped(true);
+        return new WorkUnitFrame();
 
-        return lastFrame;
-    }
     // If we found a complete run, then we can extract information about it
-    else if(endOfFrameFound == true && startOfFrameFound == true)
+    if(completeRunFound)
     {
-        lastFrame = new WorkUnitFrame(endOfFrameInfo.frameId);
+        // Compute the frame duration
+        // If endFrame2.timestamp is before endFrame1.timestamp, we can assume that we passed midnight, because the two timestamps come from
+        // the same machine
+        runDuration = endFrame1.timestamp.Subtract(endFrame2.timestamp).GetSeconds().GetLo();
+        if(runDuration < 0)
+            runDuration += 86400;
+
+        // We won't deal with too large durations, so stop now if it is the case with this one
+        if(runDuration > MAX_FRAME_DURATION)
+            return NULL;
         
         // Compute the elapsed seconds since this frame has been completed
-        elapsedSeconds = wxDateTime::Now().Subtract(endOfFrameInfo.timestamp).GetSeconds().ToLong();
-        if(elapsedSeconds >= 0)
-            lastFrame->SetElapsedSeconds(elapsedSeconds);
-        else
-            lastFrame->SetElapsedSeconds(elapsedSeconds + 86400);
+        // If wxDateTime::Now() is before endFrame1.timestamp, we don't use elapsed time because if FahMon is running on a different machine
+        // than the client, we can't assume that they are sufficiently synchronized
+        elapsedSeconds = wxDateTime::Now().Subtract(endFrame1.timestamp).GetSeconds().ToLong();
+        if(elapsedSeconds < 0)
+            elapsedSeconds = 0;
 
 
-        // Compute a (perhaps temporary) frame duration: it can be modified for LLT_COMPLETED lines
-        duration = endOfFrameInfo.timestamp.Subtract(startOfFrameInfo.timestamp).GetSeconds().GetLo();
-        
-        if(duration >= 0)
-            lastFrame->SetDuration(duration, false);
-        else
-            lastFrame->SetDuration(duration + 86400, false);
-        
-        
-        // Check if the run is complete, extrapolate the time if needed, using the number of steps
-        // For this kind of WUs, the frame id is always a percentage
-        // QMD WUs are a real pain...
-        if(startOfFrameInfo.type == LLT_COMPLETED)
-        {
-            elapsedSteps  = endOfFrameInfo.nbSteps - startOfFrameInfo.nbSteps;
-            stepsPerFrame = endOfFrameInfo.totalSteps / 100;
-            if(elapsedSteps != stepsPerFrame && elapsedSteps != 0)
-            {
-                // The run is not complete, extrapolate the time
-                duration = lastFrame->GetDuration() * stepsPerFrame / elapsedSteps;
-
-                lastFrame->SetDuration(duration, true);
-            }
-        }
-
-        // The object is ready now
-        return lastFrame;
+        return new WorkUnitFrame(endFrame1.frameId, false, runDuration, elapsedSeconds);
     }
-    
+
     return NULL;
 }
 
 
 /**
  * Take a line of a FAHLog file, and extract information from it
+ * Beware that the 'lineToParse' parameter is modified by this function !
 **/
-void FahLogAnalyzer::ParseLogLine(const wxString& completeLineToParse, LogLineInfo& logLineInfo)
+void FahLogAnalyzer::ParseLogLine(wxString& lineToParse, LogLine& logLine)
 {
     wxInt32       position;
-    wxString      lineToParse;
+    wxString      timestamp;
     unsigned long convertedNumber;
 
-    
-    // We will progressively remove the parsed elements from lineToParse
-    // For now, we have to consider the whole line
-    lineToParse = completeLineToParse;
-    
+    // If the line is empty, we don't do anything
+    if(lineToParse.IsEmpty() == true)
+    {
+        logLine.type = LLT_EMPTY;
+        return;
+    }
 
-    // --- 1) Check if there is a timestamp
+    // Check if a timestamp is present, extract it if this is the case
     if(lineToParse.GetChar(0) == '[')
     {
-        // Extract the timestamp
-        // The rest of the date (day, month and year) is automatically set to today
-        // Folding@Home client write dates in GMT format, so tell it the wxDateTime
-        logLineInfo.timestamp.SetToCurrent();
-        logLineInfo.timestamp.ParseFormat(lineToParse.c_str(), wxT("[%H:%M:%S]"));
-        logLineInfo.timestamp.MakeGMT();
-
-        // Remove the timestamp
+        timestamp   = lineToParse.Mid(1, 10);
         lineToParse = lineToParse.Mid(11);
     }
 
+    // Find the type of the line
+         if(lineToParse.IsEmpty() == true)                                        logLine.type = LLT_EMPTY;
+    else if(lineToParse.StartsWith(wxT("Completed ")) == true)                    logLine.type = LLT_COMPLETED;
+    else if(lineToParse.StartsWith(wxT("Finished a frame")) == true)              logLine.type = LLT_FINISHED;
+    else if(lineToParse.StartsWith(wxT("Folding@Home Client Shutdown.")) == true) logLine.type = LLT_SHUTDOWN;
+    else                                                                          logLine.type = LLT_UNKNOWN;
 
-    // --- 2) Find the type of this line
-    if(lineToParse.IsEmpty() == true)
-        logLineInfo.type = LLT_EMPTY;
-    else if(lineToParse.StartsWith(wxT("Completed ")) == true)
+    // When a frame is finished, extract its identifier and the timestamp
+    if(logLine.type == LLT_COMPLETED || logLine.type == LLT_FINISHED)
     {
-        logLineInfo.type = LLT_COMPLETED;
-        lineToParse      = lineToParse.Mid(10);         // Remove the string "Completed "
-
-        // We first have the current number of steps
-        lineToParse.ToULong(&convertedNumber);
-        logLineInfo.nbSteps = convertedNumber;
-
-        // We then have the total number of steps
-        position = lineToParse.Find(wxT(" out of "));
-        if(position != -1)
-        {
-            lineToParse = lineToParse.Mid(position +  8);
-            lineToParse.ToULong(&convertedNumber);
-            logLineInfo.totalSteps = convertedNumber;
-        }
-
-        // And finally, the frame number
+        // Extract the frame identifier
+        // We can't pass logLine.frameId to ToULong() because it's too short : the next bytes would be modified
         position = lineToParse.Find(wxT("("));
         if(position != -1)
         {
-            lineToParse = lineToParse.Mid(position + 1);
-            lineToParse.ToULong(&convertedNumber);
-            logLineInfo.frameId = (FrameId)convertedNumber;
+            lineToParse.Right(lineToParse.Len()-position-1).ToULong(&convertedNumber);
+            logLine.frameId = (FrameId)convertedNumber;
         }
-    }
-    else if(lineToParse.StartsWith(wxT("Finished a frame")) == true)
-    {
-        logLineInfo.type = LLT_FINISHED;
-        lineToParse      = lineToParse.Mid(17);  // Remove the string "Finished a frame "
-        
-        // We should find the frame number between parenthesis
-        if(lineToParse.GetChar(0) == '(')
-        {
-            lineToParse = lineToParse.Mid(1);
-            lineToParse.ToULong(&convertedNumber);
 
-            logLineInfo.frameId = (FrameId)convertedNumber;
-        }
+        // Extract the timestamp (it is in GMT format)
+        logLine.timestamp.SetToCurrent();
+        logLine.timestamp.ParseFormat(timestamp.c_str(), wxT("%H:%M:%S]"));
+        logLine.timestamp.MakeGMT();
     }
-    else if(lineToParse.StartsWith(wxT("Folding@Home Client Shutdown.")) == true)
-        logLineInfo.type = LLT_SHUTDOWN;
-    else
-        logLineInfo.type = LLT_UNKNOWN;
 }

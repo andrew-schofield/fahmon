@@ -135,7 +135,7 @@ void ClientDialog::DestroyInstance(void)
 
 /**
  * Show the dialog in order to edit the given client
- * If clientId is equal to FMC_INTMAX, then a new client will be created
+ * If clientId is equal to INVALID_CLIENT_ID, then a new client will be created
 **/
 int ClientDialog::ShowModal(wxUint32 clientId)
 {
@@ -145,7 +145,7 @@ int ClientDialog::ShowModal(wxUint32 clientId)
     mClientId = clientId;
 
     // And fill the fields with this client's information, if any
-    if(mClientId != FMC_INTMAX)
+    if(mClientId != INVALID_CLIENT_ID)
     {
         clientToEdit = ClientsManager::GetInstance()->Get(mClientId);
         mClientNameCtrl->SetValue(clientToEdit->GetName());
@@ -208,7 +208,7 @@ void ClientDialog::OnOkButton(wxCommandEvent& event)
 
     // So far, so good
     // If the client already exists, simply reload it, this will automatically update any changed information
-    if(mClientId != FMC_INTMAX)
+    if(mClientId != INVALID_CLIENT_ID)
     {
         ClientsManager::GetInstance()->Edit(mClientId, clientName, clientLocation);
         ClientsManager::GetInstance()->ReloadThreaded(mClientId);

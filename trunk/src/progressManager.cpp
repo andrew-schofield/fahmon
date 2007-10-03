@@ -18,6 +18,7 @@
 #include "progressManager.h"
 
 #include "wx/icon.h"
+#include "pathManager.h"
 
 
 /**
@@ -40,7 +41,12 @@ ProgressManager::ProgressManager(bool isInSilentMode)
     if(mIsInSilentMode == false)
     {
         mProgressDlg = new wxProgressDialog(wxT(FMC_PRODUCT), wxT("                                                                    "), 100, NULL, wxPD_AUTO_HIDE | wxPD_APP_MODAL | wxPD_CAN_ABORT | wxPD_ELAPSED_TIME);
-        mProgressDlg->SetIcon(FMC_ICON_DIALOG);
+
+#ifdef _FAHMON_LINUX_
+        mProgressDlg->SetIcon(wxIcon(PathManager::GetImgPath() + wxT(FMC_FILE_IMG_DIALOG)));
+#else
+        mProgressDlg->SetIcon(wxICON(dialog_icon));
+#endif
     }
 }
 

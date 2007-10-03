@@ -20,6 +20,7 @@
 #include "tools.h"
 #include "wx/image.h"
 #include "mainDialog.h"
+#include "pathManager.h"
 #include "clientsManager.h"
 #include "firstTimeDialog.h"
 #include "projectsManager.h"
@@ -67,7 +68,7 @@ bool FahMonApp::OnInit(void)
     MainDialog::CreateInstance();               // MUST be created last, when all other managers have been created
 
     // Should we run the first-time dialog?
-    if(wxDirExists(wxT(FMC_DIR_CONFIG)) == false)
+    if(!wxDirExists(PathManager::GetCfgPath()))
     {
         // If something goes wrong with the wizard, we quit immediately
         if(FirstTimeDialog::GetInstance()->ShowModal() == wxID_CANCEL)

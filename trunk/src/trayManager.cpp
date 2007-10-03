@@ -19,6 +19,7 @@
 
 #include "wx/icon.h"
 #include "mainDialog.h"
+#include "pathManager.h"
 
 
 // The single instance accross the application
@@ -80,7 +81,13 @@ void TrayManager::DestroyInstance(void)
 void TrayManager::InstallIcon(void)
 {
     if(IsIconInstalled() == false)
-        SetIcon(FMC_ICON_SYSTRAY, mTooltip);
+    {
+#ifdef _FAHMON_LINUX_
+        SetIcon(wxIcon(PathManager::GetImgPath() + wxT(FMC_FILE_IMG_DIALOG)), mTooltip);
+#else
+        SetIcon(wxICON(dialog_icon), mTooltip);
+#endif
+    }
 }
 
 
@@ -103,7 +110,13 @@ void TrayManager::SetTooltip(const wxString& tooltip)
     mTooltip = wxString::Format(wxT("%s / %s"), wxT(FMC_PRODUCT), tooltip.c_str());
     
     if(IsIconInstalled() == true)
-        SetIcon(FMC_ICON_SYSTRAY, mTooltip);
+    {
+#ifdef _FAHMON_LINUX_
+        SetIcon(wxIcon(PathManager::GetImgPath() + wxT(FMC_FILE_IMG_DIALOG)), mTooltip);
+#else
+        SetIcon(wxICON(dialog_icon), mTooltip);
+#endif
+    }
 }
 
 

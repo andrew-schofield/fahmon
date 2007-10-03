@@ -113,8 +113,8 @@ HTTPDownloader::DownloadStatus HTTPDownloader::DownloadFile(const wxString& host
     if(socket.Connect(serverAddress) == true)
     {
         // --- Send the request
-        socket.Write((const char*)request.mb_str(), request.Length());
-        if(socket.LastCount() == request.Length())
+        socket.Write((const char*)request.mb_str(), request.Len());
+        if(socket.LastCount() == request.Len())
         {
             // --- Read the data and display statistics about the progress
             moreDataToRead      = true;

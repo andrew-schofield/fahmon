@@ -19,6 +19,7 @@
 
 #include "tools.h"
 #include "staticUrl.h"
+#include "pathManager.h"
 #include "wx/statline.h"
 #include "projectsManager.h"
 #include "staticBoldedText.h"
@@ -62,7 +63,7 @@ FirstTimeDialog::FirstTimeDialog(void) : wxDialog(NULL, wxID_ANY, wxString::Form
     mainSizer->AddSpacer(FMC_GUI_SPACING_HIGH);
     mainSizer->Add(new wxStaticLine(this, wxID_ANY, wxDefaultPosition, wxSize(150, -1)), 0, wxALIGN_CENTER);
     mainSizer->AddSpacer(FMC_GUI_SPACING_HIGH);
-    mainSizer->Add(new wxStaticText(this, wxID_ANY, wxT("Projects information (e.g. deadlines) is read from a local file, which must be regularly updated.")), 0, wxALIGN_LEFT);
+    mainSizer->Add(new wxStaticText(this, wxID_ANY, wxT("Project information (e.g. deadlines) is read from a local file, which must be regularly updated.")), 0, wxALIGN_LEFT);
     mainSizer->Add(new wxStaticText(this, wxID_ANY, wxT("Thus, you should first download the latest available information on currently running projects:")), 0, wxALIGN_LEFT);
     mainSizer->Add(new wxStaticText(this, wxID_ANY, wxT("(NOTE: If you use a proxy for HTTP connections, you will need to change the preferences first!)")), 0, wxALIGN_LEFT);
     mainSizer->AddSpacer(FMC_GUI_SPACING_HIGH);
@@ -137,12 +138,12 @@ void FirstTimeDialog::DestroyInstance(void)
 **/
 int FirstTimeDialog::ShowModal(void)
 {
-    // Try to create the directory
-    if(wxDirExists(wxT(FMC_DIR_CONFIG)) == false)
+    // Try to create the directory if it does not already exist
+    if(!wxDirExists(PathManager::GetCfgPath()))
     {
-        if(wxMkdir(wxT(FMC_DIR_CONFIG)) == false)
+        if(!wxMkdir(PathManager::GetCfgPath()))
         {
-            Tools::ErrorMsgBox(wxString::Format(wxT("Could not create directory <%s>"), wxT(FMC_DIR_CONFIG)));
+            Tools::ErrorMsgBox(wxString::Format(wxT("Could not create directory <%s>"), PathManager::GetCfgPath().c_str()));
             return wxID_CANCEL;
         }
     }

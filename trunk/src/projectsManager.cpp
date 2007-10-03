@@ -20,6 +20,7 @@
 #include "tools.h"
 #include "htmlParser.h"
 #include "mainDialog.h"
+#include "pathManager.h"
 #include "wx/textfile.h"
 #include "httpDownloader.h"
 #include "messagesManager.h"
@@ -96,9 +97,9 @@ ProjectsManager* ProjectsManager::GetInstance(void)
 **/
 inline void ProjectsManager::Load(void)
 {
-    DataInputStream  in(wxT(FMC_PATH_PROJECTS));
-    wxUint32         nbProjects, i;
     Project         *currentProject;
+    wxUint32         nbProjects, i;
+    DataInputStream  in(PathManager::GetCfgPath() + wxT(FMC_FILE_PROJECTS));
 
     // Could the file be opened ?
     if(in.Ok() == false)
@@ -123,12 +124,12 @@ inline void ProjectsManager::Load(void)
 **/
 inline void ProjectsManager::Save(void)
 {
-    DataOutputStream               out(wxT(FMC_PATH_PROJECTS));
+    DataOutputStream               out(PathManager::GetCfgPath() + wxT(FMC_FILE_PROJECTS));
     ProjectsListHashMap::iterator  iterator;
 
     if(out.Ok() == false)
     {
-        Tools::ErrorMsgBox(wxString::Format(wxT("Could not open file <%s> for writing!"), wxT(FMC_PATH_PROJECTS)));
+        Tools::ErrorMsgBox(wxString::Format(wxT("Could not open file <%s> for writing!"), (PathManager::GetCfgPath() + wxT(FMC_FILE_PROJECTS)).c_str()));
         return;
     }
 

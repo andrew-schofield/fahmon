@@ -23,6 +23,7 @@
 #include "wx/filefn.h"
 #include "trayManager.h"
 #include "aboutDialog.h"
+#include "pathManager.h"
 #include "clientDialog.h"
 #include "messagesFrame.h"
 #include "clientsManager.h"
@@ -33,10 +34,6 @@
 #include "benchmarksDialog.h"
 #include "preferencesDialog.h"
 #include "preferencesManager.h"
-
-// TODO
-// Replace wxUint32 by the correct typedef (ClientId)
-// And FMC_INTMAX by the correct MAX_VALUE
 
 
 // Identifiers for the controls
@@ -128,7 +125,12 @@ MainDialog::MainDialog(void) : wxFrame(NULL, wxID_ANY, wxT(FMC_PRODUCT))
     bool trayIconEnabled;
 
     // Setting the icon for the main dialog will allows child frames and dialog to inherit from it
-    SetIcon(FMC_ICON_DIALOG);
+
+#ifdef _FAHMON_LINUX_
+    SetIcon(wxIcon(PathManager::GetImgPath() + wxT(FMC_FILE_IMG_DIALOG)));
+#else
+    SetIcon(wxICON(dialog_icon));
+#endif
 
     CreateMenuBar();
     CreateStatusBar(2);
@@ -243,34 +245,16 @@ void MainDialog::SetAutoReloadTimer(void)
  * Display available information on the given clientId
  * This method does not affect the ListView
 **/
-void MainDialog::ShowClientInformation(wxUint32 clientId)
+void MainDialog::ShowClientInformation(ClientId clientId)
 {
-          bool        clientIsOk;
-          bool        autoUpdateProjects;
-    const Client     *client;
-    const Project    *project;
-          wxDateTime  preferredDeadline;
-          wxDateTime  finalDeadline;
+    bool           autoUpdateProjects;
+    wxDateTime     preferredDeadline;
+    wxDateTime     finalDeadline;
+    const Client  *client;
+    const Project *project;
 
-
-    // --- Try to retrieve the client, if any, and check that it could be correctly loaded (IsOk() method)
-    clientIsOk = false;
-    if(clientId != FMC_INTMAX)
-    {
-        client = ClientsManager::GetInstance()->Get(clientId);
-
-        // This method cannot be called for 'ghost' clients, if this is the case, then there's a big problem
-        wxASSERT(client != NULL);
-
-        SetStatusText(client->GetLocation(), STATUS_CLIENTNAME);
-        clientIsOk = client->IsOk();
-    }
-    else
-        SetStatusText(wxT(""), STATUS_CLIENTNAME);
-
-
-    // --- Clear information when something is wrong with the client
-    if(clientIsOk == false)
+    // Clear information for invalid clients
+    if(clientId == INVALID_CLIENT_ID)
     {
         mCoreName->SetLabel(wxT(""));
         mProjectId->SetLabel(wxT(""));
@@ -280,51 +264,88 @@ void MainDialog::ShowClientInformation(wxUint32 clientId)
         mFinalDeadline->SetLabel(wxT(""));
         mWUProgressGauge->SetValue(0);
         mWUProgressText->SetLabel(wxT(""));
+        SetStatusText(wxT(""), STATUS_CLIENTNAME);
 
         if(mLogFile->IsShown() == true)
             mLogFile->SetValue(wxT(""));
+
+        return;
+    }
+
+    client = ClientsManager::GetInstance()->Get(clientId);
+
+    // This method cannot be called for 'ghost' clients, if this is the case, then there's a big problem
+    wxASSERT(client != NULL);
+
+    SetStatusText(client->GetLocation(), STATUS_CLIENTNAME);
+
+    // Clear information if this client is not a valid one
+    if(!client->IsAccessible())
+    {
+        mCoreName->SetLabel(wxT(""));
+        mProjectId->SetLabel(wxT(""));
+        mCredit->SetLabel(wxT(""));
+        mDownloaded->SetLabel(wxT(""));
+        mPreferredDeadline->SetLabel(wxT(""));
+        mFinalDeadline->SetLabel(wxT(""));
+        mWUProgressGauge->SetValue(0);
+        mWUProgressText->SetLabel(wxT(""));
+        mLogFile->SetValue(wxT("Something is wrong with this client.\nPlease check the messages (FahMon->Show/Hide Messages Window)."));
+
+        return;
+    }
+
+    // Load the log only if it is not hidden, it's useless otherwise
+    if(mLogFile->IsShown())
+    {
+        // Arghhhhh, it takes *ages* on wxGTK to load the log file within the wxTextCtrl!!
+        mLogFile->SetValue(client->GetLog());
+        mLogFile->ShowPosition(mLogFile->GetLastPosition());
+    }
+
+    mWUProgressText->SetLabel(wxT("  ") + client->GetProgressString());
+    mWUProgressGauge->SetValue(client->GetProgress());
+    
+    if(client->GetDownloadDate() == wxInvalidDateTime)
+        mDownloaded->SetLabel(wxT("N/A"));
+    else
+        mDownloaded->SetLabel(client->GetDownloadDate().Format(wxT(FMC_DATE_MAIN_FORMAT)));
+
+    if(client->GetProjectId() == INVALID_PROJECT_ID)
+    {
+        mProjectId->SetLabel(wxT("N/A"));
+        mCoreName->SetLabel(wxT("N/A"));
+        mCredit->SetLabel(wxT("N/A"));
+        mPreferredDeadline->SetLabel(wxT("N/A"));
+        mFinalDeadline->SetLabel(wxT("N/A"));
     }
     else
     {
-        // --- Information about the client itself
         mProjectId->SetLabel(wxString::Format(wxT("%u"), client->GetProjectId()));
-        mDownloaded->SetLabel(client->GetDownloadDate().Format(wxT(FMC_DATE_MAIN_FORMAT)));
-        mWUProgressText->SetLabel(wxT("  ") + client->GetProgressString());
-        mWUProgressGauge->SetValue(client->GetProgress());
-
-        // Load the log only if it is not hidden, it's useless otherwise
-        if(mLogFile->IsShown() == true)
-        {
-            // Arghhhhh, it takes *ages* on wxGTK to load the log file within the wxTextCtrl!!
-            mLogFile->SetValue(client->GetLog());
-            mLogFile->ShowPosition(mLogFile->GetLastPosition());
-        }
-
-
-        // --- Then, information about the project currently processed
         project = ProjectsManager::GetInstance()->GetProject(client->GetProjectId());
 
         // This project can be unknown, if the database is not up to date
         if(project == NULL)
         {
-            mCoreName->SetLabel(wxT(""));
-            mCredit->SetLabel(wxT("/"));
-            mPreferredDeadline->SetLabel(wxT("/"));
-            mFinalDeadline->SetLabel(wxT("/"));
-
             // Update the database, if the user wants to
             // This update is not forced, it will occur only if the elapsed time since the last one is high enough
             // This way, we ensure that we won't perform many multiple requests for the file, while it does not
             // contain the information we want
             _PrefsGetBool(PREF_MAINDIALOG_AUTOUPDATEPROJECTS, autoUpdateProjects);
             
-            if(autoUpdateProjects == true)
+            if(autoUpdateProjects)
             {
-                if(ProjectsManager::GetInstance()->UpdateDatabase(false, false) == true)
+                if(ProjectsManager::GetInstance()->UpdateDatabase(false, false))
                     ClientsManager::GetInstance()->ReloadThreaded(CM_LOADALL);
             }
             else
+            {
+                mCoreName->SetLabel(wxT("N/A"));
+                mCredit->SetLabel(wxT("N/A"));
+                mPreferredDeadline->SetLabel(wxT("N/A"));
+                mFinalDeadline->SetLabel(wxT("N/A"));
                 _LogMsgWarning(wxString::Format(wxT("Project %u is unknown, you should try to update the projects database"), client->GetProjectId()));
+            }
         }
         else
         {
@@ -332,24 +353,24 @@ void MainDialog::ShowClientInformation(wxUint32 clientId)
             mCredit->SetLabel(wxString::Format(wxT("%u points"), project->GetCredit()));
             
             // Preferred deadline: if it is equal to 0 day, there is no preferred deadline
-            if(project->GetPreferredDeadlineInDays() == 0)
-                mPreferredDeadline->SetLabel(wxT("N/A"));
-            else
+            if(client->GetDownloadDate() != wxInvalidDateTime && project->GetPreferredDeadlineInDays() != 0)
             {
                 preferredDeadline = client->GetDownloadDate();
                 preferredDeadline.Add(wxTimeSpan::Days(project->GetPreferredDeadlineInDays()));
                 mPreferredDeadline->SetLabel(preferredDeadline.Format(wxT(FMC_DATE_MAIN_FORMAT)));
             }
+            else
+                mPreferredDeadline->SetLabel(wxT("N/A"));
 
             // Final deadline: if it is equal to 0 day, there is no final deadline
-            if(project->GetFinalDeadlineInDays() == 0)
-                mFinalDeadline->SetLabel(wxT("N/A"));
-            else
+            if(client->GetDownloadDate() != wxInvalidDateTime && project->GetFinalDeadlineInDays() != 0)
             {
                 finalDeadline = client->GetDownloadDate();
                 finalDeadline.Add(wxTimeSpan::Days(project->GetFinalDeadlineInDays()));
                 mFinalDeadline->SetLabel(finalDeadline.Format(wxT(FMC_DATE_MAIN_FORMAT)));
             }
+            else
+                mFinalDeadline->SetLabel(wxT("N/A"));
         }
     }
 
@@ -378,7 +399,7 @@ inline void MainDialog::CreateMenuBar(void)
     // The 'Main' menu
     menu = new wxMenu();
     menu->Append(MID_TOGGLE_MESSAGES_FRAME, wxT("&Show/Hide Messages Window"), wxT("Toggle the messages window"));
-    menu->Append(MID_UPDATEPROJECTS, wxT("&Download New Projects"), wxT("Update the local projects database"));
+    menu->Append(MID_UPDATEPROJECTS, wxT("&Download New Projects"), wxT("Update the local project database"));
     menu->AppendSeparator();
     menu->Append(MID_BENCHMARKS, wxT("&Benchmarks...\tCTRL+B"), wxT("Open the benchmarks dialog"));
     menu->Append(MID_PREFERENCES, wxT("&Preferences...\tCTRL+P"), wxT("Open the preferences dialog"));
@@ -607,13 +628,13 @@ void MainDialog::OnMenuQuit(wxCommandEvent& event)
 
 
 /**
- * Reload the selected client
+ * Reload the selected client, if any
 **/
 void MainDialog::OnMenuReload(wxCommandEvent& event)
 {
-    wxUint32 selectedClientId = mClientsList->GetSelectedClientId();
+    ClientId selectedClientId = mClientsList->GetSelectedClientId();
     
-    if(selectedClientId != FMC_INTMAX)
+    if(selectedClientId != INVALID_CLIENT_ID)
         ClientsManager::GetInstance()->ReloadThreaded(selectedClientId);
 }
 
@@ -649,9 +670,9 @@ void MainDialog::OnMenuUpdateProjects(wxCommandEvent& event)
 **/
 void MainDialog::OnMenuToggleLog(wxCommandEvent& event)
 {
-          bool      isLogShown;
-          wxUint32  selectedClientId;
-    const Client   *selectedClient;
+    bool          isLogShown;
+    ClientId      selectedClientId;
+    const Client *selectedClient;
     
     // Show/Hide the log area
     isLogShown = !mLogFile->IsShown();
@@ -667,7 +688,7 @@ void MainDialog::OnMenuToggleLog(wxCommandEvent& event)
 
     // Load the correct log file (if any) when we are going to show the wxTextCtrl
     selectedClientId = mClientsList->GetSelectedClientId();
-    if(isLogShown == true && selectedClientId != FMC_INTMAX)
+    if(isLogShown && selectedClientId != INVALID_CLIENT_ID)
     {
         selectedClient = ClientsManager::GetInstance()->Get(selectedClientId);
 
@@ -691,13 +712,14 @@ void MainDialog::OnMenuToggleMessagesFrame(wxCommandEvent& event)
 **/
 void MainDialog::OnMenuBenchmarks(wxCommandEvent& event)
 {
-    wxUint32  selectedClientId;
+    ClientId  selectedClientId;
     ProjectId selectedProjectId;
 
     // Select the project currently processed by the selected client
     selectedClientId = mClientsList->GetSelectedClientId();
-    if(selectedClientId == FMC_INTMAX)
-        selectedProjectId = MAX_PROJECT_ID;
+
+    if(selectedClientId == INVALID_CLIENT_ID)
+        selectedProjectId = INVALID_PROJECT_ID;
     else
         selectedProjectId = ClientsManager::GetInstance()->Get(selectedClientId)->GetProjectId();
 
@@ -721,7 +743,7 @@ void MainDialog::OnMenuPreferences(wxCommandEvent& event)
 void MainDialog::OnMenuWeb(wxCommandEvent& event)
 {
     wxString      webAddress;
-    wxUint32      selectedClientId;
+    ClientId      selectedClientId;
     const Client *selectedClient;
 
     // Determine the url to go to
@@ -732,7 +754,7 @@ void MainDialog::OnMenuWeb(wxCommandEvent& event)
         case MID_WWWMYSTATS:
             // For these two menus, a client MUST be selected
             selectedClientId = mClientsList->GetSelectedClientId();
-            if(selectedClientId != FMC_INTMAX)
+            if(selectedClientId != INVALID_CLIENT_ID)
             {
                 selectedClient = ClientsManager::GetInstance()->Get(selectedClientId);
                 
@@ -769,7 +791,7 @@ void MainDialog::OnMenuWeb(wxCommandEvent& event)
 
         //--
         case wxID_HELP_CONTENTS:
-            Tools::OpenURLInBrowser(wxT("file://") + wxGetCwd() + wxT(FMC_URL_HELP));
+            Tools::OpenURLInBrowser(wxT(FMC_URL_HELP));
             break;
 		
         //--
@@ -836,7 +858,7 @@ void MainDialog::OnListSelectionChanged(wxListEvent& event)
 **/
 void MainDialog::OnClientReloaded(wxCommandEvent& event)
 {
-    wxUint32 clientId = event.GetInt();
+    ClientId clientId = event.GetInt();
     
     // The ListView must be updated, regardless of the current selection
     mClientsList->UpdateClient(clientId);
@@ -854,13 +876,13 @@ void MainDialog::OnClientReloaded(wxCommandEvent& event)
 void MainDialog::OnNewClientAdded(wxCommandEvent& event)
 {
     wxUint32 i;
-    wxUint32 clientId;
+    ClientId clientId;
 
     // Reset the list to have the correct number of clients
     mClientsList->Reset(ClientsManager::GetInstance()->GetCount());
     
     // Clear displayed information, as the list has been reseted, nothing is selected
-    ShowClientInformation(FMC_INTMAX);
+    ShowClientInformation(INVALID_CLIENT_ID);
 
     // Re-display all clients, except the new one (not yet loaded)
     clientId = (wxUint32)event.GetInt();
@@ -885,7 +907,7 @@ void MainDialog::OnClientDeleted(wxCommandEvent& event)
     mClientsList->Reset(ClientsManager::GetInstance()->GetCount());
     
     // Clear displayed information, as the list has been reseted, nothing is selected
-    ShowClientInformation(FMC_INTMAX);
+    ShowClientInformation(INVALID_CLIENT_ID);
 
     // Re-display all left clients
     for(i=0; i<ClientsManager::GetInstance()->GetCount(); ++i)

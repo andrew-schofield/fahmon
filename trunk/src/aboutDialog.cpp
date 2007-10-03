@@ -23,6 +23,7 @@
 #include "wx/version.h"
 #include "wx/statbmp.h"
 #include "wx/statline.h"
+#include "pathManager.h"
 #include "staticBoldedText.h"
 
 
@@ -67,7 +68,7 @@ AboutDialog::AboutDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, wxString
     // ---
     mainSizer = new wxFlexGridSizer(2, FMC_GUI_SPACING_LOW, FMC_GUI_SPACING_LOW);
     
-    mainSizer->Add(new wxStaticBitmap(this, wxID_ANY, wxBitmap(wxImage(wxT(FMC_PATH_IMG_ABOUT), wxBITMAP_TYPE_PNG))), 0, wxALIGN_CENTER_VERTICAL | wxRIGHT, FMC_GUI_SPACING_HIGH);
+    mainSizer->Add(new wxStaticBitmap(this, wxID_ANY, wxBitmap(wxImage(PathManager::GetImgPath() + wxT(FMC_FILE_IMG_ABOUT), wxBITMAP_TYPE_PNG))), 0, wxALIGN_CENTER_VERTICAL | wxRIGHT, FMC_GUI_SPACING_HIGH);
     mainSizer->Add(infoSizer);
     
     // ---

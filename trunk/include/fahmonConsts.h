@@ -24,9 +24,9 @@
 
 // --- Strings
 #define FMC_APPNAME 	"FahMon"
-#define FMC_VERSION 	"2.0.4"
+#define FMC_VERSION 	"2.1.0"
 #define FMC_PRODUCT 	FMC_APPNAME" "FMC_VERSION
-#define FMC_UID         FMC_APPNAME"__LOCK__"
+#define FMC_UID         "."FMC_APPNAME"__LOCK__"
 
 
 // --- URLs
@@ -38,7 +38,7 @@
 #define FMC_URL_PROJECTS          "http://fah-web.stanford.edu/psummary.html"      // Complete URL
 #define FMC_URL_PROJECTS_SERVER   "fah-web.stanford.edu"                           // Used for updating projects
 #define FMC_URL_PROJECTS_RESOURCE "psummaryC.html"                                 // ---
-#define FMC_URL_HELP              "/help/readme.html"
+#define FMC_URL_HELP              "http://fahmon.silent-blade.org/index.php?n=Main.Help"
 #define FMC_URL_FAHMON            "http://fahmon.silent-blade.org"
 #define FMC_URL_WXWIDGETS         "http://www.wxwidgets.org"
 
@@ -53,8 +53,8 @@
 
 // --- Directories
 #define FMC_DIR_XYZ         "./xyz/"
-#define FMC_DIR_CONFIG      "./config/"
 #define FMC_DIR_IMAGES      "./images/"
+#define FMC_DIR_CONFIG      "./config/"
 
 
 // --- Files
@@ -63,38 +63,16 @@
 #define FMC_FILE_PROJECTS   "projects.dat"
 #define FMC_FILE_BENCHMARKS "benchmarks.dat"
 
-#define FMC_FILE_IMG_ABOUT              "main_icon.png"
-#define FMC_FILE_IMG_DIALOG             "dialog_icon.png"
-#define FMC_FILE_IMG_LIST_OK            "list_client_ok.png"
-#define FMC_FILE_IMG_LIST_ERROR         "list_client_error.png"
-#define FMC_FILE_IMG_LIST_INACTIVE      "list_client_inactive.png"
-#define FMC_FILE_IMG_LIST_ARROW_UP      "list_up_arrow.png"
-#define FMC_FILE_IMG_LIST_ARROW_DOWN    "list_down_arrow.png"
+#define FMC_FILE_IMG_ABOUT             "main_icon.png"
+#define FMC_FILE_IMG_DIALOG            "dialog_icon.png"
 
+#define FMC_FILE_IMG_LIST_OK           "list_client_ok.png"
+#define FMC_FILE_IMG_LIST_STOPPED      "list_client_stopped.png"
+#define FMC_FILE_IMG_LIST_INACTIVE     "list_client_inactive.png"
+#define FMC_FILE_IMG_LIST_INACCESSIBLE "list_client_inaccessible.png"
 
-// --- Paths
-#define FMC_PATH_PREFS      FMC_DIR_CONFIG""FMC_FILE_PREFS
-#define FMC_PATH_CLIENTS    FMC_DIR_CONFIG""FMC_FILE_CLIENTS
-#define FMC_PATH_PROJECTS   FMC_DIR_CONFIG""FMC_FILE_PROJECTS
-#define FMC_PATH_BENCHMARKS FMC_DIR_CONFIG""FMC_FILE_BENCHMARKS
-
-#define FMC_PATH_IMG_ABOUT              FMC_DIR_IMAGES""FMC_FILE_IMG_ABOUT
-#define FMC_PATH_IMG_DIALOG             FMC_DIR_IMAGES""FMC_FILE_IMG_DIALOG
-#define FMC_PATH_IMG_LIST_OK            FMC_DIR_IMAGES""FMC_FILE_IMG_LIST_OK
-#define FMC_PATH_IMG_LIST_ERROR         FMC_DIR_IMAGES""FMC_FILE_IMG_LIST_ERROR
-#define FMC_PATH_IMG_LIST_INACTIVE      FMC_DIR_IMAGES""FMC_FILE_IMG_LIST_INACTIVE
-#define FMC_PATH_IMG_LIST_ARROW_UP      FMC_DIR_IMAGES""FMC_FILE_IMG_LIST_ARROW_UP
-#define FMC_PATH_IMG_LIST_ARROW_DOWN    FMC_DIR_IMAGES""FMC_FILE_IMG_LIST_ARROW_DOWN
-
-
-// --- Icons
-#ifdef _FAHMON_LINUX_
-#define FMC_ICON_DIALOG  wxIcon(wxT(FMC_PATH_IMG_DIALOG))
-#else
-#define FMC_ICON_DIALOG wxICON(dialog_icon)     // The icon is loaded from the resources under Windows
-#endif
-
-#define FMC_ICON_SYSTRAY FMC_ICON_DIALOG
+#define FMC_FILE_IMG_LIST_ARROW_UP   "list_up_arrow.png"
+#define FMC_FILE_IMG_LIST_ARROW_DOWN "list_down_arrow.png"
 
 
 // --- GUI
