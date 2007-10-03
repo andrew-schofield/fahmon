@@ -13,7 +13,7 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
- 
+
 #ifndef _FAHMONCONSTS_H
 #define _FAHMONCONSTS_H
 
@@ -24,7 +24,7 @@
 
 // --- Strings
 #define FMC_APPNAME 	"FahMon"
-#define FMC_VERSION 	"2.1.5"
+#define FMC_VERSION 	"2.2.0"
 #define FMC_PRODUCT 	FMC_APPNAME" "FMC_VERSION
 #define FMC_UID         "."FMC_APPNAME"__LOCK__"
 
@@ -33,12 +33,13 @@
 #define FMC_URL_MYSTATS           "http://fah-web.stanford.edu/cgi-bin/main.py?qtype=userpage"
 #define FMC_URL_TEAMSTATS         "http://fah-web.stanford.edu/cgi-bin/main.py?qtype=teampage"
 #define FMC_URL_JMOL              "http://www.jmol.org/fah/?project="
+#define FMC_URL_FAHINFO           "http://fahinfo.org/?WULookup=true&project="
 #define FMC_URL_FOLDING           "http://folding.stanford.edu"
 #define FMC_URL_FCORG             "http://forum.folding-community.org/portal.php"
 #define FMC_URL_SERVERS           "http://fah-web.stanford.edu/serverstat.html"
 #define FMC_URL_PROJECTS          "http://fah-web.stanford.edu/psummary.html"      // Complete URL
 #define FMC_URL_PROJECTS_SERVER   "fah-web.stanford.edu"                           // Used for updating projects
-#define FMC_URL_PROJECTS_RESOURCE "psummaryC.html"                                 // ---
+#define FMC_URL_PROJECTS_RESOURCE "psummary.html"                                 // ---
 #define FMC_URL_HELP              "http://fahmon.silent-blade.org/index.php?n=Main.Help"
 #define FMC_URL_FAHMON            "http://fahmon.silent-blade.org"
 #define FMC_URL_WXWIDGETS         "http://www.wxwidgets.org"

@@ -16,6 +16,7 @@
 
 #include "fahmon.h"
 #include "fahlogAnalyzer.h"
+#include "messagesManager.h"
 
 
 /**
@@ -135,7 +136,7 @@ WorkUnitFrame* FahLogAnalyzer::AnalyzeLastFrame(const wxString& fahlogComplete)
         // Compute the elapsed seconds since this frame has been completed
         // If wxDateTime::Now() is before endFrame1.timestamp, we don't use elapsed time because if FahMon is running on a different machine
         // than the client, we can't assume that they are sufficiently synchronized
-        elapsedSeconds = wxDateTime::Now().MakeUTC().Subtract(endFrame1.timestamp).GetSeconds().ToLong();
+        elapsedSeconds = wxDateTime::Now().ToUTC().Subtract(endFrame1.timestamp).GetSeconds().ToLong();
         if(elapsedSeconds < 0)
             elapsedSeconds = 0;
 
@@ -179,6 +180,8 @@ void FahLogAnalyzer::ParseLogLine(wxString& lineToParse, LogLine& logLine)
     else if(lineToParse.StartsWith(wxT("Completed ")))                    logLine.type = LLT_COMPLETED;
     else if(lineToParse.StartsWith(wxT("Finished a frame")))              logLine.type = LLT_FINISHED;
     else if(lineToParse.StartsWith(wxT("Folding@Home Client Shutdown."))) logLine.type = LLT_SHUTDOWN;
+    // not used yet:
+    else if(lineToParse.StartsWith(wxT("Folding@home Core Shutdown: FINISHED_UNIT"))) logLine.type = LLT_WU_COMPLETE;
     else                                                                  logLine.type = LLT_UNKNOWN;
 
     // When a frame is finished, extract its identifier and the timestamp
@@ -192,6 +195,11 @@ void FahLogAnalyzer::ParseLogLine(wxString& lineToParse, LogLine& logLine)
             lineToParse.Right(lineToParse.Len()-position-1).ToULong(&convertedNumber);
             logLine.frameId = (FrameId)convertedNumber;
         }
+	//extra bit for GPU WUs
+	else if(lineToParse.Mid(10, lineToParse.Len()-1).ToULong(&convertedNumber) == true)
+	{
+	    logLine.frameId = (FrameId)convertedNumber;
+	}
 
         // Extract the timestamp (it is in GMT format)
         logLine.timestamp.SetToCurrent();

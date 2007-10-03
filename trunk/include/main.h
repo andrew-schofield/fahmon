@@ -34,6 +34,12 @@ protected:
 public:
 	virtual bool OnInit(void);
 	virtual int OnExit(void);
+	void OnEndSession( wxCloseEvent& event );
+  	void OnQueryEndSession( wxCloseEvent& event ); 
+
+private:
+DECLARE_EVENT_TABLE()
+
 };
 
 

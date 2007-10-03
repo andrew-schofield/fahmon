@@ -3,6 +3,21 @@
 
 
 
+v2.2.0
+[+] Added full monitoring support for GPU and SMP clients
+[+] Added SREM Gromacs (GROST) core support
+[+] Added PPD display per client, and total
+[-] Fixed bug which caused all unsaved settings to be lost when client was left running on an OS shutdown or logoff.
+[-] Fixed bugs which prevented code working correctly with gcc > 4 (thanks to ck_wong and goober_dvd for the patches)
+[+] A local file can now be used as a project data source, and the download parameters can be changed
+[+] Added a tray menu showing number of clients and PPD
+[+] Right click menu for clients now allows you to open the client folder in your file manager
+[+] Client list can be sorted by PPD and Status
+[+] Inaccessible clients can be included in sorting, by default they are always displayed last.
+[+] Web menu now includes a link to fahinfo.org, pointing to the relevant project information page
+
+
+
 v2.1.5
 [+] Added links to user's stats page in the right panel of the main window
 [+] When tray icon is enabled, hide the main window when it is minimized (thanks to Mihail Boev for the patch)

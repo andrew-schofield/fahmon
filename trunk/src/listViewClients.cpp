@@ -25,6 +25,8 @@
 #include "clientDialog.h"
 #include "clientsManager.h"
 #include "preferencesManager.h"
+#include "projectsManager.h"
+#include "benchmarksManager.h"
 
 // TODO
 // FMC_COLOR_LIST_ODD_LINES creates a new wxColour object each time it is used
@@ -34,9 +36,11 @@
 // The columns
 enum _LISTVIEW_COLUMN
 {
+    LVC_STATUS,
     LVC_PROGRESS,
     LVC_NAME,
-    LVC_ETA
+    LVC_ETA,
+    LVC_PPD
 };
 
 
@@ -59,7 +63,8 @@ enum _CONTROL_ID
     MID_RELOADCLIENT,
     MID_ADDCLIENT,
     MID_EDITCLIENT,
-    MID_DELETECLIENT
+    MID_DELETECLIENT,
+    MID_VIEWFILES
 };
 
 
@@ -70,6 +75,7 @@ BEGIN_EVENT_TABLE(ListViewClients, wxListView)
     EVT_MENU    (MID_ADDCLIENT,      ListViewClients::OnMenuAddClient)
     EVT_MENU    (MID_EDITCLIENT,     ListViewClients::OnMenuEditClient)
     EVT_MENU    (MID_DELETECLIENT,   ListViewClients::OnMenuDeleteClient)
+    EVT_MENU    (MID_VIEWFILES,    ListViewClients::OnMenuViewFiles)
 
     // List events
     EVT_LIST_COL_CLICK    (wxID_ANY, ListViewClients::OnColumnLeftClick)
@@ -98,20 +104,26 @@ ListViewClients::ListViewClients(wxWindow* parent, wxWindowID id, wxUint32 nbCli
     wxUint32     progressColumnWidth;
     wxUint32     nameColumnWidth;
     wxUint32     etaColumnWidth;
+    wxUint32     ppdColumnWidth;
     wxImageList *imageList;
 
     // --- Create the columns and restore their size
+    InsertColumn(LVC_STATUS, wxT(""));
     InsertColumn(LVC_PROGRESS, wxT("Progress"));
     InsertColumn(LVC_NAME,     wxT("Name"));
     InsertColumn(LVC_ETA,      wxT("ETA"));
+    InsertColumn(LVC_PPD,      wxT("PPD"));
 
     _PrefsGetUint(PREF_LISTVIEWCLIENTS_PROGRESSCOLUMNWIDTH, progressColumnWidth);
     _PrefsGetUint(PREF_LISTVIEWCLIENTS_NAMECOLUMNWIDTH,     nameColumnWidth);
     _PrefsGetUint(PREF_LISTVIEWCLIENTS_ETACOLUMNWIDTH,      etaColumnWidth);
+    _PrefsGetUint(PREF_LISTVIEWCLIENTS_PPDCOLUMNWIDTH,      ppdColumnWidth);
 
     SetColumnWidth(LVC_PROGRESS, progressColumnWidth);
     SetColumnWidth(LVC_NAME,     nameColumnWidth);
     SetColumnWidth(LVC_ETA,      etaColumnWidth);
+    SetColumnWidth(LVC_PPD,      ppdColumnWidth);
+    SetColumnWidth(LVC_STATUS, 30);
 
     // --- Create the ImageList associated with this ListView
     //     Images must be loaded in the order defined by the enum _LISTVIEW_ICON
@@ -127,12 +139,12 @@ ListViewClients::ListViewClients(wxWindow* parent, wxWindowID id, wxUint32 nbCli
     // --- Restore sorting order
     _PrefsGetUint(PREF_LISTVIEWCLIENTS_SORTCOLUMN,    mSortColumn);
     _PrefsGetBool(PREF_LISTVIEWCLIENTS_SORTASCENDING, mSortAscending);
-    
+
     if(mSortAscending == true)
         SetColumnImage(mSortColumn, LVI_UP_ARROW);
     else
         SetColumnImage(mSortColumn, LVI_DOWN_ARROW);
-    
+
     // --- Initialize the list with the given number of clients
     Reset(nbClients);
 }
@@ -147,12 +159,12 @@ ListViewClients::~ListViewClients(void)
     _PrefsSetUint(PREF_LISTVIEWCLIENTS_PROGRESSCOLUMNWIDTH, GetColumnWidth(LVC_PROGRESS));
     _PrefsSetUint(PREF_LISTVIEWCLIENTS_NAMECOLUMNWIDTH,     GetColumnWidth(LVC_NAME));
     _PrefsSetUint(PREF_LISTVIEWCLIENTS_ETACOLUMNWIDTH,      GetColumnWidth(LVC_ETA));
-    
+    _PrefsSetUint(PREF_LISTVIEWCLIENTS_PPDCOLUMNWIDTH,      GetColumnWidth(LVC_PPD));
+
     // Save the sorting order
     _PrefsSetUint(PREF_LISTVIEWCLIENTS_SORTCOLUMN,    mSortColumn);
     _PrefsSetBool(PREF_LISTVIEWCLIENTS_SORTASCENDING, mSortAscending);
 }
-
 
 /**
  * Compare two clients according to the current sorting criterion
@@ -162,15 +174,27 @@ int ListViewClients::CompareClients(wxUint32 clientId1, wxUint32 clientId2) cons
     const Client  *client1;
     const Client  *client2;
           wxInt32  comparisonResult;
-    
+    int Client1State;
+    int Client2State;
+    bool keepDeadLast;
+
+
+    _PrefsGetBool(PREF_LISTCLIENTS_KEEP_DEAD_LAST,      keepDeadLast);
+
     client1 = ClientsManager::GetInstance()->Get(clientId1);
     client2 = ClientsManager::GetInstance()->Get(clientId2);
 
+    Client1State = 0;
+    Client2State = 0;
+
     // Invalid clients must always be at the end of the list
-    if(!client1->IsAccessible())
-        return 1;
-    else if(!client2->IsAccessible())
-        return -1;
+    if(keepDeadLast == true)
+    {
+        if(!client1->IsAccessible())
+            return 1;
+        else if(!client2->IsAccessible())
+             return -1;
+    }
 
     // If the two clients are valid, then we compare them using the correct sorting criterion
     switch(mSortColumn)
@@ -193,6 +217,32 @@ int ListViewClients::CompareClients(wxUint32 clientId1, wxUint32 clientId2) cons
                 comparisonResult = 1;
             break;
 
+        // ---
+        case LVC_PPD:
+            if(client1->GetPPD() > client2->GetPPD())
+                comparisonResult = -1;
+            else
+                comparisonResult = 1;
+            break;
+
+        // ---
+        case LVC_STATUS:
+            // enumerate the client statuses
+            if(!client1->IsAccessible()) Client1State = 0; // dead client
+            if(!client2->IsAccessible()) Client2State = 0;
+            if(client1->IsStopped()) Client1State = 1; // stopped client
+            if(client2->IsStopped()) Client2State = 1;
+            if(client1->IsInactive()) Client1State = 2; // inactive client
+            if(client2->IsInactive()) Client2State = 2;
+            if(client1->IsAccessible() && !client1->IsInactive() &&  !client1->IsStopped()) Client1State = 3; //active client
+            if(client2->IsAccessible() && !client2->IsInactive() &&  !client2->IsStopped()) Client2State = 3;
+
+            if(Client1State > Client2State)
+                comparisonResult = -1;
+            else
+                comparisonResult = 1;
+            break;
+
         // We should never fall here
         default:
             wxASSERT(false);
@@ -203,7 +253,7 @@ int ListViewClients::CompareClients(wxUint32 clientId1, wxUint32 clientId2) cons
     // We need to inverse the result of the comparison if we sort in a descending manner
     if(mSortAscending == false)
         return -comparisonResult;
-    
+
     return comparisonResult;
 }
 
@@ -277,16 +327,20 @@ void ListViewClients::UpdateAllClients(void)
 **/
 void ListViewClients::UpdateClient(wxUint32 clientId)
 {
-    wxUint32      clientIndex;
+    wxUint32	clientIndex;
+    wxString	PPD;
+    wxString	clientLocation;
+    wxString	clientName;
     const Client *client;
+    const Project *project;
 
     // The identifier MUST be stored in our translation table
     wxASSERT(clientId < mClientIdToIndex.GetCount());
-    
+
     // Retrieve the correct index and the corresponding client
     client      = ClientsManager::GetInstance()->Get(clientId);
     clientIndex = mClientIdToIndex.Item(clientId);
-    
+
     // If the index is greater than the number of items, then our translation table is really broken
     wxASSERT(clientIndex < (wxUint32)GetItemCount());
 
@@ -295,9 +349,22 @@ void ListViewClients::UpdateClient(wxUint32 clientId)
 
     SetItem(clientIndex, LVC_PROGRESS, client->GetProgressString());
     SetItem(clientIndex, LVC_NAME, client->GetName());
-    
+
+    // Blank the PPD column
+    PPD = wxT("--");
+
+    project = ProjectsManager::GetInstance()->GetProject(client->GetProjectId());
+
+    // If it's possible to get the PPD, do so now
+    if(client->IsAccessible() && !client->IsStopped() && project != INVALID_PROJECT_ID)
+    {
+        PPD = wxString::Format(wxT("%.2f"), client->GetPPD());
+    }
+
+    SetItem(clientIndex, LVC_PPD, PPD);
+
     // ETA
-         if(client->GetProgress() == 100)                       SetItem(clientIndex, LVC_ETA, wxT("Finished"));
+    if(client->GetProgress() == 100)                       SetItem(clientIndex, LVC_ETA, wxT("Finished"));
     else if(!client->IsAccessible() || client->IsStopped())     SetItem(clientIndex, LVC_ETA, wxT("N/A"));
     else if(!client->GetETA()->IsOk())                          SetItem(clientIndex, LVC_ETA, wxT("N/A"));
     else                                                        SetItem(clientIndex, LVC_ETA, client->GetETA()->GetString());
@@ -337,7 +404,7 @@ void ListViewClients::Sort(void)
     for(i=0; i<(wxUint32)GetItemCount(); ++i)
     {
         mClientIdToIndex[GetItemData(i)] = i;
-        
+
         if((i&1) != 0)
             SetItemBackgroundColour(i, FMC_COLOR_LIST_ODD_LINES);
         else
@@ -349,11 +416,11 @@ void ListViewClients::Sort(void)
     if(selectedClientId != INVALID_CLIENT_ID)
     {
         selectedClientIndex = mClientIdToIndex[selectedClientId];
-        
+
         Select(selectedClientIndex);
         EnsureVisible(selectedClientIndex);
     }
-    
+
     Thaw();
 }
 
@@ -428,6 +495,7 @@ void ListViewClients::OnRightClick(wxMouseEvent& event)
         clientContextMenu.Append(MID_RELOADCLIENT, wxT("Reload this client"));
         clientContextMenu.Append(MID_EDITCLIENT, wxT("Edit this client"));
         clientContextMenu.Append(MID_DELETECLIENT, wxT("Delete this client"));
+        clientContextMenu.Append(MID_VIEWFILES, wxT("View Client Files"));
     }
 
     PopupMenu(&clientContextMenu);
@@ -440,7 +508,7 @@ void ListViewClients::OnRightClick(wxMouseEvent& event)
 void ListViewClients::OnMenuReloadClient(wxCommandEvent& event)
 {
     wxUint32 selectedClientId = GetSelectedClientId();
-    
+
     // Ensure that something is really selected
     if(selectedClientId != INVALID_CLIENT_ID)
         ClientsManager::GetInstance()->ReloadThreaded(selectedClientId);
@@ -463,11 +531,11 @@ void ListViewClients::OnMenuAddClient(wxCommandEvent& event)
 void ListViewClients::OnMenuEditClient(wxCommandEvent& event)
 {
     wxUint32 selectedClientId = GetSelectedClientId();
-    
+
     // Ensure that something is really selected
     if(selectedClientId == INVALID_CLIENT_ID)
         return;
-    
+
     // Ask the main dialog to edit this client
     ClientDialog::GetInstance(this)->ShowModal(selectedClientId);
 }
@@ -491,8 +559,57 @@ void ListViewClients::OnMenuDeleteClient(wxCommandEvent& event)
     {
         // Delete the client
         ClientsManager::GetInstance()->Delete(selectedClientId);
-        
+
         // And warn the main dialog
         MainDialog::GetInstance()->AddPendingEvent(deleteEvent);
     }
+}
+
+/**
+* Extract "cell" text
+**/
+wxString ListViewClients::GetCellContentsString( long row_number, int column )
+{
+   wxListItem     row_info;
+   wxString       cell_contents_string;
+
+   // Set what row it is (m_itemId is a member of the regular wxListCtrl class)
+   row_info.m_itemId = row_number;
+   // Set what column of that row we want to query for information.
+   row_info.m_col = column;
+   // Set text mask
+   row_info.m_mask = wxLIST_MASK_TEXT;
+
+   // Get the info and store it in row_info variable.
+   GetItem( row_info );
+
+   // Extract the text out that cell
+   cell_contents_string = row_info.m_text;
+
+   return cell_contents_string;
+}
+
+/**
+ * View client files in filemanager
+**/
+void ListViewClients::OnMenuViewFiles(wxCommandEvent& event)
+{
+    wxString  ClientLocation;
+    wxString  FileManager;
+    const Client  *client;
+
+    client = ClientsManager::GetInstance()->Get(GetSelectedClientId());
+
+    ClientLocation = client->GetLocation();
+
+    _PrefsGetString(PREF_TOOLS_FILEMANAGER, FileManager);
+
+    #ifndef _FAHMON_LINUX_
+        // Converts / to \ in filepaths so Windows can use them correctly
+        ClientLocation.Replace("/", "\\", true);
+    #endif
+
+    // Not sure why, but this *never* fails
+    if(wxExecute(FileManager + wxT(" ") + ClientLocation) == false)
+        Tools::ErrorMsgBox(wxT("Unable to launch the default filemanager.\n\nPlease check that the correct filemanager is set in Preferences"));
 }

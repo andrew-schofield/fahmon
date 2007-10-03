@@ -26,6 +26,7 @@
 #include "wx/checkbox.h"
 #include "wx/spinctrl.h"
 #include "wx/stattext.h"
+#include "wx/button.h"
 
 
 /**
@@ -41,8 +42,7 @@ protected:
     wxCheckBox *mGeneralEnableTrayIcon;
     wxCheckBox *mGeneralAutoUpdateProjectsDatabase;
     wxCheckBox *mGeneralCollectXYZFiles;
-    wxTextCtrl *mGeneralBrowser;
-    wxStaticText *mGeneralBrowserLabel;
+    wxCheckBox *mGeneralKeepInaccessibleClientsLast;
 
     // Widgets for the monitoring tab
     wxChoice   *mMonitoringETADisplayStyle;
@@ -61,6 +61,27 @@ protected:
     wxStaticText *mNetworkingLabelUsername;
     wxStaticText *mNetworkingLabelPassword;
 
+    // Widgets for the advanced tab
+    wxCheckBox  *mAdvancedUseAlternateProjectSource;
+    wxTextCtrl  *mAdvancedAlternateProjectSourceLocationServer;
+    wxStaticText  *mAdvancedLabelLocationServer;
+    wxTextCtrl  *mAdvancedAlternateProjectSourceLocationPort;
+    wxStaticText  *mAdvancedLabelLocationPort;
+    wxTextCtrl  *mAdvancedAlternateProjectSourceLocationResource;
+    wxStaticText  *mAdvancedLabelLocationResource;
+    wxCheckBox  *mAdvancedUseLocalFile;
+    wxTextCtrl  *mAdvancedLocalFileLocation;
+    wxStaticText  *mAdvancedLabelLocalFile;
+    wxButton  *mAdvancedLocationChooser;
+
+    // Widgets for the system tab
+    wxTextCtrl *mSystemBrowser;
+    wxStaticText *mSystemBrowserLabel;
+    wxChoice *mSystemFileManager;
+    wxStaticText *mSystemFileManagerLabel;
+    wxTextCtrl *mSystemOtherFM;
+    wxStaticText *mSystemOtherFMLabel;
+
     // Storage for the initial value of some important preferences
     // This is needed to detect when one of them has changed, so that the concerned component can be warned
     bool     mInitAutoReload;
@@ -75,12 +96,16 @@ protected:
     wxPanel* CreateGeneralTab(wxNotebook* parent);
     wxPanel* CreateMonitoringTab(wxNotebook* parent);
     wxPanel* CreateNetworkingTab(wxNotebook* parent);
+    wxPanel* CreateAdvancedTab(wxNotebook* parent);
+    wxPanel* CreateSystemTab(wxNotebook* parent);
     
     void LoadPreferences(void);
     void SavePreferences(void);
     
     void OnOkButton(wxCommandEvent& event);
+    void OnBrowseButton(wxCommandEvent& event);
     void OnCheckboxes(wxCommandEvent& event);
+    void OnChoices(wxCommandEvent& event);
 
 
 public:

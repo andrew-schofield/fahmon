@@ -36,6 +36,7 @@ protected:
         LLT_FINISHED,           // [13:25:00] Finished a frame (1)
         LLT_EMPTY,              // An empty line (excluding the timestamp)
         LLT_SHUTDOWN,           // Folding@Home Client Shutdown.
+        LLT_WU_COMPLETE,    // A WU has been completed
         LLT_UNKNOWN             // Any other type of line
     } LogLineType;
 
@@ -45,6 +46,7 @@ protected:
         LogLineType type;
         FrameId     frameId;       // Valid when (type == LLT_FINISHED) or (type == LLT_COMPLETED)
         wxDateTime  timestamp;
+        wxUint32    project;
     } LogLine;
 
 

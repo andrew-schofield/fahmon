@@ -57,6 +57,7 @@ protected:
     wxString   mUserName;
     wxUint32   mTeamNumber;
     ProjectId  mProjectId;
+    double  mPPD;
     wxDateTime mDownloadDate;
 
     void ComputeETA(WorkUnitFrame* lastFrame);
@@ -77,6 +78,7 @@ public:
     wxString GetUserStatsURL(void) const;
     wxString GetTeamStatsURL(void) const;
     wxString GetJmolURL(void)      const;
+    wxString GetFahinfoURL(void)      const;
 
     // -- 'Setters' --
     void SetName(const wxString& name) {mName = name;}
@@ -96,6 +98,7 @@ public:
     wxString          GetUserName(void)       const {return mUserName;}
     wxUint32          GetTeamNumber(void)     const {return mTeamNumber;}
     ProjectId         GetProjectId(void)      const {return mProjectId;}
+    double         GetPPD(void)      const {return mPPD;}
     const wxDateTime& GetDownloadDate(void)   const {return mDownloadDate;}
 
     const ETA* GetETA(void) const {return &mETA;}

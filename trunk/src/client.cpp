@@ -26,6 +26,7 @@
 #include "messagesManager.h"
 #include "benchmarksManager.h"
 #include "preferencesManager.h"
+#include "clientsManager.h"
 
 
 // This mutex is used to ensure that two threads won't try to overwite the same file at the same time
@@ -38,10 +39,10 @@ wxMutex Client::mMutexXYZFiles;
 Client::Client(const wxString& name, const wxString& location)
 {
     mPreviouslyAnalyzedFrameId = MAX_FRAME_ID;
-    
+
     SetName(name);
     SetLocation(location);
-    
+
     Reset();
 }
 
@@ -60,10 +61,10 @@ Client::~Client(void)
 void Client::SetLocation(const wxString& location)
 {
     mLocation = location;
-    
+
     // Avoid the use of backslashes
     mLocation.Replace(wxT("\\"), wxT("/"));
-    
+
     // Ensure that the location ends with a slash
     if(mLocation.Last() != '/')
         mLocation += '/';
@@ -84,7 +85,8 @@ void Client::Reset(void)
     mDownloadDate   = wxInvalidDateTime;
     mProjectString  = wxT("");
     mProgressString = wxT("N/A");
-    
+    mPPD = 0;
+
     mETA.Invalidate();
 }
 
@@ -96,7 +98,14 @@ void Client::Reload(void)
 {
     bool           collectXYZFiles;
     WorkUnitFrame *lastFrame;
-    
+    wxUint32	nbBenchmarks;
+    wxUint32	i;
+    wxString	PPD;
+    wxString	clientLocation;
+    wxString	clientName;
+    const Project *project;
+    const Benchmark **benchmarks;
+
     _LogMsgInfo(wxString::Format(wxT("Reloading %s"), mName.c_str()));
 
     Reset();
@@ -142,6 +151,27 @@ void Client::Reload(void)
         BenchmarksManager::GetInstance()->Add(mProjectId, this, lastFrame);
     }
 
+    // Default PPD is always 0
+    mPPD = 0;
+
+    // If current project is valid and is found in the benchmarks database, then grab the PPD
+    if (mProjectId != INVALID_PROJECT_ID) {
+        project = ProjectsManager::GetInstance()->GetProject(mProjectId);
+        if (project != INVALID_PROJECT_ID)
+        {
+            benchmarks = BenchmarksManager::GetInstance()->GetBenchmarksList(mProjectId, nbBenchmarks);
+            if (nbBenchmarks != 0) {
+                for(i=0; i<nbBenchmarks; ++i) {
+                    clientLocation = BenchmarksManager::GetInstance()->GetClientLocationFromClientId(benchmarks[i]->GetClientId());
+                    clientName     = ClientsManager::GetInstance()->GetNameFromLocation(clientLocation);
+                    if (clientName == mName) {
+                        mPPD = (project->GetCredit() * 86400.0) / ((double)benchmarks[i]->GetAvgDuration() * (double)project->GetNbFrames());
+                    }
+                }
+            }
+        }
+    }
+
     // Compute ETA
     ComputeETA(lastFrame);
 
@@ -176,7 +206,7 @@ inline bool Client::LoadLogFile(const wxString& filename)
 inline bool Client::LoadUnitInfoFile(const wxString& filename)
 {
     bool              projectOk, downloadDateOk, progressOk;
-    wxInt32           startingPos, endingPos;
+    wxInt32           /**startingPos,**/ endingPos;
     wxUint32          i;
     wxString          currentLine;
     wxString          progressString, downloadDateString;
@@ -192,29 +222,30 @@ inline bool Client::LoadUnitInfoFile(const wxString& filename)
     projectOk      = false;
     progressOk     = false;
     downloadDateOk = false;
-    
+
     // Retrieve each line and try to extract the needed elements
     for(i=0; i<in.GetLineCount(); ++i)
     {
         currentLine = in.GetLine(i);
- 
-        // Name: p890_p53dimer890
-        if(currentLine.StartsWith(wxT("Name: "), &mProjectString))
-        {
-            startingPos = mProjectString.Find('p');
-            endingPos   = mProjectString.Find('_');
 
-            if(startingPos != -1 && endingPos != -1 && endingPos > startingPos)
-            {
-                if(mProjectString.Mid(startingPos+1, endingPos-startingPos-1).ToULong(&tmpLong) == true)
-                {
-                    projectOk  = true;
-                    mProjectId = (wxUint32)tmpLong;
-                }
-            }
-        }
-        // Download time: July 19 16:46:49
-        else if(currentLine.StartsWith(wxT("Download time: "), &downloadDateString))
+        // Name: p890_p53dimer890
+       /**if(currentLine.StartsWith(wxT("Name: "), &mProjectString))
+      * {
+	*     startingPos = mProjectString.Find('p');
+	*    endingPos   = mProjectString.Find('_');
+	*
+        *    if(startingPos != -1 && endingPos != -1 && endingPos > startingPos)
+        *    {
+        *        if(mProjectString.Mid(startingPos+1, endingPos-startingPos-1).ToULong(&tmpLong) == true)
+        *        {
+        *            projectOk  = true;
+        *            mProjectId = (wxUint32)tmpLong;
+        *        }
+        *    }
+        * }
+       *
+        else**/
+	if(currentLine.StartsWith(wxT("Download time: "), &downloadDateString))
         {
             // We cannot rely on ParseFormat() function to parse the month name because of locales
             // Indeed, the month name is written in english and english language can be unavailable on some non-english systems
@@ -270,6 +301,36 @@ inline bool Client::LoadUnitInfoFile(const wxString& filename)
 
     in.Close();
 
+    // some hacked together code to try and get project name from fahlog (a very bad way of doing it)
+    if(!wxFileExists(mLocation + wxT("FAHlog.txt")) || !in.Open(mLocation + wxT("FAHlog.txt"))) {
+	    _LogMsgWarning(wxT("Couldn't Open FAHlog.txt"));
+            return false;
+    }
+    i = in.GetLineCount()-1;
+    while( i > 0)
+    {
+        currentLine = in.GetLine(i);
+        currentLine = currentLine.Mid(11);
+        if(currentLine.StartsWith(wxT("Project: "), &mProjectString) || currentLine.StartsWith(wxT("Protein: "), &mProjectString))
+        {
+            endingPos = mProjectString.Find('(');
+            if (endingPos !=-1)
+            {
+                mProjectString = mProjectString.Mid(0, endingPos-1);
+                if(mProjectString.ToULong(&tmpLong) == true)
+                {
+                    mProjectId = (wxUint32)tmpLong;
+                    _LogMsgInfo(wxString::Format(wxT("Project number found for %s from FAHlog.txt: %u "), mName.c_str(), mProjectId));
+                    projectOk = true;
+                    break;
+                }
+            }
+        }
+        i--;
+    }
+    in.Close();
+
+
     // We succeeded only if we found these three elements
     if(projectOk && downloadDateOk && progressOk)
         return true;
@@ -313,7 +374,7 @@ inline bool Client::LoadClientCfg(const wxString& filename)
     // We need to find all these elements, otherwise the file is not correct
     userNameOk   = false;
     teamNumberOk = false;
-    
+
     // Retrieve each line and try to extract the needed elements
     for(i=0; i<in.GetLineCount() && (!userNameOk || !teamNumberOk); ++i)
     {
@@ -347,7 +408,7 @@ inline bool Client::LoadClientCfg(const wxString& filename)
 
     if(!teamNumberOk)
         _LogMsgWarning(wxString::Format(wxT("No valid team number were found in file %s"), filename.c_str()));
-    
+
     return false;
 }
 
@@ -361,15 +422,15 @@ inline void Client::SaveXYZFile(void) const
     // ----- Access Lock -----
     wxMutexLocker mutexLocker(mMutexXYZFiles);
     // ----- Access Lock -----
-    
+
 
     wxString xyzInFile;
     wxString xyzOutFile;
-    
+
     // Create the complete path of the files
     xyzInFile  = mLocation + wxT("work/current.xyz");
     xyzOutFile = PathManager::GetXYZPath() + mProjectString + wxT(".xyz");
-    
+
     // Check that the file to save exists
     if(!wxFileExists(xyzInFile))
     {
@@ -383,7 +444,7 @@ inline void Client::SaveXYZFile(void) const
         _LogMsgWarning(wxString::Format(wxT("Unable to create directory %s"), PathManager::GetXYZPath().c_str()));
         return;
     }
-    
+
     // Check that the file does not already exist
     if(wxFileExists(xyzOutFile))
         return;
@@ -413,9 +474,9 @@ void Client::ComputeETA(WorkUnitFrame* lastFrame)
     // If the client is stopped, there is no ETA
     if(lastFrame && lastFrame->ClientIsStopped())
         return;
-    
+
     logLine = wxString::Format(wxT("%s [ETA]"), mName.c_str());
-    
+
     // --- 1) Retrieve the total number of frames for the current project, or try to guess it if possible
     projectInfo = ProjectsManager::GetInstance()->GetProject(mProjectId);
     if(projectInfo != NULL)
@@ -431,8 +492,8 @@ void Client::ComputeETA(WorkUnitFrame* lastFrame)
         // If we really have no clue about the total number of frames, we cannot tell anything about the ETA
         return;
     }
-    
-    
+
+
     // This can't be equal to 0, as we need this value in further computations
     wxASSERT(totalFrames != 0);
 
@@ -467,25 +528,25 @@ void Client::ComputeETA(WorkUnitFrame* lastFrame)
 
         referenceDuration = (wxUint32)((Tl - Tm) * X / Y + Tm);
         */
-        
+
         // This causes problems with some WUs, for which the duration of a frame can vary a lot
         // In this case, the ETA varies a lot too, so for now we only use the average duration of a frame
-        
+
         logLine = logLine + wxString::Format(wxT(" | avg=%us"), benchmark->GetAvgDuration());
-        
+
         referenceDuration = benchmark->GetAvgDuration();
     }
     else if(benchmark != NULL)
     {
         logLine = logLine + wxString::Format(wxT(" | avg=%us | last=N/A"), benchmark->GetAvgDuration());
-        
+
         // No duration for the last frame, use the average duration
         referenceDuration = benchmark->GetAvgDuration();
     }
     else if(lastFrame != NULL)
     {
         logLine = logLine + wxString::Format(wxT(" | avg=N/A | last=%us"), lastFrame->GetDuration());
-        
+
         // No average duration of a frame, use the duration of the last frame
         referenceDuration = lastFrame->GetDuration();
     }
@@ -493,11 +554,11 @@ void Client::ComputeETA(WorkUnitFrame* lastFrame)
     {
         logLine = logLine + wxString::Format(wxT(" | avg=N/A | last=N/A"));
         _LogMsgInfo(logLine);
-        
+
         // No indication on the average duration of a frame, nor on the duration of the last frame, so we cannot do anything
         return;
     }
-    
+
     logLine = logLine + wxString::Format(wxT(" | ref=%us"), referenceDuration);
 
 
@@ -505,7 +566,7 @@ void Client::ComputeETA(WorkUnitFrame* lastFrame)
     if(lastFrame != NULL)
     {
         nbLeftSeconds = referenceDuration * (totalFrames - lastFrame->GetId());
-        
+
         // Make a more accurate value by using the elapsed time since the end of the last frame
         if(lastFrame->GetElapsedSeconds() > referenceDuration)
         {
@@ -517,22 +578,22 @@ void Client::ComputeETA(WorkUnitFrame* lastFrame)
             nbLeftSeconds = nbLeftSeconds - lastFrame->GetElapsedSeconds();
             logLine = logLine + wxString::Format(wxT(" | adj=%us"), lastFrame->GetElapsedSeconds());
         }
-        
+
         logLine = logLine + wxString::Format(wxT(" | left=%us"), nbLeftSeconds);
     }
     else
     {
         // We don't have the identifier of the last computed frame, so we have to try to guess it once again
         wxUint32 lastComputedFrame = totalFrames * mProgress / 100;
-        
+
         nbLeftSeconds = referenceDuration * (totalFrames - lastComputedFrame);
-        
+
         logLine = logLine + wxString::Format(wxT(" | left=%us (guess)"), nbLeftSeconds);
     }
-    
-    
+
+
     // --- 4) That's it
-    mETA.SetLeftTimeInMinutes(nbLeftSeconds/60);    
+    mETA.SetLeftTimeInMinutes(nbLeftSeconds/60);
     _LogMsgInfo(logLine);
 }
 
@@ -585,7 +646,7 @@ void Client::FindCurrentState(WorkUnitFrame* lastFrame)
     // inactive, and we don't want to alert the user too early
     if(trigger < 45*60)
         trigger = 45*60;
-    
+
     // Last step
     if(lastFrame->GetElapsedSeconds() < trigger)
         mState = ST_RUNNING;
@@ -621,4 +682,13 @@ wxString Client::GetTeamStatsURL(void) const
 wxString Client::GetJmolURL(void) const
 {
     return wxString::Format(wxT("%s%u"), wxT(FMC_URL_JMOL), GetProjectId());
+}
+
+
+/**
+ * Returns the URL of the project page on fahinfo.org
+**/
+wxString Client::GetFahinfoURL(void) const
+{
+    return wxString::Format(wxT("%s%u"), wxT(FMC_URL_FAHINFO), GetProjectId());
 }

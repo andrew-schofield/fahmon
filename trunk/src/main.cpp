@@ -27,6 +27,7 @@
 #include "messagesManager.h"
 #include "benchmarksManager.h"
 #include "preferencesManager.h"
+#include "trayManager.h"
 
 #ifdef _FAHMON_LINUX_
 #include "locale.h"
@@ -35,6 +36,9 @@
 // wxWidgets' way of creating a new application
 IMPLEMENT_APP(FahMonApp)
 
+BEGIN_EVENT_TABLE(FahMonApp, wxApp)
+EVT_END_SESSION( FahMonApp::OnQueryEndSession ) 
+END_EVENT_TABLE()
 
 /**
  * This is the entry point of the application
@@ -93,7 +97,7 @@ int FahMonApp::OnExit(void)
 {
     // This frame is automatically destroyed by wxWidget, so we don't have to do it
     // MainDialog::DestroyInstance();
-
+    TrayManager::DestroyInstance();
     BenchmarksManager::DestroyInstance();
     ClientsManager::DestroyInstance();
     ProjectsManager::DestroyInstance();
@@ -101,6 +105,16 @@ int FahMonApp::OnExit(void)
     MessagesManager::DestroyInstance();
     
     delete mInstanceChecker;
-	
+
     return 0;
+}
+
+void FahMonApp::OnEndSession(wxCloseEvent& event)
+{
+wxTheApp->OnExit();
+}
+
+void FahMonApp::OnQueryEndSession(wxCloseEvent& event)
+{
+wxTheApp->OnExit();
 }

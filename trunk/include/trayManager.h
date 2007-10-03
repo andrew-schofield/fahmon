@@ -13,12 +13,12 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
- 
+
 #ifndef _TRAYMANAGER_H
 #define _TRAYMANAGER_H
 
 #include "wx/taskbar.h"
-
+class wxMenu;
 
 /**
  * This class is used to manage events from/to the system tray
@@ -33,6 +33,11 @@ protected:
     ~TrayManager(void);
 
     void OnClick(wxTaskBarIconEvent& event);
+    void Close(wxCommandEvent&);
+    void Show(wxCommandEvent&);
+    void Hide(wxCommandEvent&);
+    void Benchmarks(wxCommandEvent&);
+    void Preferences(wxCommandEvent&);
 
 
 public:
@@ -48,6 +53,8 @@ public:
 
 
 private:
+
+	virtual wxMenu* CreatePopupMenu();
 	DECLARE_EVENT_TABLE()
 };
 

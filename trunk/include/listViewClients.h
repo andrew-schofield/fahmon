@@ -34,6 +34,9 @@
 #define PREF_LISTVIEWCLIENTS_ETACOLUMNWIDTH         wxT("ListViewClients.ETAColumnWidth")
 #define PREF_LISTVIEWCLIENTS_ETACOLUMNWIDTH_DV      100
 
+#define PREF_LISTVIEWCLIENTS_PPDCOLUMNWIDTH         wxT("ListViewClients.PPDColumnWidth")
+#define PREF_LISTVIEWCLIENTS_PPDCOLUMNWIDTH_DV      50
+
 #define PREF_LISTVIEWCLIENTS_SORTCOLUMN             wxT("ListViewClients.SortColumn")
 #define PREF_LISTVIEWCLIENTS_SORTCOLUMN_DV          LVC_PROGRESS
 
@@ -58,6 +61,7 @@ protected:
     void OnMenuAddClient(wxCommandEvent& event);
     void OnMenuEditClient(wxCommandEvent& event);
     void OnMenuDeleteClient(wxCommandEvent& event);
+    void OnMenuViewFiles(wxCommandEvent& event);
 
 
 public:
@@ -69,6 +73,7 @@ public:
     void UpdateAllClients(void);
     int CompareClients(wxUint32 clientId1, wxUint32 clientId2) const;
     wxUint32 GetSelectedClientId(void) const;
+    wxString GetCellContentsString( long row_number, int column );
 
 
 private:

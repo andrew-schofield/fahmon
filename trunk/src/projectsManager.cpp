@@ -22,6 +22,7 @@
 #include "mainDialog.h"
 #include "pathManager.h"
 #include "wx/textfile.h"
+#include "wx/filename.h"
 #include "httpDownloader.h"
 #include "messagesManager.h"
 #include "dataInputStream.h"
@@ -278,43 +279,99 @@ bool ProjectsManager::UpdateDatabase(bool forced, bool silentMode)
 **/
 bool ProjectsManager::Update_DownloadProjectsFile(wxString& fileName, ProgressManager& progressManager, wxString& errorMsg)
 {
+    bool     useAlternate;
+    bool     useLocalFile;
+    bool     fileexists;
+    bool     copied;
+    wxString projectLocationServer;
+    wxUint32 projectLocationPort;
+    wxString projectLocationResource;
+    wxString projectLocalFile;
+    wxString serverused;
+    wxUint32 portused;
+    wxString resourceused;
+
     HTTPDownloader::DownloadStatus downloadStatus;
 
-    // Download the file
-    downloadStatus = HTTPDownloader::DownloadFile(wxT(FMC_URL_PROJECTS_SERVER), 80, wxT(FMC_URL_PROJECTS_RESOURCE), fileName, progressManager);
+    _PrefsGetBool        (PREF_HTTPDOWNLOADER_USEALTERNATEUPDATE,                   useAlternate);
+    _PrefsGetString      (PREF_HTTPDOWNLOADER_ALTERNATEUPDATELOCATIONSERVER,               projectLocationServer);
+    _PrefsGetUint      (PREF_HTTPDOWNLOADER_ALTERNATEUPDATELOCATIONPORT,               projectLocationPort);
+    _PrefsGetString      (PREF_HTTPDOWNLOADER_ALTERNATEUPDATELOCATIONRESOURCE,               projectLocationResource);
+    _PrefsGetBool        (PREF_HTTPDOWNLOADER_USELOCALFILE,                   useLocalFile);
+    _PrefsGetString      (PREF_HTTPDOWNLOADER_LOCALFILELOCATION,               projectLocalFile);
 
-    // If nothing went wrong, we can stop here
-    if(downloadStatus == HTTPDownloader::STATUS_NO_ERROR)
-        return true;
+    //Initialise the port number
+    portused = 80;
 
-    // Otherwise, we create an explicit error message to specify what went wrong
-    switch(downloadStatus)
+    if(useLocalFile ==false)
     {
-        case HTTPDownloader::STATUS_TEMP_FILE_CREATION_ERROR:
-            errorMsg = wxT("Unable to create a temporary file!");
-            break;
+        if(useAlternate == false)
+        {
+            serverused = wxT(FMC_URL_PROJECTS_SERVER);
+            portused = 80;
+            resourceused = wxT(FMC_URL_PROJECTS_RESOURCE);
+        }
 
-        case HTTPDownloader::STATUS_TEMP_FILE_OPEN_ERROR:
-            errorMsg = wxString::Format(wxT("Unable to open the temporary file <%s>"), fileName.c_str());
-            break;
+        if(useAlternate == true && useLocalFile == false)
+        {
+            serverused = projectLocationServer;
+            portused = projectLocationPort;
+            resourceused = projectLocationResource;
+        }
 
-        case HTTPDownloader::STATUS_CONNECT_ERROR:
-            errorMsg = wxT("Unable to connect to the server!");
-            break;
+        // Download the file
+        downloadStatus = HTTPDownloader::DownloadFile(serverused, portused, resourceused, fileName, progressManager);
 
-        case HTTPDownloader::STATUS_SEND_REQUEST_ERROR:
-            errorMsg = wxT("Unable to send the request to the server!");
-            break;
+        // If nothing went wrong, we can stop here
+        if(downloadStatus == HTTPDownloader::STATUS_NO_ERROR)
+            return true;
 
-        case HTTPDownloader::STATUS_ABORTED:
-            errorMsg = wxT("Download aborted!");
-            break;
+        // Otherwise, we create an explicit error message to specify what went wrong
+        switch(downloadStatus)
+        {
+            case HTTPDownloader::STATUS_TEMP_FILE_CREATION_ERROR:
+                errorMsg = wxT("Unable to create a temporary file!");
+                break;
 
-        // We should never fall here
-        default:
-            wxASSERT(false);
-            errorMsg = wxT("An unknown error happened!");
-            break;
+            case HTTPDownloader::STATUS_TEMP_FILE_OPEN_ERROR:
+                errorMsg = wxString::Format(wxT("Unable to open the temporary file <%s>"), fileName.c_str());
+                break;
+
+            case HTTPDownloader::STATUS_CONNECT_ERROR:
+                errorMsg = wxT("Unable to connect to the server!");
+                break;
+
+            case HTTPDownloader::STATUS_SEND_REQUEST_ERROR:
+                errorMsg = wxT("Unable to send the request to the server!");
+                break;
+
+            case HTTPDownloader::STATUS_ABORTED:
+                errorMsg = wxT("Download aborted!");
+                break;
+
+            // We should never fall here
+            default:
+                wxASSERT(false);
+                errorMsg = wxT("An unknown error happened!");
+                break;
+        }
+    } else {
+        fileexists = wxFileExists(projectLocalFile);
+        if(fileexists == false)
+        {
+            errorMsg = wxT("Local project update file doesn't exist!");
+            return false;
+        } else {
+            fileName = wxFileName::CreateTempFileName(wxT(FMC_APPNAME));
+            copied = wxCopyFile(projectLocalFile, fileName);
+            if(copied == false)
+            {
+                errorMsg = wxT("Unable to copy local project update file to temporary location");
+                return false;
+            } else {
+                return true;
+            }
+        }
     }
 
     return false;
@@ -447,13 +504,14 @@ Project* ProjectsManager::Update_ParseProjectInfo(const wxString& projectInfo) c
         return NULL;
     nbFrames = (FrameId)tmpLong;
 
+    // The erroneous Gromacs 33 '0 frame' issue is no longer present
+    // Thus apply a generic rule for if frames = 0 then frames = 100
+    if (nbFrames == 0)
+         nbFrames = 100;
+
     // Core
     parser.NextToken(3);
     coreId = Core::ShortNameToId(parser.GetCurrentText());
-
-    // Workaround for Gromacs 33 WUs having 0 frames
-    if(coreId == Core::GROMACS33)
-        nbFrames= 100;
 
     return new Project(projectId, preferredDeadlineInDays, finalDeadlineInDays, nbFrames, credit, coreId);
 }

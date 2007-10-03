@@ -19,6 +19,7 @@
 
 #include "client.h"
 #include "wx/valtext.h"
+#include "wx/filedlg.h"
 #include "mainDialog.h"
 #include "httpDownloader.h"
 #include "preferencesManager.h"
@@ -29,9 +30,13 @@
 enum _CONTROL_ID
 {
     // Checkboxes
-    CHK_AUTORELOAD = wxID_HIGHEST,
+    CHK_AUTORELOAD,
     CHK_USEPROXY,
-    CHK_PROXYAUTHENTICATION
+    CHK_PROXYAUTHENTICATION,
+    CHK_USEALTERNATEPROJECTSOURCE,
+    CHK_USELOCALFILE,
+    CHC_FILEMANAGER,
+    BTN_BROWSE = wxID_HIGHEST
 };
 
 
@@ -39,12 +44,17 @@ enum _CONTROL_ID
 BEGIN_EVENT_TABLE(PreferencesDialog, wxDialog)
 
     // --- Buttons
+    EVT_BUTTON(BTN_BROWSE, PreferencesDialog::OnBrowseButton)
     EVT_BUTTON(wxID_OK,    PreferencesDialog::OnOkButton)
 
     // --- Checkboxes
     EVT_CHECKBOX(CHK_USEPROXY,            PreferencesDialog::OnCheckboxes)
     EVT_CHECKBOX(CHK_AUTORELOAD,          PreferencesDialog::OnCheckboxes)
     EVT_CHECKBOX(CHK_PROXYAUTHENTICATION, PreferencesDialog::OnCheckboxes)
+    EVT_CHECKBOX(CHK_USEALTERNATEPROJECTSOURCE, PreferencesDialog::OnCheckboxes)
+    EVT_CHECKBOX(CHK_USELOCALFILE, PreferencesDialog::OnCheckboxes)
+    EVT_CHOICE(CHC_FILEMANAGER, PreferencesDialog::OnChoices)
+
 END_EVENT_TABLE()
 
 
@@ -68,6 +78,8 @@ PreferencesDialog::PreferencesDialog(wxWindow* parent) : wxDialog(parent, wxID_A
     noteBook->AddPage(CreateGeneralTab(noteBook),    wxT("General"));
     noteBook->AddPage(CreateMonitoringTab(noteBook), wxT("Monitoring"));
     noteBook->AddPage(CreateNetworkingTab(noteBook), wxT("Networking"));
+    noteBook->AddPage(CreateAdvancedTab(noteBook), wxT("Advanced"));
+    noteBook->AddPage(CreateSystemTab(noteBook), wxT("System"));
 
     // Buttons 'Ok' and 'Cancel' are right-aligned
     buttonsSizer = new wxBoxSizer(wxHORIZONTAL);
@@ -82,10 +94,10 @@ PreferencesDialog::PreferencesDialog(wxWindow* parent) : wxDialog(parent, wxID_A
     mainSizer->Add(noteBook, 1, wxEXPAND);
     mainSizer->AddSpacer(FMC_GUI_SPACING_HIGH);
     mainSizer->Add(buttonsSizer, 0, wxALIGN_RIGHT);
-    
+
     // The final sizer
     topLevelSizer = new wxBoxSizer(wxVERTICAL);
-    
+
     topLevelSizer->Add(mainSizer, 1, wxEXPAND | wxALL, FMC_GUI_BORDER);
     SetSizer(topLevelSizer);
     topLevelSizer->Fit(this);
@@ -107,7 +119,7 @@ PreferencesDialog* PreferencesDialog::GetInstance(wxWindow* parent)
 {
     if(mInstance == NULL)
         mInstance = new PreferencesDialog(parent);
-    
+
     return mInstance;
 }
 
@@ -132,18 +144,15 @@ inline wxPanel* PreferencesDialog::CreateGeneralTab(wxNotebook* parent)
 {
     wxPanel    *panel;
     wxBoxSizer *sizer;
-    wxBoxSizer *browserSizer;
     wxBoxSizer *topLevelSizer;
 
     panel                              = new wxPanel(parent);
     sizer                              = new wxBoxSizer(wxVERTICAL);
-    browserSizer                       = new wxBoxSizer(wxHORIZONTAL);
     topLevelSizer                      = new wxBoxSizer(wxVERTICAL);
     mGeneralEnableTrayIcon             = new wxCheckBox(panel, wxID_ANY, wxT("Enable system tray icon"));
     mGeneralCollectXYZFiles            = new wxCheckBox(panel, wxID_ANY, wxT("Collect .xyz files"));
     mGeneralAutoUpdateProjectsDatabase = new wxCheckBox(panel, wxID_ANY, wxT("Auto update projects database when needed"));
-    mGeneralBrowser                    = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
-    mGeneralBrowserLabel               = new wxStaticText(panel, wxID_ANY, wxT("Browser:"));
+    mGeneralKeepInaccessibleClientsLast = new wxCheckBox(panel, wxID_ANY, wxT("Always list inaccessible clients last"));
 
     sizer->AddStretchSpacer();
     sizer->Add(mGeneralEnableTrayIcon, 0, wxALIGN_LEFT);
@@ -152,25 +161,12 @@ inline wxPanel* PreferencesDialog::CreateGeneralTab(wxNotebook* parent)
     sizer->AddStretchSpacer();
     sizer->Add(mGeneralAutoUpdateProjectsDatabase, 0, wxALIGN_LEFT);
     sizer->AddStretchSpacer();
-
-#ifdef _FAHMON_LINUX_
-
-    browserSizer->Add(mGeneralBrowserLabel, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_LEFT);
-    browserSizer->Add(mGeneralBrowser, 1, wxALIGN_CENTER_VERTICAL | wxEXPAND);
-
-    sizer->Add(browserSizer, 0, wxALIGN_LEFT | wxEXPAND);
+    sizer->Add(mGeneralKeepInaccessibleClientsLast, 0, wxALIGN_LEFT);
     sizer->AddStretchSpacer();
-
-#else 
-
-    mGeneralBrowser->Hide();
-    mGeneralBrowserLabel->Hide();
-
-#endif
 
     topLevelSizer->Add(sizer, 1, wxEXPAND | wxALL, FMC_GUI_BORDER);
     panel->SetSizer(topLevelSizer);
-    
+
     return panel;
 }
 
@@ -185,7 +181,7 @@ inline wxPanel* PreferencesDialog::CreateMonitoringTab(wxNotebook* parent)
           wxBoxSizer *topLevelSizer;
           wxBoxSizer *sizerETA;
           wxBoxSizer *sizerAutoReload;
-    const wxString    etaFormats[3] = {wxT("A date (dd/mm)"), wxT("A date (mm/dd)"), wxT("Left time")};    // The order *MUST* correspond to the one used for the definition of ETA_DisplayStyle
+    const wxString    etaFormats[3] = {wxT("A date (dd/mm)"), wxT("A date (mm/dd)"), wxT("Time left")};    // The order *MUST* correspond to the one used for the definition of ETA_DisplayStyle
 
     panel                          = new wxPanel(parent);
     sizer                          = new wxBoxSizer(wxVERTICAL);
@@ -195,22 +191,22 @@ inline wxPanel* PreferencesDialog::CreateMonitoringTab(wxNotebook* parent)
     mMonitoringAutoReload          = new wxCheckBox(panel, CHK_AUTORELOAD, wxT("Auto reload every (Mn) "));
     mMonitoringETADisplayStyle     = new wxChoice(panel, wxID_ANY, wxDefaultPosition, wxDefaultSize, 3, etaFormats);
     mMonitoringAutoReloadFrequency = new wxSpinCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 1, 1000, 5);
-    
+
     sizerETA->Add(new wxStaticText(panel, wxID_ANY, wxT("Display ETA as ")), 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL);
     sizerETA->Add(mMonitoringETADisplayStyle, 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL);
 
     sizerAutoReload->Add(mMonitoringAutoReload, 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL);
     sizerAutoReload->Add(mMonitoringAutoReloadFrequency, 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL);
-    
+
     sizer->AddStretchSpacer();
     sizer->Add(sizerAutoReload, 0, wxALIGN_LEFT);
     sizer->AddStretchSpacer();
     sizer->Add(sizerETA, 0, wxALIGN_LEFT);
     sizer->AddStretchSpacer();
-    
+
     topLevelSizer->Add(sizer, 1, wxEXPAND | wxALL, FMC_GUI_BORDER);
     panel->SetSizer(topLevelSizer);
-    
+
     return panel;
 }
 
@@ -231,7 +227,7 @@ inline wxPanel* PreferencesDialog::CreateNetworkingTab(wxNotebook* parent)
     topLevelSizer                     = new wxBoxSizer(wxVERTICAL);
     proxyAddressSizer                 = new wxBoxSizer(wxHORIZONTAL);
     proxyAuthenticationSizer          = new wxBoxSizer(wxHORIZONTAL);
-    
+
     mNetworkingUseProxy               = new wxCheckBox(panel, CHK_USEPROXY, wxT("Use a proxy for HTTP connections"));
     mNetworkingProxyAddress           = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
     mNetworkingProxyPort              = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition, wxDefaultSize, 0, wxTextValidator(wxFILTER_NUMERIC));
@@ -248,7 +244,7 @@ inline wxPanel* PreferencesDialog::CreateNetworkingTab(wxNotebook* parent)
     proxyAddressSizer->AddSpacer(FMC_GUI_SPACING_LOW);
     proxyAddressSizer->Add(mNetworkingLabelPort, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
     proxyAddressSizer->Add(mNetworkingProxyPort, 1, wxALIGN_CENTER_VERTICAL);
-    
+
     proxyAuthenticationSizer->Add(mNetworkingLabelUsername, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
     proxyAuthenticationSizer->Add(mNetworkingProxyUsername, 1, wxALIGN_CENTER_VERTICAL | wxEXPAND);
     proxyAuthenticationSizer->AddSpacer(FMC_GUI_SPACING_LOW);
@@ -267,7 +263,135 @@ inline wxPanel* PreferencesDialog::CreateNetworkingTab(wxNotebook* parent)
 
     topLevelSizer->Add(sizer, 1, wxEXPAND | wxALL, FMC_GUI_BORDER);
     panel->SetSizer(topLevelSizer);
-    
+
+    return panel;
+}
+
+/**
+ * Create the tab containing networking preferences
+**/
+inline wxPanel* PreferencesDialog::CreateAdvancedTab(wxNotebook* parent)
+{
+    wxPanel    *panel;
+    wxBoxSizer *sizer;
+    wxBoxSizer *topLevelSizer;
+    wxBoxSizer *ServerPortSizer;
+    wxBoxSizer *ResourceSizer;
+    wxBoxSizer *LocalFileSizer;
+    wxBoxSizer *LocationSizer;
+
+    panel                             = new wxPanel(parent);
+    sizer                             = new wxBoxSizer(wxVERTICAL);
+    topLevelSizer                     = new wxBoxSizer(wxVERTICAL);
+    ServerPortSizer                 = new wxBoxSizer(wxHORIZONTAL);
+    ResourceSizer                 = new wxBoxSizer(wxHORIZONTAL);
+    LocalFileSizer                 = new wxBoxSizer(wxHORIZONTAL);
+    LocationSizer       = new wxBoxSizer(wxHORIZONTAL);
+
+    mAdvancedUseAlternateProjectSource               = new wxCheckBox(panel, CHK_USEALTERNATEPROJECTSOURCE, wxT("Use the following settings for new project downloads"));
+    mAdvancedAlternateProjectSourceLocationServer           = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
+    mAdvancedLabelLocationServer           = new wxStaticText(panel, wxID_ANY, wxT("Server:"));
+    mAdvancedAlternateProjectSourceLocationPort           = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition, wxDefaultSize, 0, wxTextValidator(wxFILTER_NUMERIC));
+    mAdvancedLabelLocationPort           = new wxStaticText(panel, wxID_ANY, wxT("Port:"));
+    mAdvancedAlternateProjectSourceLocationResource           = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
+    mAdvancedLabelLocationResource           = new wxStaticText(panel, wxID_ANY, wxT("Resource:"));
+    mAdvancedUseLocalFile               = new wxCheckBox(panel, CHK_USELOCALFILE, wxT("Use a local file for project data"));
+    mAdvancedLocalFileLocation           = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
+    mAdvancedLabelLocalFile           = new wxStaticText(panel, wxID_ANY, wxT("Filename:"));
+    mAdvancedLocationChooser        = new wxButton(panel, BTN_BROWSE, wxT("..."), wxDefaultPosition, wxSize(26, 26));
+
+    LocalFileSizer->Add(mAdvancedLabelLocalFile, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
+    LocalFileSizer->Add(mAdvancedLocalFileLocation, 1, wxALIGN_CENTER_VERTICAL);
+    LocalFileSizer->AddSpacer(FMC_GUI_SPACING_LOW);
+    LocalFileSizer->Add(mAdvancedLocationChooser, 0, wxALIGN_CENTER_VERTICAL);
+
+    ServerPortSizer->Add(mAdvancedLabelLocationServer, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
+    ServerPortSizer->Add(mAdvancedAlternateProjectSourceLocationServer, 1, wxALIGN_CENTER_VERTICAL | wxEXPAND);
+    ServerPortSizer->AddSpacer(FMC_GUI_SPACING_LOW);
+    ServerPortSizer->Add(mAdvancedLabelLocationPort, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
+    ServerPortSizer->Add(mAdvancedAlternateProjectSourceLocationPort, 1, wxALIGN_CENTER_VERTICAL);
+    ResourceSizer->Add(mAdvancedLabelLocationResource, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
+    ResourceSizer->Add(mAdvancedAlternateProjectSourceLocationResource, 1, wxALIGN_CENTER_VERTICAL | wxEXPAND);
+
+
+    sizer->AddStretchSpacer();
+    sizer->Add(mAdvancedUseAlternateProjectSource, 0, wxALIGN_LEFT);
+    sizer->AddSpacer(FMC_GUI_SPACING_LOW);
+    sizer->Add(ServerPortSizer, 0, wxALIGN_LEFT | wxEXPAND);
+    sizer->AddStretchSpacer();
+    sizer->Add(ResourceSizer, 0, wxALIGN_LEFT | wxEXPAND);
+    sizer->AddStretchSpacer();
+    sizer->Add(mAdvancedUseLocalFile, 0, wxALIGN_LEFT);
+    sizer->Add(LocalFileSizer, 0, wxALIGN_LEFT | wxEXPAND);
+    sizer->AddStretchSpacer();
+
+    topLevelSizer->Add(sizer, 1, wxEXPAND | wxALL, FMC_GUI_BORDER);
+    panel->SetSizer(topLevelSizer);
+
+    return panel;
+}
+
+/**
+ * Create the tab containing general preferences
+**/
+inline wxPanel* PreferencesDialog::CreateSystemTab(wxNotebook* parent)
+{
+    wxPanel    *panel;
+    wxBoxSizer *sizer;
+    wxBoxSizer *browserSizer;
+    wxBoxSizer *filemanagerSizer;
+    wxBoxSizer *topLevelSizer;
+    wxBoxSizer *otherSizer;
+
+
+    panel                              = new wxPanel(parent);
+    sizer                              = new wxBoxSizer(wxVERTICAL);
+    browserSizer                       = new wxBoxSizer(wxHORIZONTAL);
+    filemanagerSizer                       = new wxBoxSizer(wxHORIZONTAL);
+    otherSizer                       = new wxBoxSizer(wxHORIZONTAL);
+    topLevelSizer                      = new wxBoxSizer(wxVERTICAL);
+    mSystemBrowser                    = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
+    mSystemBrowserLabel               = new wxStaticText(panel, wxID_ANY, wxT("Web Browser:"));
+    mSystemFileManagerLabel               = new wxStaticText(panel, wxID_ANY, wxT("File Manager:"));
+    mSystemOtherFM              = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
+    mSystemOtherFMLabel               = new wxStaticText(panel, wxID_ANY, wxT("File Manager Command:"));
+
+    #ifndef _FAHMON_LINUX_
+    const wxString    fileManagers[2] = {wxT("Windows Explorer"), wxT("Other")};
+    mSystemFileManager     = new wxChoice(panel, CHC_FILEMANAGER, wxDefaultPosition, wxDefaultSize, 2, fileManagers);
+    #else
+    const wxString    fileManagers[4] = {wxT("Konqueror (KDE)"), wxT("Nautilus (Gnome)"), wxT("Thunar (Xfce 4.4)"), wxT("Other")};
+    mSystemFileManager     = new wxChoice(panel, CHC_FILEMANAGER, wxDefaultPosition, wxDefaultSize, 4, fileManagers);
+    #endif
+
+    sizer->AddStretchSpacer();
+
+    #ifdef _FAHMON_LINUX_
+    browserSizer->Add(mSystemBrowserLabel, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_LEFT);
+    browserSizer->Add(mSystemBrowser, 1, wxALIGN_CENTER_VERTICAL | wxEXPAND);
+
+    sizer->Add(browserSizer, 0, wxALIGN_LEFT | wxEXPAND);
+    sizer->AddStretchSpacer();
+    #else
+    mSystemBrowser->Hide();
+    mSystemBrowserLabel->Hide();
+    #endif
+
+    filemanagerSizer->Add(mSystemFileManagerLabel, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_LEFT);
+    filemanagerSizer->Add(mSystemFileManager, 1, wxALIGN_CENTER_VERTICAL | wxEXPAND);
+
+    sizer->Add(filemanagerSizer, 0, wxALIGN_LEFT | wxEXPAND);
+    sizer->AddStretchSpacer();
+
+    otherSizer->Add(mSystemOtherFMLabel, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_LEFT);
+    otherSizer->Add(mSystemOtherFM, 1, wxALIGN_CENTER_VERTICAL | wxEXPAND);
+
+    sizer->Add(otherSizer, 0, wxALIGN_LEFT | wxEXPAND);
+    sizer->AddStretchSpacer();
+
+    topLevelSizer->Add(sizer, 1, wxEXPAND | wxALL, FMC_GUI_BORDER);
+    panel->SetSizer(topLevelSizer);
+
     return panel;
 }
 
@@ -279,7 +403,7 @@ int PreferencesDialog::ShowModal(void)
 {
     LoadPreferences();
     Center();
-    
+
     return wxDialog::ShowModal();
 }
 
@@ -292,23 +416,31 @@ inline void PreferencesDialog::LoadPreferences(void)
     bool     useProxy;
     bool     isCollectingXYZFiles;
     bool     autoUpdateProjects;
+    bool     keepInaccessibleLast;
     bool     useProxyAuthentication;
+    bool     useAlternate;
+    bool     useLocalFile;
     wxUint32 proxyPort;
     wxString proxyAddress;
     wxString proxyUsername;
     wxString proxyPassword;
     wxString browser;
-    
+    wxString projectLocationServer;
+    wxUint32 projectLocationPort;
+    wxString projectLocationResource;
+    wxString projectLocalFile;
+    wxString filemanager;
+
     // -----===== General preferences =====-----
     _PrefsGetBool(PREF_FAHCLIENT_COLLECTXYZFILES,     isCollectingXYZFiles);
     _PrefsGetBool(PREF_MAINDIALOG_AUTOUPDATEPROJECTS, autoUpdateProjects);
     _PrefsGetBool(PREF_MAINDIALOG_ENABLE_TRAY_ICON,   mInitEnableTrayIcon);
-    _PrefsGetString(PREF_TOOLS_BROWSER,               browser);
+    _PrefsGetBool(PREF_LISTCLIENTS_KEEP_DEAD_LAST,   keepInaccessibleLast);
 
     mGeneralCollectXYZFiles->SetValue(isCollectingXYZFiles);
     mGeneralEnableTrayIcon->SetValue(mInitEnableTrayIcon);
     mGeneralAutoUpdateProjectsDatabase->SetValue(autoUpdateProjects);
-    mGeneralBrowser->SetValue(browser);
+    mGeneralKeepInaccessibleClientsLast->SetValue(keepInaccessibleLast);
 
     // -----===== Monitoring preferences =====-----
     _PrefsGetBool(PREF_MAINDIALOG_AUTORELOAD,          mInitAutoReload);
@@ -363,8 +495,107 @@ inline void PreferencesDialog::LoadPreferences(void)
         mNetworkingProxyUsername->SetValue(wxT(""));
         mNetworkingProxyPassword->SetValue(wxT(""));
     }
-}
 
+    // -----===== Advanced preferences =====-----
+    _PrefsGetBool        (PREF_HTTPDOWNLOADER_USEALTERNATEUPDATE,                   useAlternate);
+    _PrefsGetString      (PREF_HTTPDOWNLOADER_ALTERNATEUPDATELOCATIONSERVER,               projectLocationServer);
+    _PrefsGetUint      (PREF_HTTPDOWNLOADER_ALTERNATEUPDATELOCATIONPORT,               projectLocationPort);
+    _PrefsGetString      (PREF_HTTPDOWNLOADER_ALTERNATEUPDATELOCATIONRESOURCE,               projectLocationResource);
+    _PrefsGetBool        (PREF_HTTPDOWNLOADER_USELOCALFILE,                   useLocalFile);
+    _PrefsGetString      (PREF_HTTPDOWNLOADER_LOCALFILELOCATION,               projectLocalFile);
+
+    mAdvancedUseAlternateProjectSource->SetValue(useAlternate);
+    mAdvancedUseLocalFile->SetValue(useLocalFile);
+
+    if(useAlternate == false)
+    {
+        mAdvancedAlternateProjectSourceLocationServer->SetValue(wxT("fah-web.stanford.edu"));
+        mAdvancedAlternateProjectSourceLocationPort->SetValue(wxT("80"));
+        mAdvancedAlternateProjectSourceLocationResource->SetValue(wxT("psummary.html"));
+        mAdvancedLocalFileLocation->SetValue(wxT(""));
+
+        mAdvancedAlternateProjectSourceLocationServer->Enable(false);
+        mAdvancedLabelLocationServer->Enable(false);
+        mAdvancedAlternateProjectSourceLocationPort->Enable(false);
+        mAdvancedLabelLocationPort->Enable(false);
+        mAdvancedAlternateProjectSourceLocationResource->Enable(false);
+        mAdvancedLabelLocationResource->Enable(false);
+        mAdvancedUseLocalFile->Enable(false);
+        mAdvancedLocalFileLocation->Enable(false);
+        mAdvancedLabelLocalFile->Enable(false);
+        mAdvancedLocationChooser->Enable(false);
+    }
+
+    if(useAlternate == true && useLocalFile == false)
+    {
+        mAdvancedAlternateProjectSourceLocationServer->SetValue(projectLocationServer);
+        mAdvancedAlternateProjectSourceLocationPort->SetValue(wxString::Format(wxT("%u"), projectLocationPort));
+        mAdvancedAlternateProjectSourceLocationResource->SetValue(projectLocationResource);
+
+        mAdvancedAlternateProjectSourceLocationServer->Enable(true);
+        mAdvancedLabelLocationServer->Enable(true);
+        mAdvancedAlternateProjectSourceLocationPort->Enable(true);
+        mAdvancedLabelLocationPort->Enable(true);
+        mAdvancedAlternateProjectSourceLocationResource->Enable(true);
+        mAdvancedLabelLocationResource->Enable(true);
+        mAdvancedUseLocalFile->Enable(true);
+        mAdvancedLocalFileLocation->Enable(false);
+        mAdvancedLabelLocalFile->Enable(false);
+        mAdvancedLocationChooser->Enable(false);
+    }
+
+    if(useAlternate == true && useLocalFile == true)
+    {
+        mAdvancedLocalFileLocation->SetValue(projectLocalFile);
+
+        mAdvancedAlternateProjectSourceLocationServer->Enable(false);
+        mAdvancedLabelLocationServer->Enable(false);
+        mAdvancedAlternateProjectSourceLocationPort->Enable(false);
+        mAdvancedLabelLocationPort->Enable(false);
+        mAdvancedAlternateProjectSourceLocationResource->Enable(false);
+        mAdvancedLabelLocationResource->Enable(false);
+        mAdvancedUseLocalFile->Enable(true);
+        mAdvancedLocalFileLocation->Enable(true);
+        mAdvancedLabelLocalFile->Enable(true);
+        mAdvancedLocationChooser->Enable(true);
+    }
+
+    // -----===== System preferences =====-----
+    _PrefsGetString(PREF_TOOLS_BROWSER,               browser);
+    _PrefsGetString(PREF_TOOLS_FILEMANAGER,               filemanager);
+    mSystemBrowser->SetValue(browser);
+    mSystemOtherFM->SetValue(filemanager);
+
+    #ifndef _FAHMON_LINUX_
+    if(filemanager == wxT("explorer.exe"))
+    {
+        mSystemFileManager->Select(0);
+    }
+    else //otherfilemanager
+    {
+        mSystemFileManager->Select(1);
+    }
+    #else
+    if(filemanager == wxT("konqueror --profile=filemanagement"))
+    {
+        mSystemFileManager->Select(0);
+    }
+    else if(filemanager == wxT("nautilus"))
+    {
+        mSystemFileManager->Select(1);
+    }
+    else if(filemanager == wxT("thunar"))
+    {
+        mSystemFileManager->Select(2);
+    }
+    else // other filemanager
+    {
+        mSystemFileManager->Select(3);
+    }
+    #endif
+
+
+}
 
 /**
  * Save the value of each control using the preferences
@@ -372,14 +603,15 @@ inline void PreferencesDialog::LoadPreferences(void)
 inline void PreferencesDialog::SavePreferences(void)
 {
     wxUint32 proxyPort;
-    
+    wxUint32 alternatePort;
+
     // -----===== General preferences =====-----
     _PrefsSetBool(PREF_FAHCLIENT_COLLECTXYZFILES,     mGeneralCollectXYZFiles->GetValue());
     _PrefsSetBool(PREF_MAINDIALOG_ENABLE_TRAY_ICON,   mGeneralEnableTrayIcon->GetValue());
     _PrefsSetBool(PREF_MAINDIALOG_AUTOUPDATEPROJECTS, mGeneralAutoUpdateProjectsDatabase->GetValue());
-    _PrefsSetString(PREF_TOOLS_BROWSER,               mGeneralBrowser->GetValue());
+    _PrefsSetBool(PREF_LISTCLIENTS_KEEP_DEAD_LAST, mGeneralKeepInaccessibleClientsLast->GetValue());
 
-    
+
     // -----===== Monitoring preferences =====-----
     _PrefsSetBool(PREF_MAINDIALOG_AUTORELOAD,          mMonitoringAutoReload->GetValue());
     _PrefsSetUint(PREF_MAINDIALOG_AUTORELOADFREQUENCY, mMonitoringAutoReloadFrequency->GetValue());
@@ -387,24 +619,40 @@ inline void PreferencesDialog::SavePreferences(void)
 
 
     // -----===== Networking preferences =====-----
-    mNetworkingProxyPort->GetValue().ToLong((long*)&proxyPort);
+     proxyPort = wxAtoi(mNetworkingProxyPort->GetValue());
 
     _PrefsSetBool  (PREF_HTTPDOWNLOADER_USEPROXY,     mNetworkingUseProxy->GetValue());
     _PrefsSetString(PREF_HTTPDOWNLOADER_PROXYADDRESS, mNetworkingProxyAddress->GetValue());
     _PrefsSetUint  (PREF_HTTPDOWNLOADER_PROXYPORT,    proxyPort);
-    
+
     _PrefsSetBool        (PREF_HTTPDOWNLOADER_USE_PROXY_AUTHENTICATION,   mNetworkingUseProxyAuthentication->GetValue());
     _PrefsSetString      (PREF_HTTPDOWNLOADER_PROXY_USERNAME,             mNetworkingProxyUsername->GetValue());
     _PrefsSetHiddenString(PREF_HTTPDOWNLOADER_PROXY_PASSWORD,             mNetworkingProxyPassword->GetValue());
 
 
+    // -----===== Advanced preferences =====-----
+     alternatePort = wxAtoi(mAdvancedAlternateProjectSourceLocationPort->GetValue());
+
+    _PrefsSetBool  (PREF_HTTPDOWNLOADER_USEALTERNATEUPDATE,     mAdvancedUseAlternateProjectSource->GetValue());
+    _PrefsSetString(PREF_HTTPDOWNLOADER_ALTERNATEUPDATELOCATIONSERVER, mAdvancedAlternateProjectSourceLocationServer->GetValue());
+    _PrefsSetUint(PREF_HTTPDOWNLOADER_ALTERNATEUPDATELOCATIONPORT, alternatePort);
+    _PrefsSetString(PREF_HTTPDOWNLOADER_ALTERNATEUPDATELOCATIONRESOURCE, mAdvancedAlternateProjectSourceLocationResource->GetValue());
+    _PrefsSetBool  (PREF_HTTPDOWNLOADER_USELOCALFILE,     mAdvancedUseLocalFile->GetValue());
+    _PrefsSetString(PREF_HTTPDOWNLOADER_LOCALFILELOCATION, mAdvancedLocalFileLocation->GetValue());
+
+
+    // -----===== System preferences =====-----
+    _PrefsSetString(PREF_TOOLS_BROWSER,               mSystemBrowser->GetValue());
+    _PrefsSetString(PREF_TOOLS_FILEMANAGER,               mSystemOtherFM->GetValue());
+
+
     // -----===== Alert components when important prefs have changed =====-----
     if(mGeneralEnableTrayIcon->GetValue() != mInitEnableTrayIcon)
         MainDialog::GetInstance()->OnTrayIconPrefChanged();
-    
+
     if(mMonitoringAutoReload->GetValue() != mInitAutoReload || (wxUint32)mMonitoringAutoReloadFrequency->GetValue() != mInitAutoReloadFrequency)
         MainDialog::GetInstance()->OnAutoReloadPrefChanged();
-    
+
     if((wxUint32)mMonitoringETADisplayStyle->GetSelection() != mInitETADisplayStyle)
         MainDialog::GetInstance()->OnETAStylePrefChanged();
 }
@@ -420,6 +668,24 @@ void PreferencesDialog::OnOkButton(wxCommandEvent& event)
 {
     SavePreferences();
     event.Skip();
+}
+
+
+/**
+ * Show file chooser dialog box
+**/
+void PreferencesDialog::OnBrowseButton(wxCommandEvent& event)
+{
+    wxString selectedFile;
+
+    wxFileDialog *OpenDialog = new wxFileDialog(this, wxT("Choose a local project data file"), wxT(""), mAdvancedLocalFileLocation->GetValue(),wxT("HTML Files (*.html)|*.html"), wxOPEN, wxDefaultPosition);
+     // Creates a "open file" dialog with 4 file types
+     if (OpenDialog->ShowModal() == wxID_OK) // if the user click "Open" instead of "cancel"
+     {
+       selectedFile = OpenDialog->GetPath();
+       // Sets our current document to the file the user selected
+       mAdvancedLocalFileLocation->SetValue(selectedFile); //Opens that file
+     }
 }
 
 
@@ -467,9 +733,107 @@ void PreferencesDialog::OnCheckboxes(wxCommandEvent& event)
             mNetworkingLabelPassword->Enable(mNetworkingUseProxyAuthentication->GetValue());
             break;
 
+        // ---
+        case CHK_USEALTERNATEPROJECTSOURCE:
+           mAdvancedAlternateProjectSourceLocationServer->Enable(mAdvancedUseAlternateProjectSource->GetValue());
+           mAdvancedLabelLocationServer->Enable(mAdvancedUseAlternateProjectSource->GetValue());
+           mAdvancedAlternateProjectSourceLocationPort->Enable(mAdvancedUseAlternateProjectSource->GetValue());
+           mAdvancedLabelLocationPort->Enable(mAdvancedUseAlternateProjectSource->GetValue());
+           mAdvancedAlternateProjectSourceLocationResource->Enable(mAdvancedUseAlternateProjectSource->GetValue());
+           mAdvancedLabelLocationResource->Enable(mAdvancedUseAlternateProjectSource->GetValue());
+           mAdvancedUseLocalFile->Enable(mAdvancedUseAlternateProjectSource->GetValue());
+           mAdvancedUseLocalFile->SetValue(false);
+           mAdvancedLocalFileLocation->Enable(false);
+           mAdvancedLabelLocalFile->Enable(false);
+           mAdvancedLocationChooser->Enable(false);
+           break;
+
+        // ---
+        case CHK_USELOCALFILE:
+           mAdvancedLocalFileLocation->Enable(mAdvancedUseLocalFile->GetValue());
+           mAdvancedLabelLocalFile->Enable(mAdvancedUseLocalFile->GetValue());
+           mAdvancedLocationChooser->Enable(mAdvancedUseLocalFile->GetValue());
+
+           if(mAdvancedUseLocalFile->GetValue() == true)
+           {
+               mAdvancedAlternateProjectSourceLocationServer->Enable(false);
+               mAdvancedLabelLocationServer->Enable(false);
+               mAdvancedAlternateProjectSourceLocationPort->Enable(false);
+               mAdvancedLabelLocationPort->Enable(false);
+               mAdvancedAlternateProjectSourceLocationResource->Enable(false);
+               mAdvancedLabelLocationResource->Enable(false);
+           }
+           if(mAdvancedUseLocalFile->GetValue() == false)
+           {
+               mAdvancedAlternateProjectSourceLocationServer->Enable(true);
+               mAdvancedLabelLocationServer->Enable(true);
+               mAdvancedAlternateProjectSourceLocationPort->Enable(true);
+               mAdvancedLabelLocationPort->Enable(true);
+               mAdvancedAlternateProjectSourceLocationResource->Enable(true);
+               mAdvancedLabelLocationResource->Enable(true);
+           }
+
         // We should never fall here
         default:
             wxASSERT(false);
             break;
+    }
+}
+
+
+/**
+ * Alter fields when choicebox values are changed
+**/
+void PreferencesDialog::OnChoices(wxCommandEvent& event)
+{
+    switch(event.GetId())
+    {
+     // ---
+        case CHC_FILEMANAGER:
+            #ifndef _FAHMON_LINUX_
+            switch(mSystemFileManager->GetSelection())
+            {
+            // ---
+                case 0: //Windows Explorer
+                    mSystemOtherFM->SetValue(wxT("explorer.exe"));
+                    break;
+
+                case 1: //Other
+                    mSystemOtherFM->SetValue(wxT(""));
+                    break;
+
+                default:
+                    break;
+            }
+            #else
+            switch(mSystemFileManager->GetSelection())
+            {
+            // ---
+                case 0: //Konqueror
+                    mSystemOtherFM->SetValue(wxT("konqueror --profile=filemanagement"));
+                    break;
+
+                case 1: //Nautilus
+                    mSystemOtherFM->SetValue(wxT("nautilus"));
+                    break;
+
+                case 2: //Thunar
+                    mSystemOtherFM->SetValue(wxT("thunar"));
+                    break;
+
+                case 3: //Other
+                    mSystemOtherFM->SetValue(wxT(""));
+                    break;
+
+                default:
+                    break;
+            }
+
+            #endif
+            break;
+
+       default:
+           wxASSERT(false);
+           break;
     }
 }

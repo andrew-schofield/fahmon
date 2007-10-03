@@ -34,6 +34,7 @@
 #include "benchmarksDialog.h"
 #include "preferencesDialog.h"
 #include "preferencesManager.h"
+#include "listViewClients.h"
 
 
 // Identifiers for the controls
@@ -53,9 +54,18 @@ enum _CONTROL_ID
     MID_WWWFCORG,
     MID_WWWPROJECTS,
     MID_WWWSERVERS,
-    
+    MID_WWWFAHINFO,
+
     // --- ListView
     LST_CLIENTS
+};
+
+enum _LISTVIEW_COLUMN
+{
+    LVC_PROGRESS,
+    LVC_NAME,
+    LVC_ETA,
+    LVC_PPD
 };
 
 
@@ -87,6 +97,7 @@ BEGIN_EVENT_TABLE(MainDialog, wxFrame)
     EVT_MENU    (MID_BENCHMARKS,            MainDialog::OnMenuBenchmarks)
     EVT_MENU    (MID_PREFERENCES,           MainDialog::OnMenuPreferences)
     EVT_MENU    (MID_WWWJMOL,               MainDialog::OnMenuWeb)
+    EVT_MENU    (MID_WWWFAHINFO,            MainDialog::OnMenuWeb)
     EVT_MENU    (MID_WWWMYSTATS,            MainDialog::OnMenuWeb)
     EVT_MENU    (MID_WWWFOLDING,            MainDialog::OnMenuWeb)
     EVT_MENU    (MID_WWWFCORG,              MainDialog::OnMenuWeb)
@@ -101,7 +112,7 @@ BEGIN_EVENT_TABLE(MainDialog, wxFrame)
 
     // --- List
     EVT_LIST_ITEM_SELECTED  (LST_CLIENTS, MainDialog::OnListSelectionChanged)
-    
+
     // --- Timers
     EVT_TIMER   (wxID_ANY,  MainDialog::OnAutoReloadTimer)
 
@@ -141,7 +152,7 @@ MainDialog::MainDialog(void) : wxFrame(NULL, wxID_ANY, wxT(FMC_PRODUCT))
     // The timer used for auto-reloading
     mAutoReloadTimer.SetOwner(this);
     SetAutoReloadTimer();
-    
+
     // The tray icon
     _PrefsGetBool(PREF_MAINDIALOG_ENABLE_TRAY_ICON, trayIconEnabled);
     if(trayIconEnabled == true)
@@ -163,7 +174,7 @@ MainDialog::~MainDialog(void)
 void MainDialog::CreateInstance(void)
 {
     wxASSERT(mInstance == NULL);
-	
+
     mInstance = new MainDialog();
 }
 
@@ -174,7 +185,7 @@ void MainDialog::CreateInstance(void)
 void MainDialog::DestroyInstance(void)
 {
     wxASSERT(mInstance != NULL);
-	
+
     delete mInstance;
     mInstance = NULL;
 }
@@ -195,7 +206,7 @@ bool MainDialog::HasBeenInstanciated(void)
 MainDialog* MainDialog::GetInstance(void)
 {
     wxASSERT(mInstance != NULL);
-	
+
     return mInstance;
 }
 
@@ -339,7 +350,7 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
     mTeamNumber->Enable();
     mTeamNumber->SetLabel(wxString::Format(wxT("(%u)"), client->GetTeamNumber()));
     mTeamNumber->SetURL(client->GetTeamStatsURL());
-    
+
     if(client->GetDownloadDate().IsValid())
         mDownloaded->SetLabel(client->GetDownloadDate().Format(wxT(FMC_DATE_MAIN_FORMAT)));
     else
@@ -360,14 +371,24 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
     project = ProjectsManager::GetInstance()->GetProject(client->GetProjectId());
 
     // This project can be unknown, if the database is not up to date
-    if(project == NULL)
+    if(project == NULL) // this may need to be INVALID_PROJECT
     {
+
+        // Fallback to reset all info in case psummary doesn't contain the data we need
+        // Otherwise bad things happen like the data remaining from the last client viewed
+
+        mProjectId->SetLabel(wxT("N/A"));
+        mCoreName->SetLabel(wxT("N/A"));
+        mCredit->SetLabel(wxT("N/A"));
+        mPreferredDeadline->SetLabel(wxT("N/A"));
+        mFinalDeadline->SetLabel(wxT("N/A"));
+
         // Update the database, if the user wants to
         // This update is not forced, it will occur only if the elapsed time since the last one is high enough
         // This way, we ensure that we won't perform many multiple requests for the file, while it does not
         // contain the information we want
         _PrefsGetBool(PREF_MAINDIALOG_AUTOUPDATEPROJECTS, autoUpdateProjects);
-        
+
         if(autoUpdateProjects)
         {
             if(ProjectsManager::GetInstance()->UpdateDatabase(false, false))
@@ -388,7 +409,7 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
     // We do have project information
     mCoreName->SetLabel(Core::IdToLongName(project->GetCoreId()));
     mCredit->SetLabel(wxString::Format(wxT("%u points"), project->GetCredit()));
-    
+
     // Preferred deadline: if it is equal to 0 day, there is no preferred deadline
     if(client->GetDownloadDate().IsValid() && project->GetPreferredDeadlineInDays() != 0)
     {
@@ -408,6 +429,10 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
     }
     else
         mFinalDeadline->SetLabel(wxT("N/A"));
+
+    // Get the total PPD to display next to progress bar
+    mWUTotalPPD->SetLabel(wxString::Format(wxT(" :: Total PPD: %.2f "), MainDialog::GetTotalPPD()));
+
 }
 
 
@@ -452,18 +477,19 @@ inline void MainDialog::CreateMenuBar(void)
     menu = new wxMenu();
     menu->Append(MID_WWWMYSTATS, wxT("&My Stats\tF2"), wxT("View the personal statistics for the selected client"));
     menu->Append(MID_WWWJMOL, wxT("&Jmol\tF3"), wxT("View the current project on the Jmol website"));
+    menu->Append(MID_WWWFAHINFO, wxT("&fahinfo\tF4"), wxT("View the current project on fahinfo.org"));
     menu->AppendSeparator();
     menu->Append(MID_WWWFOLDING, wxT("F@H &Website"), wxT("Open to the official Stanford website"));
     menu->Append(MID_WWWFCORG, wxT("Folding-&Community"), wxT("Open the Folding@Home support forum"));
     menu->Append(MID_WWWPROJECTS, wxT("&Projects Summary"), wxT("Open the list of the current projects"));
     menu->Append(MID_WWWSERVERS, wxT("&Servers Status"), wxT("Open the list of the servers with their status"));
     menuBar->Append(menu, wxT("&Web"));
-	
+
     // The 'Help' menu
     menu = new wxMenu();
     menu->Append(wxID_HELP_CONTENTS, wxT("&Help Contents\tF1"), wxT("See help contents"));
     menu->Append(wxID_ABOUT, wxT("&About"), wxT("About "FMC_APPNAME));
-    menuBar->Append(menu, wxT("&Help"));	
+    menuBar->Append(menu, wxT("&Help"));
 }
 
 
@@ -485,8 +511,8 @@ inline void MainDialog::CreateLayout(void)
     // We need to use a panel as a top level component in our frame
     // Without that, the frame looks ugly under Windows (dark grey background)
     topLevelPanel = new wxPanel(this, wxID_ANY);
-    
-    
+
+
     // A splitter is used to separate the ListView and the WU information, so that the user can choose the size
     mSplitterWindow = new wxSplitterWindow(topLevelPanel, wxID_ANY);
 
@@ -530,9 +556,9 @@ inline void MainDialog::CreateLayout(void)
     infoSizer->Add(new StaticBoldedText(topRightPanel, wxID_ANY, wxT("Username:")), 0, wxALIGN_RIGHT);
     infoSizer->Add(userinfoSizer, 0, wxALIGN_LEFT);
     infoSizer->Add(new StaticBoldedText(topRightPanel, wxID_ANY, wxT("Downloaded:")), 0, wxALIGN_RIGHT);
-    infoSizer->Add(mDownloaded, 0, wxALIGN_LEFT);    
+    infoSizer->Add(mDownloaded, 0, wxALIGN_LEFT);
     infoSizer->Add(new StaticBoldedText(topRightPanel, wxID_ANY, wxT("Preferred Deadline:")), 0, wxALIGN_RIGHT);
-    infoSizer->Add(mPreferredDeadline, 0, wxALIGN_LEFT);    
+    infoSizer->Add(mPreferredDeadline, 0, wxALIGN_LEFT);
     infoSizer->Add(new StaticBoldedText(topRightPanel, wxID_ANY, wxT("Final Deadline:")), 0, wxALIGN_RIGHT);
     infoSizer->Add(mFinalDeadline, 0, wxALIGN_LEFT);
 
@@ -556,19 +582,21 @@ inline void MainDialog::CreateLayout(void)
 
 
     // --- The middle part
-    // It contains the progress bar (gauge) and a simple label 
+    // It contains the progress bar (gauge) and a simple label
     // The label keeps its minimum size, while the gauge fill the available left space
     midSizer         = new wxBoxSizer(wxHORIZONTAL);
     mWUProgressGauge = new wxGauge(topLevelPanel, wxID_ANY, 100, wxDefaultPosition, wxSize(0, 18));
     mWUProgressText  = new wxStaticText(topLevelPanel, wxID_ANY, wxT(""));
-    
+    mWUTotalPPD = new wxStaticText(topLevelPanel, wxID_ANY, wxT(" :: Total PPD:"));
+
     midSizer->Add(mWUProgressGauge, 1);
     midSizer->Add(mWUProgressText, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
-    
-    
+    midSizer->Add(mWUTotalPPD, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
+
+
     // --- The bottom part : Log file
     mLogFile = new wxTextCtrl(topLevelPanel, wxID_ANY, wxT("Log file."), wxDefaultPosition, wxSize(100, FMC_GUI_LOG_HEIGHT), wxTE_MULTILINE | wxTE_READONLY | wxHSCROLL);
-    
+
 
     // -- Finally construct the frame itself
     // Both the top part and the log area will expand vertically, a little more quickly for the log (4/3 ratio)
@@ -581,7 +609,7 @@ inline void MainDialog::CreateLayout(void)
 
     // That's done, we can finally add the top level sizer to the panel
     mTopLevelSizer = new wxBoxSizer(wxVERTICAL);
-    
+
     mTopLevelSizer->Add(mainSizer, 1, wxEXPAND | wxALL, FMC_GUI_BORDER);
     topLevelPanel->SetSizer(mTopLevelSizer);
 }
@@ -618,27 +646,27 @@ inline void MainDialog::RestoreFrameState(void)
         mTopLevelSizer->Show(mLogFile, false);
     }
     mTopLevelSizer->Layout();
-    
-    
+
+
     // --- Size and position of the frame
     // Retrieve saved values
     _PrefsGetInt(PREF_MAINDIALOG_FRAMEWIDTH,  frameWidth);
     _PrefsGetInt(PREF_MAINDIALOG_FRAMEHEIGHT, frameHeight);
-    
+
     _PrefsGetInt(PREF_MAINDIALOG_FRAME_POS_X, framePosX);
     _PrefsGetInt(PREF_MAINDIALOG_FRAME_POS_Y, framePosY);
 
     // Check if these values are correct for the current resolution, which can be different from the last time
     // If some values are not correct, they are changed to default ones
     wxDisplaySize(&displayWidth, &displayHeight);
-    
+
     if(frameWidth >= displayWidth || frameHeight >= displayHeight)
     {
         // -1 indicates defaults values
         frameWidth  = -1;
         frameHeight = -1;
     }
-    
+
     if(framePosX >= displayWidth || framePosY >= displayHeight)
     {
         // -1 indicates defaults values
@@ -650,7 +678,7 @@ inline void MainDialog::RestoreFrameState(void)
     SetSize(frameWidth, frameHeight);
     Move(framePosX, framePosY);
 
-    
+
     // --- Splitter's state
     _PrefsGetUint(PREF_MAINDIALOG_SASHPOSITION, sashPosition);
 
@@ -677,7 +705,7 @@ void MainDialog::OnMenuQuit(wxCommandEvent& event)
 void MainDialog::OnMenuReload(wxCommandEvent& event)
 {
     ClientId selectedClientId = mClientsList->GetSelectedClientId();
-    
+
     if(selectedClientId != INVALID_CLIENT_ID)
         ClientsManager::GetInstance()->ReloadThreaded(selectedClientId);
 }
@@ -698,10 +726,10 @@ void MainDialog::OnMenuReloadAll(wxCommandEvent& event)
 void MainDialog::OnMenuUpdateProjects(wxCommandEvent& event)
 {
     bool updateResult;
-    
+
     // The user asked to update the database, so we force this update and we are not doing it silently
     updateResult = ProjectsManager::GetInstance()->UpdateDatabase(true, false);
-    
+
     // If no error occurred while updating the database, we can then update the displayed information about clients
     if(updateResult == true)
         ClientsManager::GetInstance()->ReloadThreaded(CM_LOADALL);
@@ -796,6 +824,7 @@ void MainDialog::OnMenuWeb(wxCommandEvent& event)
         //--
         case MID_WWWJMOL:
         case MID_WWWMYSTATS:
+        case MID_WWWFAHINFO:
             // For these two menus, a client must be selected
             selectedClientId = mClientsList->GetSelectedClientId();
             if(selectedClientId != INVALID_CLIENT_ID)
@@ -803,27 +832,30 @@ void MainDialog::OnMenuWeb(wxCommandEvent& event)
                 if(event.GetId() == MID_WWWJMOL)
                     Tools::OpenURLInBrowser(ClientsManager::GetInstance()->Get(selectedClientId)->GetJmolURL());
                 else
+                if(event.GetId() == MID_WWWFAHINFO)
+                    Tools::OpenURLInBrowser(ClientsManager::GetInstance()->Get(selectedClientId)->GetFahinfoURL());
+                else
                     Tools::OpenURLInBrowser(ClientsManager::GetInstance()->Get(selectedClientId)->GetUserStatsURL());
             }
             else
                 Tools::ErrorMsgBox(wxT("You must first select a client!"));
             break;
-		
+
         //--
         case MID_WWWFOLDING:
             Tools::OpenURLInBrowser(wxT(FMC_URL_FOLDING));
             break;
-		
+
         //--
         case MID_WWWFCORG:
             Tools::OpenURLInBrowser(wxT(FMC_URL_FCORG));
             break;
-		
+
         //--
         case MID_WWWPROJECTS:
             Tools::OpenURLInBrowser(wxT(FMC_URL_PROJECTS));
             break;
-		
+
         //--
         case MID_WWWSERVERS:
             Tools::OpenURLInBrowser(wxT(FMC_URL_SERVERS));
@@ -833,7 +865,7 @@ void MainDialog::OnMenuWeb(wxCommandEvent& event)
         case wxID_HELP_CONTENTS:
             Tools::OpenURLInBrowser(wxT(FMC_URL_HELP));
             break;
-		
+
         //--
         default:
             // We should never fall here
@@ -863,12 +895,12 @@ void MainDialog::OnClose(wxCloseEvent& event)
         // Save the size of the frame
         _PrefsSetInt(PREF_MAINDIALOG_FRAMEWIDTH,  GetSize().GetWidth());
         _PrefsSetInt(PREF_MAINDIALOG_FRAMEHEIGHT, GetSize().GetHeight());
-        
+
         // Save the position of the frame
         _PrefsSetInt(PREF_MAINDIALOG_FRAME_POS_X, GetPosition().x);
         _PrefsSetInt(PREF_MAINDIALOG_FRAME_POS_Y, GetPosition().y);
     }
-    
+
     // Save the position of the sash
     _PrefsSetUint(PREF_MAINDIALOG_SASHPOSITION, mSplitterWindow->GetSashPosition());
 
@@ -919,7 +951,7 @@ void MainDialog::OnListSelectionChanged(wxListEvent& event)
 void MainDialog::OnClientReloaded(wxCommandEvent& event)
 {
     ClientId clientId = event.GetInt();
-    
+
     // The ListView must be updated, regardless of the current selection
     mClientsList->UpdateClient(clientId);
 
@@ -940,7 +972,7 @@ void MainDialog::OnNewClientAdded(wxCommandEvent& event)
 
     // Reset the list to have the correct number of clients
     mClientsList->Reset(ClientsManager::GetInstance()->GetCount());
-    
+
     // Clear displayed information, as the list has been reseted, nothing is selected
     ShowClientInformation(INVALID_CLIENT_ID);
 
@@ -965,7 +997,7 @@ void MainDialog::OnClientDeleted(wxCommandEvent& event)
 
     // Reset the list to have the correct number of clients
     mClientsList->Reset(ClientsManager::GetInstance()->GetCount());
-    
+
     // Clear displayed information, as the list has been reseted, nothing is selected
     ShowClientInformation(INVALID_CLIENT_ID);
 
@@ -1046,4 +1078,35 @@ void MainDialog::OnTrayIconPrefChanged(void)
         TrayManager::GetInstance()->InstallIcon();
     else
         TrayManager::GetInstance()->UninstallIcon();
+}
+
+
+/**
+ * Calculate total PPD from all active/inactive clients
+ **/
+double MainDialog::GetTotalPPD(void)
+{
+    wxString  test;
+    double  tmpdouble;
+    double  TotalPPD;
+    wxInt32	i;
+
+    TotalPPD = 0;
+
+    for(i=0; i<mClientsList->GetItemCount(); ++i) {
+        test = mClientsList->GetCellContentsString(i,4);
+        test.ToDouble(&tmpdouble);
+        TotalPPD = TotalPPD + tmpdouble;
+    }
+
+    return TotalPPD;
+
+}
+
+/**
+ * Get the number of clients monitored
+**/
+wxInt32 MainDialog::GetClientCount(void)
+{
+    return mClientsList->GetItemCount();
 }

@@ -63,6 +63,16 @@
 #define PREF_MAINDIALOG_ENABLE_TRAY_ICON    wxT("MainDialog.EnableTrayIcon")
 #define PREF_MAINDIALOG_ENABLE_TRAY_ICON_DV false
 
+#define PREF_LISTCLIENTS_KEEP_DEAD_LAST  wxT("MainDialog.KeepDeadClientsLast")
+#define PREF_LISTCLIENTS_KEEP_DEAD_LAST_DV true
+
+#define PREF_TOOLS_FILEMANAGER   wxT("MainDialog.FileManager")
+
+#ifndef _FAHMON_LINUX_
+#define PREF_TOOLS_FILEMANAGER_DV wxT("explorer.exe");
+#else
+#define PREF_TOOLS_FILEMANAGER_DV wxT("konqueror --profile=filemanagement");
+#endif
 
 // Custom events
 DECLARE_EVENT_TYPE(EVT_CLIENTRELOADED, -1)              // Sent when a client has been reloaded
@@ -88,6 +98,7 @@ protected:
     wxBoxSizer       *mTopLevelSizer;
     wxTextCtrl       *mLogFile;
     wxStaticText     *mWUProgressText;
+    wxStaticText     *mWUTotalPPD;
     wxStaticText     *mCoreName;
     wxStaticText     *mProjectId;
     wxStaticText     *mCredit;
@@ -142,6 +153,8 @@ public:
     static MainDialog* GetInstance(void);
 
     bool Show(bool show = true);
+    double GetTotalPPD(void);
+    wxInt32 GetClientCount(void);
 
     // Methods used when some prefs have changed
     void OnAutoReloadPrefChanged(void);
