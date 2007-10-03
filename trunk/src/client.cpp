@@ -592,6 +592,6 @@ void Client::FindCurrentState(WorkUnitFrame* lastFrame)
     else
     {
         mState = ST_INACTIVE;
-        _LogMsgInfo(wxString::Format(wxT("%s seems to be inactive : Elapsed time is %us and limit is %s"), mName.c_str(), trigger));
+        _LogMsgInfo(wxString::Format(wxT("%s seems to be inactive : Elapsed time is %us and limit is %us"), mName.c_str(), lastFrame->GetElapsedSeconds(), trigger));
     }
 }

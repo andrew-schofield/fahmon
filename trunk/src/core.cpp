@@ -18,8 +18,8 @@
 #include "core.h"
 
 
-wxString Core::mCoreLongName[CORE_ID_COUNT] = {wxT("Tinker"), wxT("Gromacs"), wxT("Double Gromacs"), wxT("GBGromacs"), wxT("Amber"), wxT("QMD"), wxT("Unknown")};
-wxString Core::mCoreShortName[CORE_ID_COUNT] = {wxT("tinker"), wxT("gromacs"), wxT("dgromacs"), wxT("gbgromacs"), wxT("amber"), wxT("qmd"), wxT("Unknown")};
+wxString Core::mCoreLongName[CORE_ID_COUNT] = {wxT("Tinker"), wxT("Gromacs"), wxT("Double Gromacs"), wxT("GBGromacs"), wxT("Amber"), wxT("QMD"), wxT("Unknown"), wxT("Gromacs 33")};
+wxString Core::mCoreShortName[CORE_ID_COUNT] = {wxT("tinker"), wxT("gromacs"), wxT("dgromacs"), wxT("gbgromacs"), wxT("amber"), wxT("qmd"), wxT("Unknown"), wxT("gromacs33")};
 
 
 /**

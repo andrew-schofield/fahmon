@@ -448,5 +448,9 @@ Project* ProjectsManager::Update_ParseProjectInfo(const wxString& projectInfo) c
     parser.NextToken(3);
     coreId = Core::ShortNameToId(parser.GetCurrentText());
 
+    // Workaround for Gromacs 33 WUs having 0 frames
+    if(coreId == Core::GROMACS33)
+        nbFrames= 100;
+
     return new Project(projectId, preferredDeadlineInDays, finalDeadlineInDays, nbFrames, credit, coreId);
 }

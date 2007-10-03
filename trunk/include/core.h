@@ -39,6 +39,7 @@ public:
         AMBER,
         QMD,
         UNKNOWN,
+        GROMACS33,
         CORE_ID_COUNT
     };
 
