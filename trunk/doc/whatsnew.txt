@@ -3,6 +3,12 @@
 
 
 
+v2.2.1a
+[-] Reverted Win32 build back to wxWidgets 2.6.3 as 2.8.4 appeared to cause file access problems for some users
+[ ] Altered projects database conversion system to work correctly
+
+
+
 v2.2.1
 [+] Added "Start Minimized" option
 [+] Added the blue color for unsynched clients, please check the help file for more information
@@ -16,6 +22,7 @@ v2.2.1
 [-] Fixed empty log crash bug
 [-] Fixed state detection bug for verbose clients trying to upload results periodically
 [-] Fixed projects database to handle non-integer deadlines correctly
+[ ] Status images slightly altered
 [ ] Worked around bug in wxwidgets breaking DST timezones, see above
 [ ] Download times and deadlines are now displayed in local time instead of UTC
 [ ] ETA times in the message log now displayed as HH:MM:SS instead of seconds

@@ -118,7 +118,7 @@ inline void ProjectsManager::Load(void)
         AddProject(currentProject);
     }
     in.ReadUint(version);
-    if(version == 135456360) //why is it this number?
+    if(version < 1 || version > FMC_PROJECTS_VERSION)
         version = 1;
 
     if(version == 1)
