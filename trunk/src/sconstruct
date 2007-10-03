@@ -46,7 +46,7 @@ else:
     env.ParseConfig( 'wx-config --cxxflags --libs --debug=no' )
     env.Append( CXXFLAGS='-O2' )
 
-env.Append( CXXFLAGS = '-D_FAHMON_LINUX_ -Wall' )
+env.Append( CXXFLAGS = '-D_FAHMON_LINUX_ -Wall -Wno-strict-aliasing' )
 env.Append( CPPPATH = '../include' )
 
 env.Program(target, sources)

@@ -45,19 +45,19 @@ protected:
 
     static wxMutex mMutexXYZFiles;
 
-    ETA         mETA;
-    State       mState;
-    FrameId     mPreviouslyAnalyzedFrameId;
-    wxString    mName;
-    wxString    mLocation;
-    wxString    mLog;
-    wxString    mProjectString;
-    wxUint32    mProgress;
-    wxString    mProgressString;
-    wxString    mUserName;
-    wxUint32    mTeamNumber;
-    ProjectId   mProjectId;
-    wxDateTime *mDownloadDate;
+    ETA        mETA;
+    State      mState;
+    FrameId    mPreviouslyAnalyzedFrameId;
+    wxString   mName;
+    wxString   mLocation;
+    wxString   mLog;
+    wxString   mProjectString;
+    wxUint32   mProgress;
+    wxString   mProgressString;
+    wxString   mUserName;
+    wxUint32   mTeamNumber;
+    ProjectId  mProjectId;
+    wxDateTime mDownloadDate;
 
     void ComputeETA(WorkUnitFrame* lastFrame);
     void FindCurrentState(WorkUnitFrame* lastFrame);
@@ -92,7 +92,7 @@ public:
     wxString          GetUserName(void)       const {return mUserName;}
     wxUint32          GetTeamNumber(void)     const {return mTeamNumber;}
     ProjectId         GetProjectId(void)      const {return mProjectId;}
-    const wxDateTime* GetDownloadDate(void)   const {return mDownloadDate;}
+    const wxDateTime& GetDownloadDate(void)   const {return mDownloadDate;}
 
     const ETA* GetETA(void) const {return &mETA;}
 };

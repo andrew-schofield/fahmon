@@ -40,6 +40,8 @@ public:
         QMD,
         UNKNOWN,
         GROMACS33,
+        GROMACSSMP,
+        GROGPU,
         CORE_ID_COUNT
     };
 

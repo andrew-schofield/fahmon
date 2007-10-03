@@ -204,6 +204,9 @@ MainDialog* MainDialog::GetInstance(void)
 **/
 bool MainDialog::Show(bool show)
 {
+    // Showing the frame must be done before selecting a client, or the sash position won't be restored
+    bool result = wxFrame::Show(show);
+
     if(show == true)
     {
         // Items surely won't keep their order when they will be loaded because of sorting, so selecting a
@@ -215,7 +218,7 @@ bool MainDialog::Show(bool show)
         ClientsManager::GetInstance()->ReloadThreaded(CM_LOADALL);
     }
 
-    return wxFrame::Show(show);
+    return result;
 }
 
 
@@ -242,10 +245,20 @@ void MainDialog::SetAutoReloadTimer(void)
 
 
 /**
- * Display available information on the given clientId
- * This method does not affect the ListView
+ * Update the fields using the given client and refresh the GUI
 **/
 void MainDialog::ShowClientInformation(ClientId clientId)
+{
+    UpdateClientInformation(clientId);
+    mTopLevelSizer->Layout();
+}
+
+
+/**
+ * Update the fields using the given client
+ * This method does not affect the ListView
+**/
+void MainDialog::UpdateClientInformation(ClientId clientId)
 {
     bool           autoUpdateProjects;
     wxDateTime     preferredDeadline;
@@ -306,10 +319,10 @@ void MainDialog::ShowClientInformation(ClientId clientId)
     mWUProgressText->SetLabel(wxT("  ") + client->GetProgressString());
     mWUProgressGauge->SetValue(client->GetProgress());
     
-    if(client->GetDownloadDate() == NULL)
-        mDownloaded->SetLabel(wxT("N/A"));
+    if(client->GetDownloadDate().IsValid())
+        mDownloaded->SetLabel(client->GetDownloadDate().Format(wxT(FMC_DATE_MAIN_FORMAT)));
     else
-        mDownloaded->SetLabel(client->GetDownloadDate()->Format(wxT(FMC_DATE_MAIN_FORMAT)));
+        mDownloaded->SetLabel(wxT("N/A"));
 
     if(client->GetProjectId() == INVALID_PROJECT_ID)
     {
@@ -318,63 +331,62 @@ void MainDialog::ShowClientInformation(ClientId clientId)
         mCredit->SetLabel(wxT("N/A"));
         mPreferredDeadline->SetLabel(wxT("N/A"));
         mFinalDeadline->SetLabel(wxT("N/A"));
-    }
-    else
-    {
-        mProjectId->SetLabel(wxString::Format(wxT("%u"), client->GetProjectId()));
-        project = ProjectsManager::GetInstance()->GetProject(client->GetProjectId());
 
-        // This project can be unknown, if the database is not up to date
-        if(project == NULL)
+        return;
+    }
+
+    mProjectId->SetLabel(wxString::Format(wxT("%u"), client->GetProjectId()));
+    project = ProjectsManager::GetInstance()->GetProject(client->GetProjectId());
+
+    // This project can be unknown, if the database is not up to date
+    if(project == NULL)
+    {
+        // Update the database, if the user wants to
+        // This update is not forced, it will occur only if the elapsed time since the last one is high enough
+        // This way, we ensure that we won't perform many multiple requests for the file, while it does not
+        // contain the information we want
+        _PrefsGetBool(PREF_MAINDIALOG_AUTOUPDATEPROJECTS, autoUpdateProjects);
+        
+        if(autoUpdateProjects)
         {
-            // Update the database, if the user wants to
-            // This update is not forced, it will occur only if the elapsed time since the last one is high enough
-            // This way, we ensure that we won't perform many multiple requests for the file, while it does not
-            // contain the information we want
-            _PrefsGetBool(PREF_MAINDIALOG_AUTOUPDATEPROJECTS, autoUpdateProjects);
-            
-            if(autoUpdateProjects)
-            {
-                if(ProjectsManager::GetInstance()->UpdateDatabase(false, false))
-                    ClientsManager::GetInstance()->ReloadThreaded(CM_LOADALL);
-            }
-            else
-            {
-                mCoreName->SetLabel(wxT("N/A"));
-                mCredit->SetLabel(wxT("N/A"));
-                mPreferredDeadline->SetLabel(wxT("N/A"));
-                mFinalDeadline->SetLabel(wxT("N/A"));
-                _LogMsgWarning(wxString::Format(wxT("Project %u is unknown, you should try to update the projects database"), client->GetProjectId()));
-            }
+            if(ProjectsManager::GetInstance()->UpdateDatabase(false, false))
+                ClientsManager::GetInstance()->ReloadThreaded(CM_LOADALL);
         }
         else
         {
-            mCoreName->SetLabel(Core::IdToLongName(project->GetCoreId()));
-            mCredit->SetLabel(wxString::Format(wxT("%u points"), project->GetCredit()));
-            
-            // Preferred deadline: if it is equal to 0 day, there is no preferred deadline
-            if(client->GetDownloadDate() != NULL && project->GetPreferredDeadlineInDays() != 0)
-            {
-                preferredDeadline.Set(client->GetDownloadDate()->GetTicks());
-                preferredDeadline.Add(wxTimeSpan::Days(project->GetPreferredDeadlineInDays()));
-                mPreferredDeadline->SetLabel(preferredDeadline.Format(wxT(FMC_DATE_MAIN_FORMAT)));
-            }
-            else
-                mPreferredDeadline->SetLabel(wxT("N/A"));
-
-            // Final deadline: if it is equal to 0 day, there is no final deadline
-            if(client->GetDownloadDate() != NULL && project->GetFinalDeadlineInDays() != 0)
-            {
-                finalDeadline.Set(client->GetDownloadDate()->GetTicks());
-                finalDeadline.Add(wxTimeSpan::Days(project->GetFinalDeadlineInDays()));
-                mFinalDeadline->SetLabel(finalDeadline.Format(wxT(FMC_DATE_MAIN_FORMAT)));
-            }
-            else
-                mFinalDeadline->SetLabel(wxT("N/A"));
+            mCoreName->SetLabel(wxT("N/A"));
+            mCredit->SetLabel(wxT("N/A"));
+            mPreferredDeadline->SetLabel(wxT("N/A"));
+            mFinalDeadline->SetLabel(wxT("N/A"));
+            _LogMsgWarning(wxString::Format(wxT("Project %u is unknown, you should try to update the projects database"), client->GetProjectId()));
         }
+
+        return;
     }
 
-    mTopLevelSizer->Layout();
+    // We do have project information
+    mCoreName->SetLabel(Core::IdToLongName(project->GetCoreId()));
+    mCredit->SetLabel(wxString::Format(wxT("%u points"), project->GetCredit()));
+    
+    // Preferred deadline: if it is equal to 0 day, there is no preferred deadline
+    if(client->GetDownloadDate().IsValid() && project->GetPreferredDeadlineInDays() != 0)
+    {
+        preferredDeadline = client->GetDownloadDate();
+        preferredDeadline.Add(wxTimeSpan::Days(project->GetPreferredDeadlineInDays()));
+        mPreferredDeadline->SetLabel(preferredDeadline.Format(wxT(FMC_DATE_MAIN_FORMAT)));
+    }
+    else
+        mPreferredDeadline->SetLabel(wxT("N/A"));
+
+    // Final deadline: if it is equal to 0 day, there is no final deadline
+    if(client->GetDownloadDate().IsValid() && project->GetFinalDeadlineInDays() != 0)
+    {
+        finalDeadline = client->GetDownloadDate();
+        finalDeadline.Add(wxTimeSpan::Days(project->GetFinalDeadlineInDays()));
+        mFinalDeadline->SetLabel(finalDeadline.Format(wxT(FMC_DATE_MAIN_FORMAT)));
+    }
+    else
+        mFinalDeadline->SetLabel(wxT("N/A"));
 }
 
 
@@ -572,7 +584,6 @@ inline void MainDialog::RestoreFrameState(void)
         mLogFile->Show(false);
         mTopLevelSizer->Show(mLogFile, false);
     }
-    // This must be called even if we don't hide the log, otherwise the wxSplitterWindow does not correctly restore the sash position
     mTopLevelSizer->Layout();
     
     

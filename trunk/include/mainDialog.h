@@ -107,6 +107,7 @@ protected:
 
     void SetAutoReloadTimer(void);
     void ShowClientInformation(ClientId clientId);
+    void UpdateClientInformation(ClientId clientId);
 
     // Events
     void OnMenuReload(wxCommandEvent& event);

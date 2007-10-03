@@ -329,6 +329,7 @@ bool ProjectsManager::Update_DownloadProjectsFile(wxString& fileName, ProgressMa
 bool ProjectsManager::Update_ParseProjectsFile(const wxString& fileName, ProgressManager& progressManager, wxString& errorMsg)
 {
     bool        tableHeaderFound;
+    bool        errorOccured;
     wxInt32     pos;
     wxUint32    i;
     wxString    currentLine;
@@ -338,6 +339,7 @@ bool ProjectsManager::Update_ParseProjectsFile(const wxString& fileName, Progres
 
     in.Open(fileName);
     tableHeaderFound = false;
+    errorOccured = false;
     for(i=0; i<in.GetLineCount(); ++i)
     {
         currentLine = in.GetLine(i);
@@ -358,13 +360,14 @@ bool ProjectsManager::Update_ParseProjectsFile(const wxString& fileName, Progres
                 projectInfo = currentLine.Mid(pos+23);
 
                 // Try to parse this line
+                // If the parser fails, store the error and continue with the next line
                 project = Update_ParseProjectInfo(projectInfo);
                 if(project != NULL)
                     AddProject(project);
                 else
                 {
-                    errorMsg = wxString::Format(wxT("Something went wrong on line %u"), i+1);
-                    return false;
+                    errorMsg = wxString::Format(wxT("The line %u is not correctly formatted!\n\n%s"), i+1, currentLine.c_str());
+                    errorOccured = true;
                 }
             }
         }
@@ -379,7 +382,7 @@ bool ProjectsManager::Update_ParseProjectsFile(const wxString& fileName, Progres
         }
     }
 
-    return true;
+    return !errorOccured;
 }
 
 
