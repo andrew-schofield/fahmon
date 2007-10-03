@@ -353,7 +353,7 @@ void MainDialog::ShowClientInformation(wxUint32 clientId)
         }
     }
 
-//    mTopLevelSizer->Layout();
+    mTopLevelSizer->Layout();
 }
 
 

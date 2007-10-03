@@ -27,16 +27,16 @@ class Tools
 protected:
     static const char* mBase64Table;
 
-	static int MsgBox(const wxString& msg, long style) {return wxMessageBox(msg, wxT(FMC_PRODUCT), style);}
+    static int MsgBox(const wxString& msg, long style) {return wxMessageBox(msg, wxT(FMC_PRODUCT), style);}
 
 
 public:
-	static void     OpenURLInBrowser(const wxString& url);
+    static void     OpenURLInBrowser(const wxString& url);
     static bool     LoadFile(const wxString& filename, wxString& fileContent);
     static wxString FormatSeconds(wxUint32 nbSeconds);
 
-	// Miscellaneous message boxes
-	static void ErrorMsgBox(const wxString& error) {MsgBox(error, wxICON_ERROR | wxOK);}
+    // Miscellaneous message boxes
+    static void ErrorMsgBox(const wxString& error) {MsgBox(error, wxICON_ERROR | wxOK);}
     static bool QuestionMsgBox(const wxString& question) {return MsgBox(question, wxICON_QUESTION | wxYES_NO) == wxYES;}
 };
 

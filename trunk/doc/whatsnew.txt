@@ -3,6 +3,14 @@
 
 
 
+v2.0.4
+
+[-] FahMon was unusable on some non-english Linux systems
+[-] Percentage of completion near the progress bar was not displayed until the window was resized
+[-] Fixed the 'Feburary' bug caused by some F@H cores
+
+
+
 v2.0.3
 
 [+] The position of the frame is saved and restored across sessions

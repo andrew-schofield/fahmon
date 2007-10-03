@@ -239,8 +239,45 @@ inline bool Client::LoadUnitInfoFile(const wxString& filename)
         // Download time: July 19 16:46:49
         else if(currentLine.StartsWith(wxT("Download time: "), &tmpString) == true)
         {
-            if(mDownloadDate.ParseFormat(tmpString.c_str(), wxT("%B %d %H:%M:%S")) != NULL)
+            // We cannot rely on ParseFormat() function to parse the month names because of locales
+            // Indeed, the month name is written in english and english could be unavailable on some non-english systems
+            // So we must parse the month name 'by hand'
+            // The rest of the date is only composed of numbers, so ParseFormat() can be used for them
+            wxDateTime::Month theMonth;
+
+            // Some f@h cores write "Feburary" instead of "February", so we must be careful
+            if(tmpString.StartsWith(wxT("January"), &tmpString) == true)
+                theMonth = wxDateTime::Jan;
+            else if(tmpString.StartsWith(wxT("February"), &tmpString) == true || tmpString.StartsWith(wxT("Feburary"), &tmpString) == true)
+                theMonth = wxDateTime::Feb;
+            else if(tmpString.StartsWith(wxT("March"), &tmpString) == true)
+                theMonth = wxDateTime::Mar;
+            else if(tmpString.StartsWith(wxT("April"), &tmpString) == true)
+                theMonth = wxDateTime::Apr;
+            else if(tmpString.StartsWith(wxT("May"), &tmpString) == true)
+                theMonth = wxDateTime::May;
+            else if(tmpString.StartsWith(wxT("June"), &tmpString) == true)
+                theMonth = wxDateTime::Jun;
+            else if(tmpString.StartsWith(wxT("July"), &tmpString) == true)
+                theMonth = wxDateTime::Jul;
+            else if(tmpString.StartsWith(wxT("August"), &tmpString) == true)
+                theMonth = wxDateTime::Aug;
+            else if(tmpString.StartsWith(wxT("September"), &tmpString) == true)
+                theMonth = wxDateTime::Sep;
+            else if(tmpString.StartsWith(wxT("October"), &tmpString) == true)
+                theMonth = wxDateTime::Oct;
+            else if(tmpString.StartsWith(wxT("November"), &tmpString) == true)
+                theMonth = wxDateTime::Nov;
+            else if(tmpString.StartsWith(wxT("December"), &tmpString) == true)
+                theMonth = wxDateTime::Dec;
+            else
+                theMonth = wxDateTime::Inv_Month;
+
+            if(theMonth != wxDateTime::Inv_Month && mDownloadDate.ParseFormat(tmpString.c_str(), wxT(" %d %H:%M:%S")) != NULL)
+            {
+                mDownloadDate.SetMonth(theMonth);
                 downloadDateOk = true;
+            }
             else
                 _LogMsgWarning(wxString::Format(wxT("The download date in file %s could not be parsed"), filename.c_str()));
         }

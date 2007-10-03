@@ -60,7 +60,7 @@ ProjectsManager::~ProjectsManager(void)
 void ProjectsManager::CreateInstance(void)
 {
     wxASSERT(mInstance == NULL);
-	
+
     mInstance = new ProjectsManager();
     mInstance->Load();
 }
@@ -72,9 +72,9 @@ void ProjectsManager::CreateInstance(void)
 void ProjectsManager::DestroyInstance(void)
 {
     wxASSERT(mInstance != NULL);
-	
+
     mInstance->Save();
-	
+
     delete mInstance;
     mInstance = NULL;
 }
@@ -86,7 +86,7 @@ void ProjectsManager::DestroyInstance(void)
 ProjectsManager* ProjectsManager::GetInstance(void)
 {
     wxASSERT(mInstance != NULL);
-	
+
     return mInstance;
 }
 
@@ -125,7 +125,7 @@ inline void ProjectsManager::Save(void)
 {
     DataOutputStream               out(wxT(FMC_PATH_PROJECTS));
     ProjectsListHashMap::iterator  iterator;
-    
+
     if(out.Ok() == false)
     {
         Tools::ErrorMsgBox(wxString::Format(wxT("Could not open file <%s> for writing!"), wxT(FMC_PATH_PROJECTS)));
@@ -164,7 +164,7 @@ const Project* ProjectsManager::GetProject(ProjectId projectId)
 
     if(iterator == mProjectsHashMap.end())
         return NULL;
-    
+
     return iterator->second;
 }
 
@@ -225,9 +225,9 @@ bool ProjectsManager::UpdateDatabase(bool forced, bool silentMode)
 
     // This update will be the new reference
     mLastUpdateTimestamp = wxGetLocalTime();
-    
+
     _LogMsgInfo(wxT("Updating projects database"));
-    
+
 
     // --- We first have to download the new projects
     // This part is estimated to be 90% of the total work
@@ -296,7 +296,7 @@ bool ProjectsManager::Update_DownloadProjectsFile(wxString& fileName, ProgressMa
         case HTTPDownloader::STATUS_TEMP_FILE_OPEN_ERROR:
             errorMsg = wxString::Format(wxT("Unable to open the temporary file <%s>"), fileName.c_str());
             break;
-            
+
         case HTTPDownloader::STATUS_CONNECT_ERROR:
             errorMsg = wxT("Unable to connect to the server!");
             break;
@@ -304,7 +304,7 @@ bool ProjectsManager::Update_DownloadProjectsFile(wxString& fileName, ProgressMa
         case HTTPDownloader::STATUS_SEND_REQUEST_ERROR:
             errorMsg = wxT("Unable to send the request to the server!");
             break;
-        
+
         case HTTPDownloader::STATUS_ABORTED:
             errorMsg = wxT("Download aborted!");
             break;
@@ -380,11 +380,11 @@ bool ProjectsManager::Update_ParseProjectsFile(const wxString& fileName, Progres
 
     return true;
 }
-    
+
 
 /**
  * Parse a line with project information from the PSummary file
-**/    
+**/
 Project* ProjectsManager::Update_ParseProjectInfo(const wxString& projectInfo) const
 {
     long       tmpLong;
@@ -396,7 +396,7 @@ Project* ProjectsManager::Update_ParseProjectInfo(const wxString& projectInfo) c
     wxUint32   finalDeadlineInDays;
     ProjectId  projectId;
     HTMLParser parser;
-    
+
     // This is ugly, but it works...
     parser.ParseString(projectInfo);
 
@@ -405,7 +405,7 @@ Project* ProjectsManager::Update_ParseProjectInfo(const wxString& projectInfo) c
     if(parser.GetCurrentText().ToLong(&tmpLong) == false)
         return NULL;
     projectId = (ProjectId)tmpLong;
-    
+
     // Preferred deadline in days
     // It is possible that there is no preferred deadline, in this case there is a '--' string instead
     // of the value
@@ -436,16 +436,16 @@ Project* ProjectsManager::Update_ParseProjectInfo(const wxString& projectInfo) c
     if(parser.GetCurrentText().ToDouble(&tmpDouble) == false)
         return NULL;
     credit = (WuCredit)tmpDouble;
-    
+
     // Number of frames
     parser.NextToken(3);
     if(parser.GetCurrentText().ToLong(&tmpLong) == false)
         return NULL;
     nbFrames = (FrameId)tmpLong;
-    
+
     // Core
     parser.NextToken(3);
     coreId = Core::ShortNameToId(parser.GetCurrentText());
-    
+
     return new Project(projectId, preferredDeadlineInDays, finalDeadlineInDays, nbFrames, credit, coreId);
 }
