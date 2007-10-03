@@ -36,11 +36,12 @@ public:
 
     void Write(const void *buffer, wxUint32 size) {mDataOS->Write8((const wxUint8*)buffer, size);}
 
-    void WriteBool(bool value)              {mDataOS->Write8( (value == true ? 1 : 0) );}
-    void WriteUint(wxUint32 value)          {mDataOS->Write32(value);}
-    void WriteInt(wxInt32 value)            {mDataOS->Write32(value);}
-    void WriteDouble(double value)          {mDataOS->WriteDouble(value);}
-    void WriteString(const wxString& value) {mDataOS->WriteString(value);}
+    void WriteBool(bool value)                      {mDataOS->Write8( (value == true ? 1 : 0) );}
+    void WriteUint(wxUint32 value)                  {mDataOS->Write32(value);}
+    void WriteInt(wxInt32 value)                    {mDataOS->Write32(value);}
+    void WriteDouble(double value)                  {mDataOS->WriteDouble(value);}
+    void WriteString(const wxString& value)         {mDataOS->WriteString(value);}
+    void WriteHiddenString(const wxString& value);
     
     bool Ok(void) const {return mDataOS != NULL;}
 };

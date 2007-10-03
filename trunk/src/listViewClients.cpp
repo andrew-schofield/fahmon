@@ -250,7 +250,7 @@ void ListViewClients::Reset(wxUint32 nbClients)
         mClientIdToIndex.Add(i);
         SetItemData(i, i);
     }
-    
+
     Thaw();
 }
 
@@ -423,9 +423,9 @@ void ListViewClients::OnRightClick(wxMouseEvent& event)
         Select(hitItem);
 
         // And our context menu should allow some actions on this item
-        clientContextMenu.Append(MID_RELOADCLIENT, wxT("Reload this client"));
-        clientContextMenu.AppendSeparator();
         clientContextMenu.Append(MID_ADDCLIENT, wxT("Add a new client"));
+        clientContextMenu.AppendSeparator();
+        clientContextMenu.Append(MID_RELOADCLIENT, wxT("Reload this client"));
         clientContextMenu.Append(MID_EDITCLIENT, wxT("Edit this client"));
         clientContextMenu.Append(MID_DELETECLIENT, wxT("Delete this client"));
     }

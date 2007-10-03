@@ -7,38 +7,32 @@
  *  This program is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU Library General Public License for more details.
+ *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
  
-#ifndef _TOOLS_H
-#define _TOOLS_H
+#ifndef _BASE64CODEC_H
+#define _BASE64CODEC_H
 
 
-#include "wx/msgdlg.h"
-#include "fahmonConsts.h"
+#include "wx/string.h"
 
 
-class Tools
+class Base64Codec
 {
 protected:
     static const char* mBase64Table;
 
-	static int MsgBox(const wxString& msg, long style) {return wxMessageBox(msg, wxT(FMC_PRODUCT), style);}
-
-
+    static char     Base64IndexToChar(wxUint32 index);
+    static wxUint32 CharToBase64Index(char c);
+    
 public:
-	static void     OpenURLInBrowser(const wxString& url);
-    static bool     LoadFile(const wxString& filename, wxString& fileContent);
-    static wxString FormatSeconds(wxUint32 nbSeconds);
-
-	// Miscellaneous message boxes
-	static void ErrorMsgBox(const wxString& error) {MsgBox(error, wxICON_ERROR | wxOK);}
-    static bool QuestionMsgBox(const wxString& question) {return MsgBox(question, wxICON_QUESTION | wxYES_NO) == wxYES;}
+    static wxString Encode(const wxString& string);
+    static wxString Decode(const wxString& string);
 };
 
 
-#endif /* _TOOLS_H */
+#endif /* _BASE64CODEC_H */

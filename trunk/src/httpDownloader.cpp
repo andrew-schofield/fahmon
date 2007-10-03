@@ -17,9 +17,11 @@
 #include "fahmon.h"
 #include "httpDownloader.h"
 
+#include "tools.h"
 #include "wx/timer.h"
 #include "wx/socket.h"
 #include "wx/filename.h"
+#include "base64Codec.h"
 #include "preferencesManager.h"
 
 
@@ -41,6 +43,7 @@
 HTTPDownloader::DownloadStatus HTTPDownloader::DownloadFile(const wxString& host, wxUint32 port, const wxString& resource, wxString& localFileName, ProgressManager& progressManager)
 {
     bool                isUsingProxy;
+    bool                proxyNeedsAuthentication;
     bool                moreDataToRead;
     bool                isFirstSlice;
     double              downloadSpeed;              // KB/s
@@ -49,7 +52,10 @@ HTTPDownloader::DownloadStatus HTTPDownloader::DownloadFile(const wxString& host
     wxUint32            totalDataDownloaded;
     wxUint32            totalDataToDownload;
     wxString            proxyAddress;
+    wxString            proxyUsername;
+    wxString            proxyPassword;
     wxString            request;
+    wxString            base64ProxyAuthentication;
     wxLongLong          startingTime;
     wxLongLong          elapsedTime;
     wxIPV4address       serverAddress;
@@ -59,9 +65,12 @@ HTTPDownloader::DownloadStatus HTTPDownloader::DownloadFile(const wxString& host
 
 
     // --- Retrieve proxy configuration
-    _PrefsGetBool  (PREF_HTTPDOWNLOADER_USEPROXY,     isUsingProxy);
-    _PrefsGetString(PREF_HTTPDOWNLOADER_PROXYADDRESS, proxyAddress);
-    _PrefsGetUint  (PREF_HTTPDOWNLOADER_PROXYPORT,    proxyPort);
+    _PrefsGetBool        (PREF_HTTPDOWNLOADER_USEPROXY,                   isUsingProxy);
+    _PrefsGetString      (PREF_HTTPDOWNLOADER_PROXYADDRESS,               proxyAddress);
+    _PrefsGetUint        (PREF_HTTPDOWNLOADER_PROXYPORT,                  proxyPort);
+    _PrefsGetBool        (PREF_HTTPDOWNLOADER_USE_PROXY_AUTHENTICATION,   proxyNeedsAuthentication);
+    _PrefsGetString      (PREF_HTTPDOWNLOADER_PROXY_USERNAME,             proxyUsername);
+    _PrefsGetHiddenString(PREF_HTTPDOWNLOADER_PROXY_PASSWORD,             proxyPassword);
 
 
     // --- Create a temporary local file and try to open it
@@ -72,12 +81,19 @@ HTTPDownloader::DownloadStatus HTTPDownloader::DownloadFile(const wxString& host
     out = new wxFileOutputStream(localFileName);
     if(out->Ok() == false)
         return STATUS_TEMP_FILE_OPEN_ERROR;
-    
-    
+
+
     // --- Forge the request, considering the proxy configuration, and fill the address of the 'real' host to contact
     if(isUsingProxy == true)
     {
-        request = wxString::Format(wxT("GET http://%s:%u/%s HTTP/1.0\nHost: %s\n\n"), host.c_str(), port, resource.c_str(), host.c_str());
+        // Do we need to use authentication?
+        if(proxyNeedsAuthentication == true)
+        {
+            base64ProxyAuthentication = Base64Codec::Encode(wxString::Format(wxT("%s:%s"), proxyUsername.c_str(), proxyPassword.c_str()));
+            request                   = wxString::Format(wxT("GET http://%s:%u/%s HTTP/1.0\nHost: %s\nProxy-Authorization: Basic %s\n\n"), host.c_str(), port, resource.c_str(), host.c_str(), base64ProxyAuthentication.c_str());
+        }
+        else
+            request = wxString::Format(wxT("GET http://%s:%u/%s HTTP/1.0\nHost: %s\n\n"), host.c_str(), port, resource.c_str(), host.c_str());
 
         serverAddress.Hostname(proxyAddress);
         serverAddress.Service(proxyPort);

@@ -3,6 +3,15 @@
 
 
 
+v2.0.2
+
+[+] Added support for proxies that require authentication
+[+] Added support for a system tray icon
+[-] Fixed the bug that caused a blank window of Internet Explorer to appear in the win32 version
+[ ] Miscellaneous small changes
+
+
+
 v2.0.1
 
 [-] Fixed the inability to sort the list of clients using the ETA as the sorting criterion

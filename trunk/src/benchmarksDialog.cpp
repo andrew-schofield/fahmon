@@ -44,6 +44,9 @@ enum _COLUMNS_ID
 BEGIN_EVENT_TABLE(BenchmarksDialog, wxDialog)
     // List View
     EVT_LIST_ITEM_SELECTED  (LST_PROJECTS, BenchmarksDialog::OnProjectChanged)
+
+    // Buttons
+    EVT_BUTTON(wxID_CLOSE,    BenchmarksDialog::OnCloseButton)
 END_EVENT_TABLE()
 
 BenchmarksDialog* BenchmarksDialog::mInstance = NULL;
@@ -83,7 +86,7 @@ BenchmarksDialog::BenchmarksDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY
     
     mainSizer->Add(mSplitter, 1, wxEXPAND);
     mainSizer->AddSpacer(FMC_GUI_SPACING_HIGH);
-    mainSizer->Add(new wxButton(this, wxID_CANCEL, wxT("Close")), 0, wxALIGN_CENTER_HORIZONTAL);
+    mainSizer->Add(new wxButton(this, wxID_CLOSE), 0, wxALIGN_CENTER_HORIZONTAL);
 
     // ---
     topLevelSizer = new wxBoxSizer(wxVERTICAL);
@@ -164,17 +167,17 @@ void BenchmarksDialog::PopulateProjectsList(ProjectId projectIdToSelect)
     wxUint32   nbProjects;
     wxUint32   entryToSelect;
     ProjectId *projectsList;
-    
+
     // We first remove any previous entry
     mListOfProjects->DeleteAllItems();
-    
+
     // Try to see if there is at least one registered benchmark
     projectsList = BenchmarksManager::GetInstance()->GetBenchmarkedProjects(nbProjects);
     if(nbProjects == 0)
         return;
-    
+
     entryToSelect = 0;
-    
+
     // Ok, we can fill the ListView
     for(i=0; i<nbProjects; ++i)
     {
@@ -183,7 +186,7 @@ void BenchmarksDialog::PopulateProjectsList(ProjectId projectIdToSelect)
         mListOfProjects->InsertItem(i, wxString::Format(wxT("%u"), projectsList[i]));
         mListOfProjects->SetItemData(i, projectsList[i]);
 
-        // Is this the projecy we should select?
+        // Is this the project we should select?
         if(projectsList[i] == projectIdToSelect)
             entryToSelect = i;
 
@@ -258,27 +261,39 @@ void BenchmarksDialog::ShowBenchmarks(ProjectId projectIdToShow)
             infoString += wxString::Format(wxT("\n\n -- %s --\n\n"), clientLocation.c_str());
 
         // Best time
-        // Display points per day if possible
-        infoString += wxString::Format(wxT("Min. Time / Frame : %s"), Tools::FormatSeconds(benchmarks[i]->GetMinDuration()).c_str());
-        if(project != NULL && benchmarks[i]->GetMinDuration() != 0)
+        if(benchmarks[i]->GetMinDuration() != 0)
         {
-            minPPD = (project->GetCredit() * 86400.0) / ((double)benchmarks[i]->GetMinDuration() * (double)project->GetNbFrames());    // There are 86400 seconds in a day
-            infoString += wxString::Format(wxT(" - %.2f ppd\n"), minPPD);
+            infoString += wxString::Format(wxT("Min. Time / Frame : %s"), Tools::FormatSeconds(benchmarks[i]->GetMinDuration()).c_str());
+            
+            // Compute points per day if possible
+            if(project != NULL)
+            {
+                minPPD = (project->GetCredit() * 86400.0) / ((double)benchmarks[i]->GetMinDuration() * (double)project->GetNbFrames());    // There are 86400 seconds in a day
+                infoString += wxString::Format(wxT(" - %.2f ppd"), minPPD);
+            }
         }
         else
-            infoString += wxT("\n");
+            infoString += wxT("No Min. Time / Frame");
+        
+        infoString += wxT("\n");
 
         
         // Average time
-        // Display points per day if possible
-        infoString += wxString::Format(wxT("Avg. Time / Frame : %s"), Tools::FormatSeconds(benchmarks[i]->GetAvgDuration()).c_str());
-        if(project != NULL && benchmarks[i]->GetAvgDuration() != 0)
+        if(benchmarks[i]->GetAvgDuration() != 0)
         {
-            avgPPD = (project->GetCredit() * 86400.0) / ((double)benchmarks[i]->GetAvgDuration() * (double)project->GetNbFrames());    // There are 86400 seconds in a day
-            infoString += wxString::Format(wxT(" - %.2f ppd\n"), avgPPD);
+            infoString += wxString::Format(wxT("Avg. Time / Frame : %s"), Tools::FormatSeconds(benchmarks[i]->GetAvgDuration()).c_str());
+            
+            // Compute points per day if possible
+            if(project != NULL)
+            {
+                avgPPD = (project->GetCredit() * 86400.0) / ((double)benchmarks[i]->GetAvgDuration() * (double)project->GetNbFrames());    // There are 86400 seconds in a day
+                infoString += wxString::Format(wxT(" - %.2f ppd"), avgPPD);
+            }
         }
         else
-            infoString += wxT("\n");
+            infoString += wxT("No Avg. Time / Frame");
+        
+        infoString += wxT("\n");
     }
 
     mBenchmarksInformation->SetValue(infoString);
@@ -299,4 +314,13 @@ void BenchmarksDialog::OnProjectChanged(wxListEvent& event)
         ShowBenchmarks(MAX_PROJECT_ID);
     else
         ShowBenchmarks(mListOfProjects->GetItemData(selection));
+}
+
+
+/**
+ * The 'close' button has been pushed
+**/
+void BenchmarksDialog::OnCloseButton(wxCommandEvent& event)
+{
+    Close();
 }

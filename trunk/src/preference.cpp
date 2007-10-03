@@ -34,9 +34,9 @@ Preference::Preference(void)
 **/
 Preference::Preference(wxString name, bool value)
 {
-	mPrefType  = PT_BOOL;
-	mPrefName  = name;
-	mBoolValue = value;
+    mPrefType  = PT_BOOL;
+    mPrefName  = name;
+    mBoolValue = value;
 }
 
 
@@ -45,9 +45,9 @@ Preference::Preference(wxString name, bool value)
 **/
 Preference::Preference(wxString name, wxUint32 value)
 {
-	mPrefType  = PT_UINT;
-	mPrefName  = name;
-	mUintValue = value;
+    mPrefType  = PT_UINT;
+    mPrefName  = name;
+    mUintValue = value;
 }
 
 
@@ -56,9 +56,9 @@ Preference::Preference(wxString name, wxUint32 value)
 **/
 Preference::Preference(wxString name, wxInt32 value)
 {
-	mPrefType = PT_INT;
-	mPrefName = name;
-	mIntValue = value;
+    mPrefType = PT_INT;
+    mPrefName = name;
+    mIntValue = value;
 }
 
 
@@ -67,20 +67,26 @@ Preference::Preference(wxString name, wxInt32 value)
 **/
 Preference::Preference(wxString name, double value)
 {
-	mPrefType    = PT_DOUBLE;
-	mPrefName    = name;
-	mDoubleValue = value;
+    mPrefType    = PT_DOUBLE;
+    mPrefName    = name;
+    mDoubleValue = value;
 }
 
 
 /**
  * Constructor
 **/
-Preference::Preference(wxString name, const wxString& value)
+Preference::Preference(wxString name, const wxString& value, bool isHidden)
 {
-	mPrefType    = PT_STRING;
-	mPrefName    = name;
-	mStringValue = value;
+    // Hidden strings are stored in the same way as 'normal' strings
+    // Only the method used to read/write them is different
+    if(isHidden == true)
+        mPrefType = PT_HIDDEN_STRING;
+    else
+        mPrefType = PT_STRING;
+
+    mPrefName    = name;
+    mStringValue = value;
 }
 
 
@@ -118,6 +124,10 @@ void Preference::Read(DataInputStream& in)
             in.ReadString(mStringValue);
             break;
         
+        case PT_HIDDEN_STRING:
+            in.ReadHiddenString(mStringValue);
+            break;
+        
         // We should never fall here
         default:
             wxASSERT(false);
@@ -143,21 +153,25 @@ void Preference::Write(DataOutputStream& out) const
         case PT_BOOL:
             out.WriteBool(mBoolValue);
             break;
-        
+
         case PT_UINT:
             out.WriteUint(mUintValue);
             break;
-        
+
         case PT_INT:
             out.WriteInt(mIntValue);
             break;
-        
+
         case PT_DOUBLE:
             out.WriteDouble(mDoubleValue);
             break;
-        
+
         case PT_STRING:
             out.WriteString(mStringValue);
+            break;
+
+        case PT_HIDDEN_STRING:
+            out.WriteHiddenString(mStringValue);
             break;
         
         // We should never fall here

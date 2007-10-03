@@ -21,6 +21,7 @@
 #include "client.h"
 #include "wx/colour.h"
 #include "wx/filefn.h"
+#include "trayManager.h"
 #include "aboutDialog.h"
 #include "clientDialog.h"
 #include "messagesFrame.h"
@@ -98,15 +99,13 @@ BEGIN_EVENT_TABLE(MainDialog, wxFrame)
     EVT_MENU    (wxID_ABOUT,                MainDialog::OnMenuAbout)
 
     // --- Frame
-    EVT_CLOSE               (MainDialog::OnClose)
-    EVT_ICONIZE             (MainDialog::OnIconize)
-//    EVT_TASKBAR_LEFT_DCLICK (MainDialog::OnTrayDblClick)
-    
+    EVT_CLOSE   (MainDialog::OnClose)
+
     // --- List
     EVT_LIST_ITEM_SELECTED  (LST_CLIENTS, MainDialog::OnListSelectionChanged)
     
     // --- Timers
-    EVT_TIMER   (wxID_ANY,      MainDialog::OnAutoReloadTimer)
+    EVT_TIMER   (wxID_ANY,  MainDialog::OnAutoReloadTimer)
 
     // --- Custom
     EVT_COMMAND    (wxID_ANY, EVT_CLIENTRELOADED,               MainDialog::OnClientReloaded)
@@ -126,6 +125,8 @@ MainDialog* MainDialog::mInstance = NULL;
 **/
 MainDialog::MainDialog(void) : wxFrame(NULL, wxID_ANY, wxT(FMC_PRODUCT))
 {
+    bool trayIconEnabled;
+
     // Setting the icon for the main dialog will allows child frames and dialog to inherit from it
     SetIcon(FMC_ICON_DIALOG);
 
@@ -137,6 +138,11 @@ MainDialog::MainDialog(void) : wxFrame(NULL, wxID_ANY, wxT(FMC_PRODUCT))
     // The timer used for auto-reloading
     mAutoReloadTimer.SetOwner(this);
     SetAutoReloadTimer();
+    
+    // The tray icon
+    _PrefsGetBool(PREF_MAINDIALOG_ENABLE_TRAY_ICON, trayIconEnabled);
+    if(trayIconEnabled == true)
+        TrayManager::GetInstance()->InstallIcon();
 }
 
 
@@ -266,7 +272,7 @@ void MainDialog::ShowClientInformation(wxUint32 clientId)
     // --- Clear information when something is wrong with the client
     if(clientIsOk == false)
     {
-        mCoreName->SetLabel(Core::IdToLongName(Core::UNKNOWN));
+        mCoreName->SetLabel(wxT(""));
         mProjectId->SetLabel(wxT(""));
         mCredit->SetLabel(wxT(""));
         mDownloaded->SetLabel(wxT(""));
@@ -301,7 +307,7 @@ void MainDialog::ShowClientInformation(wxUint32 clientId)
         // This project can be unknown, if the database is not up to date
         if(project == NULL)
         {
-            mCoreName->SetLabel(Core::IdToLongName(Core::UNKNOWN));
+            mCoreName->SetLabel(wxT(""));
             mCredit->SetLabel(wxT("/"));
             mPreferredDeadline->SetLabel(wxT("/"));
             mFinalDeadline->SetLabel(wxT("/"));
@@ -347,7 +353,7 @@ void MainDialog::ShowClientInformation(wxUint32 clientId)
         }
     }
 
-    mTopLevelSizer->Layout();
+//    mTopLevelSizer->Layout();
 }
 
 
@@ -417,7 +423,6 @@ inline void MainDialog::CreateLayout(void)
     wxBoxSizer       *mainSizer;
     wxBoxSizer       *topSizer;
     wxBoxSizer       *midSizer;
-    wxBoxSizer       *coreSizer;
     wxGridSizer      *infoSizer;
     wxStaticBoxSizer *topRightSizer;
 
@@ -440,22 +445,20 @@ inline void MainDialog::CreateLayout(void)
     // It contains labels to display information on the currently selected client
     topRightPanel      = new wxPanel(mSplitterWindow, wxID_ANY);
     topRightSizer      = new wxStaticBoxSizer(wxVERTICAL, topRightPanel, wxT("Work Unit Information"));
-    coreSizer          = new wxBoxSizer(wxHORIZONTAL);
     infoSizer          = new wxGridSizer(2, FMC_GUI_SPACING_HIGH, FMC_GUI_SPACING_LOW);
-    mCoreName          = new StaticBoldedText(topRightPanel, wxID_ANY, wxT("unknown"));
+    mCoreName          = new StaticBoldedText(topRightPanel, wxID_ANY, wxT(""));
     mProjectId         = new wxStaticText(topRightPanel, wxID_ANY, wxT(""));
     mCredit            = new wxStaticText(topRightPanel, wxID_ANY, wxT(""));
     mDownloaded        = new wxStaticText(topRightPanel, wxID_ANY, wxT(""));
     mPreferredDeadline = new wxStaticText(topRightPanel, wxID_ANY, wxT(""));
     mFinalDeadline     = new wxStaticText(topRightPanel, wxID_ANY, wxT(""));
 
-    // We use a specific sizer for the core, because we use 3 labels instead of just one (to have the core name in red)
+    // Emphasize the name of the core
     mCoreName->SetForegroundColour(*wxRED);
-    coreSizer->Add(new wxStaticText(topRightPanel, wxID_ANY, wxT("Using ")));
-    coreSizer->Add(mCoreName);
-    coreSizer->Add(new wxStaticText(topRightPanel, wxID_ANY, wxT(" core")));
 
     // Information on the current client is stored using a GridSizer
+    infoSizer->Add(new StaticBoldedText(topRightPanel, wxID_ANY, wxT("Core:")), 0, wxALIGN_RIGHT);
+    infoSizer->Add(mCoreName, 0, wxALIGN_LEFT);
     infoSizer->Add(new StaticBoldedText(topRightPanel, wxID_ANY, wxT("Project:")), 0, wxALIGN_RIGHT);
     infoSizer->Add(mProjectId, 0, wxALIGN_LEFT);
     infoSizer->Add(new StaticBoldedText(topRightPanel, wxID_ANY, wxT("Credit:")), 0, wxALIGN_RIGHT);
@@ -470,13 +473,9 @@ inline void MainDialog::CreateLayout(void)
     // We use AddStretchSpacer() to keep the information vertically centered
     topRightSizer->SetMinSize(300, 0);
     topRightSizer->AddStretchSpacer();
-    topRightSizer->Add(coreSizer, 0, wxALIGN_CENTER_HORIZONTAL);
-    topRightSizer->AddSpacer(FMC_GUI_SPACING_LOW);
-    topRightSizer->Add(new wxStaticText(topRightPanel, wxID_ANY, wxT("---")), 0, wxALIGN_CENTER);
-    topRightSizer->AddSpacer(FMC_GUI_SPACING_LOW);
     topRightSizer->Add(infoSizer, 0, wxALIGN_CENTER);
     topRightSizer->AddStretchSpacer();
-    
+
     topRightPanel->SetSizer(topRightSizer);
 
 
@@ -791,7 +790,8 @@ void MainDialog::OnClose(wxCloseEvent& event)
     // Save the state of the log
     _PrefsSetBool(PREF_MAINDIALOG_SHOWLOG, mLogFile->IsShown());
 
-    // Delete any dialog we could have displayed
+    // Delete any dialog we could have displayed / Objects we could have used
+    TrayManager::DestroyInstance();
     AboutDialog::DestroyInstance();
     ClientDialog::DestroyInstance();
     MessagesFrame::DestroyInstance();
@@ -931,35 +931,18 @@ void MainDialog::OnETAStylePrefChanged(void)
 
 
 /**
- * Called when the frame is iconized
- * Depending on the preferences, FahMon will either hide it and use a tray icon, or let it be iconized as usual
+ * Enable/Disable tray icon
 **/
-void MainDialog::OnIconize(wxIconizeEvent& event)
+void MainDialog::OnTrayIconPrefChanged(void)
 {
-    /*
-    bool shouldMinimizeToTray;
+    bool trayIconEnabled;
 
-    _PrefsGetBool(PREF_MAINDIALOG_MINIMIZE_TO_TRAY, shouldMinimizeToTray);
+    // Check the new value of the preference
+    _PrefsGetBool(PREF_MAINDIALOG_ENABLE_TRAY_ICON, trayIconEnabled);
 
-    // Hide the window if the user asked for it
-    if(shouldMinimizeToTray == true)
-    {
-        mSystemTray.SetIcon(wxIcon(wxT(FMC_PATH_IMG_TRAY)), wxT(FMC_PRODUCT));
-        mSystemTray.SetNextHandler(this);
-        Show(false);
-        Show(true);
-    }
-    */
+    // And install/uninstall the icon as needed
+    if(trayIconEnabled == true)
+        TrayManager::GetInstance()->InstallIcon();
+    else
+        TrayManager::GetInstance()->UninstallIcon();
 }
-
-
-/**
- * Double-clicks show the window and remove the icon from the tray
-**/
-/*
-void MainDialog::OnTrayDblClick(wxTaskBarIconEvent& event)
-{
-    mSystemTray.RemoveIcon();
-    Show(true);
-}
-*/

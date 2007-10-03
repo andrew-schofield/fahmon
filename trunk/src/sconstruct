@@ -3,6 +3,7 @@ debug   = ARGUMENTS.get('debug', 0)
 target  = 'fahmon'
 
 sources = ['aboutDialog.cpp',
+           'base64Codec.cpp',
            'benchmark.cpp',
            'benchmarksDialog.cpp',
            'benchmarksManager.cpp',
@@ -33,6 +34,7 @@ sources = ['aboutDialog.cpp',
            'staticBoldedText.cpp',
            'staticUrl.cpp',
            'tools.cpp',
+           'trayManager.cpp',
            'workUnitFrame.cpp'
           ]
 

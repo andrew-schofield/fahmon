@@ -199,6 +199,23 @@ bool PreferencesManager::GetString(const wxString& name, wxString& value)
 
 
 /**
+ * Retrieve the value of an hidden string preference
+**/
+bool PreferencesManager::GetHiddenString(const wxString& name, wxString& value)
+{
+    Preference *prefValue = GetPref(name);
+	
+    if(prefValue == NULL)
+        return false;
+	
+    wxASSERT(prefValue->IsAnHiddenStringPref() == true);
+	
+    value = prefValue->GetHiddenStringValue();
+    return true;
+}
+
+
+/**
  * Load the preferences from the disk
 **/
 inline void PreferencesManager::Load(void)

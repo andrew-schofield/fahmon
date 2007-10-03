@@ -59,6 +59,7 @@ protected:
 
     // Events
     void OnProjectChanged(wxListEvent& event);
+    void OnCloseButton(wxCommandEvent& event);
 
 
 public:

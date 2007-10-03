@@ -25,6 +25,7 @@
 #include "wx/textctrl.h"
 #include "wx/checkbox.h"
 #include "wx/spinctrl.h"
+#include "wx/stattext.h"
 
 
 /**
@@ -37,7 +38,7 @@ protected:
     static PreferencesDialog *mInstance;
 
     // Widgets for the general tab
-    wxCheckBox *mGeneralMinimizeToTray;
+    wxCheckBox *mGeneralEnableTrayIcon;
     wxCheckBox *mGeneralAutoUpdateProjectsDatabase;
     wxCheckBox *mGeneralCollectXYZFiles;
 
@@ -47,13 +48,21 @@ protected:
     wxSpinCtrl *mMonitoringAutoReloadFrequency;
 
     // Widgets for the networking tab
-    wxCheckBox *mNetworkingUseProxy;
-    wxTextCtrl *mNetworkingProxyAddress;
-    wxTextCtrl *mNetworkingProxyPort;
+    wxCheckBox   *mNetworkingUseProxy;
+    wxTextCtrl   *mNetworkingProxyAddress;
+    wxTextCtrl   *mNetworkingProxyPort;
+    wxCheckBox   *mNetworkingUseProxyAuthentication;
+    wxTextCtrl   *mNetworkingProxyUsername;
+    wxTextCtrl   *mNetworkingProxyPassword;
+    wxStaticText *mNetworkingLabelAddress;
+    wxStaticText *mNetworkingLabelPort;
+    wxStaticText *mNetworkingLabelUsername;
+    wxStaticText *mNetworkingLabelPassword;
 
     // Storage for the initial value of some important preferences
     // This is needed to detect when one of them has changed, so that the concerned component can be warned
     bool     mInitAutoReload;
+    bool     mInitEnableTrayIcon;
     wxUint32 mInitAutoReloadFrequency;
     wxUint32 mInitETADisplayStyle;
     

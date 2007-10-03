@@ -17,7 +17,7 @@
 #include "fahmon.h"
 #include "dataInputStream.h"
 
-#include "tools.h"
+#include "base64Codec.h"
 
 
 /**
@@ -28,12 +28,12 @@ DataInputStream::DataInputStream(const wxString& filename)
     mFileIS     = NULL;
     mDataIS     = NULL;
     mBufferedIS = NULL;
-    
+
     // wxWidgets will pop up error messages when the file does not exists
     // so we avoid this by testing first the existence of the file
     if(wxFileExists(filename) == false)
         return;
-    
+
     mFileIS = new wxFileInputStream(filename);
     if(mFileIS != NULL)
     {
@@ -51,10 +51,24 @@ DataInputStream::~DataInputStream(void)
 {
     if(mDataIS != NULL)
         delete mDataIS;
-    
+
     if(mBufferedIS != NULL)
         delete mBufferedIS;
-    
+
     if(mFileIS != NULL)
         delete mFileIS;
+}
+
+
+/**
+ * Hidden strings are not directly "human readable" from the disk
+**/
+void DataInputStream::ReadHiddenString(wxString& value)
+{
+    wxString encodedString;
+
+    ReadString(encodedString);
+
+    // We must decode the read string
+    value = Base64Codec::Decode(encodedString);
 }

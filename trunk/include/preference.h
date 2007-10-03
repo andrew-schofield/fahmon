@@ -27,6 +27,9 @@
 class Preference
 {
 protected:
+    
+    // Order *MUST* not be changed
+    // This is for compatibility with older versions
 	enum _PREF_TYPE
 	{
 		PT_BOOL,
@@ -34,43 +37,46 @@ protected:
 		PT_INT,
 		PT_DOUBLE,
 		PT_STRING,
-		PT_UNKNOWN
+		PT_UNKNOWN,
+        PT_HIDDEN_STRING        // Used for string that should not be directly "human-readable" from the disk
 	};
 
-	
-	PrefType mPrefType;
-	wxString mPrefName;
-    wxString mStringValue;
+
+    PrefType mPrefType;
+    wxString mPrefName;
+    wxString mStringValue;      // Used for both PT_STRING and PT_HIDDEN_STRING
     wxUint32 mUintValue;
     wxInt32  mIntValue;
     double   mDoubleValue;
-	bool     mBoolValue;
+    bool     mBoolValue;
 
 
 public:
-	Preference(void);
-	Preference(wxString name, bool value);
+    Preference(void);
+    Preference(wxString name, bool value);
     Preference(wxString name, double value);
     Preference(wxString name, wxInt32 value);
-	Preference(wxString name, wxUint32 value);
-    Preference(wxString name, const wxString& value);
+    Preference(wxString name, wxUint32 value);
+    Preference(wxString name, const wxString& value, bool isHidden = false);
 
     void Read(DataInputStream& in);
     void Write(DataOutputStream& out) const;
 
-	bool IsABoolPref(void)   const {return mPrefType == PT_BOOL;}
-    bool IsAnIntPref(void)   const {return mPrefType == PT_INT;}
-	bool IsAnUintPref(void)  const {return mPrefType == PT_UINT;}
-	bool IsADoublePref(void) const {return mPrefType == PT_DOUBLE;}
-	bool IsAStringPref(void) const {return mPrefType == PT_STRING;}
+    bool IsABoolPref(void)          const {return mPrefType == PT_BOOL;}
+    bool IsAnIntPref(void)          const {return mPrefType == PT_INT;}
+    bool IsAnUintPref(void)         const {return mPrefType == PT_UINT;}
+    bool IsADoublePref(void)        const {return mPrefType == PT_DOUBLE;}
+    bool IsAStringPref(void)        const {return mPrefType == PT_STRING;}
+    bool IsAnHiddenStringPref(void) const {return mPrefType == PT_HIDDEN_STRING;}
 
     // --- Getters
-	wxString GetName(void)        const {return mPrefName;}
-    wxString GetStringValue(void) const {return mStringValue;}
-    wxUint32 GetUintValue(void)   const {return mUintValue;}
-    wxInt32  GetIntValue(void)    const {return mIntValue;}
-    double   GetDoubleValue(void) const {return mDoubleValue;}
-	bool     GetBoolValue(void)   const {return mBoolValue;}
+    bool     GetBoolValue(void)         const {return mBoolValue;}
+    double   GetDoubleValue(void)       const {return mDoubleValue;}
+    wxInt32  GetIntValue(void)          const {return mIntValue;}
+    wxString GetName(void)              const {return mPrefName;}
+    wxString GetStringValue(void)       const {return mStringValue;}
+    wxString GetHiddenStringValue(void) const {return mStringValue;}
+    wxUint32 GetUintValue(void)         const {return mUintValue;}
 };
 
 

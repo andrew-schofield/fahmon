@@ -29,7 +29,8 @@ enum _CONTROL_ID
 {
     // Checkboxes
     CHK_AUTORELOAD = wxID_HIGHEST,
-    CHK_USEPROXY
+    CHK_USEPROXY,
+    CHK_PROXYAUTHENTICATION
 };
 
 
@@ -40,8 +41,9 @@ BEGIN_EVENT_TABLE(PreferencesDialog, wxDialog)
     EVT_BUTTON(wxID_OK,    PreferencesDialog::OnOkButton)
 
     // --- Checkboxes
-    EVT_CHECKBOX(CHK_USEPROXY,   PreferencesDialog::OnCheckboxes)
-    EVT_CHECKBOX(CHK_AUTORELOAD, PreferencesDialog::OnCheckboxes)
+    EVT_CHECKBOX(CHK_USEPROXY,            PreferencesDialog::OnCheckboxes)
+    EVT_CHECKBOX(CHK_AUTORELOAD,          PreferencesDialog::OnCheckboxes)
+    EVT_CHECKBOX(CHK_PROXYAUTHENTICATION, PreferencesDialog::OnCheckboxes)
 END_EVENT_TABLE()
 
 
@@ -130,22 +132,22 @@ inline wxPanel* PreferencesDialog::CreateGeneralTab(wxNotebook* parent)
     wxPanel    *panel;
     wxBoxSizer *sizer;
     wxBoxSizer *topLevelSizer;
-    
+
     panel                              = new wxPanel(parent);
     sizer                              = new wxBoxSizer(wxVERTICAL);
     topLevelSizer                      = new wxBoxSizer(wxVERTICAL);
-//    mGeneralMinimizeToTray             = new wxCheckBox(panel, wxID_ANY, wxT("Minimize to system tray"));
+    mGeneralEnableTrayIcon             = new wxCheckBox(panel, wxID_ANY, wxT("Enable system tray icon"));
     mGeneralCollectXYZFiles            = new wxCheckBox(panel, wxID_ANY, wxT("Collect .xyz files"));
     mGeneralAutoUpdateProjectsDatabase = new wxCheckBox(panel, wxID_ANY, wxT("Auto update projects database when needed"));
 
     sizer->AddStretchSpacer();
-//    sizer->Add(mGeneralMinimizeToTray, 0, wxALIGN_LEFT);
+    sizer->Add(mGeneralEnableTrayIcon, 0, wxALIGN_LEFT);
     sizer->AddStretchSpacer();
     sizer->Add(mGeneralCollectXYZFiles, 0, wxALIGN_LEFT);
     sizer->AddStretchSpacer();
     sizer->Add(mGeneralAutoUpdateProjectsDatabase, 0, wxALIGN_LEFT);
     sizer->AddStretchSpacer();
-    
+
     topLevelSizer->Add(sizer, 1, wxEXPAND | wxALL, FMC_GUI_BORDER);
     panel->SetSizer(topLevelSizer);
     
@@ -198,28 +200,49 @@ inline wxPanel* PreferencesDialog::CreateMonitoringTab(wxNotebook* parent)
 **/
 inline wxPanel* PreferencesDialog::CreateNetworkingTab(wxNotebook* parent)
 {
-    wxPanel         *panel;
-    wxBoxSizer      *sizer;
-    wxBoxSizer      *topLevelSizer;
-    wxFlexGridSizer *sizerProxyConfiguration;
+    wxPanel    *panel;
+    wxBoxSizer *sizer;
+    wxBoxSizer *topLevelSizer;
+    wxBoxSizer *proxyAddressSizer;
+    wxBoxSizer *proxyAuthenticationSizer;
 
-    panel                   = new wxPanel(parent);
-    sizer                   = new wxBoxSizer(wxVERTICAL);
-    topLevelSizer           = new wxBoxSizer(wxVERTICAL);
-    sizerProxyConfiguration = new wxFlexGridSizer(2, FMC_GUI_SPACING_LOW, FMC_GUI_SPACING_LOW);
-    mNetworkingUseProxy     = new wxCheckBox(panel, CHK_USEPROXY, wxT("Use a proxy for HTTP connections"));
-    mNetworkingProxyAddress = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition, wxSize(FMC_GUI_TEXTCTRL_MIN_LENGTH, -1));
-    mNetworkingProxyPort    = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition, wxDefaultSize, 0, wxTextValidator(wxFILTER_NUMERIC));
+    panel                             = new wxPanel(parent);
+    sizer                             = new wxBoxSizer(wxVERTICAL);
+    topLevelSizer                     = new wxBoxSizer(wxVERTICAL);
+    proxyAddressSizer                 = new wxBoxSizer(wxHORIZONTAL);
+    proxyAuthenticationSizer          = new wxBoxSizer(wxHORIZONTAL);
+    
+    mNetworkingUseProxy               = new wxCheckBox(panel, CHK_USEPROXY, wxT("Use a proxy for HTTP connections"));
+    mNetworkingProxyAddress           = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
+    mNetworkingProxyPort              = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition, wxDefaultSize, 0, wxTextValidator(wxFILTER_NUMERIC));
+    mNetworkingUseProxyAuthentication = new wxCheckBox(panel, CHK_PROXYAUTHENTICATION, wxT("Proxy requires authentication"));
+    mNetworkingProxyUsername          = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
+    mNetworkingProxyPassword          = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition, wxDefaultSize, wxTE_PASSWORD);
+    mNetworkingLabelAddress           = new wxStaticText(panel, wxID_ANY, wxT("Address:"));
+    mNetworkingLabelPort              = new wxStaticText(panel, wxID_ANY, wxT("Port:"));
+    mNetworkingLabelUsername          = new wxStaticText(panel, wxID_ANY, wxT("Username:"));
+    mNetworkingLabelPassword          = new wxStaticText(panel, wxID_ANY, wxT("Password:"));
 
-    sizerProxyConfiguration->Add(new wxStaticText(panel, wxID_ANY, wxT("Address:")), 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
-    sizerProxyConfiguration->Add(mNetworkingProxyAddress, 1, wxALIGN_CENTER_VERTICAL | wxEXPAND);
-    sizerProxyConfiguration->Add(new wxStaticText(panel, wxID_ANY, wxT("Port:")), 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
-    sizerProxyConfiguration->Add(mNetworkingProxyPort, 1, wxALIGN_CENTER_VERTICAL);
+    proxyAddressSizer->Add(mNetworkingLabelAddress, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
+    proxyAddressSizer->Add(mNetworkingProxyAddress, 1, wxALIGN_CENTER_VERTICAL | wxEXPAND);
+    proxyAddressSizer->AddSpacer(FMC_GUI_SPACING_LOW);
+    proxyAddressSizer->Add(mNetworkingLabelPort, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
+    proxyAddressSizer->Add(mNetworkingProxyPort, 1, wxALIGN_CENTER_VERTICAL);
+    
+    proxyAuthenticationSizer->Add(mNetworkingLabelUsername, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
+    proxyAuthenticationSizer->Add(mNetworkingProxyUsername, 1, wxALIGN_CENTER_VERTICAL | wxEXPAND);
+    proxyAuthenticationSizer->AddSpacer(FMC_GUI_SPACING_LOW);
+    proxyAuthenticationSizer->Add(mNetworkingLabelPassword, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
+    proxyAuthenticationSizer->Add(mNetworkingProxyPassword, 1, wxALIGN_CENTER_VERTICAL);
 
     sizer->AddStretchSpacer();
     sizer->Add(mNetworkingUseProxy, 0, wxALIGN_LEFT);
     sizer->AddSpacer(FMC_GUI_SPACING_LOW);
-    sizer->Add(sizerProxyConfiguration, 0, wxALIGN_LEFT | wxEXPAND);
+    sizer->Add(proxyAddressSizer, 0, wxALIGN_LEFT | wxEXPAND);
+    sizer->AddSpacer(FMC_GUI_SPACING_LOW);
+    sizer->Add(mNetworkingUseProxyAuthentication, 0, wxALIGN_LEFT);
+    sizer->AddSpacer(FMC_GUI_SPACING_LOW);
+    sizer->Add(proxyAuthenticationSizer, 0, wxALIGN_LEFT | wxEXPAND);
     sizer->AddStretchSpacer();
 
     topLevelSizer->Add(sizer, 1, wxEXPAND | wxALL, FMC_GUI_BORDER);
@@ -246,27 +269,29 @@ int PreferencesDialog::ShowModal(void)
 **/
 inline void PreferencesDialog::LoadPreferences(void)
 {
-    bool     isUsingProxy;
+    bool     useProxy;
     bool     isCollectingXYZFiles;
     bool     autoUpdateProjects;
-    bool     minimizeToTray;
+    bool     useProxyAuthentication;
     wxUint32 proxyPort;
     wxString proxyAddress;
+    wxString proxyUsername;
+    wxString proxyPassword;
     
     // -----===== General preferences =====-----
     _PrefsGetBool(PREF_FAHCLIENT_COLLECTXYZFILES,     isCollectingXYZFiles);
     _PrefsGetBool(PREF_MAINDIALOG_AUTOUPDATEPROJECTS, autoUpdateProjects);
-    _PrefsGetBool(PREF_MAINDIALOG_MINIMIZE_TO_TRAY,   minimizeToTray);
+    _PrefsGetBool(PREF_MAINDIALOG_ENABLE_TRAY_ICON,   mInitEnableTrayIcon);
 
     mGeneralCollectXYZFiles->SetValue(isCollectingXYZFiles);
-//    mGeneralMinimizeToTray->SetValue(minimizeToTray);
+    mGeneralEnableTrayIcon->SetValue(mInitEnableTrayIcon);
     mGeneralAutoUpdateProjectsDatabase->SetValue(autoUpdateProjects);
 
     // -----===== Monitoring preferences =====-----
     _PrefsGetBool(PREF_MAINDIALOG_AUTORELOAD,          mInitAutoReload);
     _PrefsGetUint(PREF_MAINDIALOG_AUTORELOADFREQUENCY, mInitAutoReloadFrequency);
     _PrefsGetUint(PREF_ETA_DISPLAYSTYLE,               mInitETADisplayStyle);
-    
+
     mMonitoringAutoReload->SetValue(mInitAutoReload);
     mMonitoringAutoReloadFrequency->SetValue(wxString::Format(wxT("%u"), mInitAutoReloadFrequency));
     mMonitoringETADisplayStyle->Select(mInitETADisplayStyle);
@@ -274,23 +299,46 @@ inline void PreferencesDialog::LoadPreferences(void)
     // -----===== Networking preferences =====-----
 
     // --- Proxy
-    _PrefsGetBool  (PREF_HTTPDOWNLOADER_USEPROXY,     isUsingProxy);
-    _PrefsGetString(PREF_HTTPDOWNLOADER_PROXYADDRESS, proxyAddress);
-    _PrefsGetUint  (PREF_HTTPDOWNLOADER_PROXYPORT,    proxyPort);
-    
-    mNetworkingUseProxy->SetValue(isUsingProxy);
-    mNetworkingProxyAddress->Enable(isUsingProxy);
-    mNetworkingProxyPort->Enable(isUsingProxy);
-    
-    if(isUsingProxy == true)
+    _PrefsGetBool        (PREF_HTTPDOWNLOADER_USEPROXY,                   useProxy);
+    _PrefsGetString      (PREF_HTTPDOWNLOADER_PROXYADDRESS,               proxyAddress);
+    _PrefsGetUint        (PREF_HTTPDOWNLOADER_PROXYPORT,                  proxyPort);
+    _PrefsGetBool        (PREF_HTTPDOWNLOADER_USE_PROXY_AUTHENTICATION,   useProxyAuthentication);
+    _PrefsGetString      (PREF_HTTPDOWNLOADER_PROXY_USERNAME,             proxyUsername);
+    _PrefsGetHiddenString(PREF_HTTPDOWNLOADER_PROXY_PASSWORD,             proxyPassword);
+
+    mNetworkingUseProxy->SetValue(useProxy);
+    mNetworkingProxyAddress->Enable(useProxy);
+    mNetworkingLabelAddress->Enable(useProxy);
+    mNetworkingProxyPort->Enable(useProxy);
+    mNetworkingLabelPort->Enable(useProxy);
+    mNetworkingUseProxyAuthentication->Enable(useProxy);
+    mNetworkingProxyUsername->Enable(useProxy && useProxyAuthentication);
+    mNetworkingLabelUsername->Enable(useProxy && useProxyAuthentication);
+    mNetworkingProxyPassword->Enable(useProxy && useProxyAuthentication);
+    mNetworkingLabelPassword->Enable(useProxy && useProxyAuthentication);
+
+    if(useProxy == true)
     {
         mNetworkingProxyAddress->SetValue(proxyAddress);
         mNetworkingProxyPort->SetValue(wxString::Format(wxT("%u"), proxyPort));
+        mNetworkingUseProxyAuthentication->SetValue(useProxyAuthentication);
     }
     else
     {
         mNetworkingProxyAddress->SetValue(wxT(""));
         mNetworkingProxyPort->SetValue(wxT(""));
+        mNetworkingUseProxyAuthentication->SetValue(false);
+    }
+
+    if(useProxy == true && useProxyAuthentication == true)
+    {
+        mNetworkingProxyUsername->SetValue(proxyUsername);
+        mNetworkingProxyPassword->SetValue(proxyPassword);
+    }
+    else
+    {
+        mNetworkingProxyUsername->SetValue(wxT(""));
+        mNetworkingProxyPassword->SetValue(wxT(""));
     }
 }
 
@@ -300,13 +348,11 @@ inline void PreferencesDialog::LoadPreferences(void)
 **/
 inline void PreferencesDialog::SavePreferences(void)
 {
-    bool     autoReloadHasChanged;
-    bool     etaDisplayStyleHasChanged;
     wxUint32 proxyPort;
     
     // -----===== General preferences =====-----
     _PrefsSetBool(PREF_FAHCLIENT_COLLECTXYZFILES,     mGeneralCollectXYZFiles->GetValue());
-//    _PrefsSetBool(PREF_MAINDIALOG_MINIMIZE_TO_TRAY,   mGeneralMinimizeToTray->GetValue());
+    _PrefsSetBool(PREF_MAINDIALOG_ENABLE_TRAY_ICON,   mGeneralEnableTrayIcon->GetValue());
     _PrefsSetBool(PREF_MAINDIALOG_AUTOUPDATEPROJECTS, mGeneralAutoUpdateProjectsDatabase->GetValue());
 
     
@@ -314,17 +360,6 @@ inline void PreferencesDialog::SavePreferences(void)
     _PrefsSetBool(PREF_MAINDIALOG_AUTORELOAD,          mMonitoringAutoReload->GetValue());
     _PrefsSetUint(PREF_MAINDIALOG_AUTORELOADFREQUENCY, mMonitoringAutoReloadFrequency->GetValue());
     _PrefsSetUint(PREF_ETA_DISPLAYSTYLE,               mMonitoringETADisplayStyle->GetSelection());
-    
-    if(mMonitoringAutoReload->GetValue() != mInitAutoReload || (wxUint32)mMonitoringAutoReloadFrequency->GetValue() != mInitAutoReloadFrequency)
-        autoReloadHasChanged = true;
-    else
-        autoReloadHasChanged = false;
-    
-    if((wxUint32)mMonitoringETADisplayStyle->GetSelection() != mInitETADisplayStyle)
-        etaDisplayStyleHasChanged = true;
-    else
-        etaDisplayStyleHasChanged = false;
-        
 
 
     // -----===== Networking preferences =====-----
@@ -334,12 +369,19 @@ inline void PreferencesDialog::SavePreferences(void)
     _PrefsSetString(PREF_HTTPDOWNLOADER_PROXYADDRESS, mNetworkingProxyAddress->GetValue());
     _PrefsSetUint  (PREF_HTTPDOWNLOADER_PROXYPORT,    proxyPort);
     
-    
+    _PrefsSetBool        (PREF_HTTPDOWNLOADER_USE_PROXY_AUTHENTICATION,   mNetworkingUseProxyAuthentication->GetValue());
+    _PrefsSetString      (PREF_HTTPDOWNLOADER_PROXY_USERNAME,             mNetworkingProxyUsername->GetValue());
+    _PrefsSetHiddenString(PREF_HTTPDOWNLOADER_PROXY_PASSWORD,             mNetworkingProxyPassword->GetValue());
+
+
     // -----===== Alert components when important prefs have changed =====-----
-    if(autoReloadHasChanged == true)
+    if(mGeneralEnableTrayIcon->GetValue() != mInitEnableTrayIcon)
+        MainDialog::GetInstance()->OnTrayIconPrefChanged();
+    
+    if(mMonitoringAutoReload->GetValue() != mInitAutoReload || (wxUint32)mMonitoringAutoReloadFrequency->GetValue() != mInitAutoReloadFrequency)
         MainDialog::GetInstance()->OnAutoReloadPrefChanged();
     
-    if(etaDisplayStyleHasChanged == true)
+    if((wxUint32)mMonitoringETADisplayStyle->GetSelection() != mInitETADisplayStyle)
         MainDialog::GetInstance()->OnETAStylePrefChanged();
 }
 
@@ -368,14 +410,40 @@ void PreferencesDialog::OnCheckboxes(wxCommandEvent& event)
         // ---
         case CHK_USEPROXY:
             mNetworkingProxyAddress->Enable(mNetworkingUseProxy->GetValue());
+            mNetworkingLabelAddress->Enable(mNetworkingUseProxy->GetValue());
             mNetworkingProxyPort->Enable(mNetworkingUseProxy->GetValue());
+            mNetworkingLabelPort->Enable(mNetworkingUseProxy->GetValue());
+            mNetworkingUseProxyAuthentication->Enable(mNetworkingUseProxy->GetValue());
+
+            if(mNetworkingUseProxy->GetValue() == false)
+            {
+                mNetworkingProxyUsername->Enable(false);
+                mNetworkingLabelUsername->Enable(false);
+                mNetworkingProxyPassword->Enable(false);
+                mNetworkingLabelPassword->Enable(false);
+            }
+            else if(mNetworkingUseProxyAuthentication->GetValue() == true)
+            {
+                mNetworkingProxyUsername->Enable(true);
+                mNetworkingLabelUsername->Enable(true);
+                mNetworkingProxyPassword->Enable(true);
+                mNetworkingLabelPassword->Enable(true);
+            }
             break;
-        
+
         // ---
         case CHK_AUTORELOAD:
             mMonitoringAutoReloadFrequency->Enable(mMonitoringAutoReload->GetValue());
             break;
-        
+
+        // ---
+        case CHK_PROXYAUTHENTICATION:
+            mNetworkingProxyUsername->Enable(mNetworkingUseProxyAuthentication->GetValue());
+            mNetworkingLabelUsername->Enable(mNetworkingUseProxyAuthentication->GetValue());
+            mNetworkingProxyPassword->Enable(mNetworkingUseProxyAuthentication->GetValue());
+            mNetworkingLabelPassword->Enable(mNetworkingUseProxyAuthentication->GetValue());
+            break;
+
         // We should never fall here
         default:
             wxASSERT(false);

@@ -34,6 +34,15 @@
 #define PREF_HTTPDOWNLOADER_PROXYPORT    wxT("HTTPDownloader.ProxyPort")
 #define PREF_HTTPDOWNLOADER_PROXYPORT_DV 8080
 
+#define PREF_HTTPDOWNLOADER_USE_PROXY_AUTHENTICATION    wxT("HTTPDownloader.UseProxyAuthentication")
+#define PREF_HTTPDOWNLOADER_USE_PROXY_AUTHENTICATION_DV false
+
+#define PREF_HTTPDOWNLOADER_PROXY_USERNAME    wxT("HTTPDownloader.ProxyUsername")
+#define PREF_HTTPDOWNLOADER_PROXY_USERNAME_DV wxT("")
+
+#define PREF_HTTPDOWNLOADER_PROXY_PASSWORD    wxT("HTTPDownloader.ProxyPassword")
+#define PREF_HTTPDOWNLOADER_PROXY_PASSWORD_DV wxT("")
+
 
 // This class allows one to easily download files from a web server
 class HTTPDownloader

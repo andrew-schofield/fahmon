@@ -30,6 +30,12 @@
             VAR_NAME = PREF_NAME##_DV;                                              \
 }
 
+#define _PrefsGetHiddenString(PREF_NAME, VAR_NAME)                                        \
+{                                                                                         \
+    if(PreferencesManager::GetInstance()->GetHiddenString(PREF_NAME, VAR_NAME) == false)  \
+            VAR_NAME = PREF_NAME##_DV;                                                    \
+}
+
 #define _PrefsGetUint(PREF_NAME, VAR_NAME)                                        \
 {                                                                                 \
     if(PreferencesManager::GetInstance()->GetUint(PREF_NAME, VAR_NAME) == false)  \
@@ -59,6 +65,11 @@
 #define _PrefsSetString(PREF_NAME, VAR_NAME)                             \
 {                                                                       \
     PreferencesManager::GetInstance()->SetString(PREF_NAME, VAR_NAME);  \
+}
+
+#define _PrefsSetHiddenString(PREF_NAME, VAR_NAME)                             \
+{                                                                              \
+    PreferencesManager::GetInstance()->SetHiddenString(PREF_NAME, VAR_NAME);   \
 }
 
 #define _PrefsSetUint(PREF_NAME, VAR_NAME)                            \
@@ -127,6 +138,9 @@ public:
 	
     void SetString(const wxString& name, const wxString& value) {SetPref(new Preference(name, value));}
     bool GetString(const wxString& name, wxString& value);
+
+    void SetHiddenString(const wxString& name, const wxString& value) {SetPref(new Preference(name, value, true));}
+    bool GetHiddenString(const wxString& name, wxString& value);
 };
 
 

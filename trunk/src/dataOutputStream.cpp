@@ -17,6 +17,8 @@
 #include "fahmon.h"
 #include "dataOutputStream.h"
 
+#include "base64Codec.h"
+
 
 /**
  * Constructor
@@ -24,7 +26,7 @@
 DataOutputStream::DataOutputStream(const wxString& filename)
 {
     mDataOS = NULL;
-    
+
     mFileOS = new wxFileOutputStream(filename);
     if(mFileOS != NULL)
     {
@@ -42,13 +44,23 @@ DataOutputStream::~DataOutputStream(void)
 {
     if(mDataOS != NULL)
         delete mDataOS;
-    
+
     if(mBufferedOS != NULL)
     {
         mBufferedOS->Close();
         delete mBufferedOS;
     }
-    
+
     if(mFileOS != NULL)
         delete mFileOS;
+}
+
+
+/**
+ * Hidden strings are not directly "human readable" from the disk
+**/
+void DataOutputStream::WriteHiddenString(const wxString& value)
+{
+    // The string is written in base64
+    WriteString(Base64Codec::Encode(value));
 }
