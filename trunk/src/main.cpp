@@ -37,7 +37,8 @@
 IMPLEMENT_APP(FahMonApp)
 
 BEGIN_EVENT_TABLE(FahMonApp, wxApp)
-EVT_END_SESSION( FahMonApp::OnQueryEndSession ) 
+EVT_END_SESSION( FahMonApp::OnEndSession )
+EVT_QUERY_END_SESSION( FahMonApp::OnQueryEndSession )
 END_EVENT_TABLE()
 
 /**
@@ -45,7 +46,8 @@ END_EVENT_TABLE()
 **/
 bool FahMonApp::OnInit(void)
 {
-    bool    startMinimised;
+    bool startMinimised;
+    bool isTrayIconEnabled;
 
     // Check for another instance
     mInstanceChecker = new wxSingleInstanceChecker(wxT(FMC_UID));
@@ -86,9 +88,16 @@ bool FahMonApp::OnInit(void)
     }
 
     // Let's start with the main dialog box
-    _PrefsGetBool(PREF_MAINDIALOG_START_MINIMISED,    startMinimised);
+    _PrefsGetBool(PREF_MAINDIALOG_START_MINIMISED,  startMinimised);
+    _PrefsGetBool(PREF_MAINDIALOG_ENABLE_TRAY_ICON, isTrayIconEnabled);
     if (startMinimised != true)
         MainDialog::GetInstance()->Show(true);
+    if (startMinimised == true && isTrayIconEnabled == false)
+    {
+        //show main window, then minimize it to taskbar
+        MainDialog::GetInstance()->Show(true);
+        MainDialog::GetInstance()->Iconize();
+    }
 
     return true;
 }
@@ -107,7 +116,7 @@ int FahMonApp::OnExit(void)
     ProjectsManager::DestroyInstance();
     PreferencesManager::DestroyInstance();        // MUST be destroyed last, so that other managers can save their preferences when they are destroyed
     MessagesManager::DestroyInstance();
-    
+
     delete mInstanceChecker;
 
     return 0;
@@ -115,10 +124,10 @@ int FahMonApp::OnExit(void)
 
 void FahMonApp::OnEndSession(wxCloseEvent& event)
 {
-wxTheApp->OnExit();
+    wxTheApp->OnExit();
 }
 
 void FahMonApp::OnQueryEndSession(wxCloseEvent& event)
 {
-wxTheApp->OnExit();
+    event.Skip();
 }

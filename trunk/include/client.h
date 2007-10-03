@@ -41,7 +41,8 @@ protected:
         ST_STOPPED,
         ST_INACTIVE,
         ST_RUNNING,
-        ST_ASYNCH
+        ST_ASYNCH,
+        ST_HUNG,
     } State;
 
     static wxMutex mMutexXYZFiles;
@@ -59,7 +60,10 @@ protected:
     wxString   mUserName;
     wxUint32   mTeamNumber;
     ProjectId  mProjectId;
-    double  mPPD;
+    wxInt16    mRun;
+    wxInt16    mClone;
+    wxInt16    mGen;
+    double     mPPD;
     wxDateTime mDownloadDate;
 
     void ComputeETA(WorkUnitFrame* lastFrame);
@@ -77,10 +81,10 @@ public:
 
     void Reload(void);
 
-    wxString GetUserStatsURL(void) const;
-    wxString GetTeamStatsURL(void) const;
-    wxString GetJmolURL(void)      const;
-    wxString GetFahinfoURL(void)   const;
+    wxString GetDonatorStatsURL(void) const;
+    wxString GetTeamStatsURL(void)    const;
+    wxString GetJmolURL(void)         const;
+    wxString GetFahinfoURL(void)      const;
 
     // -- 'Setters' --
     void SetName(const wxString& name) {mName = name;}
@@ -92,15 +96,19 @@ public:
     bool              IsInactive(void)        const {return mState == ST_INACTIVE;}
     bool              IsRunning(void)         const {return mState == ST_RUNNING;}
     bool              IsAsynch(void)          const {return mState == ST_ASYNCH;}
+    bool              IsHung(void)            const {return mState == ST_HUNG;}
     wxString          GetName(void)           const {return mName;}
     wxString          GetLocation(void)       const {return mLocation;}
     wxString          GetLog(void)            const {return mLog;}
     wxString          GetProjectString(void)  const {return mProjectString;}
     wxUint32          GetProgress(void)       const {return mProgress;}
     wxString          GetProgressString(void) const {return mProgressString;}
-    wxString          GetUserName(void)       const {return mUserName;}
+    wxString          GetDonatorName(void)    const {return mUserName;}
     wxUint32          GetTeamNumber(void)     const {return mTeamNumber;}
     ProjectId         GetProjectId(void)      const {return mProjectId;}
+    wxInt16           GetProjectRun(void)     const {return mRun;}
+    wxInt16           GetProjectClone(void)   const {return mClone;}
+    wxInt16           GetProjectGen(void)     const {return mGen;}
     double            GetPPD(void)            const {return mPPD;}
     const wxDateTime& GetDownloadDate(void)   const {return mDownloadDate;}
 

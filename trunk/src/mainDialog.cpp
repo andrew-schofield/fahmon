@@ -229,7 +229,7 @@ bool MainDialog::Show(bool show)
         else
             ShowClientInformation(INVALID_CLIENT_ID);
 
-        ClientsManager::GetInstance()->ReloadThreaded(CM_LOADALL);
+        ClientsManager::GetInstance()->ReloadThreaded(CM_LOADALLF);
     }
 
     return result;
@@ -366,8 +366,8 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
     mWUProgressGauge->SetValue(client->GetProgress());
 
     mUsername->Enable();
-    mUsername->SetLabel(client->GetUserName());
-    mUsername->SetURL(client->GetUserStatsURL());
+    mUsername->SetLabel(client->GetDonatorName());
+    mUsername->SetURL(client->GetDonatorStatsURL());
 
     mTeamNumber->Enable();
     mTeamNumber->SetLabel(wxString::Format(wxT("(%u)"), client->GetTeamNumber()));
@@ -735,6 +735,13 @@ inline void MainDialog::RestoreFrameState(void)
         framePosY = -1;
     }
 
+    if(frameWidth <= 0 || frameHeight <= 0)
+    {
+        // -1 indicates defaults values
+        frameWidth  = -1;
+        frameHeight = -1;
+    }
+
     // We now have correct values, resize and move the frame
     SetSize(frameWidth, frameHeight);
     Move(framePosX, framePosY);
@@ -896,7 +903,7 @@ void MainDialog::OnMenuWeb(wxCommandEvent& event)
                 if(event.GetId() == MID_WWWFAHINFO)
                     Tools::OpenURLInBrowser(ClientsManager::GetInstance()->Get(selectedClientId)->GetFahinfoURL());
                 else
-                    Tools::OpenURLInBrowser(ClientsManager::GetInstance()->Get(selectedClientId)->GetUserStatsURL());
+                    Tools::OpenURLInBrowser(ClientsManager::GetInstance()->Get(selectedClientId)->GetDonatorStatsURL());
             }
             else
                 Tools::ErrorMsgBox(wxT("You must first select a client!"));
@@ -1195,4 +1202,12 @@ double MainDialog::GetTotalPPD(void)
 wxInt32 MainDialog::GetClientCount(void)
 {
     return mClientsList->GetItemCount();
+}
+
+/**
+ * Reload selected client data from traymenu
+**/
+void MainDialog::TrayReloadSelectedClient(void)
+{
+    ShowClientInformation(mClientsList->GetSelectedClientId());
 }

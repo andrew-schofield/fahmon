@@ -164,7 +164,7 @@ protected:
 
 
 public:
-	// Singleton pattern
+    // Singleton pattern
     static void CreateInstance(void);
     static void DestroyInstance(void);
     static bool HasBeenInstanciated(void);
@@ -180,6 +180,7 @@ public:
     void OnTrayIconPrefChanged(void);
     void OnPPDStylePrefChanged(void);
     void OnDeadlinePrefChanged(void);
+    void TrayReloadSelectedClient(void);
 
 
 private:

@@ -19,6 +19,7 @@
 
 #include "tools.h"
 #include "client.h"
+#include "wx/settings.h"
 #include "wx/image.h"
 #include "mainDialog.h"
 #include "pathManager.h"
@@ -76,7 +77,7 @@ BEGIN_EVENT_TABLE(ListViewClients, wxListView)
     EVT_MENU    (MID_ADDCLIENT,      ListViewClients::OnMenuAddClient)
     EVT_MENU    (MID_EDITCLIENT,     ListViewClients::OnMenuEditClient)
     EVT_MENU    (MID_DELETECLIENT,   ListViewClients::OnMenuDeleteClient)
-    EVT_MENU    (MID_VIEWFILES,    ListViewClients::OnMenuViewFiles)
+    EVT_MENU    (MID_VIEWFILES,      ListViewClients::OnMenuViewFiles)
 
     // List events
     EVT_LIST_COL_CLICK    (wxID_ANY, ListViewClients::OnColumnLeftClick)
@@ -195,7 +196,7 @@ int ListViewClients::CompareClients(wxUint32 clientId1, wxUint32 clientId2) cons
         if(!client1->IsAccessible())
             return 1;
         else if(!client2->IsAccessible())
-             return -1;
+            return -1;
     }
 
     // If the two clients are valid, then we compare them using the correct sorting criterion
@@ -234,10 +235,12 @@ int ListViewClients::CompareClients(wxUint32 clientId1, wxUint32 clientId2) cons
             if(!client2->IsAccessible()) Client2State = 0;
             if(client1->IsStopped()) Client1State = 1; // stopped client
             if(client2->IsStopped()) Client2State = 1;
-            if(client1->IsInactive()) Client1State = 2; // inactive client
-            if(client2->IsInactive()) Client2State = 2;
-            if(client1->IsAccessible() && !client1->IsInactive() &&  !client1->IsStopped()) Client1State = 3; //active client
-            if(client2->IsAccessible() && !client2->IsInactive() &&  !client2->IsStopped()) Client2State = 3;
+            if(client1->IsHung()) Client1State = 2; // hung client
+            if(client2->IsHung()) Client2State = 2;
+            if(client1->IsInactive()) Client1State = 3; // inactive client
+            if(client2->IsInactive()) Client2State = 3;
+            if(client1->IsAccessible() && !client1->IsInactive() &&  !client1->IsStopped()) Client1State = 4; //active client
+            if(client2->IsAccessible() && !client2->IsInactive() &&  !client2->IsStopped()) Client2State = 4;
 
             if(Client1State > Client2State)
                 comparisonResult = -1;
@@ -288,6 +291,8 @@ void ListViewClients::Reset(wxUint32 nbClients)
     DeleteAllItems();
     mClientIdToIndex.Empty();
 
+    SetTextColour(wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOWTEXT));
+
     // Insert dummy entries in the list, one for each client
     for(i=0; i<nbClients; ++i)
     {
@@ -296,9 +301,21 @@ void ListViewClients::Reset(wxUint32 nbClients)
 
         // Give a slightly darker color to odd lines
         if((i&1) != 0)
-            SetItemBackgroundColour(i, FMC_COLOR_LIST_ODD_LINES);
+        {
+            //for some reason the WINDOWFRAME colour doesn't work in windows, so use the light 3D
+            //element instead. Hopefully this will be the same colour most of the time anyway
+            //It appears to throw a fit at the fonts too, so we reset them here
+            #ifdef _FAHMON_WIN32_
+            SetItemBackgroundColour(i, wxSystemSettings::GetColour(wxSYS_COLOUR_3DLIGHT));
+            #else
+            SetItemBackgroundColour(i, wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOWFRAME));
+            #endif
+
+        }
         else
-            SetItemBackgroundColour(i, *wxWHITE);
+        {
+            SetItemBackgroundColour(i, wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOW));
+        }
 
         // Due to the possibility of sorting, items won't keep their order, so we associate the id of clients with their
         // index in the list, so that we can address directly the correct item to update a client
@@ -358,7 +375,7 @@ void ListViewClients::UpdateClient(wxUint32 clientId)
     project = ProjectsManager::GetInstance()->GetProject(client->GetProjectId());
 
     // If it's possible to get the PPD, do so now
-    if(client->IsAccessible() && !client->IsStopped() && project != INVALID_PROJECT_ID)
+    if(client->IsAccessible() && !client->IsStopped() && !client->IsHung() && project != INVALID_PROJECT_ID)
     {
         PPD = wxString::Format(wxT("%.2f"), client->GetPPD());
     }
@@ -366,10 +383,11 @@ void ListViewClients::UpdateClient(wxUint32 clientId)
     SetItem(clientIndex, LVC_PPD, PPD);
 
     // ETA
-    if(client->GetProgress() == 100)                       SetItem(clientIndex, LVC_ETA, wxT("Finished"));
-    else if(!client->IsAccessible() || client->IsStopped())     SetItem(clientIndex, LVC_ETA, wxT("N/A"));
-    else if(!client->GetETA()->IsOk())                          SetItem(clientIndex, LVC_ETA, wxT("N/A"));
-    else                                                        SetItem(clientIndex, LVC_ETA, client->GetETA()->GetString());
+    if(client->GetProgress() == 100)                        SetItem(clientIndex, LVC_ETA, wxT("Finished"));
+    else if(!client->IsAccessible() || client->IsStopped()) SetItem(clientIndex, LVC_ETA, wxT("N/A"));
+    else if(!client->GetETA()->IsOk())                      SetItem(clientIndex, LVC_ETA, wxT("N/A"));
+    else if(client->IsHung())                               SetItem(clientIndex, LVC_ETA, wxT("*Hung*"));
+    else                                                    SetItem(clientIndex, LVC_ETA, client->GetETA()->GetString());
 
      // We use leading icons to indicate the status of the client
     if(!client->IsAccessible())
@@ -383,6 +401,10 @@ void ListViewClients::UpdateClient(wxUint32 clientId)
     else if(client->IsInactive())
     {
         SetItemImage(clientIndex, LVI_CLIENT_INACTIVE);
+    }
+    else if(client->IsHung())
+    {
+        SetItemImage(clientIndex, LVI_CLIENT_STOPPED);
     }
     else if(client->IsAsynch())
     {
@@ -418,6 +440,7 @@ void ListViewClients::Sort(void)
     // Sort the list using the default method provided by wxWindows
     SortItems(ListViewClients_CompareFunction, (long)this);
 
+    SetTextColour(wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOWTEXT));
     // Retrieve the new position of each client and correctly color each line
     for(i=0; i<(wxUint32)GetItemCount(); ++i)
     {
@@ -425,10 +448,20 @@ void ListViewClients::Sort(void)
 
         if((i&1) != 0)
         {
-            SetItemBackgroundColour(i, FMC_COLOR_LIST_ODD_LINES);
+            //for some reason the WINDOWFRAME colour doesn't work in windows, so use the light 3D
+            //element instead. Hopefully this will be the same colour most of the time anyway
+            //It appears to throw a fit at the fonts too, so we reset them here
+            #ifdef _FAHMON_WIN32_
+            SetItemBackgroundColour(i, wxSystemSettings::GetColour(wxSYS_COLOUR_3DLIGHT));
+            #else
+            SetItemBackgroundColour(i, wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOWFRAME));
+            #endif
+
         }
         else
-            SetItemBackgroundColour(i, *wxWHITE);
+        {
+            SetItemBackgroundColour(i, wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOW));
+        }
     }
 
     // Select() does not seem to generate a LIST_ITEM_SELECTED event

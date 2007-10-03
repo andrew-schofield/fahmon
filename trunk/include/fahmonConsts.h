@@ -28,7 +28,7 @@
 
 // --- Strings
 #define FMC_APPNAME 	"FahMon"
-#define FMC_VERSION 	"2.2.1a"
+#define FMC_VERSION 	"2.2.2"
 #define FMC_PRODUCT 	FMC_APPNAME" "FMC_VERSION
 #define FMC_UID         "."FMC_APPNAME"__LOCK__"
 

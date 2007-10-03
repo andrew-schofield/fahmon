@@ -161,6 +161,8 @@ void TrayManager::OnClick(wxTaskBarIconEvent& event)
         MainDialog::GetInstance()->Show();
         MainDialog::GetInstance()->Raise();
 
+        MainDialog::GetInstance()->TrayReloadSelectedClient();
+
         // Fortunately, this function seems to keep track of the previous maximize state of the window;
         // otherwise, we would have to do that
         MainDialog::GetInstance()->Maximize(false);
@@ -225,6 +227,8 @@ void TrayManager::Show(wxCommandEvent&)
 {
         MainDialog::GetInstance()->Show();
         MainDialog::GetInstance()->Raise();
+
+        MainDialog::GetInstance()->TrayReloadSelectedClient();
 
         // Fortunately, this function seems to keep track of the previous maximize state of the window;
         // otherwise, we would have to do that

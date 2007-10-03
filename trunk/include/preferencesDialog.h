@@ -97,6 +97,8 @@ protected:
     bool     mInitEnableTrayIcon;
     bool     mInstantFrames;
     bool     mInitDeadlineDays;
+    bool     mInitOverrideTz;
+    wxInt32  mInitTimezone;
     wxUint32 mInitAutoReloadFrequency;
     wxUint32 mInitETADisplayStyle;
     wxUint32 mInitPPDDisplayStyle;

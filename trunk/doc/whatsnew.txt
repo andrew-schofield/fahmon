@@ -3,6 +3,20 @@
 
 
 
+v2.2.2
+[+] Added preliminary detection for hung clients
+[-] Fixed bug which prevented reloading selected client data after being restored from the system tray
+[-] Fixed regression which caused inaccessible clients to report an incorrect state on FahMon launch
+[-] Fixed regression that often caused an incorrect xyz file to be saved when experimental reload system was activated
+[-] Fixed (longstanding) major issue with state detection and timezone conversion which caused clients to have
+    an unknown state when the local timezone has passed 00:00 and the client hasn't.
+[-] Fixed bug which prevented you from running FahMon in "start minimised" mode without "enable tray icon" being set
+[-] Fixed another bug relating to window size not restoring correctly. If the frame is ever detected to be 0x0, default values are used instead
+[ ] Client list colour scheme now follows system on both Windows and Linux
+[ ] Made more code compatible with newer versions of wxWidgets (Win32)
+
+
+
 v2.2.1a
 [-] Reverted Win32 build back to wxWidgets 2.6.3 as 2.8.4 appeared to cause file access problems for some users
 [ ] Altered projects database conversion system to work correctly

@@ -464,7 +464,6 @@ inline void PreferencesDialog::LoadPreferences(void)
     bool     useProxyAuthentication;
     bool     useAlternate;
     bool     useLocalFile;
-    bool     overrideTimezone;
     bool     startMinimised;
     bool     ignoreAsynchronousClocks;
     wxUint32 proxyPort;
@@ -477,7 +476,6 @@ inline void PreferencesDialog::LoadPreferences(void)
     wxString projectLocationResource;
     wxString projectLocalFile;
     wxString filemanager;
-    wxInt32  TZ;
 
     // -----===== General preferences =====-----
     _PrefsGetBool(PREF_FAHCLIENT_COLLECTXYZFILES,     isCollectingXYZFiles);
@@ -633,12 +631,12 @@ inline void PreferencesDialog::LoadPreferences(void)
     // -----===== System preferences =====-----
     _PrefsGetString(PREF_TOOLS_BROWSER,     browser);
     _PrefsGetString(PREF_TOOLS_FILEMANAGER, filemanager);
-    _PrefsGetBool(PREF_OVERRIDE_TIMEZONE,   overrideTimezone);
-    _PrefsGetInt (PREF_TZ,                  TZ);
+    _PrefsGetBool(PREF_OVERRIDE_TIMEZONE,   mInitOverrideTz);
+    _PrefsGetInt (PREF_TZ,                  mInitTimezone);
     mSystemBrowser->SetValue(browser);
     mSystemOtherFM->SetValue(filemanager);
-    mSystemOverrideTimezone->SetValue(overrideTimezone);
-    mSystemTZ->SetValue(TZ);
+    mSystemOverrideTimezone->SetValue(mInitOverrideTz);
+    mSystemTZ->SetValue(mInitTimezone);
 
     #ifndef _FAHMON_LINUX_
     if(filemanager == wxT("explorer.exe"))
@@ -672,7 +670,7 @@ inline void PreferencesDialog::LoadPreferences(void)
     }
     #endif
 
-    if (overrideTimezone == true)
+    if (mInitOverrideTz == true)
     {
         mSystemTZ->Enable(true);
     }
@@ -755,6 +753,13 @@ inline void PreferencesDialog::SavePreferences(void)
 
     if(mGeneralShowDeadlineInDays->GetValue() != mInitDeadlineDays)
         MainDialog::GetInstance()->OnDeadlinePrefChanged();
+
+    // these conditionals reuse functions in maindialog
+    if(mSystemOverrideTimezone->GetValue() != mInitOverrideTz)
+        MainDialog::GetInstance()->OnPPDStylePrefChanged();
+
+    if(mSystemTZ->GetValue() != mInitTimezone)
+        MainDialog::GetInstance()->OnPPDStylePrefChanged();
 
 }
 

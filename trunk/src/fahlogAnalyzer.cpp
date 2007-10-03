@@ -56,6 +56,7 @@ WorkUnitFrame* FahLogAnalyzer::AnalyzeLastFrame(const wxString& fahlogComplete)
     LogLine   *currentLogLine;
     wxString  lineToParse;
     wxString  fahlog;
+    wxDateTime tempDateTime;
 
     fahlog           = fahlogComplete;
     endFrame1Found   = false;
@@ -149,16 +150,32 @@ WorkUnitFrame* FahLogAnalyzer::AnalyzeLastFrame(const wxString& fahlogComplete)
 
         _PrefsGetBool(PREF_OVERRIDE_TIMEZONE, overrideTimezone);
         _PrefsGetBool(PREF_IGNORE_ASYNCHRONY, ignoreAsynchrony);
+        // Since the timestamps in the log only provide the time, the DateTime construct fills in the date component itself
+        // Unfortunately, when passing over 0000UTC in local time, these dates no longer match, so the time difference becomes negative
+        // and breaks the state detection. Therefore, the date component is set manually from the converted timezone, such that they
+        // *always* match
         if(overrideTimezone != true)
         {
-            elapsedSeconds = wxDateTime::Now().ToUTC().Subtract(endFrame1.timestamp).GetSeconds().ToLong();
+            tempDateTime = endFrame1.timestamp;
+            tempDateTime.SetDay(wxDateTime::Now().ToUTC().GetDay());
+            tempDateTime.SetMonth(wxDateTime::Now().ToUTC().GetMonth());
+            tempDateTime.SetYear(wxDateTime::Now().ToUTC().GetYear());
+            // except if the client is still a "day" behind, the dates need to match again
+            if (tempDateTime.IsLaterThan(wxDateTime::Now().ToUTC())) tempDateTime = tempDateTime.Subtract(wxTimeSpan::Days(1));
+            elapsedSeconds = wxDateTime::Now().ToUTC().Subtract(tempDateTime).GetSeconds().ToLong();
         }
         else
         {
             _PrefsGetInt(PREF_TZ, timezoneoffset);
-            elapsedSeconds = wxDateTime::Now().Subtract(endFrame1.timestamp + wxTimeSpan::Hours(timezoneoffset)).GetSeconds().ToLong();
+            tempDateTime = endFrame1.timestamp;
+            tempDateTime.SetDay(wxDateTime::Now().Subtract(wxTimeSpan::Hours(timezoneoffset)).GetDay());
+            tempDateTime.SetMonth(wxDateTime::Now().Subtract(wxTimeSpan::Hours(timezoneoffset)).GetMonth());
+            tempDateTime.SetYear(wxDateTime::Now().Subtract(wxTimeSpan::Hours(timezoneoffset)).GetYear());
+            if (tempDateTime.IsLaterThan(wxDateTime::Now().Subtract(wxTimeSpan::Hours(timezoneoffset)))) tempDateTime = tempDateTime.Subtract(wxTimeSpan::Days(1));
+            elapsedSeconds = wxDateTime::Now().Subtract(wxTimeSpan::Hours(timezoneoffset)).Subtract(tempDateTime).GetSeconds().ToLong();
         }
         // asynchronous clocks
+        // can this even occur anymore?
         if(elapsedSeconds < 0)
         {
             _LogMsgInfo(wxString::Format(wxT("Possible clock asynchrony detected!")));
