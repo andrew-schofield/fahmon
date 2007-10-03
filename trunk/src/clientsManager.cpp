@@ -238,8 +238,8 @@ void ClientsManager::Reload(wxUint32 clientId)
 
 
 /**
- * Find what is the name of the client found at the given location
- * Return an empty string if there is no client at this location
+ * Find the name of the client located at the given location
+ * Return an empty string if there is no known client at this location
 **/
 wxString ClientsManager::GetNameFromLocation(const wxString& location) const
 {

@@ -525,6 +525,7 @@ inline void MainDialog::CreateLayout(void)
  * Restore the frame as it was the last time, and center it
  * Restored items are:
  *  - The size of the frame
+ *  - Its position
  *  - The visibility of the log
  *  - The size of the columns in the ListCtrl
 **/
@@ -533,8 +534,10 @@ inline void MainDialog::RestoreFrameState(void)
     bool     isLogShown;
     wxInt32  displayWidth;
     wxInt32  displayHeight;
-    wxUint32 frameWidth;
-    wxUint32 frameHeight;
+    wxInt32  framePosX;
+    wxInt32  framePosY;
+    wxInt32  frameWidth;
+    wxInt32  frameHeight;
     wxUint32 sashPosition;
 
 
@@ -552,23 +555,35 @@ inline void MainDialog::RestoreFrameState(void)
     mTopLevelSizer->Layout();
     
     
-    // --- Size of the frame
-    // Retrieve the width and the height of the frame, use a default value if the pref is unknown
-    _PrefsGetUint(PREF_MAINDIALOG_FRAMEWIDTH,  frameWidth);
-    _PrefsGetUint(PREF_MAINDIALOG_FRAMEHEIGHT, frameHeight);
+    // --- Size and position of the frame
+    // Retrieve saved values
+    _PrefsGetInt(PREF_MAINDIALOG_FRAMEWIDTH,  frameWidth);
+    _PrefsGetInt(PREF_MAINDIALOG_FRAMEHEIGHT, frameHeight);
+    
+    _PrefsGetInt(PREF_MAINDIALOG_FRAME_POS_X, framePosX);
+    _PrefsGetInt(PREF_MAINDIALOG_FRAME_POS_Y, framePosY);
 
-    // Verify that the frame is small enough to fit on the screen (resolution can be different from the last time)
-    // If this is not the case, use default values (they should fit on a good old 800*600 screen)
+    // Check if these values are correct for the current resolution, which can be different from the last time
+    // If some values are not correct, they are changed to default ones
     wxDisplaySize(&displayWidth, &displayHeight);
-    if(frameWidth > (wxUint32)displayWidth || frameHeight > (wxUint32)displayHeight)
+    
+    if(frameWidth >= displayWidth || frameHeight >= displayHeight)
     {
-        frameWidth  = PREF_MAINDIALOG_FRAMEWIDTH_DV;
-        frameHeight = PREF_MAINDIALOG_FRAMEHEIGHT_DV;
+        // -1 indicates defaults values
+        frameWidth  = -1;
+        frameHeight = -1;
     }
     
-    // We now have correct values, we can resize the frame and center it
+    if(framePosX >= displayWidth || framePosY >= displayHeight)
+    {
+        // -1 indicates defaults values
+        framePosX = -1;
+        framePosY = -1;
+    }
+
+    // We now have correct values, resize and move the frame
     SetSize(frameWidth, frameHeight);
-    Center();
+    Move(framePosX, framePosY);
 
     
     // --- Splitter's state
@@ -781,8 +796,12 @@ void MainDialog::OnMenuAbout(wxCommandEvent& event)
 void MainDialog::OnClose(wxCloseEvent& event)
 {
     // Save the size of the frame
-    _PrefsSetUint(PREF_MAINDIALOG_FRAMEWIDTH,  GetSize().GetWidth());
-    _PrefsSetUint(PREF_MAINDIALOG_FRAMEHEIGHT, GetSize().GetHeight())
+    _PrefsSetInt(PREF_MAINDIALOG_FRAMEWIDTH,  GetSize().GetWidth());
+    _PrefsSetInt(PREF_MAINDIALOG_FRAMEHEIGHT, GetSize().GetHeight());
+    
+    // Save the position of the frame
+    _PrefsSetInt(PREF_MAINDIALOG_FRAME_POS_X, GetPosition().x);
+    _PrefsSetInt(PREF_MAINDIALOG_FRAME_POS_Y, GetPosition().y);
     
     // Save the position of the sash
     _PrefsSetUint(PREF_MAINDIALOG_SASHPOSITION, mSplitterWindow->GetSashPosition());

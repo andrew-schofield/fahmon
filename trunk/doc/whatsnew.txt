@@ -3,6 +3,13 @@
 
 
 
+v2.0.3
+
+[+] The position of the frame is saved and restored across sessions
+[ ] Updated Stanford web addresses (vspx27.stanford.edu is now fah-web.stanford.edu)
+
+
+
 v2.0.2
 
 [+] Added support for proxies that require authentication

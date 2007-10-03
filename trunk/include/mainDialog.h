@@ -33,10 +33,16 @@
  * Preferences used by this class
 **/
 #define PREF_MAINDIALOG_FRAMEWIDTH    wxT("MainDialog.FrameWidth")
-#define PREF_MAINDIALOG_FRAMEWIDTH_DV 675
+#define PREF_MAINDIALOG_FRAMEWIDTH_DV -1
 
 #define PREF_MAINDIALOG_FRAMEHEIGHT    wxT("MainDialog.FrameHeight")
-#define PREF_MAINDIALOG_FRAMEHEIGHT_DV 285
+#define PREF_MAINDIALOG_FRAMEHEIGHT_DV -1
+
+#define PREF_MAINDIALOG_FRAME_POS_X    wxT("MainDialog.FramePosX")
+#define PREF_MAINDIALOG_FRAME_POS_X_DV -1
+
+#define PREF_MAINDIALOG_FRAME_POS_Y    wxT("MainDialog.FramePosY")
+#define PREF_MAINDIALOG_FRAME_POS_Y_DV -1
 
 #define PREF_MAINDIALOG_SASHPOSITION    wxT("MainDialog.SashPosition")
 #define PREF_MAINDIALOG_SASHPOSITION_DV 350

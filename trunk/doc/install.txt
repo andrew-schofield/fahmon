@@ -31,7 +31,7 @@ athropos@ruby$ ./fahmon
 3) Choosing the browser to use
 ------------------------------
 
-FahMon can open miscellaneous webpages for you, but you have to it which browser to use. To do that, you will need to define an environment variable named 'BROWSER' that will contain the command to use to launch the browser. For example with bash and firefox:
+FahMon can open miscellaneous webpages for you, but you have to tell it which browser to use. To do that, you will need to define an environment variable named 'BROWSER' that will contain the command to use to launch the browser. For example with bash and firefox:
 
 athropos@ruby$ BROWSER="firefox"
 
