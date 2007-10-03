@@ -1,0 +1,71 @@
+[-] Bug fix
+[+] New feature
+
+
+
+v2.1.0c
+[-] When client was stopped, best benchmark was deleted
+
+
+
+v2.1.0b
+[-] Clients were sometimes falsely detected as stopped
+
+
+
+v2.1.0
+[+] Made Linux version more standard: configuration and .xyz files are now stored in ~/.fahmon/
+    If you want to keep your current configuration, just copy the current files to ~/.fahmon/
+[+] Added the black color for inaccessible clients, please check the help file for more information
+[-] The download date (and thus preferred/final deadlines) was sometimes corrupted
+[-] The selected entry in the benchmarks dialog was not always visible
+[ ] Rewrote main parts of the benchmarking code, it should be more reliable
+[ ] Improved error handling when loading client information
+[ ] Improved the way inactivity is detected
+[ ] Miscellaneous small fixes
+
+
+
+v2.0.4
+[-] FahMon was unusable on some non-english Linux systems
+[-] Percentage of completion near the progress bar was not displayed until the window was resized
+[-] Fixed the 'Feburary' bug caused by some F@H cores
+
+
+
+v2.0.3
+
+[+] The position of the frame is saved and restored across sessions
+[ ] Updated Stanford web addresses (vspx27.stanford.edu is now fah-web.stanford.edu)
+
+
+
+v2.0.2
+
+[+] Added support for proxies that require authentication
+[+] Added support for a system tray icon
+[-] Fixed the bug that caused a blank window of Internet Explorer to appear in the win32 version
+[ ] Miscellaneous small changes
+
+
+
+v2.0.1
+
+[-] Fixed the inability to sort the list of clients using the ETA as the sorting criterion
+[-] Fixed the case where min. time / frame could be smaller than avg. time / frame
+[-] The correct dialog icon is now used in the win32 version
+[ ] The name of a client is displayed instead of its location in the benchmarks dialog, if possible
+
+
+
+v2.0.0
+
+[+] The main frame can be fully resized
+[+] The FAHLog file can be easily shown/hidden as needed
+[+] Both preferred and final deadlines are displayed
+[+] Each client is reloaded in its own thread (instead of one thread for all clients)
+[+] The clients list can be sorted by using the column headers
+[+] .xyz files can be automatically collected
+[+] A first-time dialog is displayed when launching FahMon for the first time
+[ ] FahMon can be compiled for Linux (needs wxGTK >= 2.6.0 and scons)
+[ ] Small miscellaneous other changes

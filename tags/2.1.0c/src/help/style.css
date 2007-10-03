@@ -1,0 +1,58 @@
+body{
+//  background-color: #FCFCF0;
+  background-color: #7989A8;
+  text-align: justify;
+  margin: 2%;
+  text-indent: 15px;
+}
+
+a:link, a:visited, a:active{
+  color: #CE4545;
+  text-decoration: none;
+}
+
+a:hover, a:visited:hover{
+  color: #CE4545;
+  text-decoration: underline;
+}
+
+div#mainBox{
+  border-style: solid;
+  background-color: #FCFCD0;
+  width: 90%;
+  margin: auto;
+  padding: 15px 25px;
+}
+
+hr{
+  margin: 30px 10px;
+}
+
+.screenshot{
+  text-align: center;
+}
+
+span.file{
+  font-weight: bold;
+}
+
+h1{
+  text-align: center;
+}
+
+h2{
+  letter-spacing: 1px;
+  font-variant: small-caps;
+}
+
+div.config{
+  border-style: solid;
+  border-width: 1px;
+  text-indent: 0px;
+}
+
+span.comment{
+  color: #333333;
+  font-style: italic;
+  font-size: 80%;
+}
