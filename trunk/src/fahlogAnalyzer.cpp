@@ -100,7 +100,7 @@ WorkUnitFrame* FahLogAnalyzer::AnalyzeLastFrame(const wxString& fahlogComplete)
     }
 
     // A stopped client is not analyzed
-    if(clientIsStopped == true)
+    if(clientIsStopped)
         return new WorkUnitFrame();
 
     // If we found a complete run, then we can extract information about it
@@ -156,12 +156,16 @@ void FahLogAnalyzer::ParseLogLine(wxString& lineToParse, LogLine& logLine)
         lineToParse = lineToParse.Mid(11);
     }
 
+    // Trim heading spaces
+    // This will empty the line if it contains only spaces
+    lineToParse.Trim(false);
+
     // Find the type of the line
-         if(lineToParse.IsEmpty() == true)                                        logLine.type = LLT_EMPTY;
-    else if(lineToParse.StartsWith(wxT("Completed ")) == true)                    logLine.type = LLT_COMPLETED;
-    else if(lineToParse.StartsWith(wxT("Finished a frame")) == true)              logLine.type = LLT_FINISHED;
-    else if(lineToParse.StartsWith(wxT("Folding@Home Client Shutdown.")) == true) logLine.type = LLT_SHUTDOWN;
-    else                                                                          logLine.type = LLT_UNKNOWN;
+         if(lineToParse.IsEmpty())                                        logLine.type = LLT_EMPTY;
+    else if(lineToParse.StartsWith(wxT("Completed ")))                    logLine.type = LLT_COMPLETED;
+    else if(lineToParse.StartsWith(wxT("Finished a frame")))              logLine.type = LLT_FINISHED;
+    else if(lineToParse.StartsWith(wxT("Folding@Home Client Shutdown."))) logLine.type = LLT_SHUTDOWN;
+    else                                                                  logLine.type = LLT_UNKNOWN;
 
     // When a frame is finished, extract its identifier and the timestamp
     if(logLine.type == LLT_COMPLETED || logLine.type == LLT_FINISHED)

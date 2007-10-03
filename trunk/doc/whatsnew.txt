@@ -3,6 +3,11 @@
 
 
 
+v2.1.0b
+[-] Clients were sometimes falsely detected as stopped
+
+
+
 v2.1.0
 [+] Made Linux version more standard: configuration and .xyz files are now stored in ~/.fahmon/
     If you want to keep your current configuration, just copy the current files to ~/.fahmon/

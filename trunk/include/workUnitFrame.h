@@ -24,7 +24,6 @@
 
 // TODO
 // Use FrameDuration instead of wxUint32?
-// Take care of too long frames in fahlogAnalyzer! (instead of doing it in benchmarksmanager)
 
 
 /**
