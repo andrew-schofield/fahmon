@@ -306,10 +306,10 @@ void MainDialog::ShowClientInformation(ClientId clientId)
     mWUProgressText->SetLabel(wxT("  ") + client->GetProgressString());
     mWUProgressGauge->SetValue(client->GetProgress());
     
-    if(client->GetDownloadDate() == wxInvalidDateTime)
+    if(client->GetDownloadDate() == NULL)
         mDownloaded->SetLabel(wxT("N/A"));
     else
-        mDownloaded->SetLabel(client->GetDownloadDate().Format(wxT(FMC_DATE_MAIN_FORMAT)));
+        mDownloaded->SetLabel(client->GetDownloadDate()->Format(wxT(FMC_DATE_MAIN_FORMAT)));
 
     if(client->GetProjectId() == INVALID_PROJECT_ID)
     {
@@ -353,9 +353,9 @@ void MainDialog::ShowClientInformation(ClientId clientId)
             mCredit->SetLabel(wxString::Format(wxT("%u points"), project->GetCredit()));
             
             // Preferred deadline: if it is equal to 0 day, there is no preferred deadline
-            if(client->GetDownloadDate() != wxInvalidDateTime && project->GetPreferredDeadlineInDays() != 0)
+            if(client->GetDownloadDate() != NULL && project->GetPreferredDeadlineInDays() != 0)
             {
-                preferredDeadline = client->GetDownloadDate();
+                preferredDeadline.Set(client->GetDownloadDate()->GetTicks());
                 preferredDeadline.Add(wxTimeSpan::Days(project->GetPreferredDeadlineInDays()));
                 mPreferredDeadline->SetLabel(preferredDeadline.Format(wxT(FMC_DATE_MAIN_FORMAT)));
             }
@@ -363,9 +363,9 @@ void MainDialog::ShowClientInformation(ClientId clientId)
                 mPreferredDeadline->SetLabel(wxT("N/A"));
 
             // Final deadline: if it is equal to 0 day, there is no final deadline
-            if(client->GetDownloadDate() != wxInvalidDateTime && project->GetFinalDeadlineInDays() != 0)
+            if(client->GetDownloadDate() != NULL && project->GetFinalDeadlineInDays() != 0)
             {
-                finalDeadline = client->GetDownloadDate();
+                finalDeadline.Set(client->GetDownloadDate()->GetTicks());
                 finalDeadline.Add(wxTimeSpan::Days(project->GetFinalDeadlineInDays()));
                 mFinalDeadline->SetLabel(finalDeadline.Format(wxT(FMC_DATE_MAIN_FORMAT)));
             }

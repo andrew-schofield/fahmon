@@ -3,7 +3,7 @@
 
 To compile FahMon on Linux, you will need:
  - g++ (either 3.x or 4.x)
- - wxGTK >= 2.6.0 (runtime and headers)
+ - wxGTK >= 2.6.3 (runtime and headers)
  - scons
 
 If wxGTK is correctly installed on your system, you should be able to execute the command wx-config from any directory:

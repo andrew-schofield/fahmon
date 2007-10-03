@@ -81,7 +81,7 @@ void Client::Reset(void)
     mUserName       = wxT("anonymous");
     mProjectId      = INVALID_PROJECT_ID;
     mTeamNumber     = 0;
-    mDownloadDate   = wxInvalidDateTime;
+    mDownloadDate   = NULL;
     mProjectString  = wxT("");
     mProgressString = wxT("N/A");
     
@@ -236,17 +236,24 @@ inline bool Client::LoadUnitInfoFile(const wxString& filename)
             else if(downloadDateString.StartsWith(wxT("December "),  &downloadDateString))    theMonth = wxDateTime::Dec;
             else                                                                              theMonth = wxDateTime::Inv_Month;
 
-            if(theMonth != wxDateTime::Inv_Month && mDownloadDate.ParseFormat(downloadDateString.c_str(), wxT("%d %H:%M")) != NULL)
+            if(theMonth != wxDateTime::Inv_Month)
             {
-                // ParseFormat() does not set the day of the month if a month was not given within the string to parse
-                // We can't even give it an arbitrary month, because it could fail due to locales (see above comment)
-                // So we need to parse the day ourselves (sic)
-                endingPos = downloadDateString.Find(' ');
-                if(endingPos != -1 && downloadDateString.Left(endingPos).ToULong(&tmpLong) == true)
+                // Create the wxDateTime object if needed
+                if(mDownloadDate == NULL)
+                    mDownloadDate = new wxDateTime();
+
+                if(mDownloadDate->ParseFormat(downloadDateString.c_str(), wxT("%d %H:%M")) != NULL)
                 {
-                    mDownloadDate.SetMonth(theMonth);
-                    mDownloadDate.SetDay((wxDateTime::wxDateTime_t)tmpLong);
-                    downloadDateOk = true;
+                    // ParseFormat() does not set the day of the month if a month was not given within the string to parse
+                    // We can't even give it an arbitrary month, because it could fail due to locales (see above comment)
+                    // So we need to parse the day ourselves (sic)
+                    endingPos = downloadDateString.Find(' ');
+                    if(endingPos != -1 && downloadDateString.Left(endingPos).ToULong(&tmpLong) == true)
+                    {
+                        mDownloadDate->SetMonth(theMonth);
+                        mDownloadDate->SetDay((wxDateTime::wxDateTime_t)tmpLong);
+                        downloadDateOk = true;
+                    }
                 }
             }
         }
@@ -283,7 +290,11 @@ inline bool Client::LoadUnitInfoFile(const wxString& filename)
     
     if(!downloadDateOk)
     {
-        mDownloadDate = wxInvalidDateTime;
+        if(mDownloadDate != NULL)
+        {
+            delete mDownloadDate;
+            mDownloadDate = NULL;
+        }
         _LogMsgWarning(wxString::Format(wxT("The download date in file %s could not be parsed"), filename.c_str()));
     }
 

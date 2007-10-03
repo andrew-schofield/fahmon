@@ -22,7 +22,7 @@
  * Return a pointer to a valid WorkUnitFrame object if information could be extracted, NULL otherwhise
  * It's up to the caller to free the WorkUnitFrame object when needed
  *
- * 
+ *
  *
  * We are searching for a pattern like this one :
  *
@@ -131,14 +131,13 @@ WorkUnitFrame* FahLogAnalyzer::AnalyzeLastFrame(const wxString& fahlogComplete)
         // We won't deal with too large durations, so stop now if it is the case with this one
         if(runDuration > MAX_FRAME_DURATION)
             return NULL;
-        
+
         // Compute the elapsed seconds since this frame has been completed
         // If wxDateTime::Now() is before endFrame1.timestamp, we don't use elapsed time because if FahMon is running on a different machine
         // than the client, we can't assume that they are sufficiently synchronized
-        elapsedSeconds = wxDateTime::Now().Subtract(endFrame1.timestamp).GetSeconds().ToLong();
+        elapsedSeconds = wxDateTime::Now().MakeUTC().Subtract(endFrame1.timestamp).GetSeconds().ToLong();
         if(elapsedSeconds < 0)
             elapsedSeconds = 0;
-
 
         return new WorkUnitFrame(endFrame1.frameId, false, runDuration, elapsedSeconds);
     }
@@ -197,6 +196,5 @@ void FahLogAnalyzer::ParseLogLine(wxString& lineToParse, LogLine& logLine)
         // Extract the timestamp (it is in GMT format)
         logLine.timestamp.SetToCurrent();
         logLine.timestamp.ParseFormat(timestamp.c_str(), wxT("%H:%M:%S]"));
-        logLine.timestamp.MakeGMT();
     }
 }

@@ -45,19 +45,19 @@ protected:
 
     static wxMutex mMutexXYZFiles;
 
-    ETA        mETA;
-    State      mState;
-    FrameId    mPreviouslyAnalyzedFrameId;
-    wxString   mName;
-    wxString   mLocation;
-    wxString   mLog;
-    wxString   mProjectString;
-    wxUint32   mProgress;
-    wxString   mProgressString;
-    wxString   mUserName;
-    wxUint32   mTeamNumber;
-    ProjectId  mProjectId;
-    wxDateTime mDownloadDate;
+    ETA         mETA;
+    State       mState;
+    FrameId     mPreviouslyAnalyzedFrameId;
+    wxString    mName;
+    wxString    mLocation;
+    wxString    mLog;
+    wxString    mProjectString;
+    wxUint32    mProgress;
+    wxString    mProgressString;
+    wxString    mUserName;
+    wxUint32    mTeamNumber;
+    ProjectId   mProjectId;
+    wxDateTime *mDownloadDate;
 
     void ComputeETA(WorkUnitFrame* lastFrame);
     void FindCurrentState(WorkUnitFrame* lastFrame);
@@ -79,21 +79,21 @@ public:
     void SetLocation(const wxString& location);
 
     // -- 'Getters' --
-    bool       IsAccessible(void)      const {return mState != ST_INACCESSIBLE;}
-    bool       IsStopped(void)         const {return mState == ST_STOPPED;}
-    bool       IsInactive(void)        const {return mState == ST_INACTIVE;}
-    bool       IsRunning(void)         const {return mState == ST_RUNNING;}
-    wxString   GetName(void)           const {return mName;}
-    wxString   GetLocation(void)       const {return mLocation;}
-    wxString   GetLog(void)            const {return mLog;}
-    wxString   GetProjectString(void)  const {return mProjectString;}
-    wxUint32   GetProgress(void)       const {return mProgress;}
-    wxString   GetProgressString(void) const {return mProgressString;}
-    wxString   GetUserName(void)       const {return mUserName;}
-    wxUint32   GetTeamNumber(void)     const {return mTeamNumber;}
-    ProjectId  GetProjectId(void)      const {return mProjectId;}
-    wxDateTime GetDownloadDate(void)   const {return mDownloadDate;}
-    
+    bool              IsAccessible(void)      const {return mState != ST_INACCESSIBLE;}
+    bool              IsStopped(void)         const {return mState == ST_STOPPED;}
+    bool              IsInactive(void)        const {return mState == ST_INACTIVE;}
+    bool              IsRunning(void)         const {return mState == ST_RUNNING;}
+    wxString          GetName(void)           const {return mName;}
+    wxString          GetLocation(void)       const {return mLocation;}
+    wxString          GetLog(void)            const {return mLog;}
+    wxString          GetProjectString(void)  const {return mProjectString;}
+    wxUint32          GetProgress(void)       const {return mProgress;}
+    wxString          GetProgressString(void) const {return mProgressString;}
+    wxString          GetUserName(void)       const {return mUserName;}
+    wxUint32          GetTeamNumber(void)     const {return mTeamNumber;}
+    ProjectId         GetProjectId(void)      const {return mProjectId;}
+    const wxDateTime* GetDownloadDate(void)   const {return mDownloadDate;}
+
     const ETA* GetETA(void) const {return &mETA;}
 };
 
