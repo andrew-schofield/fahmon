@@ -47,7 +47,7 @@ void* ClientHelperThread::Entry(void)
     // Post an event to the queue of the MainDialog to warn it that the job is done
     event.SetInt(mClientId);
     MainDialog::GetInstance()->AddPendingEvent(event);
-    
+
     // Dummy return code
     return NULL;
 }

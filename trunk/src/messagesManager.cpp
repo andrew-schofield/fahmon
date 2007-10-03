@@ -23,6 +23,7 @@
 #include "wx/txtstrm.h"
 #include "wx/textfile.h"
 #include "wx/wfstream.h"
+#include "wx/intl.h"
 #include "tools.h"
 
 
@@ -56,7 +57,7 @@ MessagesManager::~MessagesManager(void)
 void MessagesManager::CreateInstance(void)
 {
     wxASSERT(mInstance == NULL);
-	
+
     mInstance = new MessagesManager();
 }
 
@@ -67,7 +68,7 @@ void MessagesManager::CreateInstance(void)
 void MessagesManager::DestroyInstance(void)
 {
     wxASSERT(mInstance != NULL);
-	
+
     delete mInstance;
     mInstance = NULL;
 }
@@ -79,7 +80,7 @@ void MessagesManager::DestroyInstance(void)
 MessagesManager* MessagesManager::GetInstance(void)
 {
     wxASSERT(mInstance != NULL);
-	
+
     return mInstance;
 }
 
@@ -92,7 +93,7 @@ void MessagesManager::Log(const wxString& msg)
     wxMutexLocker  mutexLocker(mMutexLog);        // --- Lock the access to this method
     wxString       currentDate;
     wxCommandEvent event(EVT_NEW_MESSAGE_LOGGED);
-    wxFileOutputStream   fileOS(wxT("./messages.log"));
+    wxFileOutputStream   fileOS(PathManager::GetMsgPath() + wxT("messages.log"));
     wxTextOutputStream   textOS(fileOS);
 
     // Format the current time correctly
@@ -106,7 +107,7 @@ void MessagesManager::Log(const wxString& msg)
     // Could the file be opened?
     if(fileOS.Ok() == false)
     {
-        Tools::ErrorMsgBox(wxString::Format(wxT("Could not open file for writing!\nThe log will not be saved!")));
+        Tools::ErrorMsgBox(wxString::Format(_("Could not open file for writing!\nThe log will not be saved!")));
         return;
     }
     else

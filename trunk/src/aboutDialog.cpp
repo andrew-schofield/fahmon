@@ -19,6 +19,7 @@
 
 #include "wx/image.h"
 #include "wx/sizer.h"
+#include "wx/intl.h"
 #include "staticUrl.h"
 #include "wx/version.h"
 #include "wx/statbmp.h"
@@ -34,7 +35,7 @@ AboutDialog* AboutDialog::mInstance = NULL;
 /**
  * Constructor
 **/
-AboutDialog::AboutDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, wxString(wxT("About")))
+AboutDialog::AboutDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, wxString(_("About")))
 {
     wxBoxSizer      *topLevelSizer;
     wxBoxSizer      *infoSizer;
@@ -45,15 +46,15 @@ AboutDialog::AboutDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, wxString
     // ---
     authorHomepageSizer = new wxFlexGridSizer(2, FMC_GUI_SPACING_LOW, FMC_GUI_SPACING_LOW);
 
-    authorHomepageSizer->Add(new StaticBoldedText(this, wxID_ANY, wxT("Author:")), 0, wxALIGN_RIGHT);
+    authorHomepageSizer->Add(new StaticBoldedText(this, wxID_ANY, _("Author:")), 0, wxALIGN_RIGHT);
     authorHomepageSizer->Add(new wxStaticText(this, wxID_ANY, wxT(" Francois Ingelrest")), 0, wxALIGN_LEFT);
-    authorHomepageSizer->Add(new StaticBoldedText(this, wxID_ANY, wxT("Maintainer:")), 0, wxALIGN_RIGHT);
+    authorHomepageSizer->Add(new StaticBoldedText(this, wxID_ANY, _("Maintainer:")), 0, wxALIGN_RIGHT);
     authorHomepageSizer->Add(new wxStaticText(this, wxID_ANY, wxT(" Andrew Schofield")), 0, wxALIGN_LEFT);
-    authorHomepageSizer->Add(new StaticBoldedText(this, wxID_ANY, wxT("Homepage:")), 0, wxALIGN_RIGHT);
+    authorHomepageSizer->Add(new StaticBoldedText(this, wxID_ANY, _("Homepage:")), 0, wxALIGN_RIGHT);
     authorHomepageSizer->Add(new StaticUrl(this, wxT(FMC_URL_FAHMON), wxT(FMC_URL_FAHMON)), 0, wxALIGN_LEFT);
     authorHomepageSizer->AddSpacer(FMC_GUI_SPACING_LOW);
     authorHomepageSizer->AddSpacer(FMC_GUI_SPACING_LOW);
-    authorHomepageSizer->Add(new StaticBoldedText(this, wxID_ANY, wxT("Library:")), 0, wxALIGN_RIGHT);
+    authorHomepageSizer->Add(new StaticBoldedText(this, wxID_ANY, _("Library:")), 0, wxALIGN_RIGHT);
     authorHomepageSizer->Add(new StaticUrl(this, wxT(FMC_URL_WXWIDGETS), wxVERSION_STRING), 0, wxALIGN_LEFT);
 
 

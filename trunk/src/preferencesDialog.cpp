@@ -20,6 +20,7 @@
 #include "client.h"
 #include "wx/valtext.h"
 #include "wx/filedlg.h"
+#include "wx/string.h"
 #include "mainDialog.h"
 #include "httpDownloader.h"
 #include "preferencesManager.h"
@@ -71,7 +72,7 @@ PreferencesDialog* PreferencesDialog::mInstance = NULL;
 /**
  * Constructor
 **/
-PreferencesDialog::PreferencesDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, wxString::Format(wxT("Preferences / %s"), wxT(FMC_PRODUCT)))
+PreferencesDialog::PreferencesDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, wxString::Format(_("Preferences / %s"), wxT(FMC_PRODUCT)))
 {
     wxBoxSizer *topLevelSizer;
     wxBoxSizer *mainSizer;
@@ -81,11 +82,12 @@ PreferencesDialog::PreferencesDialog(wxWindow* parent) : wxDialog(parent, wxID_A
     // Preferences are divided into groups, thanks to a wxNoteBook (tabbed control)
     noteBook = new wxNotebook(this, wxID_ANY);
 
-    noteBook->AddPage(CreateGeneralTab(noteBook),    wxT("General"));
-    noteBook->AddPage(CreateMonitoringTab(noteBook), wxT("Monitoring"));
-    noteBook->AddPage(CreateNetworkingTab(noteBook), wxT("Networking"));
-    noteBook->AddPage(CreateAdvancedTab(noteBook),   wxT("Advanced"));
-    noteBook->AddPage(CreateSystemTab(noteBook),     wxT("System"));
+    noteBook->AddPage(CreateGeneralTab(noteBook),    _("General"));
+    noteBook->AddPage(CreateMonitoringTab(noteBook), _("Monitoring"));
+    noteBook->AddPage(CreateNetworkingTab(noteBook), _("Networking"));
+    noteBook->AddPage(CreateAdvancedTab(noteBook),   _("Advanced"));
+    noteBook->AddPage(CreateSystemTab(noteBook),     _("System"));
+    //noteBook->AddPage(CreateFahinfoTab(noteBook),    _T("fahinfo.org"));
 
     // Buttons 'Ok' and 'Cancel' are right-aligned
     buttonsSizer = new wxBoxSizer(wxHORIZONTAL);
@@ -155,12 +157,12 @@ inline wxPanel* PreferencesDialog::CreateGeneralTab(wxNotebook* parent)
     panel                               = new wxPanel(parent);
     sizer                               = new wxBoxSizer(wxVERTICAL);
     topLevelSizer                       = new wxBoxSizer(wxVERTICAL);
-    mGeneralEnableTrayIcon              = new wxCheckBox(panel, wxID_ANY, wxT("Enable system tray icon"));
-    mGeneralStartMinimised              = new wxCheckBox(panel, wxID_ANY, wxT("Start minimized"));
-    mGeneralCollectXYZFiles             = new wxCheckBox(panel, wxID_ANY, wxT("Collect .xyz files"));
-    mGeneralAutoUpdateProjectsDatabase  = new wxCheckBox(panel, wxID_ANY, wxT("Auto update projects database when needed"));
-    mGeneralKeepInaccessibleClientsLast = new wxCheckBox(panel, wxID_ANY, wxT("Always list inaccessible clients last"));
-    mGeneralShowDeadlineInDays          = new wxCheckBox(panel, wxID_ANY, wxT("Show deadlines and download times in days"));
+    mGeneralEnableTrayIcon              = new wxCheckBox(panel, wxID_ANY, _("Enable system tray icon"));
+    mGeneralStartMinimised              = new wxCheckBox(panel, wxID_ANY, _("Start minimized"));
+    mGeneralCollectXYZFiles             = new wxCheckBox(panel, wxID_ANY, _("Collect .xyz files"));
+    mGeneralAutoUpdateProjectsDatabase  = new wxCheckBox(panel, wxID_ANY, _("Auto update projects database when needed"));
+    mGeneralKeepInaccessibleClientsLast = new wxCheckBox(panel, wxID_ANY, _("Always list inaccessible clients last"));
+    mGeneralShowDeadlineInDays          = new wxCheckBox(panel, wxID_ANY, _("Show deadlines and download times in days"));
 
 
     sizer->AddStretchSpacer();
@@ -196,8 +198,8 @@ inline wxPanel* PreferencesDialog::CreateMonitoringTab(wxNotebook* parent)
     wxBoxSizer *sizerAutoReload;
     wxBoxSizer *sizerPPDType;
     wxBoxSizer *sizerAsynchrony;
-    const wxString    etaFormats[3] = {wxT("A date (dd/mm)"), wxT("A date (mm/dd)"), wxT("Time left")};    // The order *MUST* correspond to the one used for the definition of ETA_DisplayStyle
-    const wxString    ppdFormats[3] = {wxT("All frames"), wxT("Last frame only"), wxT("Last 3 frames")};    // The order *MUST* correspond to the one use for the definition of PPD_DisplayStyle
+     const wxString    etaFormats[3] = {_("A date (dd/mm)"), _("A date (mm/dd)"), _("Time left")};    // The order *MUST* correspond to the one used for the definition of ETA_DisplayStyle
+    const wxString    ppdFormats[4] = {_("All frames"), _("Last frame only"), _("Last 3 frames"), _("Effective rate")};    // The order *MUST* correspond to the one use for the definition of PPD_DisplayStyle
 
     panel                          = new wxPanel(parent);
     sizer                          = new wxBoxSizer(wxVERTICAL);
@@ -207,21 +209,21 @@ inline wxPanel* PreferencesDialog::CreateMonitoringTab(wxNotebook* parent)
     sizerPPDType                   = new wxBoxSizer(wxHORIZONTAL);
     sizerAsynchrony                = new wxBoxSizer(wxHORIZONTAL);
 
-    mMonitoringAutoReload          = new wxCheckBox(panel, CHK_AUTORELOAD, wxT("Auto reload clients"));
-    mMonitoringAutoReloadInt       = new wxStaticText(panel, wxID_ANY, wxT("Reload interval (mn) "));
-    mMonitoringAdvancedReload      = new wxCheckBox(panel, CHK_ADVANCEDRELOAD, wxT("Use experimental reload system"));
+    mMonitoringAutoReload          = new wxCheckBox(panel, CHK_AUTORELOAD, _("Auto reload clients"));
+    mMonitoringAutoReloadInt       = new wxStaticText(panel, wxID_ANY, wxString::Format(_T("%s "),  _("Reload interval (mn)")));
+    mMonitoringAdvancedReload      = new wxCheckBox(panel, CHK_ADVANCEDRELOAD, _("Use experimental reload system"));
     mMonitoringETADisplayStyle     = new wxChoice(panel, wxID_ANY, wxDefaultPosition, wxDefaultSize, 3, etaFormats);
     mMonitoringAutoReloadFrequency = new wxSpinCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 1, 1000, 5);
-    mMonitoringPPDType             = new wxChoice(panel, wxID_ANY, wxDefaultPosition, wxDefaultSize, 3, ppdFormats);
-    mMonitoringIgnoreAsynchrony    = new wxCheckBox(panel, wxID_ANY, wxT("Ignore asynchronous clocks"));
+    mMonitoringPPDType             = new wxChoice(panel, wxID_ANY, wxDefaultPosition, wxDefaultSize, 4, ppdFormats);
+    mMonitoringIgnoreAsynchrony    = new wxCheckBox(panel, wxID_ANY, _("Ignore asynchronous clocks"));
 
-    sizerETA->Add(new wxStaticText(panel, wxID_ANY, wxT("Display ETA as ")), 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL);
+    sizerETA->Add(new wxStaticText(panel, wxID_ANY, wxString::Format(_T("%s "),  _("Display ETA as"))), 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL);
     sizerETA->Add(mMonitoringETADisplayStyle, 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL);
 
     sizerAutoReload->Add(mMonitoringAutoReloadInt, 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL);
     sizerAutoReload->Add(mMonitoringAutoReloadFrequency, 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL);
 
-    sizerPPDType->Add(new wxStaticText(panel, wxID_ANY, wxT("Calculate PPD based on  ")), 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL);
+    sizerPPDType->Add(new wxStaticText(panel, wxID_ANY, wxString::Format(_T("%s  "),  _("Calculate PPD based on"))), 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL);
     sizerPPDType->Add(mMonitoringPPDType, 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL);
 
     sizerAsynchrony->Add(mMonitoringIgnoreAsynchrony, 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL);
@@ -264,16 +266,16 @@ inline wxPanel* PreferencesDialog::CreateNetworkingTab(wxNotebook* parent)
     proxyAddressSizer                 = new wxBoxSizer(wxHORIZONTAL);
     proxyAuthenticationSizer          = new wxBoxSizer(wxHORIZONTAL);
 
-    mNetworkingUseProxy               = new wxCheckBox(panel, CHK_USEPROXY, wxT("Use a proxy for HTTP connections"));
+    mNetworkingUseProxy               = new wxCheckBox(panel, CHK_USEPROXY, _("Use a proxy for HTTP connections"));
     mNetworkingProxyAddress           = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
     mNetworkingProxyPort              = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition, wxDefaultSize, 0, wxTextValidator(wxFILTER_NUMERIC));
-    mNetworkingUseProxyAuthentication = new wxCheckBox(panel, CHK_PROXYAUTHENTICATION, wxT("Proxy requires authentication"));
+    mNetworkingUseProxyAuthentication = new wxCheckBox(panel, CHK_PROXYAUTHENTICATION, _("Proxy requires authentication"));
     mNetworkingProxyUsername          = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
     mNetworkingProxyPassword          = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition, wxDefaultSize, wxTE_PASSWORD);
-    mNetworkingLabelAddress           = new wxStaticText(panel, wxID_ANY, wxT("Address:"));
-    mNetworkingLabelPort              = new wxStaticText(panel, wxID_ANY, wxT("Port:"));
-    mNetworkingLabelUsername          = new wxStaticText(panel, wxID_ANY, wxT("Username:"));
-    mNetworkingLabelPassword          = new wxStaticText(panel, wxID_ANY, wxT("Password:"));
+    mNetworkingLabelAddress           = new wxStaticText(panel, wxID_ANY, _("Address:"));
+    mNetworkingLabelPort              = new wxStaticText(panel, wxID_ANY, _("Port:"));
+    mNetworkingLabelUsername          = new wxStaticText(panel, wxID_ANY, _("Proxy\nUsername:"));
+    mNetworkingLabelPassword          = new wxStaticText(panel, wxID_ANY, _("Proxy\nPassword:"));
 
     proxyAddressSizer->Add(mNetworkingLabelAddress, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
     proxyAddressSizer->Add(mNetworkingProxyAddress, 1, wxALIGN_CENTER_VERTICAL | wxEXPAND);
@@ -324,16 +326,16 @@ inline wxPanel* PreferencesDialog::CreateAdvancedTab(wxNotebook* parent)
     LocalFileSizer                                  = new wxBoxSizer(wxHORIZONTAL);
     LocationSizer                                   = new wxBoxSizer(wxHORIZONTAL);
 
-    mAdvancedUseAlternateProjectSource              = new wxCheckBox(panel, CHK_USEALTERNATEPROJECTSOURCE, wxT("Use the following settings for new project downloads"));
+    mAdvancedUseAlternateProjectSource              = new wxCheckBox(panel, CHK_USEALTERNATEPROJECTSOURCE, _("Use the following settings for new project downloads"));
     mAdvancedAlternateProjectSourceLocationServer   = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
-    mAdvancedLabelLocationServer                    = new wxStaticText(panel, wxID_ANY, wxT("Server:"));
+    mAdvancedLabelLocationServer                    = new wxStaticText(panel, wxID_ANY, _("Server:"));
     mAdvancedAlternateProjectSourceLocationPort     = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition, wxDefaultSize, 0, wxTextValidator(wxFILTER_NUMERIC));
-    mAdvancedLabelLocationPort                      = new wxStaticText(panel, wxID_ANY, wxT("Port:"));
+    mAdvancedLabelLocationPort                      = new wxStaticText(panel, wxID_ANY, _("Port:"));
     mAdvancedAlternateProjectSourceLocationResource = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
-    mAdvancedLabelLocationResource                  = new wxStaticText(panel, wxID_ANY, wxT("Resource:"));
-    mAdvancedUseLocalFile                           = new wxCheckBox(panel, CHK_USELOCALFILE, wxT("Use a local file for project data"));
+    mAdvancedLabelLocationResource                  = new wxStaticText(panel, wxID_ANY, _("Resource:"));
+    mAdvancedUseLocalFile                           = new wxCheckBox(panel, CHK_USELOCALFILE, _("Use a local file for project data"));
     mAdvancedLocalFileLocation                      = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
-    mAdvancedLabelLocalFile                         = new wxStaticText(panel, wxID_ANY, wxT("Filename:"));
+    mAdvancedLabelLocalFile                         = new wxStaticText(panel, wxID_ANY, _("Filename:"));
     mAdvancedLocationChooser                        = new wxButton(panel, BTN_BROWSE, wxT("..."), wxDefaultPosition, wxSize(26, 26));
 
     LocalFileSizer->Add(mAdvancedLabelLocalFile, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
@@ -387,18 +389,18 @@ inline wxPanel* PreferencesDialog::CreateSystemTab(wxNotebook* parent)
     sizerTZOverride         = new wxBoxSizer(wxHORIZONTAL);
     topLevelSizer           = new wxBoxSizer(wxVERTICAL);
     mSystemBrowser          = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
-    mSystemBrowserLabel     = new wxStaticText(panel, wxID_ANY, wxT("Web Browser:"));
-    mSystemFileManagerLabel = new wxStaticText(panel, wxID_ANY, wxT("File Manager:"));
+    mSystemBrowserLabel     = new wxStaticText(panel, wxID_ANY, _("Web Browser:"));
+    mSystemFileManagerLabel = new wxStaticText(panel, wxID_ANY, _("File Manager:"));
     mSystemOtherFM          = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
-    mSystemOtherFMLabel     = new wxStaticText(panel, wxID_ANY, wxT("File Manager Command:"));
-    mSystemOverrideTimezone = new wxCheckBox(panel, CHK_TZOVERRIDE, wxT("Manually set timezone to UTC + "));
+    mSystemOtherFMLabel     = new wxStaticText(panel, wxID_ANY, _("File Manager Command:"));
+    mSystemOverrideTimezone = new wxCheckBox(panel, CHK_TZOVERRIDE, wxString::Format(_T("%s  "),  _("Manually set timezone to UTC +")));
     mSystemTZ               = new wxSpinCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, -24, 24, 0);
 
     #ifndef _FAHMON_LINUX_
-    const wxString    fileManagers[2] = {wxT("Windows Explorer"), wxT("Other")};
+    const wxString    fileManagers[2] = {_("Windows Explorer"), _("Other")};
     mSystemFileManager     = new wxChoice(panel, CHC_FILEMANAGER, wxDefaultPosition, wxDefaultSize, 2, fileManagers);
     #else
-    const wxString    fileManagers[5] = {wxT("Konqueror (KDE 3)"), wxT("Dolphin (KDE 4)"), wxT("Nautilus (Gnome)"), wxT("Thunar (Xfce 4.4)"), wxT("Other")};
+    const wxString    fileManagers[5] = {wxT("Konqueror (KDE 3)"), wxT("Dolphin (KDE 4)"), wxT("Nautilus (Gnome)"), wxT("Thunar (Xfce 4.4)"), _("Other")};
     mSystemFileManager     = new wxChoice(panel, CHC_FILEMANAGER, wxDefaultPosition, wxDefaultSize, 5, fileManagers);
     #endif
 
@@ -441,6 +443,19 @@ inline wxPanel* PreferencesDialog::CreateSystemTab(wxNotebook* parent)
 
 
 /**
+ * Create the tab containing fahinfo.org integration preferences
+**/
+/*inline wxPanel* PreferencesDialog::CreateFahinfoTab(wxNotebook* parent)
+{
+    wxPanel    *panel;
+
+    panel                   = new wxPanel(parent);
+
+    return panel;
+}*/
+
+
+/**
  * Give the correct state to each control before displaying the dialog
 **/
 int PreferencesDialog::ShowModal(void)
@@ -465,7 +480,6 @@ inline void PreferencesDialog::LoadPreferences(void)
     bool     useAlternate;
     bool     useLocalFile;
     bool     startMinimised;
-    bool     ignoreAsynchronousClocks;
     wxUint32 proxyPort;
     wxString proxyAddress;
     wxString proxyUsername;
@@ -499,7 +513,7 @@ inline void PreferencesDialog::LoadPreferences(void)
     _PrefsGetUint(PREF_MAINDIALOG_AUTORELOADFREQUENCY, mInitAutoReloadFrequency);
     _PrefsGetUint(PREF_ETA_DISPLAYSTYLE,               mInitETADisplayStyle);
     _PrefsGetUint(PREF_PPD_DISPLAYSTYLE,               mInitPPDDisplayStyle);
-    _PrefsGetBool(PREF_IGNORE_ASYNCHRONY,              ignoreAsynchronousClocks);
+    _PrefsGetBool(PREF_IGNORE_ASYNCHRONY,              mInitIgnoreAsynchronousClocks);
 
     mMonitoringAdvancedReload->SetValue(mInitAdvancedReload);
     mMonitoringAutoReload->SetValue(mInitAutoReload);
@@ -507,7 +521,7 @@ inline void PreferencesDialog::LoadPreferences(void)
     mMonitoringAutoReloadFrequency->Enable(!mInitAdvancedReload);
     mMonitoringETADisplayStyle->Select(mInitETADisplayStyle);
     mMonitoringPPDType->Select(mInitPPDDisplayStyle);
-    mMonitoringIgnoreAsynchrony->SetValue(ignoreAsynchronousClocks);
+    mMonitoringIgnoreAsynchrony->SetValue(mInitIgnoreAsynchronousClocks);
 
     mMonitoringAdvancedReload->Enable(mMonitoringAutoReload->GetValue());
     if(mMonitoringAutoReload->GetValue() == true)
@@ -761,6 +775,9 @@ inline void PreferencesDialog::SavePreferences(void)
     if(mSystemTZ->GetValue() != mInitTimezone)
         MainDialog::GetInstance()->OnPPDStylePrefChanged();
 
+    if(mMonitoringIgnoreAsynchrony->GetValue() != mInitIgnoreAsynchronousClocks)
+        MainDialog::GetInstance()->OnPPDStylePrefChanged();
+
 }
 
 
@@ -784,7 +801,7 @@ void PreferencesDialog::OnBrowseButton(wxCommandEvent& event)
 {
     wxString selectedFile;
 
-    wxFileDialog *OpenDialog = new wxFileDialog(this, wxT("Choose a local project data file"), wxT(""), mAdvancedLocalFileLocation->GetValue(),wxT("HTML Files (*.html)|*.html"), wxOPEN, wxDefaultPosition);
+    wxFileDialog *OpenDialog = new wxFileDialog(this, _("Choose a local project data file"), wxT(""), mAdvancedLocalFileLocation->GetValue(),wxT("HTML Files (*.html)|*.html"), wxOPEN, wxDefaultPosition);
      if (OpenDialog->ShowModal() == wxID_OK) // if the user click "Open" instead of "cancel"
      {
        selectedFile = OpenDialog->GetPath();

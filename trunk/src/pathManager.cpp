@@ -32,14 +32,16 @@ PathManager::PathManager(void)
 #ifdef _FAHMON_LINUX_
 
     // On Linux systems, we use the standard way to store data : in a hidden directory
-    // in the user's home direcrtory
+    // in the user's home directory
+    // the image path is now obtained from the DATADIR which is usually /usr/local/share
+    // introduced along with the proper GNU installation system
     wxString homeDir;
 
     homeDir = wxGetHomeDir();
     if(homeDir.Last() != '/')
         homeDir += wxT("/");
 
-    mImgPath = wxT("./images/");
+    mImgPath = wxString::Format(wxT("%s/pixmaps/fahmon/"), wxT(DATADIR));
     mCfgPath = homeDir + wxT(".fahmon/");
     mXYZPath = homeDir + wxT(".fahmon/xyz/");
     mMsgPath = homeDir + wxT(".fahmon/");

@@ -28,7 +28,7 @@ ProjectHelperThread::ProjectHelperThread(bool isForced, bool isInSilentMode) : w
 {
     mIsForced       = isForced;
     mIsInSilentMode = isInSilentMode;
-    
+
     Create();
     Run();
 }

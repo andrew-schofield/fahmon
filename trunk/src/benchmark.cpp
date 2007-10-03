@@ -91,6 +91,7 @@ void Benchmark::AddDuration(FrameDuration duration)
     mFrameDuration2 = mFrameDuration3;
     mFrameDuration3 = duration;
     m3FrameDuration = duration;
+
     if(mFrameDuration1 != 0 && mFrameDuration2 != 0 && mFrameDuration3 != 0)
         m3FrameDuration = (mFrameDuration1 + mFrameDuration2 + mFrameDuration3) / 3;
 
@@ -100,4 +101,12 @@ void Benchmark::AddDuration(FrameDuration duration)
 
     // instantaneous frame time
     mInstantDuration = duration;
+}
+
+/**
+ * Update the efective duration
+**/
+void Benchmark::AddEffectiveDuration(FrameDuration duration)
+{
+    mEffectiveDuration = duration;
 }

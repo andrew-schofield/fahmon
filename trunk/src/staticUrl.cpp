@@ -88,7 +88,7 @@ void StaticUrl::OnMouseEnter(wxMouseEvent& event)
     {
         mLabel->SetForegroundColour(*wxRED);
         mLabel->Refresh();
-    
+
         SetCursor(*mHandCursor);
     }
 }
@@ -103,7 +103,7 @@ void StaticUrl::OnMouseLeave(wxMouseEvent& event)
     {
         mLabel->SetForegroundColour(*wxBLUE);
         mLabel->Refresh();
-    
+
         SetCursor(wxNullCursor);
     }
 }

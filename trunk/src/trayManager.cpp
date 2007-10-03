@@ -18,6 +18,7 @@
 #include "trayManager.h"
 
 #include "wx/icon.h"
+#include "wx/intl.h"
 #include "mainDialog.h"
 #include "pathManager.h"
 #include "wx/menu.h"
@@ -132,7 +133,7 @@ void TrayManager::SetTooltip(const wxString& tooltip)
 
     TotalPPD = MainDialog::GetInstance()->GetTotalPPD();
 
-    mTooltip = wxString::Format(wxT("%s / %s\n%i clients for %.2fPPD"), wxT(FMC_PRODUCT), tooltip.c_str(), ClientCount, TotalPPD);
+    mTooltip = wxString::Format(_T("%s / %s\n%i clients for %.2fPPD"), wxT(FMC_PRODUCT), tooltip.c_str(), ClientCount, TotalPPD);
 
     if(IsIconInstalled() == true)
     {
@@ -169,6 +170,9 @@ void TrayManager::OnClick(wxTaskBarIconEvent& event)
     }
 }
 
+/**
+ * Creates a right-click popup menu from the tray icon
+**/
 wxMenu* TrayManager::CreatePopupMenu()
 {
     double  TotalPPD;
@@ -184,45 +188,51 @@ wxMenu* TrayManager::CreatePopupMenu()
 
     ClientCount = MainDialog::GetInstance()->GetClientCount();
 
-    traymenu->Append(TRAY_MENU_NULL, wxString::Format(wxT("Clients: %i "), ClientCount));
+    traymenu->Append(TRAY_MENU_NULL, wxString::Format(_("Clients: %i"), ClientCount));
 
     TotalPPD = MainDialog::GetInstance()->GetTotalPPD();
 
-    traymenu->Append(TRAY_MENU_NULL, wxString::Format(wxT("Total PPD: %.2f "), TotalPPD));
+    traymenu->Append(TRAY_MENU_NULL, wxString::Format(_("Total PPD: %.2f"), TotalPPD));
 
     // Separator
     traymenu->AppendSeparator();
 
-    traymenu->Append(TRAY_MENU_BENCHMARKS, wxT("Benchmarks"));
+    traymenu->Append(TRAY_MENU_BENCHMARKS, _("Benchmarks"));
 
-    traymenu->Append(TRAY_MENU_PREFERENCES, wxT("Preferences"));
+    traymenu->Append(TRAY_MENU_PREFERENCES, _("Preferences"));
 
     // Separator
     traymenu->AppendSeparator();
 
     if (MainDialog::GetInstance()->IsShown()) {
         //hide item
-        traymenu->Append(TRAY_MENU_HIDE, wxT("Hide FahMon"));
+        traymenu->Append(TRAY_MENU_HIDE, _("Hide FahMon"));
     } else {
         //show item
-        traymenu->Append(TRAY_MENU_SHOW, wxT("Show FahMon"));
+        traymenu->Append(TRAY_MENU_SHOW, _("Show FahMon"));
     }
 
     // Separator
     traymenu->AppendSeparator();
 
     // Exit item
-    traymenu->Append(TRAY_MENU_EXIT, wxT("Quit"));
+    traymenu->Append(TRAY_MENU_EXIT, _("Quit"));
 
     return traymenu;
 
 }
 
+/**
+ * The user has clicked close on the popup menu
+**/
 void TrayManager::Close(wxCommandEvent&)
 {
         MainDialog::GetInstance()->Close();
 }
 
+/**
+ * The user has clicked Show on the popup menu
+**/
 void TrayManager::Show(wxCommandEvent&)
 {
         MainDialog::GetInstance()->Show();
@@ -235,6 +245,9 @@ void TrayManager::Show(wxCommandEvent&)
         MainDialog::GetInstance()->Maximize(false);
 }
 
+/**
+ * The user has clicked Hide on the popup menu
+**/
 void TrayManager::Hide(wxCommandEvent&)
 {
         // Must minimize to the task bar first so that we get the minimize animation :)
@@ -242,11 +255,18 @@ void TrayManager::Hide(wxCommandEvent&)
         MainDialog::GetInstance()->Hide();
 }
 
+/**
+ * The user has clicked Benchmarks on the popup menu
+**/
 void TrayManager::Benchmarks(wxCommandEvent&)
 {
     BenchmarksDialog::GetInstance(MainDialog::GetInstance())->ShowModal(0);
 }
 
+
+/**
+ * The user has clicked Preferences on the popup menu
+**/
 void TrayManager::Preferences(wxCommandEvent&)
 {
     PreferencesDialog::GetInstance(MainDialog::GetInstance())->ShowModal();

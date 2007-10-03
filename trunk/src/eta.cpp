@@ -44,7 +44,7 @@ void ETA::SetLeftTimeInMinutes(wxUint32 leftTime)
 {
     mIsOk              = true;
     mLeftTimeInMinutes = leftTime;
-    
+
     // Compute the corresponding date once for all
     mETA.SetToCurrent();
     mETA.Add(wxTimeSpan::Minutes(leftTime));
@@ -77,13 +77,13 @@ inline wxString ETA::GetString_LeftTime(void) const
     wxUint32 nbDays;
     wxUint32 nbHours;
     wxUint32 nbMinutes;
-    
+
     // Split the left time into days, hours and minutes
     nbDays    = mLeftTimeInMinutes / (24 * 60);
     nbMinutes = mLeftTimeInMinutes % (24 * 60);
     nbHours   = nbMinutes / 60;
     nbMinutes = nbMinutes % 60;
-    
+
     // Use a friendly format
     if(nbDays != 0)
         return wxString::Format(wxT("%ud %02uh %02umn"), nbDays, nbHours, nbMinutes);
@@ -100,16 +100,16 @@ inline wxString ETA::GetString_LeftTime(void) const
 wxString ETA::GetString(void) const
 {
     wxUint32 displayStyle;
-    
+
     _PrefsGetUint(PREF_ETA_DISPLAYSTYLE, displayStyle);
-    
+
     switch(displayStyle)
     {
         // ---
         case ETADS_DATE_DAY_MONTH:
             return GetString_Standard();
             break;
-        
+
         // ---
         case ETADS_DATE_MONTH_DAY:
             return GetString_American();
@@ -119,12 +119,12 @@ wxString ETA::GetString(void) const
         case ETADS_LEFT_TIME:
             return GetString_LeftTime();
             break;
-        
+
         // We shall never fall here
         default:
             wxASSERT(false);
             break;
     };
-    
+
     return GetString_Standard();
 }

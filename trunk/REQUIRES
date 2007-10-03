@@ -1,0 +1,32 @@
+Software for building FahMon on Linux:
+REQUIRED
+* gcc-c++
+* wxGTK >=2.6.3
+* wxGTK-Devel >=2.6.3
+* m4
+
+OPTIONAL
+* gettext (required to edit or create new translations)
+* automake 1.8 (required to make new translations)
+* autoconf 2.5 (required to make new translations)
+* a gettext catalog editor like poEdit or KBabel (required to edit or create new
+  translations)
+
+Software for building FahMon on MS Windows
+REQUIRED
+* Microsoft Visual Studio (or Visual C++ Express)
+* Microsoft Windows Server 2003 R2 SDK
+* wxWidgets 2.6.3 (2.8.4 causes problems with network shares)
+
+OPTIONAL
+* a gettext catalog editor like poEdit (required to edit or create new
+  translations)
+
+NOTE
+It may be possible to compile for Windows using ming32w, however it won't work
+with the makefiles provided.
+
+Software for building FahMon on Mac OS X (not supported, for developers only)
+REQUIRED
+* Xcode
+* wxWidgets (available from MacPorts, or compile from source)

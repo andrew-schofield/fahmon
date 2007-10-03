@@ -77,7 +77,7 @@ HTTPDownloader::DownloadStatus HTTPDownloader::DownloadFile(const wxString& host
     localFileName = wxFileName::CreateTempFileName(wxT(FMC_APPNAME));
     if(localFileName.empty() == true)
         return STATUS_TEMP_FILE_CREATION_ERROR;
-    
+
     out = new wxFileOutputStream(localFileName);
     if(out->Ok() == false)
         return STATUS_TEMP_FILE_OPEN_ERROR;
@@ -101,13 +101,13 @@ HTTPDownloader::DownloadStatus HTTPDownloader::DownloadFile(const wxString& host
     else
     {
         request = wxString::Format(wxT("GET /%s HTTP/1.0\nHost: %s\n\n"), resource.c_str(), host.c_str());
-        
+
         serverAddress.Hostname(host);
         serverAddress.Service(port);
     }
-    
+
     returnValue = STATUS_NO_ERROR;
-    
+
     // --- Try to contact the server
     socket.SetTimeout(15);
     if(socket.Connect(serverAddress) == true)
@@ -130,7 +130,7 @@ HTTPDownloader::DownloadStatus HTTPDownloader::DownloadFile(const wxString& host
                 {
                     out->Write(buffer, socket.LastCount());
                     totalDataDownloaded += socket.LastCount();
-                    
+
                     // The first slice of data contains the header
                     if(isFirstSlice == true)
                     {
@@ -149,13 +149,13 @@ HTTPDownloader::DownloadStatus HTTPDownloader::DownloadFile(const wxString& host
                     downloadSpeed = (totalDataDownloaded * 1000.0) / (double)(elapsedTime.ToLong() * 1024);
                 else
                     downloadSpeed = 0.0;
-                
-                if(progressManager.SetText(wxString::Format(wxT("%.1f KB/s"), downloadSpeed)) == false)
+
+                if(progressManager.SetText(wxString::Format(_("%.1f KB/s"), downloadSpeed)) == false)
                 {
                     returnValue    = STATUS_ABORTED;
                     moreDataToRead = false;
                 }
-                
+
                 // Update the progress
                 if(totalDataToDownload != 0)
                 {
@@ -178,7 +178,7 @@ HTTPDownloader::DownloadStatus HTTPDownloader::DownloadFile(const wxString& host
     socket.Close();
     out->Close();
     delete out;
-    
+
     return returnValue;
 }
 
@@ -208,7 +208,7 @@ wxUint32 HTTPDownloader::ExtractContentSize(wxByte* buffer, wxUint32 bufferSize)
     // Remove leading data, and the field name itself
     // 16 is the size of 'Content-Length: '
     header = header.Mid(fieldPos + 16);
-    
+
     // Find where the value ends
     valueEndPos = header.Find(wxT("\n"));
     if(valueEndPos == -1)
@@ -217,6 +217,6 @@ wxUint32 HTTPDownloader::ExtractContentSize(wxByte* buffer, wxUint32 bufferSize)
     // Extract the part containing the size and convert it to a numerical value
     header = header.Mid(0, valueEndPos);
     header.ToLong(&value);
-    
+
     return (wxInt32)value;
 }

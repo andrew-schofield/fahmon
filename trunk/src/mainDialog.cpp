@@ -300,7 +300,11 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
     wxTimeSpan    timeDiff;
     const Client  *client;
     const Project *project;
-    float         tempFloat;
+    wxInt32       timeInMinutes;
+    wxInt32       nbDays;
+    wxInt32       nbHours;
+    wxInt32       nbMinutes;
+    wxString      tempString;
 
     _PrefsGetBool(PREF_OVERRIDE_TIMEZONE, overrideTZ);
     _PrefsGetInt (PREF_TZ,                TZ);
@@ -349,7 +353,7 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
         mFinalDeadline->SetLabel(wxT(""));
         mWUProgressGauge->SetValue(0);
         mWUProgressText->SetLabel(wxT(""));
-        mLogFile->SetValue(wxT("Something is wrong with this client.\nPlease check the messages (FahMon->Show/Hide Messages Window)."));
+        mLogFile->SetValue(_("Something is wrong with this client.\nPlease check the messages (FahMon->Show/Hide Messages Window)."));
 
         return;
     }
@@ -388,8 +392,23 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
         if(deadlineDays == true)
         {
             timeDiff = timeNow.Subtract(downloadTime);
-            tempFloat = timeDiff.GetMinutes();
-            mDownloaded->SetLabel(wxString::Format(wxT("%.2f days ago"), tempFloat / 1440));
+            timeInMinutes = timeDiff.GetMinutes();
+
+
+            // Split the left time into days, hours and minutes
+            nbDays    = timeInMinutes / (24 * 60);
+            nbMinutes = timeInMinutes % (24 * 60);
+            nbHours   = nbMinutes / 60;
+            nbMinutes = nbMinutes % 60;
+            // Use a friendly format
+            if(nbDays != 0)
+                tempString = wxString::Format(wxT("%id %02ih %02imn"), nbDays, nbHours, nbMinutes);
+            else if(nbHours != 0)
+                tempString = wxString::Format(wxT("%ih %02imn"), nbHours, nbMinutes);
+            else
+                tempString = wxString::Format(wxT("%imn"), nbMinutes);
+
+            mDownloaded->SetLabel(wxString::Format(_("%s ago"), tempString.c_str()));
         }
         else
         {
@@ -397,20 +416,20 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
         }
     }
     else
-        mDownloaded->SetLabel(wxT("N/A"));
+        mDownloaded->SetLabel(_("N/A"));
 
     if(client->GetProjectId() == INVALID_PROJECT_ID)
     {
-        mProjectId->SetLabel(wxT("N/A"));
-        mCoreName->SetLabel(wxT("N/A"));
-        mCredit->SetLabel(wxT("N/A"));
-        mPreferredDeadline->SetLabel(wxT("N/A"));
-        mFinalDeadline->SetLabel(wxT("N/A"));
+        mProjectId->SetLabel(_("N/A"));
+        mCoreName->SetLabel(_("N/A"));
+        mCredit->SetLabel(_("N/A"));
+        mPreferredDeadline->SetLabel(_("N/A"));
+        mFinalDeadline->SetLabel(_("N/A"));
 
         return;
     }
 
-    mProjectId->SetLabel(wxString::Format(wxT("%u"), client->GetProjectId()));
+    mProjectId->SetLabel(wxString::Format(wxT("%u (R%i, C%i, G%i)"), client->GetProjectId(), client->GetProjectRun(), client->GetProjectClone(), client->GetProjectGen()));
     project = ProjectsManager::GetInstance()->GetProject(client->GetProjectId());
 
     // This project can be unknown, if the database is not up to date
@@ -420,11 +439,11 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
         // Fallback to reset all info in case psummary doesn't contain the data we need
         // Otherwise bad things happen like the data remaining from the last client viewed
 
-        mProjectId->SetLabel(wxT("N/A"));
-        mCoreName->SetLabel(wxT("N/A"));
-        mCredit->SetLabel(wxT("N/A"));
-        mPreferredDeadline->SetLabel(wxT("N/A"));
-        mFinalDeadline->SetLabel(wxT("N/A"));
+        mProjectId->SetLabel(_("N/A"));
+        mCoreName->SetLabel(_("N/A"));
+        mCredit->SetLabel(_("N/A"));
+        mPreferredDeadline->SetLabel(_("N/A"));
+        mFinalDeadline->SetLabel(_("N/A"));
 
         // Update the database, if the user wants to
         // This update is not forced, it will occur only if the elapsed time since the last one is high enough
@@ -439,11 +458,11 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
         }
         else
         {
-            mCoreName->SetLabel(wxT("N/A"));
-            mCredit->SetLabel(wxT("N/A"));
-            mPreferredDeadline->SetLabel(wxT("N/A"));
-            mFinalDeadline->SetLabel(wxT("N/A"));
-            _LogMsgWarning(wxString::Format(wxT("Project %u is unknown, you should try to update the projects database"), client->GetProjectId()));
+            mCoreName->SetLabel(_("N/A"));
+            mCredit->SetLabel(_("N/A"));
+            mPreferredDeadline->SetLabel(_("N/A"));
+            mFinalDeadline->SetLabel(_("N/A"));
+            _LogMsgWarning(wxString::Format(_("Project %u is unknown, you should try to update the projects database"), client->GetProjectId()));
         }
 
         return;
@@ -451,7 +470,7 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 
     // We do have project information
     mCoreName->SetLabel(Core::IdToLongName(project->GetCoreId()));
-    mCredit->SetLabel(wxString::Format(wxT("%u points"), project->GetCredit()));
+    mCredit->SetLabel(wxString::Format(_("%u points"), project->GetCredit()));
 
     // Preferred deadline: if it is equal to 0 day, there is no preferred deadline
     if(client->GetDownloadDate().IsValid() && project->GetPreferredDeadlineInDays() != 0)
@@ -461,8 +480,27 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
         if(deadlineDays == true)
         {
             timeDiff = preferredDeadline.Subtract(timeNow);
-            tempFloat = timeDiff.GetMinutes();
-            mPreferredDeadline->SetLabel(wxString::Format(wxT("In %.2f days"), tempFloat / 1440));
+            timeInMinutes = timeDiff.GetMinutes();
+            if(timeDiff.GetMinutes() < 0) timeInMinutes = 0 - timeInMinutes;
+
+            // Split the left time into days, hours and minutes
+            nbDays    = timeInMinutes / (24 * 60);
+            nbMinutes = timeInMinutes % (24 * 60);
+            nbHours   = nbMinutes / 60;
+            nbMinutes = nbMinutes % 60;
+            // Use a friendly format
+            if(nbDays != 0)
+                tempString = wxString::Format(wxT("%id %02ih %02imn"), nbDays, nbHours, nbMinutes);
+            else if(nbHours != 0)
+                tempString = wxString::Format(wxT("%ih %02imn"), nbHours, nbMinutes);
+            else
+                tempString = wxString::Format(wxT("%imn"), nbMinutes);
+
+            if(timeDiff.GetMinutes() < 0)
+                mPreferredDeadline->SetLabel(wxString::Format(_("%s ago"), tempString.c_str()));
+            else
+                mPreferredDeadline->SetLabel(wxString::Format(_("In %s"), tempString.c_str()));
+
         }
         else
         {
@@ -470,7 +508,7 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
         }
     }
     else
-        mPreferredDeadline->SetLabel(wxT("N/A"));
+        mPreferredDeadline->SetLabel(_("N/A"));
 
     // Final deadline: if it is equal to 0 day, there is no final deadline
     if(client->GetDownloadDate().IsValid() && project->GetFinalDeadlineInDays() != 0)
@@ -480,8 +518,27 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
         if(deadlineDays == true)
         {
             timeDiff = finalDeadline.Subtract(timeNow);
-            tempFloat = timeDiff.GetMinutes();
-            mFinalDeadline->SetLabel(wxString::Format(wxT("In %.2f days"), tempFloat / 1440));
+            timeInMinutes = timeDiff.GetMinutes();
+            if(timeDiff.GetMinutes() < 0) timeInMinutes = 0 - timeInMinutes;
+
+
+            // Split the left time into days, hours and minutes
+            nbDays    = timeInMinutes / (24 * 60);
+            nbMinutes = timeInMinutes % (24 * 60);
+            nbHours   = nbMinutes / 60;
+            nbMinutes = nbMinutes % 60;
+            // Use a friendly format
+            if(nbDays != 0)
+                tempString = wxString::Format(wxT("%id %02ih %02imn"), nbDays, nbHours, nbMinutes);
+            else if(nbHours != 0)
+                tempString = wxString::Format(wxT("%ih %02imn"), nbHours, nbMinutes);
+            else
+                tempString = wxString::Format(wxT("%imn"), nbMinutes);
+
+            if(timeDiff.GetMinutes() < 0)
+               mFinalDeadline->SetLabel(wxString::Format(_("%s ago"), tempString.c_str()));
+            else 
+               mFinalDeadline->SetLabel(wxString::Format(_("In %s"), tempString.c_str()));
         }
         else
         {
@@ -489,10 +546,10 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
         }
     }
     else
-        mFinalDeadline->SetLabel(wxT("N/A"));
+        mFinalDeadline->SetLabel(_("N/A"));
 
     // Get the total PPD to display next to progress bar
-    mWUTotalPPD->SetLabel(wxString::Format(wxT(" :: Total PPD: %.2f "), MainDialog::GetTotalPPD()));
+    mWUTotalPPD->SetLabel(wxString::Format(_(" :: Total PPD: %.2f"), MainDialog::GetTotalPPD()));
 
 }
 
@@ -517,40 +574,50 @@ inline void MainDialog::CreateMenuBar(void)
 
     // The 'Main' menu
     menu = new wxMenu();
-    menu->Append(MID_TOGGLE_MESSAGES_FRAME, wxT("&Show/Hide Messages Window"), wxT("Toggle the messages window"));
-    menu->Append(MID_UPDATEPROJECTS, wxT("&Download New Projects"), wxT("Update the local project database"));
+    menu->Append(MID_TOGGLE_MESSAGES_FRAME, _("&Show/Hide Messages Window"), _("Toggle the messages window"));
+    menu->Append(MID_UPDATEPROJECTS, _("&Download New Projects"), _("Update the local project database"));
     menu->AppendSeparator();
-    menu->Append(MID_BENCHMARKS, wxT("&Benchmarks...\tCTRL+B"), wxT("Open the benchmarks dialog"));
-    menu->Append(MID_PREFERENCES, wxT("&Preferences...\tCTRL+P"), wxT("Open the preferences dialog"));
+    menu->Append(MID_BENCHMARKS, _("&Benchmarks...\tCTRL+B"), _("Open the benchmarks dialog"));
+    menu->Append(MID_PREFERENCES, _("&Preferences...\tCTRL+P"), _("Open the preferences dialog"));
     menu->AppendSeparator();
-    menu->Append(wxID_EXIT, wxT("&Quit\tCtrl+Q"), wxT("Quit "FMC_APPNAME));
-    menuBar->Append(menu, wxT("&"FMC_APPNAME));
+#ifdef _FAHMON_WIN32_
+    // MSVC stupidity
+    menu->Append(wxID_EXIT, _("&Quit\tCtrl+Q"), wxString::Format(_T("%s %s"),  _("Quit"), _T(FMC_APPNAME)));
+#elif _FAHMON_LINUX_
+    menu->Append(wxID_EXIT, _("&Quit\tCtrl+Q"), wxString::Format(_T("%s "FMC_APPNAME), _("Quit")));
+#endif
+    menuBar->Append(menu, wxString::Format(wxT("&%s"), wxT(FMC_APPNAME)));
 
     // The 'Monitoring' menu
     menu = new wxMenu();
-    menu->Append(MID_RELOAD, wxT("Reload &Selection\tF5"), wxT("Reload the selected client"));
-    menu->Append(MID_RELOAD_ALL, wxT("Reload &All\tF6"), wxT("Reload all the clients"));
+    menu->Append(MID_RELOAD, _("Reload &Selection\tF5"), _("Reload the selected client"));
+    menu->Append(MID_RELOAD_ALL, _("Reload &All\tF6"), _("Reload all the clients"));
     menu->AppendSeparator();
-    menu->Append(MID_TOGGLELOG, wxT("&Show/Hide FAHLog\tF8"), wxT("Toggle the log file"));
-    menuBar->Append(menu, wxT("&Monitoring"));
+    menu->Append(MID_TOGGLELOG, _("&Show/Hide FAHLog\tF8"), _("Toggle the log file"));
+    menuBar->Append(menu, _("&Monitoring"));
 
     // The 'Web' menu
     menu = new wxMenu();
-    menu->Append(MID_WWWMYSTATS, wxT("&My Stats\tF2"), wxT("View the personal statistics for the selected client"));
-    menu->Append(MID_WWWJMOL, wxT("&Jmol\tF3"), wxT("View the current project on the Jmol website"));
-    menu->Append(MID_WWWFAHINFO, wxT("&fahinfo\tF4"), wxT("View the current project on fahinfo.org"));
+    menu->Append(MID_WWWMYSTATS, _("&My Stats\tF2"), _("View the personal statistics for the selected client"));
+    menu->Append(MID_WWWJMOL, _("&Jmol\tF3"), _("View the current project on the Jmol website"));
+    menu->Append(MID_WWWFAHINFO, _("&fahinfo\tF4"), _("View the current project on fahinfo.org"));
     menu->AppendSeparator();
-    menu->Append(MID_WWWFOLDING, wxT("F@H &Website"), wxT("Open to the official Stanford website"));
-    menu->Append(MID_WWWFCORG, wxT("Folding-&Community"), wxT("Open the Folding@Home support forum"));
-    menu->Append(MID_WWWPROJECTS, wxT("&Projects Summary"), wxT("Open the list of the current projects"));
-    menu->Append(MID_WWWSERVERS, wxT("&Servers Status"), wxT("Open the list of the servers with their status"));
-    menuBar->Append(menu, wxT("&Web"));
+    menu->Append(MID_WWWFOLDING, _("F@H &Website"), _("Open to the official Stanford website"));
+    menu->Append(MID_WWWFCORG, _("Folding-&Community"), _("Open the Folding@Home support forum"));
+    menu->Append(MID_WWWPROJECTS, _("&Projects Summary"), _("Open the list of the current projects"));
+    menu->Append(MID_WWWSERVERS, _("&Servers Status"), _("Open the list of the servers with their status"));
+    menuBar->Append(menu, _("&Web"));
 
     // The 'Help' menu
     menu = new wxMenu();
-    menu->Append(wxID_HELP_CONTENTS, wxT("&Help Contents\tF1"), wxT("See help contents"));
-    menu->Append(wxID_ABOUT, wxT("&About"), wxT("About "FMC_APPNAME));
-    menuBar->Append(menu, wxT("&Help"));
+    menu->Append(wxID_HELP_CONTENTS, _("&Help Contents\tF1"), _("See help contents"));
+#ifdef _FAHMON_WIN32_
+    // MSVC stupidity
+    menu->Append(wxID_ABOUT, _("&About"), wxString::Format(_T("%s %s"),  _("About"), _T(FMC_APPNAME)));
+#elif _FAHMON_LINUX_
+    menu->Append(wxID_ABOUT, _("&About"), wxString::Format(_T("%s "FMC_APPNAME),  _("About")));
+#endif
+    menuBar->Append(menu, _("&Help"));
 }
 
 
@@ -586,7 +653,7 @@ inline void MainDialog::CreateLayout(void)
     // --- The top right part
     // It contains labels to display information on the currently selected client
     topRightPanel      = new wxPanel(mSplitterWindow, wxID_ANY);
-    topRightSizer      = new wxStaticBoxSizer(wxVERTICAL, topRightPanel, wxT("Work Unit Information"));
+    topRightSizer      = new wxStaticBoxSizer(wxVERTICAL, topRightPanel, _("Work Unit Information"));
     infoSizer          = new wxGridSizer(2, FMC_GUI_SPACING_HIGH, FMC_GUI_SPACING_LOW);
     mCoreName          = new StaticBoldedText(topRightPanel, wxID_ANY, wxT(""));
     mProjectId         = new wxStaticText(topRightPanel, wxID_ANY, wxT(""));
@@ -608,19 +675,19 @@ inline void MainDialog::CreateLayout(void)
     mCoreName->SetForegroundColour(*wxRED);
 
     // Information on the current client is stored using a GridSizer
-    infoSizer->Add(new StaticBoldedText(topRightPanel, wxID_ANY, wxT("Core:")), 0, wxALIGN_RIGHT);
+    infoSizer->Add(new StaticBoldedText(topRightPanel, wxID_ANY, _("Core:")), 0, wxALIGN_RIGHT);
     infoSizer->Add(mCoreName, 0, wxALIGN_LEFT);
-    infoSizer->Add(new StaticBoldedText(topRightPanel, wxID_ANY, wxT("Project:")), 0, wxALIGN_RIGHT);
+    infoSizer->Add(new StaticBoldedText(topRightPanel, wxID_ANY, _("Project:")), 0, wxALIGN_RIGHT);
     infoSizer->Add(mProjectId, 0, wxALIGN_LEFT);
-    infoSizer->Add(new StaticBoldedText(topRightPanel, wxID_ANY, wxT("Credit:")), 0, wxALIGN_RIGHT);
+    infoSizer->Add(new StaticBoldedText(topRightPanel, wxID_ANY, _("Credit:")), 0, wxALIGN_RIGHT);
     infoSizer->Add(mCredit, 0, wxALIGN_LEFT);
-    infoSizer->Add(new StaticBoldedText(topRightPanel, wxID_ANY, wxT("Username:")), 0, wxALIGN_RIGHT);
+    infoSizer->Add(new StaticBoldedText(topRightPanel, wxID_ANY, _("Username:")), 0, wxALIGN_RIGHT);
     infoSizer->Add(userinfoSizer, 0, wxALIGN_LEFT);
-    infoSizer->Add(new StaticBoldedText(topRightPanel, wxID_ANY, wxT("Downloaded:")), 0, wxALIGN_RIGHT);
+    infoSizer->Add(new StaticBoldedText(topRightPanel, wxID_ANY, _("Downloaded:")), 0, wxALIGN_RIGHT);
     infoSizer->Add(mDownloaded, 0, wxALIGN_LEFT);
-    infoSizer->Add(new StaticBoldedText(topRightPanel, wxID_ANY, wxT("Preferred Deadline:")), 0, wxALIGN_RIGHT);
+    infoSizer->Add(new StaticBoldedText(topRightPanel, wxID_ANY, _("Preferred Deadline:")), 0, wxALIGN_RIGHT);
     infoSizer->Add(mPreferredDeadline, 0, wxALIGN_LEFT);
-    infoSizer->Add(new StaticBoldedText(topRightPanel, wxID_ANY, wxT("Final Deadline:")), 0, wxALIGN_RIGHT);
+    infoSizer->Add(new StaticBoldedText(topRightPanel, wxID_ANY, _("Final Deadline:")), 0, wxALIGN_RIGHT);
     infoSizer->Add(mFinalDeadline, 0, wxALIGN_LEFT);
 
     // We use AddStretchSpacer() to keep the information vertically centered
@@ -648,7 +715,7 @@ inline void MainDialog::CreateLayout(void)
     midSizer         = new wxBoxSizer(wxHORIZONTAL);
     mWUProgressGauge = new wxGauge(topLevelPanel, wxID_ANY, 100, wxDefaultPosition, wxSize(0, 18));
     mWUProgressText  = new wxStaticText(topLevelPanel, wxID_ANY, wxT(""));
-    mWUTotalPPD = new wxStaticText(topLevelPanel, wxID_ANY, wxT(" :: Total PPD:"));
+    mWUTotalPPD = new wxStaticText(topLevelPanel, wxID_ANY, _(" :: Total PPD:"));
 
     midSizer->Add(mWUProgressGauge, 1);
     midSizer->Add(mWUProgressText, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
@@ -656,7 +723,7 @@ inline void MainDialog::CreateLayout(void)
 
 
     // --- The bottom part : Log file
-    mLogFile = new wxTextCtrl(topLevelPanel, wxID_ANY, wxT("Log file."), wxDefaultPosition, wxSize(100, FMC_GUI_LOG_HEIGHT), wxTE_MULTILINE | wxTE_READONLY | wxHSCROLL);
+    mLogFile = new wxTextCtrl(topLevelPanel, wxID_ANY, _("Log file."), wxDefaultPosition, wxSize(100, FMC_GUI_LOG_HEIGHT), wxTE_MULTILINE | wxTE_READONLY | wxHSCROLL);
 
 
     // -- Finally construct the frame itself
@@ -906,7 +973,7 @@ void MainDialog::OnMenuWeb(wxCommandEvent& event)
                     Tools::OpenURLInBrowser(ClientsManager::GetInstance()->Get(selectedClientId)->GetDonatorStatsURL());
             }
             else
-                Tools::ErrorMsgBox(wxT("You must first select a client!"));
+                Tools::ErrorMsgBox(_("You must first select a client!"));
             break;
 
         //--
@@ -1161,11 +1228,17 @@ void MainDialog::OnTrayIconPrefChanged(void)
         TrayManager::GetInstance()->UninstallIcon();
 }
 
+/**
+ * Reload all clients on (but not limited to) PPD style change
+**/
 void MainDialog::OnPPDStylePrefChanged(void)
 {
     ClientsManager::GetInstance()->ReloadThreaded(CM_LOADALLF);
 }
 
+/**
+ * Reload selected client data on deadline style change
+**/
 void MainDialog::OnDeadlinePrefChanged(void)
 {
     ClientId selectedClientId = mClientsList->GetSelectedClientId();

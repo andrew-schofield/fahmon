@@ -36,7 +36,7 @@ MessagesFrame* MessagesFrame::mInstance = NULL;
 /**
  * Constructor
 **/
-MessagesFrame::MessagesFrame(wxWindow *parent) : wxFrame(parent, wxID_ANY, wxString::Format(wxT("Messages / %s"), wxT(FMC_PRODUCT)))
+MessagesFrame::MessagesFrame(wxWindow *parent) : wxFrame(parent, wxID_ANY, wxString::Format(_("Messages / %s"), wxT(FMC_PRODUCT)))
 {
     wxUint32    frameWidth;
     wxUint32    frameHeight;
@@ -53,7 +53,7 @@ MessagesFrame::MessagesFrame(wxWindow *parent) : wxFrame(parent, wxID_ANY, wxStr
 
     // --- We don't really need a status bar, but with it on Windows a 'grip sizer' appears, so that users can see that the frame is resizable
     CreateStatusBar();
-    
+
 
     // --- Construct the frame
     // We use a panel so that it look better under Windows, and a fixed pitch font, because that's easier to
@@ -62,7 +62,7 @@ MessagesFrame::MessagesFrame(wxWindow *parent) : wxFrame(parent, wxID_ANY, wxStr
     mainSizer     = new wxBoxSizer(wxVERTICAL);
     topLevelSizer = new wxBoxSizer(wxVERTICAL);
     mTextCtrl     = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE | wxTE_READONLY | wxTE_DONTWRAP);
-    
+
     mainSizer->Add(mTextCtrl, 1, wxEXPAND);
     mTextCtrl->SetFont(wxFont(9, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL));
     topLevelSizer->Add(mainSizer, 1, wxEXPAND | wxALL, FMC_GUI_BORDER);
@@ -91,7 +91,7 @@ MessagesFrame* MessagesFrame::GetInstance(wxWindow* parent)
 {
     if(mInstance == NULL)
         mInstance = new MessagesFrame(parent);
-    
+
     return mInstance;
 }
 
@@ -106,7 +106,7 @@ void MessagesFrame::DestroyInstance(void)
         // Save the size of the frame before cleaning
         _PrefsSetUint(PREF_MESSAGESFRAME_FRAMEWIDTH,  mInstance->GetSize().GetWidth());
         _PrefsSetUint(PREF_MESSAGESFRAME_FRAMEHEIGHT, mInstance->GetSize().GetHeight());
-        
+
         mInstance->Destroy();
         mInstance = NULL;
     }
@@ -123,7 +123,7 @@ void MessagesFrame::Toggle(void)
         // Change the content of the wxTextCtrl with the current messages before displaying the window
         mTextCtrl->SetValue(MessagesManager::GetInstance()->GetMessages());
         mTextCtrl->ShowPosition(mTextCtrl->GetLastPosition());
-        
+
         Show(true);
     }
     else

@@ -141,7 +141,7 @@ void BenchmarksManager::Save(void)
 
     if(out.Ok() == false)
     {
-        Tools::ErrorMsgBox(wxString::Format(wxT("Could not open file <%s> for writing!"), (PathManager::GetCfgPath() + wxT(FMC_FILE_BENCHMARKS)).c_str()));
+        Tools::ErrorMsgBox(wxString::Format(_("Could not open file <%s> for writing!"), (PathManager::GetCfgPath() + wxT(FMC_FILE_BENCHMARKS)).c_str()));
         return;
     }
 
@@ -152,7 +152,6 @@ void BenchmarksManager::Save(void)
         out.WriteString(iteratorClientId->first);
         out.Write(&iteratorClientId->second, sizeof(ClientId));
     }
-
 
     // Then for all projects, and all clients, the associated benchmark
     out.WriteUint(mProjectIdToBenchmarks.size());
@@ -192,7 +191,6 @@ void BenchmarksManager::Load(void)
     if(in.Ok() == false)
         return;
 
-
     // The registered clients
     in.ReadUint(nbRegisteredClients);
     for(i=0; i<nbRegisteredClients; ++i)
@@ -214,7 +212,6 @@ void BenchmarksManager::Load(void)
                 mNextAvailableClientId = MAX_CLIENT_ID;
         }
     }
-
 
     // The known projects and each benchmark
     in.ReadUint(nbProjects);
@@ -296,7 +293,7 @@ void BenchmarksManager::Add(ProjectId projectId, const Client* client, const Wor
         // Stop before the limit
         if(mNextAvailableClientId == MAX_CLIENT_ID)
         {
-            _LogMsgError(wxT("(Benchmarks) The maximum number of known clients has been reached!"));
+            _LogMsgError(_("(Benchmarks) The maximum number of known clients has been reached!"));
             return;
         }
 
@@ -307,7 +304,6 @@ void BenchmarksManager::Add(ProjectId projectId, const Client* client, const Wor
 
         ++mNextAvailableClientId;
     }
-
 
     // --- Try to retrieve the already known benchmarks for the considered project and client, if any
     iteratorBenchmarksList = mProjectIdToBenchmarks.find(projectId);
@@ -327,10 +323,9 @@ void BenchmarksManager::Add(ProjectId projectId, const Client* client, const Wor
         benchmark        = new Benchmark(clientId);
     }
 
-
     // --- Add the new benchmarked frame
     benchmark->AddDuration(frame->GetDuration());
-
+    benchmark->AddEffectiveDuration(frame->GetEffectiveDuration());
 
     // --- So far, so good
     // Store the modified benchmark back into the hashtable, and the hashtable itself into the main hashtable
@@ -438,7 +433,7 @@ wxString BenchmarksManager::GetClientLocationFromClientId(ClientId clientId)
     if(iterator == mClientIdToClientLocation.end())
     {
         wxASSERT(false);
-        return wxT("Unknown client");
+        return _("Unknown client");
     }
 
     return iterator->second;

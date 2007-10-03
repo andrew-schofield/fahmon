@@ -97,7 +97,7 @@ void Preference::Read(DataInputStream& in)
 {
     // 1) The type
     in.Read(&mPrefType, sizeof(PrefType));
-    
+
     // 2) The name
     in.ReadString(mPrefName);
 
@@ -107,27 +107,27 @@ void Preference::Read(DataInputStream& in)
         case PT_BOOL:
             in.ReadBool(mBoolValue);
             break;
-        
+
         case PT_UINT:
             in.ReadUint(mUintValue);
             break;
-        
+
         case PT_INT:
             in.ReadInt(mIntValue);
             break;
-        
+
         case PT_DOUBLE:
             in.ReadDouble(mDoubleValue);
             break;
-        
+
         case PT_STRING:
             in.ReadString(mStringValue);
             break;
-        
+
         case PT_HIDDEN_STRING:
             in.ReadHiddenString(mStringValue);
             break;
-        
+
         // We should never fall here
         default:
             wxASSERT(false);
@@ -173,7 +173,7 @@ void Preference::Write(DataOutputStream& out) const
         case PT_HIDDEN_STRING:
             out.WriteHiddenString(mStringValue);
             break;
-        
+
         // We should never fall here
         default:
             wxASSERT(false);

@@ -29,6 +29,7 @@
 #include "dataOutputStream.h"
 #include "preferencesManager.h"
 #include "projectHelperThread.h"
+#include "locale.h"
 
 
 // The single instance of ProjectsManager accross the application
@@ -105,7 +106,7 @@ inline void ProjectsManager::Load(void)
     // Could the file be opened ?
     if(in.Ok() == false)
     {
-        _LogMsgWarning(wxT("There is no projects file, or it is not readable"));
+        _LogMsgWarning(_("There is no projects file, or it is not readable"));
         return;
     }
 
@@ -136,7 +137,7 @@ inline void ProjectsManager::Save(void)
 
     if(out.Ok() == false)
     {
-        Tools::ErrorMsgBox(wxString::Format(wxT("Could not open file <%s> for writing!"), (PathManager::GetCfgPath() + wxT(FMC_FILE_PROJECTS)).c_str()));
+        Tools::ErrorMsgBox(wxString::Format(_("Could not open file <%s> for writing!"), (PathManager::GetCfgPath() + wxT(FMC_FILE_PROJECTS)).c_str()));
         return;
     }
 
@@ -236,12 +237,12 @@ bool ProjectsManager::UpdateDatabase(bool forced, bool silentMode)
     // This update will be the new reference
     mLastUpdateTimestamp = wxGetLocalTime();
 
-    _LogMsgInfo(wxT("Updating projects database"));
+    _LogMsgInfo(_("Updating projects database"));
 
 
     // --- We first have to download the new projects
     // This part is estimated to be 90% of the total work
-    progressManager.SetTextAndProgress(wxT("Downloading new projects"), 0);
+    progressManager.SetTextAndProgress(_("Downloading new projects"), 0);
     progressManager.CreateTask(90);
     if(Update_DownloadProjectsFile(projectFile, progressManager, errorMsg) == false)
     {
@@ -260,7 +261,7 @@ bool ProjectsManager::UpdateDatabase(bool forced, bool silentMode)
 
 
     // --- We can then parse the file (10% of the total work)
-    progressManager.SetText(wxT("Adding the new projects to the database"));
+    progressManager.SetText(_("Adding the new projects to the database"));
     progressManager.CreateTask(10);
     if(Update_ParseProjectsFile(projectFile, progressManager, errorMsg) == false)
     {
@@ -338,43 +339,43 @@ bool ProjectsManager::Update_DownloadProjectsFile(wxString& fileName, ProgressMa
         switch(downloadStatus)
         {
             case HTTPDownloader::STATUS_TEMP_FILE_CREATION_ERROR:
-                errorMsg = wxT("Unable to create a temporary file!");
+                errorMsg = _("Unable to create a temporary file!");
                 break;
 
             case HTTPDownloader::STATUS_TEMP_FILE_OPEN_ERROR:
-                errorMsg = wxString::Format(wxT("Unable to open the temporary file <%s>"), fileName.c_str());
+                errorMsg = wxString::Format(_("Unable to open the temporary file <%s>"), fileName.c_str());
                 break;
 
             case HTTPDownloader::STATUS_CONNECT_ERROR:
-                errorMsg = wxT("Unable to connect to the server!");
+                errorMsg = _("Unable to connect to the server!");
                 break;
 
             case HTTPDownloader::STATUS_SEND_REQUEST_ERROR:
-                errorMsg = wxT("Unable to send the request to the server!");
+                errorMsg = _("Unable to send the request to the server!");
                 break;
 
             case HTTPDownloader::STATUS_ABORTED:
-                errorMsg = wxT("Download aborted!");
+                errorMsg = _("Download aborted!");
                 break;
 
             // We should never fall here
             default:
                 wxASSERT(false);
-                errorMsg = wxT("An unknown error happened!");
+                errorMsg = _("An unknown error happened!");
                 break;
         }
     } else {
         fileexists = wxFileExists(projectLocalFile);
         if(fileexists == false)
         {
-            errorMsg = wxT("Local project update file doesn't exist!");
+            errorMsg = _("Local project update file doesn't exist!");
             return false;
         } else {
             fileName = wxFileName::CreateTempFileName(wxT(FMC_APPNAME));
             copied = wxCopyFile(projectLocalFile, fileName);
             if(copied == false)
             {
-                errorMsg = wxT("Unable to copy local project update file to temporary location");
+                errorMsg = _("Unable to copy local project update file to temporary location");
                 return false;
             } else {
                 return true;
@@ -405,6 +406,7 @@ bool ProjectsManager::Update_ParseProjectsFile(const wxString& fileName, Progres
     in.Open(fileName);
     tableHeaderFound = false;
     errorOccured = false;
+    char *locOld = setlocale(LC_NUMERIC, "C");
     for(i=0; i<in.GetLineCount(); ++i)
     {
         currentLine = in.GetLine(i);
@@ -431,7 +433,7 @@ bool ProjectsManager::Update_ParseProjectsFile(const wxString& fileName, Progres
                     AddProject(project);
                 else
                 {
-                    errorMsg = wxString::Format(wxT("The line %u is not correctly formatted!\n\n%s"), i+1, currentLine.c_str());
+                    errorMsg = wxString::Format(_("The line %u is not correctly formatted!\n\n%s"), i+1, currentLine.c_str());
                     errorOccured = true;
                 }
             }
@@ -442,10 +444,38 @@ bool ProjectsManager::Update_ParseProjectsFile(const wxString& fileName, Progres
         wxASSERT(in.GetLineCount() != 0);
         if(progressManager.SetProgress((i * 100) / in.GetLineCount()) == false)
         {
-            errorMsg = wxT("Update aborted!");
+            errorMsg = _("Update aborted!");
             return false;
         }
     }
+    setlocale(LC_NUMERIC, locOld);
+    /*m_locale1.Init(wxLANGUAGE_DEFAULT, wxLOCALE_CONV_ENCODING);
+
+    wxString locale = m_locale1.GetLocale();
+
+#ifdef _FAHMON_WIN32_
+    {
+        wxLocale::AddCatalogLookupPathPrefix(wxT("./lang"));
+    }
+#endif
+#ifdef _FAHMON_LINUX_
+    {
+        wxLocale::AddCatalogLookupPathPrefix(wxT(DATADIR));
+    }
+#endif
+    // Initialize the catalogs we'll be using
+    m_locale1.AddCatalog(wxT("fahmon"));
+
+    // this catalog is installed in standard location on Linux systems and
+    // shows that you may make use of the standard message catalogs as well
+    //
+    // if it's not installed on your system, it is just silently ignored
+#ifdef _FAHMON_LINUX_
+    {
+        wxLogNull noLog;
+        m_locale1.AddCatalog(_T("fileutils"));
+    }
+#endif*/
 
     return !errorOccured;
 }

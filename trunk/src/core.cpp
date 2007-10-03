@@ -18,8 +18,8 @@
 #include "core.h"
 
 
-wxString Core::mCoreLongName[CORE_ID_COUNT] = {wxT("Tinker"), wxT("Gromacs"), wxT("Double Gromacs"), wxT("GBGromacs"), wxT("Amber"), wxT("QMD"), wxT("Unknown"), wxT("Gromacs 33"), wxT("SMP Gromacs"), wxT("GPU Gromacs"), wxT("SREM Gromacs"), wxT("SimT Gromacs")};
-wxString Core::mCoreShortName[CORE_ID_COUNT] = {wxT("tinker"), wxT("gromacs"), wxT("dgromacs"), wxT("gbgromacs"), wxT("amber"), wxT("qmd"), wxT("Unknown"), wxT("gromacs33"), wxT("gro-smp"), wxT("grogpu"), wxT("grost"), wxT("grosimt")};
+wxString Core::mCoreLongName[CORE_ID_COUNT] = {wxT("Tinker"), wxT("Gromacs"), wxT("Double Gromacs"), wxT("GBGromacs"), wxT("Amber"), wxT("QMD"), wxT("Unknown"), wxT("Gromacs 33"), wxT("SMP Gromacs"), wxT("GPU Gromacs"), wxT("SREM Gromacs"), wxT("SimT Gromacs"), wxT("Double Gromacs B")};
+wxString Core::mCoreShortName[CORE_ID_COUNT] = {wxT("tinker"), wxT("gromacs"), wxT("dgromacs"), wxT("gbgromacs"), wxT("amber"), wxT("qmd"), wxT("Unknown"), wxT("gromacs33"), wxT("gro-smp"), wxT("grogpu"), wxT("grost"), wxT("grosimt"), wxT("dgromacsb")};
 
 
 /**
@@ -28,11 +28,11 @@ wxString Core::mCoreShortName[CORE_ID_COUNT] = {wxT("tinker"), wxT("gromacs"), w
 CoreId Core::ShortNameToId(const wxString& name)
 {
     CoreId identifier;
-    
+
     for(identifier=TINKER; identifier<CORE_ID_COUNT; ++identifier)
         if(name.CmpNoCase(mCoreShortName[identifier]) == 0)
             return identifier;
-        
+
     return UNKNOWN;
 }
 
@@ -44,7 +44,7 @@ wxString Core::IdToShortName(CoreId identifier)
 {
     if(identifier >= CORE_ID_COUNT)
         return mCoreShortName[UNKNOWN];
-    
+
     return mCoreShortName[identifier];
 }
 
@@ -56,6 +56,6 @@ wxString Core::IdToLongName(CoreId identifier)
 {
     if(identifier >= CORE_ID_COUNT)
         return mCoreLongName[UNKNOWN];
-    
+
     return mCoreLongName[identifier];
 }

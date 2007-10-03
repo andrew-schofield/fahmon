@@ -73,17 +73,17 @@ bool HTMLParser::NextToken(void)
     wxInt32  nextTagPos;
     wxInt32  endTagPos;
     wxString currentTag;
-    
+
     // No more tokens if we reached the end of the file
     if(Eof() == true)
         return false;
-    
+
     // We can be either on a HTML tag, or on a piece of text
     if(mParsedContent[0] == '<')
     {
         mIsStartingTag = true;
         endTagPos      = mParsedContent.Find('>');
-        
+
         // We reached the end of the file
         if(endTagPos == -1)
         {
@@ -92,7 +92,7 @@ bool HTMLParser::NextToken(void)
                 currentTag = mParsedContent.Mid(1);
             else
                 currentTag = wxT("");
-            
+
             mParsedContent = wxT("");
         }
         else
@@ -100,14 +100,14 @@ bool HTMLParser::NextToken(void)
             currentTag     = mParsedContent.Mid(1, endTagPos-1);
             mParsedContent = mParsedContent.Mid(endTagPos+1);
         }
-        
+
         mCurrentToken = TextToToken(currentTag);
     }
     else
     {
         mCurrentToken = TOKEN_TEXT;
         nextTagPos    = mParsedContent.Find('<');
-        
+
         // We reached the end of the file
         if(nextTagPos == -1)
         {
@@ -120,7 +120,7 @@ bool HTMLParser::NextToken(void)
             mParsedContent = mParsedContent.Mid(nextTagPos);
         }
     }
-    
+
     return true;
 }
 
@@ -163,7 +163,7 @@ HTMLParser::HTMLToken HTMLParser::TextToToken(const wxString& text)
 void HTMLParser::NextToken(wxUint32 nbTokensToSkip)
 {
     wxUint32 i;
-    
+
     for(i=0; i<nbTokensToSkip; ++i)
         NextToken();
 }

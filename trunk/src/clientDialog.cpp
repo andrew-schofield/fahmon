@@ -20,6 +20,7 @@
 #include "tools.h"
 #include "wx/dirdlg.h"
 #include "wx/button.h"
+#include "wx/intl.h"
 #include "mainDialog.h"
 #include "clientsManager.h"
 #include "staticBoldedText.h"
@@ -49,7 +50,7 @@ ClientDialog* ClientDialog::mInstance = NULL;
 /**
  * Constructor
 **/
-ClientDialog::ClientDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, wxString::Format(wxT("Client Edition / %s"), wxT(FMC_PRODUCT)))
+ClientDialog::ClientDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, wxString::Format(_("Client Edition / %s"), wxT(FMC_PRODUCT)))
 {
     wxBoxSizer       *topLevelSizer;
     wxBoxSizer       *mainSizer;
@@ -69,12 +70,12 @@ ClientDialog::ClientDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, wxStri
     locationSizer->Add(new wxButton(this, BTN_BROWSE, wxT("..."), wxDefaultPosition, wxSize(26, 26)), 0, wxALIGN_CENTER_VERTICAL);
 
     // The top part: it contains the two wxTextCtrl and their labels
-    groupSizer      = new wxStaticBoxSizer(wxVERTICAL, this, wxT("Client information"));
+    groupSizer      = new wxStaticBoxSizer(wxVERTICAL, this, _("Client information"));
     clientInfoSizer = new wxFlexGridSizer(2, FMC_GUI_SPACING_LOW, FMC_GUI_SPACING_LOW);
 
-    clientInfoSizer->Add(new StaticBoldedText(this, wxID_ANY, wxT("Name:")), 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
+    clientInfoSizer->Add(new StaticBoldedText(this, wxID_ANY, _("Name:")), 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
     clientInfoSizer->Add(mClientNameCtrl, 0, wxALIGN_CENTER_VERTICAL | wxEXPAND);
-    clientInfoSizer->Add(new StaticBoldedText(this, wxID_ANY, wxT("Location:")), 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
+    clientInfoSizer->Add(new StaticBoldedText(this, wxID_ANY, _("Location:")), 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
     clientInfoSizer->Add(locationSizer, 0, wxALIGN_CENTER_VERTICAL);
     groupSizer->Add(clientInfoSizer, 1, wxEXPAND | wxALL, FMC_GUI_BORDER);
 
@@ -176,7 +177,7 @@ void ClientDialog::OnBrowseButton(wxCommandEvent& event)
     wxString selectedPath;
 
     // Pop up the directory selector, starting from the current path
-    selectedPath = wxDirSelector(wxT("Choose a folder"), mClientLocationCtrl->GetValue());
+    selectedPath = wxDirSelector(_("Choose a folder"), mClientLocationCtrl->GetValue());
 
     // Check if 'Ok' button was hit
     if(selectedPath.empty() == false)
@@ -201,7 +202,7 @@ void ClientDialog::OnOkButton(wxCommandEvent& event)
     // The two fields must have been filled
     if(clientName.empty() == true || clientLocation.empty() == true)
     {
-        Tools::ErrorMsgBox(wxT("You must fill the name AND the locations fields."));
+        Tools::ErrorMsgBox(_("You must fill the name AND the locations fields."));
 
         // Don't call event.Skip(), since we are not validating this client
         return;

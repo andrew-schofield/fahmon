@@ -29,7 +29,7 @@
  *
  * We are searching for a pattern like this one :
  *
- * [16:04:36] Completed 6900000 out of 12500000 steps  (55%)   <-- We now the run below is complete because of this line
+ * [16:04:36] Completed 6900000 out of 12500000 steps  (55%)   <-- We know the run below is complete because of this line
  * ...
  * [16:25:32] Completed 7000000 out of 12500000 steps  (56%)   <-+
  * ...                                                           |-- Complete run
@@ -48,7 +48,7 @@ WorkUnitFrame* FahLogAnalyzer::AnalyzeLastFrame(const wxString& fahlogComplete)
 {
     bool      completeRunFound, emptyLineFound, endOfLogReached, clientIsStopped, newWUStarted;
     bool      endFrame1Found, endFrame2Found;
-    bool      overrideTimezone, ignoreAsynchrony;
+    bool      overrideTimezone, ignoreAsynchrony, isAsync;
     wxInt32   endOfLine;
     wxInt32   elapsedSeconds, runDuration;
     wxInt32   timezoneoffset;
@@ -66,13 +66,14 @@ WorkUnitFrame* FahLogAnalyzer::AnalyzeLastFrame(const wxString& fahlogComplete)
     clientIsStopped  = false;
     completeRunFound = false;
     newWUStarted     = false;
+    isAsync          = false;
 
     // Remove empty lines (if any) located at the end of the log
     while(fahlog.Last() == '\n' || fahlog.Last() == '\r')
         fahlog.RemoveLast();
 
     // An empty line means that we've reached the time where the client was started, therefore we won't be able to find a complete run
-    // actually this is wrong, since -verbosity 9 when periodically trying to return a finished WU inserts blank lines.
+    // actually this is wrong, since -verbosity 9, when periodically trying to return a finished WU inserts blank lines.
     while(!completeRunFound && !endOfLogReached && !clientIsStopped )
     {
         if(endFrame1Found == false) currentLogLine = &endFrame1;
@@ -113,7 +114,8 @@ WorkUnitFrame* FahLogAnalyzer::AnalyzeLastFrame(const wxString& fahlogComplete)
             case LLT_COMPLETED:
                 if(endFrame1Found == false)      endFrame1Found   = true;
                 else if(endFrame2Found == false) endFrame2Found   = true;
-                else                             completeRunFound = true;
+                else if((endFrame1.frameId != endFrame2.frameId) && (endFrame1.frameId != endFrame3.frameId) && (endFrame2.frameId != endFrame3.frameId)) completeRunFound = true;
+                else completeRunFound = false;
                 break;
 
             case LLT_FINISHED:
@@ -144,10 +146,6 @@ WorkUnitFrame* FahLogAnalyzer::AnalyzeLastFrame(const wxString& fahlogComplete)
         if(runDuration > MAX_FRAME_DURATION)
             return NULL;
 
-        // Compute the elapsed seconds since this frame has been completed
-        // If wxDateTime::Now() is before endFrame1.timestamp, we don't use elapsed time because if FahMon is running on a different machine
-        // than the client, we can't assume that they are sufficiently synchronized
-
         _PrefsGetBool(PREF_OVERRIDE_TIMEZONE, overrideTimezone);
         _PrefsGetBool(PREF_IGNORE_ASYNCHRONY, ignoreAsynchrony);
         // Since the timestamps in the log only provide the time, the DateTime construct fills in the date component itself
@@ -160,6 +158,9 @@ WorkUnitFrame* FahLogAnalyzer::AnalyzeLastFrame(const wxString& fahlogComplete)
             tempDateTime.SetDay(wxDateTime::Now().ToUTC().GetDay());
             tempDateTime.SetMonth(wxDateTime::Now().ToUTC().GetMonth());
             tempDateTime.SetYear(wxDateTime::Now().ToUTC().GetYear());
+            //potential asynchrony detection
+            if (tempDateTime.IsLaterThan(wxDateTime::Now().ToUTC())) isAsync = true;
+            else isAsync = false;
             // except if the client is still a "day" behind, the dates need to match again
             if (tempDateTime.IsLaterThan(wxDateTime::Now().ToUTC())) tempDateTime = tempDateTime.Subtract(wxTimeSpan::Days(1));
             elapsedSeconds = wxDateTime::Now().ToUTC().Subtract(tempDateTime).GetSeconds().ToLong();
@@ -171,23 +172,19 @@ WorkUnitFrame* FahLogAnalyzer::AnalyzeLastFrame(const wxString& fahlogComplete)
             tempDateTime.SetDay(wxDateTime::Now().Subtract(wxTimeSpan::Hours(timezoneoffset)).GetDay());
             tempDateTime.SetMonth(wxDateTime::Now().Subtract(wxTimeSpan::Hours(timezoneoffset)).GetMonth());
             tempDateTime.SetYear(wxDateTime::Now().Subtract(wxTimeSpan::Hours(timezoneoffset)).GetYear());
+            if (tempDateTime.IsLaterThan(wxDateTime::Now().Subtract(wxTimeSpan::Hours(timezoneoffset)))) isAsync = true;
+            else isAsync = false;
             if (tempDateTime.IsLaterThan(wxDateTime::Now().Subtract(wxTimeSpan::Hours(timezoneoffset)))) tempDateTime = tempDateTime.Subtract(wxTimeSpan::Days(1));
             elapsedSeconds = wxDateTime::Now().Subtract(wxTimeSpan::Hours(timezoneoffset)).Subtract(tempDateTime).GetSeconds().ToLong();
         }
-        // asynchronous clocks
-        // can this even occur anymore?
-        if(elapsedSeconds < 0)
+        if(isAsync == true)
         {
-            _LogMsgInfo(wxString::Format(wxT("Possible clock asynchrony detected!")));
+            _LogMsgInfo(wxString::Format(_("Possible clock asynchrony detected!")));
             if(ignoreAsynchrony)
             {
             // forces the client to be detected as still active (may break other detection routines though)
                 //maybe a bit risky doing this
                 elapsedSeconds = 65535;
-            }
-            else
-            {
-                elapsedSeconds = 0;
             }
         }
 
@@ -231,7 +228,7 @@ void FahLogAnalyzer::ParseLogLine(wxString& lineToParse, LogLine& logLine)
     else if(lineToParse.StartsWith(wxT("Completed ")))                                logLine.type = LLT_COMPLETED;
     else if(lineToParse.StartsWith(wxT("Finished a frame")))                          logLine.type = LLT_FINISHED;
     else if(lineToParse.StartsWith(wxT("Folding@Home Client Shutdown.")))             logLine.type = LLT_SHUTDOWN;
-    // not used yet:
+    // this one is not used yet:
     else if(lineToParse.StartsWith(wxT("Folding@home Core Shutdown: FINISHED_UNIT"))) logLine.type = LLT_WU_COMPLETE;
     else if(lineToParse.StartsWith(wxT("Protein")))                                   logLine.type = LLT_WU_STARTED;
     else if(lineToParse.StartsWith(wxT("Project")))                                   logLine.type = LLT_WU_STARTED;
@@ -242,19 +239,29 @@ void FahLogAnalyzer::ParseLogLine(wxString& lineToParse, LogLine& logLine)
     {
         // Extract the frame identifier
         // We can't pass logLine.frameId to ToULong() because it's too short : the next bytes would be modified
+
+        // For regular log messages of the type "Completed xxx of yyy steps (1)"
+        // or "Finished frame (1)"
         position = lineToParse.Find(wxT("("));
         if(position != -1)
         {
             lineToParse.Right(lineToParse.Len()-position-1).ToULong(&convertedNumber);
             logLine.frameId = (FrameId)convertedNumber;
         }
-	//extra bit for GPU WUs
-	else if(lineToParse.Mid(10, lineToParse.Len()-10).ToULong(&convertedNumber) == true)
-	{
-	    logLine.frameId = (FrameId)convertedNumber;
-	}
+        // Extra bit for GPU WUs
+        // core_10 writes "Completed 1"
+        else if(lineToParse.Mid(10, lineToParse.Len()-10).ToULong(&convertedNumber) == true)
+        {
+            logLine.frameId = (FrameId)convertedNumber;
+        }
+        // Extra bit for early versions of 7b core
+        // These cores write "Completed 1%" 
+        else if(lineToParse.Mid(10, lineToParse.Len()-11).ToULong(&convertedNumber) == true)
+        {
+            logLine.frameId = (FrameId)convertedNumber;
+        }
 
-        // Extract the timestamp (it is in GMT format)
+        // Extract the timestamp (it is in UTC format)
         logLine.timestamp.SetToCurrent();
         logLine.timestamp.ParseFormat(timestamp.c_str(), wxT("%H:%M:%S]"));
     }

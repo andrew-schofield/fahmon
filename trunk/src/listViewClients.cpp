@@ -82,6 +82,7 @@ BEGIN_EVENT_TABLE(ListViewClients, wxListView)
     // List events
     EVT_LIST_COL_CLICK    (wxID_ANY, ListViewClients::OnColumnLeftClick)
     EVT_RIGHT_DOWN        (          ListViewClients::OnRightClick)
+    EVT_LEFT_DCLICK       (          ListViewClients::OnDoubleClick)
 END_EVENT_TABLE()
 
 
@@ -111,10 +112,10 @@ ListViewClients::ListViewClients(wxWindow* parent, wxWindowID id, wxUint32 nbCli
 
     // --- Create the columns and restore their size
     InsertColumn(LVC_STATUS, wxT(""));
-    InsertColumn(LVC_PROGRESS, wxT("Progress"));
-    InsertColumn(LVC_NAME,     wxT("Name"));
-    InsertColumn(LVC_ETA,      wxT("ETA"));
-    InsertColumn(LVC_PPD,      wxT("PPD"));
+    InsertColumn(LVC_PROGRESS, _("Progress"));
+    InsertColumn(LVC_NAME,     _("Name"));
+    InsertColumn(LVC_ETA,      _("ETA"));
+    InsertColumn(LVC_PPD,      _("PPD"));
 
     _PrefsGetUint(PREF_LISTVIEWCLIENTS_PROGRESSCOLUMNWIDTH, progressColumnWidth);
     _PrefsGetUint(PREF_LISTVIEWCLIENTS_NAMECOLUMNWIDTH,     nameColumnWidth);
@@ -297,7 +298,7 @@ void ListViewClients::Reset(wxUint32 nbClients)
     for(i=0; i<nbClients; ++i)
     {
         InsertItem(i, wxT(""), LVI_CLIENT_STOPPED);
-        SetItem(i, LVC_NAME, wxT("Loading..."));
+        SetItem(i, LVC_NAME, _("Loading..."));
 
         // Give a slightly darker color to odd lines
         if((i&1) != 0)
@@ -383,10 +384,10 @@ void ListViewClients::UpdateClient(wxUint32 clientId)
     SetItem(clientIndex, LVC_PPD, PPD);
 
     // ETA
-    if(client->GetProgress() == 100)                        SetItem(clientIndex, LVC_ETA, wxT("Finished"));
-    else if(!client->IsAccessible() || client->IsStopped()) SetItem(clientIndex, LVC_ETA, wxT("N/A"));
-    else if(!client->GetETA()->IsOk())                      SetItem(clientIndex, LVC_ETA, wxT("N/A"));
-    else if(client->IsHung())                               SetItem(clientIndex, LVC_ETA, wxT("*Hung*"));
+    if(client->GetProgress() == 100)                        SetItem(clientIndex, LVC_ETA, _("Finished"));
+    else if(!client->IsAccessible() || client->IsStopped()) SetItem(clientIndex, LVC_ETA, _("N/A"));
+    else if(!client->GetETA()->IsOk())                      SetItem(clientIndex, LVC_ETA, _("N/A"));
+    else if(client->IsHung())                               SetItem(clientIndex, LVC_ETA, _("*Hung*"));
     else                                                    SetItem(clientIndex, LVC_ETA, client->GetETA()->GetString());
 
      // We use leading icons to indicate the status of the client
@@ -535,7 +536,7 @@ void ListViewClients::OnRightClick(wxMouseEvent& event)
     if(hitItem == wxNOT_FOUND)
     {
         // Nothing was hit, so we should just allow the creation of a new client
-        clientContextMenu.Append(MID_ADDCLIENT, wxT("Add a new client"));
+        clientContextMenu.Append(MID_ADDCLIENT, _("Add a new client"));
     }
     else
     {
@@ -543,15 +544,42 @@ void ListViewClients::OnRightClick(wxMouseEvent& event)
         Select(hitItem);
 
         // And our context menu should allow some actions on this item
-        clientContextMenu.Append(MID_ADDCLIENT, wxT("Add a new client"));
+        clientContextMenu.Append(MID_ADDCLIENT, _("Add a new client"));
         clientContextMenu.AppendSeparator();
-        clientContextMenu.Append(MID_RELOADCLIENT, wxT("Reload this client"));
-        clientContextMenu.Append(MID_EDITCLIENT, wxT("Edit this client"));
-        clientContextMenu.Append(MID_DELETECLIENT, wxT("Delete this client"));
-        clientContextMenu.Append(MID_VIEWFILES, wxT("View Client Files"));
+        clientContextMenu.Append(MID_RELOADCLIENT, _("Reload this client"));
+        clientContextMenu.Append(MID_EDITCLIENT, _("Edit this client"));
+        clientContextMenu.Append(MID_DELETECLIENT, _("Delete this client"));
+        clientContextMenu.Append(MID_VIEWFILES, _("View Client Files"));
     }
 
     PopupMenu(&clientContextMenu);
+}
+
+
+/**
+ * Manage double clicks on the list
+**/
+void ListViewClients::OnDoubleClick(wxMouseEvent& event)
+{
+    wxInt32 hitItem;
+    wxInt32 hitFlags;
+    wxPoint clickPosition;
+
+    // Test if an item was hit by the click or not
+    clickPosition = event.GetPosition();
+    hitItem       = HitTest(clickPosition, hitFlags);
+    if(hitItem == wxNOT_FOUND)
+    {
+        // Nothing was hit, so we should do nothing
+    }
+    else
+    {
+        // An item was hit, so we have to select it
+        Select(hitItem);
+
+        // And we should show the client files
+        ShowClientFiles();
+    }
 }
 
 
@@ -608,7 +636,7 @@ void ListViewClients::OnMenuDeleteClient(wxCommandEvent& event)
         return;
 
     // Ensure that the user did not ask for deletion by error
-    if(Tools::QuestionMsgBox(wxT("Do you really want to delete this client?")) == true)
+    if(Tools::QuestionMsgBox(_("Do you really want to delete this client?")) == true)
     {
         // Delete the client
         ClientsManager::GetInstance()->Delete(selectedClientId);
@@ -647,6 +675,15 @@ wxString ListViewClients::GetCellContentsString( long row_number, int column )
 **/
 void ListViewClients::OnMenuViewFiles(wxCommandEvent& event)
 {
+    ShowClientFiles();
+}
+
+/**
+ * Launch filemanager to show client files
+**/
+void ListViewClients::ShowClientFiles()
+{
+
     wxString  ClientLocation;
     wxString  FileManager;
     const Client  *client;
@@ -659,10 +696,10 @@ void ListViewClients::OnMenuViewFiles(wxCommandEvent& event)
 
     #ifndef _FAHMON_LINUX_
         // Converts / to \ in filepaths so Windows can use them correctly
-        ClientLocation.Replace("/", "\\", true);
+        ClientLocation.Replace(_T("/"), _T("\\"), true);
     #endif
 
     // Not sure why, but this *never* fails
     if(wxExecute(FileManager + wxT(" ") + ClientLocation) == false)
-        Tools::ErrorMsgBox(wxT("Unable to launch the default filemanager.\n\nPlease check that the correct filemanager is set in Preferences"));
+        Tools::ErrorMsgBox(_("Unable to launch the default filemanager.\n\nPlease check that the correct filemanager is set in Preferences"));
 }

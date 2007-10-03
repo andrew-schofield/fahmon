@@ -19,6 +19,7 @@
 
 #include "tools.h"
 #include "wx/image.h"
+#include "wx/intl.h"
 #include "mainDialog.h"
 #include "pathManager.h"
 #include "clientsManager.h"
@@ -29,16 +30,16 @@
 #include "preferencesManager.h"
 #include "trayManager.h"
 
-#ifdef _FAHMON_LINUX_
+
 #include "locale.h"
-#endif
 
 // wxWidgets' way of creating a new application
 IMPLEMENT_APP(FahMonApp)
 
 BEGIN_EVENT_TABLE(FahMonApp, wxApp)
-EVT_END_SESSION( FahMonApp::OnEndSession )
-EVT_QUERY_END_SESSION( FahMonApp::OnQueryEndSession )
+  EVT_QUERY_END_SESSION (FahMonApp::OnQueryEndSession)
+  //EVT_END_SESSION (FahMonApp::OnEndSession)
+  //EVT_SET_FOCUS (FahMonApp::TestEventHandler)
 END_EVENT_TABLE()
 
 /**
@@ -46,16 +47,71 @@ END_EVENT_TABLE()
 **/
 bool FahMonApp::OnInit(void)
 {
-    bool startMinimised;
-    bool isTrayIconEnabled;
+    bool               startMinimised;
+    bool               isTrayIconEnabled;
+    bool               requiresFirstRunDialog;
 
     // Check for another instance
     mInstanceChecker = new wxSingleInstanceChecker(wxT(FMC_UID));
     if(mInstanceChecker->IsAnotherRunning() == true)
     {
-        Tools::ErrorMsgBox(wxString::Format(wxT("Another instance of %s is already running!"), wxT(FMC_APPNAME)));
+        wxClient client;
+        wxConnectionBase *conn = client.MakeConnection (wxEmptyString, _T("/tmp/fahmon-ipc"), IPC_START);
+        if (conn)
+        {
+            if (conn->Execute(_T("Show")))
+            {
+                delete mInstanceChecker;
+                mInstanceChecker = NULL;
+                return false;
+            }
+            return false;
+        }
+        delete conn;
+        // Fallback error message for when auto-raising doesn't work.
+        Tools::ErrorMsgBox(wxString::Format(_("Another instance of %s is already running!"), wxT(FMC_APPNAME)));
         return false;
     }
+    mServerIPC = new FahMonAppIPCServer();
+    if (!mServerIPC->Create (_T("/tmp/fahmon-ipc")))
+    {
+        delete mServerIPC;
+        mServerIPC = NULL;
+        Tools::ErrorMsgBox(wxString::Format(_T("Could create socket, auto-raising will not function!")));
+    }
+
+    if ( !m_locale.Init(wxLANGUAGE_DEFAULT, wxLOCALE_CONV_ENCODING) )
+    {
+        Tools::ErrorMsgBox(wxString::Format(_T("This language is not supported by the system.")));
+        return false;
+    }
+
+    wxString locale = m_locale.GetLocale();
+
+    //Tools::ErrorMsgBox(wxString::Format(_T("Locale: %s"), locale.c_str()));
+#ifdef _FAHMON_WIN32_
+    {
+        wxLocale::AddCatalogLookupPathPrefix(wxT("./lang"));
+    }
+#endif
+#ifdef _FAHMON_LINUX_
+    {
+        wxLocale::AddCatalogLookupPathPrefix(wxT(DATADIR));
+    }
+#endif
+    // Initialize the catalogs we'll be using
+    m_locale.AddCatalog(wxT("fahmon"));
+
+    // this catalog is installed in standard location on Linux systems and
+    // shows that you may make use of the standard message catalogs as well
+    //
+    // if it's not installed on your system, it is just silently ignored
+#ifdef _FAHMON_LINUX_
+    {
+        wxLogNull noLog;
+        m_locale.AddCatalog(_T("fileutils"));
+    }
+#endif
 
     // We must explicitly tell to wxGTK which locale we want to use
     // Otherwise, floating point number conversion doesn't work on non-english Linux systems that do not use point as the decimal character
@@ -67,6 +123,18 @@ bool FahMonApp::OnInit(void)
     // Miscellaneous initializations
     wxImage::AddHandler(new wxPNGHandler);      // We use only PNG images
 
+    // Create the config directory right at the beginning so we can save messages.log there without it complaining about
+    // not being able to create the file. Note: This means no messages can/should be logged prior to this point
+    requiresFirstRunDialog = false;
+    if(!wxDirExists(PathManager::GetCfgPath())) {
+        requiresFirstRunDialog = true;
+        if(!wxMkdir(PathManager::GetCfgPath()))
+        {
+            Tools::ErrorMsgBox(wxString::Format(_("Could not create directory <%s>"), PathManager::GetCfgPath().c_str()));
+            return false;
+        }
+    }
+
     // Create mandatory singletons
     MessagesManager::CreateInstance();          // MUST be created first, so that other manager can log messages immediately
     PreferencesManager::CreateInstance();       // MUST be created second, so that other managers can retrieve some preferences when created
@@ -76,7 +144,7 @@ bool FahMonApp::OnInit(void)
     MainDialog::CreateInstance();               // MUST be created last, when all other managers have been created
 
     // Should we run the first-time dialog?
-    if(!wxDirExists(PathManager::GetCfgPath()))
+    if(requiresFirstRunDialog == true)
     {
         // If something goes wrong with the wizard, we quit immediately
         if(FirstTimeDialog::GetInstance()->ShowModal() == wxID_CANCEL)
@@ -122,12 +190,29 @@ int FahMonApp::OnExit(void)
     return 0;
 }
 
+/**
+ * This catches shutdown/logoff events
+**/
 void FahMonApp::OnEndSession(wxCloseEvent& event)
 {
-    wxTheApp->OnExit();
+    _LogMsgInfo(wxString::Format(wxT("Running OnEndSession")));
+    FahMonApp::OnExit();
 }
 
+/**
+ * This catches shutdown/logoff events
+**/
 void FahMonApp::OnQueryEndSession(wxCloseEvent& event)
 {
-    event.Skip();
+   //Tools::ErrorMsgBox(wxString::Format(wxT("This event is working")));
+    _LogMsgInfo(wxString::Format(wxT("Running OnQueryEndSession")));
+   FahMonApp::OnExit();
 }
+
+/**
+ * void FahMonApp::TestEventHandler(wxFocusEvent& event)
+ * {
+ *     // Hint don't enable this ;)
+ *     //Tools::ErrorMsgBox(wxString::Format(wxT("This event is working")));
+ * }
+**/

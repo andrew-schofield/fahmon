@@ -50,7 +50,7 @@ PreferencesManager::~PreferencesManager(void)
 void PreferencesManager::CreateInstance(void)
 {
     wxASSERT(mInstance == NULL);
-	
+
     mInstance = new PreferencesManager();
     mInstance->Load();
 }
@@ -62,9 +62,9 @@ void PreferencesManager::CreateInstance(void)
 void PreferencesManager::DestroyInstance(void)
 {
     wxASSERT(mInstance != NULL);
-	
+
     mInstance->Save();
-	
+
     delete mInstance;
     mInstance = NULL;
 }
@@ -76,7 +76,7 @@ void PreferencesManager::DestroyInstance(void)
 PreferencesManager* PreferencesManager::GetInstance(void)
 {
     wxASSERT(mInstance != NULL);
-	
+
     return mInstance;
 }
 
@@ -89,12 +89,12 @@ void PreferencesManager::SetPref(Preference* preference)
     PreferencesHashMap::iterator iterator;
 
     wxASSERT(preference != NULL);
-    
+
     // Let's first free the old preference if needed
     iterator = mPrefsHashMap.find(preference->GetName());
     if(iterator != mPrefsHashMap.end())
         delete iterator->second;
-    
+
     // We can now insert the new value into the table
     mPrefsHashMap[preference->GetName()] = preference;
 }
@@ -137,12 +137,12 @@ bool PreferencesManager::GetBool(const wxString& name, bool& value)
 bool PreferencesManager::GetUint(const wxString& name, wxUint32& value)
 {
     Preference *prefValue = GetPref(name);
-	
+
     if(prefValue == NULL)
         return false;
-	
+
     wxASSERT(prefValue->IsAnUintPref() == true);
-	
+
     value = prefValue->GetUintValue();
     return true;
 }
@@ -154,12 +154,12 @@ bool PreferencesManager::GetUint(const wxString& name, wxUint32& value)
 bool PreferencesManager::GetInt(const wxString& name, wxInt32& value)
 {
     Preference *prefValue = GetPref(name);
-	
+
     if(prefValue == NULL)
         return false;
-	
+
     wxASSERT(prefValue->IsAnIntPref() == true);
-	
+
     value = prefValue->GetIntValue();
     return true;
 }
@@ -171,12 +171,12 @@ bool PreferencesManager::GetInt(const wxString& name, wxInt32& value)
 bool PreferencesManager::GetDouble(const wxString& name, double& value)
 {
     Preference *prefValue = GetPref(name);
-	
+
     if(prefValue == NULL)
       return false;
-	
+
     wxASSERT(prefValue->IsADoublePref() == true);
-	
+
     value = prefValue->GetDoubleValue();
     return true;
 }
@@ -188,12 +188,12 @@ bool PreferencesManager::GetDouble(const wxString& name, double& value)
 bool PreferencesManager::GetString(const wxString& name, wxString& value)
 {
     Preference *prefValue = GetPref(name);
-	
+
     if(prefValue == NULL)
         return false;
-	
+
     wxASSERT(prefValue->IsAStringPref() == true);
-	
+
     value = prefValue->GetStringValue();
     return true;
 }
@@ -205,12 +205,12 @@ bool PreferencesManager::GetString(const wxString& name, wxString& value)
 bool PreferencesManager::GetHiddenString(const wxString& name, wxString& value)
 {
     Preference *prefValue = GetPref(name);
-	
+
     if(prefValue == NULL)
         return false;
-	
+
     wxASSERT(prefValue->IsAnHiddenStringPref() == true);
-	
+
     value = prefValue->GetHiddenStringValue();
     return true;
 }
@@ -224,11 +224,11 @@ inline void PreferencesManager::Load(void)
     wxUint32         nbPrefs, i;
     Preference      *currentPrefValue;
     DataInputStream  in(PathManager::GetCfgPath() + wxT(FMC_FILE_PREFS));
-    
+
     // Could the file be opened ?
     if(in.Ok() == false)
     {
-        _LogMsgWarning(wxT("There is no Preferences file, or it is not readable"));
+        _LogMsgWarning(_("There is no Preferences file, or it is not readable"));
         return;
     }
 
@@ -250,10 +250,10 @@ inline void PreferencesManager::Save(void)
 {
     DataOutputStream             out(PathManager::GetCfgPath() + wxT(FMC_FILE_PREFS));
     PreferencesHashMap::iterator iterator;
-    
+
     if(out.Ok() == false)
     {
-        Tools::ErrorMsgBox(wxString::Format(wxT("Could not open file <%s> for writing!"), (PathManager::GetCfgPath() + wxT(FMC_FILE_PREFS)).c_str()));
+        Tools::ErrorMsgBox(wxString::Format(_("Could not open file <%s> for writing!"), (PathManager::GetCfgPath() + wxT(FMC_FILE_PREFS)).c_str()));
         return;
     }
 

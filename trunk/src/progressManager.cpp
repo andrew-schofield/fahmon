@@ -70,7 +70,7 @@ bool ProgressManager::SetText(const wxString& text)
 {
     wxUint32 progressToDisplay;
     wxString textToDisplay;
-    
+
     if(mIsInSilentMode == true)
         return true;
 
@@ -85,10 +85,10 @@ bool ProgressManager::SetText(const wxString& text)
         mCurrentText      = text;
         textToDisplay     = mCurrentText;
     }
-    
+
     if(progressToDisplay > 100)
         progressToDisplay = 100;
-    
+
     return mProgressDlg->Update(progressToDisplay, textToDisplay);
 }
 
@@ -101,17 +101,17 @@ bool ProgressManager::SetText(const wxString& text)
 bool ProgressManager::SetProgress(wxUint32 progress)
 {
     wxUint32 progressToDisplay;
-    
+
     if(mIsInSilentMode == true)
         return true;
-    
+
     // Decide whether the new progress is about the total progress, or the progress of the current task
     if(mIsATaskActive == true)
     {
         mTaskCurrentProgress = progress;
         if(mTaskCurrentProgress > 100)
             mTaskCurrentProgress = 100;
-        
+
         progressToDisplay = mCurrentProgress + ((mTaskCurrentProgress * mTaskPercentageOfTotal) / 100);
     }
     else
@@ -119,7 +119,7 @@ bool ProgressManager::SetProgress(wxUint32 progress)
         mCurrentProgress = progress;
         if(mCurrentProgress > 100)
             mCurrentProgress = 100;
-        
+
         progressToDisplay = mCurrentProgress;
     }
 
@@ -137,10 +137,10 @@ bool ProgressManager::SetTextAndProgress(const wxString& text, wxUint32 progress
 {
     bool textResult;
     bool progressResult;
-    
+
     textResult     = SetText(text);
     progressResult = SetProgress(progress);
-    
+
     return (textResult && progressResult);
 }
 
@@ -155,7 +155,7 @@ void ProgressManager::CreateTask(wxUint32 percentageOfTotal)
         return;
 
     wxASSERT(mIsATaskActive == false);
-    
+
     mIsATaskActive         = true;
     mTaskPercentageOfTotal = percentageOfTotal;
     mTaskCurrentProgress   = 0;
@@ -169,11 +169,11 @@ void ProgressManager::EndTask(void)
 {
     if(mIsInSilentMode == true)
         return;
-    
+
     wxASSERT(mIsATaskActive == true);
-    
+
     mIsATaskActive    = false;
     mCurrentProgress += mTaskPercentageOfTotal;
-    
+
     SetProgress(mCurrentProgress);
 }

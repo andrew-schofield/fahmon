@@ -1,0 +1,89 @@
+Welcome to FahMon
+=================
+FahMon is free software. Please see the file COPYING for details.
+For documentation, please see the files in the doc subdirectory.
+
+FahMon is an open-source tool (GPL license) that allows you to quickly check the
+progress of your Folding@Home client (or clients if you have multiple ones),
+avoiding you having to open different files and/or to go to the Internet (for
+example to know how much your current work unit is worth). Other monitoring
+tools exist (such as Electron Microscope or FahLogStats), so if you don't like
+FahMon, have a look at them!
+
+FahMon is entirely coded in C++ and uses the wxWidgets library, which allows
+FahMon to exist both for Linux and Windows. It is designed to be really easy to
+use, and you should thus not encounter any major problem.
+
+The following instructions do NOT apply to the precompiled Windows binaries.
+
+BUILD
+=====
+For the build requirements of FahMon please see the REQUIRES file.
+For the generic building and installation instructions please see the INSTALL
+file.
+
+Building for Linux
+==================
+FahMon uses the standard ./configure; make method for software building. Under
+normal circumstances these are the only commands you will need to run. Configure
+will detect and setup the necessary software and files, and make will compile
+the software for you.
+
+Building for MS Windows
+====================
+Building for MS Windows is not fully supported as the build environment can be
+quite difficult to set up. However, the generic instructions are as follows:
+* Compile the Unicode Release of wxWidgets, making sure that you compile all the
+libraries statically (i.e. in the "runtime library" configuration, set it to be
+"Multi Threaded (/MT)").
+* Open the FahMon solution file and configure the additional include directories
+to point to the wxwidgets folders, and edit the linker files to use the correct
+versions of the libraries.
+* Make sure that all the source files are actually being loaded by the solution
+file (the given solution file may expect the files to be in a different
+location)
+* Compile FahMon
+
+INSTALLING AND RUNNING
+======================
+Under Linux, you can simply run "make install" (either as root or with sudo)
+which will install all the necessary files to their correct locations. To run
+FahMon, either run "fahmon" from a shell (it will work from anywhere in the
+system, no more need for shell scripts), or launch it from your Desktop
+Environment's Applications menu (if supported). You can add a shortcut item
+manually if your DE is not supported.
+
+In MS Windows, make a new folder and copy 'images', 'lang' and fahmon.exe into
+it. The
+images and lang folders MUST be in the same folder as fahmon.exe. After that you
+can move
+the folder to anywhere on your system and launch it directly or create your own
+shortcut to it.
+
+TRANSLATIONS
+============
+The translations provided with FahMon should work with no user intervention on
+both Linux and MS Windows provided they were installed correctly.
+
+Editing existing translations
+=============================
+To edit existing translations, you can open the relevant .po file in your gettext catalog editor (see REQUIRES) and start modifying the strings. On Linux, these can be found in the po directory of the installation source, on MS Windows, these can be found in the lang folder. Once you are happy with the translations you have edited, you need to install them.
+
+To install an edited translation on Linux, simply run "make update-gmo" then "make install" (as root or sudo). This will compile the translation to a binary file and install it into the relevant location.
+
+To install the edited transltaion on MS Windows, you need to get you gettext catalog editor to save a .mo file (poEdit wil do this). Save the file as fahmon.mo into the relevant folder under the "lang" folder.
+
+Restart FahMon and your new translations should appear.
+
+Creating new translations
+=========================
+Make sure you have read the REQUIRES file.
+
+Make sure you know the language code for your new translation (combine the two letter language code from ISO 639-1 with the two letter country code from ISO 3166. See the existing translations for examples).
+
+On Linux, copy fahmon.pot in the po folder, to 'your_translation_name'.po and start editing. After saving your translation, open up configure.ac in the source root directory, and navigate down to "ALL_LINGUAS" and add your new translation to the list.
+Run ./reconf; ./configure; make update-gmo; make install to add your new translation. (This should not force a recompile of fahmon itself, unless you passed different options to configure).
+
+On Windows, make a folder under 'lang' with the name of your translation and copy fahmon.pot into it. Rename this to a .po file and start editing it. Once finished, save the .mo file as fahmon.mo and restart FahMon.
+
+Once you've created translations, please email the mo files to translations@fahinfo.org
