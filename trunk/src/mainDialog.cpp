@@ -291,7 +291,7 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 {
 	bool          autoUpdateProjects;
 	bool          overrideTZ;
-	bool          deadlineDays;
+	wxUint32      deadlineDays;
 	wxInt32       TZ;
 	wxDateTime    preferredDeadline;
 	wxDateTime    finalDeadline;
@@ -308,7 +308,7 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 
 	_PrefsGetBool(PREF_OVERRIDE_TIMEZONE, overrideTZ);
 	_PrefsGetInt (PREF_TZ,                TZ);
-	_PrefsGetBool(PREF_MAINDIALOG_DEADLINE_DAYS, deadlineDays);
+	_PrefsGetUint(PREF_ETA_DISPLAYSTYLE, deadlineDays);
 
 	// Clear information for invalid clients
 	if(clientId == INVALID_CLIENT_ID)
@@ -389,7 +389,7 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 			downloadTime = client->GetDownloadDate().FromTimezone(wxDateTime::UTC);
 			timeNow = wxDateTime::Now()/*.FromTimezone(wxDateTime::UTC)*/;
 		}
-		if(deadlineDays == true)
+		if(deadlineDays == ETADS_LEFT_TIME)
 		{
 			timeDiff = timeNow.Subtract(downloadTime);
 			timeInMinutes = timeDiff.GetMinutes();
@@ -410,9 +410,12 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 
 			mDownloaded->SetLabel(wxString::Format(_("%s ago"), tempString.c_str()));
 		}
-		else
+		else if (deadlineDays == ETADS_DATE_DAY_MONTH)
 		{
-			mDownloaded->SetLabel(wxString::Format(wxT("%s"), downloadTime.Format(wxT(FMC_DATE_MAIN_FORMAT)).c_str()));
+			mDownloaded->SetLabel(wxString::Format(wxT("%s"), downloadTime.Format(wxT("%d %B, %H:%M")).c_str()));
+		} else
+		{
+			mDownloaded->SetLabel(wxString::Format(wxT("%s"), downloadTime.Format(wxT("%B %d, %H:%M")).c_str()));
 		}
 	}
 	else
@@ -477,7 +480,7 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 	{
 		preferredDeadline = downloadTime;
 		preferredDeadline.Add(wxTimeSpan::Seconds(project->GetPreferredDeadlineInDays() * 864));
-		if(deadlineDays == true)
+		if(deadlineDays == ETADS_LEFT_TIME)
 		{
 			timeDiff = preferredDeadline.Subtract(timeNow);
 			timeInMinutes = timeDiff.GetMinutes();
@@ -502,9 +505,12 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 				mPreferredDeadline->SetLabel(wxString::Format(_("In %s"), tempString.c_str()));
 
 		}
-		else
+		else if (deadlineDays == ETADS_DATE_DAY_MONTH)
 		{
-			mPreferredDeadline->SetLabel(wxString::Format(wxT("%s"), preferredDeadline.Format(wxT(FMC_DATE_MAIN_FORMAT)).c_str()));
+			mPreferredDeadline->SetLabel(wxString::Format(wxT("%s"), preferredDeadline.Format(wxT("%d %B, %H:%M")).c_str()));
+		} else
+		{
+			mPreferredDeadline->SetLabel(wxString::Format(wxT("%s"), preferredDeadline.Format(wxT("%B %d, %H:%M")).c_str()));
 		}
 	}
 	else
@@ -515,7 +521,7 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 	{
 		finalDeadline = downloadTime;
 		finalDeadline.Add(wxTimeSpan::Seconds(project->GetFinalDeadlineInDays() * 864));
-		if(deadlineDays == true)
+		if(deadlineDays == ETADS_LEFT_TIME)
 		{
 			timeDiff = finalDeadline.Subtract(timeNow);
 			timeInMinutes = timeDiff.GetMinutes();
@@ -540,9 +546,12 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 			else
 			mFinalDeadline->SetLabel(wxString::Format(_("In %s"), tempString.c_str()));
 		}
-		else
+		else if (deadlineDays == ETADS_DATE_DAY_MONTH)
 		{
-			mFinalDeadline->SetLabel(wxString::Format(wxT("%s"), finalDeadline.Format(wxT(FMC_DATE_MAIN_FORMAT)).c_str()));
+			mFinalDeadline->SetLabel(wxString::Format(wxT("%s"), finalDeadline.Format(wxT("%d %B, %H:%M")).c_str()));
+		} else
+		{
+			mFinalDeadline->SetLabel(wxString::Format(wxT("%s"), finalDeadline.Format(wxT("%B %d, %H:%M")).c_str()));
 		}
 	}
 	else

@@ -67,7 +67,7 @@ Compiling wxWidgets
  * Go to the Build menu and hit "Build solution"
  * Make a snack, this will take a while
  * When the compiling has finished, you should see a line that reads
-   "Build: 18 succeeded, 0 failed, 0 up-to-date, 0 skipped" 
+   "Build: 18 succeeded, 0 failed, 0 up-to-date, 0 skipped"
  * You have now sucessfully set up your FahMon build environment! Note: if you
    need to make any changes to wxWidgets, just open wx.sln (not wx.dsw) and
    recompile.

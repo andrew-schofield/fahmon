@@ -86,4 +86,4 @@ Run ./reconf; ./configure; make update-gmo; make install to add your new transla
 
 On Windows, make a folder under 'lang' with the name of your translation and copy fahmon.pot into it. Rename this to a .po file and start editing it. Once finished, save the .mo file as fahmon.mo and restart FahMon.
 
-Once you've created translations, please email the mo files to translations@fahinfo.org
+Once you've created translations, please email the po files to translations@fahinfo.org

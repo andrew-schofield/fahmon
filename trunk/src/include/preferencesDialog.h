@@ -44,7 +44,6 @@ protected:
 	wxCheckBox *mGeneralCollectXYZFiles;
 	wxCheckBox *mGeneralKeepInaccessibleClientsLast;
 	wxCheckBox *mGeneralStartMinimised;
-	wxCheckBox *mGeneralShowDeadlineInDays;
 
 	// Widgets for the monitoring tab
 	wxChoice     *mMonitoringETADisplayStyle;
@@ -110,7 +109,6 @@ protected:
 	bool     mInitAutoReload;
 	bool     mInitEnableTrayIcon;
 	bool     mInstantFrames;
-	bool     mInitDeadlineDays;
 	bool     mInitOverrideTz;
 	bool     mInitIgnoreAsynchronousClocks;
 	wxInt32  mInitTimezone;

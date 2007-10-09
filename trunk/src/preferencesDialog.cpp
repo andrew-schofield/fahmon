@@ -176,7 +176,6 @@ inline wxPanel* PreferencesDialog::CreateGeneralTab(wxNotebook* parent)
 	mGeneralCollectXYZFiles             = new wxCheckBox(panel, wxID_ANY, _("Collect .xyz files"));
 	mGeneralAutoUpdateProjectsDatabase  = new wxCheckBox(panel, wxID_ANY, _("Auto update projects database when needed"));
 	mGeneralKeepInaccessibleClientsLast = new wxCheckBox(panel, wxID_ANY, _("Always list inaccessible clients last"));
-	mGeneralShowDeadlineInDays          = new wxCheckBox(panel, wxID_ANY, _("Show deadlines and download times in days"));
 
 
 	sizer->AddStretchSpacer();
@@ -189,8 +188,6 @@ inline wxPanel* PreferencesDialog::CreateGeneralTab(wxNotebook* parent)
 	sizer->Add(mGeneralKeepInaccessibleClientsLast, 0, wxALIGN_LEFT);
 	sizer->AddStretchSpacer();
 	sizer->Add(mGeneralStartMinimised, 0, wxALIGN_LEFT);
-	sizer->AddStretchSpacer();
-	sizer->Add(mGeneralShowDeadlineInDays, 0, wxALIGN_LEFT);
 	sizer->AddStretchSpacer();
 
 	topLevelSizer->Add(sizer, 1, wxEXPAND | wxALL, FMC_GUI_BORDER);
@@ -231,7 +228,7 @@ inline wxPanel* PreferencesDialog::CreateMonitoringTab(wxNotebook* parent)
 	mMonitoringPPDType             = new wxChoice(panel, wxID_ANY, wxDefaultPosition, wxDefaultSize, 4, ppdFormats);
 	mMonitoringIgnoreAsynchrony    = new wxCheckBox(panel, wxID_ANY, _("Ignore asynchronous clocks"));
 
-	sizerETA->Add(new wxStaticText(panel, wxID_ANY, wxString::Format(_T("%s "),  _("Display ETA as"))), 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL);
+	sizerETA->Add(new wxStaticText(panel, wxID_ANY, wxString::Format(_T("%s "),  _("Display dates as"))), 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL);
 	sizerETA->Add(mMonitoringETADisplayStyle, 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL);
 
 	sizerAutoReload->Add(mMonitoringAutoReloadInt, 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL);
@@ -593,7 +590,6 @@ inline void PreferencesDialog::LoadPreferences(void)
 	_PrefsGetBool(PREF_MAINDIALOG_ENABLE_TRAY_ICON,   mInitEnableTrayIcon);
 	_PrefsGetBool(PREF_LISTCLIENTS_KEEP_DEAD_LAST,    keepInaccessibleLast);
 	_PrefsGetBool(PREF_MAINDIALOG_START_MINIMISED,    startMinimised);
-	_PrefsGetBool(PREF_MAINDIALOG_DEADLINE_DAYS,      mInitDeadlineDays);
 
 
 	mGeneralCollectXYZFiles->SetValue(isCollectingXYZFiles);
@@ -601,7 +597,6 @@ inline void PreferencesDialog::LoadPreferences(void)
 	mGeneralAutoUpdateProjectsDatabase->SetValue(autoUpdateProjects);
 	mGeneralKeepInaccessibleClientsLast->SetValue(keepInaccessibleLast);
 	mGeneralStartMinimised->SetValue(startMinimised);
-	mGeneralShowDeadlineInDays->SetValue(mInitDeadlineDays);
 
 	// -----===== Monitoring preferences =====-----
 	_PrefsGetBool(PREF_MAINDIALOG_ADVANCEDRELOAD,      mInitAdvancedReload);
@@ -829,7 +824,6 @@ inline void PreferencesDialog::SavePreferences(void)
 	_PrefsSetBool(PREF_MAINDIALOG_ENABLE_TRAY_ICON,   mGeneralEnableTrayIcon->GetValue());
 	_PrefsSetBool(PREF_MAINDIALOG_AUTOUPDATEPROJECTS, mGeneralAutoUpdateProjectsDatabase->GetValue());
 	_PrefsSetBool(PREF_LISTCLIENTS_KEEP_DEAD_LAST,    mGeneralKeepInaccessibleClientsLast->GetValue());
-	_PrefsSetBool(PREF_MAINDIALOG_DEADLINE_DAYS,      mGeneralShowDeadlineInDays->GetValue());
 
 
 	// -----===== Monitoring preferences =====-----
@@ -891,9 +885,6 @@ inline void PreferencesDialog::SavePreferences(void)
 
 	if((wxUint32)mMonitoringPPDType->GetSelection() != mInitPPDDisplayStyle)
 		MainDialog::GetInstance()->OnPPDStylePrefChanged();
-
-	if(mGeneralShowDeadlineInDays->GetValue() != mInitDeadlineDays)
-		MainDialog::GetInstance()->OnDeadlinePrefChanged();
 
 	// these conditionals reuse functions in maindialog
 	if(mSystemOverrideTimezone->GetValue() != mInitOverrideTz)
