@@ -11,12 +11,12 @@
 ;General
 
   ;Name and file
-  Name "FahMon 2.3.0"
-  OutFile "FahMon-2.3.0-Installer.exe"
+  Name "FahMon 2.3.1.dev2"
+  OutFile "FahMon-2.3.1.dev2-Installer.exe"
 
   ;Default installation folder
   InstallDir "$PROGRAMFILES\FahMon"
-  
+
   ;Get installation folder from registry if available
   InstallDirRegKey HKCU "Software\FahMon" ""
 
@@ -40,31 +40,31 @@
   !insertmacro MUI_PAGE_LICENSE "${NSISDIR}\Docs\Modern UI\License.txt"
   !insertmacro MUI_PAGE_COMPONENTS
   !insertmacro MUI_PAGE_DIRECTORY
-  
+
   ;Start Menu Folder Page Configuration
-  !define MUI_STARTMENUPAGE_REGISTRY_ROOT "HKCU" 
-  !define MUI_STARTMENUPAGE_REGISTRY_KEY "Software\FahMon" 
+  !define MUI_STARTMENUPAGE_REGISTRY_ROOT "HKCU"
+  !define MUI_STARTMENUPAGE_REGISTRY_KEY "Software\FahMon"
   !define MUI_STARTMENUPAGE_REGISTRY_VALUENAME "Start Menu Folder"
-  
+
   !insertmacro MUI_PAGE_STARTMENU Application $STARTMENU_FOLDER
-  
+
   !insertmacro MUI_PAGE_INSTFILES
-  
+
   !insertmacro MUI_UNPAGE_CONFIRM
   !insertmacro MUI_UNPAGE_INSTFILES
 
 ;--------------------------------
 ;Languages
- 
+
   !insertmacro MUI_LANGUAGE "English"
 
 ;--------------------------------
 ;Installer Sections
 
-Section "!FahMon 2.3.0" SecFahMon
+Section "!FahMon 2.3.1.dev2" SecFahMon
 
   SetOutPath "$INSTDIR"
-  
+
   ;ADD YOUR OWN FILES HERE...
   File "fahmon.exe"
   SetOutPath "$INSTDIR\images"
@@ -87,24 +87,24 @@ Section "!FahMon 2.3.0" SecFahMon
   File "docs\help.pdf"
   File "docs\NEWS.txt"
   File "docs\README.txt"
-  
+
   SetOutPath "$INSTDIR"
-  
+
   ;Store installation folder
   WriteRegStr HKCU "Software\FahMon" "" $INSTDIR
-  
+
   ;Create uninstaller
   WriteUninstaller "$INSTDIR\Uninstall.exe"
-  
+
   !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
-    
+
     ;Create shortcuts
     CreateDirectory "$SMPROGRAMS\$STARTMENU_FOLDER"
     CreateShortcut "$SMPROGRAMS\$STARTMENU_FOLDER\FahMon.lnk" "$INSTDIR\fahmon.exe"
     CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Uninstall.lnk" "$INSTDIR\Uninstall.exe"
     CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Help.lnk" "$INSTDIR\docs\help.pdf"
     CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\README.lnk" "$INSTDIR\README.txt"
-  
+
   !insertmacro MUI_STARTMENU_WRITE_END
 
 SectionEnd
@@ -152,6 +152,13 @@ Section /o "Swedish" secLangsvSE
   File "lang\sv_SE\fahmon.mo"
 
 SectionEnd
+Section /o "Czech" secLangcsCZ
+
+  SetOutPath "$INSTDIR\lang\cs_CZ"
+  File "lang\cs_CZ\cs_CZ.po"
+  File "lang\cs_CZ\fahmon.mo"
+
+SectionEnd
 SectionGroupEnd
 
 ;--------------------------------
@@ -166,6 +173,7 @@ SectionGroupEnd
   LangString DESC_SecLangptPT ${LANG_ENGLISH} "Install Portuguese translation"
   LangString DESC_SecLangruRU ${LANG_ENGLISH} "Install Russian translation"
   LangString DESC_SecLangsvSE ${LANG_ENGLISH} "Install Swedish translation"
+  LangString DESC_SecLangcsCZ ${LANG_ENGLISH} "Install Czech translation"
 
   ;Assign language strings to sections
   !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
@@ -177,8 +185,9 @@ SectionGroupEnd
     !insertmacro MUI_DESCRIPTION_TEXT ${SecLangptPT} $(DESC_SecLangptPT)
     !insertmacro MUI_DESCRIPTION_TEXT ${SecLangruRU} $(DESC_SecLangruRU)
     !insertmacro MUI_DESCRIPTION_TEXT ${SecLangsvSE} $(DESC_SecLangsvSE)
+    !insertmacro MUI_DESCRIPTION_TEXT ${SecLangcsCZ} $(DESC_SecLangcsCZ)
   !insertmacro MUI_FUNCTION_DESCRIPTION_END
- 
+
 ;--------------------------------
 ;Uninstaller Section
 
@@ -189,7 +198,7 @@ Section "Uninstall"
   Delete "$INSTDIR\fahmon.exe"
   Delete "$INSTDIR\messages.log"
   Delete "$INSTDIR\Uninstall.exe"
-  
+
   MessageBox MB_YESNO "Keep preferences, client-list, project database and benchmarks database?" IDYES true IDNO false
   true:
     DetailPrint "Keeping config folder"
@@ -203,24 +212,24 @@ Section "Uninstall"
    RMDir /r "$INSTDIR\lang"
    RMDir /r "$INSTDIR\docs"
    RMDir "$INSTDIR"
-  
+
   !insertmacro MUI_STARTMENU_GETFOLDER Application $MUI_TEMP
-    
+
   Delete "$SMPROGRAMS\$MUI_TEMP\Uninstall.lnk"
   Delete "$SMPROGRAMS\$MUI_TEMP\FahMon.lnk"
   Delete "$SMPROGRAMS\$MUI_TEMP\Help.lnk"
   Delete "$SMPROGRAMS\$MUI_TEMP\README.lnk"
-  
+
   ;Delete empty start menu parent diretories
   StrCpy $MUI_TEMP "$SMPROGRAMS\$MUI_TEMP"
- 
+
   startMenuDeleteLoop:
 	ClearErrors
     RMDir $MUI_TEMP
     GetFullPathName $MUI_TEMP "$MUI_TEMP\.."
-    
+
     IfErrors startMenuDeleteLoopDone
-  
+
     StrCmp $MUI_TEMP $SMPROGRAMS startMenuDeleteLoopDone startMenuDeleteLoop
   startMenuDeleteLoopDone:
 
