@@ -47,4 +47,5 @@ EXTRA_DIST = \
 	firstTimeDialog.h \
 	messagesFrame.h \
 	clientsManager.h \
-	webMonitor.h
+	webMonitor.h \
+	resource.h
