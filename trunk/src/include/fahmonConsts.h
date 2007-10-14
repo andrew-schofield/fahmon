@@ -44,8 +44,8 @@
 #define FMC_URL_PROJECTS          "http://fah-web.stanford.edu/psummary.html"      // Complete URL
 #define FMC_URL_PROJECTS_SERVER   "fah-web.stanford.edu"                           // Used for updating projects
 #define FMC_URL_PROJECTS_RESOURCE "psummary.html"                                 // ---
-#define FMC_URL_HELP              "http://fahmon.silent-blade.org/index.php?n=Main.Help"
-#define FMC_URL_FAHMON            "http://fahmon.silent-blade.org"
+#define FMC_URL_HELP              "http://trac.fahmon.net"
+#define FMC_URL_FAHMON            "http://fahmon.net"
 #define FMC_URL_WXWIDGETS         "http://www.wxwidgets.org"
 
 
