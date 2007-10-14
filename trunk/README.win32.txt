@@ -79,3 +79,4 @@ Compiling wxWidgets
   "Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped"
 * If this is the case, FahMon has compiled successfully and you can find your
   new fahmon.exe inside the "Release" folder
+* To move and rename the translation files into the correct folders, run po_to_lang.bat
