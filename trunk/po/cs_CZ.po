@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cs_CZ\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2007-10-14 19:36+0100\n"
+"POT-Creation-Date: 2007-10-14 20:20+0100\n"
 "PO-Revision-Date: 2007-09-13 21:37+0200\n"
 "Last-Translator: Martin Bednar <serafean@gmail.com>\n"
 "Language-Team: Czech\n"
@@ -598,11 +598,11 @@ msgid "Toggle the log file"
 msgstr "Přrepnout logový soubor"
 
 #: src/mainDialog.cpp:611
-msgid "&Toggle Date/Time\tF9"
+msgid "&Cycle ETA Style\tF9"
 msgstr ""
 
 #: src/mainDialog.cpp:611
-msgid "Toggle between showing dates and time left"
+msgid "Cycle through the different ETA display styles"
 msgstr ""
 
 #: src/mainDialog.cpp:612

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2007-10-14 19:36+0100\n"
+"POT-Creation-Date: 2007-10-14 20:20+0100\n"
 "PO-Revision-Date: 2007-08-27 01:13+0100\n"
 "Last-Translator: Le Garrec Patrice <thor@pcperf.fr>\n"
 "Language-Team: french <http://folding.mesdiscussions.net/foldinghome/Aide-"
@@ -612,11 +612,11 @@ msgid "Toggle the log file"
 msgstr "Afficher/cacher le fichier de log"
 
 #: src/mainDialog.cpp:611
-msgid "&Toggle Date/Time\tF9"
+msgid "&Cycle ETA Style\tF9"
 msgstr ""
 
 #: src/mainDialog.cpp:611
-msgid "Toggle between showing dates and time left"
+msgid "Cycle through the different ETA display styles"
 msgstr ""
 
 #: src/mainDialog.cpp:612

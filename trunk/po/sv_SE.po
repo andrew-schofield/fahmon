@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FahMon 2.3.0\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2007-10-14 19:36+0100\n"
+"POT-Creation-Date: 2007-10-14 20:20+0100\n"
 "PO-Revision-Date: 2007-09-08 23:12+0100\n"
 "Last-Translator: Olof Persson <floffe@gmail.com>\n"
 "Language-Team: Swedish <floffe@gmail.com>\n"
@@ -604,11 +604,11 @@ msgid "Toggle the log file"
 msgstr "Visa/dölj loggfilen"
 
 #: src/mainDialog.cpp:611
-msgid "&Toggle Date/Time\tF9"
+msgid "&Cycle ETA Style\tF9"
 msgstr ""
 
 #: src/mainDialog.cpp:611
-msgid "Toggle between showing dates and time left"
+msgid "Cycle through the different ETA display styles"
 msgstr ""
 
 #: src/mainDialog.cpp:612

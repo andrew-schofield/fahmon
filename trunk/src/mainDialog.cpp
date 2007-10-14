@@ -608,7 +608,7 @@ inline void MainDialog::CreateMenuBar(void)
 	menu->AppendSeparator();
 	menu->Append(MID_TOGGLELOG, _("&Show/Hide FAHLog\tF8"), _("Toggle the log file"));
 	menu->AppendSeparator();
-	menu->Append(MID_TOGGLE_ETADATE, _("&Toggle Date/Time\tF9"), _("Toggle between showing dates and time left"));
+	menu->Append(MID_TOGGLE_ETADATE, _("&Cycle ETA Style\tF9"), _("Cycle through the different ETA display styles"));
 	menuBar->Append(menu, _("&Monitoring"));
 
 	// The 'Web' menu
@@ -1308,5 +1308,24 @@ void MainDialog::TrayReloadSelectedClient(void)
  **/
 void MainDialog::OnMenuToggleETADate(wxCommandEvent& event)
 {
-	//AboutDialog::GetInstance(this)->ShowModal();
+	wxUint32 etaStyle;
+
+	_PrefsGetUint(PREF_ETA_DISPLAYSTYLE, etaStyle);
+	switch(etaStyle)
+	{
+		case ETADS_DATE_DAY_MONTH:
+		_PrefsSetUint(PREF_ETA_DISPLAYSTYLE, ETADS_DATE_MONTH_DAY);
+		OnETAStylePrefChanged();
+		break;
+
+		case ETADS_DATE_MONTH_DAY:
+		_PrefsSetUint(PREF_ETA_DISPLAYSTYLE, ETADS_LEFT_TIME);
+		OnETAStylePrefChanged();
+		break;
+
+		case ETADS_LEFT_TIME:
+		_PrefsSetUint(PREF_ETA_DISPLAYSTYLE, ETADS_DATE_DAY_MONTH);
+		OnETAStylePrefChanged();
+		break;
+	}
 }
