@@ -20,6 +20,7 @@
 #include "tools.h"
 #include "wx/image.h"
 #include "wx/intl.h"
+#include "wx/filename.h"
 #include "mainDialog.h"
 #include "pathManager.h"
 #include "clientsManager.h"
@@ -53,6 +54,7 @@ bool FahMonApp::OnInit(void)
 	bool               requiresFirstRunDialog;
 
 	// Check for another instance
+	#ifndef __WXMAC__
 	mInstanceChecker = new wxSingleInstanceChecker(wxT(FMC_UID));
 	if(mInstanceChecker->IsAnotherRunning() == true)
 	{
@@ -78,8 +80,9 @@ bool FahMonApp::OnInit(void)
 	{
 		delete mServerIPC;
 		mServerIPC = NULL;
-		Tools::ErrorMsgBox(wxString::Format(_T("Could create socket, auto-raising will not function!")));
+		Tools::ErrorMsgBox(wxString::Format(_T("Could not create socket, auto-raising will not function!")));
 	}
+	#endif
 
 	if ( !m_locale.Init(wxLANGUAGE_DEFAULT, wxLOCALE_CONV_ENCODING) )
 	{
@@ -98,6 +101,18 @@ bool FahMonApp::OnInit(void)
 #ifdef __WXGTK__
 	{
 		wxLocale::AddCatalogLookupPathPrefix(wxT(DATADIR));
+	}
+#endif
+#ifdef __WXMAC__
+	{
+		wxFileName appPath = wxFileName(wxTheApp->argv[0]).GetPath (wxPATH_GET_VOLUME);
+		appPath.RemoveLastDir();
+	
+		wxString resourcesPath = appPath.GetPath();
+	
+		resourcesPath += _T("/Contents/SharedSupport/lang/");
+		
+		wxLocale::AddCatalogLookupPathPrefix(resourcesPath);
 	}
 #endif
 	// Initialize the catalogs we'll be using

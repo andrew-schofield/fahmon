@@ -246,7 +246,7 @@ inline void PreferencesManager::Load(void)
 /**
 * Save all the preferences to the disk
 **/
-inline void PreferencesManager::Save(void)
+void PreferencesManager::Save(void)
 {
 	DataOutputStream             out(PathManager::GetCfgPath() + wxT(FMC_FILE_PREFS));
 	PreferencesHashMap::iterator iterator;

@@ -18,6 +18,8 @@
 #include "pathManager.h"
 
 #include "wx/utils.h"
+#include "wx/filename.h"
+#include "wx/app.h"
 
 
 // The single instance accross the application
@@ -53,6 +55,30 @@ PathManager::PathManager(void)
 	mImgPath = wxT("./images/");
 	mCfgPath = wxT("./config/");
 	mMsgPath = wxT("./");
+	
+#elif __WXMAC__
+
+	// On OSX systems, the preferences are stored in ~/Library/Application Support
+	// by convention
+	
+	wxFileName appPath = wxFileName(wxTheApp->argv[0]).GetPath (wxPATH_GET_VOLUME);
+	appPath.RemoveLastDir();
+	
+	wxString resourcesPath = appPath.GetPath();
+	
+	resourcesPath += _T("/Contents/Resources/");
+
+	wxString homeDir;
+	
+	homeDir = wxGetHomeDir();
+	if(homeDir.Last() != '/')
+		homeDir += wxT("/");
+	
+	mImgPath = resourcesPath;
+	mCfgPath = homeDir + wxT("Library/Application Support/FahMon/config/");
+	mXYZPath = homeDir + wxT("Library/Application Support/FahMon/xyz/");
+	mMsgPath = homeDir + wxT("Library/Application Support/FahMon/");
+	
 
 #endif
 }
