@@ -225,7 +225,7 @@ EXTRA_DIST = config.rpath  \
         README.win32.txt \
         po_to_lang.bat
 
-SUBDIRS = m4 src doc po src/include src/images resources
+SUBDIRS = m4 src doc po src/include src/images resources mac
 appsdir = $(datadir)/applications
 apps_in_files = fahmon.desktop
 apps_DATA = $(apps_in_files)
@@ -442,7 +442,7 @@ distclean-tags:
 distdir: $(DISTFILES)
 	$(am__remove_distdir)
 	mkdir $(distdir)
-	$(mkdir_p) $(distdir)/. $(distdir)/m4 $(distdir)/po $(distdir)/src
+	$(mkdir_p) $(distdir)/. $(distdir)/m4 $(distdir)/mac $(distdir)/po $(distdir)/src
 	@srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`; \
 	topsrcdirstrip=`echo "$(top_srcdir)" | sed 's|.|.|g'`; \
 	list='$(DISTFILES)'; for file in $$list; do \
@@ -705,6 +705,19 @@ force-update-gmo-%: check-gettext
 	if test ! -f po/$$language.po ; then echo "file po/$$language.po does not exist" ; exit 1 ; fi ; \
 	touch po/$$language.po ; \
 	cd po && $(MAKE) $(AM_MAKEFLAGS) update-gmo
+
+FahMon.app:
+	-mkdir FahMon.app
+	-mkdir FahMon.app/Contents
+	-mkdir FahMon.app/Contents/MacOS
+	-mkdir FahMon.app/Contents/Resources
+	-mkdir FahMon.app/Contents/SharedSupport
+	-mkdir FahMon.app/Contents/SharedSupport/lang
+	echo -n 'APPL????' > FahMon.app/Contents/PkgInfo
+	cd mac && $(MAKE) $(AM_MAKEFLAGS) FahMon.app
+	cd src && $(MAKE) $(AM_MAKEFLAGS) FahMon.app
+	cd src/images && $(MAKE) $(AM_MAKEFLAGS) FahMon.app
+	cd po && $(MAKE) $(AM_MAKEFLAGS) FahMon.app
 
 .PHONY: check-gettext update-po update-gmo force-update-gmo
 # Tell versions [3.59,3.63) of GNU make to not export all variables.

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru_RU v.061 07/09/2007\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2007-10-14 20:20+0100\n"
+"POT-Creation-Date: 2007-10-15 00:54+0100\n"
 "PO-Revision-Date: 2007-09-07 19:54+0300\n"
 "Last-Translator: Evgeniy Chorpita, 2007 <tsc.behc@gmail.com>\n"
 "Language-Team: TSC! Russia <http://tsc.overclockers.ru/>\n"
@@ -417,7 +417,7 @@ msgid ""
 "The latest version of %s will always be available on the official website:"
 msgstr "Последняя версия %s всегда доступна на официальном сайте:"
 
-#: src/firstTimeDialog.cpp:147 src/main.cpp:134
+#: src/firstTimeDialog.cpp:147 src/main.cpp:149
 #, c-format
 msgid "Could not create directory <%s>"
 msgstr "Невозможно создать папку <%s>"
@@ -493,7 +493,7 @@ msgstr ""
 "\n"
 "Пожалуйста проверьте правильность пармаетров файлового менеджера в Настройках"
 
-#: src/main.cpp:73
+#: src/main.cpp:75
 #, c-format
 msgid "Another instance of %s is already running!"
 msgstr "Другая копия %s уже запущена!"

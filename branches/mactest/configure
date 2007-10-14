@@ -6166,7 +6166,7 @@ _ACEOF
 
 
 
-ac_config_files="$ac_config_files Makefile README doc/Makefile m4/Makefile po/Makefile.in resources/Makefile src/Makefile src/include/Makefile src/images/Makefile src/images/icons/Makefile src/images/icons/16/Makefile src/images/icons/24/Makefile src/images/icons/32/Makefile src/images/icons/48/Makefile"
+ac_config_files="$ac_config_files Makefile README doc/Makefile m4/Makefile mac/Makefile mac/Info.plist po/Makefile.in resources/Makefile src/Makefile src/include/Makefile src/images/Makefile src/images/icons/Makefile src/images/icons/16/Makefile src/images/icons/24/Makefile src/images/icons/32/Makefile src/images/icons/48/Makefile"
 
 
 cat >confcache <<\_ACEOF
@@ -6766,6 +6766,8 @@ do
     "README") CONFIG_FILES="$CONFIG_FILES README" ;;
     "doc/Makefile") CONFIG_FILES="$CONFIG_FILES doc/Makefile" ;;
     "m4/Makefile") CONFIG_FILES="$CONFIG_FILES m4/Makefile" ;;
+    "mac/Makefile") CONFIG_FILES="$CONFIG_FILES mac/Makefile" ;;
+    "mac/Info.plist") CONFIG_FILES="$CONFIG_FILES mac/Info.plist" ;;
     "po/Makefile.in") CONFIG_FILES="$CONFIG_FILES po/Makefile.in" ;;
     "resources/Makefile") CONFIG_FILES="$CONFIG_FILES resources/Makefile" ;;
     "src/Makefile") CONFIG_FILES="$CONFIG_FILES src/Makefile" ;;

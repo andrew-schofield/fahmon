@@ -15,3 +15,6 @@ AM_CXXFLAGS = -Wall -Wno-strict-aliasing
 AM_CPPFLAGS = \
 	-DDATADIR=\"$(datadir)\"
 
+FahMon.app: fahmon
+	-cp fahmon ../FahMon.app/Contents/MacOS/FahMon
+	-strip -o ../FahMon.app/Contents/MacOS/FahMon ../FahMon.app/Contents/MacOS/FahMon

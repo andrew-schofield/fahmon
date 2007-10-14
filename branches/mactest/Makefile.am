@@ -20,7 +20,7 @@ EXTRA_DIST = config.rpath  \
         FahMon.nsi \
         README.win32.txt \
         po_to_lang.bat
-SUBDIRS = m4 src doc po src/include src/images resources
+SUBDIRS = m4 src doc po src/include src/images resources mac
 
 appsdir = $(datadir)/applications
 apps_in_files = fahmon.desktop
@@ -54,5 +54,20 @@ force-update-gmo-%: check-gettext
 	if test ! -f po/$$language.po ; then echo "file po/$$language.po does not exist" ; exit 1 ; fi ; \
 	touch po/$$language.po ; \
 	cd po && $(MAKE) $(AM_MAKEFLAGS) update-gmo
+
+FahMon.app:
+	-mkdir FahMon.app
+	-mkdir FahMon.app/Contents
+	-mkdir FahMon.app/Contents/MacOS
+	-mkdir FahMon.app/Contents/Resources
+	-mkdir FahMon.app/Contents/SharedSupport
+	-mkdir FahMon.app/Contents/SharedSupport/lang
+	echo -n 'APPL????' > FahMon.app/Contents/PkgInfo
+	cd mac && $(MAKE) $(AM_MAKEFLAGS) FahMon.app
+	cd src && $(MAKE) $(AM_MAKEFLAGS) FahMon.app
+	cd src/images && $(MAKE) $(AM_MAKEFLAGS) FahMon.app
+	cd po && $(MAKE) $(AM_MAKEFLAGS) FahMon.app
+
+
 
 .PHONY: check-gettext update-po update-gmo force-update-gmo

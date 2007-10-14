@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2007-10-14 20:20+0100\n"
+"POT-Creation-Date: 2007-10-15 00:54+0100\n"
 "PO-Revision-Date: 2007-08-27 01:13+0100\n"
 "Last-Translator: Le Garrec Patrice <thor@pcperf.fr>\n"
 "Language-Team: french <http://folding.mesdiscussions.net/foldinghome/Aide-"
@@ -426,7 +426,7 @@ msgid ""
 msgstr ""
 "La derniére version de %s sera toujours disponible sur le site officiel:"
 
-#: src/firstTimeDialog.cpp:147 src/main.cpp:134
+#: src/firstTimeDialog.cpp:147 src/main.cpp:149
 #, c-format
 msgid "Could not create directory <%s>"
 msgstr "Impossible de créer le dossier <%s>"
@@ -503,7 +503,7 @@ msgstr ""
 "Merci de vérifier que le gestionnaire de fichier correct est sélectionner "
 "dans 'Preferences'"
 
-#: src/main.cpp:73
+#: src/main.cpp:75
 #, c-format
 msgid "Another instance of %s is already running!"
 msgstr "Une autre instance de %s est déja active!"
