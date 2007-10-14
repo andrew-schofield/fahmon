@@ -83,9 +83,9 @@
 
 
 // --- GUI
-#ifdef _FAHMON_LINUX_
+#ifdef __WXGTK__
 #define FMC_GUI_BORDER 2     // GTK already have some borders
-#else
+#elif _FAHMON_WIN32_
 #define FMC_GUI_BORDER 5     // Windows does not have default borders, so we use ours
 #endif
 

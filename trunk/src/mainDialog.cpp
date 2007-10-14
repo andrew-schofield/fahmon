@@ -46,6 +46,7 @@ enum _CONTROL_ID
 	MID_UPDATEPROJECTS,
 	MID_TOGGLELOG,
 	MID_TOGGLE_MESSAGES_FRAME,
+	MID_TOGGLE_ETADATE,
 	MID_BENCHMARKS,
 	MID_PREFERENCES,
 	MID_WWWJMOL,
@@ -94,6 +95,7 @@ BEGIN_EVENT_TABLE(MainDialog, wxFrame)
 	EVT_MENU    (MID_UPDATEPROJECTS,        MainDialog::OnMenuUpdateProjects)
 	EVT_MENU    (MID_TOGGLELOG,             MainDialog::OnMenuToggleLog)
 	EVT_MENU    (MID_TOGGLE_MESSAGES_FRAME, MainDialog::OnMenuToggleMessagesFrame)
+	EVT_MENU    (MID_TOGGLE_ETADATE,        MainDialog::OnMenuToggleETADate)
 	EVT_MENU    (MID_BENCHMARKS,            MainDialog::OnMenuBenchmarks)
 	EVT_MENU    (MID_PREFERENCES,           MainDialog::OnMenuPreferences)
 	EVT_MENU    (MID_WWWJMOL,               MainDialog::OnMenuWeb)
@@ -138,9 +140,9 @@ MainDialog::MainDialog(void) : wxFrame(NULL, wxID_ANY, wxT(FMC_PRODUCT))
 
 	// Setting the icon for the main dialog will allows child frames and dialog to inherit from it
 
-#ifdef _FAHMON_LINUX_
+#ifdef __WXGTK__
 	SetIcon(wxIcon(PathManager::GetImgPath() + wxT(FMC_FILE_IMG_DIALOG)));
-#else
+#elif _FAHMON_WIN32_
 	SetIcon(wxICON(dialog_icon));
 #endif
 
@@ -592,7 +594,9 @@ inline void MainDialog::CreateMenuBar(void)
 #ifdef _FAHMON_WIN32_
 	// MSVC stupidity
 	menu->Append(wxID_EXIT, _("&Quit\tCtrl+Q"), wxString::Format(_T("%s %s"),  _("Quit"), _T(FMC_APPNAME)));
-#elif _FAHMON_LINUX_
+#elif __WXGTK__
+	menu->Append(wxID_EXIT, _("&Quit\tCtrl+Q"), wxString::Format(_T("%s "FMC_APPNAME), _("Quit")));
+#elif __WXMAC__
 	menu->Append(wxID_EXIT, _("&Quit\tCtrl+Q"), wxString::Format(_T("%s "FMC_APPNAME), _("Quit")));
 #endif
 	menuBar->Append(menu, wxString::Format(wxT("&%s"), wxT(FMC_APPNAME)));
@@ -603,6 +607,8 @@ inline void MainDialog::CreateMenuBar(void)
 	menu->Append(MID_RELOAD_ALL, _("Reload &All\tF6"), _("Reload all the clients"));
 	menu->AppendSeparator();
 	menu->Append(MID_TOGGLELOG, _("&Show/Hide FAHLog\tF8"), _("Toggle the log file"));
+	menu->AppendSeparator();
+	menu->Append(MID_TOGGLE_ETADATE, _("&Toggle Date/Time\tF9"), _("Toggle between showing dates and time left"));
 	menuBar->Append(menu, _("&Monitoring"));
 
 	// The 'Web' menu
@@ -623,7 +629,9 @@ inline void MainDialog::CreateMenuBar(void)
 #ifdef _FAHMON_WIN32_
 	// MSVC stupidity
 	menu->Append(wxID_ABOUT, _("&About"), wxString::Format(_T("%s %s"),  _("About"), _T(FMC_APPNAME)));
-#elif _FAHMON_LINUX_
+#elif __WXGTK__
+	menu->Append(wxID_ABOUT, _("&About"), wxString::Format(_T("%s "FMC_APPNAME),  _("About")));
+#elif __WXMAC__
 	menu->Append(wxID_ABOUT, _("&About"), wxString::Format(_T("%s "FMC_APPNAME),  _("About")));
 #endif
 	menuBar->Append(menu, _("&Help"));
@@ -1292,4 +1300,13 @@ wxInt32 MainDialog::GetClientCount(void)
 void MainDialog::TrayReloadSelectedClient(void)
 {
 	ShowClientInformation(mClientsList->GetSelectedClientId());
+}
+
+
+/**
+ * Toggle the ETA format
+ **/
+void MainDialog::OnMenuToggleETADate(wxCommandEvent& event)
+{
+	//AboutDialog::GetInstance(this)->ShowModal();
 }

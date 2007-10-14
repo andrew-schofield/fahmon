@@ -22,7 +22,7 @@
 #include "fahmonTypes.h"
 #include "fahmonConsts.h"
 
-#ifndef _FAHMON_LINUX_
+#ifdef _FAHMON_WIN32_
 #include "resource.h"
 #endif
 

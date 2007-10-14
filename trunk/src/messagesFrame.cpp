@@ -45,9 +45,9 @@ MessagesFrame::MessagesFrame(wxWindow *parent) : wxFrame(parent, wxID_ANY, wxStr
 	wxBoxSizer *mainSizer;
 
 	// This frame does not inherit the icon of the main dialog
-#ifdef _FAHMON_LINUX_
+#ifdef __WXGTK__
 	SetIcon(wxIcon(PathManager::GetImgPath() + wxT(FMC_FILE_IMG_DIALOG)));
-#else
+#elif _FAHMON_WIN32_
 	SetIcon(wxICON(dialog_icon));
 #endif
 

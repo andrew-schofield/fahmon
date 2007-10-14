@@ -46,7 +46,7 @@ void Tools::OpenURLInBrowser(const wxString& url)
 	if(ShellExecuteEx(&shellInfo))
 		CloseHandle(shellInfo.hProcess);
 
-#elif _FAHMON_LINUX_
+#elif __WXGTK__
 
 	wxString browser;
 

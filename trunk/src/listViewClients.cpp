@@ -312,7 +312,9 @@ void ListViewClients::Reset(wxUint32 nbClients)
 			//It appears to throw a fit at the fonts too, so we reset them here
 			#ifdef _FAHMON_WIN32_
 			SetItemBackgroundColour(i, wxSystemSettings::GetColour(wxSYS_COLOUR_3DLIGHT));
-			#else
+			#elif __WXGTK__
+			SetItemBackgroundColour(i, wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOWFRAME));
+			#elif __WXMAC__
 			SetItemBackgroundColour(i, wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOWFRAME));
 			#endif
 
@@ -458,7 +460,9 @@ void ListViewClients::Sort(void)
 			//It appears to throw a fit at the fonts too, so we reset them here
 			#ifdef _FAHMON_WIN32_
 			SetItemBackgroundColour(i, wxSystemSettings::GetColour(wxSYS_COLOUR_3DLIGHT));
-			#else
+			#elseifef __WXGTK__
+			SetItemBackgroundColour(i, wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOWFRAME));
+			#elseifef __WXMAC__
 			SetItemBackgroundColour(i, wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOWFRAME));
 			#endif
 
@@ -698,7 +702,7 @@ void ListViewClients::ShowClientFiles()
 
 	_PrefsGetString(PREF_TOOLS_FILEMANAGER, FileManager);
 
-	#ifndef _FAHMON_LINUX_
+	#ifdef _FAHMON_WIN32_
 		// Converts / to \ in filepaths so Windows can use them correctly
 		ClientLocation.Replace(_T("/"), _T("\\"), true);
 	#endif

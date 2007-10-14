@@ -101,9 +101,9 @@ void TrayManager::InstallIcon(void)
 {
 	if(IsIconInstalled() == false)
 	{
-	#ifdef _FAHMON_LINUX_
+	#ifdef __WXGTK__
 		SetIcon(wxIcon(PathManager::GetImgPath() + wxT(FMC_FILE_IMG_DIALOG)), mTooltip);
-	#else
+	#elif _FAHMON_WIN32_
 		SetIcon(wxICON(dialog_icon), mTooltip);
 	#endif
 	}
@@ -137,9 +137,9 @@ void TrayManager::SetTooltip(const wxString& tooltip)
 
 	if(IsIconInstalled() == true)
 	{
-	#ifdef _FAHMON_LINUX_
+	#ifdef __WXGTK__
 		SetIcon(wxIcon(PathManager::GetImgPath() + wxT(FMC_FILE_IMG_DIALOG)), mTooltip);
-	#else
+	#elif _FAHMON_WIN32_
 		SetIcon(wxICON(dialog_icon), mTooltip);
 	#endif
 	}

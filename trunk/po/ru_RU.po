@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru_RU v.061 07/09/2007\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2007-10-09 23:10+0100\n"
+"POT-Creation-Date: 2007-10-14 19:36+0100\n"
 "PO-Revision-Date: 2007-09-07 19:54+0300\n"
 "Last-Translator: Evgeniy Chorpita, 2007 <tsc.behc@gmail.com>\n"
 "Language-Team: TSC! Russia <http://tsc.overclockers.ru/>\n"
@@ -12,7 +12,8 @@ msgstr ""
 "X-Poedit-Language: Russian\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 
-#: src/aboutDialog.cpp:38 src/mainDialog.cpp:625 src/mainDialog.cpp:627
+#: src/aboutDialog.cpp:38 src/mainDialog.cpp:631 src/mainDialog.cpp:633
+#: src/mainDialog.cpp:635
 msgid "About"
 msgstr "О программе"
 
@@ -143,13 +144,13 @@ msgstr "Лог не загружен!"
 msgid "anonymous"
 msgstr "аноним"
 
-#: src/client.cpp:91 src/listViewClients.cpp:392 src/listViewClients.cpp:393
-#: src/mainDialog.cpp:422 src/mainDialog.cpp:426 src/mainDialog.cpp:427
-#: src/mainDialog.cpp:428 src/mainDialog.cpp:429 src/mainDialog.cpp:430
-#: src/mainDialog.cpp:445 src/mainDialog.cpp:446 src/mainDialog.cpp:447
-#: src/mainDialog.cpp:448 src/mainDialog.cpp:449 src/mainDialog.cpp:464
-#: src/mainDialog.cpp:465 src/mainDialog.cpp:466 src/mainDialog.cpp:467
-#: src/mainDialog.cpp:517 src/mainDialog.cpp:558 src/webMonitor.cpp:140
+#: src/client.cpp:91 src/listViewClients.cpp:394 src/listViewClients.cpp:395
+#: src/mainDialog.cpp:424 src/mainDialog.cpp:428 src/mainDialog.cpp:429
+#: src/mainDialog.cpp:430 src/mainDialog.cpp:431 src/mainDialog.cpp:432
+#: src/mainDialog.cpp:447 src/mainDialog.cpp:448 src/mainDialog.cpp:449
+#: src/mainDialog.cpp:450 src/mainDialog.cpp:451 src/mainDialog.cpp:466
+#: src/mainDialog.cpp:467 src/mainDialog.cpp:468 src/mainDialog.cpp:469
+#: src/mainDialog.cpp:519 src/mainDialog.cpp:560 src/webMonitor.cpp:140
 #: src/webMonitor.cpp:141 src/webMonitor.cpp:142 src/webMonitor.cpp:143
 #: src/webMonitor.cpp:144 src/webMonitor.cpp:145 src/webMonitor.cpp:146
 #: src/webMonitor.cpp:191 src/webMonitor.cpp:192 src/webMonitor.cpp:193
@@ -450,39 +451,39 @@ msgstr "PPD"
 msgid "Loading..."
 msgstr "Загрузка..."
 
-#: src/listViewClients.cpp:391 src/webMonitor.cpp:324
+#: src/listViewClients.cpp:393 src/webMonitor.cpp:324
 msgid "Finished"
 msgstr "Закончено"
 
-#: src/listViewClients.cpp:394 src/webMonitor.cpp:327
+#: src/listViewClients.cpp:396 src/webMonitor.cpp:327
 msgid "*Hung*"
 msgstr "*Завис*"
 
-#: src/listViewClients.cpp:543 src/listViewClients.cpp:551
+#: src/listViewClients.cpp:547 src/listViewClients.cpp:555
 msgid "Add a new client"
 msgstr "Добавить нового клиента"
 
-#: src/listViewClients.cpp:553
+#: src/listViewClients.cpp:557
 msgid "Reload this client"
 msgstr "Обновить информацию о клиенте"
 
-#: src/listViewClients.cpp:554
+#: src/listViewClients.cpp:558
 msgid "Edit this client"
 msgstr "Редактировать этого клиента"
 
-#: src/listViewClients.cpp:555
+#: src/listViewClients.cpp:559
 msgid "Delete this client"
 msgstr "Удалить этого клиента"
 
-#: src/listViewClients.cpp:556
+#: src/listViewClients.cpp:560
 msgid "View Client Files"
 msgstr "Просмотреть файлы клиента"
 
-#: src/listViewClients.cpp:643
+#: src/listViewClients.cpp:647
 msgid "Do you really want to delete this client?"
 msgstr "Вы действительно хотите удалить этого клиента?"
 
-#: src/listViewClients.cpp:708
+#: src/listViewClients.cpp:712
 msgid ""
 "Unable to launch the default filemanager.\n"
 "\n"
@@ -497,7 +498,7 @@ msgstr ""
 msgid "Another instance of %s is already running!"
 msgstr "Другая копия %s уже запущена!"
 
-#: src/mainDialog.cpp:356
+#: src/mainDialog.cpp:358
 msgid ""
 "Something is wrong with this client.\n"
 "Please check the messages (FahMon->Show/Hide Messages Window)."
@@ -505,218 +506,227 @@ msgstr ""
 "Что-то не в порядке с этим клиентом.\n"
 "Пожалуйста проверьте лог (FahMon->Показать/Скрыть Окно Сообщений"
 
-#: src/mainDialog.cpp:411 src/mainDialog.cpp:503 src/mainDialog.cpp:545
+#: src/mainDialog.cpp:413 src/mainDialog.cpp:505 src/mainDialog.cpp:547
 #: src/webMonitor.cpp:182 src/webMonitor.cpp:235 src/webMonitor.cpp:274
 #, c-format
 msgid "%s ago"
 msgstr "%s назад"
 
-#: src/mainDialog.cpp:468
+#: src/mainDialog.cpp:470
 #, c-format
 msgid "Project %u is unknown, you should try to update the projects database"
 msgstr "Задание %u неизвестно, Вам необходимо обновить базу заданий"
 
-#: src/mainDialog.cpp:476 src/webMonitor.cpp:209
+#: src/mainDialog.cpp:478 src/webMonitor.cpp:209
 #, c-format
 msgid "%u points"
 msgstr "%u очков"
 
-#: src/mainDialog.cpp:505 src/mainDialog.cpp:547 src/webMonitor.cpp:237
+#: src/mainDialog.cpp:507 src/mainDialog.cpp:549 src/webMonitor.cpp:237
 #: src/webMonitor.cpp:276
 #, c-format
 msgid "In %s"
 msgstr "В %s"
 
-#: src/mainDialog.cpp:561
+#: src/mainDialog.cpp:563
 #, c-format
 msgid " :: Total PPD: %.2f"
 msgstr " :: Всего PPD: %.2f"
 
-#: src/mainDialog.cpp:586
+#: src/mainDialog.cpp:588
 msgid "&Show/Hide Messages Window"
 msgstr "&Показать/Скрыть Окно Сообщений"
 
-#: src/mainDialog.cpp:586
+#: src/mainDialog.cpp:588
 msgid "Toggle the messages window"
 msgstr "Окно сообщений мониторинга FahMon"
 
-#: src/mainDialog.cpp:587
+#: src/mainDialog.cpp:589
 msgid "&Download New Projects"
 msgstr "Обновить &Базу Заданий"
 
-#: src/mainDialog.cpp:587
+#: src/mainDialog.cpp:589
 msgid "Update the local project database"
 msgstr "Обновить локальную базу заданий"
 
-#: src/mainDialog.cpp:589
+#: src/mainDialog.cpp:591
 msgid "&Benchmarks...\tCTRL+B"
 msgstr "&Ориентиры...\tCTRL+B"
 
-#: src/mainDialog.cpp:589
+#: src/mainDialog.cpp:591
 msgid "Open the benchmarks dialog"
 msgstr "Открыть диалог ориентиров"
 
-#: src/mainDialog.cpp:590
+#: src/mainDialog.cpp:592
 msgid "&Preferences...\tCTRL+P"
 msgstr "&Настройки...\tCTRL+P"
 
-#: src/mainDialog.cpp:590
+#: src/mainDialog.cpp:592
 msgid "Open the preferences dialog"
 msgstr "Открыть диалог настроек"
 
-#: src/mainDialog.cpp:594 src/mainDialog.cpp:596
+#: src/mainDialog.cpp:596 src/mainDialog.cpp:598 src/mainDialog.cpp:600
 msgid "&Quit\tCtrl+Q"
 msgstr "&Выход\tCtrl+Q"
 
-#: src/mainDialog.cpp:594 src/mainDialog.cpp:596 src/trayManager.cpp:219
+#: src/mainDialog.cpp:596 src/mainDialog.cpp:598 src/mainDialog.cpp:600
+#: src/trayManager.cpp:219
 msgid "Quit"
 msgstr "Выход из"
 
-#: src/mainDialog.cpp:602
+#: src/mainDialog.cpp:606
 msgid "Reload &Selection\tF5"
 msgstr "Обновить В&ыбранные\tF5"
 
-#: src/mainDialog.cpp:602
+#: src/mainDialog.cpp:606
 msgid "Reload the selected client"
 msgstr "Обновить выбранного клиента"
 
-#: src/mainDialog.cpp:603
+#: src/mainDialog.cpp:607
 msgid "Reload &All\tF6"
 msgstr "Обновить &Все\tF6"
 
-#: src/mainDialog.cpp:603
+#: src/mainDialog.cpp:607
 msgid "Reload all the clients"
 msgstr "Обновить все клиенты"
 
-#: src/mainDialog.cpp:605
+#: src/mainDialog.cpp:609
 msgid "&Show/Hide FAHLog\tF8"
 msgstr "&Показать/Скрыть FAHLog\tF8"
 
-#: src/mainDialog.cpp:605
+#: src/mainDialog.cpp:609
 msgid "Toggle the log file"
 msgstr "Приклеить окно лога клиента внизу"
 
-#: src/mainDialog.cpp:606
+#: src/mainDialog.cpp:611
+msgid "&Toggle Date/Time\tF9"
+msgstr ""
+
+#: src/mainDialog.cpp:611
+msgid "Toggle between showing dates and time left"
+msgstr ""
+
+#: src/mainDialog.cpp:612
 msgid "&Monitoring"
 msgstr "&Мониторинг"
 
-#: src/mainDialog.cpp:610
+#: src/mainDialog.cpp:616
 msgid "&My Stats\tF2"
 msgstr "&Моя статистика\tF2"
 
-#: src/mainDialog.cpp:610
+#: src/mainDialog.cpp:616
 msgid "View the personal statistics for the selected client"
 msgstr "Посмотреть персональную статистику для выбранных клиентов"
 
-#: src/mainDialog.cpp:611
+#: src/mainDialog.cpp:617
 msgid "&Jmol\tF3"
 msgstr "&Jmol\tF3"
 
-#: src/mainDialog.cpp:611
+#: src/mainDialog.cpp:617
 msgid "View the current project on the Jmol website"
 msgstr "Посмотреть текущее задание в 3D на сайте Jmol"
 
-#: src/mainDialog.cpp:612
+#: src/mainDialog.cpp:618
 msgid "&fahinfo\tF4"
 msgstr "&База статистики fahinfo\tF4"
 
-#: src/mainDialog.cpp:612
+#: src/mainDialog.cpp:618
 msgid "View the current project on fahinfo.org"
 msgstr "Посмотреть статистику текущего задания в базе fahinfo.org"
 
-#: src/mainDialog.cpp:614
+#: src/mainDialog.cpp:620
 msgid "F@H &Website"
 msgstr "&F@H сайт"
 
-#: src/mainDialog.cpp:614
+#: src/mainDialog.cpp:620
 msgid "Open to the official Stanford website"
 msgstr "Открыть официальный сайт Стенфорда о фолдинге"
 
-#: src/mainDialog.cpp:615
+#: src/mainDialog.cpp:621
 msgid "Folding-&Community"
 msgstr "Сообщество &Фолдинга"
 
-#: src/mainDialog.cpp:615
+#: src/mainDialog.cpp:621
 msgid "Open the Folding@Home support forum"
 msgstr "Открыть форум поддержки Folding@Home"
 
-#: src/mainDialog.cpp:616
+#: src/mainDialog.cpp:622
 msgid "&Projects Summary"
 msgstr "&Информация о Проектах"
 
-#: src/mainDialog.cpp:616
+#: src/mainDialog.cpp:622
 msgid "Open the list of the current projects"
 msgstr "Открыть перечень текущих заданий"
 
-#: src/mainDialog.cpp:617
+#: src/mainDialog.cpp:623
 msgid "&Servers Status"
 msgstr "&Статус серверов F@H"
 
-#: src/mainDialog.cpp:617
+#: src/mainDialog.cpp:623
 msgid "Open the list of the servers with their status"
 msgstr "Открыть список серверов F@H со статусами их работы"
 
-#: src/mainDialog.cpp:618
+#: src/mainDialog.cpp:624
 msgid "&Web"
 msgstr "&Интернет"
 
-#: src/mainDialog.cpp:622
+#: src/mainDialog.cpp:628
 msgid "&Help Contents\tF1"
 msgstr "&Содержание помощи\tF1"
 
-#: src/mainDialog.cpp:622
+#: src/mainDialog.cpp:628
 msgid "See help contents"
 msgstr "Онлайн помощь по программе FahMon"
 
-#: src/mainDialog.cpp:625 src/mainDialog.cpp:627
+#: src/mainDialog.cpp:631 src/mainDialog.cpp:633 src/mainDialog.cpp:635
 msgid "&About"
 msgstr "&О программе"
 
-#: src/mainDialog.cpp:629
+#: src/mainDialog.cpp:637
 msgid "&Help"
 msgstr "&Помощь"
 
-#: src/mainDialog.cpp:665 src/webMonitor.cpp:415
+#: src/mainDialog.cpp:673 src/webMonitor.cpp:415
 msgid "Work Unit Information"
 msgstr "Информация по текущему заданию"
 
-#: src/mainDialog.cpp:687 src/webMonitor.cpp:415
+#: src/mainDialog.cpp:695 src/webMonitor.cpp:415
 msgid "Core:"
 msgstr "Ядро:"
 
-#: src/mainDialog.cpp:689 src/webMonitor.cpp:415
+#: src/mainDialog.cpp:697 src/webMonitor.cpp:415
 msgid "Project:"
 msgstr "Задание:"
 
-#: src/mainDialog.cpp:691 src/webMonitor.cpp:415
+#: src/mainDialog.cpp:699 src/webMonitor.cpp:415
 msgid "Credit:"
 msgstr "Очков:"
 
-#: src/mainDialog.cpp:693 src/webMonitor.cpp:415
+#: src/mainDialog.cpp:701 src/webMonitor.cpp:415
 msgid "Username:"
 msgstr "Участник:"
 
-#: src/mainDialog.cpp:695 src/webMonitor.cpp:415
+#: src/mainDialog.cpp:703 src/webMonitor.cpp:415
 msgid "Downloaded:"
 msgstr "Скачано:"
 
-#: src/mainDialog.cpp:697 src/webMonitor.cpp:415
+#: src/mainDialog.cpp:705 src/webMonitor.cpp:415
 msgid "Preferred Deadline:"
 msgstr "Предпочтительный дедлайн:"
 
-#: src/mainDialog.cpp:699 src/webMonitor.cpp:415
+#: src/mainDialog.cpp:707 src/webMonitor.cpp:415
 msgid "Final Deadline:"
 msgstr "Дедлайн:"
 
-#: src/mainDialog.cpp:727
+#: src/mainDialog.cpp:735
 msgid " :: Total PPD:"
 msgstr " :: Всего PPD:"
 
-#: src/mainDialog.cpp:735
+#: src/mainDialog.cpp:743
 msgid "Log file."
 msgstr "Лог файл."
 
-#: src/mainDialog.cpp:985
+#: src/mainDialog.cpp:993
 msgid "You must first select a client!"
 msgstr "Вы должны сначала выбрать клиента!"
 

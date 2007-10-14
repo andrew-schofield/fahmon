@@ -42,9 +42,9 @@ ProgressManager::ProgressManager(bool isInSilentMode)
 	{
 		mProgressDlg = new wxProgressDialog(wxT(FMC_PRODUCT), wxT("                                                                    "), 100, NULL, wxPD_AUTO_HIDE | wxPD_APP_MODAL | wxPD_CAN_ABORT | wxPD_ELAPSED_TIME);
 
-#ifdef _FAHMON_LINUX_
+#ifdef __WXGTK__
 		mProgressDlg->SetIcon(wxIcon(PathManager::GetImgPath() + wxT(FMC_FILE_IMG_DIALOG)));
-#else
+#elif _FAHMON_WIN32_
 		mProgressDlg->SetIcon(wxICON(dialog_icon));
 #endif
 	}

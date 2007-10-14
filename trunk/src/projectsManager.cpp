@@ -449,33 +449,6 @@ bool ProjectsManager::Update_ParseProjectsFile(const wxString& fileName, Progres
 		}
 	}
 	setlocale(LC_NUMERIC, locOld);
-	/*m_locale1.Init(wxLANGUAGE_DEFAULT, wxLOCALE_CONV_ENCODING);
-
-	wxString locale = m_locale1.GetLocale();
-
-#ifdef _FAHMON_WIN32_
-	{
-		wxLocale::AddCatalogLookupPathPrefix(wxT("./lang"));
-	}
-#endif
-#ifdef _FAHMON_LINUX_
-	{
-		wxLocale::AddCatalogLookupPathPrefix(wxT(DATADIR));
-	}
-#endif
-	// Initialize the catalogs we'll be using
-	m_locale1.AddCatalog(wxT("fahmon"));
-
-	// this catalog is installed in standard location on Linux systems and
-	// shows that you may make use of the standard message catalogs as well
-	//
-	// if it's not installed on your system, it is just silently ignored
-#ifdef _FAHMON_LINUX_
-	{
-		wxLogNull noLog;
-		m_locale1.AddCatalog(_T("fileutils"));
-	}
-#endif*/
 
 	return !errorOccured;
 }

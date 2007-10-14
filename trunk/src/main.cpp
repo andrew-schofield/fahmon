@@ -95,7 +95,7 @@ bool FahMonApp::OnInit(void)
 		wxLocale::AddCatalogLookupPathPrefix(wxT("./lang"));
 	}
 #endif
-#ifdef _FAHMON_LINUX_
+#ifdef __WXGTK__
 	{
 		wxLocale::AddCatalogLookupPathPrefix(wxT(DATADIR));
 	}
@@ -107,7 +107,7 @@ bool FahMonApp::OnInit(void)
 	// shows that you may make use of the standard message catalogs as well
 	//
 	// if it's not installed on your system, it is just silently ignored
-#ifdef _FAHMON_LINUX_
+#ifdef __WXGTK__
 	{
 		wxLogNull noLog;
 		m_locale.AddCatalog(_T("fileutils"));
@@ -117,7 +117,7 @@ bool FahMonApp::OnInit(void)
 	// We must explicitly tell to wxGTK which locale we want to use
 	// Otherwise, floating point number conversion doesn't work on non-english Linux systems that do not use point as the decimal character
 	// This is because the point is used as the decimal character on Stanford webpages and we can't change that
-#ifdef _FAHMON_LINUX_
+#ifdef __WXGTK__
 	setlocale(LC_NUMERIC, "C");
 #endif
 

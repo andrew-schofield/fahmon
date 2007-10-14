@@ -29,7 +29,7 @@ PathManager* PathManager::mInstance = NULL;
 **/
 PathManager::PathManager(void)
 {
-#ifdef _FAHMON_LINUX_
+#ifdef __WXGTK__
 
 	// On Linux systems, we use the standard way to store data : in a hidden directory
 	// in the user's home directory
@@ -46,7 +46,7 @@ PathManager::PathManager(void)
 	mXYZPath = homeDir + wxT(".fahmon/xyz/");
 	mMsgPath = homeDir + wxT(".fahmon/");
 
-#else
+#elif _FAHMON_WIN32_
 
 	// On Win32 systems, we simply use the current directory
 	mXYZPath = wxT("./xyz/");

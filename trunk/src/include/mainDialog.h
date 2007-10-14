@@ -87,9 +87,9 @@
 
 #define PREF_TOOLS_FILEMANAGER   wxT("MainDialog.FileManager")
 
-#ifndef _FAHMON_LINUX_
+#ifdef _FAHMON_WIN32_
 #define PREF_TOOLS_FILEMANAGER_DV wxT("explorer.exe");
-#else
+#elif __WXGTK__
 #define PREF_TOOLS_FILEMANAGER_DV wxT("konqueror --profile filemanagement");
 #endif
 
@@ -164,6 +164,7 @@ protected:
 	void OnProjectsDatabaseUpdated(wxCommandEvent& event);
 	void OnNewMessageLogged(wxCommandEvent& event);
 	void OnAutoReloadTimer(wxTimerEvent& event);
+	void OnMenuToggleETADate(wxCommandEvent& event);
 
 
 public:

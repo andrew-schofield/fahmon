@@ -407,17 +407,17 @@ inline wxPanel* PreferencesDialog::CreateSystemTab(wxNotebook* parent)
 	mSystemOverrideTimezone = new wxCheckBox(panel, CHK_TZOVERRIDE, wxString::Format(_T("%s  "),  _("Manually set timezone to UTC +")));
 	mSystemTZ               = new wxSpinCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, -24, 24, 0);
 
-	#ifndef _FAHMON_LINUX_
+	#ifdef _FAHMON_WIN32_
 	const wxString    fileManagers[2] = {_("Windows Explorer"), _("Other")};
 	mSystemFileManager     = new wxChoice(panel, CHC_FILEMANAGER, wxDefaultPosition, wxDefaultSize, 2, fileManagers);
-	#else
+	#elif __WXGTK__
 	const wxString    fileManagers[5] = {wxT("Konqueror (KDE 3)"), wxT("Dolphin (KDE 4)"), wxT("Nautilus (Gnome)"), wxT("Thunar (Xfce 4.4)"), _("Other")};
 	mSystemFileManager     = new wxChoice(panel, CHC_FILEMANAGER, wxDefaultPosition, wxDefaultSize, 5, fileManagers);
 	#endif
 
 	sizer->AddStretchSpacer();
 
-	#ifdef _FAHMON_LINUX_
+	#ifdef __WXGTK__
 	browserSizer->Add(mSystemBrowserLabel, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_LEFT);
 	browserSizer->Add(mSystemBrowser, 1, wxALIGN_CENTER_VERTICAL | wxEXPAND);
 
@@ -766,7 +766,7 @@ inline void PreferencesDialog::LoadPreferences(void)
 	mWebAppSimpleWebLocationChooser->Enable(useSimpleWeb);
 	mWebAppSimpleTextLocationChooser->Enable(useSimpleText);
 
-	#ifndef _FAHMON_LINUX_
+	#ifdef _FAHMON_WIN32_
 	if(filemanager == wxT("explorer.exe"))
 	{
 		mSystemFileManager->Select(0);
@@ -775,7 +775,7 @@ inline void PreferencesDialog::LoadPreferences(void)
 	{
 		mSystemFileManager->Select(1);
 	}
-	#else
+	#elif __WXGTK__
 	if(filemanager == wxT("konqueror --profile filemanagement"))
 	{
 		mSystemFileManager->Select(0);
@@ -1117,7 +1117,7 @@ void PreferencesDialog::OnChoices(wxCommandEvent& event)
 	{
 	// ---
 		case CHC_FILEMANAGER:
-			#ifndef _FAHMON_LINUX_
+			#ifdef _FAHMON_WIN32_
 			switch(mSystemFileManager->GetSelection())
 			{
 			// ---
@@ -1132,7 +1132,7 @@ void PreferencesDialog::OnChoices(wxCommandEvent& event)
 				default:
 					break;
 			}
-			#else
+			#elif __WXGTK__
 			switch(mSystemFileManager->GetSelection())
 			{
 			// ---
