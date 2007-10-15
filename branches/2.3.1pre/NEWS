@@ -1,0 +1,38 @@
+FahMon -- History of visible changes.
+
+Copyright (C) 2004-7, Francois Ingelrest <>
+Copyright (C) 2007, Andrew Schofield <the.uncle.fungus@gmail.com>
+See the end for copying conditions.
+
+Please send FahMon bug reports to the.uncle.fungus@gmail.com.
+
+Version 2.3.0
+
+* First ever NEWS entry thanks to the GNU build system. The scons installation
+  system has been removed completely from the source package, so now you should
+  use the familiar "./configure; make; make install;" method to install FahMon.
+* You can now run FahMon from anywhere on the system (if you're using Linux),
+  and assuming you compiled it right, it will always load the images properly,
+  no more scripting required.
+* Several minor bugs have been squashed, and a couple of new features added that
+  were requested.
+* I've built some packages for the Linux distros I happen to have installed, but
+  these may not work (depends if I've built them right or not), so if you find
+  that they're broken, please let me know.
+
+-------------------------------------------------------
+Copying information:
+
+Copyright (C) 2004-7, Francois Ingelrest <>
+Copyright (C) 2007, Andrew Schofield <the.uncle.fungus@gmail.com>
+
+   Permission is granted to anyone to make or distribute verbatim copies
+   of this document as received, in any medium, provided that the
+   copyright notice and this permission notice are preserved,
+   thus giving the recipient permission to redistribute in turn.
+
+   Permission is granted to distribute modified versions
+   of this document, or of portions of it,
+   under the above conditions, provided also that they
+   carry prominent notices stating who last changed them.
+
