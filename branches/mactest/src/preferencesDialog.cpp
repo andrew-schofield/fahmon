@@ -413,6 +413,9 @@ inline wxPanel* PreferencesDialog::CreateSystemTab(wxNotebook* parent)
 	#elif __WXGTK__
 	const wxString    fileManagers[5] = {wxT("Konqueror (KDE 3)"), wxT("Dolphin (KDE 4)"), wxT("Nautilus (Gnome)"), wxT("Thunar (Xfce 4.4)"), _("Other")};
 	mSystemFileManager     = new wxChoice(panel, CHC_FILEMANAGER, wxDefaultPosition, wxDefaultSize, 5, fileManagers);
+	#elif __WXMAC__
+	const wxString fileManagers[2] = {_("Finder"), _("Other")};
+	mSystemFileManager     = new wxChoice(panel, CHC_FILEMANAGER, wxDefaultPosition, wxDefaultSize, 2, fileManagers);
 	#endif
 
 	sizer->AddStretchSpacer();

@@ -48,7 +48,6 @@ enum _CONTROL_ID
 	MID_TOGGLE_MESSAGES_FRAME,
 	MID_TOGGLE_ETADATE,
 	MID_BENCHMARKS,
-	MID_PREFERENCES,
 	MID_WWWJMOL,
 	MID_WWWMYSTATS,
 	MID_WWWFOLDING,
@@ -97,7 +96,7 @@ BEGIN_EVENT_TABLE(MainDialog, wxFrame)
 	EVT_MENU    (MID_TOGGLE_MESSAGES_FRAME, MainDialog::OnMenuToggleMessagesFrame)
 	EVT_MENU    (MID_TOGGLE_ETADATE,        MainDialog::OnMenuToggleETADate)
 	EVT_MENU    (MID_BENCHMARKS,            MainDialog::OnMenuBenchmarks)
-	EVT_MENU    (MID_PREFERENCES,           MainDialog::OnMenuPreferences)
+	EVT_MENU    (wxID_PREFERENCES,          MainDialog::OnMenuPreferences)
 	EVT_MENU    (MID_WWWJMOL,               MainDialog::OnMenuWeb)
 	EVT_MENU    (MID_WWWFAHINFO,            MainDialog::OnMenuWeb)
 	EVT_MENU    (MID_WWWMYSTATS,            MainDialog::OnMenuWeb)
@@ -581,7 +580,6 @@ inline void MainDialog::CreateMenuBar(void)
 
 	// Create the menubar
 	menuBar = new wxMenuBar();
-	SetMenuBar(menuBar);
 
 	// The 'Main' menu
 	menu = new wxMenu();
@@ -589,7 +587,7 @@ inline void MainDialog::CreateMenuBar(void)
 	menu->Append(MID_UPDATEPROJECTS, _("&Download New Projects"), _("Update the local project database"));
 	menu->AppendSeparator();
 	menu->Append(MID_BENCHMARKS, _("&Benchmarks...\tCTRL+B"), _("Open the benchmarks dialog"));
-	menu->Append(MID_PREFERENCES, _("&Preferences...\tCTRL+P"), _("Open the preferences dialog"));
+	menu->Append(wxID_PREFERENCES, _("&Preferences...\tCTRL+P"), _("Open the preferences dialog"));
 	menu->AppendSeparator();
 #ifdef _FAHMON_WIN32_
 	// MSVC stupidity
@@ -599,7 +597,11 @@ inline void MainDialog::CreateMenuBar(void)
 #elif __WXMAC__
 	menu->Append(wxID_EXIT, _("&Quit\tCtrl+Q"), wxString::Format(_T("%s "FMC_APPNAME), _("Quit")));
 #endif
+#ifndef __WXMAC__
 	menuBar->Append(menu, wxString::Format(wxT("&%s"), wxT(FMC_APPNAME)));
+#else
+	menuBar->Append(menu, _("&Tools"));
+#endif
 
 	// The 'Monitoring' menu
 	menu = new wxMenu();
@@ -634,7 +636,16 @@ inline void MainDialog::CreateMenuBar(void)
 #elif __WXMAC__
 	menu->Append(wxID_ABOUT, _("&About"), wxString::Format(_T("%s "FMC_APPNAME),  _("About")));
 #endif
+	
+#ifdef __WXMAC__
+	{
+		wxApp::s_macHelpMenuTitleName = _("&Help");
+		//wxApp::s_macAboutMenuItemID = wxID_ABOUT;
+	}
+#endif
 	menuBar->Append(menu, _("&Help"));
+
+	SetMenuBar(menuBar);
 }
 
 
@@ -1042,6 +1053,7 @@ void MainDialog::OnMenuAbout(wxCommandEvent& event)
 void MainDialog::OnClose(wxCloseEvent& event)
 {
 	// Don't save window size if it is iconized (win32 bug)
+#ifdef _FAHMON_WIN32_
 	if(!IsIconized())
 	{
 		// Save the size of the frame
@@ -1052,7 +1064,7 @@ void MainDialog::OnClose(wxCloseEvent& event)
 		_PrefsSetInt(PREF_MAINDIALOG_FRAME_POS_X, GetPosition().x);
 		_PrefsSetInt(PREF_MAINDIALOG_FRAME_POS_Y, GetPosition().y);
 	}
-
+#endif
 	// Save the position of the sash
 	_PrefsSetUint(PREF_MAINDIALOG_SASHPOSITION, mSplitterWindow->GetSashPosition());
 
