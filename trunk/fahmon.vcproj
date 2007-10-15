@@ -339,6 +339,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\src\include\webMonitor.h"
+				>
+			</File>
+			<File
 				RelativePath=".\src\include\workUnitFrame.h"
 				>
 			</File>
@@ -500,6 +504,10 @@
 			</File>
 			<File
 				RelativePath=".\src\trayManager.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\webMonitor.cpp"
 				>
 			</File>
 			<File
