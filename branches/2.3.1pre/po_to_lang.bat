@@ -22,17 +22,17 @@ mkdir lang\%%~nf
 echo Copying translations...
 copy /y po\%%~nf.po .\lang\%%~nf\%%~nf.po
 copy /y po\%%~nf.gmo .\lang\%%~nf\fahmon.mo
-echo Checking for translation in NSI script
-find "%%~nf" < fahmon.nsi > lang_out
-for /f %%i in ('find /v /c "" ^< lang_out') do set /a lines=%%i
-if %lines% NEQ 3 (
-echo Warning: %%~nf doesn't appear to be in the NSI script
-echo This language won't be included in the installer until you add it
-pause
-) else (
-echo Entry found.
-)
-del lang_out
+rem echo Checking for translation in NSI script
+rem find "%%~nf" < fahmon.nsi > lang_out
+rem for /f %%i in ('find /v /c "" ^< lang_out') do set /a lines=%%i
+rem if %lines% NEQ 3 (
+rem echo Warning: %%~nf doesn't appear to be in the NSI script
+rem echo This language won't be included in the installer until you add it
+rem pause
+rem ) else (
+rem echo Entry found.
+rem )
+rem del lang_out
 echo ============
 )
 echo Copying translation template
