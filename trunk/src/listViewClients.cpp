@@ -460,9 +460,9 @@ void ListViewClients::Sort(void)
 			//It appears to throw a fit at the fonts too, so we reset them here
 			#ifdef _FAHMON_WIN32_
 			SetItemBackgroundColour(i, wxSystemSettings::GetColour(wxSYS_COLOUR_3DLIGHT));
-			#elseifef __WXGTK__
+			#elseif __WXGTK__
 			SetItemBackgroundColour(i, wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOWFRAME));
-			#elseifef __WXMAC__
+			#elseif __WXMAC__
 			SetItemBackgroundColour(i, wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOWFRAME));
 			#endif
 
