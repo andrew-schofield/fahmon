@@ -30,6 +30,7 @@ v2.3.1
       controlled by the old "Display ETA as" option which has been renamed to
       "Display dates as"
     * Added menu item to cycle through ETA display display styles as requested.
+    * Updated about dialog to use new website
 
 v2.3.0 (10/09/07)
 
