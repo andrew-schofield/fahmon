@@ -35,6 +35,9 @@
 #include "preferencesDialog.h"
 #include "preferencesManager.h"
 #include "listViewClients.h"
+#ifdef __WXMAC__
+#include "wx/sysopt.h"
+#endif
 
 
 // Identifiers for the controls
@@ -662,6 +665,11 @@ inline void MainDialog::CreateLayout(void)
 	wxBoxSizer       *userinfoSizer;
 	wxGridSizer      *infoSizer;
 	wxStaticBoxSizer *topRightSizer;
+	
+		
+	#ifdef __WXMAC__
+	wxSystemOptions::SetOption(_T("mac.listctrl.always_use_generic"), 1);
+	#endif
 
 
 	// We need to use a panel as a top level component in our frame
