@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FahMon 2.3.0\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2007-10-14 20:20+0100\n"
+"POT-Creation-Date: 2007-10-16 15:54+0100\n"
 "PO-Revision-Date: 2007-09-08 23:12+0100\n"
 "Last-Translator: Olof Persson <floffe@gmail.com>\n"
 "Language-Team: Swedish <floffe@gmail.com>\n"
@@ -922,6 +922,18 @@ msgstr "Utforskaren"
 #: src/preferencesDialog.cpp:411 src/preferencesDialog.cpp:414
 msgid "Other"
 msgstr "Annan"
+
+#: src/preferencesDialog.cpp:494
+msgid "Export Web Application"
+msgstr ""
+
+#: src/preferencesDialog.cpp:499
+msgid "Export Simple Web page"
+msgstr ""
+
+#: src/preferencesDialog.cpp:504
+msgid "Export Simple Text file"
+msgstr ""
 
 #: src/preferencesDialog.cpp:923
 msgid "Choose a local project data file"

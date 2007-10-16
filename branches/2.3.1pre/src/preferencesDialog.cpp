@@ -491,17 +491,17 @@ inline wxPanel* PreferencesDialog::CreateWebAppTab(wxNotebook* parent)
 	simpleTextSizer         = new wxBoxSizer(wxHORIZONTAL);
 	simpleTextLocationSizer = new wxBoxSizer(wxHORIZONTAL);
 
-	mWebAppUseWebApp                 = new wxCheckBox(panel, CHK_USEWEBAPP, _T("Export Web Application"));
+	mWebAppUseWebApp                 = new wxCheckBox(panel, CHK_USEWEBAPP, _("Export Web Application"));
 	mWebAppWebAppLocation            = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
 	mWebAppWebAppLabel               = new wxStaticText(panel, wxID_ANY, _("Filename:"));
 	mWebAppWebAppLocationChooser     = new wxButton(panel, BTN_BROWSE_WEBAPP, wxT("..."), wxDefaultPosition, wxSize(26, 26));
 
-	mWebAppUseSimpleWeb              = new wxCheckBox(panel, CHK_USESIMPLEWEB, _T("Export Simple Web page"));
+	mWebAppUseSimpleWeb              = new wxCheckBox(panel, CHK_USESIMPLEWEB, _("Export Simple Web page"));
 	mWebAppSimpleWebLocation         = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
 	mWebAppSimpleWebLabel            = new wxStaticText(panel, wxID_ANY, _("Filename:"));
 	mWebAppSimpleWebLocationChooser  = new wxButton(panel, BTN_BROWSE_SIMPLEWEB, wxT("..."), wxDefaultPosition, wxSize(26, 26));
 
-	mWebAppUseSimpleText             = new wxCheckBox(panel, CHK_USESIMPLETEXT, _T("Export Simple Text file"));
+	mWebAppUseSimpleText             = new wxCheckBox(panel, CHK_USESIMPLETEXT, _("Export Simple Text file"));
 	mWebAppSimpleTextLocation        = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
 	mWebAppSimpleTextLabel           = new wxStaticText(panel, wxID_ANY, _("Filename:"));
 	mWebAppSimpleTextLocationChooser = new wxButton(panel, BTN_BROWSE_SIMPLETEXT, wxT("..."), wxDefaultPosition, wxSize(26, 26));
