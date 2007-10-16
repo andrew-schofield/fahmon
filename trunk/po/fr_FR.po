@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2007-10-14 20:20+0100\n"
+"POT-Creation-Date: 2007-10-16 15:54+0100\n"
 "PO-Revision-Date: 2007-08-27 01:13+0100\n"
 "Last-Translator: Le Garrec Patrice <thor@pcperf.fr>\n"
 "Language-Team: french <http://folding.mesdiscussions.net/foldinghome/Aide-"
@@ -935,6 +935,18 @@ msgstr "Windows Explorer"
 #: src/preferencesDialog.cpp:411 src/preferencesDialog.cpp:414
 msgid "Other"
 msgstr "Autre"
+
+#: src/preferencesDialog.cpp:494
+msgid "Export Web Application"
+msgstr ""
+
+#: src/preferencesDialog.cpp:499
+msgid "Export Simple Web page"
+msgstr ""
+
+#: src/preferencesDialog.cpp:504
+msgid "Export Simple Text file"
+msgstr ""
 
 #: src/preferencesDialog.cpp:923
 msgid "Choose a local project data file"

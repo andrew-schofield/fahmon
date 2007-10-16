@@ -8,5 +8,9 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-SUBDIRS = 16 24 32 48 64 128 256
+EXTRA_DIST = fahmon.png
+
+fahmoniconspixdir = $(datadir)/icons/hicolor/256x256/apps
+
+fahmoniconspix_DATA = $(EXTRA_DIST)
 
