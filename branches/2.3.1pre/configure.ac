@@ -64,6 +64,9 @@ AC_CONFIG_FILES([
    src/images/icons/24/Makefile
    src/images/icons/32/Makefile
    src/images/icons/48/Makefile
+   src/images/icons/64/Makefile
+   src/images/icons/128/Makefile
+   src/images/icons/256/Makefile
 ])
 
 AC_OUTPUT

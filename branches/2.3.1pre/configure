@@ -6166,7 +6166,7 @@ _ACEOF
 
 
 
-ac_config_files="$ac_config_files Makefile README doc/Makefile m4/Makefile po/Makefile.in resources/Makefile src/Makefile src/include/Makefile src/images/Makefile src/images/icons/Makefile src/images/icons/16/Makefile src/images/icons/24/Makefile src/images/icons/32/Makefile src/images/icons/48/Makefile"
+ac_config_files="$ac_config_files Makefile README doc/Makefile m4/Makefile po/Makefile.in resources/Makefile src/Makefile src/include/Makefile src/images/Makefile src/images/icons/Makefile src/images/icons/16/Makefile src/images/icons/24/Makefile src/images/icons/32/Makefile src/images/icons/48/Makefile src/images/icons/64/Makefile src/images/icons/128/Makefile src/images/icons/256/Makefile"
 
 
 cat >confcache <<\_ACEOF
@@ -6776,6 +6776,9 @@ do
     "src/images/icons/24/Makefile") CONFIG_FILES="$CONFIG_FILES src/images/icons/24/Makefile" ;;
     "src/images/icons/32/Makefile") CONFIG_FILES="$CONFIG_FILES src/images/icons/32/Makefile" ;;
     "src/images/icons/48/Makefile") CONFIG_FILES="$CONFIG_FILES src/images/icons/48/Makefile" ;;
+    "src/images/icons/64/Makefile") CONFIG_FILES="$CONFIG_FILES src/images/icons/64/Makefile" ;;
+    "src/images/icons/128/Makefile") CONFIG_FILES="$CONFIG_FILES src/images/icons/128/Makefile" ;;
+    "src/images/icons/256/Makefile") CONFIG_FILES="$CONFIG_FILES src/images/icons/256/Makefile" ;;
 
   *) { { echo "$as_me:$LINENO: error: invalid argument: $ac_config_target" >&5
 echo "$as_me: error: invalid argument: $ac_config_target" >&2;}
