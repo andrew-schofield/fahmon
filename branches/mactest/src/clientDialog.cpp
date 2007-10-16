@@ -67,7 +67,11 @@ ClientDialog::ClientDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, wxStri
 
 	locationSizer->Add(mClientLocationCtrl, 1, wxALIGN_CENTER_VERTICAL);
 	locationSizer->AddSpacer(FMC_GUI_SPACING_LOW);
+	#ifndef __WXMAC__
 	locationSizer->Add(new wxButton(this, BTN_BROWSE, wxT("..."), wxDefaultPosition, wxSize(26, 26)), 0, wxALIGN_CENTER_VERTICAL);
+	#else
+	locationSizer->Add(new wxButton(this, BTN_BROWSE, _("Choose"), wxDefaultPosition), 0, wxALIGN_CENTER_VERTICAL);
+	#endif
 
 	// The top part: it contains the two wxTextCtrl and their labels
 	groupSizer      = new wxStaticBoxSizer(wxVERTICAL, this, _("Client information"));
