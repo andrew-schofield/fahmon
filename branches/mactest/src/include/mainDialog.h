@@ -92,7 +92,7 @@
 #elif __WXGTK__
 #define PREF_TOOLS_FILEMANAGER_DV wxT("konqueror --profile filemanagement");
 #elif __WXMAC__
-#define PREF_TOOLS_FILEMANAGER_DV wxT("finder.app");
+#define PREF_TOOLS_FILEMANAGER_DV wxT("open");
 #endif
 
 // Custom events

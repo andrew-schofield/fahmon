@@ -815,6 +815,15 @@ inline void PreferencesDialog::LoadPreferences(void)
 	{
 		mSystemFileManager->Select(4);
 	}
+	#elif __WXMAC__
+	if(filemanager == wxT("open"))
+	{
+		mSystemFileManager->Select(0);
+	}
+	else // other filemanager
+	{
+		mSystemFileManager->Select(1);
+	}
 	#endif
 
 	if (mInitOverrideTz == true)
@@ -1178,7 +1187,21 @@ void PreferencesDialog::OnChoices(wxCommandEvent& event)
 				default:
 					break;
 			}
-
+			#elif __WXMAC__
+			switch(mSystemFileManager->GetSelection())
+			{
+			// ---
+				case 0: //Finder
+					mSystemOtherFM->SetValue(wxT("open"));
+					break;
+				
+				case 1: //Other
+					mSystemOtherFM->SetValue(wxT(""));
+					break;
+					
+				default:
+					break;
+			}
 			#endif
 			break;
 

@@ -70,7 +70,7 @@ ClientDialog::ClientDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, wxStri
 	#ifndef __WXMAC__
 	locationSizer->Add(new wxButton(this, BTN_BROWSE, wxT("..."), wxDefaultPosition, wxSize(26, 26)), 0, wxALIGN_CENTER_VERTICAL);
 	#else
-	locationSizer->Add(new wxButton(this, BTN_BROWSE, _("Choose"), wxDefaultPosition), 0, wxALIGN_CENTER_VERTICAL);
+	locationSizer->Add(new wxButton(this, BTN_BROWSE, _("Choose")), 0, wxALIGN_CENTER_VERTICAL);
 	#endif
 
 	// The top part: it contains the two wxTextCtrl and their labels
@@ -103,6 +103,7 @@ ClientDialog::ClientDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, wxStri
 	topLevelSizer->Add(mainSizer, 1, wxEXPAND | wxALL, FMC_GUI_BORDER);
 	SetSizer(topLevelSizer);
 	topLevelSizer->Fit(this);
+	
 }
 
 
