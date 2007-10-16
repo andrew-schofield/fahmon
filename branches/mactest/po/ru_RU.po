@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: ru_RU v.061 07/09/2007\n"
+"Project-Id-Version: ru_RU v.231 16/10/2007\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2007-10-15 00:54+0100\n"
-"PO-Revision-Date: 2007-09-07 19:54+0300\n"
+"POT-Creation-Date: 2007-10-16 15:54+0100\n"
+"PO-Revision-Date: 2007-10-14 16:50+0300\n"
 "Last-Translator: Evgeniy Chorpita, 2007 <tsc.behc@gmail.com>\n"
 "Language-Team: TSC! Russia <http://tsc.overclockers.ru/>\n"
 "MIME-Version: 1.0\n"
@@ -35,7 +35,7 @@ msgstr "Библиотека:"
 
 #: src/benchmarksDialog.cpp:58 src/trayManager.cpp:200
 msgid "Benchmarks"
-msgstr "Ориентиры"
+msgstr "Производительность"
 
 #: src/benchmarksDialog.cpp:80
 msgid "Projects"
@@ -43,7 +43,7 @@ msgstr "Задание"
 
 #: src/benchmarksDialog.cpp:238
 msgid "No benchmarks for this project!"
-msgstr "Нет ориентиров для этого задания!"
+msgstr "Нет производительности для этого задания!"
 
 #: src/benchmarksDialog.cpp:246
 #, c-format
@@ -130,7 +130,8 @@ msgstr "Невозможно открыть файл <%s> для записи!"
 
 #: src/benchmarksManager.cpp:296
 msgid "(Benchmarks) The maximum number of known clients has been reached!"
-msgstr "(Ориентиры) Максимальная скорость расчетов, достигнутая клиентами!"
+msgstr ""
+"(Производительность) Максимальная скорость расчетов, достигнутая клиентами!"
 
 #: src/benchmarksManager.cpp:436
 msgid "Unknown client"
@@ -417,7 +418,7 @@ msgid ""
 "The latest version of %s will always be available on the official website:"
 msgstr "Последняя версия %s всегда доступна на официальном сайте:"
 
-#: src/firstTimeDialog.cpp:147 src/main.cpp:149
+#: src/firstTimeDialog.cpp:147 src/main.cpp:134
 #, c-format
 msgid "Could not create directory <%s>"
 msgstr "Невозможно создать папку <%s>"
@@ -489,11 +490,11 @@ msgid ""
 "\n"
 "Please check that the correct filemanager is set in Preferences"
 msgstr ""
-"Невозможно запустить установленный по-умолчанию файловый менеджер .\n"
+"Невозможно запустить установленный по-умолчанию менеджер файлов.\n"
 "\n"
-"Пожалуйста проверьте правильность пармаетров файлового менеджера в Настройках"
+"Пожалуйста проверьте правильность параметров менеджера файлов в Настройках"
 
-#: src/main.cpp:75
+#: src/main.cpp:73
 #, c-format
 msgid "Another instance of %s is already running!"
 msgstr "Другая копия %s уже запущена!"
@@ -551,11 +552,11 @@ msgstr "Обновить локальную базу заданий"
 
 #: src/mainDialog.cpp:591
 msgid "&Benchmarks...\tCTRL+B"
-msgstr "&Ориентиры...\tCTRL+B"
+msgstr "П&роизводительность...\tCTRL+B"
 
 #: src/mainDialog.cpp:591
 msgid "Open the benchmarks dialog"
-msgstr "Открыть диалог ориентиров"
+msgstr "Открыть диалог производительности"
 
 #: src/mainDialog.cpp:592
 msgid "&Preferences...\tCTRL+P"
@@ -600,11 +601,11 @@ msgstr "Приклеить окно лога клиента внизу"
 
 #: src/mainDialog.cpp:611
 msgid "&Cycle ETA Style\tF9"
-msgstr ""
+msgstr "Переключить стиль &РВО\tF9"
 
 #: src/mainDialog.cpp:611
 msgid "Cycle through the different ETA display styles"
-msgstr ""
+msgstr "Переключение между различными стилями показа РВО"
 
 #: src/mainDialog.cpp:612
 msgid "&Monitoring"
@@ -770,7 +771,7 @@ msgstr "Система"
 
 #: src/preferencesDialog.cpp:104
 msgid "WebApp"
-msgstr ""
+msgstr "Web экспорт"
 
 #: src/preferencesDialog.cpp:174
 msgid "Enable system tray icon"
@@ -782,7 +783,7 @@ msgstr "Запускать свёрнутым в трей"
 
 #: src/preferencesDialog.cpp:176
 msgid "Collect .xyz files"
-msgstr "Сохранять .xyz файлы в базу"
+msgstr "Сохранять файлы .xyz в базу"
 
 #: src/preferencesDialog.cpp:177
 msgid "Auto update projects database when needed"
@@ -837,7 +838,6 @@ msgid "Ignore asynchronous clocks"
 msgstr "Игнорировать асинхронность часов"
 
 #: src/preferencesDialog.cpp:231
-#, fuzzy
 msgid "Display dates as"
 msgstr "Показывать Расчетное Время Окончания как"
 
@@ -900,7 +900,7 @@ msgstr "Обозреватель:"
 
 #: src/preferencesDialog.cpp:404
 msgid "File Manager:"
-msgstr "Файловый менеджер:"
+msgstr "Менеджер файлов:"
 
 #: src/preferencesDialog.cpp:406
 msgid "File Manager Command:"
@@ -918,21 +918,33 @@ msgstr "Проводник"
 msgid "Other"
 msgstr "Прочее"
 
+#: src/preferencesDialog.cpp:494
+msgid "Export Web Application"
+msgstr ""
+
+#: src/preferencesDialog.cpp:499
+msgid "Export Simple Web page"
+msgstr ""
+
+#: src/preferencesDialog.cpp:504
+msgid "Export Simple Text file"
+msgstr ""
+
 #: src/preferencesDialog.cpp:923
 msgid "Choose a local project data file"
 msgstr "Выбрать локальный файл для данных заданий"
 
 #: src/preferencesDialog.cpp:940
 msgid "Choose where to save the Web Application"
-msgstr ""
+msgstr "Выберите куда сохранить Web приложение"
 
 #: src/preferencesDialog.cpp:957
 msgid "Choose where to save the simple web page"
-msgstr ""
+msgstr "Выберите куда сохранить простую Web страницу"
 
 #: src/preferencesDialog.cpp:974
 msgid "Choose where to save the simple text file"
-msgstr ""
+msgstr "Выберите куда сохранить простой текстовый файл"
 
 #: src/preferencesManager.cpp:231
 msgid "There is no Preferences file, or it is not readable"
@@ -1039,15 +1051,15 @@ msgstr "Показать FahMon"
 
 #: src/webMonitor.cpp:291 src/webMonitor.cpp:386
 msgid "Inaccessible"
-msgstr ""
+msgstr "Недоступен"
 
 #: src/webMonitor.cpp:296 src/webMonitor.cpp:390
 msgid "Stopped"
-msgstr ""
+msgstr "Остановлен"
 
 #: src/webMonitor.cpp:301 src/webMonitor.cpp:394
 msgid "Inactive"
-msgstr ""
+msgstr "Неактивен"
 
 #: src/webMonitor.cpp:306 src/webMonitor.cpp:398
 msgid "Hung"
@@ -1055,11 +1067,11 @@ msgstr "Завис"
 
 #: src/webMonitor.cpp:311
 msgid "Async"
-msgstr ""
+msgstr "Асинхрон"
 
 #: src/webMonitor.cpp:316
 msgid "Ok"
-msgstr ""
+msgstr "OK"
 
 #: src/webMonitor.cpp:350
 #, c-format
@@ -1067,15 +1079,17 @@ msgid ""
 "Could not open file <%s> for writing!\n"
 "The web application will not be created!"
 msgstr ""
+"Невозможно открыть файл <%s> для записи!\n"
+"Web приложение не будет создано!"
 
 #: src/webMonitor.cpp:376
 #, c-format
 msgid "%s Web View - Last updated: %s"
-msgstr ""
+msgstr "%s Web Просмотр - Последнее обновление: %s"
 
 #: src/webMonitor.cpp:402
 msgid "Asynch"
-msgstr ""
+msgstr "Асинхрон"
 
 #: src/webMonitor.cpp:429
 #, c-format
@@ -1083,14 +1097,16 @@ msgid ""
 "Could not open file <%s> for writing!\n"
 "The simple web output will not be created!"
 msgstr ""
+"Невозможно открыть файл <%s> для записи!\n"
+"Просмотр простой web не будет создан!"
 
 #: src/webMonitor.cpp:436 src/webMonitor.cpp:462
 msgid "State"
-msgstr ""
+msgstr "Статус"
 
 #: src/webMonitor.cpp:436 src/webMonitor.cpp:462
 msgid "PRCG"
-msgstr ""
+msgstr "PRCG"
 
 #: src/webMonitor.cpp:436 src/webMonitor.cpp:462
 msgid "Credit"
@@ -1106,6 +1122,8 @@ msgid ""
 "Could not open file <%s> for writing!\n"
 "The simple text output will not be created!"
 msgstr ""
+"Невозможно открыть файл <%s> для записи!\n"
+"Просмотр простым текстом не будет создан!"
 
 #: src/webMonitor.cpp:461
 #, c-format
@@ -1113,6 +1131,8 @@ msgid ""
 "FahMon Client Monitoring %s - Simple Text Output\n"
 "\n"
 msgstr ""
+"FahMon Мониторинг Клиентов %s - Простой текстовый вывод\n"
+"\n"
 
 #~ msgid "Show deadlines and download times in days"
 #~ msgstr "Показывать дедлайн и время скачивания в днях"

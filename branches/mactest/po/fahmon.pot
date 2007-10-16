@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2007-10-15 00:54+0100\n"
+"POT-Creation-Date: 2007-10-16 15:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -397,7 +397,7 @@ msgid ""
 "The latest version of %s will always be available on the official website:"
 msgstr ""
 
-#: src/firstTimeDialog.cpp:147 src/main.cpp:149
+#: src/firstTimeDialog.cpp:147 src/main.cpp:134
 #, c-format
 msgid "Could not create directory <%s>"
 msgstr ""
@@ -470,7 +470,7 @@ msgid ""
 "Please check that the correct filemanager is set in Preferences"
 msgstr ""
 
-#: src/main.cpp:75
+#: src/main.cpp:73
 #, c-format
 msgid "Another instance of %s is already running!"
 msgstr ""
@@ -888,6 +888,18 @@ msgstr ""
 
 #: src/preferencesDialog.cpp:411 src/preferencesDialog.cpp:414
 msgid "Other"
+msgstr ""
+
+#: src/preferencesDialog.cpp:494
+msgid "Export Web Application"
+msgstr ""
+
+#: src/preferencesDialog.cpp:499
+msgid "Export Simple Web page"
+msgstr ""
+
+#: src/preferencesDialog.cpp:504
+msgid "Export Simple Text file"
 msgstr ""
 
 #: src/preferencesDialog.cpp:923

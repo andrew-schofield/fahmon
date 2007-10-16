@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FahMon 2.2.3 PL\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2007-10-15 00:54+0100\n"
+"POT-Creation-Date: 2007-10-16 15:54+0100\n"
 "PO-Revision-Date: 2007-09-07 03:17+0100\n"
 "Last-Translator: Mariusz Pociask <mariusz.pociask@epf.pl>\n"
 "Language-Team: \n"
@@ -425,7 +425,7 @@ msgid ""
 msgstr ""
 "Najnowsza wersja programu %s będzie zawsze dostępna na oficjalnej stronie:"
 
-#: src/firstTimeDialog.cpp:147 src/main.cpp:149
+#: src/firstTimeDialog.cpp:147 src/main.cpp:134
 #, c-format
 msgid "Could not create directory <%s>"
 msgstr "Nie można utworzyć katalogu <%s>"
@@ -501,7 +501,7 @@ msgstr ""
 "\n"
 "Sprawdź, czy w ustawieniach został wybrany właściwy"
 
-#: src/main.cpp:75
+#: src/main.cpp:73
 #, c-format
 msgid "Another instance of %s is already running!"
 msgstr "Działa już inna instancja %s !"
@@ -929,6 +929,18 @@ msgstr "Eksplorator Windows"
 #: src/preferencesDialog.cpp:411 src/preferencesDialog.cpp:414
 msgid "Other"
 msgstr "Inny"
+
+#: src/preferencesDialog.cpp:494
+msgid "Export Web Application"
+msgstr ""
+
+#: src/preferencesDialog.cpp:499
+msgid "Export Simple Web page"
+msgstr ""
+
+#: src/preferencesDialog.cpp:504
+msgid "Export Simple Text file"
+msgstr ""
 
 #: src/preferencesDialog.cpp:923
 msgid "Choose a local project data file"

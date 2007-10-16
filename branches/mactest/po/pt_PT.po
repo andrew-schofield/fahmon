@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fahmon_pt_PT\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2007-10-15 00:54+0100\n"
+"POT-Creation-Date: 2007-10-16 15:54+0100\n"
 "PO-Revision-Date: 2007-09-07 01:04-0000\n"
 "Last-Translator: Filipe Rodrigues <shello.stb@gmail.com>\n"
 "Language-Team: Português de Portugal <en@li.org>\n"
@@ -426,7 +426,7 @@ msgid ""
 "The latest version of %s will always be available on the official website:"
 msgstr "A versão mais recente do %s estará sempre disponível no sítio oficial:"
 
-#: src/firstTimeDialog.cpp:147 src/main.cpp:149
+#: src/firstTimeDialog.cpp:147 src/main.cpp:134
 #, c-format
 msgid "Could not create directory <%s>"
 msgstr "Impossível criar a directoria <%s>"
@@ -503,7 +503,7 @@ msgstr ""
 "Por favor, verifique que o gerenciador de ficheiros está definido nas "
 "Preferências"
 
-#: src/main.cpp:75
+#: src/main.cpp:73
 #, c-format
 msgid "Another instance of %s is already running!"
 msgstr "Outra instância do %s já está a correr!"
@@ -943,6 +943,18 @@ msgstr "Explorador do Windows"
 #: src/preferencesDialog.cpp:411 src/preferencesDialog.cpp:414
 msgid "Other"
 msgstr "Outro"
+
+#: src/preferencesDialog.cpp:494
+msgid "Export Web Application"
+msgstr ""
+
+#: src/preferencesDialog.cpp:499
+msgid "Export Simple Web page"
+msgstr ""
+
+#: src/preferencesDialog.cpp:504
+msgid "Export Simple Text file"
+msgstr ""
 
 #: src/preferencesDialog.cpp:923
 msgid "Choose a local project data file"
