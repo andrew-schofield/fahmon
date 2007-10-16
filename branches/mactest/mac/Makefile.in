@@ -335,7 +335,7 @@ uninstall-am: uninstall-info-am
 	uninstall-info-am
 
 
-FahMon.app: Info.plist fahmon.icns
+FahMon.app:
 	-cp Info.plist ../FahMon.app/Contents/
 	-cp fahmon.icns ../FahMon.app/Contents/Resources/
 # Tell versions [3.59,3.63) of GNU make to not export all variables.

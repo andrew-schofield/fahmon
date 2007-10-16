@@ -12,6 +12,6 @@ EXTRA_DIST = \
 	fahmon.icns \
 	Info.plist.in
 
-FahMon.app: Info.plist fahmon.icns
+FahMon.app:
 	-cp Info.plist ../FahMon.app/Contents/
 	-cp fahmon.icns ../FahMon.app/Contents/Resources/
