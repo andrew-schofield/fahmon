@@ -21,7 +21,11 @@
 #include "wx/panel.h"
 #include "wx/dialog.h"
 #include "wx/choice.h"
+#ifndef __WXMAC__
 #include "wx/notebook.h"
+#else
+#include "wx/choicebk.h"
+#endif
 #include "wx/textctrl.h"
 #include "wx/checkbox.h"
 #include "wx/spinctrl.h"
@@ -120,13 +124,13 @@ protected:
 	PreferencesDialog(wxWindow* parent);
 	~PreferencesDialog(void);
 
-	wxPanel* CreateGeneralTab(wxNotebook* parent);
-	wxPanel* CreateMonitoringTab(wxNotebook* parent);
-	wxPanel* CreateNetworkingTab(wxNotebook* parent);
-	wxPanel* CreateAdvancedTab(wxNotebook* parent);
-	wxPanel* CreateSystemTab(wxNotebook* parent);
-	//wxPanel* CreateFahinfoTab(wxNotebook* parent);
-	wxPanel* CreateWebAppTab(wxNotebook* parent);
+	wxPanel* CreateGeneralTab(wxBookCtrlBase* parent);
+	wxPanel* CreateMonitoringTab(wxBookCtrlBase* parent);
+	wxPanel* CreateNetworkingTab(wxBookCtrlBase* parent);
+	wxPanel* CreateAdvancedTab(wxBookCtrlBase* parent);
+	wxPanel* CreateSystemTab(wxBookCtrlBase* parent);
+	//wxPanel* CreateFahinfoTab(wxBookCtrlBase* parent);
+	wxPanel* CreateWebAppTab(wxBookCtrlBase* parent);
 
 	void LoadPreferences(void);
 	void SavePreferences(void);
@@ -138,7 +142,9 @@ protected:
 	void OnSimpleTextBrowseButton(wxCommandEvent& event);
 	void OnCheckboxes(wxCommandEvent& event);
 	void OnChoices(wxCommandEvent& event);
-
+	#ifdef __WXMAC__
+	void OnClose(wxCloseEvent& event);
+	#endif
 
 public:
 	// Singleton pattern

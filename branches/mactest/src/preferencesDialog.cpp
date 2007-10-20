@@ -74,6 +74,10 @@ BEGIN_EVENT_TABLE(PreferencesDialog, wxDialog)
 	EVT_CHECKBOX(CHK_USESIMPLETEXT,             PreferencesDialog::OnCheckboxes)
 	EVT_CHOICE(CHC_FILEMANAGER,                 PreferencesDialog::OnChoices)
 	// EVT_CHOICE(CHK_PPDTYPE, PreferencesDialog::OnChoices)
+	
+	#ifdef __WXMAC__
+	EVT_CLOSE(PreferencesDialog::OnClose)
+	#endif
 
 END_EVENT_TABLE()
 
@@ -89,11 +93,23 @@ PreferencesDialog::PreferencesDialog(wxWindow* parent) : wxDialog(parent, wxID_A
 {
 	wxBoxSizer *topLevelSizer;
 	wxBoxSizer *mainSizer;
+	#ifndef __WXMAC__
 	wxBoxSizer *buttonsSizer;
 	wxNotebook *noteBook;
-
+	#else
+	wxChoicebook *noteBook;
+	#endif
+	
 	// Preferences are divided into groups, thanks to a wxNoteBook (tabbed control)
+	#ifndef __WXMAC__
 	noteBook = new wxNotebook(this, wxID_ANY);
+	#else
+	noteBook = new wxChoicebook(this, wxID_ANY);
+	#endif
+	
+	//this.SetFont(wxSMALL_FONT);
+	
+	//noteBook.SetFont(wxSMALL_FONT);
 
 	noteBook->AddPage(CreateGeneralTab(noteBook),    _("General"));
 	noteBook->AddPage(CreateMonitoringTab(noteBook), _("Monitoring"));
@@ -103,19 +119,22 @@ PreferencesDialog::PreferencesDialog(wxWindow* parent) : wxDialog(parent, wxID_A
 	//noteBook->AddPage(CreateFahinfoTab(noteBook),    _T("fahinfo.org"));
 	noteBook->AddPage(CreateWebAppTab(noteBook),     _("WebApp"));
 
+#ifndef __WXMAC__
 	// Buttons 'Ok' and 'Cancel' are right-aligned
 	buttonsSizer = new wxBoxSizer(wxHORIZONTAL);
 
 	buttonsSizer->Add(new wxButton(this, wxID_CANCEL), 0, wxALIGN_RIGHT);
 	buttonsSizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	buttonsSizer->Add(new wxButton(this, wxID_OK), 0, wxALIGN_RIGHT);
-
+#endif
 	// Construct the dialog
 	mainSizer = new wxBoxSizer(wxVERTICAL);
 
 	mainSizer->Add(noteBook, 1, wxEXPAND);
 	mainSizer->AddSpacer(FMC_GUI_SPACING_HIGH);
+#ifndef __WXMAC__
 	mainSizer->Add(buttonsSizer, 0, wxALIGN_RIGHT);
+#endif
 
 	// The final sizer
 	topLevelSizer = new wxBoxSizer(wxVERTICAL);
@@ -162,7 +181,7 @@ void PreferencesDialog::DestroyInstance(void)
 /**
 * Create the tab containing general preferences
 **/
-inline wxPanel* PreferencesDialog::CreateGeneralTab(wxNotebook* parent)
+inline wxPanel* PreferencesDialog::CreateGeneralTab(wxBookCtrlBase* parent)
 {
 	wxPanel    *panel;
 	wxBoxSizer *sizer;
@@ -200,7 +219,7 @@ inline wxPanel* PreferencesDialog::CreateGeneralTab(wxNotebook* parent)
 /**
 * Create the tab containing monitoring preferences
 **/
-inline wxPanel* PreferencesDialog::CreateMonitoringTab(wxNotebook* parent)
+inline wxPanel* PreferencesDialog::CreateMonitoringTab(wxBookCtrlBase* parent)
 {
 	wxPanel    *panel;
 	wxBoxSizer *sizer;
@@ -263,7 +282,7 @@ inline wxPanel* PreferencesDialog::CreateMonitoringTab(wxNotebook* parent)
 /**
 * Create the tab containing networking preferences
 **/
-inline wxPanel* PreferencesDialog::CreateNetworkingTab(wxNotebook* parent)
+inline wxPanel* PreferencesDialog::CreateNetworkingTab(wxBookCtrlBase* parent)
 {
 	wxPanel    *panel;
 	wxBoxSizer *sizer;
@@ -281,12 +300,12 @@ inline wxPanel* PreferencesDialog::CreateNetworkingTab(wxNotebook* parent)
 	mNetworkingProxyAddress           = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
 	mNetworkingProxyPort              = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition, wxDefaultSize, 0, wxTextValidator(wxFILTER_NUMERIC));
 	mNetworkingUseProxyAuthentication = new wxCheckBox(panel, CHK_PROXYAUTHENTICATION, _("Proxy requires authentication"));
-	mNetworkingProxyUsername          = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
+	mNetworkingProxyUsername          = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition, wxDefaultSize);
 	mNetworkingProxyPassword          = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition, wxDefaultSize, wxTE_PASSWORD);
 	mNetworkingLabelAddress           = new wxStaticText(panel, wxID_ANY, _("Address:"));
 	mNetworkingLabelPort              = new wxStaticText(panel, wxID_ANY, _("Port:"));
-	mNetworkingLabelUsername          = new wxStaticText(panel, wxID_ANY, _("Proxy\nUsername:"));
-	mNetworkingLabelPassword          = new wxStaticText(panel, wxID_ANY, _("Proxy\nPassword:"));
+	mNetworkingLabelUsername          = new wxStaticText(panel, wxID_ANY, _("Username:"));
+	mNetworkingLabelPassword          = new wxStaticText(panel, wxID_ANY, _("Password:"));
 
 	proxyAddressSizer->Add(mNetworkingLabelAddress, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
 	proxyAddressSizer->Add(mNetworkingProxyAddress, 1, wxALIGN_CENTER_VERTICAL | wxEXPAND);
@@ -295,7 +314,7 @@ inline wxPanel* PreferencesDialog::CreateNetworkingTab(wxNotebook* parent)
 	proxyAddressSizer->Add(mNetworkingProxyPort, 1, wxALIGN_CENTER_VERTICAL);
 
 	proxyAuthenticationSizer->Add(mNetworkingLabelUsername, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
-	proxyAuthenticationSizer->Add(mNetworkingProxyUsername, 1, wxALIGN_CENTER_VERTICAL | wxEXPAND);
+	proxyAuthenticationSizer->Add(mNetworkingProxyUsername, 1, wxALIGN_CENTER_VERTICAL);
 	proxyAuthenticationSizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	proxyAuthenticationSizer->Add(mNetworkingLabelPassword, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
 	proxyAuthenticationSizer->Add(mNetworkingProxyPassword, 1, wxALIGN_CENTER_VERTICAL);
@@ -319,7 +338,7 @@ inline wxPanel* PreferencesDialog::CreateNetworkingTab(wxNotebook* parent)
 /**
 * Create the tab containing networking preferences
 **/
-inline wxPanel* PreferencesDialog::CreateAdvancedTab(wxNotebook* parent)
+inline wxPanel* PreferencesDialog::CreateAdvancedTab(wxBookCtrlBase* parent)
 {
 	wxPanel    *panel;
 	wxBoxSizer *sizer;
@@ -386,7 +405,7 @@ inline wxPanel* PreferencesDialog::CreateAdvancedTab(wxNotebook* parent)
 /**
 * Create the tab containing general preferences
 **/
-inline wxPanel* PreferencesDialog::CreateSystemTab(wxNotebook* parent)
+inline wxPanel* PreferencesDialog::CreateSystemTab(wxBookCtrlBase* parent)
 {
 	wxPanel    *panel;
 	wxBoxSizer *sizer;
@@ -463,7 +482,7 @@ inline wxPanel* PreferencesDialog::CreateSystemTab(wxNotebook* parent)
 /**
 * Create the tab containing fahinfo.org integration preferences
 **/
-/*inline wxPanel* PreferencesDialog::CreateFahinfoTab(wxNotebook* parent)
+/*inline wxPanel* PreferencesDialog::CreateFahinfoTab(wxBookCtrlBase* parent)
 {
 	wxPanel    *panel;
 
@@ -476,7 +495,7 @@ inline wxPanel* PreferencesDialog::CreateSystemTab(wxNotebook* parent)
 /**
 * Create the tab containing web application preferences
 **/
-inline wxPanel* PreferencesDialog::CreateWebAppTab(wxNotebook* parent)
+inline wxPanel* PreferencesDialog::CreateWebAppTab(wxBookCtrlBase* parent)
 {
 	wxPanel    *panel;
 	wxBoxSizer *sizer;
@@ -940,6 +959,17 @@ void PreferencesDialog::OnOkButton(wxCommandEvent& event)
 	event.Skip();
 }
 
+#ifdef __WXMAC__
+/**
+* Mac Specific close routine to save the preferences: no close button
+**/
+void PreferencesDialog::OnClose(wxCloseEvent& event)
+{
+	SavePreferences();
+	PreferencesManager::GetInstance()->Save();
+	event.Skip();
+}
+#endif
 
 /**
 * Show file chooser dialog box
