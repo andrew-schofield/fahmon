@@ -44,6 +44,7 @@ protected:
 	wxCheckBox *mGeneralCollectXYZFiles;
 	wxCheckBox *mGeneralKeepInaccessibleClientsLast;
 	wxCheckBox *mGeneralStartMinimised;
+	wxCheckBox *mGeneralUpdateCheck;
 
 	// Widgets for the monitoring tab
 	wxChoice     *mMonitoringETADisplayStyle;

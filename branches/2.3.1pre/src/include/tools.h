@@ -41,6 +41,7 @@ public:
 	// Miscellaneous message boxes
 	static void ErrorMsgBox(const wxString& error) {MsgBox(error, wxICON_ERROR | wxOK);}
 	static bool QuestionMsgBox(const wxString& question) {return MsgBox(question, wxICON_QUESTION | wxYES_NO) == wxYES;}
+	static void InfoMsgBox(const wxString& information) {MsgBox(information, wxICON_INFORMATION | wxOK);}
 };
 
 
