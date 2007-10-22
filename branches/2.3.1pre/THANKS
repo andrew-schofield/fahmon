@@ -2,7 +2,7 @@ FahMon THANKS file
 
 FahMon has originally been written by Francois Ingelrest. It is now
 maintained and developed by Andrew Schofield.
-Many people have further contributed to FahMon by reporting problems, 
+Many people have further contributed to FahMon by reporting problems,
 suggesting various improvements, or submitting actual code. Here is
 a list of these people. Help me keep it complete and exempt of errors.
 
@@ -20,6 +20,7 @@ Polish (pl_PL) - Mariusz Pociask
 French (fr_FR) - Patrice Le Garrec
 Swedish (sv_SE) - Olof Persson
 Czech (cs_CZ) - Martin Bednar
+Dutch (nl_NL) - Bastien
 
 For instructions on how you can help with the translation effort, please see the
 TRANSLATIONS section of README.
