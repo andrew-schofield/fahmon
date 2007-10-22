@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: ru_RU v.231 16/10/2007\n"
+"Project-Id-Version: ru_RU v.231 22/10/2007\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2007-10-21 22:52+0100\n"
-"PO-Revision-Date: 2007-10-14 16:50+0300\n"
+"POT-Creation-Date: 2007-10-22 21:36+0100\n"
+"PO-Revision-Date: 2007-10-22 21:04+0300\n"
 "Last-Translator: Evgeniy Chorpita, 2007 <tsc.behc@gmail.com>\n"
 "Language-Team: TSC! Russia <http://tsc.overclockers.ru/>\n"
 "MIME-Version: 1.0\n"
@@ -552,11 +552,11 @@ msgstr "Обновить локальную базу заданий"
 
 #: src/mainDialog.cpp:602
 msgid "&Check for update"
-msgstr ""
+msgstr "Проверить &обновление"
 
 #: src/mainDialog.cpp:602
 msgid "Check online for the latest version of FahMon"
-msgstr ""
+msgstr "Проверить в интернете наличие новой версии FahMon"
 
 #: src/mainDialog.cpp:604
 msgid "&Benchmarks...\tCTRL+B"
@@ -741,30 +741,32 @@ msgstr "Вы должны сначала выбрать клиента!"
 
 #: src/mainDialog.cpp:1365
 msgid "Checking for FahMon updates"
-msgstr ""
+msgstr "Проверить наличие новой версии FahMon"
 
 #: src/mainDialog.cpp:1369
 msgid "Checking for update"
-msgstr ""
+msgstr "Проверка обновления"
 
 #: src/mainDialog.cpp:1388
 #, c-format
 msgid "Your version: %s; New version: %s"
-msgstr ""
+msgstr "Ваша версия: %s; Новая версия: %s"
 
 #: src/mainDialog.cpp:1402
 msgid "Update available"
-msgstr ""
+msgstr "Доступно обновление"
 
 #: src/mainDialog.cpp:1403
 msgid ""
 "A newer version of FahMon is available\n"
 "Do you want to go to the FahMon website?"
 msgstr ""
+"Вышла новая версия FahMon\n"
+"Хотите перейти на страницу загрузки FahMon?"
 
 #: src/mainDialog.cpp:1406
 msgid "No update found"
-msgstr ""
+msgstr "Новых версий нет"
 
 #: src/mainDialog.cpp:1434 src/projectsManager.cpp:342
 msgid "Unable to create a temporary file!"
@@ -855,7 +857,7 @@ msgstr "Всегда показывать неактивных клиентов 
 
 #: src/preferencesDialog.cpp:179
 msgid "Check for FahMon updates on startup"
-msgstr ""
+msgstr "Проверять обновления FahMon при запуске"
 
 #: src/preferencesDialog.cpp:215
 msgid "A date (dd/mm)"
@@ -895,7 +897,7 @@ msgstr "Интервал обновления (мин.)"
 
 #: src/preferencesDialog.cpp:228
 msgid "Use experimental reload system"
-msgstr "Использовать экспериментальную систему обновления"
+msgstr "Использовать экспериментальную систему обновления данных"
 
 #: src/preferencesDialog.cpp:232
 msgid "Ignore asynchronous clocks"
@@ -984,15 +986,15 @@ msgstr "Прочее"
 
 #: src/preferencesDialog.cpp:497
 msgid "Export Web Application"
-msgstr ""
+msgstr "Экспорт Web приложения"
 
 #: src/preferencesDialog.cpp:502
 msgid "Export Simple Web page"
-msgstr ""
+msgstr "Экспорт простой Web страницы"
 
 #: src/preferencesDialog.cpp:507
 msgid "Export Simple Text file"
-msgstr ""
+msgstr "Экспорт простого текстового файла"
 
 #: src/preferencesDialog.cpp:930
 msgid "Choose a local project data file"
@@ -1104,7 +1106,7 @@ msgstr "Неактивен"
 msgid "Hung"
 msgstr "Завис"
 
-#: src/webMonitor.cpp:311
+#: src/webMonitor.cpp:311 src/webMonitor.cpp:402
 msgid "Async"
 msgstr "Асинхрон"
 
@@ -1125,10 +1127,6 @@ msgstr ""
 #, c-format
 msgid "%s Web View - Last updated: %s"
 msgstr "%s Web Просмотр - Последнее обновление: %s"
-
-#: src/webMonitor.cpp:402
-msgid "Asynch"
-msgstr "Асинхрон"
 
 #: src/webMonitor.cpp:429
 #, c-format
@@ -1172,6 +1170,9 @@ msgid ""
 msgstr ""
 "FahMon Мониторинг Клиентов %s - Простой текстовый вывод\n"
 "\n"
+
+#~ msgid "Asynch"
+#~ msgstr "Асинхрон"
 
 #~ msgid "Show deadlines and download times in days"
 #~ msgstr "Показывать дедлайн и время скачивания в днях"

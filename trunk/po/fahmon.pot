@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2007-10-21 22:52+0100\n"
+"POT-Creation-Date: 2007-10-22 21:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1068,7 +1068,7 @@ msgstr ""
 msgid "Hung"
 msgstr ""
 
-#: src/webMonitor.cpp:311
+#: src/webMonitor.cpp:311 src/webMonitor.cpp:402
 msgid "Async"
 msgstr ""
 
@@ -1086,10 +1086,6 @@ msgstr ""
 #: src/webMonitor.cpp:376
 #, c-format
 msgid "%s Web View - Last updated: %s"
-msgstr ""
-
-#: src/webMonitor.cpp:402
-msgid "Asynch"
 msgstr ""
 
 #: src/webMonitor.cpp:429

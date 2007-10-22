@@ -399,7 +399,7 @@ void WebMonitor::WriteApp(void)
 			{
 				textOS.WriteString(_T("<td><img src=\"list_client_stopped.png\" /></td>\n"));
 			}
-			else if(dataArray[currentClient][12] == _("Asynch"))
+			else if(dataArray[currentClient][12] == _("Async"))
 			{
 				textOS.WriteString(_T("<td><img src=\"list_client_asynch.png\" /></td>\n"));
 			}

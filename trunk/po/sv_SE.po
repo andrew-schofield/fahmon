@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FahMon 2.3.0\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2007-10-21 22:52+0100\n"
+"POT-Creation-Date: 2007-10-22 21:36+0100\n"
 "PO-Revision-Date: 2007-10-22 10:29+0100\n"
 "Last-Translator: Olof Persson <floffe@gmail.com>\n"
 "Language-Team: Swedish <floffe@gmail.com>\n"
@@ -1111,7 +1111,7 @@ msgstr "Inaktiv"
 msgid "Hung"
 msgstr "Hängd"
 
-#: src/webMonitor.cpp:311
+#: src/webMonitor.cpp:311 src/webMonitor.cpp:402
 msgid "Async"
 msgstr "Ur synk"
 
@@ -1132,10 +1132,6 @@ msgstr ""
 #, c-format
 msgid "%s Web View - Last updated: %s"
 msgstr "%s Webbsida - Senast uppdaterad: %s"
-
-#: src/webMonitor.cpp:402
-msgid "Asynch"
-msgstr "Ur synk"
 
 #: src/webMonitor.cpp:429
 #, c-format
@@ -1179,6 +1175,9 @@ msgid ""
 msgstr ""
 "FahMon klientövervakning %s - Enkel textrapport\n"
 "\n"
+
+#~ msgid "Asynch"
+#~ msgstr "Ur synk"
 
 #~ msgid "Show deadlines and download times in days"
 #~ msgstr "Visa tidsgränser och nedladdningstider i dagar"
