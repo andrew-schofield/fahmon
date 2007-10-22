@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2007-10-21 22:52+0100\n"
+"POT-Creation-Date: 2007-10-22 21:36+0100\n"
 "PO-Revision-Date: 2007-10-21 22:55+0100\n"
 "Last-Translator: Andrew Schofield <the.uncle.fungus@gmail.com>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -1114,7 +1114,7 @@ msgstr "Inactive"
 msgid "Hung"
 msgstr "Hung"
 
-#: src/webMonitor.cpp:311
+#: src/webMonitor.cpp:311 src/webMonitor.cpp:402
 msgid "Async"
 msgstr "Async"
 
@@ -1135,10 +1135,6 @@ msgstr ""
 #, c-format
 msgid "%s Web View - Last updated: %s"
 msgstr "%s Web View - Last updated: %s"
-
-#: src/webMonitor.cpp:402
-msgid "Asynch"
-msgstr "Asynch"
 
 #: src/webMonitor.cpp:429
 #, c-format
@@ -1182,3 +1178,6 @@ msgid ""
 msgstr ""
 "FahMon Client Monitoring %s - Simple Text Output\n"
 "\n"
+
+#~ msgid "Asynch"
+#~ msgstr "Asynch"

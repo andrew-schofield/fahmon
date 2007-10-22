@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FahMon 2.2.3 PL\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2007-10-21 22:52+0100\n"
+"POT-Creation-Date: 2007-10-22 21:36+0100\n"
 "PO-Revision-Date: 2007-09-07 03:17+0100\n"
 "Last-Translator: Mariusz Pociask <mariusz.pociask@epf.pl>\n"
 "Language-Team: \n"
@@ -1116,7 +1116,7 @@ msgstr ""
 msgid "Hung"
 msgstr "Zawieszony"
 
-#: src/webMonitor.cpp:311
+#: src/webMonitor.cpp:311 src/webMonitor.cpp:402
 msgid "Async"
 msgstr ""
 
@@ -1134,10 +1134,6 @@ msgstr ""
 #: src/webMonitor.cpp:376
 #, c-format
 msgid "%s Web View - Last updated: %s"
-msgstr ""
-
-#: src/webMonitor.cpp:402
-msgid "Asynch"
 msgstr ""
 
 #: src/webMonitor.cpp:429

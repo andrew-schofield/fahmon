@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FahMon 2.3.0\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2007-10-21 22:52+0100\n"
-"PO-Revision-Date: 2007-09-08 23:12+0100\n"
+"POT-Creation-Date: 2007-10-22 21:36+0100\n"
+"PO-Revision-Date: 2007-10-22 10:29+0100\n"
 "Last-Translator: Olof Persson <floffe@gmail.com>\n"
 "Language-Team: Swedish <floffe@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -556,11 +556,11 @@ msgstr "Uppdaterar den lokala projektdatabasen"
 
 #: src/mainDialog.cpp:602
 msgid "&Check for update"
-msgstr ""
+msgstr "&Leta efter uppdateringar"
 
 #: src/mainDialog.cpp:602
 msgid "Check online for the latest version of FahMon"
-msgstr ""
+msgstr "Kontrollera online om det finns en nyare version av FahMon"
 
 #: src/mainDialog.cpp:604
 msgid "&Benchmarks...\tCTRL+B"
@@ -613,11 +613,11 @@ msgstr "Visa/dölj loggfilen"
 
 #: src/mainDialog.cpp:624
 msgid "&Cycle ETA Style\tF9"
-msgstr ""
+msgstr "Växla tidsvisning"
 
 #: src/mainDialog.cpp:624
 msgid "Cycle through the different ETA display styles"
-msgstr ""
+msgstr "Växla mellan de olika visningssätten för beräknad sluttid"
 
 #: src/mainDialog.cpp:625
 msgid "&Monitoring"
@@ -745,30 +745,32 @@ msgstr "Du måste först välja en klient!"
 
 #: src/mainDialog.cpp:1365
 msgid "Checking for FahMon updates"
-msgstr ""
+msgstr "Letar efter uppdateringar till FahMon"
 
 #: src/mainDialog.cpp:1369
 msgid "Checking for update"
-msgstr ""
+msgstr "Letar efter uppdatering"
 
 #: src/mainDialog.cpp:1388
 #, c-format
 msgid "Your version: %s; New version: %s"
-msgstr ""
+msgstr "Din version: %s; Ny version: %s"
 
 #: src/mainDialog.cpp:1402
 msgid "Update available"
-msgstr ""
+msgstr "Nyare version hittad"
 
 #: src/mainDialog.cpp:1403
 msgid ""
 "A newer version of FahMon is available\n"
 "Do you want to go to the FahMon website?"
 msgstr ""
+"En nyare version av FahMon är tillgänglig\n"
+"Vill du gå till FahMons webbplats?"
 
 #: src/mainDialog.cpp:1406
 msgid "No update found"
-msgstr ""
+msgstr "Ingen nyare version hittades"
 
 #: src/mainDialog.cpp:1434 src/projectsManager.cpp:342
 msgid "Unable to create a temporary file!"
@@ -835,7 +837,7 @@ msgstr "System"
 
 #: src/preferencesDialog.cpp:104
 msgid "WebApp"
-msgstr ""
+msgstr "WebApp"
 
 #: src/preferencesDialog.cpp:174
 msgid "Enable system tray icon"
@@ -859,7 +861,7 @@ msgstr "Visa alltid otillgängliga klienter sist"
 
 #: src/preferencesDialog.cpp:179
 msgid "Check for FahMon updates on startup"
-msgstr ""
+msgstr "Leta efter uppdateringar vid start"
 
 #: src/preferencesDialog.cpp:215
 msgid "A date (dd/mm)"
@@ -907,7 +909,7 @@ msgstr "Ignorera felaktiga klockor"
 
 #: src/preferencesDialog.cpp:234
 msgid "Display dates as"
-msgstr ""
+msgstr "Visa datum som"
 
 #: src/preferencesDialog.cpp:240
 msgid "Calculate PPD based on"
@@ -988,15 +990,15 @@ msgstr "Annan"
 
 #: src/preferencesDialog.cpp:497
 msgid "Export Web Application"
-msgstr ""
+msgstr "Exportera WebApp"
 
 #: src/preferencesDialog.cpp:502
 msgid "Export Simple Web page"
-msgstr ""
+msgstr "Exportera enkel webbsida"
 
 #: src/preferencesDialog.cpp:507
 msgid "Export Simple Text file"
-msgstr ""
+msgstr "Exportera enkel textfil"
 
 #: src/preferencesDialog.cpp:930
 msgid "Choose a local project data file"
@@ -1004,15 +1006,15 @@ msgstr "Välj en lokal fil för projektinformation"
 
 #: src/preferencesDialog.cpp:947
 msgid "Choose where to save the Web Application"
-msgstr ""
+msgstr "Välj var Webb-programmet ska sparas"
 
 #: src/preferencesDialog.cpp:964
 msgid "Choose where to save the simple web page"
-msgstr ""
+msgstr "Välj var den enkla webbsidan ska sparas"
 
 #: src/preferencesDialog.cpp:981
 msgid "Choose where to save the simple text file"
-msgstr ""
+msgstr "Välj var den enkla textfilen ska sparas"
 
 #: src/preferencesManager.cpp:231
 msgid "There is no Preferences file, or it is not readable"
@@ -1095,27 +1097,27 @@ msgstr "Visa FahMon"
 
 #: src/webMonitor.cpp:291 src/webMonitor.cpp:386
 msgid "Inaccessible"
-msgstr ""
+msgstr "Otillgänglig"
 
 #: src/webMonitor.cpp:296 src/webMonitor.cpp:390
 msgid "Stopped"
-msgstr ""
+msgstr "Stoppad"
 
 #: src/webMonitor.cpp:301 src/webMonitor.cpp:394
 msgid "Inactive"
-msgstr ""
+msgstr "Inaktiv"
 
 #: src/webMonitor.cpp:306 src/webMonitor.cpp:398
 msgid "Hung"
 msgstr "Hängd"
 
-#: src/webMonitor.cpp:311
+#: src/webMonitor.cpp:311 src/webMonitor.cpp:402
 msgid "Async"
-msgstr ""
+msgstr "Ur synk"
 
 #: src/webMonitor.cpp:316
 msgid "Ok"
-msgstr ""
+msgstr "OK"
 
 #: src/webMonitor.cpp:350
 #, c-format
@@ -1123,15 +1125,13 @@ msgid ""
 "Could not open file <%s> for writing!\n"
 "The web application will not be created!"
 msgstr ""
+"Kunde inte skriva till filen <%s>!\n"
+"Webb-programmet kan inte skapas!"
 
 #: src/webMonitor.cpp:376
 #, c-format
 msgid "%s Web View - Last updated: %s"
-msgstr ""
-
-#: src/webMonitor.cpp:402
-msgid "Asynch"
-msgstr ""
+msgstr "%s Webbsida - Senast uppdaterad: %s"
 
 #: src/webMonitor.cpp:429
 #, c-format
@@ -1139,14 +1139,16 @@ msgid ""
 "Could not open file <%s> for writing!\n"
 "The simple web output will not be created!"
 msgstr ""
+"Kunde inte skriva till filen <%s>!\n"
+"Webbsidan kan inte skapas!"
 
 #: src/webMonitor.cpp:436 src/webMonitor.cpp:462
 msgid "State"
-msgstr ""
+msgstr "Läge"
 
 #: src/webMonitor.cpp:436 src/webMonitor.cpp:462
 msgid "PRCG"
-msgstr ""
+msgstr "PKKG"
 
 #: src/webMonitor.cpp:436 src/webMonitor.cpp:462
 msgid "Credit"
@@ -1162,6 +1164,8 @@ msgid ""
 "Could not open file <%s> for writing!\n"
 "The simple text output will not be created!"
 msgstr ""
+"Kunde inte skriva till filen <%s>!\n"
+"Textfilen kan inte skapas!"
 
 #: src/webMonitor.cpp:461
 #, c-format
@@ -1169,6 +1173,11 @@ msgid ""
 "FahMon Client Monitoring %s - Simple Text Output\n"
 "\n"
 msgstr ""
+"FahMon klientövervakning %s - Enkel textrapport\n"
+"\n"
+
+#~ msgid "Asynch"
+#~ msgstr "Ur synk"
 
 #~ msgid "Show deadlines and download times in days"
 #~ msgstr "Visa tidsgränser och nedladdningstider i dagar"

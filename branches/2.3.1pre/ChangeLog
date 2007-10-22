@@ -31,6 +31,8 @@ v2.3.1
       "Display dates as"
     * Added menu item to cycle through ETA display display styles as requested.
     * Updated about dialog to use new website
+    * HTTP requests from FahMon now send a User-Agent string (i.e. FahMon/2.3.1)
+    * Update notification system added
 
 v2.3.0 (10/09/07)
 
