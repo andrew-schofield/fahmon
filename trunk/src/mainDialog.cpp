@@ -1385,9 +1385,9 @@ void MainDialog::CheckForUpdates(void)
 		return;
 
 	versionInfo = in.GetLine(in.GetLineCount()-1);
-	_LogMsgInfo(wxString::Format(_("Your version: %s; New version: %s"), _T(FMC_VERSION), versionInfo.c_str()));
+	_LogMsgInfo(wxString::Format(_("Your version: %s; New version: %s"), wxT(FMC_VERSION), versionInfo.c_str()));
 
-	if(versionInfo.Cmp(_T(FMC_VERSION)) > 0)
+	if(versionInfo.Cmp(wxT(FMC_VERSION)) > 0)
 	{
 		updateAvailable = true;
 	}
