@@ -11,8 +11,8 @@
 ;General
 
   ;Name and file
-  Name "FahMon 2.3.1pre"
-  OutFile "FahMon-2.3.1pre-Installer.exe"
+  Name "FahMon 2.3.1"
+  OutFile "FahMon-2.3.1-Installer.exe"
 
   ;Default installation folder
   InstallDir "$PROGRAMFILES\FahMon"
@@ -37,7 +37,7 @@
 ;--------------------------------
 ;Pages
 
-  !insertmacro MUI_PAGE_LICENSE "${NSISDIR}\Docs\Modern UI\License.txt"
+  ;!insertmacro MUI_PAGE_LICENSE "${NSISDIR}\Docs\Modern UI\License.txt"
   !insertmacro MUI_PAGE_COMPONENTS
   !insertmacro MUI_PAGE_DIRECTORY
 
@@ -61,7 +61,7 @@
 ;--------------------------------
 ;Installer Sections
 
-Section "!FahMon 2.3.1pre" SecFahMon
+Section "!FahMon 2.3.1" SecFahMon
 
   SetOutPath "$INSTDIR"
 
@@ -159,6 +159,13 @@ Section /o "Czech" secLangcsCZ
   File "lang\cs_CZ\fahmon.mo"
 
 SectionEnd
+Section /o "Dutch" secLangnlNL
+
+  SetOutPath "$INSTDIR\lang\nl_NL"
+  File "lang\nl_NL\nl_NL.po"
+  File "lang\nl_NL\fahmon.mo"
+
+SectionEnd
 SectionGroupEnd
 
 ;--------------------------------
@@ -174,6 +181,7 @@ SectionGroupEnd
   LangString DESC_SecLangruRU ${LANG_ENGLISH} "Install Russian translation"
   LangString DESC_SecLangsvSE ${LANG_ENGLISH} "Install Swedish translation"
   LangString DESC_SecLangcsCZ ${LANG_ENGLISH} "Install Czech translation"
+  LangString DESC_SecLangnlNL ${LANG_ENGLISH} "Install Dutch translation"
 
   ;Assign language strings to sections
   !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
@@ -186,6 +194,7 @@ SectionGroupEnd
     !insertmacro MUI_DESCRIPTION_TEXT ${SecLangruRU} $(DESC_SecLangruRU)
     !insertmacro MUI_DESCRIPTION_TEXT ${SecLangsvSE} $(DESC_SecLangsvSE)
     !insertmacro MUI_DESCRIPTION_TEXT ${SecLangcsCZ} $(DESC_SecLangcsCZ)
+    !insertmacro MUI_DESCRIPTION_TEXT ${SecLangnlNL} $(DESC_SecLangnlNL)
   !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
 ;--------------------------------
