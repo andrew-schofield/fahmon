@@ -19,13 +19,13 @@ v2.3.1
       now provided.
     * Altered progress detection method to use FAHlog.txt, this should help with
       cores that don't update unitinfo.txt in a timely fashion, or at all.
-      Unitinfo.txt is still used as a fallback if 1) The projectId is unknown, 2)
-      The WU is still in the "startup" phase (i.e. yellow).
-    * Added WebApp module. You can now export the monitoring status to 3 different
-      formats, WebApp - a fancy jscript powered web page that mimics the FahMon
-      interface; Simple Web - a simple web page containing useful data arranged in
-      a simple table; Simple Text - similar to Simple Web, but optimised for
-      shell based viewing - useful for monitoring over SSH.
+      Unitinfo.txt is still used as a fallback if 1) The projectId is unknown,
+      2) The WU is still in the "startup" phase (i.e. yellow).
+    * Added WebApp module. You can now export the monitoring status to 3
+      different formats, WebApp - a fancy jscript powered web page that mimics
+      the FahMon interface; Simple Web - a simple web page containing useful
+      data arranged in a simple table; Simple Text - similar to Simple Web, but
+      optimised for shell based viewing - useful for monitoring over SSH.
     * Removed redundant "display deadlines in days option". The format is now
       controlled by the old "Display ETA as" option which has been renamed to
       "Display dates as"
