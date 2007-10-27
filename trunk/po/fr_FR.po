@@ -1,14 +1,14 @@
-# translation of fr.po to French
+# translation of fr_FR.po to British English
 # Copyright (C) YEAR Andrew Schofield
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Andrew Schofield <the.uncle.fungus@gmail.com>, 2007.
 msgid ""
 msgstr ""
-"Project-Id-Version: fr\n"
+"Project-Id-Version: fr_FR\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
 "POT-Creation-Date: 2007-10-22 21:36+0100\n"
-"PO-Revision-Date: 2007-08-27 01:13+0100\n"
+"PO-Revision-Date: 2007-10-27 15:30+0100\n"
 "Last-Translator: Le Garrec Patrice <thor@pcperf.fr>\n"
 "Language-Team: french <http://folding.mesdiscussions.net/foldinghome/Aide-"
 "client-folding-home/fahmon-sujet_486_1.htm>\n"
@@ -260,8 +260,7 @@ msgstr "%s a un état inconnu (Impossible de trouver une frame compléte)"
 #: src/client.cpp:842
 #, c-format
 msgid "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
-msgstr ""
-"%s est stoppé (La ligne \"Folding@Home Client Shutdown.\" a été trouvée)"
+msgstr "%s est stoppé (La ligne \"Folding@Home Client Shutdown.\" a été trouvée)"
 
 #: src/client.cpp:851
 #, c-format
@@ -280,14 +279,12 @@ msgstr "%s est indiqué comme ayant une horloge désynchronisée."
 #: src/client.cpp:886
 #, c-format
 msgid "%s seems to have hung : Elapsed time is %um and limit is %um"
-msgstr ""
-"%s semble être en pause : Le temps écoulé est de %um et la limite est %um"
+msgstr "%s semble être en pause : Le temps écoulé est de %um et la limite est %um"
 
 #: src/client.cpp:891
 #, c-format
 msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
-msgstr ""
-"%s semble étre inactif : Le temps écoulé est de %um et la limite est %um"
+msgstr "%s semble étre inactif : Le temps écoulé est de %um et la limite est %um"
 
 #: src/clientDialog.cpp:53
 #, c-format
@@ -421,10 +418,8 @@ msgstr ""
 
 #: src/firstTimeDialog.cpp:84
 #, c-format
-msgid ""
-"The latest version of %s will always be available on the official website:"
-msgstr ""
-"La dernière version de %s sera toujours disponible sur le site officiel:"
+msgid "The latest version of %s will always be available on the official website:"
+msgstr "La dernière version de %s sera toujours disponible sur le site officiel:"
 
 #: src/firstTimeDialog.cpp:147 src/main.cpp:134
 #, c-format
@@ -621,11 +616,11 @@ msgstr "Afficher/cacher le fichier de log"
 
 #: src/mainDialog.cpp:624
 msgid "&Cycle ETA Style\tF9"
-msgstr ""
+msgstr "&Changer l'affichage de l ETA\tF9"
 
 #: src/mainDialog.cpp:624
 msgid "Cycle through the different ETA display styles"
-msgstr ""
+msgstr "Changer le type d'affichage de l'estimation du temps restant(eta)"
 
 #: src/mainDialog.cpp:625
 msgid "&Monitoring"
@@ -861,8 +856,7 @@ msgstr "Récupérer les fichiers .xyz"
 
 #: src/preferencesDialog.cpp:177
 msgid "Auto update projects database when needed"
-msgstr ""
-"Mises a jour automatique de la base de données des projets si necéssaire"
+msgstr "Mises a jour automatique de la base de données des projets si necéssaire"
 
 #: src/preferencesDialog.cpp:178
 msgid "Always list inaccessible clients last"
@@ -958,8 +952,7 @@ msgstr ""
 
 #: src/preferencesDialog.cpp:343
 msgid "Use the following settings for new project downloads"
-msgstr ""
-"Utiliser les réglages suivants pour les nouveaux téléchargements de projets"
+msgstr "Utiliser les réglages suivants pour les nouveaux téléchargements de projets"
 
 #: src/preferencesDialog.cpp:345
 msgid "Server:"
@@ -1190,9 +1183,3 @@ msgstr ""
 "Moniteur FahMon Client %s - Fichier texte seul\n"
 "\n"
 
-#~ msgid "Asynch"
-#~ msgstr "Désychro"
-
-#~ msgid "Show deadlines and download times in days"
-#~ msgstr ""
-#~ "Afficher les deadlines et le temps depuis le téléchargement en jours"
