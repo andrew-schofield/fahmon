@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2007-10-22 21:36+0100\n"
+"POT-Creation-Date: 2007-10-28 12:52+0000\n"
 "PO-Revision-Date: 2007-10-21 22:55+0100\n"
 "Last-Translator: Andrew Schofield <the.uncle.fungus@gmail.com>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -190,76 +190,76 @@ msgstr "Error while reading %sunitinfo.txt!"
 msgid "Error while reading %sclient.cfg!"
 msgstr "Error while reading %sclient.cfg!"
 
-#: src/client.cpp:470
+#: src/client.cpp:473
 msgid "Couldn't Open FAHlog.txt"
 msgstr "Couldn't Open FAHlog.txt"
 
-#: src/client.cpp:507
+#: src/client.cpp:510
 #, c-format
 msgid "PRCG found for %s from FAHlog.txt: %u/%i/%i/%i"
 msgstr "PRCG found for %s from FAHlog.txt: %u/%i/%i/%i"
 
-#: src/client.cpp:524
+#: src/client.cpp:527
 #, c-format
 msgid "The progress value in file %s could not be found/parsed"
 msgstr "The progress value in file %s could not be found/parsed"
 
-#: src/client.cpp:527
+#: src/client.cpp:530
 #, c-format
 msgid "No valid project number was found for %s in FAHlog.txt"
 msgstr "No valid project number was found for %s in FAHlog.txt"
 
-#: src/client.cpp:532
+#: src/client.cpp:535
 #, c-format
 msgid "The download date in file %s could not be parsed"
 msgstr "The download date in file %s could not be parsed"
 
-#: src/client.cpp:591
+#: src/client.cpp:594
 #, c-format
 msgid "No valid username were found in file %s"
 msgstr "No valid username were found in file %s"
 
-#: src/client.cpp:594
+#: src/client.cpp:597
 #, c-format
 msgid "No valid team number were found in file %s"
 msgstr "No valid team number were found in file %s"
 
-#: src/client.cpp:621
+#: src/client.cpp:624
 #, c-format
 msgid "Unable to save %s because it does not exist"
 msgstr "Unable to save %s because it does not exist"
 
-#: src/client.cpp:628
+#: src/client.cpp:631
 #, c-format
 msgid "Unable to create directory %s"
 msgstr "Unable to create directory %s"
 
-#: src/client.cpp:638
+#: src/client.cpp:641
 #, c-format
 msgid "Unable to copy %s to %s"
 msgstr "Unable to copy %s to %s"
 
-#: src/client.cpp:666
+#: src/client.cpp:669
 #, c-format
 msgid "%s is on frame %u"
 msgstr "%s is on frame %u"
 
-#: src/client.cpp:670
+#: src/client.cpp:673
 #, c-format
 msgid "Cannot determine frame number for %s (this isn't a problem)"
 msgstr "Cannot determine frame number for %s (this isn't a problem)"
 
-#: src/client.cpp:833
+#: src/client.cpp:836
 #, c-format
 msgid "%s has an unknown state (Unable to find a complete frame)"
 msgstr "%s has an unknown state (Unable to find a complete frame)"
 
-#: src/client.cpp:842
+#: src/client.cpp:845
 #, c-format
 msgid "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
 msgstr "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
 
-#: src/client.cpp:851
+#: src/client.cpp:854
 #, c-format
 msgid ""
 "%s has an unknown state (Unable to extract a valid elapsed time since the "
@@ -268,17 +268,17 @@ msgstr ""
 "%s has an unknown state (Unable to extract a valid elapsed time since the "
 "last completed frame)"
 
-#: src/client.cpp:859
+#: src/client.cpp:862
 #, c-format
 msgid "%s has been marked as having a asynchronous clock."
 msgstr "%s has been marked as having a asynchronous clock."
 
-#: src/client.cpp:886
+#: src/client.cpp:889
 #, c-format
 msgid "%s seems to have hung : Elapsed time is %um and limit is %um"
 msgstr "%s seems to have hung : Elapsed time is %um and limit is %um"
 
-#: src/client.cpp:891
+#: src/client.cpp:894
 #, c-format
 msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
 msgstr "%s seems to be inactive : Elapsed time is %um and limit is %um"

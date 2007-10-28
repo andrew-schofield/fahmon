@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FahMon 2.2.3 PL\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2007-10-22 21:36+0100\n"
+"POT-Creation-Date: 2007-10-28 12:52+0000\n"
 "PO-Revision-Date: 2007-09-07 03:17+0100\n"
 "Last-Translator: Mariusz Pociask <mariusz.pociask@epf.pl>\n"
 "Language-Team: \n"
@@ -192,77 +192,77 @@ msgstr "Błąd podczas odczytu %sunitinfo.txt!"
 msgid "Error while reading %sclient.cfg!"
 msgstr "Błąd podczas odczytu %sclient.cfg!"
 
-#: src/client.cpp:470
+#: src/client.cpp:473
 msgid "Couldn't Open FAHlog.txt"
 msgstr "Nie można otworzyć pliku FAHlog.txt"
 
-#: src/client.cpp:507
+#: src/client.cpp:510
 #, c-format
 msgid "PRCG found for %s from FAHlog.txt: %u/%i/%i/%i"
 msgstr "PRCG dla %s w FAHlog.txt zidentyfikowane: %u/%i/%i/%i"
 
-#: src/client.cpp:524
+#: src/client.cpp:527
 #, c-format
 msgid "The progress value in file %s could not be found/parsed"
 msgstr "Wskaźnik postępu w pliku %s nie został odnaleziony/zinterpretowany"
 
-#: src/client.cpp:527
+#: src/client.cpp:530
 #, c-format
 msgid "No valid project number was found for %s in FAHlog.txt"
 msgstr "Nie odnaleziono numeru projektu dla %s w pliku FAHlog.txt"
 
-#: src/client.cpp:532
+#: src/client.cpp:535
 #, c-format
 msgid "The download date in file %s could not be parsed"
 msgstr "Data pobrania w pliku %s nie została zidentyfikowana"
 
-#: src/client.cpp:591
+#: src/client.cpp:594
 #, c-format
 msgid "No valid username were found in file %s"
 msgstr "Nie odnaleziono nazwy użytkownika w pliku %s"
 
-#: src/client.cpp:594
+#: src/client.cpp:597
 #, c-format
 msgid "No valid team number were found in file %s"
 msgstr "Nie odnaleziono numeru zespołu w pliku %s"
 
-#: src/client.cpp:621
+#: src/client.cpp:624
 #, c-format
 msgid "Unable to save %s because it does not exist"
 msgstr "Nie można zapisać %s ponieważ nie został utworzony"
 
-#: src/client.cpp:628
+#: src/client.cpp:631
 #, c-format
 msgid "Unable to create directory %s"
 msgstr "Nie można utworzyć katalogu %s"
 
-#: src/client.cpp:638
+#: src/client.cpp:641
 #, c-format
 msgid "Unable to copy %s to %s"
 msgstr "Nie można skopiować %s do %s"
 
-#: src/client.cpp:666
+#: src/client.cpp:669
 #, c-format
 msgid "%s is on frame %u"
 msgstr "%s pracuje nad ramką %u"
 
-#: src/client.cpp:670
+#: src/client.cpp:673
 #, c-format
 msgid "Cannot determine frame number for %s (this isn't a problem)"
 msgstr "Nie można określić numeru ramki dla %s (nie jest to poważny problem)"
 
-#: src/client.cpp:833
+#: src/client.cpp:836
 #, c-format
 msgid "%s has an unknown state (Unable to find a complete frame)"
 msgstr ""
 "%s znajduje się w niewiadomym stanie (Nie odnaleziono ukończonej ramki)"
 
-#: src/client.cpp:842
+#: src/client.cpp:845
 #, c-format
 msgid "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
 msgstr "%s jest wyłączone (Znaleziono wpis \"Folding@Home Client Shutdown.\")"
 
-#: src/client.cpp:851
+#: src/client.cpp:854
 #, c-format
 msgid ""
 "%s has an unknown state (Unable to extract a valid elapsed time since the "
@@ -271,18 +271,18 @@ msgstr ""
 "%s znajduje się w niewiadomym stanie (Nie można określić czasu ukończenia po "
 "przetworzeniu poprzedniej ramki)"
 
-#: src/client.cpp:859
+#: src/client.cpp:862
 #, c-format
 msgid "%s has been marked as having a asynchronous clock."
 msgstr "%s został oznaczony jako posiadający rozsynchronizowany zegar."
 
-#: src/client.cpp:886
+#: src/client.cpp:889
 #, c-format
 msgid "%s seems to have hung : Elapsed time is %um and limit is %um"
 msgstr ""
 "%s wydaje się być zawieszony : Czas przetwarzania to %um, a graniczny to %um"
 
-#: src/client.cpp:891
+#: src/client.cpp:894
 #, c-format
 msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
 msgstr ""
