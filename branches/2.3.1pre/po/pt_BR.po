@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: fahmon_pt_PT\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
 "POT-Creation-Date: 2007-10-28 12:52+0000\n"
-"PO-Revision-Date: 2007-10-01 22:55-0300\n"
+"PO-Revision-Date: 2007-10-28 18:13-0300\n"
 "Last-Translator: Custódio Marcelino de Jesus <custodiomdj@gmail.com>\n"
 "Language-Team: Português de Portugal <en@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -561,11 +561,11 @@ msgstr "Atualizar a base de dados local dos projetos"
 
 #: src/mainDialog.cpp:602
 msgid "&Check for update"
-msgstr ""
+msgstr "&Verificar por atualizações"
 
 #: src/mainDialog.cpp:602
 msgid "Check online for the latest version of FahMon"
-msgstr ""
+msgstr "Verificar online pela última versão do FahMon"
 
 #: src/mainDialog.cpp:604
 msgid "&Benchmarks...\tCTRL+B"
@@ -618,11 +618,13 @@ msgstr "Alternar para o arquivo de registro"
 
 #: src/mainDialog.cpp:624
 msgid "&Cycle ETA Style\tF9"
-msgstr ""
+msgstr "&Mudar estilo de ETA\tF9"
 
 #: src/mainDialog.cpp:624
 msgid "Cycle through the different ETA display styles"
 msgstr ""
+"Mudar através dos diferentes tipos de estilo de visualização de \"Tempo "
+"Estimado de Conclusão\""
 
 #: src/mainDialog.cpp:625
 msgid "&Monitoring"
@@ -750,30 +752,32 @@ msgstr "Deve selecionar um cliente primeiro!"
 
 #: src/mainDialog.cpp:1365
 msgid "Checking for FahMon updates"
-msgstr ""
+msgstr "Verificando por atualizações do FahMon"
 
 #: src/mainDialog.cpp:1369
 msgid "Checking for update"
-msgstr ""
+msgstr "Verificando por atualizações"
 
 #: src/mainDialog.cpp:1388
 #, c-format
 msgid "Your version: %s; New version: %s"
-msgstr ""
+msgstr "Sua versão: %s; Nova versão: %s"
 
 #: src/mainDialog.cpp:1402
 msgid "Update available"
-msgstr ""
+msgstr "Atualização disponível"
 
 #: src/mainDialog.cpp:1403
 msgid ""
 "A newer version of FahMon is available\n"
 "Do you want to go to the FahMon website?"
 msgstr ""
+"Uma nova versão do FahMon está disponível\n"
+"Você quer ir ao website do FahMon?"
 
 #: src/mainDialog.cpp:1406
 msgid "No update found"
-msgstr ""
+msgstr "Nenhuma atualização encontrada"
 
 #: src/mainDialog.cpp:1434 src/projectsManager.cpp:342
 msgid "Unable to create a temporary file!"
@@ -865,7 +869,7 @@ msgstr "Listar sempre os clientes inacessíveis por último"
 
 #: src/preferencesDialog.cpp:179
 msgid "Check for FahMon updates on startup"
-msgstr ""
+msgstr "Verificar por atualizações do FahMon na inicialização"
 
 #: src/preferencesDialog.cpp:215
 msgid "A date (dd/mm)"
@@ -913,7 +917,7 @@ msgstr "Ignorar relógios assíncronos"
 
 #: src/preferencesDialog.cpp:234
 msgid "Display dates as"
-msgstr ""
+msgstr "Mostrar datas como"
 
 #: src/preferencesDialog.cpp:240
 msgid "Calculate PPD based on"
@@ -998,15 +1002,15 @@ msgstr "Outro"
 
 #: src/preferencesDialog.cpp:497
 msgid "Export Web Application"
-msgstr ""
+msgstr "Exportar Aplicação Web"
 
 #: src/preferencesDialog.cpp:502
 msgid "Export Simple Web page"
-msgstr ""
+msgstr "Exportar Página Web Simples"
 
 #: src/preferencesDialog.cpp:507
 msgid "Export Simple Text file"
-msgstr ""
+msgstr "Exportar Arquivo de Texto Simples"
 
 #: src/preferencesDialog.cpp:930
 msgid "Choose a local project data file"
@@ -1014,15 +1018,15 @@ msgstr "Escolha um arquivo local de informações do projeto"
 
 #: src/preferencesDialog.cpp:947
 msgid "Choose where to save the Web Application"
-msgstr ""
+msgstr "Escolha onde salver a Aplicação Web"
 
 #: src/preferencesDialog.cpp:964
 msgid "Choose where to save the simple web page"
-msgstr ""
+msgstr "Escolha onde salvar a Página Web Simples"
 
 #: src/preferencesDialog.cpp:981
 msgid "Choose where to save the simple text file"
-msgstr ""
+msgstr "Escolha onde salvar o Arquivo de Texto Simples"
 
 #: src/preferencesManager.cpp:231
 msgid "There is no Preferences file, or it is not readable"
@@ -1105,15 +1109,15 @@ msgstr "Mostrar FahMon"
 
 #: src/webMonitor.cpp:291 src/webMonitor.cpp:386
 msgid "Inaccessible"
-msgstr ""
+msgstr "Inacessível"
 
 #: src/webMonitor.cpp:296 src/webMonitor.cpp:390
 msgid "Stopped"
-msgstr ""
+msgstr "Parado"
 
 #: src/webMonitor.cpp:301 src/webMonitor.cpp:394
 msgid "Inactive"
-msgstr ""
+msgstr "Inativo"
 
 #: src/webMonitor.cpp:306 src/webMonitor.cpp:398
 msgid "Hung"
@@ -1121,11 +1125,11 @@ msgstr "Sem Avançar"
 
 #: src/webMonitor.cpp:311 src/webMonitor.cpp:402
 msgid "Async"
-msgstr ""
+msgstr "Assíncrono"
 
 #: src/webMonitor.cpp:316
 msgid "Ok"
-msgstr ""
+msgstr "Normal"
 
 #: src/webMonitor.cpp:350
 #, c-format
@@ -1133,11 +1137,13 @@ msgid ""
 "Could not open file <%s> for writing!\n"
 "The web application will not be created!"
 msgstr ""
+"O arquivo <%s> não pôde ser aberto para escrita!\n"
+"A aplicação web não será criada!"
 
 #: src/webMonitor.cpp:376
 #, c-format
 msgid "%s Web View - Last updated: %s"
-msgstr ""
+msgstr "%s Visualização Web - Atualizada em: %s"
 
 #: src/webMonitor.cpp:429
 #, c-format
@@ -1145,14 +1151,16 @@ msgid ""
 "Could not open file <%s> for writing!\n"
 "The simple web output will not be created!"
 msgstr ""
+"O arquivo %s não pôde ser aberto para escrita!\n"
+"O Arquivo Web Simples não será criado!"
 
 #: src/webMonitor.cpp:436 src/webMonitor.cpp:462
 msgid "State"
-msgstr ""
+msgstr "Estado"
 
 #: src/webMonitor.cpp:436 src/webMonitor.cpp:462
 msgid "PRCG"
-msgstr ""
+msgstr "PRCG"
 
 #: src/webMonitor.cpp:436 src/webMonitor.cpp:462
 msgid "Credit"
@@ -1168,6 +1176,8 @@ msgid ""
 "Could not open file <%s> for writing!\n"
 "The simple text output will not be created!"
 msgstr ""
+"O arquivo %s não pode ser aberto para escrita!\n"
+"O Arquivo de Texto Simples não será criado!"
 
 #: src/webMonitor.cpp:461
 #, c-format
@@ -1175,6 +1185,8 @@ msgid ""
 "FahMon Client Monitoring %s - Simple Text Output\n"
 "\n"
 msgstr ""
+"Monitoração do Cliente FahMon %s - Saída de Texto Simples\n"
+"\n"
 
 #~ msgid "Show deadlines and download times in days"
 #~ msgstr "Mostrar prazos de entrega e datas de descarregamento em dias"
