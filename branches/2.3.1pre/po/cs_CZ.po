@@ -1,5 +1,4 @@
-# translation of cs_CZ.po to Czech
-# translation of fahmon.po to
+# translation of cs_CZ.po to
 # Copyright (C) YEAR Andrew Schofield
 # This file is distributed under the same license as the PACKAGE package.
 #
@@ -8,10 +7,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cs_CZ\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2007-10-22 21:36+0100\n"
-"PO-Revision-Date: 2007-09-13 21:37+0200\n"
-"Last-Translator: Martin Bednar <serafean@gmail.com>\n"
-"Language-Team: Czech\n"
+"POT-Creation-Date: 2007-10-28 12:52+0000\n"
+"PO-Revision-Date: 2007-10-28 12:07+0100\n"
+"Last-Translator: \n"
+"Language-Team:  <en@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -191,76 +190,76 @@ msgstr "Nastala chyba při načítání %sunitinfo.txt!"
 msgid "Error while reading %sclient.cfg!"
 msgstr "Nastala chyba při načítání %sclient.cfg!"
 
-#: src/client.cpp:470
+#: src/client.cpp:473
 msgid "Couldn't Open FAHlog.txt"
 msgstr "Nelze otevřít FAHlog.txt"
 
-#: src/client.cpp:507
+#: src/client.cpp:510
 #, c-format
 msgid "PRCG found for %s from FAHlog.txt: %u/%i/%i/%i"
 msgstr "PRCG v FAHlog.txt nenalezeno pro %s : %u/%i/%i/%i "
 
-#: src/client.cpp:524
+#: src/client.cpp:527
 #, c-format
 msgid "The progress value in file %s could not be found/parsed"
 msgstr "Hodnotu postupu v souboru %s nelze najít/analyzovat"
 
-#: src/client.cpp:527
+#: src/client.cpp:530
 #, c-format
 msgid "No valid project number was found for %s in FAHlog.txt"
 msgstr "Nenalezeno žádné platné číslo projektu pro %s v FAHlog.txt "
 
-#: src/client.cpp:532
+#: src/client.cpp:535
 #, c-format
 msgid "The download date in file %s could not be parsed"
 msgstr "Datum stažení v souboru %s nelze číst"
 
-#: src/client.cpp:591
+#: src/client.cpp:594
 #, c-format
 msgid "No valid username were found in file %s"
 msgstr "Nenalezeno žádné platné uživatelské jméno ve %s"
 
-#: src/client.cpp:594
+#: src/client.cpp:597
 #, c-format
 msgid "No valid team number were found in file %s"
 msgstr "Nenalezeno žádné platné číslo týmu ve %s"
 
-#: src/client.cpp:621
+#: src/client.cpp:624
 #, c-format
 msgid "Unable to save %s because it does not exist"
 msgstr "Nelze uložit %s jelikož neexistuje"
 
-#: src/client.cpp:628
+#: src/client.cpp:631
 #, c-format
 msgid "Unable to create directory %s"
 msgstr "Nelze vztořit složku %s"
 
-#: src/client.cpp:638
+#: src/client.cpp:641
 #, c-format
 msgid "Unable to copy %s to %s"
 msgstr "Nelze kopírovat %s do %s"
 
-#: src/client.cpp:666
+#: src/client.cpp:669
 #, c-format
 msgid "%s is on frame %u"
 msgstr "%s dělá obrázek %u"
 
-#: src/client.cpp:670
+#: src/client.cpp:673
 #, c-format
 msgid "Cannot determine frame number for %s (this isn't a problem)"
 msgstr "Nelze určit číslo obrázku pro %s (toto není problém)"
 
-#: src/client.cpp:833
+#: src/client.cpp:836
 #, c-format
 msgid "%s has an unknown state (Unable to find a complete frame)"
 msgstr "%s je v neznámém stavu (Nelze najít hotový obrázek)"
 
-#: src/client.cpp:842
+#: src/client.cpp:845
 #, c-format
 msgid "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
 msgstr "%s je zastaven (\"Folding@Home Client Shutdown.\"nalezeno v logu)"
 
-#: src/client.cpp:851
+#: src/client.cpp:854
 #, c-format
 msgid ""
 "%s has an unknown state (Unable to extract a valid elapsed time since the "
@@ -269,17 +268,17 @@ msgstr ""
 "%s je v neznamem stavu (Nedaří se načíst platný uplynutý čas od posledniho "
 "hotového obrázku)"
 
-#: src/client.cpp:859
+#: src/client.cpp:862
 #, c-format
 msgid "%s has been marked as having a asynchronous clock."
 msgstr "%s byl označen jako majíc nesynchronizované hodiny"
 
-#: src/client.cpp:886
+#: src/client.cpp:889
 #, c-format
 msgid "%s seems to have hung : Elapsed time is %um and limit is %um"
 msgstr "y%s se zdá zablokovaný : Uplynulý čas je %um a limit je %um"
 
-#: src/client.cpp:891
+#: src/client.cpp:894
 #, c-format
 msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
 msgstr "%s se zdá být neaktivní : Uplynulý čas je %um a limit je %um"
@@ -550,11 +549,11 @@ msgstr "Aktualizovat lokální databázi projektů"
 
 #: src/mainDialog.cpp:602
 msgid "&Check for update"
-msgstr ""
+msgstr "zkontrolovat aktualizace"
 
 #: src/mainDialog.cpp:602
 msgid "Check online for the latest version of FahMon"
-msgstr ""
+msgstr "Zkontrolovat poslední verzi FahMon na Internetu."
 
 #: src/mainDialog.cpp:604
 msgid "&Benchmarks...\tCTRL+B"
@@ -607,11 +606,11 @@ msgstr "Přrepnout logový soubor"
 
 #: src/mainDialog.cpp:624
 msgid "&Cycle ETA Style\tF9"
-msgstr ""
+msgstr "Procházet ETA styly"
 
 #: src/mainDialog.cpp:624
 msgid "Cycle through the different ETA display styles"
-msgstr ""
+msgstr "Procházet  různé styly ETA"
 
 #: src/mainDialog.cpp:625
 msgid "&Monitoring"
@@ -739,30 +738,32 @@ msgstr "Musíte nejprve vybrat klienta!"
 
 #: src/mainDialog.cpp:1365
 msgid "Checking for FahMon updates"
-msgstr ""
+msgstr "Ověřuji dostupnos aktualizací FahMon"
 
 #: src/mainDialog.cpp:1369
 msgid "Checking for update"
-msgstr ""
+msgstr "Ověřuji dostupnost aktualizace"
 
 #: src/mainDialog.cpp:1388
 #, c-format
 msgid "Your version: %s; New version: %s"
-msgstr ""
+msgstr "Vaše verze : %s ; Nová verze : %s"
 
 #: src/mainDialog.cpp:1402
 msgid "Update available"
-msgstr ""
+msgstr "Aktualizace dostupna"
 
 #: src/mainDialog.cpp:1403
 msgid ""
 "A newer version of FahMon is available\n"
 "Do you want to go to the FahMon website?"
 msgstr ""
+"Nová verze FahMon je dostupná\n"
+"Chcete přejít na domovskou stránku FahMon?"
 
 #: src/mainDialog.cpp:1406
 msgid "No update found"
-msgstr ""
+msgstr "Nebyly nalezeny žádné aktualizace"
 
 #: src/mainDialog.cpp:1434 src/projectsManager.cpp:342
 msgid "Unable to create a temporary file!"
@@ -829,7 +830,7 @@ msgstr "Systém"
 
 #: src/preferencesDialog.cpp:104
 msgid "WebApp"
-msgstr ""
+msgstr "WebApp"
 
 #: src/preferencesDialog.cpp:174
 msgid "Enable system tray icon"
@@ -853,7 +854,7 @@ msgstr "Vždy zobrazit nedostupné klienty poslední"
 
 #: src/preferencesDialog.cpp:179
 msgid "Check for FahMon updates on startup"
-msgstr ""
+msgstr "Ověřit dostupnost aktualizací FahMon při spuštění"
 
 #: src/preferencesDialog.cpp:215
 msgid "A date (dd/mm)"
@@ -900,9 +901,8 @@ msgid "Ignore asynchronous clocks"
 msgstr "Ignorovat nesynchronizované hodiny"
 
 #: src/preferencesDialog.cpp:234
-#, fuzzy
 msgid "Display dates as"
-msgstr "Zobrazit ETA jako"
+msgstr "Zobrazit data jako"
 
 #: src/preferencesDialog.cpp:240
 msgid "Calculate PPD based on"
@@ -987,15 +987,15 @@ msgstr "Ostatní"
 
 #: src/preferencesDialog.cpp:497
 msgid "Export Web Application"
-msgstr ""
+msgstr "Exportovat webovou aplikaci"
 
 #: src/preferencesDialog.cpp:502
 msgid "Export Simple Web page"
-msgstr ""
+msgstr "Exportovat jednoduchou webovou stránku"
 
 #: src/preferencesDialog.cpp:507
 msgid "Export Simple Text file"
-msgstr ""
+msgstr "Exportovat jednoduchý textový soubor"
 
 #: src/preferencesDialog.cpp:930
 msgid "Choose a local project data file"
@@ -1003,15 +1003,15 @@ msgstr "Vyberte lokální složku s daty o projektech"
 
 #: src/preferencesDialog.cpp:947
 msgid "Choose where to save the Web Application"
-msgstr ""
+msgstr "Vybrat kam uložit webovou aplikaci"
 
 #: src/preferencesDialog.cpp:964
 msgid "Choose where to save the simple web page"
-msgstr ""
+msgstr "Vybrat kam uložit jednoduchou webovou stránku"
 
 #: src/preferencesDialog.cpp:981
 msgid "Choose where to save the simple text file"
-msgstr ""
+msgstr "Vybrat kam uložit jednoduchý textový soubor."
 
 #: src/preferencesManager.cpp:231
 msgid "There is no Preferences file, or it is not readable"
@@ -1092,15 +1092,15 @@ msgstr "Zobrazit FahMon"
 
 #: src/webMonitor.cpp:291 src/webMonitor.cpp:386
 msgid "Inaccessible"
-msgstr ""
+msgstr "Nepřístupné"
 
 #: src/webMonitor.cpp:296 src/webMonitor.cpp:390
 msgid "Stopped"
-msgstr ""
+msgstr "Zastaveno"
 
 #: src/webMonitor.cpp:301 src/webMonitor.cpp:394
 msgid "Inactive"
-msgstr ""
+msgstr "Neaktivní"
 
 #: src/webMonitor.cpp:306 src/webMonitor.cpp:398
 msgid "Hung"
@@ -1108,11 +1108,11 @@ msgstr "Zablokovaný"
 
 #: src/webMonitor.cpp:311 src/webMonitor.cpp:402
 msgid "Async"
-msgstr ""
+msgstr "Asynchroní"
 
 #: src/webMonitor.cpp:316
 msgid "Ok"
-msgstr ""
+msgstr "Ok"
 
 #: src/webMonitor.cpp:350
 #, c-format
@@ -1120,11 +1120,13 @@ msgid ""
 "Could not open file <%s> for writing!\n"
 "The web application will not be created!"
 msgstr ""
+"Nelze otevřít soubor <%s> pro zapisování!\n"
+"Webová aplikace nebude vytvořena!"
 
 #: src/webMonitor.cpp:376
 #, c-format
 msgid "%s Web View - Last updated: %s"
-msgstr ""
+msgstr "%s Webové zobrazení - posledně aktualizované : %s"
 
 #: src/webMonitor.cpp:429
 #, c-format
@@ -1132,14 +1134,16 @@ msgid ""
 "Could not open file <%s> for writing!\n"
 "The simple web output will not be created!"
 msgstr ""
+"Nelze otevřít soubor <%s> pro zapisování!\n"
+"Jednoduchý webový výstup nebude vytvořen!"
 
 #: src/webMonitor.cpp:436 src/webMonitor.cpp:462
 msgid "State"
-msgstr ""
+msgstr "Status"
 
 #: src/webMonitor.cpp:436 src/webMonitor.cpp:462
 msgid "PRCG"
-msgstr ""
+msgstr "PRCG"
 
 #: src/webMonitor.cpp:436 src/webMonitor.cpp:462
 msgid "Credit"
@@ -1155,6 +1159,8 @@ msgid ""
 "Could not open file <%s> for writing!\n"
 "The simple text output will not be created!"
 msgstr ""
+"Nelze otevřít soubor <%s> pro zapisování!\n"
+"Jednoduchý textový výstup nebude vytvořen!"
 
 #: src/webMonitor.cpp:461
 #, c-format
@@ -1162,6 +1168,8 @@ msgid ""
 "FahMon Client Monitoring %s - Simple Text Output\n"
 "\n"
 msgstr ""
+"Monitorování FahMon klienta %s - Jednoduchý textový výstup\n"
+"\n"
 
-#~ msgid "Show deadlines and download times in days"
-#~ msgstr "Zobrazit termíny a časy stažení ve dnech"
+#~ msgid "Asynch"
+#~ msgstr "Asynch"
