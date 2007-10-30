@@ -6,6 +6,19 @@ See the end for copying conditions.
 
 Please send FahMon bug reports to the.uncle.fungus@gmail.com.
 
+Version 2.3.1
+
+* The most obvious new change to version 2.3.1 is the new "WebApp" module. This
+  enables you to export the monitoring information provided by FahMon to a web-
+  page, or to a file for viewing over a secure shell.
+* Drag and drop capability has been added to the client-list too, so you just
+  drag and drop your FAH folder onto the list, and the add client dialog appears
+  with the location field already filled in. This works for multiple clients
+  too, you just get presented with multiple dialogs in succession.
+* An update notification system has been added, which although very basic, will
+  alert you that a new version of FahMon has been released. You can either check
+  manually from the menu item, or allow FahMon to check every time it starts.
+
 Version 2.3.0
 
 * First ever NEWS entry thanks to the GNU build system. The scons installation

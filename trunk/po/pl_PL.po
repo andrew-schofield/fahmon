@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: FahMon 2.2.3 PL\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
 "POT-Creation-Date: 2007-10-28 12:52+0000\n"
-"PO-Revision-Date: 2007-09-07 03:17+0100\n"
+"PO-Revision-Date: 2007-10-30 12:08+0100\n"
 "Last-Translator: Mariusz Pociask <mariusz.pociask@epf.pl>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -559,11 +559,11 @@ msgstr "Aktualizuj lokalną bazę projektów"
 
 #: src/mainDialog.cpp:602
 msgid "&Check for update"
-msgstr ""
+msgstr "&Wyszukaj aktualizacje"
 
 #: src/mainDialog.cpp:602
 msgid "Check online for the latest version of FahMon"
-msgstr ""
+msgstr "Znajdź w sieci najnowszą wersję FahMona"
 
 #: src/mainDialog.cpp:604
 msgid "&Benchmarks...\tCTRL+B"
@@ -616,11 +616,11 @@ msgstr "Wyświetl / ukryj dziennik"
 
 #: src/mainDialog.cpp:624
 msgid "&Cycle ETA Style\tF9"
-msgstr ""
+msgstr "Zmień format &czasu ukończenia\tF9"
 
 #: src/mainDialog.cpp:624
 msgid "Cycle through the different ETA display styles"
-msgstr ""
+msgstr "Przełączaj między różnymi trybami wyświetlania czasu ukończenia"
 
 #: src/mainDialog.cpp:625
 msgid "&Monitoring"
@@ -728,11 +728,11 @@ msgstr "Pobrano:"
 
 #: src/mainDialog.cpp:718 src/webMonitor.cpp:415
 msgid "Preferred Deadline:"
-msgstr "Preferowany termin ukończenia:"
+msgstr "Preferowany czas ukończenia:"
 
 #: src/mainDialog.cpp:720 src/webMonitor.cpp:415
 msgid "Final Deadline:"
-msgstr "Ostateczny termin ukończenia:"
+msgstr "Ostateczny czas ukończenia:"
 
 #: src/mainDialog.cpp:748
 msgid " :: Total PPD:"
@@ -748,30 +748,32 @@ msgstr "Musisz najpierw wybrać klienta!"
 
 #: src/mainDialog.cpp:1365
 msgid "Checking for FahMon updates"
-msgstr ""
+msgstr "Wyszukiwanie aktualizacji FahMona"
 
 #: src/mainDialog.cpp:1369
 msgid "Checking for update"
-msgstr ""
+msgstr "Wyszukiwanie aktualizacji"
 
 #: src/mainDialog.cpp:1388
 #, c-format
 msgid "Your version: %s; New version: %s"
-msgstr ""
+msgstr "Twoja wersja: %s; nowa wersja: %s"
 
 #: src/mainDialog.cpp:1402
 msgid "Update available"
-msgstr ""
+msgstr "Znaleziono uaktualnienie"
 
 #: src/mainDialog.cpp:1403
 msgid ""
 "A newer version of FahMon is available\n"
 "Do you want to go to the FahMon website?"
 msgstr ""
+"Dostępna jest nowa wersja FahMona\n"
+"Czy chcesz przejść do strony domowej programu?"
 
 #: src/mainDialog.cpp:1406
 msgid "No update found"
-msgstr ""
+msgstr "Nie znaleziono aktualizacji"
 
 #: src/mainDialog.cpp:1434 src/projectsManager.cpp:342
 msgid "Unable to create a temporary file!"
@@ -838,7 +840,7 @@ msgstr "System"
 
 #: src/preferencesDialog.cpp:104
 msgid "WebApp"
-msgstr ""
+msgstr "IntSieciowy"
 
 #: src/preferencesDialog.cpp:174
 msgid "Enable system tray icon"
@@ -862,7 +864,7 @@ msgstr "Grupuj niedostępne klienty zawsze na końcu"
 
 #: src/preferencesDialog.cpp:179
 msgid "Check for FahMon updates on startup"
-msgstr ""
+msgstr "Wyszukaj aktualizacje FahMona przy starcie"
 
 #: src/preferencesDialog.cpp:215
 msgid "A date (dd/mm)"
@@ -910,7 +912,7 @@ msgstr "Ignoruj rozsynchronizowane zegary"
 
 #: src/preferencesDialog.cpp:234
 msgid "Display dates as"
-msgstr ""
+msgstr "Wyświetlaj daty jako                                     "
 
 #: src/preferencesDialog.cpp:240
 msgid "Calculate PPD based on"
@@ -995,15 +997,15 @@ msgstr "Inny"
 
 #: src/preferencesDialog.cpp:497
 msgid "Export Web Application"
-msgstr ""
+msgstr "Eksportuj interfejs graficzny"
 
 #: src/preferencesDialog.cpp:502
 msgid "Export Simple Web page"
-msgstr ""
+msgstr "Eksportuj prostą stronę"
 
 #: src/preferencesDialog.cpp:507
 msgid "Export Simple Text file"
-msgstr ""
+msgstr "Eksportuj plik tekstowy"
 
 #: src/preferencesDialog.cpp:930
 msgid "Choose a local project data file"
@@ -1011,15 +1013,15 @@ msgstr "Wybierz lokalny plik z danymi projektów"
 
 #: src/preferencesDialog.cpp:947
 msgid "Choose where to save the Web Application"
-msgstr ""
+msgstr "Wybierz miejsce zapisu interfejsu graficznego"
 
 #: src/preferencesDialog.cpp:964
 msgid "Choose where to save the simple web page"
-msgstr ""
+msgstr "Wybierz miejsce zapisu strony"
 
 #: src/preferencesDialog.cpp:981
 msgid "Choose where to save the simple text file"
-msgstr ""
+msgstr "Wybierz miejsce zapisu pliku tekstowego"
 
 #: src/preferencesManager.cpp:231
 msgid "There is no Preferences file, or it is not readable"
@@ -1102,15 +1104,15 @@ msgstr "Wyświetl FahMona"
 
 #: src/webMonitor.cpp:291 src/webMonitor.cpp:386
 msgid "Inaccessible"
-msgstr ""
+msgstr "Niedostępny"
 
 #: src/webMonitor.cpp:296 src/webMonitor.cpp:390
 msgid "Stopped"
-msgstr ""
+msgstr "Wyłączony"
 
 #: src/webMonitor.cpp:301 src/webMonitor.cpp:394
 msgid "Inactive"
-msgstr ""
+msgstr "Niekatywny"
 
 #: src/webMonitor.cpp:306 src/webMonitor.cpp:398
 msgid "Hung"
@@ -1118,11 +1120,11 @@ msgstr "Zawieszony"
 
 #: src/webMonitor.cpp:311 src/webMonitor.cpp:402
 msgid "Async"
-msgstr ""
+msgstr "Niezsynchronizowany"
 
 #: src/webMonitor.cpp:316
 msgid "Ok"
-msgstr ""
+msgstr "OK"
 
 #: src/webMonitor.cpp:350
 #, c-format
@@ -1130,11 +1132,13 @@ msgid ""
 "Could not open file <%s> for writing!\n"
 "The web application will not be created!"
 msgstr ""
+"Brak możliwości zapisu do pliku <%s>!\n"
+"Plik z interfejsem graficznym nie zostanie utworzony!"
 
 #: src/webMonitor.cpp:376
 #, c-format
 msgid "%s Web View - Last updated: %s"
-msgstr ""
+msgstr "%s Widok sieciowy - Ostatnio uaktualniany: %s"
 
 #: src/webMonitor.cpp:429
 #, c-format
@@ -1142,14 +1146,16 @@ msgid ""
 "Could not open file <%s> for writing!\n"
 "The simple web output will not be created!"
 msgstr ""
+"Brak możliwości zapisu do pliku <%s>!\n"
+"Plik HTML nie zostanie utworzony!"
 
 #: src/webMonitor.cpp:436 src/webMonitor.cpp:462
 msgid "State"
-msgstr ""
+msgstr "Stan"
 
 #: src/webMonitor.cpp:436 src/webMonitor.cpp:462
 msgid "PRCG"
-msgstr ""
+msgstr "PRCG"
 
 #: src/webMonitor.cpp:436 src/webMonitor.cpp:462
 msgid "Credit"
@@ -1165,6 +1171,8 @@ msgid ""
 "Could not open file <%s> for writing!\n"
 "The simple text output will not be created!"
 msgstr ""
+"Brak możliwości zapisu do pliku <%s>!\n"
+"Plik tekstowy nie zostanie utworzony!"
 
 #: src/webMonitor.cpp:461
 #, c-format
@@ -1172,6 +1180,11 @@ msgid ""
 "FahMon Client Monitoring %s - Simple Text Output\n"
 "\n"
 msgstr ""
+"Monitor programu %s - widok tekstowy\n"
+"\n"
+
+#~ msgid "Asynch"
+#~ msgstr "Niezsynchronizowany"
 
 #~ msgid "Show deadlines and download times in days"
 #~ msgstr "Wyświetlaj termin ukończenia i czas pobrania w dniach"
