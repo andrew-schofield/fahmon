@@ -149,7 +149,7 @@ Section /o "Portuguese (Brazil)" secLangptBR
 
   SetOutPath "$INSTDIR\lang\pt_BR"
   File "lang\pt_BR\pt_BR.po"
-  File "lang\pt_BRL\fahmon.mo"
+  File "lang\pt_BR\fahmon.mo"
 
 SectionEnd
 Section /o "Portuguese (Portugal)" secLangptPT
