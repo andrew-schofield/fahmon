@@ -232,6 +232,10 @@ void Client::Reload(void)
 			{
 				tempFloat = timeDiff.GetMinutes() * 60 / ((double)(lastFrame->GetId() / 100) * (double)project->GetNbFrames());
 			}
+			else
+			{
+				tempFloat = timeDiff.GetMinutes() * 60 / lastFrame->GetId();
+			}
 		}
 		else //"normal" WUs
 		{
