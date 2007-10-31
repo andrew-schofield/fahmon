@@ -29,6 +29,7 @@
 #include "listViewClients.h"
 #include "staticUrl.h"
 #include "wx/dnd.h"
+#include "progressManager.h"
 
 
 /**
@@ -95,6 +96,9 @@
 #define PREF_TOOLS_FILEMANAGER_DV wxT("open");
 #endif
 
+#define PREF_MAINDIALOG_UPDATE_CHECK wxT("MainDialog.UpdateCheck")
+#define PREF_MAINDIALOG_UPDATE_CHECK_DV false
+
 // Custom events
 DECLARE_EVENT_TYPE(EVT_CLIENTRELOADED, -1)              // Sent when a client has been reloaded
 DECLARE_EVENT_TYPE(EVT_NEWCLIENTADDED, -1)              // Sent when a new client has been added to the ClientsManager
@@ -113,6 +117,7 @@ class MainDialog : public wxFrame
 
 protected:
 	static MainDialog *mInstance;
+	static wxMutex     mMutexUpdateCheck;
 
 	// Widgets used in the frame
 	wxGauge          *mWUProgressGauge;
@@ -167,6 +172,9 @@ protected:
 	void OnNewMessageLogged(wxCommandEvent& event);
 	void OnAutoReloadTimer(wxTimerEvent& event);
 	void OnMenuToggleETADate(wxCommandEvent& event);
+	void OnUpdateCheck(wxCommandEvent& event);
+	bool DownloadUpdateFile(wxString& fileName, ProgressManager& progressManager, wxString& errorMsg, wxString resource);
+	void CheckForUpdates(void);
 
 
 public:

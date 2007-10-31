@@ -226,9 +226,16 @@ void Client::Reload(void)
 		timeDiff = timeNow.Subtract(downloadTime);
 		// sanity checking because WUs with odd frame numbers still write out the % not the frameID
 		project = ProjectsManager::GetInstance()->GetProject(mProjectId);
-		if ((project->GetNbFrames() != 100) && (project->GetNbFrames() != 400))
+		if(project != INVALID_PROJECT_ID)
 		{
-			tempFloat = timeDiff.GetMinutes() * 60 / ((double)(lastFrame->GetId() / 100) * (double)project->GetNbFrames());
+			if ((project->GetNbFrames() != 100) && (project->GetNbFrames() != 400))
+			{
+				tempFloat = timeDiff.GetMinutes() * 60 / ((double)(lastFrame->GetId() / 100) * (double)project->GetNbFrames());
+			}
+			else
+			{
+				tempFloat = timeDiff.GetMinutes() * 60 / lastFrame->GetId();
+			}
 		}
 		else //"normal" WUs
 		{

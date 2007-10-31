@@ -21,6 +21,7 @@
 #include "client.h"
 #include "wx/colour.h"
 #include "wx/filefn.h"
+#include "wx/textfile.h"
 #include "trayManager.h"
 #include "aboutDialog.h"
 #include "pathManager.h"
@@ -58,6 +59,7 @@ enum _CONTROL_ID
 	MID_WWWPROJECTS,
 	MID_WWWSERVERS,
 	MID_WWWFAHINFO,
+	MID_UPDATECHECK,
 
 	// --- ListView
 	LST_CLIENTS
@@ -109,6 +111,7 @@ BEGIN_EVENT_TABLE(MainDialog, wxFrame)
 	EVT_MENU    (MID_WWWSERVERS,            MainDialog::OnMenuWeb)
 	EVT_MENU    (wxID_HELP_CONTENTS,        MainDialog::OnMenuWeb)
 	EVT_MENU    (wxID_ABOUT,                MainDialog::OnMenuAbout)
+	EVT_MENU    (MID_UPDATECHECK,           MainDialog::OnUpdateCheck)
 
 	// --- Frame
 	EVT_CLOSE   (MainDialog::OnClose)
@@ -132,6 +135,7 @@ END_EVENT_TABLE()
 // The single instance of MainDialog accross the application
 MainDialog* MainDialog::mInstance = NULL;
 
+wxMutex MainDialog::mMutexUpdateCheck;
 
 /**
 * Constructor
@@ -139,6 +143,7 @@ MainDialog* MainDialog::mInstance = NULL;
 MainDialog::MainDialog(void) : wxFrame(NULL, wxID_ANY, wxT(FMC_PRODUCT))
 {
 	bool trayIconEnabled;
+	bool updateCheck;
 
 	// Setting the icon for the main dialog will allows child frames and dialog to inherit from it
 
@@ -152,6 +157,9 @@ MainDialog::MainDialog(void) : wxFrame(NULL, wxID_ANY, wxT(FMC_PRODUCT))
 	CreateStatusBar(2);
 	CreateLayout();
 	RestoreFrameState();     // MUST be called when all controls have been created !
+	_PrefsGetBool(PREF_MAINDIALOG_UPDATE_CHECK, updateCheck);
+    if(updateCheck == true)
+            CheckForUpdates();
 
 	// The timer used for auto-reloading
 	mAutoReloadTimer.SetOwner(this);
@@ -589,6 +597,8 @@ inline void MainDialog::CreateMenuBar(void)
 	menu->Append(MID_TOGGLE_MESSAGES_FRAME, _("&Show/Hide Messages Window"), _("Toggle the messages window"));
 	menu->Append(MID_UPDATEPROJECTS, _("&Download New Projects"), _("Update the local project database"));
 	menu->AppendSeparator();
+	menu->Append(MID_UPDATECHECK, _("&Check for update"), _("Check online for the latest version of FahMon"));
+    menu->AppendSeparator();
 	menu->Append(MID_BENCHMARKS, _("&Benchmarks...\tCTRL+B"), _("Open the benchmarks dialog"));
 	menu->Append(wxID_PREFERENCES, _("&Preferences...\tCTRL+P"), _("Open the preferences dialog"));
 	menu->AppendSeparator();
@@ -1348,4 +1358,120 @@ void MainDialog::OnMenuToggleETADate(wxCommandEvent& event)
 		OnETAStylePrefChanged();
 		break;
 	}
+}
+
+/**
+ * Check for updates to FahMon
+**/
+void MainDialog::OnUpdateCheck(wxCommandEvent& event)
+{
+	CheckForUpdates();
+}
+
+
+void MainDialog::CheckForUpdates(void)
+{
+	wxMutexLocker   mutexLocker(mMutexUpdateCheck);        // --- Lock the access to this method
+	wxString        updateFile;
+	wxString        errorMsg;
+	wxString        versionInfo;
+	wxTextFile      in;
+	bool            updateAvailable = false;
+	ProgressManager progressManager(false);
+
+	_LogMsgInfo(_("Checking for FahMon updates"));
+
+
+	// --- We first have to download the new update file
+	progressManager.SetTextAndProgress(_("Checking for update"), 0);
+	progressManager.CreateTask(100);
+	if(DownloadUpdateFile(updateFile, progressManager, errorMsg, _T("downloads/update.chk")) == false)
+	{
+		Tools::ErrorMsgBox(errorMsg);
+
+		// Don't forget to remove the file before leaving, if it is needed
+		if(updateFile.IsEmpty() == false)
+			wxRemoveFile(updateFile);
+
+		// Stop there, since we cannot parse a non-existing file
+		return;
+	}
+	progressManager.EndTask();
+
+	if(!wxFileExists(updateFile) || !in.Open(updateFile))
+		return;
+
+	versionInfo = in.GetLine(in.GetLineCount()-1);
+	_LogMsgInfo(wxString::Format(_("Your version: %s; New version: %s"), wxT(FMC_VERSION), versionInfo.c_str()));
+
+	if(versionInfo.Cmp(wxT(FMC_VERSION)) > 0)
+	{
+		updateAvailable = true;
+	}
+	// --- We can finally delete the temporary file
+	// This file must exist if we reached this part of the code
+	wxASSERT(updateFile.IsEmpty() == false);
+	wxRemoveFile(updateFile);
+	in.Close();
+
+	if(updateAvailable == true)
+	{
+		_LogMsgInfo(_("Update available"));
+		if(Tools::QuestionMsgBox(_("A newer version of FahMon is available\nDo you want to go to the FahMon website?")) == true)
+			Tools::OpenURLInBrowser(wxT("http://fahmon.net/download.html"));
+	} else {
+		_LogMsgInfo(_("No update found"));
+	}
+}
+
+/**
+ * This method downloads the files with the current projects
+ * Return false if something went wrong, true otherwise
+ * In the case of an error, an explicit message is placed in errorMsg
+ * The name of the file to which the downloaded data was written is in fileName, which will be empty in case of an error
+ **/
+bool MainDialog::DownloadUpdateFile(wxString& fileName, ProgressManager& progressManager, wxString& errorMsg, wxString resource)
+{
+
+	HTTPDownloader::DownloadStatus downloadStatus;
+
+	//Initialise the port number
+
+	// Download the file
+	downloadStatus = HTTPDownloader::DownloadFile(_T("fahmon.net"), 80, resource, fileName, progressManager);
+
+	// If nothing went wrong, we can stop here
+	if(downloadStatus == HTTPDownloader::STATUS_NO_ERROR)
+		return true;
+
+	// Otherwise, we create an explicit error message to specify what went wrong
+	switch(downloadStatus)
+	{
+		case HTTPDownloader::STATUS_TEMP_FILE_CREATION_ERROR:
+			errorMsg = _("Unable to create a temporary file!");
+			break;
+
+		case HTTPDownloader::STATUS_TEMP_FILE_OPEN_ERROR:
+			errorMsg = wxString::Format(_("Unable to open the temporary file <%s>"), fileName.c_str());
+			break;
+
+		case HTTPDownloader::STATUS_CONNECT_ERROR:
+			errorMsg = _("Unable to connect to the server!");
+			break;
+
+		case HTTPDownloader::STATUS_SEND_REQUEST_ERROR:
+			errorMsg = _("Unable to send the request to the server!");
+			break;
+
+		case HTTPDownloader::STATUS_ABORTED:
+			errorMsg = _("Download aborted!");
+			break;
+
+		// We should never fall here
+		default:
+			wxASSERT(false);
+			errorMsg = _("An unknown error happened!");
+			break;
+	}
+	return false;
 }

@@ -183,7 +183,7 @@ void WebMonitor::WriteApp(void)
 					}
 					else
 					{
-						dataArray[currentClient][8] = wxString::Format(_T("%s"), downloadTime.Format(_T(FMC_DATE_MAIN_FORMAT)).c_str());
+						dataArray[currentClient][8] = wxString::Format(_T("%s"), downloadTime.Format(wxT(FMC_DATE_MAIN_FORMAT)).c_str());
 					}
 				}
 				if(client->GetProjectId() == INVALID_PROJECT_ID)
@@ -239,7 +239,7 @@ void WebMonitor::WriteApp(void)
 							}
 							else
 							{
-								dataArray[currentClient][9] = wxString::Format(_T("%s"), preferredDeadline.Format(_T(FMC_DATE_MAIN_FORMAT)).c_str());
+								dataArray[currentClient][9] = wxString::Format(_T("%s"), preferredDeadline.Format(wxT(FMC_DATE_MAIN_FORMAT)).c_str());
 							}
 						}
 						else
@@ -277,7 +277,7 @@ void WebMonitor::WriteApp(void)
 							}
 							else
 							{
-								dataArray[currentClient][10] = wxString::Format(_T("%s"), finalDeadline.Format(_T(FMC_DATE_MAIN_FORMAT)).c_str());
+								dataArray[currentClient][10] = wxString::Format(_T("%s"), finalDeadline.Format(wxT(FMC_DATE_MAIN_FORMAT)).c_str());
 							}
 						}
 						else
@@ -353,7 +353,7 @@ void WebMonitor::WriteApp(void)
 
 		// Write out the web header
 		textOS.WriteString(_T("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">\n<head>\n\t<meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\" />\n\t<meta http-equiv=\"Pragma\" content=\"no-cache\" />\n\t<meta http-equiv=\"refresh\" content=\"100\" />\n"));
-		textOS.WriteString(wxString::Format(_T("\t<title>%s</title>\n<script type=\"text/javascript\">\n"), _T(FMC_PRODUCT)));
+		textOS.WriteString(wxString::Format(_T("\t<title>%s</title>\n<script type=\"text/javascript\">\n"), wxT(FMC_PRODUCT)));
 		textOS.WriteString(_T("<!--\n"));
 
 		// Write out the wuinfo panel variable data
@@ -373,7 +373,7 @@ void WebMonitor::WriteApp(void)
 		// The actual visible bits
 		textOS.WriteString(_T("<body>\n<div id=\"fahmon\">\n"));
 		textOS.WriteString(_T("<table style=\"border-collapse:collapse;width:774px;\"><tr bgcolor=\"#3858a5\"><td width=\"18px\"><img src=\"dialog_icon.png\" /></td><td><b><font color=\"#FFFFFF\">"));
-		textOS.WriteString(wxString::Format(_("%s Web View - Last updated: %s"), _T(FMC_PRODUCT), wxDateTime::Now().Format(_T(FMC_DATE_MAIN_FORMAT)).c_str()));
+		textOS.WriteString(wxString::Format(_("%s Web View - Last updated: %s"), wxT(FMC_PRODUCT), wxDateTime::Now().Format(wxT(FMC_DATE_MAIN_FORMAT)).c_str()));
 		textOS.WriteString(_T("</font></b></td><td align=\"right\"><b><font color=\"#FFFFFF\">"));
 		textOS.WriteString(wxString::Format(_("Total PPD: %.2f"), MainDialog::GetInstance()->GetTotalPPD()));
 		textOS.WriteString(_T("</font></b></td><td align=\"right\" onclick=\"javascript:window.close();\"><b><font color=\"#FFFFFF\">X</font></b></td></tr></table>\n"));
@@ -399,7 +399,7 @@ void WebMonitor::WriteApp(void)
 			{
 				textOS.WriteString(_T("<td><img src=\"list_client_stopped.png\" /></td>\n"));
 			}
-			else if(dataArray[currentClient][12] == _("Asynch"))
+			else if(dataArray[currentClient][12] == _("Async"))
 			{
 				textOS.WriteString(_T("<td><img src=\"list_client_asynch.png\" /></td>\n"));
 			}
@@ -432,7 +432,7 @@ void WebMonitor::WriteApp(void)
 
 		// Write out the web header
 		textOS.WriteString(_T("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">\n<head>\n\t<meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\" />\n\t<meta http-equiv=\"Pragma\" content=\"no-cache\" />\n\t<meta http-equiv=\"refresh\" content=\"100\" />\n"));
-		textOS.WriteString(wxString::Format(_T("\t<title>%s</title>\n"), _T(FMC_PRODUCT)));
+		textOS.WriteString(wxString::Format(_T("\t<title>%s</title>\n"), wxT(FMC_PRODUCT)));
 		textOS.WriteString(wxString::Format(_T("<style type=\"text/css\">\n<!--\nTD {\npadding:2px;\nborder:1px solid #000;\n}\n//-->\n</style>\n</head>\n<body>\n<pre>\n<table style=\"border-collapse:collapse;border: 1px solid #000;\">\n<tr bgcolor=\"#eeeeee\">\n<td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n"), _("State"), _("Progress"), _("Name"), _("ETA"), _("PPD"), _("PRCG"), _("Credit"), _("Downloaded")));
 
 		// Iterate through the clients and print data
@@ -458,7 +458,7 @@ void WebMonitor::WriteApp(void)
 			_LogMsgError(wxString::Format(_("Could not open file <%s> for writing!\nThe simple text output will not be created!"), simpleTextLocation.c_str()));
 			return;
 		}
-		textOS.WriteString(wxString::Format(_("FahMon Client Monitoring %s - Simple Text Output\n\n"), _T(FMC_PRODUCT)));
+		textOS.WriteString(wxString::Format(_("FahMon Client Monitoring %s - Simple Text Output\n\n"), wxT(FMC_PRODUCT)));
 		textOS.WriteString(wxString::Format(_T("%s|%s|%s|%s|%s|%s|%s\n"), PadToLength(_("State"),7).c_str(), PadToLength(_("Progress"),4).c_str(), PadToLength(_("Name"),20).c_str(), PadToLength(_("ETA"),15).c_str(), PadToLength(_("PPD"),7).c_str(), PadToLength(_("PRCG"),23).c_str(), PadToLength(_("Credit"),11).c_str()));
 		textOS.WriteString(_T("=======|====|====================|===============|=======|=======================|===========\n"));
 		// Iterate through the clients and print data

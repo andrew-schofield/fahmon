@@ -195,6 +195,7 @@ inline wxPanel* PreferencesDialog::CreateGeneralTab(wxBookCtrlBase* parent)
 	mGeneralCollectXYZFiles             = new wxCheckBox(panel, wxID_ANY, _("Collect .xyz files"));
 	mGeneralAutoUpdateProjectsDatabase  = new wxCheckBox(panel, wxID_ANY, _("Auto update projects database when needed"));
 	mGeneralKeepInaccessibleClientsLast = new wxCheckBox(panel, wxID_ANY, _("Always list inaccessible clients last"));
+	mGeneralUpdateCheck                 = new wxCheckBox(panel, wxID_ANY, _("Check for FahMon updates on startup"));
 
 
 	sizer->AddStretchSpacer();
@@ -207,7 +208,9 @@ inline wxPanel* PreferencesDialog::CreateGeneralTab(wxBookCtrlBase* parent)
 	sizer->Add(mGeneralKeepInaccessibleClientsLast, 0, wxALIGN_LEFT);
 	sizer->AddStretchSpacer();
 	sizer->Add(mGeneralStartMinimised, 0, wxALIGN_LEFT);
-	sizer->AddStretchSpacer();
+	sizer->AddStretchSpacer();	
+    sizer->Add(mGeneralUpdateCheck, 0, wxALIGN_LEFT);
+    sizer->AddStretchSpacer();
 
 	topLevelSizer->Add(sizer, 1, wxEXPAND | wxALL, FMC_GUI_BORDER);
 	panel->SetSizer(topLevelSizer);
@@ -608,6 +611,7 @@ inline void PreferencesDialog::LoadPreferences(void)
 	bool     useWebApp;
 	bool     useSimpleWeb;
 	bool     useSimpleText;
+	bool     updateCheck;
 	wxUint32 proxyPort;
 	wxString proxyAddress;
 	wxString proxyUsername;
@@ -628,6 +632,7 @@ inline void PreferencesDialog::LoadPreferences(void)
 	_PrefsGetBool(PREF_MAINDIALOG_ENABLE_TRAY_ICON,   mInitEnableTrayIcon);
 	_PrefsGetBool(PREF_LISTCLIENTS_KEEP_DEAD_LAST,    keepInaccessibleLast);
 	_PrefsGetBool(PREF_MAINDIALOG_START_MINIMISED,    startMinimised);
+	_PrefsGetBool(PREF_MAINDIALOG_UPDATE_CHECK,       updateCheck);
 
 
 	mGeneralCollectXYZFiles->SetValue(isCollectingXYZFiles);
@@ -635,6 +640,7 @@ inline void PreferencesDialog::LoadPreferences(void)
 	mGeneralAutoUpdateProjectsDatabase->SetValue(autoUpdateProjects);
 	mGeneralKeepInaccessibleClientsLast->SetValue(keepInaccessibleLast);
 	mGeneralStartMinimised->SetValue(startMinimised);
+	mGeneralUpdateCheck->SetValue(updateCheck);
 
 	// -----===== Monitoring preferences =====-----
 	_PrefsGetBool(PREF_MAINDIALOG_ADVANCEDRELOAD,      mInitAdvancedReload);
@@ -871,6 +877,7 @@ inline void PreferencesDialog::SavePreferences(void)
 	_PrefsSetBool(PREF_MAINDIALOG_ENABLE_TRAY_ICON,   mGeneralEnableTrayIcon->GetValue());
 	_PrefsSetBool(PREF_MAINDIALOG_AUTOUPDATEPROJECTS, mGeneralAutoUpdateProjectsDatabase->GetValue());
 	_PrefsSetBool(PREF_LISTCLIENTS_KEEP_DEAD_LAST,    mGeneralKeepInaccessibleClientsLast->GetValue());
+	_PrefsSetBool(PREF_MAINDIALOG_UPDATE_CHECK,       mGeneralUpdateCheck->GetValue());
 
 
 	// -----===== Monitoring preferences =====-----

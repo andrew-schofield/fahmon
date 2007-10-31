@@ -90,17 +90,17 @@ HTTPDownloader::DownloadStatus HTTPDownloader::DownloadFile(const wxString& host
 		if(proxyNeedsAuthentication == true)
 		{
 			base64ProxyAuthentication = Base64Codec::Encode(wxString::Format(wxT("%s:%s"), proxyUsername.c_str(), proxyPassword.c_str()));
-			request                   = wxString::Format(wxT("GET http://%s:%u/%s HTTP/1.0\nHost: %s\nProxy-Authorization: Basic %s\n\n"), host.c_str(), port, resource.c_str(), host.c_str(), base64ProxyAuthentication.c_str());
+			request                   = wxString::Format(wxT("GET http://%s:%u/%s HTTP/1.0\nHost: %s\nProxy-Authorization: Basic %s\nUser-Agent: %s/%s\n\n"), host.c_str(), port, resource.c_str(), host.c_str(), base64ProxyAuthentication.c_str(), wxT(FMC_APPNAME), wxT(FMC_VERSION));
 		}
 		else
-			request = wxString::Format(wxT("GET http://%s:%u/%s HTTP/1.0\nHost: %s\n\n"), host.c_str(), port, resource.c_str(), host.c_str());
+			request = wxString::Format(wxT("GET http://%s:%u/%s HTTP/1.0\nHost: %s\nUser-Agent: %s/%s\n\n"), host.c_str(), port, resource.c_str(), host.c_str(), wxT(FMC_APPNAME), wxT(FMC_VERSION));
 
 		serverAddress.Hostname(proxyAddress);
 		serverAddress.Service(proxyPort);
 	}
 	else
 	{
-		request = wxString::Format(wxT("GET /%s HTTP/1.0\nHost: %s\n\n"), resource.c_str(), host.c_str());
+		request = wxString::Format(wxT("GET /%s HTTP/1.0\nHost: %s\nUser-Agent: %s/%s\n\n"), resource.c_str(), host.c_str(), wxT(FMC_APPNAME), wxT(FMC_VERSION));
 
 		serverAddress.Hostname(host);
 		serverAddress.Service(port);
