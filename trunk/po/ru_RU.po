@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru_RU v.231 22/10/2007\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2007-10-30 13:21+0000\n"
+"POT-Creation-Date: 2007-11-09 21:48+0000\n"
 "PO-Revision-Date: 2007-10-22 21:04+0300\n"
 "Last-Translator: Evgeniy Chorpita, 2007 <tsc.behc@gmail.com>\n"
 "Language-Team: TSC! Russia <http://tsc.overclockers.ru/>\n"
@@ -735,28 +735,28 @@ msgstr " :: Всего PPD:"
 msgid "Log file."
 msgstr "Лог файл."
 
-#: src/mainDialog.cpp:1006
+#: src/mainDialog.cpp:1014
 msgid "You must first select a client!"
 msgstr "Вы должны сначала выбрать клиента!"
 
-#: src/mainDialog.cpp:1365
+#: src/mainDialog.cpp:1379
 msgid "Checking for FahMon updates"
 msgstr "Проверить наличие новой версии FahMon"
 
-#: src/mainDialog.cpp:1369
+#: src/mainDialog.cpp:1383
 msgid "Checking for update"
 msgstr "Проверка обновления"
 
-#: src/mainDialog.cpp:1388
+#: src/mainDialog.cpp:1402
 #, c-format
 msgid "Your version: %s; New version: %s"
 msgstr "Ваша версия: %s; Новая версия: %s"
 
-#: src/mainDialog.cpp:1402
+#: src/mainDialog.cpp:1416
 msgid "Update available"
 msgstr "Доступно обновление"
 
-#: src/mainDialog.cpp:1403
+#: src/mainDialog.cpp:1417
 msgid ""
 "A newer version of FahMon is available\n"
 "Do you want to go to the FahMon website?"
@@ -764,32 +764,32 @@ msgstr ""
 "Вышла новая версия FahMon\n"
 "Хотите перейти на страницу загрузки FahMon?"
 
-#: src/mainDialog.cpp:1406
+#: src/mainDialog.cpp:1420
 msgid "No update found"
 msgstr "Новых версий нет"
 
-#: src/mainDialog.cpp:1434 src/projectsManager.cpp:342
+#: src/mainDialog.cpp:1448 src/projectsManager.cpp:342
 msgid "Unable to create a temporary file!"
 msgstr "Невозможно создать временный файл!"
 
-#: src/mainDialog.cpp:1438 src/projectsManager.cpp:346
+#: src/mainDialog.cpp:1452 src/projectsManager.cpp:346
 #, c-format
 msgid "Unable to open the temporary file <%s>"
 msgstr "Невозможно открыть временный файл <%s>"
 
-#: src/mainDialog.cpp:1442 src/projectsManager.cpp:350
+#: src/mainDialog.cpp:1456 src/projectsManager.cpp:350
 msgid "Unable to connect to the server!"
 msgstr "Невозможно соединиться с сервером!"
 
-#: src/mainDialog.cpp:1446 src/projectsManager.cpp:354
+#: src/mainDialog.cpp:1460 src/projectsManager.cpp:354
 msgid "Unable to send the request to the server!"
 msgstr "Невозможно послать запрос на сервер!"
 
-#: src/mainDialog.cpp:1450 src/projectsManager.cpp:358
+#: src/mainDialog.cpp:1464 src/projectsManager.cpp:358
 msgid "Download aborted!"
 msgstr "Скачивание прервано!"
 
-#: src/mainDialog.cpp:1456 src/projectsManager.cpp:364
+#: src/mainDialog.cpp:1470 src/projectsManager.cpp:364
 msgid "An unknown error happened!"
 msgstr "Вы словили неизвестную ошибку!"
 

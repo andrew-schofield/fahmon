@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FahMon 2.3.0\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2007-10-30 13:21+0000\n"
+"POT-Creation-Date: 2007-11-09 21:48+0000\n"
 "PO-Revision-Date: 2007-10-22 10:29+0100\n"
 "Last-Translator: Olof Persson <floffe@gmail.com>\n"
 "Language-Team: Swedish <floffe@gmail.com>\n"
@@ -739,28 +739,28 @@ msgstr " :: Sammanlagd PPD:"
 msgid "Log file."
 msgstr "Loggfil."
 
-#: src/mainDialog.cpp:1006
+#: src/mainDialog.cpp:1014
 msgid "You must first select a client!"
 msgstr "Du måste först välja en klient!"
 
-#: src/mainDialog.cpp:1365
+#: src/mainDialog.cpp:1379
 msgid "Checking for FahMon updates"
 msgstr "Letar efter uppdateringar till FahMon"
 
-#: src/mainDialog.cpp:1369
+#: src/mainDialog.cpp:1383
 msgid "Checking for update"
 msgstr "Letar efter uppdatering"
 
-#: src/mainDialog.cpp:1388
+#: src/mainDialog.cpp:1402
 #, c-format
 msgid "Your version: %s; New version: %s"
 msgstr "Din version: %s; Ny version: %s"
 
-#: src/mainDialog.cpp:1402
+#: src/mainDialog.cpp:1416
 msgid "Update available"
 msgstr "Nyare version hittad"
 
-#: src/mainDialog.cpp:1403
+#: src/mainDialog.cpp:1417
 msgid ""
 "A newer version of FahMon is available\n"
 "Do you want to go to the FahMon website?"
@@ -768,32 +768,32 @@ msgstr ""
 "En nyare version av FahMon är tillgänglig\n"
 "Vill du gå till FahMons webbplats?"
 
-#: src/mainDialog.cpp:1406
+#: src/mainDialog.cpp:1420
 msgid "No update found"
 msgstr "Ingen nyare version hittades"
 
-#: src/mainDialog.cpp:1434 src/projectsManager.cpp:342
+#: src/mainDialog.cpp:1448 src/projectsManager.cpp:342
 msgid "Unable to create a temporary file!"
 msgstr "Kunde inte skapa en tillfällig fil!"
 
-#: src/mainDialog.cpp:1438 src/projectsManager.cpp:346
+#: src/mainDialog.cpp:1452 src/projectsManager.cpp:346
 #, c-format
 msgid "Unable to open the temporary file <%s>"
 msgstr "Kunde inte öppna den tillfälliga filen <%s>"
 
-#: src/mainDialog.cpp:1442 src/projectsManager.cpp:350
+#: src/mainDialog.cpp:1456 src/projectsManager.cpp:350
 msgid "Unable to connect to the server!"
 msgstr "Kunde inte ansluta till servern!"
 
-#: src/mainDialog.cpp:1446 src/projectsManager.cpp:354
+#: src/mainDialog.cpp:1460 src/projectsManager.cpp:354
 msgid "Unable to send the request to the server!"
 msgstr "kunde inte skicka förfrågan till servern!"
 
-#: src/mainDialog.cpp:1450 src/projectsManager.cpp:358
+#: src/mainDialog.cpp:1464 src/projectsManager.cpp:358
 msgid "Download aborted!"
 msgstr "Hämtning avbruten!"
 
-#: src/mainDialog.cpp:1456 src/projectsManager.cpp:364
+#: src/mainDialog.cpp:1470 src/projectsManager.cpp:364
 msgid "An unknown error happened!"
 msgstr "Ett okänt fel har uppstått!"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fr_FR\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2007-10-30 13:21+0000\n"
+"POT-Creation-Date: 2007-11-09 21:48+0000\n"
 "PO-Revision-Date: 2007-10-27 15:30+0100\n"
 "Last-Translator: Le Garrec Patrice <thor@pcperf.fr>\n"
 "Language-Team: french <http://folding.mesdiscussions.net/foldinghome/Aide-"
@@ -747,28 +747,28 @@ msgstr " :: PPD total:"
 msgid "Log file."
 msgstr "Fichier de Log."
 
-#: src/mainDialog.cpp:1006
+#: src/mainDialog.cpp:1014
 msgid "You must first select a client!"
 msgstr "Vous devez commencer par sélectionner un client!"
 
-#: src/mainDialog.cpp:1365
+#: src/mainDialog.cpp:1379
 msgid "Checking for FahMon updates"
 msgstr "Recherche de mises à jour de FahMon"
 
-#: src/mainDialog.cpp:1369
+#: src/mainDialog.cpp:1383
 msgid "Checking for update"
 msgstr "Recherche de mise a jour"
 
-#: src/mainDialog.cpp:1388
+#: src/mainDialog.cpp:1402
 #, c-format
 msgid "Your version: %s; New version: %s"
 msgstr "Votre version: %s; Nouvelle version: %s"
 
-#: src/mainDialog.cpp:1402
+#: src/mainDialog.cpp:1416
 msgid "Update available"
 msgstr "Mise a jour disponible"
 
-#: src/mainDialog.cpp:1403
+#: src/mainDialog.cpp:1417
 msgid ""
 "A newer version of FahMon is available\n"
 "Do you want to go to the FahMon website?"
@@ -776,32 +776,32 @@ msgstr ""
 "Une nouvelle version de FahMon est disponible.Voulez-vous vous rendre sur le "
 "site de FahMon ?"
 
-#: src/mainDialog.cpp:1406
+#: src/mainDialog.cpp:1420
 msgid "No update found"
 msgstr "Aucune mise à jour trouvée"
 
-#: src/mainDialog.cpp:1434 src/projectsManager.cpp:342
+#: src/mainDialog.cpp:1448 src/projectsManager.cpp:342
 msgid "Unable to create a temporary file!"
 msgstr "Impossible de créer un fichier temporaire!"
 
-#: src/mainDialog.cpp:1438 src/projectsManager.cpp:346
+#: src/mainDialog.cpp:1452 src/projectsManager.cpp:346
 #, c-format
 msgid "Unable to open the temporary file <%s>"
 msgstr "Impossible d'ouvrir le fichier temporaire <%s>"
 
-#: src/mainDialog.cpp:1442 src/projectsManager.cpp:350
+#: src/mainDialog.cpp:1456 src/projectsManager.cpp:350
 msgid "Unable to connect to the server!"
 msgstr "Impossible de se connecter au serveur!"
 
-#: src/mainDialog.cpp:1446 src/projectsManager.cpp:354
+#: src/mainDialog.cpp:1460 src/projectsManager.cpp:354
 msgid "Unable to send the request to the server!"
 msgstr "Impossible d'envoyer une requête au serveur!"
 
-#: src/mainDialog.cpp:1450 src/projectsManager.cpp:358
+#: src/mainDialog.cpp:1464 src/projectsManager.cpp:358
 msgid "Download aborted!"
 msgstr "Téléchargement abandonné!"
 
-#: src/mainDialog.cpp:1456 src/projectsManager.cpp:364
+#: src/mainDialog.cpp:1470 src/projectsManager.cpp:364
 msgid "An unknown error happened!"
 msgstr "Une erreur inconnue s'est produite!"
 

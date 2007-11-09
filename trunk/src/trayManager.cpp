@@ -166,7 +166,7 @@ void TrayManager::OnClick(wxTaskBarIconEvent& event)
 
 		// Fortunately, this function seems to keep track of the previous maximize state of the window;
 		// otherwise, we would have to do that
-		MainDialog::GetInstance()->Maximize(false);
+		// MainDialog::GetInstance()->Maximize(false);
 	}
 }
 
@@ -242,7 +242,7 @@ void TrayManager::Show(wxCommandEvent&)
 
 		// Fortunately, this function seems to keep track of the previous maximize state of the window;
 		// otherwise, we would have to do that
-		MainDialog::GetInstance()->Maximize(false);
+		// MainDialog::GetInstance()->Maximize(false);
 }
 
 /**

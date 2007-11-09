@@ -791,6 +791,7 @@ inline void MainDialog::RestoreFrameState(void)
 	wxInt32  frameWidth;
 	wxInt32  frameHeight;
 	wxUint32 sashPosition;
+	bool     max;
 
 
 	// --- State of the log
@@ -804,6 +805,12 @@ inline void MainDialog::RestoreFrameState(void)
 		mTopLevelSizer->Show(mLogFile, false);
 	}
 	mTopLevelSizer->Layout();
+
+	// --- Splitter's state
+	_PrefsGetUint(PREF_MAINDIALOG_SASHPOSITION, sashPosition);
+
+	mSplitterWindow->SetMinimumPaneSize(20);
+	mSplitterWindow->SetSashPosition(sashPosition, true);
 
 
 	// --- Size and position of the frame
@@ -834,21 +841,22 @@ inline void MainDialog::RestoreFrameState(void)
 
 	if(frameWidth <= 0 || frameHeight <= 0)
 	{
+		if(frameWidth == -2 && frameHeight == -2)
+		{
+			//if maximized, default frame size is restored, however GTK overrides this
+			max = true;
+		}
 		// -1 indicates defaults values
 		frameWidth  = -1;
 		frameHeight = -1;
 	}
-
 	// We now have correct values, resize and move the frame
 	SetSize(frameWidth, frameHeight);
 	Move(framePosX, framePosY);
-
-
-	// --- Splitter's state
-	_PrefsGetUint(PREF_MAINDIALOG_SASHPOSITION, sashPosition);
-
-	mSplitterWindow->SetMinimumPaneSize(20);
-	mSplitterWindow->SetSashPosition(sashPosition);
+	if(max)
+	{
+		Maximize(true);
+	}
 }
 
 
@@ -1057,13 +1065,19 @@ void MainDialog::OnClose(wxCloseEvent& event)
 	// Don't save window size if it is iconized (win32 bug)
 	if(!IsIconized())
 	{
-		// Save the size of the frame
-		_PrefsSetInt(PREF_MAINDIALOG_FRAMEWIDTH,  GetSize().GetWidth());
-		_PrefsSetInt(PREF_MAINDIALOG_FRAMEHEIGHT, GetSize().GetHeight());
+		if( !IsMaximized())
+		{
+			// Save the size of the frame
+			_PrefsSetInt(PREF_MAINDIALOG_FRAMEWIDTH,  GetSize().GetWidth());
+			_PrefsSetInt(PREF_MAINDIALOG_FRAMEHEIGHT, GetSize().GetHeight());
 
-		// Save the position of the frame
-		_PrefsSetInt(PREF_MAINDIALOG_FRAME_POS_X, GetPosition().x);
-		_PrefsSetInt(PREF_MAINDIALOG_FRAME_POS_Y, GetPosition().y);
+			// Save the position of the frame
+			_PrefsSetInt(PREF_MAINDIALOG_FRAME_POS_X, GetPosition().x);
+			_PrefsSetInt(PREF_MAINDIALOG_FRAME_POS_Y, GetPosition().y);
+		} else {
+			_PrefsSetInt(PREF_MAINDIALOG_FRAMEWIDTH,  -2);
+			_PrefsSetInt(PREF_MAINDIALOG_FRAMEHEIGHT, -2);
+		}
 	}
 
 	// Save the position of the sash
