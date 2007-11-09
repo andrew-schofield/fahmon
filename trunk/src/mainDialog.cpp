@@ -838,14 +838,13 @@ inline void MainDialog::RestoreFrameState(void)
 		framePosX = -1;
 		framePosY = -1;
 	}
-
+	max = false;
 	if(frameWidth <= 0 || frameHeight <= 0)
 	{
 		if(frameWidth == -2 && frameHeight == -2)
-		{
-			//if maximized, default frame size is restored, however GTK overrides this
 			max = true;
-		}
+		else
+			max = false;
 		// -1 indicates defaults values
 		frameWidth  = -1;
 		frameHeight = -1;
