@@ -91,10 +91,12 @@ void WebMonitor::WriteApp(void)
 	bool           useSimpleWeb;
 	bool           useSimpleText;
 	bool           overrideTZ;
-	bool           deadlineDays;
+	wxUint32       deadlineDays;
 	wxString       webAppLocation;
 	wxString       simpleWebLocation;
 	wxString       simpleTextLocation;
+	wxString       updateDate;
+	float          totalPPD;
 	//wxString       dataArray[ClientsManager::GetInstance()->GetCount()][13];
 	//for reference: 0progress, 1client name, 2ETA, 3PPD, 4corename, 5projectID, 6credit, 7username/team, 8downloaded, 9preferred, 10final, 11bgcolor, 12state
 	wxString      ** dataArray;
@@ -121,7 +123,7 @@ void WebMonitor::WriteApp(void)
 
 	_PrefsGetBool(PREF_OVERRIDE_TIMEZONE,           overrideTZ);
 	_PrefsGetInt (PREF_TZ,                          TZ);
-	_PrefsGetBool(PREF_MAINDIALOG_DEADLINE_DAYS,    deadlineDays);
+	_PrefsGetUint(PREF_ETA_DISPLAYSTYLE,            deadlineDays);
 
 	_PrefsGetBool(PREF_WEBAPP_WEBAPP,               useWebApp)
 	_PrefsGetBool(PREF_WEBAPP_SIMPLEWEB,            useSimpleWeb)
@@ -129,6 +131,8 @@ void WebMonitor::WriteApp(void)
 	_PrefsGetString(PREF_WEBAPP_WEBAPPLOCATION,     webAppLocation);
 	_PrefsGetString(PREF_WEBAPP_SIMPLEWEBLOCATION,  simpleWebLocation);
 	_PrefsGetString(PREF_WEBAPP_SIMPLETEXTLOCATION, simpleTextLocation);
+
+	totalPPD = MainDialog::GetInstance()->GetTotalPPD();
 
 	if(useWebApp == true || useSimpleWeb == true || useSimpleText == true)
 	{
@@ -160,7 +164,7 @@ void WebMonitor::WriteApp(void)
 						downloadTime = client->GetDownloadDate().FromTimezone(wxDateTime::UTC);
 						timeNow = wxDateTime::Now()/*.FromTimezone(wxDateTime::UTC)*/;
 					}
-					if(deadlineDays == true)
+					if(deadlineDays == ETADS_LEFT_TIME)
 					{
 						timeDiff = timeNow.Subtract(downloadTime);
 						timeInMinutes = timeDiff.GetMinutes();
@@ -180,10 +184,17 @@ void WebMonitor::WriteApp(void)
 							tempString = wxString::Format(_T("%imn"), nbMinutes);
 
 						dataArray[currentClient][8] = wxString::Format(_("%s ago"), tempString.c_str());
+						updateDate = wxString::Format(wxT("%s"), timeNow.Format(wxT("%d %B, %H:%M")).c_str());
+					}
+					else if (deadlineDays == ETADS_DATE_DAY_MONTH)
+					{
+						dataArray[currentClient][8] = wxString::Format(wxT("%s"), downloadTime.Format(wxT("%d %B, %H:%M")).c_str());
+						updateDate = wxString::Format(wxT("%s"), timeNow.Format(wxT("%d %B, %H:%M")).c_str());
 					}
 					else
 					{
-						dataArray[currentClient][8] = wxString::Format(_T("%s"), downloadTime.Format(wxT(FMC_DATE_MAIN_FORMAT)).c_str());
+						dataArray[currentClient][8] = wxString::Format(wxT("%s"), downloadTime.Format(wxT("%B %d, %H:%M")).c_str());
+						updateDate = wxString::Format(wxT("%s"), timeNow.Format(wxT("%B %d, %H:%M")).c_str());
 					}
 				}
 				if(client->GetProjectId() == INVALID_PROJECT_ID)
@@ -212,7 +223,7 @@ void WebMonitor::WriteApp(void)
 						{
 							preferredDeadline = downloadTime;
 							preferredDeadline.Add(wxTimeSpan::Seconds(project->GetPreferredDeadlineInDays() * 864));
-							if(deadlineDays == true)
+							if(deadlineDays == ETADS_LEFT_TIME)
 							{
 								timeDiff = preferredDeadline.Subtract(timeNow);
 								timeInMinutes = timeDiff.GetMinutes();
@@ -237,9 +248,13 @@ void WebMonitor::WriteApp(void)
 									dataArray[currentClient][9] = wxString::Format(_("In %s"), tempString.c_str());
 
 							}
+							else if (deadlineDays == ETADS_DATE_DAY_MONTH)
+							{
+								dataArray[currentClient][9] = wxString::Format(wxT("%s"), preferredDeadline.Format(wxT("%d %B, %H:%M")).c_str());
+							}
 							else
 							{
-								dataArray[currentClient][9] = wxString::Format(_T("%s"), preferredDeadline.Format(wxT(FMC_DATE_MAIN_FORMAT)).c_str());
+								dataArray[currentClient][9] = wxString::Format(wxT("%s"), preferredDeadline.Format(wxT("%B %d, %H:%M")).c_str());
 							}
 						}
 						else
@@ -250,7 +265,7 @@ void WebMonitor::WriteApp(void)
 						{
 							finalDeadline = downloadTime;
 							finalDeadline.Add(wxTimeSpan::Seconds(project->GetFinalDeadlineInDays() * 864));
-							if(deadlineDays == true)
+							if(deadlineDays == ETADS_LEFT_TIME)
 							{
 								timeDiff = finalDeadline.Subtract(timeNow);
 								timeInMinutes = timeDiff.GetMinutes();
@@ -275,9 +290,13 @@ void WebMonitor::WriteApp(void)
 								else
 									dataArray[currentClient][10] = wxString::Format(_("In %s"), tempString.c_str());
 							}
+							else if (deadlineDays == ETADS_DATE_DAY_MONTH)
+							{
+								dataArray[currentClient][10] = wxString::Format(wxT("%s"), finalDeadline.Format(wxT("%d %B, %H:%M")).c_str());
+							}
 							else
 							{
-								dataArray[currentClient][10] = wxString::Format(_T("%s"), finalDeadline.Format(wxT(FMC_DATE_MAIN_FORMAT)).c_str());
+								dataArray[currentClient][10] = wxString::Format(wxT("%s"), finalDeadline.Format(wxT("%B %d, %H:%M")).c_str());
 							}
 						}
 						else
@@ -373,9 +392,9 @@ void WebMonitor::WriteApp(void)
 		// The actual visible bits
 		textOS.WriteString(_T("<body>\n<div id=\"fahmon\">\n"));
 		textOS.WriteString(_T("<table style=\"border-collapse:collapse;width:774px;\"><tr bgcolor=\"#3858a5\"><td width=\"18px\"><img src=\"dialog_icon.png\" /></td><td><b><font color=\"#FFFFFF\">"));
-		textOS.WriteString(wxString::Format(_("%s Web View - Last updated: %s"), wxT(FMC_PRODUCT), wxDateTime::Now().Format(wxT(FMC_DATE_MAIN_FORMAT)).c_str()));
+		textOS.WriteString(wxString::Format(_("%s Web View - Last updated: %s"), wxT(FMC_PRODUCT), updateDate.c_str()));
 		textOS.WriteString(_T("</font></b></td><td align=\"right\"><b><font color=\"#FFFFFF\">"));
-		textOS.WriteString(wxString::Format(_("Total PPD: %.2f"), MainDialog::GetInstance()->GetTotalPPD()));
+		textOS.WriteString(wxString::Format(_("Total PPD: %.2f"), totalPPD));
 		textOS.WriteString(_T("</font></b></td><td align=\"right\" onclick=\"javascript:window.close();\"><b><font color=\"#FFFFFF\">X</font></b></td></tr></table>\n"));
 		textOS.WriteString(wxString::Format(_T("<div id=\"tableContainer\" class=\"tableContainer\">\n<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" class=\"scrollTable\">\n<thead class=\"fixedHeader\" id=\"fixedHeader\">\n\t<tr>\n<th></th>\n<th><u>%s</u></th>\n<th><u>%s</u></th>\n<th><u>%s</u></th>\n<th><u>%s</u></th>\n\t</tr>\n</thead>\n<tbody class=\"scrollContent\">\n"), _("Progress"), _("Name"), _("ETA"), _("PPD") ));
 
@@ -433,7 +452,11 @@ void WebMonitor::WriteApp(void)
 		// Write out the web header
 		textOS.WriteString(_T("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">\n<head>\n\t<meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\" />\n\t<meta http-equiv=\"Pragma\" content=\"no-cache\" />\n\t<meta http-equiv=\"refresh\" content=\"100\" />\n"));
 		textOS.WriteString(wxString::Format(_T("\t<title>%s</title>\n"), wxT(FMC_PRODUCT)));
-		textOS.WriteString(wxString::Format(_T("<style type=\"text/css\">\n<!--\nTD {\npadding:2px;\nborder:1px solid #000;\n}\n//-->\n</style>\n</head>\n<body>\n<pre>\n<table style=\"border-collapse:collapse;border: 1px solid #000;\">\n<tr bgcolor=\"#eeeeee\">\n<td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n"), _("State"), _("Progress"), _("Name"), _("ETA"), _("PPD"), _("PRCG"), _("Credit"), _("Downloaded")));
+		textOS.WriteString(_T("<style type=\"text/css\">\n<!--\nTD {\npadding:2px;\nborder:1px solid #000;\n}\n//-->\n</style>\n</head>\n<body>\n<pre>\n<table style=\"border-collapse:collapse;border: 1px solid #000;\">\n<tr><td colspan=\"6\">"));
+		textOS.WriteString(wxString::Format(_("%s Web View - Last updated: %s"), wxT(FMC_PRODUCT), updateDate.c_str()));
+		textOS.WriteString(_T("</td><td colspan=\"2\">"));
+		textOS.WriteString(wxString::Format(_("Total PPD: %.2f"), totalPPD));
+		textOS.WriteString(wxString::Format(_T("</td></tr><tr bgcolor=\"#eeeeee\">\n<td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n"), _("State"), _("Progress"), _("Name"), _("ETA"), _("PPD"), _("PRCG"), _("Credit"), _("Downloaded")));
 
 		// Iterate through the clients and print data
 		for(currentClient=0; currentClient<ClientsManager::GetInstance()->GetCount(); ++currentClient)
@@ -458,7 +481,10 @@ void WebMonitor::WriteApp(void)
 			_LogMsgError(wxString::Format(_("Could not open file <%s> for writing!\nThe simple text output will not be created!"), simpleTextLocation.c_str()));
 			return;
 		}
-		textOS.WriteString(wxString::Format(_("FahMon Client Monitoring %s - Simple Text Output\n\n"), wxT(FMC_PRODUCT)));
+		textOS.WriteString(wxString::Format(_("FahMon Client Monitoring %s - Simple Text Output\n"), wxT(FMC_PRODUCT)));
+		textOS.WriteString(wxString::Format(_("Last updated: %s"), updateDate.c_str()));
+		textOS.WriteString(_T("   "));
+		textOS.WriteString(wxString::Format(_("Total PPD: %.2f\n\n"), totalPPD));
 		textOS.WriteString(wxString::Format(_T("%s|%s|%s|%s|%s|%s|%s\n"), PadToLength(_("State"),7).c_str(), PadToLength(_("Progress"),4).c_str(), PadToLength(_("Name"),20).c_str(), PadToLength(_("ETA"),15).c_str(), PadToLength(_("PPD"),7).c_str(), PadToLength(_("PRCG"),23).c_str(), PadToLength(_("Credit"),11).c_str()));
 		textOS.WriteString(_T("=======|====|====================|===============|=======|=======================|===========\n"));
 		// Iterate through the clients and print data
