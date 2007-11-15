@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fr_FR\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2007-11-15 00:30+0000\n"
+"POT-Creation-Date: 2007-11-15 21:14+0000\n"
 "PO-Revision-Date: 2007-10-27 15:30+0100\n"
 "Last-Translator: Le Garrec Patrice <thor@pcperf.fr>\n"
 "Language-Team: french <http://folding.mesdiscussions.net/foldinghome/Aide-"
@@ -200,50 +200,50 @@ msgstr "Erreur durant la lecture de %sunitinfo.txt!"
 msgid "Error while reading %sunitinfo.txt!"
 msgstr "Erreur durant la lecture de %sunitinfo.txt!"
 
-#: src/client.cpp:423
+#: src/client.cpp:424
 #, c-format
 msgid "The progress value in file %s could not be found/parsed"
 msgstr "La valeur de progression du fichier %s ne peut pas étre trouvée/parsée"
 
-#: src/client.cpp:647
+#: src/client.cpp:648
 #, c-format
 msgid "Unable to save %s because it does not exist"
 msgstr "Impossible de sauvegarder %s car il n'existe pas"
 
-#: src/client.cpp:654
+#: src/client.cpp:655
 #, c-format
 msgid "Unable to create directory %s"
 msgstr "Impossible de créer le dossier %s"
 
-#: src/client.cpp:664
+#: src/client.cpp:665
 #, c-format
 msgid "Unable to copy %s to %s"
 msgstr "Impossible de copier %s vers %s"
 
-#: src/client.cpp:692
+#: src/client.cpp:693
 #, c-format
 msgid "%s is on frame %u"
 msgstr "%s Est a la frame %u"
 
-#: src/client.cpp:696
+#: src/client.cpp:697
 #, c-format
 msgid "Cannot determine frame number for %s (this isn't a problem)"
 msgstr ""
 "Impossible de déterminer le nombre de frames pour %s (Ceci n'est pas un "
 "problème)"
 
-#: src/client.cpp:859
+#: src/client.cpp:861
 #, c-format
 msgid "%s has an unknown state (Unable to find a complete frame)"
 msgstr "%s a un état inconnu (Impossible de trouver une frame compléte)"
 
-#: src/client.cpp:868
+#: src/client.cpp:870
 #, c-format
 msgid "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
 msgstr ""
 "%s est stoppé (La ligne \"Folding@Home Client Shutdown.\" a été trouvée)"
 
-#: src/client.cpp:877
+#: src/client.cpp:879
 #, c-format
 msgid ""
 "%s has an unknown state (Unable to extract a valid elapsed time since the "
@@ -252,18 +252,18 @@ msgstr ""
 "%s est dans un état inconnu (Impossible d'extraire une durée valide du temps "
 "écoulé depuis la derniére frame terminée)"
 
-#: src/client.cpp:885
+#: src/client.cpp:887
 #, c-format
 msgid "%s has been marked as having a asynchronous clock."
 msgstr "%s est indiqué comme ayant une horloge désynchronisée."
 
-#: src/client.cpp:912
+#: src/client.cpp:914
 #, c-format
 msgid "%s seems to have hung : Elapsed time is %um and limit is %um"
 msgstr ""
 "%s semble être en pause : Le temps écoulé est de %um et la limite est %um"
 
-#: src/client.cpp:917
+#: src/client.cpp:919
 #, c-format
 msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
 msgstr ""

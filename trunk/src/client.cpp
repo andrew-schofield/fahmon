@@ -224,6 +224,9 @@ void Client::Reload(void)
 		}
 		// There may be a cleaner way of doing this
 		timeDiff = timeNow.Subtract(downloadTime);
+		_LogMsgInfo(wxString::Format(wxT("%s"), timeDiff.Format(wxT("%d %B, %H:%M")).c_str()));
+		_LogMsgInfo(wxString::Format(wxT("%s"), timeNow.Format(wxT("%d %B %y, %H:%M")).c_str()));
+		_LogMsgInfo(wxString::Format(wxT("%s"), downloadTime.Format(wxT("%d %B %y, %H:%M")).c_str()));
 		// sanity checking because WUs with odd frame numbers still write out the % not the frameID
 		project = ProjectsManager::GetInstance()->GetProject(mProjectId);
 		if(project != INVALID_PROJECT_ID)
@@ -382,8 +385,6 @@ inline bool Client::LoadUnitInfoFile(const wxString& filename)
 	if(!wxFileExists(filename) || !in.Open(filename))
 		return false;
 
-	// We need to find all these elements, otherwise the file is not correct
-	//projectOk      = false;
 	progressOk     = false;
 
 	// Retrieve each line and try to extract the needed elements
@@ -448,7 +449,7 @@ inline bool Client::LoadQueueFile(const wxString& filename)
 	systype = 0;
 #elif _FAHMON_WIN32_
 	systype = 1;
-#elif __WXMAC__PPC
+#elif __WXMAC_PPC__
 	systype = 2;
 #elif __WXMAC__
 	systype = 3;
@@ -496,7 +497,7 @@ tw:				q = "1Windows";
 			case 7032:
 				queueversion = 324;
 tl:				if (genome)
-#ifdef __WXMAC__PPC
+#ifdef __WXMAC_PPC__
 					q = "0Linux";
 #else
 					q = "2Mac/PPC";
@@ -510,7 +511,7 @@ tl:				if (genome)
 			case 7168:
 				queueversion = 500;
 tt:				if (genome)
-#ifdef __WXMAC__PPC
+#ifdef __WXMAC_PPC__
 					q = "1Linux, Windows or Mac/x86";
 #else
 					q = "2Mac/PPC";
@@ -523,7 +524,7 @@ tt:				if (genome)
 			systype = *q++ - '0';
 		//endian swap for PPC machines and queues
 		endianswap = FALSE;
-#ifdef __WXMAC__PPC
+#ifdef __WXMAC_PPC__
 		if (systype != 2)
 			endianswap = TRUE;
 #else
@@ -608,8 +609,8 @@ tt:				if (genome)
 		wxString username(p->uname, wxConvUTF8);
 		wxString teamnumber(p->teamn, wxConvUTF8);
 		//_LogMsgInfo(wxString::Format(_T("PRCG from queue for %s: %u/%u/%u/%u"), mName.c_str(), mProjectId, mRun, mClone, mGen));
-		it = (genome ? le4(p->wuid.g.issue[0]) : le4(p->wuid.f.issue[0])) - TIME_OFS;
-		mDownloadDate = it;
+		it = (genome ? le4(p->wuid.g.issue[0]) : le4(p->wuid.f.issue[0]));
+		mDownloadDate = it/* what is going on here I wonder? Does wxwidgets also use 01/01/2000 as it's epoch? */;
 		mUserName = username;
 		if(teamnumber.ToULong(&tmpLong) == true)
 		{
@@ -763,6 +764,7 @@ void Client::ComputeETA(WorkUnitFrame* lastFrame)
 		switch(ppdDisplay)
 		{
 			// ---
+			case PPDDS_EFFECTIVE_FRAMES:
 			case PPDDS_ALL_FRAMES:
 				referenceDuration = benchmark->GetAvgDuration();
 				break;
