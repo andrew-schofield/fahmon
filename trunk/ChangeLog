@@ -1,5 +1,14 @@
 FahMon: The Folding@home client monitoring program
 
+v2.3.2
+
+	General
+
+	* Updated licence information.
+	* Included code from qd to retrieve PRCG, issue date, username and
+	  teamnumber.
+	* Removed redundant (unstable) code.
+
 v2.3.1 (30/10/07)
 
     General

@@ -46,6 +46,8 @@
 #define FMC_URL_PROJECTS_RESOURCE "psummary.html"                                 // ---
 #define FMC_URL_HELP              "http://trac.fahmon.net"
 #define FMC_URL_FAHMON            "http://fahmon.net"
+#define FMC_URL_QD                "http://linuxminded.nl/?target=software-qd-tools.plc"
+#define FMC_URL_LICENCE           "http://trac.fahmon.net/browser/trunk/COPYING?format=raw"
 #define FMC_URL_WXWIDGETS         "http://www.wxwidgets.org"
 
 

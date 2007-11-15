@@ -70,7 +70,7 @@ protected:
 	void FindCurrentState(WorkUnitFrame* lastFrame);
 	bool LoadLogFile(const wxString& filename);
 	bool LoadUnitInfoFile(const wxString& filename);
-	bool LoadClientCfg(const wxString& filename);
+	bool LoadQueueFile(const wxString& filename);
 	void Reset(void);
 	void SaveXYZFile(void) const;
 

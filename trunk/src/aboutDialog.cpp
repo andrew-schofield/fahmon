@@ -52,6 +52,10 @@ AboutDialog::AboutDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, wxString
 	authorHomepageSizer->Add(new wxStaticText(this, wxID_ANY, wxT(" Andrew Schofield")), 0, wxALIGN_LEFT);
 	authorHomepageSizer->Add(new StaticBoldedText(this, wxID_ANY, _("Homepage:")), 0, wxALIGN_RIGHT);
 	authorHomepageSizer->Add(new StaticUrl(this, wxT(FMC_URL_FAHMON), wxT(FMC_URL_FAHMON)), 0, wxALIGN_LEFT);
+	authorHomepageSizer->Add(new StaticBoldedText(this, wxID_ANY, _("Qd homepage:")), 0, wxALIGN_RIGHT);
+	authorHomepageSizer->Add(new StaticUrl(this, wxT(FMC_URL_QD), wxT("http://linuxminded.nl")), 0, wxALIGN_LEFT);
+	authorHomepageSizer->Add(new StaticBoldedText(this, wxID_ANY, _("Licence:")), 0, wxALIGN_RIGHT);
+	authorHomepageSizer->Add(new StaticUrl(this, wxT(FMC_URL_LICENCE), wxT("GNU GPL v2")), 0, wxALIGN_LEFT);
 	authorHomepageSizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	authorHomepageSizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	authorHomepageSizer->Add(new StaticBoldedText(this, wxID_ANY, _("Library:")), 0, wxALIGN_RIGHT);

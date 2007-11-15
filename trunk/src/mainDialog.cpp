@@ -157,6 +157,14 @@ MainDialog::MainDialog(void) : wxFrame(NULL, wxID_ANY, wxT(FMC_PRODUCT))
 	CreateLayout();
 	RestoreFrameState();     // MUST be called when all controls have been created !
 
+	_LogMsgInfo(wxString::Format(_("%s is licenced under the GNU GPL v2"), wxT(FMC_PRODUCT)));
+	_LogMsgInfo(_("Copyright (C) 2004-2007 Francois Ingelrest"));
+	_LogMsgInfo(_("Copyright (C) 2007 Andrew Schofield"));
+	_LogMsgInfo(_T(""));
+	_LogMsgInfo(_("FahMon contains code from qd, also licenced under the GNU GPL v2"));
+	_LogMsgInfo(_("Copyright (C) 2002-2005 Richard P. Howell IV."));
+	_LogMsgInfo(_("Copyright (C) 2005-2007 Sebastiaan Couwenberg"));
+	_LogMsgInfo(_T(""));
 	// this needs to be before the tray icon, otherwise you can still click the tray icon and crash FahMon
 	_PrefsGetBool(PREF_MAINDIALOG_UPDATE_CHECK, updateCheck);
 	if(updateCheck == true)
@@ -170,6 +178,7 @@ MainDialog::MainDialog(void) : wxFrame(NULL, wxID_ANY, wxT(FMC_PRODUCT))
 	_PrefsGetBool(PREF_MAINDIALOG_ENABLE_TRAY_ICON, trayIconEnabled);
 	if(trayIconEnabled == true)
 		TrayManager::GetInstance()->InstallIcon();
+
 }
 
 
