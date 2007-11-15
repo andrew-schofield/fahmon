@@ -48,4 +48,5 @@ EXTRA_DIST = \
 	messagesFrame.h \
 	clientsManager.h \
 	webMonitor.h \
-	resource.h
+	resource.h \
+	queue.h
