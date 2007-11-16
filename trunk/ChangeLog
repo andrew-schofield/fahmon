@@ -9,6 +9,9 @@ v2.3.2
 	  teamnumber.
 	* Removed redundant (unstable) code.
 	* Fixed bug that prevented FahMon from being restored to maximised state.
+	* Fixed bug that formatted dates incorrectly in Web Output.
+	* Added total PPD and update dates to Simple Web and Text output.
+	* Fix bug in progress calculation system that reported 100% as 0%
 
 v2.3.1 (30/10/07)
 

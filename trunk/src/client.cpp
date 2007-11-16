@@ -224,9 +224,6 @@ void Client::Reload(void)
 		}
 		// There may be a cleaner way of doing this
 		timeDiff = timeNow.Subtract(downloadTime);
-		_LogMsgInfo(wxString::Format(wxT("%s"), timeDiff.Format(wxT("%d %B, %H:%M")).c_str()));
-		_LogMsgInfo(wxString::Format(wxT("%s"), timeNow.Format(wxT("%d %B %y, %H:%M")).c_str()));
-		_LogMsgInfo(wxString::Format(wxT("%s"), downloadTime.Format(wxT("%d %B %y, %H:%M")).c_str()));
 		// sanity checking because WUs with odd frame numbers still write out the % not the frameID
 		project = ProjectsManager::GetInstance()->GetProject(mProjectId);
 		if(project != INVALID_PROJECT_ID)
@@ -536,14 +533,15 @@ tt:				if (genome)
 		if (i > 9)
 		{
 			bp = &queuebuffer;
-			//_LogMsgInfo(wxString::Format(_T("Queue version %i.%02d"), i / 100, i % 100));
 			if ((queueversion == 314) && ((i >= 324) && (i < 400)))
 			{
 				q = "Google";
 				i = queueversion;
 			}
-			if (i > 510)
+			if (i > MAXQVER)
 			{
+
+				_LogMsgInfo(wxString::Format(_T("%s Queue version %i.%02d"), mName.c_str(), i / 100, i % 100));
 				_LogMsgInfo(_T("WARNING: unknown version number"));
 				if (queueversion == 0)
 				{
