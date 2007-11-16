@@ -333,13 +333,9 @@ void Client::Reload(void)
 		project = ProjectsManager::GetInstance()->GetProject(mProjectId);
 		if (project != INVALID_PROJECT_ID)
 		{
-			mProgress = lastFrame->GetId() - ((lastFrame->GetId() / project->GetNbFrames()) * project->GetNbFrames());
-			if(project->GetNbFrames() == 400)
+			mProgress = project->GetNbFrames() / (project->GetNbFrames() / lastFrame->GetId());
+			if(project->GetCoreId() == Core::TINKER)
 				mProgress = mProgress / 4;
-		} else {
-			// Guess and hope its not a Tinker WU
-			//mProgress = lastFrame->GetId();
-			//actually no, we'll just fallback to the original method
 		}
 	}
 	mProgressString  = wxString::Format(wxT("%u%%"), mProgress);
