@@ -14,6 +14,11 @@
 *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
+/**
+ * \file aboutDialog.h
+ * Class definition for the About Dialog
+ **/
+
 #ifndef _ABOUTDIALOG_H
 #define _ABOUTDIALOG_H
 
@@ -21,13 +26,13 @@
 
 
 /**
-* This is the famous about dialog box
-* It's a singleton
+* About Dialog class.
+* A singleton class.
 **/
 class AboutDialog : public wxDialog
 {
 protected:
-	static AboutDialog *mInstance;
+	static AboutDialog *mInstance; /**< The single instance of the About Dialog */
 
 	AboutDialog(wxWindow* parent);
 	~AboutDialog(void);

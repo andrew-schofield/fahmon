@@ -26,7 +26,7 @@ class Base64Codec
 protected:
 	static const wxChar* mBase64Table;
 
-	static wxChar     Base64IndexToChar(wxUint32 index);
+	static wxChar   Base64IndexToChar(wxUint32 index);
 	static wxUint32 CharToBase64Index(wxChar c);
 
 public:

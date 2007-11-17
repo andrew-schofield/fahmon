@@ -228,9 +228,10 @@ void Client::Reload(void)
 		project = ProjectsManager::GetInstance()->GetProject(mProjectId);
 		if(project != INVALID_PROJECT_ID)
 		{
-			if ((project->GetNbFrames() != 100) && (project->GetNbFrames() != 400))
+			if ((project->GetNbFrames() != 100) && (project->GetCoreId() != Core::TINKER))
 			{
-				tempFloat = timeDiff.GetMinutes() * 60 / ((double)(lastFrame->GetId() / 100) * (double)project->GetNbFrames());
+				//tempFloat = timeDiff.GetMinutes() * 60 / ((double)(lastFrame->GetId() / 100) * (double)project->GetNbFrames());
+				tempFloat = ((double)timeDiff.GetMinutes() * 60 / lastFrame->GetId()) / ((double)project->GetNbFrames()/100);
 			}
 			else
 			{
@@ -241,7 +242,9 @@ void Client::Reload(void)
 		{
 			tempFloat = timeDiff.GetMinutes() * 60 / lastFrame->GetId();
 		}
+		//_LogMsgInfo(wxString::Format(wxT("%s: Input duration with correction: %f"), mName.c_str(), tempFloat));
 		lastFrame->SetEffectiveDuration(wxUint32(tempFloat));
+		//_LogMsgInfo(wxString::Format(wxT("%s: Output duration with correction: %i"), mName.c_str(), lastFrame->GetEffectiveDuration()));
 		BenchmarksManager::GetInstance()->Add(mProjectId, this, lastFrame);
 	}
 
@@ -330,7 +333,7 @@ void Client::Reload(void)
 		project = ProjectsManager::GetInstance()->GetProject(mProjectId);
 		if (project != INVALID_PROJECT_ID)
 		{
-			mProgress = project->GetNbFrames() / (project->GetNbFrames() / lastFrame->GetId());
+			mProgress = wxUint32((double)project->GetNbFrames() / ((double)project->GetNbFrames() / (double)lastFrame->GetId()));
 			if(project->GetCoreId() == Core::TINKER)
 				mProgress = mProgress / 4;
 		}
@@ -759,6 +762,10 @@ void Client::ComputeETA(WorkUnitFrame* lastFrame)
 		{
 			// ---
 			case PPDDS_EFFECTIVE_FRAMES:
+				referenceDuration = benchmark->GetEffectiveDuration();
+				break;
+
+			// ---
 			case PPDDS_ALL_FRAMES:
 				referenceDuration = benchmark->GetAvgDuration();
 				break;
@@ -808,7 +815,10 @@ void Client::ComputeETA(WorkUnitFrame* lastFrame)
 	// --- 3) Compute the the left time
 	if(lastFrame != NULL)
 	{
-		nbLeftSeconds = referenceDuration * (totalFrames - lastFrame->GetId());
+		if(projectInfo->GetCoreId() == Core::TINKER)
+			nbLeftSeconds = referenceDuration * (totalFrames - lastFrame->GetId());
+		else
+			nbLeftSeconds = referenceDuration * (totalFrames - (lastFrame->GetId() * (totalFrames/100))); //correction for odd gromacs WUs
 
 		// Make a more accurate value by using the elapsed time since the end of the last frame
 		if(lastFrame->GetElapsedSeconds() > referenceDuration)
@@ -829,7 +839,11 @@ void Client::ComputeETA(WorkUnitFrame* lastFrame)
 		// We don't have the identifier of the last computed frame, so we have to try to guess it once again
 		wxUint32 lastComputedFrame = totalFrames * mProgress / 100;
 
-		nbLeftSeconds = referenceDuration * (totalFrames - lastComputedFrame);
+		//nbLeftSeconds = referenceDuration * (totalFrames - lastComputedFrame);
+		if(projectInfo->GetCoreId() == Core::TINKER)
+			nbLeftSeconds = referenceDuration * (totalFrames - lastComputedFrame);
+		else
+			nbLeftSeconds = referenceDuration * (totalFrames - (lastComputedFrame * (totalFrames/100))); //correction for odd gromacs WUs
 
 		logLine = logLine + wxString::Format(wxT(" | left=%us (guess)"), nbLeftSeconds);
 	}

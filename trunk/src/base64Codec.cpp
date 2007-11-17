@@ -19,13 +19,18 @@
 
 #include "messagesManager.h"
 
-
+/**
+ * Base64 mapping table.
+ * Maps each character to its base64 encoded index.
+ **/
 const wxChar* Base64Codec::mBase64Table = _T("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/");
 
 
 /**
-* Transform a base64 index into the corresponding character
-**/
+ * Transform a base64 index into the corresponding character.
+ * @param index The index in mBase64Table.
+ * @return The character (wxChar) retrieved from mBase64Table
+ **/
 wxChar Base64Codec::Base64IndexToChar(wxUint32 index)
 {
 	if(index < 64)
@@ -39,8 +44,10 @@ wxChar Base64Codec::Base64IndexToChar(wxUint32 index)
 
 
 /**
-* Transform a base64 character into the corresponding index
-**/
+ * Transform a base64 character into the corresponding index.
+ * @param c The character in mBase64Table.
+ * @return The index of that character in mBase64Table.
+ **/
 wxUint32 Base64Codec::CharToBase64Index(wxChar c)
 {
 	if(c >= 'A' && c <= 'Z')
@@ -65,14 +72,16 @@ _LogMsgError(_T("Base64Codec: The given base64 character is invalid!"));
 
 
 /**
-* Transform a 'normal' string into a base64 encoded string
-**/
+ * Transform a 'normal' string into a base64 encoded string.
+ * @param string The string to be encoded.
+ * @return The base64 encoded string.
+ **/
 wxString Base64Codec::Encode(const wxString& string)
 {
-	wxChar     c1;
-	wxChar     c2;
-	wxChar     c3;
-	wxInt32  i;			// Must NOT be Uint, because 'string.Len()-2' can be smaller than 0
+	wxChar   c1;
+	wxChar   c2;
+	wxChar   c3;
+	wxInt32  i;      // Must NOT be Uint, because 'string.Len()-2' can be smaller than 0
 	wxString result;
 
 	result = wxT("");
@@ -121,8 +130,10 @@ wxString Base64Codec::Encode(const wxString& string)
 
 
 /**
-* Decode a base64 encoded string
-**/
+ * Decode a base64 encoded string.
+ * @param string The base64 string to be decoded.
+ * @return The decoded string.
+ **/
 wxString Base64Codec::Decode(const wxString& string)
 {
 	wxUint32 i;

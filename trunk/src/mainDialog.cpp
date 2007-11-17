@@ -169,6 +169,7 @@ MainDialog::MainDialog(void) : wxFrame(NULL, wxID_ANY, wxT(FMC_PRODUCT))
 	_PrefsGetBool(PREF_MAINDIALOG_UPDATE_CHECK, updateCheck);
 	if(updateCheck == true)
 		CheckForUpdates();
+	_LogMsgInfo(_T(""));
 
 	// The timer used for auto-reloading
 	mAutoReloadTimer.SetOwner(this);

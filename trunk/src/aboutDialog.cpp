@@ -33,8 +33,10 @@ AboutDialog* AboutDialog::mInstance = NULL;
 
 
 /**
-* Constructor
-**/
+ * Constructor.
+ * Contructs an About Dialog of type wxDialog with a title of "About".
+ * @param parent The parent window of type wxWindow
+ **/
 AboutDialog::AboutDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, wxString(_("About")))
 {
 	wxBoxSizer      *topLevelSizer;
@@ -88,16 +90,19 @@ AboutDialog::AboutDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, wxString
 
 
 /**
-* Destructor
-**/
+ * Destructor.
+ **/
 AboutDialog::~AboutDialog(void)
 {
 }
 
 
 /**
-* Retrieve the instance of AboutDialog, create it if needed
-**/
+ * Retrieve the instance of AboutDialog.
+ * If an instance doesn't already exist, create it.
+ * @param parent The parent window of type wxWindow.
+ * @return An instance of class AboutDialog.
+ **/
 AboutDialog* AboutDialog::GetInstance(wxWindow* parent)
 {
 	if(mInstance == NULL)
@@ -108,8 +113,9 @@ AboutDialog* AboutDialog::GetInstance(wxWindow* parent)
 
 
 /**
-* Destroy the instance of AboutDialog, if any
-**/
+ * Destroy the instance of AboutDialog.
+ * Only if an instance exists.
+ **/
 void AboutDialog::DestroyInstance(void)
 {
 	if(mInstance != NULL)
@@ -121,8 +127,9 @@ void AboutDialog::DestroyInstance(void)
 
 
 /**
-* Center the dialog box before displaying it
-**/
+ * Show the About Dialog
+ * Opens a modal window, and centres it.
+ **/
 int AboutDialog::ShowModal(void)
 {
 	Center();
