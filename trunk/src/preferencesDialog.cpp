@@ -298,7 +298,7 @@ inline wxPanel* PreferencesDialog::CreateNetworkingTab(wxNotebook* parent)
 	proxyAddressSizer->Add(mNetworkingProxyPort, 1, wxALIGN_CENTER_VERTICAL);
 
 	proxyAuthenticationSizer->Add(mNetworkingLabelUsername, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
-	proxyAuthenticationSizer->Add(mNetworkingProxyUsername, 1, wxALIGN_CENTER_VERTICAL | wxEXPAND);
+	proxyAuthenticationSizer->Add(mNetworkingProxyUsername, 1, wxALIGN_CENTER_VERTICAL);
 	proxyAuthenticationSizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	proxyAuthenticationSizer->Add(mNetworkingLabelPassword, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
 	proxyAuthenticationSizer->Add(mNetworkingProxyPassword, 1, wxALIGN_CENTER_VERTICAL);
@@ -320,7 +320,7 @@ inline wxPanel* PreferencesDialog::CreateNetworkingTab(wxNotebook* parent)
 }
 
 /**
-* Create the tab containing networking preferences
+* Create the tab containing advanced preferences
 **/
 inline wxPanel* PreferencesDialog::CreateAdvancedTab(wxNotebook* parent)
 {
@@ -383,7 +383,7 @@ inline wxPanel* PreferencesDialog::CreateAdvancedTab(wxNotebook* parent)
 }
 
 /**
-* Create the tab containing general preferences
+* Create the tab containing system preferences
 **/
 inline wxPanel* PreferencesDialog::CreateSystemTab(wxNotebook* parent)
 {
