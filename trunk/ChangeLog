@@ -15,10 +15,12 @@ v2.3.2
 	* Fixed bug that broke effective frame time for some clients.
 	* Fixed bug in monitoring system that broke PPD/ETA for projects with less
 	  than 100 frames.
+	* Fixed proxy username text box sizing bug.
 
 	Windows
 
 	* Fixed bug which drew the FahMon icon over the progress dialog title.
+	* Fixed issue with VC8 resource compiler not accepting compressed vista icons.
 
 v2.3.1 (30/10/07)
 

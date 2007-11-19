@@ -68,7 +68,6 @@ Section "!FahMon 2.3.1" SecFahMon
   ;ADD YOUR OWN FILES HERE...
   File "fahmon.exe"
   SetOutPath "$INSTDIR\images"
-  File "images\fahmon.ico"
   File "images\list_client_asynch.png"
   File "images\list_client_inaccessible.png"
   File "images\list_client_inactive.png"

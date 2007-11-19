@@ -417,7 +417,6 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 			timeDiff = timeNow.Subtract(downloadTime);
 			timeInMinutes = timeDiff.GetMinutes();
 
-
 			// Split the left time into days, hours and minutes
 			nbDays    = timeInMinutes / (24 * 60);
 			nbMinutes = timeInMinutes % (24 * 60);
@@ -461,7 +460,6 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 	// This project can be unknown, if the database is not up to date
 	if(project == NULL) // this may need to be INVALID_PROJECT
 	{
-
 		// Fallback to reset all info in case psummary doesn't contain the data we need
 		// Otherwise bad things happen like the data remaining from the last client viewed
 
@@ -549,7 +547,6 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 			timeDiff = finalDeadline.Subtract(timeNow);
 			timeInMinutes = timeDiff.GetMinutes();
 			if(timeDiff.GetMinutes() < 0) timeInMinutes = 0 - timeInMinutes;
-
 
 			// Split the left time into days, hours and minutes
 			nbDays    = timeInMinutes / (24 * 60);
@@ -675,26 +672,23 @@ inline void MainDialog::CreateLayout(void)
 	wxGridSizer      *infoSizer;
 	wxStaticBoxSizer *topRightSizer;
 
-
 	// We need to use a panel as a top level component in our frame
 	// Without that, the frame looks ugly under Windows (dark grey background)
 	topLevelPanel = new wxPanel(this, wxID_ANY);
 
-
 	// A splitter is used to separate the ListView and the WU information, so that the user can choose the size
 	mSplitterWindow = new wxSplitterWindow(topLevelPanel, wxID_ANY);
-
 
 	// --- The top left part
 	// It is simply composed by the list of clients
 	mClientsList = new ListViewClients(mSplitterWindow, LST_CLIENTS, ClientsManager::GetInstance()->GetCount());
-
 
 	// --- The top right part
 	// It contains labels to display information on the currently selected client
 	topRightPanel      = new wxPanel(mSplitterWindow, wxID_ANY);
 	topRightSizer      = new wxStaticBoxSizer(wxVERTICAL, topRightPanel, _("Work Unit Information"));
 	infoSizer          = new wxGridSizer(2, FMC_GUI_SPACING_HIGH, FMC_GUI_SPACING_LOW);
+	userinfoSizer      = new wxBoxSizer(wxHORIZONTAL);
 	mCoreName          = new StaticBoldedText(topRightPanel, wxID_ANY, wxT(""));
 	mProjectId         = new wxStaticText(topRightPanel, wxID_ANY, wxT(""));
 	mCredit            = new wxStaticText(topRightPanel, wxID_ANY, wxT(""));
@@ -703,8 +697,7 @@ inline void MainDialog::CreateLayout(void)
 	mFinalDeadline     = new wxStaticText(topRightPanel, wxID_ANY, wxT(""));
 
 	// User's information: username and team number
-	userinfoSizer = new wxBoxSizer(wxHORIZONTAL);
-	mUsername     = new StaticUrl(topRightPanel);
+	mUsername    =  new StaticUrl(topRightPanel);
 	mTeamNumber   = new StaticUrl(topRightPanel);
 
 	userinfoSizer->Add(mUsername);
@@ -738,7 +731,6 @@ inline void MainDialog::CreateLayout(void)
 
 	topRightPanel->SetSizer(topRightSizer);
 
-
 	// --- The top part
 	// It contains:
 	//  - The list of clients on the left side, which takes the available left space
@@ -747,7 +739,6 @@ inline void MainDialog::CreateLayout(void)
 
 	topSizer->Add(mSplitterWindow, 1, wxEXPAND);
 	mSplitterWindow->SplitVertically(mClientsList, topRightPanel);
-
 
 	// --- The middle part
 	// It contains the progress bar (gauge) and a simple label
@@ -761,10 +752,8 @@ inline void MainDialog::CreateLayout(void)
 	midSizer->Add(mWUProgressText, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
 	midSizer->Add(mWUTotalPPD, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
 
-
 	// --- The bottom part : Log file
 	mLogFile = new wxTextCtrl(topLevelPanel, wxID_ANY, _("Log file."), wxDefaultPosition, wxSize(100, FMC_GUI_LOG_HEIGHT), wxTE_MULTILINE | wxTE_READONLY | wxHSCROLL);
-
 
 	// -- Finally construct the frame itself
 	// Both the top part and the log area will expand vertically, a little more quickly for the log (4/3 ratio)
@@ -803,7 +792,6 @@ inline void MainDialog::RestoreFrameState(void)
 	wxUint32 sashPosition;
 	bool     max;
 
-
 	// --- State of the log
 	_PrefsGetBool(PREF_MAINDIALOG_SHOWLOG, isLogShown);
 
@@ -821,7 +809,6 @@ inline void MainDialog::RestoreFrameState(void)
 
 	mSplitterWindow->SetMinimumPaneSize(20);
 	mSplitterWindow->SetSashPosition(sashPosition, true);
-
 
 	// --- Size and position of the frame
 	// Retrieve saved values
@@ -1386,7 +1373,6 @@ void MainDialog::CheckForUpdates(void)
 	ProgressManager progressManager(false);
 
 	_LogMsgInfo(_("Checking for FahMon updates"));
-
 
 	// --- We first have to download the new update file
 	progressManager.SetTextAndProgress(_("Checking for update"), 0);

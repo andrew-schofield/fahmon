@@ -199,17 +199,4 @@ private:
 	DECLARE_EVENT_TABLE()
 };
 
-/*class DropFiles: public wxFileDropTarget {
-
-public:
-
-	//! contructor
-	DropFiles (MainDialog *frame) {m_frame = frame;}
-
-	virtual bool OnDropFiles (wxCoord x, wxCoord y, const wxArrayString& filenames);
-
-private:
-	MainDialog *m_frame;
-};*/
-
 #endif /* _MAINDIALOG_H */

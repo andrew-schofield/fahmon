@@ -66,7 +66,7 @@ StaticUrl::~StaticUrl(void)
 **/
 void StaticUrl::SetLabel(const wxString& label)
 {
-	mLabel->SetLabel(wxT(" ") + label);
+	mLabel->SetLabel(label);
 }
 
 
