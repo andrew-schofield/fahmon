@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2007-11-18 19:34+0000\n"
+"POT-Creation-Date: 2007-11-19 12:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -148,15 +148,15 @@ msgstr ""
 msgid "Unknown client"
 msgstr ""
 
-#: src/client.cpp:84
+#: src/client.cpp:95
 msgid "Log not loaded!"
 msgstr ""
 
-#: src/client.cpp:87
+#: src/client.cpp:98
 msgid "anonymous"
 msgstr ""
 
-#: src/client.cpp:92 src/listViewClients.cpp:394 src/listViewClients.cpp:395
+#: src/client.cpp:103 src/listViewClients.cpp:394 src/listViewClients.cpp:395
 #: src/mainDialog.cpp:444 src/mainDialog.cpp:448 src/mainDialog.cpp:449
 #: src/mainDialog.cpp:450 src/mainDialog.cpp:451 src/mainDialog.cpp:452
 #: src/mainDialog.cpp:466 src/mainDialog.cpp:467 src/mainDialog.cpp:468
@@ -173,89 +173,89 @@ msgstr ""
 msgid "N/A"
 msgstr ""
 
-#: src/client.cpp:171
+#: src/client.cpp:182
 #, c-format
 msgid "Reloading %s"
 msgstr ""
 
-#: src/client.cpp:179
+#: src/client.cpp:190
 #, c-format
 msgid "Directory %s does not exist or cannot be read!"
 msgstr ""
 
-#: src/client.cpp:189
+#: src/client.cpp:200
 #, c-format
 msgid "Error while reading %sFAHlog.txt!"
 msgstr ""
 
-#: src/client.cpp:196
+#: src/client.cpp:207
 #, c-format
 msgid "Error while reading %squeue.dat"
 msgstr ""
 
-#: src/client.cpp:200
+#: src/client.cpp:211
 #, c-format
 msgid "Error while reading %sunitinfo.txt!"
 msgstr ""
 
-#: src/client.cpp:420
+#: src/client.cpp:431
 #, c-format
 msgid "The progress value in file %s could not be found/parsed"
 msgstr ""
 
-#: src/client.cpp:645
+#: src/client.cpp:656
 #, c-format
 msgid "Unable to save %s because it does not exist"
 msgstr ""
 
-#: src/client.cpp:652
+#: src/client.cpp:663
 #, c-format
 msgid "Unable to create directory %s"
 msgstr ""
 
-#: src/client.cpp:662
+#: src/client.cpp:673
 #, c-format
 msgid "Unable to copy %s to %s"
 msgstr ""
 
-#: src/client.cpp:690
+#: src/client.cpp:701
 #, c-format
 msgid "%s is on frame %u"
 msgstr ""
 
-#: src/client.cpp:694
+#: src/client.cpp:705
 #, c-format
 msgid "Cannot determine frame number for %s (this isn't a problem)"
 msgstr ""
 
-#: src/client.cpp:869
+#: src/client.cpp:880
 #, c-format
 msgid "%s has an unknown state (Unable to find a complete frame)"
 msgstr ""
 
-#: src/client.cpp:878
+#: src/client.cpp:889
 #, c-format
 msgid "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
 msgstr ""
 
-#: src/client.cpp:887
+#: src/client.cpp:898
 #, c-format
 msgid ""
 "%s has an unknown state (Unable to extract a valid elapsed time since the "
 "last completed frame)"
 msgstr ""
 
-#: src/client.cpp:895
+#: src/client.cpp:906
 #, c-format
 msgid "%s has been marked as having a asynchronous clock."
 msgstr ""
 
-#: src/client.cpp:922
+#: src/client.cpp:933
 #, c-format
 msgid "%s seems to have hung : Elapsed time is %um and limit is %um"
 msgstr ""
 
-#: src/client.cpp:927
+#: src/client.cpp:938
 #, c-format
 msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
 msgstr ""

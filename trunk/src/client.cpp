@@ -67,12 +67,23 @@ void Client::SetLocation(const wxString& location)
 {
 	mLocation = location;
 
+	// In order to work with wx2.8.6msw, we can't do this anymore
 	// Avoid the use of backslashes
-	mLocation.Replace(wxT("\\"), wxT("/"));
+	//mLocation.Replace(wxT("\\"), wxT("/"));
 
 	// Ensure that the location ends with a slash
-	if(mLocation.Last() != '/')
-		mLocation += '/';
+#ifdef _FAHMON_WIN32_
+	{
+		mLocation.Replace(wxT("/"), wxT("\\"));
+		if(mLocation.Last() != '\\')
+			mLocation += '\\';
+	}
+#else
+	{
+		if(mLocation.Last() != '/')
+			mLocation += '/';
+	}
+#endif
 }
 
 

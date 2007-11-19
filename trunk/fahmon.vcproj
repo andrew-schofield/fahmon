@@ -118,7 +118,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories=".\src\include;&quot;C:\wxWidgets-2.6.3\include\msvc&quot;;&quot;C:\wxWidgets-2.6.34\include&quot;"
+				AdditionalIncludeDirectories=".\src\include;&quot;C:\wxWidgets-2.8.6\include\msvc&quot;;&quot;C:\wxWidgets-2.8.6\include&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_FAHMON_WIN32_;_FILE_OFFSET_BITS=64;_LARGE_FILES;_LARGEFILE_SOURCE=1;UNICODE;_UNICODE"
 				RuntimeLibrary="0"
 				UsePrecompiledHeader="0"
@@ -137,9 +137,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="wxmsw26u_core.lib wxmsw26u_adv.lib wxbase26u.lib wxtiff.lib wxjpeg.lib wxpng.lib wxregexu.lib wxexpat.lib winmm.lib comctl32.lib rpcrt4.lib wsock32.lib oleacc.lib odbc32.lib wxbase26u_net.lib wxbase26u_xml.lib wxmsw26u_media.lib wxzlib.lib"
+				AdditionalDependencies="wxmsw28u_core.lib wxmsw28u_adv.lib wxbase28u.lib wxpng.lib comctl32.lib rpcrt4.lib wsock32.lib oleacc.lib odbc32.lib wxbase28u_net.lib wxbase28u_xml.lib wxmsw28u_media.lib wxzlib.lib"
 				LinkIncremental="0"
-				AdditionalLibraryDirectories="&quot;C:\wxWidgets-2.8.4\lib\vc_lib&quot;"
+				AdditionalLibraryDirectories="&quot;C:\wxWidgets-2.8.6\lib\vc_lib&quot;"
 				GenerateManifest="true"
 				IgnoreDefaultLibraryNames=""
 				GenerateDebugInformation="false"
