@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fr_FR\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2007-11-25 00:09+0000\n"
+"POT-Creation-Date: 2007-11-25 17:49+0000\n"
 "PO-Revision-Date: 2007-11-15 23:42+0000\n"
 "Last-Translator: Andrew Schofield <the.uncle.fungus@gmail.com>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -414,23 +414,23 @@ msgstr "Impossible de créer le dossier <%s>"
 msgid "%.1f KB/s"
 msgstr "%.1f KB/s"
 
-#: src/listViewClients.cpp:117 src/webMonitor.cpp:399 src/webMonitor.cpp:459
-#: src/webMonitor.cpp:488
+#: src/listViewClients.cpp:117 src/webMonitor.cpp:410 src/webMonitor.cpp:470
+#: src/webMonitor.cpp:499
 msgid "Progress"
 msgstr "Progression"
 
-#: src/listViewClients.cpp:118 src/webMonitor.cpp:399 src/webMonitor.cpp:459
-#: src/webMonitor.cpp:488
+#: src/listViewClients.cpp:118 src/webMonitor.cpp:410 src/webMonitor.cpp:470
+#: src/webMonitor.cpp:499
 msgid "Name"
 msgstr "Nom"
 
-#: src/listViewClients.cpp:119 src/webMonitor.cpp:399 src/webMonitor.cpp:459
-#: src/webMonitor.cpp:488
+#: src/listViewClients.cpp:119 src/webMonitor.cpp:410 src/webMonitor.cpp:470
+#: src/webMonitor.cpp:499
 msgid "ETA"
 msgstr "ETA"
 
-#: src/listViewClients.cpp:120 src/webMonitor.cpp:399 src/webMonitor.cpp:459
-#: src/webMonitor.cpp:488
+#: src/listViewClients.cpp:120 src/webMonitor.cpp:410 src/webMonitor.cpp:470
+#: src/webMonitor.cpp:499
 msgid "PPD"
 msgstr "PPD"
 
@@ -710,35 +710,35 @@ msgstr "&A propos"
 msgid "&Help"
 msgstr "&Aide"
 
-#: src/mainDialog.cpp:689 src/webMonitor.cpp:434
+#: src/mainDialog.cpp:689 src/webMonitor.cpp:445
 msgid "Work Unit Information"
 msgstr "Information sur l'unité de calcul"
 
-#: src/mainDialog.cpp:711 src/webMonitor.cpp:434
+#: src/mainDialog.cpp:711 src/webMonitor.cpp:445
 msgid "Core:"
 msgstr "Core:"
 
-#: src/mainDialog.cpp:713 src/webMonitor.cpp:434
+#: src/mainDialog.cpp:713 src/webMonitor.cpp:445
 msgid "Project:"
 msgstr "Projet:"
 
-#: src/mainDialog.cpp:715 src/webMonitor.cpp:434
+#: src/mainDialog.cpp:715 src/webMonitor.cpp:445
 msgid "Credit:"
 msgstr "Credit:"
 
-#: src/mainDialog.cpp:717 src/webMonitor.cpp:434
+#: src/mainDialog.cpp:717 src/webMonitor.cpp:445
 msgid "Username:"
 msgstr "Pseudo:"
 
-#: src/mainDialog.cpp:719 src/webMonitor.cpp:434
+#: src/mainDialog.cpp:719 src/webMonitor.cpp:445
 msgid "Downloaded:"
 msgstr "Téléchargé le:"
 
-#: src/mainDialog.cpp:721 src/webMonitor.cpp:434
+#: src/mainDialog.cpp:721 src/webMonitor.cpp:445
 msgid "Preferred Deadline:"
 msgstr "Deadline Préférable:"
 
-#: src/mainDialog.cpp:723 src/webMonitor.cpp:434
+#: src/mainDialog.cpp:723 src/webMonitor.cpp:445
 msgid "Final Deadline:"
 msgstr "Deadline Final:"
 
@@ -1087,7 +1087,7 @@ msgstr ""
 msgid "Clients: %i"
 msgstr "Clients: %i"
 
-#: src/trayManager.cpp:195 src/webMonitor.cpp:397 src/webMonitor.cpp:458
+#: src/trayManager.cpp:195 src/webMonitor.cpp:408 src/webMonitor.cpp:469
 #, c-format
 msgid "Total PPD: %.2f"
 msgstr "Total PPD: %.2f"
@@ -1104,23 +1104,23 @@ msgstr "Cacher FahMon"
 msgid "Show FahMon"
 msgstr "Afficher FahMon"
 
-#: src/webMonitor.cpp:310 src/webMonitor.cpp:405
+#: src/webMonitor.cpp:310 src/webMonitor.cpp:416
 msgid "Inaccessible"
 msgstr "Inaccessible"
 
-#: src/webMonitor.cpp:315 src/webMonitor.cpp:409
+#: src/webMonitor.cpp:315 src/webMonitor.cpp:420
 msgid "Stopped"
 msgstr "Stoppé"
 
-#: src/webMonitor.cpp:320 src/webMonitor.cpp:413
+#: src/webMonitor.cpp:320 src/webMonitor.cpp:424
 msgid "Inactive"
 msgstr "Inactif"
 
-#: src/webMonitor.cpp:325 src/webMonitor.cpp:417
+#: src/webMonitor.cpp:325 src/webMonitor.cpp:428
 msgid "Hung"
 msgstr "Pause"
 
-#: src/webMonitor.cpp:330 src/webMonitor.cpp:421
+#: src/webMonitor.cpp:330 src/webMonitor.cpp:432
 msgid "Async"
 msgstr "Désynchro"
 
@@ -1137,12 +1137,12 @@ msgstr ""
 "Ne peut ouvrir le fichier <%s> pour écriture!\n"
 "L'application Web ne sera pas créée!"
 
-#: src/webMonitor.cpp:395 src/webMonitor.cpp:456
+#: src/webMonitor.cpp:406 src/webMonitor.cpp:467
 #, c-format
 msgid "%s Web View - Last updated: %s"
 msgstr "%s Vue Web - Dernière mise à jour: %s"
 
-#: src/webMonitor.cpp:448
+#: src/webMonitor.cpp:459
 #, c-format
 msgid ""
 "Could not open file <%s> for writing!\n"
@@ -1151,23 +1151,23 @@ msgstr ""
 "Ne peut ouvrir le fichier <%s> pour écritureLe fichier Web seul ne sera pas "
 "créé!"
 
-#: src/webMonitor.cpp:459 src/webMonitor.cpp:488
+#: src/webMonitor.cpp:470 src/webMonitor.cpp:499
 msgid "State"
 msgstr "Etat"
 
-#: src/webMonitor.cpp:459 src/webMonitor.cpp:488
+#: src/webMonitor.cpp:470 src/webMonitor.cpp:499
 msgid "PRCG"
 msgstr "PRCG"
 
-#: src/webMonitor.cpp:459 src/webMonitor.cpp:488
+#: src/webMonitor.cpp:470 src/webMonitor.cpp:499
 msgid "Credit"
 msgstr "Credit"
 
-#: src/webMonitor.cpp:459
+#: src/webMonitor.cpp:470
 msgid "Downloaded"
 msgstr "Téléchargé le"
 
-#: src/webMonitor.cpp:481
+#: src/webMonitor.cpp:492
 #, c-format
 msgid ""
 "Could not open file <%s> for writing!\n"
@@ -1176,17 +1176,17 @@ msgstr ""
 "Ne peut ouvrir le fichier <%s> pour écritureLe fichier texte seul ne sera "
 "pas créé!"
 
-#: src/webMonitor.cpp:484
+#: src/webMonitor.cpp:495
 #, c-format
 msgid "FahMon Client Monitoring %s - Simple Text Output\n"
 msgstr "Moniteur FahMon Client %s - Fichier texte seul\n"
 
-#: src/webMonitor.cpp:485
+#: src/webMonitor.cpp:496
 #, c-format
 msgid "Last updated: %s"
 msgstr "Dernière mise à jour: %s"
 
-#: src/webMonitor.cpp:487
+#: src/webMonitor.cpp:498
 #, c-format
 msgid ""
 "Total PPD: %.2f\n"

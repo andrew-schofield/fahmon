@@ -19,6 +19,7 @@ v2.3.2
 	* Cleaned up project download settings. Users migrating from =< 2.3.1 will
       need to enter their settings again if they were using an "alternate"
       download location.
+    * WebApp web output now copies images automatically.
 
 	Windows
 

@@ -370,6 +370,17 @@ void WebMonitor::WriteApp(void)
 			return;
 		}
 
+		// check that images exist in output folder (only check first one, if !exist, recopy all)
+		if (!wxFileExists(wxPathOnly(webAppLocation) + wxT("/dialog_icon.png")));
+		{
+			wxCopyFile(PathManager::GetImgPath() + wxT("/dialog_icon.png"), wxPathOnly(webAppLocation) + wxT("/dialog_icon.png"));
+			wxCopyFile(PathManager::GetImgPath() + wxT("/list_client_asynch.png"), wxPathOnly(webAppLocation) + wxT("/list_client_asynch.png"));
+			wxCopyFile(PathManager::GetImgPath() + wxT("/list_client_inaccessible.png"), wxPathOnly(webAppLocation) + wxT("/list_client_inaccessible.png"));
+			wxCopyFile(PathManager::GetImgPath() + wxT("/list_client_inactive.png"), wxPathOnly(webAppLocation) + wxT("/list_client_inactive.png"));
+			wxCopyFile(PathManager::GetImgPath() + wxT("/list_client_ok.png"), wxPathOnly(webAppLocation) + wxT("/list_client_ok.png"));
+			wxCopyFile(PathManager::GetImgPath() + wxT("/list_client_stopped.png"), wxPathOnly(webAppLocation) + wxT("/list_client_stopped.png"));
+		}
+
 		// Write out the web header
 		textOS.WriteString(_T("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">\n<head>\n\t<meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\" />\n\t<meta http-equiv=\"Pragma\" content=\"no-cache\" />\n\t<meta http-equiv=\"refresh\" content=\"100\" />\n"));
 		textOS.WriteString(wxString::Format(_T("\t<title>%s</title>\n<script type=\"text/javascript\">\n"), wxT(FMC_PRODUCT)));
