@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es_ES\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2007-11-19 12:46+0000\n"
+"POT-Creation-Date: 2007-11-25 00:09+0000\n"
 "PO-Revision-Date: 2007-11-15 23:41+0000\n"
 "Last-Translator: Andrew Schofield <the.uncle.fungus@gmail.com>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -412,7 +412,7 @@ msgstr ""
 msgid "Could not create directory <%s>"
 msgstr "No se pudo crear el directorio <%s>"
 
-#: src/httpDownloader.cpp:153
+#: src/httpDownloader.cpp:154
 #, c-format
 msgid "%.1f KB/s"
 msgstr "%.1f KB/s"
@@ -785,28 +785,28 @@ msgstr ""
 msgid "No update found"
 msgstr "No se encontraron actualizaciones"
 
-#: src/mainDialog.cpp:1443 src/projectsManager.cpp:342
+#: src/mainDialog.cpp:1443 src/projectsManager.cpp:331
 msgid "Unable to create a temporary file!"
 msgstr "¡No se puede crear un archivo temporal!"
 
-#: src/mainDialog.cpp:1447 src/projectsManager.cpp:346
+#: src/mainDialog.cpp:1447 src/projectsManager.cpp:335
 #, c-format
 msgid "Unable to open the temporary file <%s>"
 msgstr "No se puede abrir el archivo temporal <%s>"
 
-#: src/mainDialog.cpp:1451 src/projectsManager.cpp:350
+#: src/mainDialog.cpp:1451 src/projectsManager.cpp:339
 msgid "Unable to connect to the server!"
 msgstr "¡No se puede conectar con el servidor!"
 
-#: src/mainDialog.cpp:1455 src/projectsManager.cpp:354
+#: src/mainDialog.cpp:1455 src/projectsManager.cpp:343
 msgid "Unable to send the request to the server!"
 msgstr "¡No se puede enviar la petición al servidor!"
 
-#: src/mainDialog.cpp:1459 src/projectsManager.cpp:358
+#: src/mainDialog.cpp:1459 src/projectsManager.cpp:347
 msgid "Download aborted!"
 msgstr "¡Descarga interrumpida!"
 
-#: src/mainDialog.cpp:1465 src/projectsManager.cpp:364
+#: src/mainDialog.cpp:1465 src/projectsManager.cpp:353
 msgid "An unknown error happened!"
 msgstr "¡Ha ocurrido un error desconocido!"
 
@@ -936,11 +936,11 @@ msgstr "Utilizar un proxy para las conexiones HTTP"
 msgid "Proxy requires authentication"
 msgstr "El proxy requiere autentificación"
 
-#: src/preferencesDialog.cpp:289
+#: src/preferencesDialog.cpp:289 src/preferencesDialog.cpp:343
 msgid "Address:"
 msgstr "Dirección:"
 
-#: src/preferencesDialog.cpp:290 src/preferencesDialog.cpp:347
+#: src/preferencesDialog.cpp:290
 msgid "Port:"
 msgstr "Puerto:"
 
@@ -960,77 +960,69 @@ msgstr ""
 "Proxy\n"
 "Contraseña:"
 
-#: src/preferencesDialog.cpp:343
+#: src/preferencesDialog.cpp:341
 msgid "Use the following settings for new project downloads"
 msgstr ""
 "Utilizar la siguiente configuración para la descarga de proyectos nuevos"
 
-#: src/preferencesDialog.cpp:345
-msgid "Server:"
-msgstr "Servidor:"
-
-#: src/preferencesDialog.cpp:349
-msgid "Resource:"
-msgstr "Recurso:"
-
-#: src/preferencesDialog.cpp:350
+#: src/preferencesDialog.cpp:344
 msgid "Use a local file for project data"
 msgstr "Utilizar un archivo local para los datos de proyecto"
 
-#: src/preferencesDialog.cpp:352 src/preferencesDialog.cpp:499
-#: src/preferencesDialog.cpp:504 src/preferencesDialog.cpp:509
+#: src/preferencesDialog.cpp:346 src/preferencesDialog.cpp:486
+#: src/preferencesDialog.cpp:491 src/preferencesDialog.cpp:496
 msgid "Filename:"
 msgstr "Nombre del archivo:"
 
-#: src/preferencesDialog.cpp:406
+#: src/preferencesDialog.cpp:393
 msgid "Web Browser:"
 msgstr "Navegador web:"
 
-#: src/preferencesDialog.cpp:407
+#: src/preferencesDialog.cpp:394
 msgid "File Manager:"
 msgstr "Administrador de archivos:"
 
-#: src/preferencesDialog.cpp:409
+#: src/preferencesDialog.cpp:396
 msgid "File Manager Command:"
 msgstr "Comando administrador de archivos:"
 
-#: src/preferencesDialog.cpp:410
+#: src/preferencesDialog.cpp:397
 msgid "Manually set timezone to UTC +"
 msgstr "Ajustar manualmente la zona horaria a UTC +"
 
-#: src/preferencesDialog.cpp:414
+#: src/preferencesDialog.cpp:401
 msgid "Windows Explorer"
 msgstr "Explorador de Windows"
 
-#: src/preferencesDialog.cpp:414 src/preferencesDialog.cpp:417
+#: src/preferencesDialog.cpp:401 src/preferencesDialog.cpp:404
 msgid "Other"
 msgstr "Otros"
 
-#: src/preferencesDialog.cpp:497
+#: src/preferencesDialog.cpp:484
 msgid "Export Web Application"
 msgstr "Aplicación para exportar página web"
 
-#: src/preferencesDialog.cpp:502
+#: src/preferencesDialog.cpp:489
 msgid "Export Simple Web page"
 msgstr "Exportar a una pagina web"
 
-#: src/preferencesDialog.cpp:507
+#: src/preferencesDialog.cpp:494
 msgid "Export Simple Text file"
 msgstr "Exportar a un archivo de texto"
 
-#: src/preferencesDialog.cpp:930
+#: src/preferencesDialog.cpp:892
 msgid "Choose a local project data file"
 msgstr "Elegir un archivo local de datos de proyecto"
 
-#: src/preferencesDialog.cpp:947
+#: src/preferencesDialog.cpp:909
 msgid "Choose where to save the Web Application"
 msgstr "Elegir donde guardar la la Aplicación Web"
 
-#: src/preferencesDialog.cpp:964
+#: src/preferencesDialog.cpp:926
 msgid "Choose where to save the simple web page"
 msgstr "Elegir donde guardar la página web"
 
-#: src/preferencesDialog.cpp:981
+#: src/preferencesDialog.cpp:943
 msgid "Choose where to save the simple text file"
 msgstr "Elegir donde guardar el archivo de texto"
 
@@ -1054,17 +1046,17 @@ msgstr "Descargando proyectos nuevos"
 msgid "Adding the new projects to the database"
 msgstr "Añadiendo los proyectos nuevos a la base de datos"
 
-#: src/projectsManager.cpp:371
+#: src/projectsManager.cpp:360
 msgid "Local project update file doesn't exist!"
 msgstr "No existe el archivo local de actualización de proyectos"
 
-#: src/projectsManager.cpp:378
+#: src/projectsManager.cpp:367
 msgid "Unable to copy local project update file to temporary location"
 msgstr ""
 "No se puede copiar el archivo local de actualización de proyectos al "
 "emplazamiento temporal"
 
-#: src/projectsManager.cpp:436
+#: src/projectsManager.cpp:425
 #, c-format
 msgid ""
 "The line %u is not correctly formatted!\n"
@@ -1075,7 +1067,7 @@ msgstr ""
 "\n"
 "%s"
 
-#: src/projectsManager.cpp:447
+#: src/projectsManager.cpp:436
 msgid "Update aborted!"
 msgstr "¡Actualización interrumpida!"
 
@@ -1204,3 +1196,9 @@ msgid ""
 msgstr ""
 "PPD Total: %.2f\n"
 "\n"
+
+#~ msgid "Server:"
+#~ msgstr "Servidor:"
+
+#~ msgid "Resource:"
+#~ msgstr "Recurso:"

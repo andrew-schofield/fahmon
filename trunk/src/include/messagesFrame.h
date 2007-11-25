@@ -55,7 +55,7 @@ public:
 	static MessagesFrame* GetInstance(wxWindow* parent);
 	static void           DestroyInstance(void);
 
-		void Toggle(void);
+	void Toggle(void);
 	static void OnNewMessage(void);
 
 

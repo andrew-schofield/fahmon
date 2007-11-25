@@ -23,6 +23,7 @@
 #include "wx/filename.h"
 #include "base64Codec.h"
 #include "preferencesManager.h"
+#include "messagesManager.h"
 
 
 // This size should be high enough to store the whole head of the answer
@@ -219,4 +220,40 @@ wxUint32 HTTPDownloader::ExtractContentSize(wxByte* buffer, wxUint32 bufferSize)
 	header.ToLong(&value);
 
 	return (wxInt32)value;
+}
+
+/**
+ * Decontructs a "real" url into its Server, Port and Resource fields
+ * and downloads the file
+ **/
+HTTPDownloader::DownloadStatus HTTPDownloader::Url(const wxString& url, wxString& localFileName, ProgressManager& progressManager)
+{
+	wxString      tempString;
+	wxInt32       portPosition;
+	wxInt32       fslashPosition;
+	wxString      clientPortStr;
+	unsigned long clientPort;
+	wxString      clientServer;
+	wxString      clientResource;
+
+	if(url.Mid(0, 4) == wxT("http"))
+	{
+		tempString = url.Mid(7, url.Length() - 7);
+		portPosition = tempString.Find(':');
+		fslashPosition = tempString.Find('/');
+		if(portPosition == -1)
+		{
+			clientPortStr = wxT("80");
+			clientServer = tempString.Mid(0, fslashPosition);
+		}
+		else
+		{
+			clientPortStr = tempString.Mid(portPosition+1, fslashPosition-portPosition-1);
+			clientServer = tempString.Mid(0, portPosition);
+		}
+		clientResource = tempString.Mid(fslashPosition +1 , tempString.Length() - fslashPosition);
+		clientPortStr.ToULong(&clientPort);
+		return DownloadFile(clientServer, clientPort, clientResource, localFileName, progressManager);
+	}
+	return STATUS_CONNECT_ERROR;
 }

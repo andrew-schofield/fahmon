@@ -1377,7 +1377,7 @@ void MainDialog::CheckForUpdates(void)
 	// --- We first have to download the new update file
 	progressManager.SetTextAndProgress(_("Checking for update"), 0);
 	progressManager.CreateTask(100);
-	if(DownloadUpdateFile(updateFile, progressManager, errorMsg, _T("downloads/update.chk")) == false)
+	if(DownloadUpdateFile(updateFile, progressManager, errorMsg, _T("http://fahmon.net/downloads/update.chk")) == false)
 	{
 		Tools::ErrorMsgBox(errorMsg);
 
@@ -1430,7 +1430,7 @@ bool MainDialog::DownloadUpdateFile(wxString& fileName, ProgressManager& progres
 	//Initialise the port number
 
 	// Download the file
-	downloadStatus = HTTPDownloader::DownloadFile(_T("fahmon.net"), 80, resource, fileName, progressManager);
+	downloadStatus = HTTPDownloader::Url(resource, fileName, progressManager);
 
 	// If nothing went wrong, we can stop here
 	if(downloadStatus == HTTPDownloader::STATUS_NO_ERROR)

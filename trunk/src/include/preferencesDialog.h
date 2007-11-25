@@ -69,12 +69,8 @@ protected:
 
 	// Widgets for the advanced tab
 	wxCheckBox   *mAdvancedUseAlternateProjectSource;
-	wxTextCtrl   *mAdvancedAlternateProjectSourceLocationServer;
-	wxStaticText *mAdvancedLabelLocationServer;
-	wxTextCtrl   *mAdvancedAlternateProjectSourceLocationPort;
-	wxStaticText *mAdvancedLabelLocationPort;
-	wxTextCtrl   *mAdvancedAlternateProjectSourceLocationResource;
-	wxStaticText *mAdvancedLabelLocationResource;
+	wxTextCtrl   *mAdvancedAlternateProjectSourceLocationAddress;
+	wxStaticText *mAdvancedLabelLocationAddress;
 	wxCheckBox   *mAdvancedUseLocalFile;
 	wxTextCtrl   *mAdvancedLocalFileLocation;
 	wxStaticText *mAdvancedLabelLocalFile;

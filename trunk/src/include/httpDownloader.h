@@ -46,20 +46,15 @@
 #define PREF_HTTPDOWNLOADER_USEALTERNATEUPDATE    wxT("HTTPDownloader.UseAlternateUpdate")
 #define PREF_HTTPDOWNLOADER_USEALTERNATEUPDATE_DV true
 
-#define PREF_HTTPDOWNLOADER_ALTERNATEUPDATELOCATIONSERVER    wxT("HTTPDownloader.AlternateUpdateLocationServer")
-#define PREF_HTTPDOWNLOADER_ALTERNATEUPDATELOCATIONSERVER_DV wxT("fah-web.stanford.edu")
-
-#define PREF_HTTPDOWNLOADER_ALTERNATEUPDATELOCATIONPORT    wxT("HTTPDownloader.AlternateUpdateLocationPort")
-#define PREF_HTTPDOWNLOADER_ALTERNATEUPDATELOCATIONPORT_DV 80
-
-#define PREF_HTTPDOWNLOADER_ALTERNATEUPDATELOCATIONRESOURCE    wxT("HTTPDownloader.AlternateUpdateLocationResource")
-#define PREF_HTTPDOWNLOADER_ALTERNATEUPDATELOCATIONRESOURCE_DV wxT("psummary.html")
-
 #define PREF_HTTPDOWNLOADER_USELOCALFILE    wxT("HTTPDownloader.UseLocalFile")
 #define PREF_HTTPDOWNLOADER_USELOCALFILE_DV false
 
 #define PREF_HTTPDOWNLOADER_LOCALFILELOCATION    wxT("HTTPDownloader.LocalFileLocation")
 #define PREF_HTTPDOWNLOADER_LOCALFILELOCATION_DV wxT("")
+
+#define PREF_HTTPDOWNLOADER_ALTERNATEUPDATEADDRESS    wxT("HTTPDownloader.AlternateUpdateAddress")
+#define PREF_HTTPDOWNLOADER_ALTERNATEUPDATEADDRESS_DV wxT("http://fah-web.stanford.edu/psummary.html")
+
 
 
 // This class allows one to easily download files from a web server
@@ -69,11 +64,11 @@ class HTTPDownloader
 		typedef enum _DOWNLOAD_STATUS
 		{
 			STATUS_TEMP_FILE_CREATION_ERROR,
-STATUS_TEMP_FILE_OPEN_ERROR,
-STATUS_CONNECT_ERROR,
-STATUS_SEND_REQUEST_ERROR,
-STATUS_ABORTED,
-STATUS_NO_ERROR
+			STATUS_TEMP_FILE_OPEN_ERROR,
+			STATUS_CONNECT_ERROR,
+			STATUS_SEND_REQUEST_ERROR,
+			STATUS_ABORTED,
+			STATUS_NO_ERROR
 		} DownloadStatus;
 
 
@@ -82,6 +77,7 @@ STATUS_NO_ERROR
 
 	public:
 		static DownloadStatus DownloadFile(const wxString& host, wxUint32 port, const wxString& resource, wxString& localFileName, ProgressManager& progressManager);
+		static DownloadStatus Url(const wxString& url, wxString& localFileName, ProgressManager& progressManager);
 };
 
 

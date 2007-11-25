@@ -16,11 +16,17 @@ v2.3.2
 	* Fixed bug in monitoring system that broke PPD/ETA for projects with less
 	  than 100 frames.
 	* Fixed proxy username text box sizing bug.
+	* Cleaned up project download settings. Users migrating from =< 2.3.1 will
+      need to enter their settings again if they were using an "alternate"
+      download location.
 
 	Windows
 
 	* Fixed bug which drew the FahMon icon over the progress dialog title.
-	* Fixed issue with VC8 resource compiler not accepting compressed vista icons.
+	* Fixed issue with VC8 resource compiler not accepting compressed vista
+      icons.
+	* Fixed issues with wxMSW 2.8.6 and network paths.
+	* Built Win32 version against wxMSW 2.8.6.
 
 v2.3.1 (30/10/07)
 

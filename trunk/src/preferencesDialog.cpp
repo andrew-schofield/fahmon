@@ -327,26 +327,20 @@ inline wxPanel* PreferencesDialog::CreateAdvancedTab(wxNotebook* parent)
 	wxPanel    *panel;
 	wxBoxSizer *sizer;
 	wxBoxSizer *topLevelSizer;
-	wxBoxSizer *ServerPortSizer;
-	wxBoxSizer *ResourceSizer;
+	wxBoxSizer *AddressSizer;
 	wxBoxSizer *LocalFileSizer;
 	wxBoxSizer *LocationSizer;
 
 	panel                                           = new wxPanel(parent);
 	sizer                                           = new wxBoxSizer(wxVERTICAL);
 	topLevelSizer                                   = new wxBoxSizer(wxVERTICAL);
-	ServerPortSizer                                 = new wxBoxSizer(wxHORIZONTAL);
-	ResourceSizer                                   = new wxBoxSizer(wxHORIZONTAL);
+	AddressSizer                                    = new wxBoxSizer(wxHORIZONTAL);
 	LocalFileSizer                                  = new wxBoxSizer(wxHORIZONTAL);
 	LocationSizer                                   = new wxBoxSizer(wxHORIZONTAL);
 
 	mAdvancedUseAlternateProjectSource              = new wxCheckBox(panel, CHK_USEALTERNATEPROJECTSOURCE, _("Use the following settings for new project downloads"));
-	mAdvancedAlternateProjectSourceLocationServer   = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
-	mAdvancedLabelLocationServer                    = new wxStaticText(panel, wxID_ANY, _("Server:"));
-	mAdvancedAlternateProjectSourceLocationPort     = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition, wxDefaultSize, 0, wxTextValidator(wxFILTER_NUMERIC));
-	mAdvancedLabelLocationPort                      = new wxStaticText(panel, wxID_ANY, _("Port:"));
-	mAdvancedAlternateProjectSourceLocationResource = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
-	mAdvancedLabelLocationResource                  = new wxStaticText(panel, wxID_ANY, _("Resource:"));
+	mAdvancedAlternateProjectSourceLocationAddress  = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
+	mAdvancedLabelLocationAddress                   = new wxStaticText(panel, wxID_ANY, _("Address:"));
 	mAdvancedUseLocalFile                           = new wxCheckBox(panel, CHK_USELOCALFILE, _("Use a local file for project data"));
 	mAdvancedLocalFileLocation                      = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
 	mAdvancedLabelLocalFile                         = new wxStaticText(panel, wxID_ANY, _("Filename:"));
@@ -357,20 +351,13 @@ inline wxPanel* PreferencesDialog::CreateAdvancedTab(wxNotebook* parent)
 	LocalFileSizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	LocalFileSizer->Add(mAdvancedLocationChooser, 0, wxALIGN_CENTER_VERTICAL);
 
-	ServerPortSizer->Add(mAdvancedLabelLocationServer, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
-	ServerPortSizer->Add(mAdvancedAlternateProjectSourceLocationServer, 1, wxALIGN_CENTER_VERTICAL | wxEXPAND);
-	ServerPortSizer->AddSpacer(FMC_GUI_SPACING_LOW);
-	ServerPortSizer->Add(mAdvancedLabelLocationPort, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
-	ServerPortSizer->Add(mAdvancedAlternateProjectSourceLocationPort, 1, wxALIGN_CENTER_VERTICAL);
-	ResourceSizer->Add(mAdvancedLabelLocationResource, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
-	ResourceSizer->Add(mAdvancedAlternateProjectSourceLocationResource, 1, wxALIGN_CENTER_VERTICAL | wxEXPAND);
+	AddressSizer->Add(mAdvancedLabelLocationAddress, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
+	AddressSizer->Add(mAdvancedAlternateProjectSourceLocationAddress, 1, wxALIGN_CENTER_VERTICAL | wxEXPAND);
 
 	sizer->AddStretchSpacer();
 	sizer->Add(mAdvancedUseAlternateProjectSource, 0, wxALIGN_LEFT);
 	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
-	sizer->Add(ServerPortSizer, 0, wxALIGN_LEFT | wxEXPAND);
-	sizer->AddStretchSpacer();
-	sizer->Add(ResourceSizer, 0, wxALIGN_LEFT | wxEXPAND);
+	sizer->Add(AddressSizer, 0, wxALIGN_LEFT | wxEXPAND);
 	sizer->AddStretchSpacer();
 	sizer->Add(mAdvancedUseLocalFile, 0, wxALIGN_LEFT);
 	sizer->Add(LocalFileSizer, 0, wxALIGN_LEFT | wxEXPAND);
@@ -579,9 +566,7 @@ inline void PreferencesDialog::LoadPreferences(void)
 	wxString proxyUsername;
 	wxString proxyPassword;
 	wxString browser;
-	wxString projectLocationServer;
-	wxUint32 projectLocationPort;
-	wxString projectLocationResource;
+	wxString projectLocationAddress;
 	wxString projectLocalFile;
 	wxString filemanager;
 	wxString webAppLocation;
@@ -677,9 +662,7 @@ inline void PreferencesDialog::LoadPreferences(void)
 
 	// -----===== Advanced preferences =====-----
 	_PrefsGetBool        (PREF_HTTPDOWNLOADER_USEALTERNATEUPDATE,              useAlternate);
-	_PrefsGetString      (PREF_HTTPDOWNLOADER_ALTERNATEUPDATELOCATIONSERVER,   projectLocationServer);
-	_PrefsGetUint        (PREF_HTTPDOWNLOADER_ALTERNATEUPDATELOCATIONPORT,     projectLocationPort);
-	_PrefsGetString      (PREF_HTTPDOWNLOADER_ALTERNATEUPDATELOCATIONRESOURCE, projectLocationResource);
+	_PrefsGetString      (PREF_HTTPDOWNLOADER_ALTERNATEUPDATEADDRESS,          projectLocationAddress);
 	_PrefsGetBool        (PREF_HTTPDOWNLOADER_USELOCALFILE,                    useLocalFile);
 	_PrefsGetString      (PREF_HTTPDOWNLOADER_LOCALFILELOCATION,               projectLocalFile);
 
@@ -688,17 +671,11 @@ inline void PreferencesDialog::LoadPreferences(void)
 
 	if(useAlternate == false)
 	{
-		mAdvancedAlternateProjectSourceLocationServer->SetValue(wxT("fah-web.stanford.edu"));
-		mAdvancedAlternateProjectSourceLocationPort->SetValue(wxT("80"));
-		mAdvancedAlternateProjectSourceLocationResource->SetValue(wxT("psummary.html"));
+		mAdvancedAlternateProjectSourceLocationAddress->SetValue(wxT("http://fah-web.stanford.edu/psummary.html"));
 		mAdvancedLocalFileLocation->SetValue(wxT(""));
 
-		mAdvancedAlternateProjectSourceLocationServer->Enable(false);
-		mAdvancedLabelLocationServer->Enable(false);
-		mAdvancedAlternateProjectSourceLocationPort->Enable(false);
-		mAdvancedLabelLocationPort->Enable(false);
-		mAdvancedAlternateProjectSourceLocationResource->Enable(false);
-		mAdvancedLabelLocationResource->Enable(false);
+		mAdvancedAlternateProjectSourceLocationAddress->Enable(false);
+		mAdvancedLabelLocationAddress->Enable(false);
 		mAdvancedUseLocalFile->Enable(false);
 		mAdvancedLocalFileLocation->Enable(false);
 		mAdvancedLabelLocalFile->Enable(false);
@@ -707,16 +684,10 @@ inline void PreferencesDialog::LoadPreferences(void)
 
 	if(useAlternate == true && useLocalFile == false)
 	{
-		mAdvancedAlternateProjectSourceLocationServer->SetValue(projectLocationServer);
-		mAdvancedAlternateProjectSourceLocationPort->SetValue(wxString::Format(wxT("%u"), projectLocationPort));
-		mAdvancedAlternateProjectSourceLocationResource->SetValue(projectLocationResource);
+		mAdvancedAlternateProjectSourceLocationAddress->SetValue(projectLocationAddress);
 
-		mAdvancedAlternateProjectSourceLocationServer->Enable(true);
-		mAdvancedLabelLocationServer->Enable(true);
-		mAdvancedAlternateProjectSourceLocationPort->Enable(true);
-		mAdvancedLabelLocationPort->Enable(true);
-		mAdvancedAlternateProjectSourceLocationResource->Enable(true);
-		mAdvancedLabelLocationResource->Enable(true);
+		mAdvancedAlternateProjectSourceLocationAddress->Enable(true);
+		mAdvancedLabelLocationAddress->Enable(true);
 		mAdvancedUseLocalFile->Enable(true);
 		mAdvancedLocalFileLocation->Enable(false);
 		mAdvancedLabelLocalFile->Enable(false);
@@ -727,12 +698,8 @@ inline void PreferencesDialog::LoadPreferences(void)
 	{
 		mAdvancedLocalFileLocation->SetValue(projectLocalFile);
 
-		mAdvancedAlternateProjectSourceLocationServer->Enable(false);
-		mAdvancedLabelLocationServer->Enable(false);
-		mAdvancedAlternateProjectSourceLocationPort->Enable(false);
-		mAdvancedLabelLocationPort->Enable(false);
-		mAdvancedAlternateProjectSourceLocationResource->Enable(false);
-		mAdvancedLabelLocationResource->Enable(false);
+		mAdvancedAlternateProjectSourceLocationAddress->Enable(false);
+		mAdvancedLabelLocationAddress->Enable(false);
 		mAdvancedUseLocalFile->Enable(true);
 		mAdvancedLocalFileLocation->Enable(true);
 		mAdvancedLabelLocalFile->Enable(true);
@@ -822,7 +789,6 @@ inline void PreferencesDialog::LoadPreferences(void)
 inline void PreferencesDialog::SavePreferences(void)
 {
 	wxUint32 proxyPort;
-	wxUint32 alternatePort;
 
 	// -----===== General preferences =====-----
 	_PrefsSetBool(PREF_FAHCLIENT_COLLECTXYZFILES,     mGeneralCollectXYZFiles->GetValue());
@@ -855,12 +821,8 @@ inline void PreferencesDialog::SavePreferences(void)
 
 
 	// -----===== Advanced preferences =====-----
-	alternatePort = wxAtoi(mAdvancedAlternateProjectSourceLocationPort->GetValue());
-
 	_PrefsSetBool  (PREF_HTTPDOWNLOADER_USEALTERNATEUPDATE,              mAdvancedUseAlternateProjectSource->GetValue());
-	_PrefsSetString(PREF_HTTPDOWNLOADER_ALTERNATEUPDATELOCATIONSERVER,   mAdvancedAlternateProjectSourceLocationServer->GetValue());
-	_PrefsSetUint  (PREF_HTTPDOWNLOADER_ALTERNATEUPDATELOCATIONPORT,     alternatePort);
-	_PrefsSetString(PREF_HTTPDOWNLOADER_ALTERNATEUPDATELOCATIONRESOURCE, mAdvancedAlternateProjectSourceLocationResource->GetValue());
+	_PrefsSetString(PREF_HTTPDOWNLOADER_ALTERNATEUPDATEADDRESS,          mAdvancedAlternateProjectSourceLocationAddress->GetValue());
 	_PrefsSetBool  (PREF_HTTPDOWNLOADER_USELOCALFILE,                    mAdvancedUseLocalFile->GetValue());
 	_PrefsSetString(PREF_HTTPDOWNLOADER_LOCALFILELOCATION,               mAdvancedLocalFileLocation->GetValue());
 
@@ -1046,12 +1008,8 @@ void PreferencesDialog::OnCheckboxes(wxCommandEvent& event)
 
 		// ---
 		case CHK_USEALTERNATEPROJECTSOURCE:
-		mAdvancedAlternateProjectSourceLocationServer->Enable(mAdvancedUseAlternateProjectSource->GetValue());
-		mAdvancedLabelLocationServer->Enable(mAdvancedUseAlternateProjectSource->GetValue());
-		mAdvancedAlternateProjectSourceLocationPort->Enable(mAdvancedUseAlternateProjectSource->GetValue());
-		mAdvancedLabelLocationPort->Enable(mAdvancedUseAlternateProjectSource->GetValue());
-		mAdvancedAlternateProjectSourceLocationResource->Enable(mAdvancedUseAlternateProjectSource->GetValue());
-		mAdvancedLabelLocationResource->Enable(mAdvancedUseAlternateProjectSource->GetValue());
+		mAdvancedAlternateProjectSourceLocationAddress->Enable(mAdvancedUseAlternateProjectSource->GetValue());
+		mAdvancedLabelLocationAddress->Enable(mAdvancedUseAlternateProjectSource->GetValue());
 		mAdvancedUseLocalFile->Enable(mAdvancedUseAlternateProjectSource->GetValue());
 		mAdvancedUseLocalFile->SetValue(false);
 		mAdvancedLocalFileLocation->Enable(false);
@@ -1067,21 +1025,13 @@ void PreferencesDialog::OnCheckboxes(wxCommandEvent& event)
 
 		if(mAdvancedUseLocalFile->GetValue() == true)
 		{
-			mAdvancedAlternateProjectSourceLocationServer->Enable(false);
-			mAdvancedLabelLocationServer->Enable(false);
-			mAdvancedAlternateProjectSourceLocationPort->Enable(false);
-			mAdvancedLabelLocationPort->Enable(false);
-			mAdvancedAlternateProjectSourceLocationResource->Enable(false);
-			mAdvancedLabelLocationResource->Enable(false);
+			mAdvancedAlternateProjectSourceLocationAddress->Enable(false);
+			mAdvancedLabelLocationAddress->Enable(false);
 		}
 		if(mAdvancedUseLocalFile->GetValue() == false)
 		{
-			mAdvancedAlternateProjectSourceLocationServer->Enable(true);
-			mAdvancedLabelLocationServer->Enable(true);
-			mAdvancedAlternateProjectSourceLocationPort->Enable(true);
-			mAdvancedLabelLocationPort->Enable(true);
-			mAdvancedAlternateProjectSourceLocationResource->Enable(true);
-			mAdvancedLabelLocationResource->Enable(true);
+			mAdvancedAlternateProjectSourceLocationAddress->Enable(true);
+			mAdvancedLabelLocationAddress->Enable(true);
 		}
 		break;
 	// ---

@@ -42,8 +42,6 @@
 #define FMC_URL_FCORG             "http://forum.folding-community.org/portal.php"
 #define FMC_URL_SERVERS           "http://fah-web.stanford.edu/serverstat.html"
 #define FMC_URL_PROJECTS          "http://fah-web.stanford.edu/psummary.html"      // Complete URL
-#define FMC_URL_PROJECTS_SERVER   "fah-web.stanford.edu"                           // Used for updating projects
-#define FMC_URL_PROJECTS_RESOURCE "psummary.html"                                 // ---
 #define FMC_URL_HELP              "http://trac.fahmon.net"
 #define FMC_URL_FAHMON            "http://fahmon.net"
 #define FMC_URL_QD                "http://linuxminded.nl/?target=software-qd-tools.plc"

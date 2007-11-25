@@ -292,44 +292,33 @@ bool ProjectsManager::Update_DownloadProjectsFile(wxString& fileName, ProgressMa
 	bool     useLocalFile;
 	bool     fileexists;
 	bool     copied;
-	wxString projectLocationServer;
-	wxUint32 projectLocationPort;
-	wxString projectLocationResource;
 	wxString projectLocalFile;
-	wxString serverused;
-	wxUint32 portused;
-	wxString resourceused;
+	wxString resource, alternateAddress;
 
 	HTTPDownloader::DownloadStatus downloadStatus;
 
 	_PrefsGetBool        (PREF_HTTPDOWNLOADER_USEALTERNATEUPDATE,              useAlternate);
-	_PrefsGetString      (PREF_HTTPDOWNLOADER_ALTERNATEUPDATELOCATIONSERVER,   projectLocationServer);
-	_PrefsGetUint        (PREF_HTTPDOWNLOADER_ALTERNATEUPDATELOCATIONPORT,     projectLocationPort);
-	_PrefsGetString      (PREF_HTTPDOWNLOADER_ALTERNATEUPDATELOCATIONRESOURCE, projectLocationResource);
 	_PrefsGetBool        (PREF_HTTPDOWNLOADER_USELOCALFILE,                    useLocalFile);
 	_PrefsGetString      (PREF_HTTPDOWNLOADER_LOCALFILELOCATION,               projectLocalFile);
-
-	//Initialise the port number
-	portused = 80;
+	_PrefsGetString      (PREF_HTTPDOWNLOADER_ALTERNATEUPDATEADDRESS,          alternateAddress);
 
 	if(useLocalFile ==false)
 	{
 		if(useAlternate == false)
 		{
-			serverused = wxT(FMC_URL_PROJECTS_SERVER);
-			portused = 80;
-			resourceused = wxT(FMC_URL_PROJECTS_RESOURCE);
+			resource = wxT(FMC_URL_PROJECTS);
 		}
 
-		if(useAlternate == true && useLocalFile == false)
+		else if(useAlternate == true && useLocalFile == false)
 		{
-			serverused = projectLocationServer;
-			portused = projectLocationPort;
-			resourceused = projectLocationResource;
+			//serverused = projectLocationServer;
+			//portused = projectLocationPort;
+			//resourceused = projectLocationResource;
+			resource = alternateAddress;
 		}
 
 		// Download the file
-		downloadStatus = HTTPDownloader::DownloadFile(serverused, portused, resourceused, fileName, progressManager);
+		downloadStatus = HTTPDownloader::Url(resource, fileName, progressManager);
 
 		// If nothing went wrong, we can stop here
 		if(downloadStatus == HTTPDownloader::STATUS_NO_ERROR)

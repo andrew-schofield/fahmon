@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru_RU\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2007-11-19 12:46+0000\n"
+"POT-Creation-Date: 2007-11-25 00:09+0000\n"
 "PO-Revision-Date: 2007-11-15 23:47+0000\n"
 "Last-Translator: Andrew Schofield <the.uncle.fungus@gmail.com>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -405,7 +405,7 @@ msgstr "Последняя версия %s всегда доступна на о
 msgid "Could not create directory <%s>"
 msgstr "Невозможно создать папку <%s>"
 
-#: src/httpDownloader.cpp:153
+#: src/httpDownloader.cpp:154
 #, c-format
 msgid "%.1f KB/s"
 msgstr "%.1f кБ/с"
@@ -775,28 +775,28 @@ msgstr ""
 msgid "No update found"
 msgstr "Новых версий нет"
 
-#: src/mainDialog.cpp:1443 src/projectsManager.cpp:342
+#: src/mainDialog.cpp:1443 src/projectsManager.cpp:331
 msgid "Unable to create a temporary file!"
 msgstr "Невозможно создать временный файл!"
 
-#: src/mainDialog.cpp:1447 src/projectsManager.cpp:346
+#: src/mainDialog.cpp:1447 src/projectsManager.cpp:335
 #, c-format
 msgid "Unable to open the temporary file <%s>"
 msgstr "Невозможно открыть временный файл <%s>"
 
-#: src/mainDialog.cpp:1451 src/projectsManager.cpp:350
+#: src/mainDialog.cpp:1451 src/projectsManager.cpp:339
 msgid "Unable to connect to the server!"
 msgstr "Невозможно соединиться с сервером!"
 
-#: src/mainDialog.cpp:1455 src/projectsManager.cpp:354
+#: src/mainDialog.cpp:1455 src/projectsManager.cpp:343
 msgid "Unable to send the request to the server!"
 msgstr "Невозможно послать запрос на сервер!"
 
-#: src/mainDialog.cpp:1459 src/projectsManager.cpp:358
+#: src/mainDialog.cpp:1459 src/projectsManager.cpp:347
 msgid "Download aborted!"
 msgstr "Скачивание прервано!"
 
-#: src/mainDialog.cpp:1465 src/projectsManager.cpp:364
+#: src/mainDialog.cpp:1465 src/projectsManager.cpp:353
 msgid "An unknown error happened!"
 msgstr "Вы словили неизвестную ошибку!"
 
@@ -926,11 +926,11 @@ msgstr "Использовать прокси для HTTP соединений"
 msgid "Proxy requires authentication"
 msgstr "Прокси требует авторизации:"
 
-#: src/preferencesDialog.cpp:289
+#: src/preferencesDialog.cpp:289 src/preferencesDialog.cpp:343
 msgid "Address:"
 msgstr "Адрес:"
 
-#: src/preferencesDialog.cpp:290 src/preferencesDialog.cpp:347
+#: src/preferencesDialog.cpp:290
 msgid "Port:"
 msgstr "Порт:"
 
@@ -946,76 +946,68 @@ msgid ""
 "Password:"
 msgstr "Пароль:"
 
-#: src/preferencesDialog.cpp:343
+#: src/preferencesDialog.cpp:341
 msgid "Use the following settings for new project downloads"
 msgstr "Настройки для скачивания информации о новых заданиях"
 
-#: src/preferencesDialog.cpp:345
-msgid "Server:"
-msgstr "Сервер:"
-
-#: src/preferencesDialog.cpp:349
-msgid "Resource:"
-msgstr "Источник:"
-
-#: src/preferencesDialog.cpp:350
+#: src/preferencesDialog.cpp:344
 msgid "Use a local file for project data"
 msgstr "Использовать локальный файл для данных заданий"
 
-#: src/preferencesDialog.cpp:352 src/preferencesDialog.cpp:499
-#: src/preferencesDialog.cpp:504 src/preferencesDialog.cpp:509
+#: src/preferencesDialog.cpp:346 src/preferencesDialog.cpp:486
+#: src/preferencesDialog.cpp:491 src/preferencesDialog.cpp:496
 msgid "Filename:"
 msgstr "Имя файла:"
 
-#: src/preferencesDialog.cpp:406
+#: src/preferencesDialog.cpp:393
 msgid "Web Browser:"
 msgstr "Обозреватель:"
 
-#: src/preferencesDialog.cpp:407
+#: src/preferencesDialog.cpp:394
 msgid "File Manager:"
 msgstr "Менеджер файлов:"
 
-#: src/preferencesDialog.cpp:409
+#: src/preferencesDialog.cpp:396
 msgid "File Manager Command:"
 msgstr "Команда запуска файлового менеджера:"
 
-#: src/preferencesDialog.cpp:410
+#: src/preferencesDialog.cpp:397
 msgid "Manually set timezone to UTC +"
 msgstr "Установить часовую зону вручную как UTC + "
 
-#: src/preferencesDialog.cpp:414
+#: src/preferencesDialog.cpp:401
 msgid "Windows Explorer"
 msgstr "Проводник"
 
-#: src/preferencesDialog.cpp:414 src/preferencesDialog.cpp:417
+#: src/preferencesDialog.cpp:401 src/preferencesDialog.cpp:404
 msgid "Other"
 msgstr "Прочее"
 
-#: src/preferencesDialog.cpp:497
+#: src/preferencesDialog.cpp:484
 msgid "Export Web Application"
 msgstr "Экспорт Web приложения"
 
-#: src/preferencesDialog.cpp:502
+#: src/preferencesDialog.cpp:489
 msgid "Export Simple Web page"
 msgstr "Экспорт простой Web страницы"
 
-#: src/preferencesDialog.cpp:507
+#: src/preferencesDialog.cpp:494
 msgid "Export Simple Text file"
 msgstr "Экспорт простого текстового файла"
 
-#: src/preferencesDialog.cpp:930
+#: src/preferencesDialog.cpp:892
 msgid "Choose a local project data file"
 msgstr "Выбрать локальный файл для данных заданий"
 
-#: src/preferencesDialog.cpp:947
+#: src/preferencesDialog.cpp:909
 msgid "Choose where to save the Web Application"
 msgstr "Выберите куда сохранить Web приложение"
 
-#: src/preferencesDialog.cpp:964
+#: src/preferencesDialog.cpp:926
 msgid "Choose where to save the simple web page"
 msgstr "Выберите куда сохранить простую Web страницу"
 
-#: src/preferencesDialog.cpp:981
+#: src/preferencesDialog.cpp:943
 msgid "Choose where to save the simple text file"
 msgstr "Выберите куда сохранить простой текстовый файл"
 
@@ -1039,16 +1031,16 @@ msgstr "Скачиваются новые задания"
 msgid "Adding the new projects to the database"
 msgstr "Добавление новых заданий в базу"
 
-#: src/projectsManager.cpp:371
+#: src/projectsManager.cpp:360
 msgid "Local project update file doesn't exist!"
 msgstr "Обновлённого файла данных заданий не существует!"
 
-#: src/projectsManager.cpp:378
+#: src/projectsManager.cpp:367
 msgid "Unable to copy local project update file to temporary location"
 msgstr ""
 "Невозможно скопировать локальный файл с данными заданий во временную папку."
 
-#: src/projectsManager.cpp:436
+#: src/projectsManager.cpp:425
 #, c-format
 msgid ""
 "The line %u is not correctly formatted!\n"
@@ -1059,7 +1051,7 @@ msgstr ""
 "\n"
 "%s"
 
-#: src/projectsManager.cpp:447
+#: src/projectsManager.cpp:436
 msgid "Update aborted!"
 msgstr "Обновление прервано!"
 
@@ -1187,3 +1179,9 @@ msgid ""
 msgstr ""
 "Всего PPD: %.2f\n"
 "\n"
+
+#~ msgid "Server:"
+#~ msgstr "Сервер:"
+
+#~ msgid "Resource:"
+#~ msgstr "Источник:"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl_PL\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2007-11-19 12:46+0000\n"
+"POT-Creation-Date: 2007-11-25 00:09+0000\n"
 "PO-Revision-Date: 2007-11-15 23:44+0000\n"
 "Last-Translator: Andrew Schofield <the.uncle.fungus@gmail.com>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -410,7 +410,7 @@ msgstr ""
 msgid "Could not create directory <%s>"
 msgstr "Nie można utworzyć katalogu <%s>"
 
-#: src/httpDownloader.cpp:153
+#: src/httpDownloader.cpp:154
 #, c-format
 msgid "%.1f KB/s"
 msgstr "%.1f KB/s"
@@ -780,28 +780,28 @@ msgstr ""
 msgid "No update found"
 msgstr "Nie znaleziono aktualizacji"
 
-#: src/mainDialog.cpp:1443 src/projectsManager.cpp:342
+#: src/mainDialog.cpp:1443 src/projectsManager.cpp:331
 msgid "Unable to create a temporary file!"
 msgstr "Nie można utworzyć pliku tymczasowego!"
 
-#: src/mainDialog.cpp:1447 src/projectsManager.cpp:346
+#: src/mainDialog.cpp:1447 src/projectsManager.cpp:335
 #, c-format
 msgid "Unable to open the temporary file <%s>"
 msgstr "Nie można otworzyć tymczasowego pliku <%s>"
 
-#: src/mainDialog.cpp:1451 src/projectsManager.cpp:350
+#: src/mainDialog.cpp:1451 src/projectsManager.cpp:339
 msgid "Unable to connect to the server!"
 msgstr "Nie można połączyć się z serwerem!"
 
-#: src/mainDialog.cpp:1455 src/projectsManager.cpp:354
+#: src/mainDialog.cpp:1455 src/projectsManager.cpp:343
 msgid "Unable to send the request to the server!"
 msgstr "Nie można wysłać polecenia do serwera!"
 
-#: src/mainDialog.cpp:1459 src/projectsManager.cpp:358
+#: src/mainDialog.cpp:1459 src/projectsManager.cpp:347
 msgid "Download aborted!"
 msgstr "Pobieranie przerwane!"
 
-#: src/mainDialog.cpp:1465 src/projectsManager.cpp:364
+#: src/mainDialog.cpp:1465 src/projectsManager.cpp:353
 msgid "An unknown error happened!"
 msgstr "Wystąpił nieznany błąd!"
 
@@ -931,11 +931,11 @@ msgstr "Użyj proxy dla połączeń HTTP"
 msgid "Proxy requires authentication"
 msgstr "Proxy wymaga zalogowania się"
 
-#: src/preferencesDialog.cpp:289
+#: src/preferencesDialog.cpp:289 src/preferencesDialog.cpp:343
 msgid "Address:"
 msgstr "Adres:"
 
-#: src/preferencesDialog.cpp:290 src/preferencesDialog.cpp:347
+#: src/preferencesDialog.cpp:290
 msgid "Port:"
 msgstr "Port:"
 
@@ -955,76 +955,68 @@ msgstr ""
 "Hasło\n"
 "do proxy:"
 
-#: src/preferencesDialog.cpp:343
+#: src/preferencesDialog.cpp:341
 msgid "Use the following settings for new project downloads"
 msgstr "Użyj następujących parametrów do aktualizacji bazy projektów"
 
-#: src/preferencesDialog.cpp:345
-msgid "Server:"
-msgstr "Serwer:"
-
-#: src/preferencesDialog.cpp:349
-msgid "Resource:"
-msgstr "Strona :"
-
-#: src/preferencesDialog.cpp:350
+#: src/preferencesDialog.cpp:344
 msgid "Use a local file for project data"
 msgstr "Użyj własnego pliku z danymi projektów"
 
-#: src/preferencesDialog.cpp:352 src/preferencesDialog.cpp:499
-#: src/preferencesDialog.cpp:504 src/preferencesDialog.cpp:509
+#: src/preferencesDialog.cpp:346 src/preferencesDialog.cpp:486
+#: src/preferencesDialog.cpp:491 src/preferencesDialog.cpp:496
 msgid "Filename:"
 msgstr "Plik:"
 
-#: src/preferencesDialog.cpp:406
+#: src/preferencesDialog.cpp:393
 msgid "Web Browser:"
 msgstr "Przeglądarka internetowa:"
 
-#: src/preferencesDialog.cpp:407
+#: src/preferencesDialog.cpp:394
 msgid "File Manager:"
 msgstr "Menedżer plików:"
 
-#: src/preferencesDialog.cpp:409
+#: src/preferencesDialog.cpp:396
 msgid "File Manager Command:"
 msgstr "Polecenie uruchamiające:"
 
-#: src/preferencesDialog.cpp:410
+#: src/preferencesDialog.cpp:397
 msgid "Manually set timezone to UTC +"
 msgstr "Ustaw strefę czasową ręcznie na UTC +   "
 
-#: src/preferencesDialog.cpp:414
+#: src/preferencesDialog.cpp:401
 msgid "Windows Explorer"
 msgstr "Eksplorator Windows"
 
-#: src/preferencesDialog.cpp:414 src/preferencesDialog.cpp:417
+#: src/preferencesDialog.cpp:401 src/preferencesDialog.cpp:404
 msgid "Other"
 msgstr "Inny"
 
-#: src/preferencesDialog.cpp:497
+#: src/preferencesDialog.cpp:484
 msgid "Export Web Application"
 msgstr "Eksportuj interfejs graficzny"
 
-#: src/preferencesDialog.cpp:502
+#: src/preferencesDialog.cpp:489
 msgid "Export Simple Web page"
 msgstr "Eksportuj prostą stronę"
 
-#: src/preferencesDialog.cpp:507
+#: src/preferencesDialog.cpp:494
 msgid "Export Simple Text file"
 msgstr "Eksportuj plik tekstowy"
 
-#: src/preferencesDialog.cpp:930
+#: src/preferencesDialog.cpp:892
 msgid "Choose a local project data file"
 msgstr "Wybierz lokalny plik z danymi projektów"
 
-#: src/preferencesDialog.cpp:947
+#: src/preferencesDialog.cpp:909
 msgid "Choose where to save the Web Application"
 msgstr "Wybierz miejsce zapisu interfejsu graficznego"
 
-#: src/preferencesDialog.cpp:964
+#: src/preferencesDialog.cpp:926
 msgid "Choose where to save the simple web page"
 msgstr "Wybierz miejsce zapisu strony"
 
-#: src/preferencesDialog.cpp:981
+#: src/preferencesDialog.cpp:943
 msgid "Choose where to save the simple text file"
 msgstr "Wybierz miejsce zapisu pliku tekstowego"
 
@@ -1048,17 +1040,17 @@ msgstr "Pobieranie nowych projektów"
 msgid "Adding the new projects to the database"
 msgstr "Dodawanie nowych projektów do bazy"
 
-#: src/projectsManager.cpp:371
+#: src/projectsManager.cpp:360
 msgid "Local project update file doesn't exist!"
 msgstr "Brak lokalnego pliku aktualnych projektów!"
 
-#: src/projectsManager.cpp:378
+#: src/projectsManager.cpp:367
 msgid "Unable to copy local project update file to temporary location"
 msgstr ""
 "Nie można skopiować lokalnego pliku aktualnych projektów do katalogu "
 "tymczasowego"
 
-#: src/projectsManager.cpp:436
+#: src/projectsManager.cpp:425
 #, c-format
 msgid ""
 "The line %u is not correctly formatted!\n"
@@ -1069,7 +1061,7 @@ msgstr ""
 "\n"
 "%s"
 
-#: src/projectsManager.cpp:447
+#: src/projectsManager.cpp:436
 msgid "Update aborted!"
 msgstr "Aktualizacja przerwana!"
 
@@ -1197,3 +1189,9 @@ msgid ""
 msgstr ""
 "Łączne PPD: %.2f\n"
 "\n"
+
+#~ msgid "Server:"
+#~ msgstr "Serwer:"
+
+#~ msgid "Resource:"
+#~ msgstr "Strona :"
