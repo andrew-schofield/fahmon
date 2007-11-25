@@ -26,23 +26,47 @@
 
 
 /**
-* About Dialog class.
-* A singleton class.
-**/
+ * About Dialog class.
+ * A singleton class.
+ **/
 class AboutDialog : public wxDialog
 {
 protected:
 	static AboutDialog *mInstance; /**< The single instance of the About Dialog */
 
+	/**
+	 * Constructor.
+	 * Contructs an About Dialog of type wxDialog with a title of "About".
+	 * @param parent The parent window of type wxWindow
+	 **/
 	AboutDialog(wxWindow* parent);
+
+	/**
+	 * Destructor.
+	 **/
 	~AboutDialog(void);
 
 
 public:
 	// Singleton pattern
+	/**
+	 * Retrieve the instance of AboutDialog.
+	 * If an instance doesn't already exist, create it.
+	 * @param parent The parent window of type wxWindow.
+	 * @return An instance of class AboutDialog.
+	 **/
 	static AboutDialog* GetInstance(wxWindow* parent);
+
+	/**
+	 * Destroy the instance of AboutDialog.
+	 * Only if an instance exists.
+	 **/
 	static void DestroyInstance(void);
 
+	/**
+	 * Show the About Dialog
+	 * Opens a modal window, and centres it.
+	 **/
 	int ShowModal(void);
 };
 

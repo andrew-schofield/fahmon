@@ -65,7 +65,7 @@ wxUint32 Base64Codec::CharToBase64Index(wxChar c)
 	if(c == '/')
 		return 63;
 
-_LogMsgError(_T("Base64Codec: The given base64 character is invalid!"));
+	_LogMsgError(_T("Base64Codec: The given base64 character is invalid!"));
 
 	return 0;
 }
