@@ -14,6 +14,11 @@
 *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
+/**
+ * \file base64Codec.h
+ * Class definition for a base64 string codec
+ **/
+
 #ifndef _BASE64CODEC_H
 #define _BASE64CODEC_H
 
@@ -21,16 +26,46 @@
 #include "wx/string.h"
 
 
+/**
+ * A base 64 codec class.
+ * Implements a base 64 string codec used for proxy authentication.
+ **/
 class Base64Codec
 {
 protected:
+	/**
+	 * Base64 mapping table.
+	 * Maps each character to its base64 encoded index.
+	 **/
 	static const wxChar* mBase64Table;
 
+	/**
+	 * Transform a base64 index into the corresponding character.
+	 * @param index The index in mBase64Table.
+	 * @return The character (wxChar) retrieved from mBase64Table
+	 **/
 	static wxChar   Base64IndexToChar(wxUint32 index);
+
+	/**
+	 * Transform a base64 character into the corresponding index.
+	 * @param c The character in mBase64Table.
+	 * @return The index of that character in mBase64Table.
+	 **/
 	static wxUint32 CharToBase64Index(wxChar c);
 
 public:
+	/**
+	 * Transform a 'normal' string into a base64 encoded string.
+	 * @param string The string to be encoded.
+	 * @return The base64 encoded string.
+	 **/
 	static wxString Encode(const wxString& string);
+
+	/**
+	 * Decode a base64 encoded string.
+	 * @param string The base64 string to be decoded.
+	 * @return The decoded string.
+	 **/
 	static wxString Decode(const wxString& string);
 };
 
