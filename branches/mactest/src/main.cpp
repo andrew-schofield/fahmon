@@ -202,8 +202,10 @@ int FahMonApp::OnExit(void)
 	WebMonitor::DestroyInstance();
 	PreferencesManager::DestroyInstance();        // MUST be destroyed last, so that other managers can save their preferences when they are destroyed
 	MessagesManager::DestroyInstance();
-
-	delete mInstanceChecker;
+#ifndef __WXMAC__
+	if (mInstanceChecker)
+		delete mInstanceChecker;
+#endif
 
 	return 0;
 }
