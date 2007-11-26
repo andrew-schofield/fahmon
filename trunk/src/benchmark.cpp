@@ -17,10 +17,6 @@
 #include "fahmon.h"
 #include "benchmark.h"
 
-
-/**
-* Constructor
-**/
 Benchmark::Benchmark(ClientId clientId)
 {
 	mClientId    = clientId;
@@ -35,17 +31,11 @@ Benchmark::Benchmark(ClientId clientId)
 }
 
 
-/**
-* Destructor
-**/
 Benchmark::~Benchmark(void)
 {
 }
 
 
-/**
-* Write this benchmark to the given stream
-**/
 void Benchmark::Write(DataOutputStream& out) const
 {
 	out.Write(&mNbSamples, sizeof(mNbSamples));
@@ -54,9 +44,6 @@ void Benchmark::Write(DataOutputStream& out) const
 }
 
 
-/**
-* Read this benchmark from the given stream
-**/
 void Benchmark::Read(DataInputStream& in)
 {
 	in.Read(&mNbSamples, sizeof(mNbSamples));
@@ -65,9 +52,6 @@ void Benchmark::Read(DataInputStream& in)
 }
 
 
-/**
-* Update the average and minimum durations
-**/
 void Benchmark::AddDuration(FrameDuration duration)
 {
 	wxUint32 sumOfSamples;
@@ -103,9 +87,7 @@ void Benchmark::AddDuration(FrameDuration duration)
 	mInstantDuration = duration;
 }
 
-/**
-* Update the efective duration
-**/
+
 void Benchmark::AddEffectiveDuration(FrameDuration duration)
 {
 	mEffectiveDuration = duration;
