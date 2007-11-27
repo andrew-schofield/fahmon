@@ -28,6 +28,7 @@ v2.3.2
       icons.
 	* Fixed issues with wxMSW 2.8.6 and network paths.
 	* Built Win32 version against wxMSW 2.8.6.
+	* Updated MSVC project to allow building of debug releases.
 
 v2.3.1 (30/10/07)
 
