@@ -22,6 +22,7 @@
 #include "wx/colour.h"
 #include "wx/filefn.h"
 #include "wx/textfile.h"
+#include "wx/hyperlink.h"
 #include "trayManager.h"
 #include "aboutDialog.h"
 #include "pathManager.h"
@@ -336,8 +337,12 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 	// Clear information for invalid clients
 	if(clientId == INVALID_CLIENT_ID)
 	{
-		mUsername->ClearAndDisable();
-		mTeamNumber->ClearAndDisable();
+		mUsername->Disable();
+		mUsername->SetURL(wxT(""));
+		mUsername->SetLabel(wxT(""));
+		mTeamNumber->Disable();
+		mTeamNumber->SetURL(wxT(""));
+		mTeamNumber->SetLabel(wxT(""));
 
 		mCoreName->SetLabel(wxT(""));
 		mProjectId->SetLabel(wxT(""));
@@ -365,8 +370,12 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 	// Clear information if this client is not a valid one
 	if(!client->IsAccessible())
 	{
-		mUsername->ClearAndDisable();
-		mTeamNumber->ClearAndDisable();
+		mUsername->Disable();
+		mUsername->SetURL(wxT(""));
+		mUsername->SetLabel(wxT(""));
+		mTeamNumber->Disable();
+		mTeamNumber->SetURL(wxT(""));
+		mTeamNumber->SetLabel(wxT(""));
 
 		mCoreName->SetLabel(wxT(""));
 		mProjectId->SetLabel(wxT(""));
@@ -697,8 +706,14 @@ inline void MainDialog::CreateLayout(void)
 	mFinalDeadline     = new wxStaticText(topRightPanel, wxID_ANY, wxT(""));
 
 	// User's information: username and team number
-	mUsername    =  new StaticUrl(topRightPanel);
-	mTeamNumber   = new StaticUrl(topRightPanel);
+	mUsername    =  new wxHyperlinkCtrl(topRightPanel, wxID_ANY, wxT(""), wxT(""));
+	mUsername->SetNormalColour(*wxBLUE);
+	mUsername->SetHoverColour(*wxRED);
+	mUsername->SetVisitedColour(*wxBLUE);
+	mTeamNumber   = new wxHyperlinkCtrl(topRightPanel, wxID_ANY, wxT(""), wxT(""));
+	mTeamNumber->SetNormalColour(*wxBLUE);
+	mTeamNumber->SetHoverColour(*wxRED);
+	mTeamNumber->SetVisitedColour(*wxBLUE);
 
 	userinfoSizer->Add(mUsername);
 	userinfoSizer->AddSpacer(FMC_GUI_SPACING_LOW);

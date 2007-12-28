@@ -37,8 +37,8 @@ StaticUrl::StaticUrl(wxWindow* parent, const wxString& url, const wxString& labe
 	wxBoxSizer *topLevelSizer;
 
 	mEnabled      = true;
-	mLabel        = new wxStaticText(this, wxID_ANY, wxT(""));
 	topLevelSizer = new wxBoxSizer(wxHORIZONTAL);
+	mLabel        = new wxStaticText(this, wxID_ANY, wxT(""));
 	mHandCursor   = new wxCursor(wxCURSOR_HAND);
 
 	SetURL(url);

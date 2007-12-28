@@ -826,7 +826,7 @@ void Client::ComputeETA(WorkUnitFrame* lastFrame)
 	// --- 3) Compute the the left time
 	if(lastFrame != NULL)
 	{
-		if(projectInfo->GetCoreId() == Core::TINKER)
+		if((projectInfo != NULL) && (projectInfo->GetCoreId() == Core::TINKER))
 			nbLeftSeconds = referenceDuration * (totalFrames - lastFrame->GetId());
 		else
 			nbLeftSeconds = referenceDuration * (totalFrames - (lastFrame->GetId() * (totalFrames/100))); //correction for odd gromacs WUs
@@ -851,7 +851,7 @@ void Client::ComputeETA(WorkUnitFrame* lastFrame)
 		wxUint32 lastComputedFrame = totalFrames * mProgress / 100;
 
 		//nbLeftSeconds = referenceDuration * (totalFrames - lastComputedFrame);
-		if(projectInfo->GetCoreId() == Core::TINKER)
+		if((projectInfo != NULL) && (projectInfo->GetCoreId() == Core::TINKER))
 			nbLeftSeconds = referenceDuration * (totalFrames - lastComputedFrame);
 		else
 			nbLeftSeconds = referenceDuration * (totalFrames - (lastComputedFrame * (totalFrames/100))); //correction for odd gromacs WUs

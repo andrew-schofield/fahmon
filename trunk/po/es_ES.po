@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es_ES\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2007-11-25 17:49+0000\n"
+"POT-Creation-Date: 2007-12-28 12:56+0000\n"
 "PO-Revision-Date: 2007-11-15 23:41+0000\n"
 "Last-Translator: Andrew Schofield <the.uncle.fungus@gmail.com>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -18,32 +18,32 @@ msgstr ""
 "X-Poedit-Country: SPAIN\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: src/aboutDialog.cpp:40 src/mainDialog.cpp:651 src/mainDialog.cpp:653
-#: src/mainDialog.cpp:655
+#: src/aboutDialog.cpp:38 src/mainDialog.cpp:660 src/mainDialog.cpp:662
+#: src/mainDialog.cpp:664
 msgid "About"
 msgstr "Acerca de"
 
-#: src/aboutDialog.cpp:51
+#: src/aboutDialog.cpp:49
 msgid "Author:"
 msgstr "Autor:"
 
-#: src/aboutDialog.cpp:53
+#: src/aboutDialog.cpp:51
 msgid "Maintainer:"
 msgstr "Mantenimiento:"
 
-#: src/aboutDialog.cpp:55
+#: src/aboutDialog.cpp:53
 msgid "Homepage:"
 msgstr "Sitio Web:"
 
-#: src/aboutDialog.cpp:57
+#: src/aboutDialog.cpp:55
 msgid "Qd homepage:"
 msgstr ""
 
-#: src/aboutDialog.cpp:59
+#: src/aboutDialog.cpp:57
 msgid "Licence:"
 msgstr ""
 
-#: src/aboutDialog.cpp:63
+#: src/aboutDialog.cpp:61
 msgid "Library:"
 msgstr "Librería:"
 
@@ -159,12 +159,12 @@ msgid "anonymous"
 msgstr "Anónimo"
 
 #: src/client.cpp:103 src/listViewClients.cpp:394 src/listViewClients.cpp:395
-#: src/mainDialog.cpp:444 src/mainDialog.cpp:448 src/mainDialog.cpp:449
-#: src/mainDialog.cpp:450 src/mainDialog.cpp:451 src/mainDialog.cpp:452
-#: src/mainDialog.cpp:466 src/mainDialog.cpp:467 src/mainDialog.cpp:468
-#: src/mainDialog.cpp:469 src/mainDialog.cpp:470 src/mainDialog.cpp:485
-#: src/mainDialog.cpp:486 src/mainDialog.cpp:487 src/mainDialog.cpp:488
-#: src/mainDialog.cpp:538 src/mainDialog.cpp:578 src/webMonitor.cpp:144
+#: src/mainDialog.cpp:453 src/mainDialog.cpp:457 src/mainDialog.cpp:458
+#: src/mainDialog.cpp:459 src/mainDialog.cpp:460 src/mainDialog.cpp:461
+#: src/mainDialog.cpp:475 src/mainDialog.cpp:476 src/mainDialog.cpp:477
+#: src/mainDialog.cpp:478 src/mainDialog.cpp:479 src/mainDialog.cpp:494
+#: src/mainDialog.cpp:495 src/mainDialog.cpp:496 src/mainDialog.cpp:497
+#: src/mainDialog.cpp:547 src/mainDialog.cpp:587 src/webMonitor.cpp:144
 #: src/webMonitor.cpp:145 src/webMonitor.cpp:146 src/webMonitor.cpp:147
 #: src/webMonitor.cpp:148 src/webMonitor.cpp:149 src/webMonitor.cpp:150
 #: src/webMonitor.cpp:202 src/webMonitor.cpp:203 src/webMonitor.cpp:204
@@ -488,32 +488,32 @@ msgstr ""
 msgid "Another instance of %s is already running!"
 msgstr "¡Existe ya otra instancia de %s en ejecución!"
 
-#: src/mainDialog.cpp:160
+#: src/mainDialog.cpp:161
 #, c-format
 msgid "%s is licenced under the GNU GPL v2"
 msgstr ""
 
-#: src/mainDialog.cpp:161
+#: src/mainDialog.cpp:162
 msgid "Copyright (C) 2003-2007 Francois Ingelrest"
 msgstr ""
 
-#: src/mainDialog.cpp:162
+#: src/mainDialog.cpp:163
 msgid "Copyright (C) 2007 Andrew Schofield"
 msgstr ""
 
-#: src/mainDialog.cpp:164
+#: src/mainDialog.cpp:165
 msgid "FahMon contains code from qd, also licenced under the GNU GPL v2"
 msgstr ""
 
-#: src/mainDialog.cpp:165
+#: src/mainDialog.cpp:166
 msgid "Copyright (C) 2002-2005 Richard P. Howell IV."
 msgstr ""
 
-#: src/mainDialog.cpp:166
+#: src/mainDialog.cpp:167
 msgid "Copyright (C) 2005-2007 Sebastiaan Couwenberg"
 msgstr ""
 
-#: src/mainDialog.cpp:379
+#: src/mainDialog.cpp:388
 msgid ""
 "Something is wrong with this client.\n"
 "Please check the messages (FahMon->Show/Hide Messages Window)."
@@ -522,258 +522,258 @@ msgstr ""
 "Por favor compruebe los mensajes (FahMon->Mostrar/Ocultar la Ventana de "
 "Mensajes)."
 
-#: src/mainDialog.cpp:433 src/mainDialog.cpp:524 src/mainDialog.cpp:565
+#: src/mainDialog.cpp:442 src/mainDialog.cpp:533 src/mainDialog.cpp:574
 #: src/webMonitor.cpp:186 src/webMonitor.cpp:246 src/webMonitor.cpp:289
 #, c-format
 msgid "%s ago"
 msgstr "Hace %s"
 
-#: src/mainDialog.cpp:489
+#: src/mainDialog.cpp:498
 #, c-format
 msgid "Project %u is unknown, you should try to update the projects database"
 msgstr ""
 "El Proyecto %u es desconocido, intente actualizar la base de datos de "
 "proyectos"
 
-#: src/mainDialog.cpp:497 src/webMonitor.cpp:220
+#: src/mainDialog.cpp:506 src/webMonitor.cpp:220
 #, c-format
 msgid "%u points"
 msgstr "%u puntos"
 
-#: src/mainDialog.cpp:526 src/mainDialog.cpp:567 src/webMonitor.cpp:248
+#: src/mainDialog.cpp:535 src/mainDialog.cpp:576 src/webMonitor.cpp:248
 #: src/webMonitor.cpp:291
 #, c-format
 msgid "In %s"
 msgstr "En %s"
 
-#: src/mainDialog.cpp:581
+#: src/mainDialog.cpp:590
 #, c-format
 msgid " :: Total PPD: %.2f"
 msgstr " :: PPD totales: %.2f"
 
-#: src/mainDialog.cpp:606
+#: src/mainDialog.cpp:615
 msgid "&Show/Hide Messages Window"
 msgstr "&Mostrar/Ocultar la Ventana de Mensajes"
 
-#: src/mainDialog.cpp:606
+#: src/mainDialog.cpp:615
 msgid "Toggle the messages window"
 msgstr "Conmuta la ventana de mensajes"
 
-#: src/mainDialog.cpp:607
+#: src/mainDialog.cpp:616
 msgid "&Download New Projects"
 msgstr "&Descargar Proyectos nuevos"
 
-#: src/mainDialog.cpp:607
+#: src/mainDialog.cpp:616
 msgid "Update the local project database"
 msgstr "Actualiza la base de datos local"
 
-#: src/mainDialog.cpp:609
+#: src/mainDialog.cpp:618
 msgid "&Check for update"
 msgstr "&Busca actualizaciones"
 
-#: src/mainDialog.cpp:609
+#: src/mainDialog.cpp:618
 msgid "Check online for the latest version of FahMon"
 msgstr "Busca en línea la última versión de FahMon"
 
-#: src/mainDialog.cpp:611
+#: src/mainDialog.cpp:620
 msgid "&Benchmarks...\tCTRL+B"
 msgstr "&Comparativas...\tCTRL+B"
 
-#: src/mainDialog.cpp:611
+#: src/mainDialog.cpp:620
 msgid "Open the benchmarks dialog"
 msgstr "Abre el cuadro de diálogo de comparativas"
 
-#: src/mainDialog.cpp:612
+#: src/mainDialog.cpp:621
 msgid "&Preferences...\tCTRL+P"
 msgstr "&Preferencias...\tCTRL+P"
 
-#: src/mainDialog.cpp:612
+#: src/mainDialog.cpp:621
 msgid "Open the preferences dialog"
 msgstr "Abre el cuadrode diálogo de preferencias"
 
-#: src/mainDialog.cpp:616 src/mainDialog.cpp:618 src/mainDialog.cpp:620
+#: src/mainDialog.cpp:625 src/mainDialog.cpp:627 src/mainDialog.cpp:629
 msgid "&Quit\tCtrl+Q"
 msgstr "&Salir\tCtrl+Q"
 
-#: src/mainDialog.cpp:616 src/mainDialog.cpp:618 src/mainDialog.cpp:620
+#: src/mainDialog.cpp:625 src/mainDialog.cpp:627 src/mainDialog.cpp:629
 #: src/trayManager.cpp:219
 msgid "Quit"
 msgstr "Salir"
 
-#: src/mainDialog.cpp:626
+#: src/mainDialog.cpp:635
 msgid "Reload &Selection\tF5"
 msgstr "Actualizar &Selección\tF5"
 
-#: src/mainDialog.cpp:626
+#: src/mainDialog.cpp:635
 msgid "Reload the selected client"
 msgstr "Actualiza el cliente seleccionado"
 
-#: src/mainDialog.cpp:627
+#: src/mainDialog.cpp:636
 msgid "Reload &All\tF6"
 msgstr "Actualizar &Todo\tF6"
 
-#: src/mainDialog.cpp:627
+#: src/mainDialog.cpp:636
 msgid "Reload all the clients"
 msgstr "Actualiza todos los clientes"
 
-#: src/mainDialog.cpp:629
+#: src/mainDialog.cpp:638
 msgid "&Show/Hide FAHLog\tF8"
 msgstr "&Muestra/Oculta el registro FAH\tF8"
 
-#: src/mainDialog.cpp:629
+#: src/mainDialog.cpp:638
 msgid "Toggle the log file"
 msgstr "Conmuta la ventana del archivo de registro"
 
-#: src/mainDialog.cpp:631
+#: src/mainDialog.cpp:640
 msgid "&Cycle ETA Style\tF9"
 msgstr "&Rota estilo ETA \tF9"
 
-#: src/mainDialog.cpp:631
+#: src/mainDialog.cpp:640
 msgid "Cycle through the different ETA display styles"
 msgstr "Rota los diferentes modos de mostrar ETA"
 
-#: src/mainDialog.cpp:632
+#: src/mainDialog.cpp:641
 msgid "&Monitoring"
 msgstr "&Monitorizar"
 
-#: src/mainDialog.cpp:636
+#: src/mainDialog.cpp:645
 msgid "&My Stats\tF2"
 msgstr "&Mis estadísticas\tF2"
 
-#: src/mainDialog.cpp:636
+#: src/mainDialog.cpp:645
 msgid "View the personal statistics for the selected client"
 msgstr "Mostrar las estadísticas personales para el cliente seleccionado"
 
-#: src/mainDialog.cpp:637
+#: src/mainDialog.cpp:646
 msgid "&Jmol\tF3"
 msgstr "&Jmol\tF3"
 
-#: src/mainDialog.cpp:637
+#: src/mainDialog.cpp:646
 msgid "View the current project on the Jmol website"
 msgstr "Ver el proyecto actual en el sitio web de Jmol"
 
-#: src/mainDialog.cpp:638
+#: src/mainDialog.cpp:647
 msgid "&fahinfo\tF4"
 msgstr "&fahinfo\tF4"
 
-#: src/mainDialog.cpp:638
+#: src/mainDialog.cpp:647
 msgid "View the current project on fahinfo.org"
 msgstr "Ver el proyecto actual en fahinfo.org"
 
-#: src/mainDialog.cpp:640
+#: src/mainDialog.cpp:649
 msgid "F@H &Website"
 msgstr "Sitio web de F@H"
 
-#: src/mainDialog.cpp:640
+#: src/mainDialog.cpp:649
 msgid "Open to the official Stanford website"
 msgstr "Ir al sitio web oficial de Stanford"
 
-#: src/mainDialog.cpp:641
+#: src/mainDialog.cpp:650
 msgid "Folding-&Community"
 msgstr "Comunidad-&Folding"
 
-#: src/mainDialog.cpp:641
+#: src/mainDialog.cpp:650
 msgid "Open the Folding@Home support forum"
 msgstr "Ir al foro de soporte de Folding@Home"
 
-#: src/mainDialog.cpp:642
+#: src/mainDialog.cpp:651
 msgid "&Projects Summary"
 msgstr "&Resumen de los Proyectos"
 
-#: src/mainDialog.cpp:642
+#: src/mainDialog.cpp:651
 msgid "Open the list of the current projects"
 msgstr "Abrir la lista de los proyectos vigentes"
 
-#: src/mainDialog.cpp:643
+#: src/mainDialog.cpp:652
 msgid "&Servers Status"
 msgstr "&Estado de los Servidores"
 
-#: src/mainDialog.cpp:643
+#: src/mainDialog.cpp:652
 msgid "Open the list of the servers with their status"
 msgstr "Abre la lista de los servidores que muestra su estado"
 
-#: src/mainDialog.cpp:644
+#: src/mainDialog.cpp:653
 msgid "&Web"
 msgstr "&Web"
 
-#: src/mainDialog.cpp:648
+#: src/mainDialog.cpp:657
 msgid "&Help Contents\tF1"
 msgstr "&Contenido de la ayuda\tF1"
 
-#: src/mainDialog.cpp:648
+#: src/mainDialog.cpp:657
 msgid "See help contents"
 msgstr "Ver el contenido de la ayuda"
 
-#: src/mainDialog.cpp:651 src/mainDialog.cpp:653 src/mainDialog.cpp:655
+#: src/mainDialog.cpp:660 src/mainDialog.cpp:662 src/mainDialog.cpp:664
 msgid "&About"
 msgstr "&Acerca de"
 
-#: src/mainDialog.cpp:657
+#: src/mainDialog.cpp:666
 msgid "&Help"
 msgstr "&Ayuda"
 
-#: src/mainDialog.cpp:689 src/webMonitor.cpp:445
+#: src/mainDialog.cpp:698 src/webMonitor.cpp:445
 msgid "Work Unit Information"
 msgstr "Información de la unidad de trabajo"
 
-#: src/mainDialog.cpp:711 src/webMonitor.cpp:445
+#: src/mainDialog.cpp:726 src/webMonitor.cpp:445
 msgid "Core:"
 msgstr "Núcleo:"
 
-#: src/mainDialog.cpp:713 src/webMonitor.cpp:445
+#: src/mainDialog.cpp:728 src/webMonitor.cpp:445
 msgid "Project:"
 msgstr "Proyecto:"
 
-#: src/mainDialog.cpp:715 src/webMonitor.cpp:445
+#: src/mainDialog.cpp:730 src/webMonitor.cpp:445
 msgid "Credit:"
 msgstr "Valor:"
 
-#: src/mainDialog.cpp:717 src/webMonitor.cpp:445
+#: src/mainDialog.cpp:732 src/webMonitor.cpp:445
 msgid "Username:"
 msgstr "Nombre de Usuario:"
 
-#: src/mainDialog.cpp:719 src/webMonitor.cpp:445
+#: src/mainDialog.cpp:734 src/webMonitor.cpp:445
 msgid "Downloaded:"
 msgstr "Descargado:"
 
-#: src/mainDialog.cpp:721 src/webMonitor.cpp:445
+#: src/mainDialog.cpp:736 src/webMonitor.cpp:445
 msgid "Preferred Deadline:"
 msgstr "Fecha límite preferida:"
 
-#: src/mainDialog.cpp:723 src/webMonitor.cpp:445
+#: src/mainDialog.cpp:738 src/webMonitor.cpp:445
 msgid "Final Deadline:"
 msgstr "Fecha límite final:"
 
-#: src/mainDialog.cpp:749
+#: src/mainDialog.cpp:764
 msgid " :: Total PPD:"
 msgstr " :: PPD Total:"
 
-#: src/mainDialog.cpp:756
+#: src/mainDialog.cpp:771
 msgid "Log file."
 msgstr "Archivo de registro."
 
-#: src/mainDialog.cpp:1010
+#: src/mainDialog.cpp:1025
 msgid "You must first select a client!"
 msgstr "¡Tiene que seleccionar un cliente primero!"
 
-#: src/mainDialog.cpp:1375
+#: src/mainDialog.cpp:1392
 msgid "Checking for FahMon updates"
 msgstr "Comprobando si hay actualizaciones de FahMon"
 
-#: src/mainDialog.cpp:1378
+#: src/mainDialog.cpp:1395
 msgid "Checking for update"
 msgstr "Comprobando si hay una actualización"
 
-#: src/mainDialog.cpp:1397
+#: src/mainDialog.cpp:1414
 #, c-format
 msgid "Your version: %s; New version: %s"
 msgstr "Su versión: %s; Nueva versión: %s "
 
-#: src/mainDialog.cpp:1411
+#: src/mainDialog.cpp:1428
 msgid "Update available"
 msgstr "Hay disponible una actualización"
 
-#: src/mainDialog.cpp:1412
+#: src/mainDialog.cpp:1429
 msgid ""
 "A newer version of FahMon is available\n"
 "Do you want to go to the FahMon website?"
@@ -781,32 +781,32 @@ msgstr ""
 "Está disponible una versión nueva de FahMon\n"
 "¿Quiere ir al sitio web de FahMon?"
 
-#: src/mainDialog.cpp:1415
+#: src/mainDialog.cpp:1432
 msgid "No update found"
 msgstr "No se encontraron actualizaciones"
 
-#: src/mainDialog.cpp:1443 src/projectsManager.cpp:331
+#: src/mainDialog.cpp:1460 src/projectsManager.cpp:331
 msgid "Unable to create a temporary file!"
 msgstr "¡No se puede crear un archivo temporal!"
 
-#: src/mainDialog.cpp:1447 src/projectsManager.cpp:335
+#: src/mainDialog.cpp:1464 src/projectsManager.cpp:335
 #, c-format
 msgid "Unable to open the temporary file <%s>"
 msgstr "No se puede abrir el archivo temporal <%s>"
 
-#: src/mainDialog.cpp:1451 src/projectsManager.cpp:339
+#: src/mainDialog.cpp:1468 src/projectsManager.cpp:339
 msgid "Unable to connect to the server!"
 msgstr "¡No se puede conectar con el servidor!"
 
-#: src/mainDialog.cpp:1455 src/projectsManager.cpp:343
+#: src/mainDialog.cpp:1472 src/projectsManager.cpp:343
 msgid "Unable to send the request to the server!"
 msgstr "¡No se puede enviar la petición al servidor!"
 
-#: src/mainDialog.cpp:1459 src/projectsManager.cpp:347
+#: src/mainDialog.cpp:1476 src/projectsManager.cpp:347
 msgid "Download aborted!"
 msgstr "¡Descarga interrumpida!"
 
-#: src/mainDialog.cpp:1465 src/projectsManager.cpp:353
+#: src/mainDialog.cpp:1482 src/projectsManager.cpp:353
 msgid "An unknown error happened!"
 msgstr "¡Ha ocurrido un error desconocido!"
 

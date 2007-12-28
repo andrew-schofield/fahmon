@@ -1,3 +1,4 @@
+
 /*
 *  This program is free software; you can redistribute it and/or modify
 *  it under the terms of the GNU General Public License as published by
@@ -30,6 +31,7 @@
 #include "staticUrl.h"
 #include "wx/dnd.h"
 #include "progressManager.h"
+#include "wx/hyperlink.h"
 
 
 /**
@@ -119,8 +121,8 @@ protected:
 
 	// Widgets used in the frame
 	wxGauge          *mWUProgressGauge;
-	StaticUrl        *mUsername;
-	StaticUrl        *mTeamNumber;
+	wxHyperlinkCtrl  *mUsername;
+	wxHyperlinkCtrl  *mTeamNumber;
 	wxBoxSizer       *mTopLevelSizer;
 	wxTextCtrl       *mLogFile;
 	wxStaticText     *mWUProgressText;
