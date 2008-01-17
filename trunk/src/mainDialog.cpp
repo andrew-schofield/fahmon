@@ -313,8 +313,8 @@ void MainDialog::ShowClientInformation(ClientId clientId)
 **/
 void MainDialog::UpdateClientInformation(ClientId clientId)
 {
-	bool          autoUpdateProjects;
 	bool          overrideTZ;
+	bool              autoUpdateProjects;
 	wxUint32      deadlineDays;
 	wxInt32       TZ;
 	wxDateTime    preferredDeadline;
@@ -466,126 +466,109 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 	mProjectId->SetLabel(wxString::Format(wxT("%u (R%i, C%i, G%i)"), client->GetProjectId(), client->GetProjectRun(), client->GetProjectClone(), client->GetProjectGen()));
 	project = ProjectsManager::GetInstance()->GetProject(client->GetProjectId());
 
+
+	_PrefsGetBool(PREF_MAINDIALOG_AUTOUPDATEPROJECTS, autoUpdateProjects);
+
 	// This project can be unknown, if the database is not up to date
-	if(project == NULL) // this may need to be INVALID_PROJECT
+	if(project == NULL && autoUpdateProjects){
+		  ProjectsManager::GetInstance()->UpdateDatabase(false, false);
+		  project = ProjectsManager::GetInstance()->GetProject(client->GetProjectId());
+		  ClientsManager::GetInstance()->ReloadThreaded(CM_LOADALLF);
+	}
+	if(project == NULL)
 	{
-		// Fallback to reset all info in case psummary doesn't contain the data we need
-		// Otherwise bad things happen like the data remaining from the last client viewed
+		mCoreName->SetLabel(_("Unknown"));
+		mCredit->SetLabel(_("Unknown"));
+		mPreferredDeadline->SetLabel(_("Unknown"));
+		mFinalDeadline->SetLabel(_("Unknown"));
+		_LogMsgWarning(wxString::Format(_("Project %u is unknown, you should try to update the projects database"), client->GetProjectId()));
+	} else {
 
-		mProjectId->SetLabel(_("N/A"));
-		mCoreName->SetLabel(_("N/A"));
-		mCredit->SetLabel(_("N/A"));
-		mPreferredDeadline->SetLabel(_("N/A"));
-		mFinalDeadline->SetLabel(_("N/A"));
+		// We do have project information
+		mCoreName->SetLabel(Core::IdToLongName(project->GetCoreId()));
+		mCredit->SetLabel(wxString::Format(_("%u points"), project->GetCredit()));
 
-		// Update the database, if the user wants to
-		// This update is not forced, it will occur only if the elapsed time since the last one is high enough
-		// This way, we ensure that we won't perform many multiple requests for the file, while it does not
-		// contain the information we want
-		_PrefsGetBool(PREF_MAINDIALOG_AUTOUPDATEPROJECTS, autoUpdateProjects);
-
-		if(autoUpdateProjects)
+		// Preferred deadline: if it is equal to 0 day, there is no preferred deadline
+		if(client->GetDownloadDate().IsValid() && project->GetPreferredDeadlineInDays() != 0)
 		{
-			if(ProjectsManager::GetInstance()->UpdateDatabase(false, false))
-				ClientsManager::GetInstance()->ReloadThreaded(CM_LOADALL);
+			preferredDeadline = downloadTime;
+			preferredDeadline.Add(wxTimeSpan::Seconds(project->GetPreferredDeadlineInDays() * 864));
+			if(deadlineDays == ETADS_LEFT_TIME)
+			{
+				timeDiff = preferredDeadline.Subtract(timeNow);
+				timeInMinutes = timeDiff.GetMinutes();
+				if(timeDiff.GetMinutes() < 0) timeInMinutes = 0 - timeInMinutes;
+
+				// Split the left time into days, hours and minutes
+				nbDays    = timeInMinutes / (24 * 60);
+				nbMinutes = timeInMinutes % (24 * 60);
+				nbHours   = nbMinutes / 60;
+				nbMinutes = nbMinutes % 60;
+				// Use a friendly format
+				if(nbDays != 0)
+					tempString = wxString::Format(wxT("%id %02ih %02imn"), nbDays, nbHours, nbMinutes);
+				else if(nbHours != 0)
+					tempString = wxString::Format(wxT("%ih %02imn"), nbHours, nbMinutes);
+				else
+					tempString = wxString::Format(wxT("%imn"), nbMinutes);
+
+				if(timeDiff.GetMinutes() < 0)
+					mPreferredDeadline->SetLabel(wxString::Format(_("%s ago"), tempString.c_str()));
+				else
+					mPreferredDeadline->SetLabel(wxString::Format(_("In %s"), tempString.c_str()));
+
+			}
+			else if (deadlineDays == ETADS_DATE_DAY_MONTH)
+			{
+				mPreferredDeadline->SetLabel(wxString::Format(wxT("%s"), preferredDeadline.Format(wxT("%d %B, %H:%M")).c_str()));
+			} else
+			{
+				mPreferredDeadline->SetLabel(wxString::Format(wxT("%s"), preferredDeadline.Format(wxT("%B %d, %H:%M")).c_str()));
+			}
 		}
 		else
-		{
-			mCoreName->SetLabel(_("N/A"));
-			mCredit->SetLabel(_("N/A"));
 			mPreferredDeadline->SetLabel(_("N/A"));
+
+		// Final deadline: if it is equal to 0 day, there is no final deadline
+		if(client->GetDownloadDate().IsValid() && project->GetFinalDeadlineInDays() != 0)
+		{
+			finalDeadline = downloadTime;
+			finalDeadline.Add(wxTimeSpan::Seconds(project->GetFinalDeadlineInDays() * 864));
+			if(deadlineDays == ETADS_LEFT_TIME)
+			{
+				timeDiff = finalDeadline.Subtract(timeNow);
+				timeInMinutes = timeDiff.GetMinutes();
+				if(timeDiff.GetMinutes() < 0) timeInMinutes = 0 - timeInMinutes;
+
+				// Split the left time into days, hours and minutes
+				nbDays    = timeInMinutes / (24 * 60);
+				nbMinutes = timeInMinutes % (24 * 60);
+				nbHours   = nbMinutes / 60;
+				nbMinutes = nbMinutes % 60;
+				// Use a friendly format
+				if(nbDays != 0)
+					tempString = wxString::Format(wxT("%id %02ih %02imn"), nbDays, nbHours, nbMinutes);
+				else if(nbHours != 0)
+					tempString = wxString::Format(wxT("%ih %02imn"), nbHours, nbMinutes);
+				else
+					tempString = wxString::Format(wxT("%imn"), nbMinutes);
+
+				if(timeDiff.GetMinutes() < 0)
+				mFinalDeadline->SetLabel(wxString::Format(_("%s ago"), tempString.c_str()));
+				else
+				mFinalDeadline->SetLabel(wxString::Format(_("In %s"), tempString.c_str()));
+			}
+			else if (deadlineDays == ETADS_DATE_DAY_MONTH)
+			{
+				mFinalDeadline->SetLabel(wxString::Format(wxT("%s"), finalDeadline.Format(wxT("%d %B, %H:%M")).c_str()));
+			} else
+			{
+				mFinalDeadline->SetLabel(wxString::Format(wxT("%s"), finalDeadline.Format(wxT("%B %d, %H:%M")).c_str()));
+			}
+		}
+		else
 			mFinalDeadline->SetLabel(_("N/A"));
-			_LogMsgWarning(wxString::Format(_("Project %u is unknown, you should try to update the projects database"), client->GetProjectId()));
-		}
-
-		return;
 	}
-
-	// We do have project information
-	mCoreName->SetLabel(Core::IdToLongName(project->GetCoreId()));
-	mCredit->SetLabel(wxString::Format(_("%u points"), project->GetCredit()));
-
-	// Preferred deadline: if it is equal to 0 day, there is no preferred deadline
-	if(client->GetDownloadDate().IsValid() && project->GetPreferredDeadlineInDays() != 0)
-	{
-		preferredDeadline = downloadTime;
-		preferredDeadline.Add(wxTimeSpan::Seconds(project->GetPreferredDeadlineInDays() * 864));
-		if(deadlineDays == ETADS_LEFT_TIME)
-		{
-			timeDiff = preferredDeadline.Subtract(timeNow);
-			timeInMinutes = timeDiff.GetMinutes();
-			if(timeDiff.GetMinutes() < 0) timeInMinutes = 0 - timeInMinutes;
-
-			// Split the left time into days, hours and minutes
-			nbDays    = timeInMinutes / (24 * 60);
-			nbMinutes = timeInMinutes % (24 * 60);
-			nbHours   = nbMinutes / 60;
-			nbMinutes = nbMinutes % 60;
-			// Use a friendly format
-			if(nbDays != 0)
-				tempString = wxString::Format(wxT("%id %02ih %02imn"), nbDays, nbHours, nbMinutes);
-			else if(nbHours != 0)
-				tempString = wxString::Format(wxT("%ih %02imn"), nbHours, nbMinutes);
-			else
-				tempString = wxString::Format(wxT("%imn"), nbMinutes);
-
-			if(timeDiff.GetMinutes() < 0)
-				mPreferredDeadline->SetLabel(wxString::Format(_("%s ago"), tempString.c_str()));
-			else
-				mPreferredDeadline->SetLabel(wxString::Format(_("In %s"), tempString.c_str()));
-
-		}
-		else if (deadlineDays == ETADS_DATE_DAY_MONTH)
-		{
-			mPreferredDeadline->SetLabel(wxString::Format(wxT("%s"), preferredDeadline.Format(wxT("%d %B, %H:%M")).c_str()));
-		} else
-		{
-			mPreferredDeadline->SetLabel(wxString::Format(wxT("%s"), preferredDeadline.Format(wxT("%B %d, %H:%M")).c_str()));
-		}
-	}
-	else
-		mPreferredDeadline->SetLabel(_("N/A"));
-
-	// Final deadline: if it is equal to 0 day, there is no final deadline
-	if(client->GetDownloadDate().IsValid() && project->GetFinalDeadlineInDays() != 0)
-	{
-		finalDeadline = downloadTime;
-		finalDeadline.Add(wxTimeSpan::Seconds(project->GetFinalDeadlineInDays() * 864));
-		if(deadlineDays == ETADS_LEFT_TIME)
-		{
-			timeDiff = finalDeadline.Subtract(timeNow);
-			timeInMinutes = timeDiff.GetMinutes();
-			if(timeDiff.GetMinutes() < 0) timeInMinutes = 0 - timeInMinutes;
-
-			// Split the left time into days, hours and minutes
-			nbDays    = timeInMinutes / (24 * 60);
-			nbMinutes = timeInMinutes % (24 * 60);
-			nbHours   = nbMinutes / 60;
-			nbMinutes = nbMinutes % 60;
-			// Use a friendly format
-			if(nbDays != 0)
-				tempString = wxString::Format(wxT("%id %02ih %02imn"), nbDays, nbHours, nbMinutes);
-			else if(nbHours != 0)
-				tempString = wxString::Format(wxT("%ih %02imn"), nbHours, nbMinutes);
-			else
-				tempString = wxString::Format(wxT("%imn"), nbMinutes);
-
-			if(timeDiff.GetMinutes() < 0)
-			mFinalDeadline->SetLabel(wxString::Format(_("%s ago"), tempString.c_str()));
-			else
-			mFinalDeadline->SetLabel(wxString::Format(_("In %s"), tempString.c_str()));
-		}
-		else if (deadlineDays == ETADS_DATE_DAY_MONTH)
-		{
-			mFinalDeadline->SetLabel(wxString::Format(wxT("%s"), finalDeadline.Format(wxT("%d %B, %H:%M")).c_str()));
-		} else
-		{
-			mFinalDeadline->SetLabel(wxString::Format(wxT("%s"), finalDeadline.Format(wxT("%B %d, %H:%M")).c_str()));
-		}
-	}
-	else
-		mFinalDeadline->SetLabel(_("N/A"));
-
 	// Get the total PPD to display next to progress bar
 	mWUTotalPPD->SetLabel(wxString::Format(_(" :: Total PPD: %.2f"), MainDialog::GetTotalPPD()));
 

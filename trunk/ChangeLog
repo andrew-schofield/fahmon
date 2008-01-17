@@ -20,6 +20,8 @@ v2.3.2
       need to enter their settings again if they were using an "alternate"
       download location.
     * WebApp web output now copies images automatically.
+    * Fixed bug in project update system that prevented client list reloading data after an update.
+    * Client information box shows as much info as possible even if projects database isn't up to date.
 
 	Windows
 

@@ -30,6 +30,7 @@
 #include "preferencesManager.h"
 #include "projectHelperThread.h"
 #include "locale.h"
+#include "progressManager.h"
 
 
 // The single instance of ProjectsManager accross the application
@@ -175,8 +176,8 @@ const Project* ProjectsManager::GetProject(ProjectId projectId)
 
 	if(iterator == mProjectsHashMap.end())
 		return NULL;
-
-	return iterator->second;
+	else
+		return iterator->second;
 }
 
 
@@ -239,10 +240,10 @@ bool ProjectsManager::UpdateDatabase(bool forced, bool silentMode)
 
 	_LogMsgInfo(_("Updating projects database"));
 
-
 	// --- We first have to download the new projects
 	// This part is estimated to be 90% of the total work
 	progressManager.SetTextAndProgress(_("Downloading new projects"), 0);
+
 	progressManager.CreateTask(90);
 	if(Update_DownloadProjectsFile(projectFile, progressManager, errorMsg) == false)
 	{

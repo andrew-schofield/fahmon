@@ -64,7 +64,7 @@ public:
 	static void DestroyInstance(void);
 
 	/**
-	 * Show the About Dialog
+	 * Show the About Dialog.
 	 * Opens a modal window, and centres it.
 	 **/
 	int ShowModal(void);

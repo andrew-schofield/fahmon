@@ -379,7 +379,7 @@ void ListViewClients::UpdateClient(wxUint32 clientId)
 	// Blank the PPD column
 	PPD = wxT("--");
 
-	project = ProjectsManager::GetInstance()->GetProject(client->GetProjectId());
+	if (client->IsAccessible()) project = ProjectsManager::GetInstance()->GetProject(client->GetProjectId());
 
 	// If it's possible to get the PPD, do so now
 	if(client->IsAccessible() && !client->IsStopped() && !client->IsHung() && project != INVALID_PROJECT_ID)
