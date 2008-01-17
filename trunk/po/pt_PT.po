@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pt_PT\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2008-01-17 18:16+0000\n"
+"POT-Creation-Date: 2008-01-17 20:15+0000\n"
 "PO-Revision-Date: 2007-11-15 23:46+0000\n"
 "Last-Translator: Andrew Schofield <the.uncle.fungus@gmail.com>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -47,7 +47,7 @@ msgstr ""
 msgid "Library:"
 msgstr "Biblioteca:"
 
-#: src/benchmarksDialog.cpp:58 src/trayManager.cpp:200
+#: src/benchmarksDialog.cpp:58 src/trayManager.cpp:202
 msgid "Benchmarks"
 msgstr "Referências"
 
@@ -600,7 +600,7 @@ msgid "&Quit\tCtrl+Q"
 msgstr "&Sair\tCTRL+Q"
 
 #: src/mainDialog.cpp:608 src/mainDialog.cpp:610 src/mainDialog.cpp:612
-#: src/trayManager.cpp:219
+#: src/trayManager.cpp:221
 msgid "Quit"
 msgstr "Sair"
 
@@ -1094,25 +1094,25 @@ msgstr ""
 "Por favor verifique que a variável de ambiente BROWSER está definida ou "
 "definida nas Preferências."
 
-#: src/trayManager.cpp:191
+#: src/trayManager.cpp:193
 #, c-format
 msgid "Clients: %i"
 msgstr "Clientes: %i"
 
-#: src/trayManager.cpp:195 src/webMonitor.cpp:408 src/webMonitor.cpp:469
+#: src/trayManager.cpp:197 src/webMonitor.cpp:408 src/webMonitor.cpp:469
 #, c-format
 msgid "Total PPD: %.2f"
 msgstr "PPD total: %.2f"
 
-#: src/trayManager.cpp:202
+#: src/trayManager.cpp:204
 msgid "Preferences"
 msgstr "Preferências"
 
-#: src/trayManager.cpp:209
+#: src/trayManager.cpp:211
 msgid "Hide FahMon"
 msgstr "Ocultar FahMon"
 
-#: src/trayManager.cpp:212
+#: src/trayManager.cpp:214
 msgid "Show FahMon"
 msgstr "Mostrat FahMon"
 
