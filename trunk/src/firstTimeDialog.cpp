@@ -17,10 +17,10 @@
 #include "fahmon.h"
 #include "firstTimeDialog.h"
 
-#include "tools.h"
-#include "staticUrl.h"
-#include "pathManager.h"
 #include "wx/statline.h"
+#include "wx/hyperlink.h"
+#include "tools.h"
+#include "pathManager.h"
 #include "fahmonConsts.h"
 #include "projectsManager.h"
 #include "staticBoldedText.h"
@@ -82,7 +82,7 @@ FirstTimeDialog::FirstTimeDialog(void) : wxDialog(NULL, wxID_ANY, wxString::Form
 	mainSizer->Add(new wxStaticLine(this, wxID_ANY, wxDefaultPosition, wxSize(150, -1)), 0, wxALIGN_CENTER);
 	mainSizer->AddSpacer(FMC_GUI_SPACING_HIGH);
 	mainSizer->Add(new wxStaticText(this, wxID_ANY, wxString::Format(_("The latest version of %s will always be available on the official website:"), wxT(FMC_APPNAME))), 0, wxALIGN_CENTER);
-	mainSizer->Add(new StaticUrl(this, wxT(FMC_URL_FAHMON), wxT(FMC_URL_FAHMON)), 0, wxALIGN_CENTER);
+	mainSizer->Add(new wxHyperlinkCtrl(this, wxID_ANY, wxT(FMC_URL_FAHMON), wxT(FMC_URL_FAHMON)), 0, wxALIGN_CENTER);
 	mainSizer->AddSpacer(FMC_GUI_SPACING_HIGH);
 	mainSizer->Add(new wxStaticLine(this, wxID_ANY, wxDefaultPosition, wxSize(150, -1)), 0, wxALIGN_CENTER);
 	mainSizer->AddSpacer(FMC_GUI_SPACING_HIGH);

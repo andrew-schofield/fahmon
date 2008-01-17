@@ -27,11 +27,10 @@
 #include "wx/splitter.h"
 #include "wx/textctrl.h"
 #include "wx/stattext.h"
-#include "listViewClients.h"
-#include "staticUrl.h"
-#include "wx/dnd.h"
-#include "progressManager.h"
 #include "wx/hyperlink.h"
+#include "wx/dnd.h"
+#include "listViewClients.h"
+#include "progressManager.h"
 
 
 /**

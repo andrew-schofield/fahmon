@@ -38,7 +38,6 @@ EXTRA_DIST = \
 	projectHelperThread.h \
 	projectsManager.h \
 	staticBoldedText.h \
-	staticUrl.h \
 	tools.h \
 	trayManager.h \
 	workUnitFrame.h \

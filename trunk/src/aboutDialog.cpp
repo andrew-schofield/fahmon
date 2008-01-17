@@ -20,10 +20,10 @@
 #include "wx/image.h"
 #include "wx/sizer.h"
 #include "wx/intl.h"
-#include "staticUrl.h"
 #include "wx/version.h"
 #include "wx/statbmp.h"
 #include "wx/statline.h"
+#include "wx/hyperlink.h"
 #include "pathManager.h"
 #include "staticBoldedText.h"
 
@@ -51,15 +51,16 @@ AboutDialog::AboutDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, wxString
 	authorHomepageSizer->Add(new StaticBoldedText(this, wxID_ANY, _("Maintainer:")), 0, wxALIGN_RIGHT);
 	authorHomepageSizer->Add(new wxStaticText(this, wxID_ANY, wxT(" Andrew Schofield")), 0, wxALIGN_LEFT);
 	authorHomepageSizer->Add(new StaticBoldedText(this, wxID_ANY, _("Homepage:")), 0, wxALIGN_RIGHT);
-	authorHomepageSizer->Add(new StaticUrl(this, wxT(FMC_URL_FAHMON), wxT(FMC_URL_FAHMON)), 0, wxALIGN_LEFT);
+	authorHomepageSizer->Add(new wxHyperlinkCtrl(this, wxID_ANY, wxT(FMC_URL_FAHMON), wxT(FMC_URL_FAHMON)));
 	authorHomepageSizer->Add(new StaticBoldedText(this, wxID_ANY, _("Qd homepage:")), 0, wxALIGN_RIGHT);
-	authorHomepageSizer->Add(new StaticUrl(this, wxT(FMC_URL_QD), wxT("http://linuxminded.nl")), 0, wxALIGN_LEFT);
+	authorHomepageSizer->Add(new wxHyperlinkCtrl(this, wxID_ANY, wxT("http://linuxminded.nl"), wxT(FMC_URL_QD)));
 	authorHomepageSizer->Add(new StaticBoldedText(this, wxID_ANY, _("Licence:")), 0, wxALIGN_RIGHT);
-	authorHomepageSizer->Add(new StaticUrl(this, wxT(FMC_URL_LICENCE), wxT("GNU GPL v2")), 0, wxALIGN_LEFT);
+	authorHomepageSizer->Add(new wxHyperlinkCtrl(this, wxID_ANY, wxT("GNU GPL v2"), wxT(FMC_URL_LICENCE)));
 	authorHomepageSizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	authorHomepageSizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	authorHomepageSizer->Add(new StaticBoldedText(this, wxID_ANY, _("Library:")), 0, wxALIGN_RIGHT);
-	authorHomepageSizer->Add(new StaticUrl(this, wxT(FMC_URL_WXWIDGETS), wxVERSION_STRING), 0, wxALIGN_LEFT);
+	authorHomepageSizer->Add(new wxHyperlinkCtrl(this, wxID_ANY, wxVERSION_STRING, wxT(FMC_URL_WXWIDGETS)));
+	authorHomepageSizer->AddSpacer(FMC_GUI_SPACING_LOW);
 
 
 	// ---
