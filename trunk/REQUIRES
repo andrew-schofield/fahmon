@@ -1,8 +1,8 @@
 Software for building FahMon on Linux:
 REQUIRED
 * gcc-c++
-* wxGTK >=2.6.3
-* wxGTK-Devel >=2.6.3
+* wxGTK >=2.8.0
+* wxGTK-Devel >=2.8.0
 * m4
 
 OPTIONAL

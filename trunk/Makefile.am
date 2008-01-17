@@ -19,7 +19,8 @@ EXTRA_DIST = config.rpath  \
         fahmon.vcproj \
         FahMon.nsi \
         README.win32.txt \
-        po_to_lang.bat
+        po_to_lang.bat \
+        doxconf
 SUBDIRS = m4 src doc po src/include src/images resources
 
 appsdir = $(datadir)/applications

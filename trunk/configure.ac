@@ -26,7 +26,7 @@ AC_PROG_CXX
 #AC_PROG_RANLIB
 
 AM_OPTIONS_WXCONFIG
-reqwx=2.6.3
+reqwx=2.8.0
 AM_PATH_WXCONFIG($reqwx, wxWin=1, wxWin=0, --unicode)
 if test "$wxWin" != 1; then
 	AC_MSG_ERROR([
@@ -52,6 +52,9 @@ AM_GNU_GETTEXT([external])
 AC_CONFIG_FILES([
    Makefile
    README
+   FahMon.nsi
+   fahmon.spec
+   doxconf
    doc/Makefile
    m4/Makefile
    po/Makefile.in

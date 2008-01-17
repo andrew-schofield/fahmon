@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cs_CZ\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2008-01-17 00:37+0000\n"
+"POT-Creation-Date: 2008-01-17 18:16+0000\n"
 "PO-Revision-Date: 2007-11-15 23:40+0000\n"
 "Last-Translator: Andrew Schofield <the.uncle.fungus@gmail.com>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -483,7 +483,7 @@ msgid "Copyright (C) 2003-2007 Francois Ingelrest"
 msgstr ""
 
 #: src/mainDialog.cpp:163
-msgid "Copyright (C) 2007 Andrew Schofield"
+msgid "Copyright (C) 2007-2008 Andrew Schofield"
 msgstr ""
 
 #: src/mainDialog.cpp:165
@@ -495,7 +495,7 @@ msgid "Copyright (C) 2002-2005 Richard P. Howell IV."
 msgstr ""
 
 #: src/mainDialog.cpp:167
-msgid "Copyright (C) 2005-2007 Sebastiaan Couwenberg"
+msgid "Copyright (C) 2005-2008 Sebastiaan Couwenberg"
 msgstr ""
 
 #: src/mainDialog.cpp:388
