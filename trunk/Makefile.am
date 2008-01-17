@@ -1,4 +1,4 @@
-# Copyright (C) 2007 Andrew Schofield <the.uncle.fungus@gmail.com>
+# Copyright (C) 2007-8 Andrew Schofield <the.uncle.fungus@gmail.com>
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
