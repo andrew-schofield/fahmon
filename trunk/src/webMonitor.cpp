@@ -371,7 +371,7 @@ void WebMonitor::WriteApp(void)
 		}
 
 		// check that images exist in output folder (only check first one, if !exist, recopy all)
-		if (!wxFileExists(wxPathOnly(webAppLocation) + wxT("/dialog_icon.png")));
+		if (!wxFileExists(wxPathOnly(webAppLocation) + wxT("/dialog_icon.png")))
 		{
 			wxCopyFile(PathManager::GetImgPath() + wxT("/dialog_icon.png"), wxPathOnly(webAppLocation) + wxT("/dialog_icon.png"));
 			wxCopyFile(PathManager::GetImgPath() + wxT("/list_client_asynch.png"), wxPathOnly(webAppLocation) + wxT("/list_client_asynch.png"));
