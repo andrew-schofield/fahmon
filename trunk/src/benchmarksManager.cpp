@@ -50,10 +50,14 @@ void SortArrayOfProjectId(ProjectId array[], wxInt32 lowerBound, wxInt32 upperBo
 	while(lo <= hi)
 	{
 		while(lo < upperBound && array[lo] < pivot)
+		{
 			++lo;
+		}
 
 		while(hi > lowerBound && array[hi] > pivot)
+		{
 			--hi;
+		}
 
 		if(lo <= hi)
 		{
@@ -66,10 +70,14 @@ void SortArrayOfProjectId(ProjectId array[], wxInt32 lowerBound, wxInt32 upperBo
 	}
 
 	if(hi > lowerBound)
+	{
 		SortArrayOfProjectId(array, lowerBound, hi);
+	}
 
 	if(lo < upperBound)
+	{
 		SortArrayOfProjectId(array, lo, upperBound);
+	}
 }
 
 
@@ -189,7 +197,9 @@ void BenchmarksManager::Load(void)
 
 	// Could the file be opened ?
 	if(in.Ok() == false)
+	{
 		return;
+	}
 
 	// The registered clients
 	in.ReadUint(nbRegisteredClients);
@@ -207,9 +217,13 @@ void BenchmarksManager::Load(void)
 		if(clientId >= mNextAvailableClientId)
 		{
 			if(clientId < MAX_CLIENT_ID)
+			{
 				mNextAvailableClientId = clientId + 1;
+			}
 			else
+			{
 				mNextAvailableClientId = MAX_CLIENT_ID;
+			}
 		}
 	}
 
@@ -252,19 +266,23 @@ const Benchmark* BenchmarksManager::GetBenchmark(ProjectId projectId, const Clie
 	// Do we have some benchmarks for the given project?
 	iteratorBenchmarksList = mProjectIdToBenchmarks.find(projectId);
 	if(iteratorBenchmarksList == mProjectIdToBenchmarks.end())
+	{
 		return NULL;
+	}
 	listOfBenchmarks = iteratorBenchmarksList->second;
 
 	// Find the identifier associated with this client
 	iteratorClientId = mClientLocationToClientId.find(client->GetLocation());
-	if(iteratorClientId == mClientLocationToClientId.end())
+	if(iteratorClientId == mClientLocationToClientId.end()){
 		return NULL;
+	}
 	clientId = iteratorClientId->second;
 
 	// There is at least one known benchmark, try to see if we have one for the given client
 	iteratorBenchmark = listOfBenchmarks->find(clientId);
-	if(iteratorBenchmark == listOfBenchmarks->end())
+	if(iteratorBenchmark == listOfBenchmarks->end()){
 		return NULL;
+	}
 
 	return (const Benchmark*)iteratorBenchmark->second;
 }
@@ -287,7 +305,9 @@ void BenchmarksManager::Add(ProjectId projectId, const Client* client, const Wor
 	// --- Retrieve the identifier associated to the given client, create a new one if needed
 	iteratorClientId = mClientLocationToClientId.find(client->GetLocation());
 	if(iteratorClientId != mClientLocationToClientId.end())
+	{
 		clientId = iteratorClientId->second;
+	}
 	else
 	{
 		// Stop before the limit
@@ -312,9 +332,13 @@ void BenchmarksManager::Add(ProjectId projectId, const Client* client, const Wor
 		listOfBenchmarks  = iteratorBenchmarksList->second;
 		iteratorBenchmark = listOfBenchmarks->find(clientId);
 		if(iteratorBenchmark != listOfBenchmarks->end())
+		{
 			benchmark = iteratorBenchmark->second;
+		}
 		else
+		{
 			benchmark = new Benchmark(clientId);
+		}
 	}
 	else
 	{
@@ -353,7 +377,9 @@ ProjectId* BenchmarksManager::GetBenchmarkedProjects(wxUint32 &nbProjects)
 	// Are there some benchmarks?
 	nbProjects = mProjectIdToBenchmarks.size();
 	if(nbProjects == 0)
+	{
 		return NULL;
+	}
 
 	// Ok, we can fill an array with all the projects
 	projects     = new ProjectId[nbProjects];
@@ -404,7 +430,9 @@ const Benchmark** BenchmarksManager::GetBenchmarksList(ProjectId projectId, wxUi
 	listOfBenchmarks = iteratorBenchmarksList->second;
 	nbBenchmarks     = listOfBenchmarks->size();
 	if(nbBenchmarks == 0)
+	{
 		return NULL;
+	}
 
 	// Ok, we can fill the array
 	benchmarks       = new const Benchmark*[nbBenchmarks];

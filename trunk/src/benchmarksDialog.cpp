@@ -115,7 +115,9 @@ BenchmarksDialog::~BenchmarksDialog(void)
 BenchmarksDialog* BenchmarksDialog::GetInstance(wxWindow* parent)
 {
 	if(mInstance == NULL)
+	{
 		mInstance = new BenchmarksDialog(parent);
+	}
 
 	return mInstance;
 }
@@ -173,7 +175,9 @@ void BenchmarksDialog::PopulateProjectsList(ProjectId projectIdToSelect)
 	// Try to see if there is at least one registered benchmark
 	projectsList = BenchmarksManager::GetInstance()->GetBenchmarkedProjects(nbProjects);
 	if(nbProjects == 0)
+	{
 		return;
+	}
 
 	entryToSelect = 0;
 
@@ -187,13 +191,19 @@ void BenchmarksDialog::PopulateProjectsList(ProjectId projectIdToSelect)
 
 		// Is this the project we should select?
 		if(projectsList[i] == projectIdToSelect)
+		{
 			entryToSelect = i;
+		}
 
 		// Give a different color to odd lines
 		if((i&1) != 0)
+		{
 			mListOfProjects->SetItemBackgroundColour(i, FMC_COLOR_LIST_ODD_LINES);
+		}
 		else
+		{
 			mListOfProjects->SetItemBackgroundColour(i, *wxWHITE);
+		}
 	}
 
 	// No memory leak
@@ -249,7 +259,9 @@ void BenchmarksDialog::ShowBenchmarks(ProjectId projectIdToShow)
 		infoString += wxT(" ") + wxString::Format(_("Credit  : %u\n"), project->GetCredit());
 	}
 	else
+	{
 		infoString += wxT(" ") + wxString::Format(_("Project : %u (Unknown)\n"), projectIdToShow);
+	}
 
 	for(i=0; i<nbBenchmarks; ++i)
 	{
@@ -258,9 +270,13 @@ void BenchmarksDialog::ShowBenchmarks(ProjectId projectIdToShow)
 		clientName     = ClientsManager::GetInstance()->GetNameFromLocation(clientLocation);
 
 		if(clientName.IsEmpty() == false)
+		{
 			infoString += wxString::Format(wxT("\n\n -- %s --\n\n"), clientName.c_str());
+		}
 		else
+		{
 			infoString += wxString::Format(wxT("\n\n -- %s --\n\n"), clientLocation.c_str());
+		}
 
 		// Best time
 		if(benchmarks[i]->GetMinDuration() != 0)
@@ -275,7 +291,9 @@ void BenchmarksDialog::ShowBenchmarks(ProjectId projectIdToShow)
 			}
 		}
 		else
+		{
 			infoString += wxString::Format(wxT(" %s"), _("No Min. Time / Frame"));
+		}
 
 		infoString += wxT("\n");
 
@@ -293,7 +311,9 @@ void BenchmarksDialog::ShowBenchmarks(ProjectId projectIdToShow)
 			}
 		}
 		else
+		{
 			infoString += wxString::Format(wxT(" %s"), _("No Avg. Time / Frame"));
+		}
 
 		infoString += wxT("\n");
 
@@ -311,7 +331,9 @@ void BenchmarksDialog::ShowBenchmarks(ProjectId projectIdToShow)
 			}
 		}
 		else
+		{
 			infoString += wxString::Format(wxT(" %s"), _("No Cur. Time / Frame"));
+		}
 
 		infoString += wxT("\n");
 
@@ -329,7 +351,9 @@ void BenchmarksDialog::ShowBenchmarks(ProjectId projectIdToShow)
 			}
 		}
 		else
+		{
 			infoString += wxString::Format(wxT(" %s"), _("No R3F. Time / Frame"));
+		}
 
 		infoString += wxT("\n");
 
@@ -347,7 +371,9 @@ void BenchmarksDialog::ShowBenchmarks(ProjectId projectIdToShow)
 			}
 		}
 		else
+		{
 			infoString += wxString::Format(wxT(" %s"), _("No Eff. Time / Frame"));
+		}
 
 		infoString += wxT("\n");
 	}
@@ -367,9 +393,13 @@ void BenchmarksDialog::OnProjectChanged(wxListEvent& event)
 	long selection = mListOfProjects->GetFirstSelected();
 
 	if(selection == -1)
+	{
 		ShowBenchmarks(INVALID_PROJECT_ID);
+	}
 	else
+	{
 		ShowBenchmarks(mListOfProjects->GetItemData(selection));
+	}
 }
 
 

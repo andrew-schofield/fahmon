@@ -77,11 +77,15 @@ void Benchmark::AddDuration(FrameDuration duration)
 	m3FrameDuration = duration;
 
 	if(mFrameDuration1 != 0 && mFrameDuration2 != 0 && mFrameDuration3 != 0)
+	{
 		m3FrameDuration = (mFrameDuration1 + mFrameDuration2 + mFrameDuration3) / 3;
+	}
 
 	// 3) Update the minimum duration
 	if(mMinDuration == 0 || duration < mMinDuration)
+	{
 		mMinDuration = duration;
+	}
 
 	// instantaneous frame time
 	mInstantDuration = duration;
