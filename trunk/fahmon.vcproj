@@ -328,10 +328,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\src\include\staticUrl.h"
-				>
-			</File>
-			<File
 				RelativePath=".\src\include\tools.h"
 				>
 			</File>
@@ -492,11 +488,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\src\staticBoldedText.cpp"
+				RelativePath=".\src\queue.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\src\staticUrl.cpp"
+				RelativePath=".\src\staticBoldedText.cpp"
 				>
 			</File>
 			<File
