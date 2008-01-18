@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2008-01-18 00:55+0000\n"
+"POT-Creation-Date: 2008-01-18 22:23+0000\n"
 "PO-Revision-Date: 2007-11-17 20:19+0000\n"
 "Last-Translator: Andrew Schofield <the.uncle.fungus@gmail.com>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -53,98 +53,98 @@ msgstr "Benchmarks"
 msgid "Projects"
 msgstr "Projects"
 
-#: src/benchmarksDialog.cpp:238
+#: src/benchmarksDialog.cpp:248
 msgid "No benchmarks for this project!"
 msgstr "No benchmarks for this project!"
 
-#: src/benchmarksDialog.cpp:246
+#: src/benchmarksDialog.cpp:256
 #, c-format
 msgid "Project : %u\n"
 msgstr "Project : %u\n"
 
-#: src/benchmarksDialog.cpp:247
+#: src/benchmarksDialog.cpp:257
 #, c-format
 msgid "Core    : %s\n"
 msgstr "Core    : %s\n"
 
-#: src/benchmarksDialog.cpp:248
+#: src/benchmarksDialog.cpp:258
 #, c-format
 msgid "Frames  : %u\n"
 msgstr "Frames  : %u\n"
 
-#: src/benchmarksDialog.cpp:249
+#: src/benchmarksDialog.cpp:259
 #, c-format
 msgid "Credit  : %u\n"
 msgstr "Credit  : %u\n"
 
-#: src/benchmarksDialog.cpp:252
+#: src/benchmarksDialog.cpp:263
 #, c-format
 msgid "Project : %u (Unknown)\n"
 msgstr "Project : %u (Unknown)\n"
 
-#: src/benchmarksDialog.cpp:268
+#: src/benchmarksDialog.cpp:284
 #, c-format
 msgid "Min. Time / Frame : %s"
 msgstr "Min. Time / Frame : %s"
 
-#: src/benchmarksDialog.cpp:274 src/benchmarksDialog.cpp:292
-#: src/benchmarksDialog.cpp:310 src/benchmarksDialog.cpp:328
-#: src/benchmarksDialog.cpp:346
+#: src/benchmarksDialog.cpp:290 src/benchmarksDialog.cpp:310
+#: src/benchmarksDialog.cpp:330 src/benchmarksDialog.cpp:350
+#: src/benchmarksDialog.cpp:370
 #, c-format
 msgid " - %.2f ppd"
 msgstr " - %.2f ppd"
 
-#: src/benchmarksDialog.cpp:278
+#: src/benchmarksDialog.cpp:295
 msgid "No Min. Time / Frame"
 msgstr "No Min. Time / Frame"
 
-#: src/benchmarksDialog.cpp:286
+#: src/benchmarksDialog.cpp:304
 #, c-format
 msgid "Avg. Time / Frame : %s"
 msgstr "Avg. Time / Frame : %s"
 
-#: src/benchmarksDialog.cpp:296
+#: src/benchmarksDialog.cpp:315
 msgid "No Avg. Time / Frame"
 msgstr "No Avg. Time / Frame"
 
-#: src/benchmarksDialog.cpp:304
+#: src/benchmarksDialog.cpp:324
 #, c-format
 msgid "Cur. Time / Frame : %s"
 msgstr "Cur. Time / Frame : %s"
 
-#: src/benchmarksDialog.cpp:314
+#: src/benchmarksDialog.cpp:335
 msgid "No Cur. Time / Frame"
 msgstr "No Cur. Time / Frame"
 
-#: src/benchmarksDialog.cpp:322
+#: src/benchmarksDialog.cpp:344
 #, c-format
 msgid "R3F. Time / Frame : %s"
 msgstr "R3F. Time / Frame : %s"
 
-#: src/benchmarksDialog.cpp:332
+#: src/benchmarksDialog.cpp:355
 msgid "No R3F. Time / Frame"
 msgstr "No R3F. Time / Frame"
 
-#: src/benchmarksDialog.cpp:340
+#: src/benchmarksDialog.cpp:364
 #, c-format
 msgid "Eff. Time / Frame : %s"
 msgstr "Eff. Time / Frame : %s"
 
-#: src/benchmarksDialog.cpp:350
+#: src/benchmarksDialog.cpp:375
 msgid "No Eff. Time / Frame"
 msgstr "No Eff. Time / Frame"
 
-#: src/benchmarksManager.cpp:144 src/preferencesManager.cpp:256
+#: src/benchmarksManager.cpp:152 src/preferencesManager.cpp:256
 #: src/projectsManager.cpp:141
 #, c-format
 msgid "Could not open file <%s> for writing!"
 msgstr "Could not open file <%s> for writing!"
 
-#: src/benchmarksManager.cpp:296
+#: src/benchmarksManager.cpp:316
 msgid "(Benchmarks) The maximum number of known clients has been reached!"
 msgstr "(Benchmarks) The maximum number of known clients has been reached!"
 
-#: src/benchmarksManager.cpp:436
+#: src/benchmarksManager.cpp:464
 msgid "Unknown client"
 msgstr "Unknown client"
 
@@ -200,42 +200,42 @@ msgstr "Error while reading %sunitinfo.txt!"
 msgid "The progress value in file %s could not be found/parsed"
 msgstr "The progress value in file %s could not be found/parsed"
 
-#: src/client.cpp:646
+#: src/client.cpp:479
 #, c-format
 msgid "Unable to save %s because it does not exist"
 msgstr "Unable to save %s because it does not exist"
 
-#: src/client.cpp:653
+#: src/client.cpp:486
 #, c-format
 msgid "Unable to create directory %s"
 msgstr "Unable to create directory %s"
 
-#: src/client.cpp:663
+#: src/client.cpp:496
 #, c-format
 msgid "Unable to copy %s to %s"
 msgstr "Unable to copy %s to %s"
 
-#: src/client.cpp:687
+#: src/client.cpp:520
 #, c-format
 msgid "%s is on frame %u"
 msgstr "%s is on frame %u"
 
-#: src/client.cpp:691
+#: src/client.cpp:524
 #, c-format
 msgid "Cannot determine frame number for %s (this isn't a problem)"
 msgstr "Cannot determine frame number for %s (this isn't a problem)"
 
-#: src/client.cpp:866
+#: src/client.cpp:699
 #, c-format
 msgid "%s has an unknown state (Unable to find a complete frame)"
 msgstr "%s has an unknown state (Unable to find a complete frame)"
 
-#: src/client.cpp:875
+#: src/client.cpp:708
 #, c-format
 msgid "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
 msgstr "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
 
-#: src/client.cpp:884
+#: src/client.cpp:717
 #, c-format
 msgid ""
 "%s has an unknown state (Unable to extract a valid elapsed time since the "
@@ -244,17 +244,17 @@ msgstr ""
 "%s has an unknown state (Unable to extract a valid elapsed time since the "
 "last completed frame)"
 
-#: src/client.cpp:892
+#: src/client.cpp:725
 #, c-format
 msgid "%s has been marked as having a asynchronous clock."
 msgstr "%s has been marked as having a asynchronous clock."
 
-#: src/client.cpp:919
+#: src/client.cpp:752
 #, c-format
 msgid "%s seems to have hung : Elapsed time is %um and limit is %um"
 msgstr "%s seems to have hung : Elapsed time is %um and limit is %um"
 
-#: src/client.cpp:924
+#: src/client.cpp:757
 #, c-format
 msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
 msgstr "%s seems to be inactive : Elapsed time is %um and limit is %um"

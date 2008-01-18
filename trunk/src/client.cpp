@@ -435,187 +435,20 @@ inline bool Client::LoadUnitInfoFile(const wxString& filename)
 */
 inline bool Client::LoadQueueFile(const wxString& filename)
 {
-	queue      queuebuffer, *bp;
-	queue::qs *p;
-	FILE      *fp;
-	wxInt32    i, queueversion, systype, n, estat, na, nc, it;
-	char      *q;
-	bool       genome, endianswap;
-	unsigned long tmpLong;
-
-#ifdef __WXGTK__
-	systype = 0;
-#elif _FAHMON_WIN32_
-	systype = 1;
-#elif __WXMAC_PPC__
-	systype = 2;
-#elif __WXMAC__
-	systype = 3;
-#endif
-
-
-	// Try to open the file, check if it exists
-	if(!wxFileExists(filename))
-		return false;
-	if((fp = fopen(filename.mb_str(), "rb")) == NULL)
+	Queue    *qf;
+	qf = new Queue();
+	if (qf->LoadQueueFile(filename, mName))
 	{
-		return false;
-	}
-	else
-	{
-		i = fread(&queuebuffer, 1, sizeof(struct queue), fp);
-		fclose(fp);
-		if(i < 6844)
-		{
-			_LogMsgWarning(_T("Invalid queue!"));
-			return false;
-		}
-		q = NULL;
-		// we should ALWAYS know the system type here, so no need to check it
-		genome = (queuebuffer.version > 0xFFFF) && ((queuebuffer.current > 0xFFFF) || (queuebuffer.current == 0));
-		queueversion = 0;
-		switch(i)
-		{
-			case 6884:
-				queueversion = 217;
-				goto tw;
-			case 6888:
-				queueversion = 314;
-				goto tw;
-			case 7048:
-			case 7056:
-				queueversion = 324;
-tw:				q = "1Windows";
-				break;
-			case 6848:
-				queueversion = 314;
-				goto tl;
-			case 7008:
-			case 7016:
-			case 7032:
-				queueversion = 324;
-tl:				if (genome)
-#ifdef __WXMAC_PPC__
-					q = "0Linux";
-#else
-					q = "2Mac/PPC";
-				else
-					q = "0Linux";
-#endif
-				break;
-			case 7072:
-				queueversion = 401;
-				goto tt;
-			case 7168:
-				queueversion = 500;
-tt:				if (genome)
-#ifdef __WXMAC_PPC__
-					q = "1Linux, Windows or Mac/x86";
-#else
-					q = "2Mac/PPC";
-				else if (queuebuffer.version == 400)
-					q = "1Windows";
-#endif
-				break;
-		}
-		if (q != NULL)
-			systype = *q++ - '0';
-		//endian swap for PPC machines and queues
-		endianswap = FALSE;
-#ifdef __WXMAC_PPC__
-		if (systype != 2)
-			endianswap = TRUE;
-#else
-		if (systype == 2)
-			endianswap = TRUE;
-#endif
-		i = queuebuffer.version;
-		if (endianswap)
-		{
-			//wxINT32_SWAP_ALWAYS(i);
-			es32(i);
-		}
-		if (i > 9)
-		{
-			bp = &queuebuffer;
-			if ((queueversion == 314) && ((i >= 324) && (i < 400)))
-			{
-				q = "Google";
-				i = queueversion;
-			}
-			if (i > MAXQVER)
-			{
-
-				_LogMsgInfo(wxString::Format(_T("%s Queue version %i.%02d"), mName.c_str(), i / 100, i % 100));
-				_LogMsgInfo(_T("WARNING: unknown version number"));
-				if (queueversion == 0)
-				{
-					queueversion = 400;
-				}
-			}
-			else
-			{
-				queueversion = i;
-			}
-		}
-		else
-		{
-			bp = (struct queue *) ((char *) &queuebuffer - 4);
-			queueversion = 0;
-		}
-		if (endianswap)
-		{
-			eswp(&queuebuffer, queueversion, systype);
-		}
-		//_LogMsgInfo(wxString::Format(_T("Current index: %u"), bp->current));
-		n = (bp->current & 0xFF) % 10;
-		p = &bp->entry[n];
-		if (queueversion < 324)
-		{
-			p = (struct queue::qs *) ((char *) p - 16 * n);
-		}
-		if (queueversion < 500)
-		{
-			p = (struct queue::qs *) ((char *) p - 8 * n);
-		}
-		if ((queueversion < 401) && (systype != 1))
-		{
-			p = (struct queue::qs *) ((char *) p - 4 * n);
-			estat = p->stat;
-			p = (struct queue::qs *) ((char *) p - 4);
-		}
-		else
-		{
-			estat = p->stat;
-		}
-		// we don't really need estat, as WU state is irrelevant at present
-		genome = ((p->core == 0xC9) || (p->core == 0xCA));
-		if ((systype == 2) && (!genome))
-		{
-			na = (p->wuid.f.run[0] & 0xFE) + (p->wuid.f.clone[0] & 0xFE) + (p->wuid.f.gen[0] & 0xFE);
-			nc = (p->wuid.f.run[1] & 0xFE) + (p->wuid.f.clone[1] & 0xFE) + (p->wuid.f.gen[1] & 0xFE);
-			if (na <= nc)
-			{
-				exch(p->wuid.f.run[0], p->wuid.f.run[1], na);
-				exch(p->wuid.f.clone[0], p->wuid.f.clone[1], na);
-				exch(p->wuid.f.gen[0], p->wuid.f.gen[1], na);
-			}
-		}
-		mProjectId = genome ? le2(p->wuid.g.proj) : le2(p->wuid.f.proj);
-		mRun = le2(p->wuid.f.run);
-		mGen = le2(p->wuid.f.gen);
-		mClone = le2(p->wuid.f.clone);
-		wxString username(p->uname, wxConvUTF8);
-		wxString teamnumber(p->teamn, wxConvUTF8);
-		it = (genome ? le4(p->wuid.g.issue[0]) : le4(p->wuid.f.issue[0]));
-		mDownloadDate = it;/* what is going on here I wonder? Does wxwidgets also use 01/01/2000 as it's epoch? */
-		mUserName = username;
-		if(teamnumber.ToULong(&tmpLong) == true)
-		{
-			mTeamNumber  = (wxUint32)tmpLong;
-		}
+		mProjectId = qf->GetProjectId();
+		mRun = qf->GetProjectRun();
+		mGen = qf->GetProjectGen();
+		mClone = qf->GetProjectClone();
+		mDownloadDate = qf->GetDownloadDate();
+		mUserName = qf->GetUserName();
+		mTeamNumber = qf->GetTeamNumber();
 		return true;
 	}
+	return false;
 }
 /**
 * End qd
