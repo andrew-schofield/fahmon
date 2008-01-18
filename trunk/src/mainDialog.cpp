@@ -314,7 +314,7 @@ void MainDialog::ShowClientInformation(ClientId clientId)
 void MainDialog::UpdateClientInformation(ClientId clientId)
 {
 	bool          overrideTZ;
-	bool              autoUpdateProjects;
+	bool          autoUpdateProjects;
 	wxUint32      deadlineDays;
 	wxInt32       TZ;
 	wxDateTime    preferredDeadline;
@@ -1213,7 +1213,7 @@ void MainDialog::OnAutoReloadTimer(wxTimerEvent& event)
 {
 	bool isAdvancedReloadOn;
 
-	_PrefsGetBool(PREF_MAINDIALOG_ADVANCEDRELOAD,          isAdvancedReloadOn);
+	_PrefsGetBool(PREF_MAINDIALOG_ADVANCEDRELOAD, isAdvancedReloadOn);
 
 	if(isAdvancedReloadOn == true)
 	{

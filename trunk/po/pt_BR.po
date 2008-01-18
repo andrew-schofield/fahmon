@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pt_BR\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2008-01-17 20:15+0000\n"
+"POT-Creation-Date: 2008-01-18 00:55+0000\n"
 "PO-Revision-Date: 2007-11-15 23:45+0000\n"
 "Last-Translator: Andrew Schofield <the.uncle.fungus@gmail.com>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -150,15 +150,15 @@ msgstr "(Referências) Foi atingido o número máximo de clientes conhecidos!"
 msgid "Unknown client"
 msgstr "Cliente Desconhecido"
 
-#: src/client.cpp:95
+#: src/client.cpp:94
 msgid "Log not loaded!"
 msgstr "Registro não carregado!"
 
-#: src/client.cpp:98
+#: src/client.cpp:97
 msgid "anonymous"
 msgstr "anônimo"
 
-#: src/client.cpp:103 src/listViewClients.cpp:394 src/listViewClients.cpp:395
+#: src/client.cpp:102 src/listViewClients.cpp:394 src/listViewClients.cpp:395
 #: src/mainDialog.cpp:453 src/mainDialog.cpp:457 src/mainDialog.cpp:458
 #: src/mainDialog.cpp:459 src/mainDialog.cpp:460 src/mainDialog.cpp:461
 #: src/mainDialog.cpp:530 src/mainDialog.cpp:570 src/webMonitor.cpp:144
@@ -172,74 +172,74 @@ msgstr "anônimo"
 msgid "N/A"
 msgstr "N/A"
 
-#: src/client.cpp:182
+#: src/client.cpp:181
 #, c-format
 msgid "Reloading %s"
 msgstr "Recarregando %s"
 
-#: src/client.cpp:190
+#: src/client.cpp:189
 #, c-format
 msgid "Directory %s does not exist or cannot be read!"
 msgstr "O diretória %s não existe ou não pode ser lido!"
 
-#: src/client.cpp:200
+#: src/client.cpp:199
 #, c-format
 msgid "Error while reading %sFAHlog.txt!"
 msgstr "Erro na leitura do %sFAHlog.txt!"
 
-#: src/client.cpp:207
+#: src/client.cpp:206
 #, c-format
 msgid "Error while reading %squeue.dat"
 msgstr "Erro na leitura do %squeue.dat!"
 
-#: src/client.cpp:211
+#: src/client.cpp:210
 #, c-format
 msgid "Error while reading %sunitinfo.txt!"
 msgstr "Erro na leitura do %sunitinfo.txt!"
 
-#: src/client.cpp:431
+#: src/client.cpp:422
 #, c-format
 msgid "The progress value in file %s could not be found/parsed"
 msgstr "O valor da progressão do arquivo %s não pôde ser encontrado/processado"
 
-#: src/client.cpp:656
+#: src/client.cpp:646
 #, c-format
 msgid "Unable to save %s because it does not exist"
 msgstr "Impossível gravar %s porque este não existe"
 
-#: src/client.cpp:663
+#: src/client.cpp:653
 #, c-format
 msgid "Unable to create directory %s"
 msgstr "Impossível criar o diretório %s"
 
-#: src/client.cpp:673
+#: src/client.cpp:663
 #, c-format
 msgid "Unable to copy %s to %s"
 msgstr "Impossível copiar %s para %s"
 
-#: src/client.cpp:701
+#: src/client.cpp:687
 #, c-format
 msgid "%s is on frame %u"
 msgstr "%s está no frame %u"
 
-#: src/client.cpp:705
+#: src/client.cpp:691
 #, c-format
 msgid "Cannot determine frame number for %s (this isn't a problem)"
 msgstr ""
 "Impossível determinar o número do frame para %s (isto não é um problema)"
 
-#: src/client.cpp:880
+#: src/client.cpp:866
 #, c-format
 msgid "%s has an unknown state (Unable to find a complete frame)"
 msgstr "%s tem um estado desconhecido (impossível encontrar um frame completo)"
 
-#: src/client.cpp:889
+#: src/client.cpp:875
 #, c-format
 msgid "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
 msgstr ""
 "%s foi parado (A linha \"Folding@Home Client Shutdown.\" foi encontrada)"
 
-#: src/client.cpp:898
+#: src/client.cpp:884
 #, c-format
 msgid ""
 "%s has an unknown state (Unable to extract a valid elapsed time since the "
@@ -248,18 +248,18 @@ msgstr ""
 "%s tem um estado desconhecido (impossível extrair um tempo decorrido válido "
 "desde a última frame completa)"
 
-#: src/client.cpp:906
+#: src/client.cpp:892
 #, c-format
 msgid "%s has been marked as having a asynchronous clock."
 msgstr "%s foi marcado como tendo um relógio assíncrono."
 
-#: src/client.cpp:933
+#: src/client.cpp:919
 #, c-format
 msgid "%s seems to have hung : Elapsed time is %um and limit is %um"
 msgstr ""
 "%s parece não estar avançando : o tempo decorrido é %um e o limite é %um"
 
-#: src/client.cpp:938
+#: src/client.cpp:924
 #, c-format
 msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
 msgstr "%s parece estar inativo : o tempo decorrido é %um e o limite é %um"

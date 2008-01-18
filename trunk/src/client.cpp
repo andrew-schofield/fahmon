@@ -16,10 +16,9 @@
 
 #include "fahmon.h"
 #include "client.h"
-
+#include "wx/textfile.h"
 #include "tools.h"
 #include "pathManager.h"
-#include "wx/textfile.h"
 #include "fahlogAnalyzer.h"
 #include "messagesManager.h"
 #include "projectsManager.h"
@@ -213,6 +212,8 @@ void Client::Reload(void)
 	// Extract the duration of the last frame
 	lastFrame = FahLogAnalyzer::AnalyzeLastFrame(mLog);
 
+	project = ProjectsManager::GetInstance()->GetProject(mProjectId);
+
 	// Should we collect .xyz files?
 	_PrefsGetBool(PREF_FAHCLIENT_COLLECTXYZFILES, collectXYZFiles);
 	// lastFrame->GetId() is needed to make sure we dont save current.xyz file from previous WU
@@ -236,12 +237,10 @@ void Client::Reload(void)
 		// There may be a cleaner way of doing this
 		timeDiff = timeNow.Subtract(downloadTime);
 		// sanity checking because WUs with odd frame numbers still write out the % not the frameID
-		project = ProjectsManager::GetInstance()->GetProject(mProjectId);
 		if(project != INVALID_PROJECT_ID)
 		{
 			if ((project->GetNbFrames() != 100) && (project->GetCoreId() != Core::TINKER))
 			{
-				//tempFloat = timeDiff.GetMinutes() * 60 / ((double)(lastFrame->GetId() / 100) * (double)project->GetNbFrames());
 				tempFloat = ((double)timeDiff.GetMinutes() * 60 / lastFrame->GetId()) / ((double)project->GetNbFrames()/100);
 			}
 			else
@@ -253,9 +252,7 @@ void Client::Reload(void)
 		{
 			tempFloat = timeDiff.GetMinutes() * 60 / lastFrame->GetId();
 		}
-		//_LogMsgInfo(wxString::Format(wxT("%s: Input duration with correction: %f"), mName.c_str(), tempFloat));
 		lastFrame->SetEffectiveDuration(wxUint32(tempFloat));
-		//_LogMsgInfo(wxString::Format(wxT("%s: Output duration with correction: %i"), mName.c_str(), lastFrame->GetEffectiveDuration()));
 		BenchmarksManager::GetInstance()->Add(mProjectId, this, lastFrame);
 	}
 
@@ -272,7 +269,6 @@ void Client::Reload(void)
 	// Needs to check state too, no point getting PPD for stopped or dead clients.
 	if (mProjectId != INVALID_PROJECT_ID && mState != ST_STOPPED && mState != ST_INACCESSIBLE && mState != ST_HUNG)
 	{
-		project = ProjectsManager::GetInstance()->GetProject(mProjectId);
 		if (project != INVALID_PROJECT_ID)
 		{
 			benchmarks = BenchmarksManager::GetInstance()->GetBenchmarksList(mProjectId, nbBenchmarks);
@@ -341,7 +337,6 @@ void Client::Reload(void)
 	}
 	if (mProjectId != INVALID_PROJECT_ID && mState != ST_INACCESSIBLE && lastFrame != NULL && mState != ST_STOPPED)
 	{
-		project = ProjectsManager::GetInstance()->GetProject(mProjectId);
 		if (project != INVALID_PROJECT_ID)
 		{
 			mProgress = wxUint32((double)project->GetNbFrames() / ((double)project->GetNbFrames() / (double)lastFrame->GetId()));
@@ -403,21 +398,17 @@ inline bool Client::LoadUnitInfoFile(const wxString& filename)
 		{
 			endingPos = mProgressString.Find('%');
 
-			if(endingPos != -1)
+			if(endingPos != -1 && mProjectId != INVALID_PROJECT_ID)
 			{
-				if (mProjectId != INVALID_PROJECT_ID)
+				mProgressString = mProgressString.Mid(0, endingPos);
+				if(mProgressString.ToULong(&tmpLong) == true)
 				{
-					mProgressString = mProgressString.Mid(0, endingPos);
-					if(mProgressString.ToULong(&tmpLong) == true)
-					{
-						mProgress        = (wxUint32)tmpLong;
-						mProgressString  = wxString::Format(wxT("%u%%"), mProgress);
-						progressOk       = true;
-					}
+					mProgress        = (wxUint32)tmpLong;
+					mProgressString  = wxString::Format(wxT("%u%%"), mProgress);
+					progressOk       = true;
 				}
 			}
 		}
-		//lastFrame->GetId();
 	}
 
 	in.Close();
@@ -616,9 +607,8 @@ tt:				if (genome)
 		mClone = le2(p->wuid.f.clone);
 		wxString username(p->uname, wxConvUTF8);
 		wxString teamnumber(p->teamn, wxConvUTF8);
-		//_LogMsgInfo(wxString::Format(_T("PRCG from queue for %s: %u/%u/%u/%u"), mName.c_str(), mProjectId, mRun, mClone, mGen));
 		it = (genome ? le4(p->wuid.g.issue[0]) : le4(p->wuid.f.issue[0]));
-		mDownloadDate = it/* what is going on here I wonder? Does wxwidgets also use 01/01/2000 as it's epoch? */;
+		mDownloadDate = it;/* what is going on here I wonder? Does wxwidgets also use 01/01/2000 as it's epoch? */
 		mUserName = username;
 		if(teamnumber.ToULong(&tmpLong) == true)
 		{
@@ -687,12 +677,8 @@ void Client::ComputeETA(WorkUnitFrame* lastFrame)
 	const Project   *projectInfo;
 	const Benchmark *benchmark;
 
-	// If we don't have a valid project id, there is no ETA
-	if(mProjectId == INVALID_PROJECT_ID)
-		return;
-
-	// If the client is stopped, there is no ETA
-	if(lastFrame && lastFrame->ClientIsStopped())
+	// If we don't have a valid project id or the client is stopped, there is no ETA
+	if(mProjectId == INVALID_PROJECT_ID || (lastFrame && lastFrame->ClientIsStopped()))
 		return;
 
 	logLine = wxString::Format(_T("%s [ETA]"), mName.c_str());
