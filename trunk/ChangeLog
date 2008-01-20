@@ -23,6 +23,7 @@ v2.3.2
     * Fixed bug in project update system that prevented client list reloading data after an update.
     * Client information box shows as much info as possible even if projects database isn't up to date.
     * Web output now uses a templating system, allowing users to create their own output designs.
+    * Fixed bug which broke deadline dates if a WU was downloaded the previous year.
 
     Windows
 
