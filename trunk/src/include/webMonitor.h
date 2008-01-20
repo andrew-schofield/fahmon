@@ -19,6 +19,7 @@
 
 #include "wx/thread.h"
 #include "listViewClients.h"
+#include <vector>
 
 /**
 * Preferences used by this class
@@ -46,7 +47,6 @@ class WebMonitor
 protected:
 	static wxMutex     mMutexWebMonitorAccess;
 	static WebMonitor* mInstance;
-	ListViewClients  *mClientsList;
 
 	WebMonitor(void);
 	~WebMonitor(void);
@@ -56,9 +56,17 @@ public:
 	static void DestroyInstance(void);
 	static WebMonitor* GetInstance(void);
 
-	static wxString PadToLength(wxString, wxUint32);
-
 	void WriteApp(void);
+
+private:
+	ListViewClients   *mClientsList;
+	wxString         **mDataArray;
+	wxString           mUpdateDate;
+
+	std::vector<wxString> TemplateToVector(wxString);
+	static wxString PadToLength(wxString, wxUint32);
+	wxString DecodeTemplate(wxString, wxUint32);
+	void ProcessTemplate(wxString, wxString);
 };
 
 #endif /* _WEBMONITOR_H */

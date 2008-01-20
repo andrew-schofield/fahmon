@@ -70,6 +70,7 @@ AC_CONFIG_FILES([
    src/images/icons/64/Makefile
    src/images/icons/128/Makefile
    src/images/icons/256/Makefile
+   templates/Makefile
 ])
 
 AC_OUTPUT

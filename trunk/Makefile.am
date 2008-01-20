@@ -20,8 +20,9 @@ EXTRA_DIST = config.rpath  \
         FahMon.nsi \
         README.win32.txt \
         po_to_lang.bat \
-        doxconf
-SUBDIRS = m4 src doc po src/include src/images resources
+        doxconf \
+        TEMPLATE_SYNTAX
+SUBDIRS = m4 src doc po src/include src/images resources templates
 
 appsdir = $(datadir)/applications
 apps_in_files = fahmon.desktop

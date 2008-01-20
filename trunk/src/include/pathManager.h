@@ -32,6 +32,8 @@ protected:
 	wxString mImgPath;
 	wxString mCfgPath;
 	wxString mMsgPath;
+	wxString mGlobalTplPath;
+	wxString mUserTplPath;
 
 	// Constructor/Destructor
 	PathManager(void);
@@ -42,10 +44,12 @@ protected:
 
 
 public:
-	static wxString GetXYZPath(void) {return GetInstance()->mXYZPath;}
-	static wxString GetImgPath(void) {return GetInstance()->mImgPath;}
-	static wxString GetCfgPath(void) {return GetInstance()->mCfgPath;}
-	static wxString GetMsgPath(void) {return GetInstance()->mMsgPath;}
+	static wxString GetXYZPath(void)       {return GetInstance()->mXYZPath;}
+	static wxString GetImgPath(void)       {return GetInstance()->mImgPath;}
+	static wxString GetCfgPath(void)       {return GetInstance()->mCfgPath;}
+	static wxString GetMsgPath(void)       {return GetInstance()->mMsgPath;}
+	static wxString GetGlobalTplPath(void) {return GetInstance()->mGlobalTplPath;}
+	static wxString GetUserTplPath(void)   {return GetInstance()->mUserTplPath;}
 };
 
 

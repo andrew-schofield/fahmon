@@ -42,6 +42,8 @@ PathManager::PathManager(void)
 		homeDir += wxT("/");
 
 	mImgPath = wxString::Format(wxT("%s/pixmaps/fahmon/"), wxT(DATADIR));
+	mGlobalTplPath = wxString::Format(wxT("%s/fahmon/templates/"), wxT(DATADIR));
+	mUserTplPath = homeDir + wxT(".fahmon/templates/");
 	mCfgPath = homeDir + wxT(".fahmon/");
 	mXYZPath = homeDir + wxT(".fahmon/xyz/");
 	mMsgPath = homeDir + wxT(".fahmon/");
@@ -52,6 +54,8 @@ PathManager::PathManager(void)
 	mXYZPath = wxT("./xyz/");
 	mImgPath = wxT("./images/");
 	mCfgPath = wxT("./config/");
+	mGlobalTplPath = wxT("./templates/");
+	mUserTplPath = wxT("./templates/");
 	mMsgPath = wxT("./");
 
 #endif

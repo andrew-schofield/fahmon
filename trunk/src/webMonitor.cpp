@@ -29,6 +29,7 @@
 #include "mainDialog.h"
 #include "fahmonConsts.h"
 #include "messagesManager.h"
+#include <vector>
 
 // The single instance of WebMonitor across the application
 WebMonitor* WebMonitor::mInstance = NULL;
@@ -95,11 +96,6 @@ void WebMonitor::WriteApp(void)
 	wxString       webAppLocation;
 	wxString       simpleWebLocation;
 	wxString       simpleTextLocation;
-	wxString       updateDate;
-	float          totalPPD;
-	//wxString       dataArray[ClientsManager::GetInstance()->GetCount()][13];
-	//for reference: 0progress, 1client name, 2ETA, 3PPD, 4corename, 5projectID, 6credit, 7username/team, 8downloaded, 9preferred, 10final, 11bgcolor, 12state
-	wxString      ** dataArray;
 	wxString       tempString;
 	const Client  *client;
 	const Project *project;
@@ -115,10 +111,10 @@ void WebMonitor::WriteApp(void)
 	wxDateTime     timeNow;
 	wxTimeSpan     timeDiff;
 
-	dataArray = new wxString *[ClientsManager::GetInstance()->GetCount()];
+	mDataArray = new wxString *[ClientsManager::GetInstance()->GetCount()];
 	for (i=0; i<ClientsManager::GetInstance()->GetCount(); i++)
 	{
-		dataArray[i] = new wxString[13];
+		mDataArray[i] = new wxString[13];
 	}
 
 	_PrefsGetBool(PREF_OVERRIDE_TIMEZONE,           overrideTZ);
@@ -132,26 +128,25 @@ void WebMonitor::WriteApp(void)
 	_PrefsGetString(PREF_WEBAPP_SIMPLEWEBLOCATION,  simpleWebLocation);
 	_PrefsGetString(PREF_WEBAPP_SIMPLETEXTLOCATION, simpleTextLocation);
 
-	totalPPD = MainDialog::GetInstance()->GetTotalPPD();
-
 	if(useWebApp == true || useSimpleWeb == true || useSimpleText == true)
 	{
 		// load up the array with data
 		for(currentClient=0; currentClient<ClientsManager::GetInstance()->GetCount(); ++currentClient)
 		{
 			client      = ClientsManager::GetInstance()->Get(currentClient);
-			if(!client->IsAccessible()) {
-				dataArray[currentClient][4] = _("N/A");
-				dataArray[currentClient][7] = _("N/A");
-				dataArray[currentClient][5] = _("N/A");
-				dataArray[currentClient][6] = _("N/A");
-				dataArray[currentClient][8] = _("N/A");
-				dataArray[currentClient][9] = _("N/A");
-				dataArray[currentClient][10] = _("N/A");
+			if(!client->IsAccessible())
+			{
+				mDataArray[currentClient][4] = _("N/A");
+				mDataArray[currentClient][7] = _("N/A");
+				mDataArray[currentClient][5] = _("N/A");
+				mDataArray[currentClient][6] = _("N/A");
+				mDataArray[currentClient][8] = _("N/A");
+				mDataArray[currentClient][9] = _("N/A");
+				mDataArray[currentClient][10] = _("N/A");
 			}
 			else
 			{
-				dataArray[currentClient][7] = wxString::Format(_T("%s (%u)"), client->GetDonatorName().c_str(), client->GetTeamNumber());
+				mDataArray[currentClient][7] = wxString::Format(_T("%s (%u)"), client->GetDonatorName().c_str(), client->GetTeamNumber());
 				if(client->GetDownloadDate().IsValid())
 				{
 					if(overrideTZ)
@@ -168,8 +163,6 @@ void WebMonitor::WriteApp(void)
 					{
 						timeDiff = timeNow.Subtract(downloadTime);
 						timeInMinutes = timeDiff.GetMinutes();
-
-
 					// Split the left time into days, hours and minutes
 						nbDays    = timeInMinutes / (24 * 60);
 						nbMinutes = timeInMinutes % (24 * 60);
@@ -183,42 +176,42 @@ void WebMonitor::WriteApp(void)
 						else
 							tempString = wxString::Format(_T("%imn"), nbMinutes);
 
-						dataArray[currentClient][8] = wxString::Format(_("%s ago"), tempString.c_str());
-						updateDate = wxString::Format(wxT("%s"), timeNow.Format(wxT("%d %B, %H:%M")).c_str());
+						mDataArray[currentClient][8] = wxString::Format(_("%s ago"), tempString.c_str());
+						mUpdateDate = wxString::Format(wxT("%s"), timeNow.Format(wxT("%d %B, %H:%M")).c_str());
 					}
 					else if (deadlineDays == ETADS_DATE_DAY_MONTH)
 					{
-						dataArray[currentClient][8] = wxString::Format(wxT("%s"), downloadTime.Format(wxT("%d %B, %H:%M")).c_str());
-						updateDate = wxString::Format(wxT("%s"), timeNow.Format(wxT("%d %B, %H:%M")).c_str());
+						mDataArray[currentClient][8] = wxString::Format(wxT("%s"), downloadTime.Format(wxT("%d %B, %H:%M")).c_str());
+						mUpdateDate = wxString::Format(wxT("%s"), timeNow.Format(wxT("%d %B, %H:%M")).c_str());
 					}
 					else
 					{
-						dataArray[currentClient][8] = wxString::Format(wxT("%s"), downloadTime.Format(wxT("%B %d, %H:%M")).c_str());
-						updateDate = wxString::Format(wxT("%s"), timeNow.Format(wxT("%B %d, %H:%M")).c_str());
+						mDataArray[currentClient][8] = wxString::Format(wxT("%s"), downloadTime.Format(wxT("%B %d, %H:%M")).c_str());
+						mUpdateDate = wxString::Format(wxT("%s"), timeNow.Format(wxT("%B %d, %H:%M")).c_str());
 					}
 				}
 				if(client->GetProjectId() == INVALID_PROJECT_ID)
 				{
-					dataArray[currentClient][5] = _("N/A");
-					dataArray[currentClient][4] = _("N/A");
-					dataArray[currentClient][6] = _("N/A");
-					dataArray[currentClient][9] = _("N/A");
-					dataArray[currentClient][10] = _("N/A");
+					mDataArray[currentClient][5] = _("N/A");
+					mDataArray[currentClient][4] = _("N/A");
+					mDataArray[currentClient][6] = _("N/A");
+					mDataArray[currentClient][9] = _("N/A");
+					mDataArray[currentClient][10] = _("N/A");
 				}
 				else
 				{
-					dataArray[currentClient][5] = wxString::Format(_T("%u (R%i, C%i, G%i)"), client->GetProjectId(), client->GetProjectRun(), client->GetProjectClone(), client->GetProjectGen());
+					mDataArray[currentClient][5] = wxString::Format(_T("%u (R%i, C%i, G%i)"), client->GetProjectId(), client->GetProjectRun(), client->GetProjectClone(), client->GetProjectGen());
 					project = ProjectsManager::GetInstance()->GetProject(client->GetProjectId());
 					if(project == NULL) // this may need to be INVALID_PROJECT
 					{
-						dataArray[currentClient][5] = _("N/A");
-						dataArray[currentClient][4] = _("N/A");
-						dataArray[currentClient][6] = _("N/A");
-						dataArray[currentClient][9] = _("N/A");
-						dataArray[currentClient][10] = _("N/A");
+						mDataArray[currentClient][5] = _("N/A");
+						mDataArray[currentClient][4] = _("N/A");
+						mDataArray[currentClient][6] = _("N/A");
+						mDataArray[currentClient][9] = _("N/A");
+						mDataArray[currentClient][10] = _("N/A");
 					} else {
-						dataArray[currentClient][6] = wxString::Format(_("%u points"), project->GetCredit());
-						dataArray[currentClient][4] = Core::IdToLongName(project->GetCoreId());
+						mDataArray[currentClient][6] = wxString::Format(_("%u points"), project->GetCredit());
+						mDataArray[currentClient][4] = Core::IdToLongName(project->GetCoreId());
 						if(client->GetDownloadDate().IsValid() && project->GetPreferredDeadlineInDays() != 0)
 						{
 							preferredDeadline = downloadTime;
@@ -228,7 +221,6 @@ void WebMonitor::WriteApp(void)
 								timeDiff = preferredDeadline.Subtract(timeNow);
 								timeInMinutes = timeDiff.GetMinutes();
 								if(timeDiff.GetMinutes() < 0) timeInMinutes = 0 - timeInMinutes;
-
 							// Split the left time into days, hours and minutes
 								nbDays    = timeInMinutes / (24 * 60);
 								nbMinutes = timeInMinutes % (24 * 60);
@@ -243,22 +235,22 @@ void WebMonitor::WriteApp(void)
 									tempString = wxString::Format(_T("%imn"), nbMinutes);
 
 								if(timeDiff.GetMinutes() < 0)
-									dataArray[currentClient][9] = wxString::Format(_("%s ago"), tempString.c_str());
+									mDataArray[currentClient][9] = wxString::Format(_("%s ago"), tempString.c_str());
 								else
-									dataArray[currentClient][9] = wxString::Format(_("In %s"), tempString.c_str());
+									mDataArray[currentClient][9] = wxString::Format(_("In %s"), tempString.c_str());
 
 							}
 							else if (deadlineDays == ETADS_DATE_DAY_MONTH)
 							{
-								dataArray[currentClient][9] = wxString::Format(wxT("%s"), preferredDeadline.Format(wxT("%d %B, %H:%M")).c_str());
+								mDataArray[currentClient][9] = wxString::Format(wxT("%s"), preferredDeadline.Format(wxT("%d %B, %H:%M")).c_str());
 							}
 							else
 							{
-								dataArray[currentClient][9] = wxString::Format(wxT("%s"), preferredDeadline.Format(wxT("%B %d, %H:%M")).c_str());
+								mDataArray[currentClient][9] = wxString::Format(wxT("%s"), preferredDeadline.Format(wxT("%B %d, %H:%M")).c_str());
 							}
 						}
 						else
-							dataArray[currentClient][9] = _("N/A");
+							mDataArray[currentClient][9] = _("N/A");
 
 					// Final deadline: if it is equal to 0 day, there is no final deadline
 						if(client->GetDownloadDate().IsValid() && project->GetFinalDeadlineInDays() != 0)
@@ -270,8 +262,6 @@ void WebMonitor::WriteApp(void)
 								timeDiff = finalDeadline.Subtract(timeNow);
 								timeInMinutes = timeDiff.GetMinutes();
 								if(timeDiff.GetMinutes() < 0) timeInMinutes = 0 - timeInMinutes;
-
-
 							// Split the left time into days, hours and minutes
 								nbDays    = timeInMinutes / (24 * 60);
 								nbMinutes = timeInMinutes % (24 * 60);
@@ -286,225 +276,202 @@ void WebMonitor::WriteApp(void)
 									tempString = wxString::Format(_T("%imn"), nbMinutes);
 
 								if(timeDiff.GetMinutes() < 0)
-									dataArray[currentClient][10] = wxString::Format(_("%s ago"), tempString.c_str());
+									mDataArray[currentClient][10] = wxString::Format(_("%s ago"), tempString.c_str());
 								else
-									dataArray[currentClient][10] = wxString::Format(_("In %s"), tempString.c_str());
+									mDataArray[currentClient][10] = wxString::Format(_("In %s"), tempString.c_str());
 							}
 							else if (deadlineDays == ETADS_DATE_DAY_MONTH)
 							{
-								dataArray[currentClient][10] = wxString::Format(wxT("%s"), finalDeadline.Format(wxT("%d %B, %H:%M")).c_str());
+								mDataArray[currentClient][10] = wxString::Format(wxT("%s"), finalDeadline.Format(wxT("%d %B, %H:%M")).c_str());
 							}
 							else
 							{
-								dataArray[currentClient][10] = wxString::Format(wxT("%s"), finalDeadline.Format(wxT("%B %d, %H:%M")).c_str());
+								mDataArray[currentClient][10] = wxString::Format(wxT("%s"), finalDeadline.Format(wxT("%B %d, %H:%M")).c_str());
 							}
 						}
 						else
-							dataArray[currentClient][10] = _("N/A");
+							mDataArray[currentClient][10] = _("N/A");
 					}
 				}
 			}
 
 			if(!client->IsAccessible())
 			{
-				dataArray[currentClient][12] = _("Inaccessible");
-				dataArray[currentClient][11] = _T("#666666");
+				mDataArray[currentClient][12] = _("Inaccessible");
+				mDataArray[currentClient][11] = _T("#666666");
 			}
 			else if(client->IsStopped())
 			{
-				dataArray[currentClient][12] = _("Stopped");
-				dataArray[currentClient][11] = _T("#FFAAAA");
+				mDataArray[currentClient][12] = _("Stopped");
+				mDataArray[currentClient][11] = _T("#FFAAAA");
 			}
 			else if(client->IsInactive())
 			{
-				dataArray[currentClient][12] = _("Inactive");
-				dataArray[currentClient][11] = _T("#FFFFAA");
+				mDataArray[currentClient][12] = _("Inactive");
+				mDataArray[currentClient][11] = _T("#FFFFAA");
 			}
 			else if(client->IsHung())
 			{
-				dataArray[currentClient][12] = _("Hung");
-				dataArray[currentClient][11] = _T("#FFAAAA");
+				mDataArray[currentClient][12] = _("Hung");
+				mDataArray[currentClient][11] = _T("#FFAAAA");
 			}
 			else if(client->IsAsynch())
 			{
-				dataArray[currentClient][12] = _("Async");
-				dataArray[currentClient][11] = _T("#AAAAFF");
+				mDataArray[currentClient][12] = _("Async");
+				mDataArray[currentClient][11] = _T("#AAAAFF");
 			}
 			else
 			{
-				dataArray[currentClient][12] = _("Ok");
-				dataArray[currentClient][11] = _T("#AAFFAA");
+				mDataArray[currentClient][12] = _("Ok");
+				mDataArray[currentClient][11] = _T("#AAFFAA");
 			}
 
-			dataArray[currentClient][0] = client->GetProgressString();
-			dataArray[currentClient][1] = client->GetName();
+			mDataArray[currentClient][0] = client->GetProgressString();
+			mDataArray[currentClient][1] = client->GetName();
 
+			if(client->GetProgress() == 100)                        mDataArray[currentClient][2] = _("Finished");
+			else if(!client->IsAccessible() || client->IsStopped()) mDataArray[currentClient][2] = _("N/A");
+			else if(!client->GetETA()->IsOk())                      mDataArray[currentClient][2] = _("N/A");
+			else if(client->IsHung())                               mDataArray[currentClient][2] = _("*Hung*");
+			else                                                    mDataArray[currentClient][2] = client->GetETA()->GetString().c_str();
 
-			if(client->GetProgress() == 100)                        dataArray[currentClient][2] = _("Finished");
-			else if(!client->IsAccessible() || client->IsStopped()) dataArray[currentClient][2] = _("N/A");
-			else if(!client->GetETA()->IsOk())                      dataArray[currentClient][2] = _("N/A");
-			else if(client->IsHung())                               dataArray[currentClient][2] = _("*Hung*");
-			else                                                    dataArray[currentClient][2] = client->GetETA()->GetString().c_str();
-
-			dataArray[currentClient][3] = _T("--");
+			mDataArray[currentClient][3] = _T("--");
 
 			project = ProjectsManager::GetInstance()->GetProject(client->GetProjectId());
 
 		// If it's possible to get the PPD, do so now
 			if(client->IsAccessible() && !client->IsStopped() && !client->IsHung() && project != INVALID_PROJECT_ID)
 			{
-				dataArray[currentClient][3] = wxString::Format(_T("%.2f"), client->GetPPD());
+				mDataArray[currentClient][3] = wxString::Format(_T("%.2f"), client->GetPPD());
 			}
 		}
 	}
 
-	if(useWebApp == true)
+	if(useWebApp)
 	{
-		wxFileOutputStream   fileOS(webAppLocation);
-		wxTextOutputStream   textOS(fileOS);
+		if(wxFileExists(PathManager::GetUserTplPath() + wxT("/fancy_template.htm")))
+		{
+			ProcessTemplate(PathManager::GetUserTplPath() + wxT("/fancy_template.htm"), webAppLocation);
+		}
+		else
+		{
+			ProcessTemplate(PathManager::GetGlobalTplPath() + wxT("/fancy_template.htm"), webAppLocation);
+		}
+	}
+	if(useSimpleWeb)
+	{
+		if(wxFileExists(PathManager::GetUserTplPath() + wxT("/simple_template.htm")))
+		{
+			ProcessTemplate(PathManager::GetUserTplPath() + wxT("/simple_template.htm"), simpleWebLocation);
+		}
+		else
+		{
+			ProcessTemplate(PathManager::GetGlobalTplPath() + wxT("/simple_template.htm"), simpleWebLocation);
+		}
+	}
+	if(useSimpleText)
+	{
+		if(wxFileExists(PathManager::GetUserTplPath() + wxT("/simple_template.txt")))
+		{
+			ProcessTemplate(PathManager::GetUserTplPath() + wxT("/simple_template.txt"), simpleTextLocation);
+		}
+		else
+		{
+			ProcessTemplate(PathManager::GetGlobalTplPath() + wxT("/simple_template.txt"), simpleTextLocation);
+		}
+	}
+}
+
+void WebMonitor::ProcessTemplate(wxString templateFile, wxString outputFile)
+{
+	wxFileOutputStream    fileOS(outputFile);
+	wxTextOutputStream    textOS(fileOS);
+	wxFileInputStream     fileIS(templateFile);
+	wxTextInputStream     textIS(fileIS);
+	wxString              currentLine;
+	bool                  continueReading;
+	wxString              processLine, outputLine, searchString;
+	wxUint32              startPos, endPos, currentClient = 0, i;
 
 		// Could the file be opened?
-		if(fileOS.Ok() == false)
-		{
-			_LogMsgError(wxString::Format(_("Could not open file <%s> for writing!\nThe web application will not be created!"), webAppLocation.c_str()));
-			return;
-		}
-
+	if(fileIS.Ok() == false)
+	{
+		_LogMsgError(wxString::Format(_("Could not open template file <%s> for reading!\nThe web application will not be created!"), outputFile.c_str()));
+		return;
+	}
+	if(fileOS.Ok() == false)
+	{
+		_LogMsgError(wxString::Format(_("Could not open file <%s> for writing!\nThe web application will not be created!"), outputFile.c_str()));
+		return;
+	}
 		// check that images exist in output folder (only check first one, if !exist, recopy all)
-		if (!wxFileExists(wxPathOnly(webAppLocation) + wxT("/dialog_icon.png")))
+	if (!wxFileExists(wxPathOnly(outputFile) + wxT("/dialog_icon.png")))
+	{
+		wxCopyFile(PathManager::GetImgPath() + wxT("/dialog_icon.png"), wxPathOnly(outputFile) + wxT("/dialog_icon.png"));
+		wxCopyFile(PathManager::GetImgPath() + wxT("/list_client_asynch.png"), wxPathOnly(outputFile) + wxT("/list_client_asynch.png"));
+		wxCopyFile(PathManager::GetImgPath() + wxT("/list_client_inaccessible.png"), wxPathOnly(outputFile) + wxT("/list_client_inaccessible.png"));
+		wxCopyFile(PathManager::GetImgPath() + wxT("/list_client_inactive.png"), wxPathOnly(outputFile) + wxT("/list_client_inactive.png"));
+		wxCopyFile(PathManager::GetImgPath() + wxT("/list_client_ok.png"), wxPathOnly(outputFile) + wxT("/list_client_ok.png"));
+		wxCopyFile(PathManager::GetImgPath() + wxT("/list_client_stopped.png"), wxPathOnly(outputFile) + wxT("/list_client_stopped.png"));
+	}
+	continueReading = false;
+	processLine = wxT("");
+	while(!fileIS.Eof()){
+		currentLine = textIS.ReadLine();
+		outputLine.clear();
+		if (currentLine.Find(wxT("<!--tpl")) == wxNOT_FOUND && continueReading == false)
 		{
-			wxCopyFile(PathManager::GetImgPath() + wxT("/dialog_icon.png"), wxPathOnly(webAppLocation) + wxT("/dialog_icon.png"));
-			wxCopyFile(PathManager::GetImgPath() + wxT("/list_client_asynch.png"), wxPathOnly(webAppLocation) + wxT("/list_client_asynch.png"));
-			wxCopyFile(PathManager::GetImgPath() + wxT("/list_client_inaccessible.png"), wxPathOnly(webAppLocation) + wxT("/list_client_inaccessible.png"));
-			wxCopyFile(PathManager::GetImgPath() + wxT("/list_client_inactive.png"), wxPathOnly(webAppLocation) + wxT("/list_client_inactive.png"));
-			wxCopyFile(PathManager::GetImgPath() + wxT("/list_client_ok.png"), wxPathOnly(webAppLocation) + wxT("/list_client_ok.png"));
-			wxCopyFile(PathManager::GetImgPath() + wxT("/list_client_stopped.png"), wxPathOnly(webAppLocation) + wxT("/list_client_stopped.png"));
+			textOS.WriteString(currentLine + wxT("\n"));
 		}
-
-		// Write out the web header
-		textOS.WriteString(_T("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">\n<head>\n\t<meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\" />\n\t<meta http-equiv=\"Pragma\" content=\"no-cache\" />\n\t<meta http-equiv=\"refresh\" content=\"100\" />\n"));
-		textOS.WriteString(wxString::Format(_T("\t<title>%s</title>\n<script type=\"text/javascript\">\n"), wxT(FMC_PRODUCT)));
-		textOS.WriteString(_T("<!--\n"));
-
-		// Write out the wuinfo panel variable data
-		textOS.WriteString(_T("pdata = new Array("));
-		for(currentClient=0; currentClient<ClientsManager::GetInstance()->GetCount(); ++currentClient)
+		else //lets process our template
 		{
-			textOS.WriteString(wxString::Format(_T("['%s','%s','%s','%s','%s','%s','%s'],"), dataArray[currentClient][4].c_str(), dataArray[currentClient][5].c_str(), dataArray[currentClient][6].c_str(), dataArray[currentClient][7].c_str(), dataArray[currentClient][8].c_str(), dataArray[currentClient][9].c_str(), dataArray[currentClient][10].c_str()));
-		}
-		textOS.WriteString(_T("[]);\n"));
-
-		// Write out the scripting
-		textOS.WriteString(_T("function removeClassName (elem, className) {\n\telem.className = elem.className.replace(className, \"\").trim();\n}\n\nfunction addCSSClass (elem, className) {\n\tremoveClassName (elem, className);\n\telem.className = (elem.className + \" \" + className).trim();\n}\n\nString.prototype.trim = function() {\n\treturn this.replace( /^\\s+|\\s+$/, \"\" );\n}\n\nfunction ChangeColor(tableRow, highLight){\n\tif (highLight){\n\t\tvar objbranch\n\t\tstripedTable();\n\t\tremoveClassName(tableRow, 'alternateRow');\n\t\tremoveClassName(tableRow, 'normalRow');\n\t\taddCSSClass(tableRow, 'clickedRow');\n\t\tobjbranch = document.getElementById('core');\n\t\tobjbranch.innerHTML = pdata[tableRow.id - 1][0];\n\t\tobjbranch = document.getElementById('project');\n\t\tobjbranch.innerHTML = pdata[tableRow.id - 1][1];\n\t\tobjbranch = document.getElementById('credit');\n\t\tobjbranch.innerHTML = pdata[tableRow.id - 1][2];\n\t\tobjbranch = document.getElementById('username');\n\t\tobjbranch.innerHTML = pdata[tableRow.id - 1][3];\n\t\tobjbranch = document.getElementById('downloaded');\n\t\tobjbranch.innerHTML = pdata[tableRow.id - 1][4];\n\t\tobjbranch = document.getElementById('preferred');\n\t\tobjbranch.innerHTML = pdata[tableRow.id - 1][5];\n\t\tobjbranch = document.getElementById('final');\n\t\tobjbranch.innerHTML = pdata[tableRow.id - 1][6];\n\t}\n}\n\nfunction stripedTable() {\n\tif (document.getElementById && document.getElementsByTagName) {\n\t\tvar allTables = document.getElementsByTagName('table');\n\t\tif (!allTables) { return; }\n\n\t\tfor (var i = 0; i < allTables.length; i++) {\n\t\t\tif (allTables[i].className.match(/[\\w\\s ]*scrollTable[\\w\\s ]*/)) {\n\t\t\t\tvar trs = allTables[i].getElementsByTagName(\"tr\");\n\t\t\t\tfor (var j = 0; j < trs.length; j++) {\n\t\t\t\t\tremoveClassName(trs[j], 'alternateRow');\n\t\t\t\t\tremoveClassName(trs[j], 'clickedRow');\n\t\t\t\t\taddCSSClass(trs[j], 'normalRow');\n\t\t\t\t}\n\t\t\t\tfor (var k = 0; k < trs.length; k += 2) {\n\t\t\t\t\tremoveClassName(trs[k], 'normalRow');\n\t\t\t\t\tremoveClassName(trs[k], 'clickedRow');\n\t\t\t\t\taddCSSClass(trs[k], 'alternateRow');\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n}\n\nfunction addIEonScroll() {\n\tvar thisContainer = document.getElementById('tableContainer');\n\tif (!thisContainer) { return; }\n}\n\nwindow.onload = function() { stripedTable(); addIEonScroll(); }\n-->\n</script>\n"));
-
-		// Write out the CSS
-		textOS.WriteString(_T("<style type=\"text/css\">\n<!--\ntable, td, a {\n\tcolor: #000;\n\tfont: normal normal 12px Verdana, Geneva, Arial, Helvetica, sans-serif\n}\n\nh1 {\n\tfont: normal normal 18px Verdana, Geneva, Arial, Helvetica, sans-serif;\n\tmargin: 0 0 5px 0\n}\n\nh2 {\n\tfont: normal normal 16px Verdana, Geneva, Arial, Helvetica, sans-serif;\n\tmargin: 0 0 5px 0\n}\n\nh3 {\n\tfont: normal normal 13px Verdana, Geneva, Arial, Helvetica, sans-serif;\n\tcolor: #008000;\n\tmargin: 0 0 15px 0\n}\ndiv.tableContainer {\n\tclear: both;\n\tborder: 1px solid #d1c8bf;\n\theight: 223px;\n\toverflow: auto;\n\twidth: 466px;\n\tfloat:left;\n}\n\\html div.tableContainer/* */ {\n\tpadding: 0 16px 0 0;\n\twidth: 450px;\n}\nhtml>body div.tableContainer {\n\theight: auto;\n\tpadding: 0;\n}\nhead:first-child+body div[class].tableContainer {\n\theight: 223px;\n\toverflow: hidden;\n\twidth: 466px\n}\ndiv.tableContainer table {\n\tfloat: left;\n\twidth: 100%\n}\n\\html div.tableContainer table/* */ {\n\tmargin: 0 -16px 0 0\n}\nhtml>body div.tableContainer table {\n\tfloat: none;\n\tmargin: 0;\n\twidth: 450px\n}\nhead:first-child+body div[class].tableContainer table {\n\twidth: 466px\n}\nthead.fixedHeader tr {\n\tposition: relative;\n\ttop: expression(document.getElementById(\"tableContainer\").scrollTop);\n}\nhead:first-child+body thead[class].fixedHeader tr {\n\tdisplay: block;\n}\nthead.fixedHeader th {\n\tbackground: #eeeae6;\n\tfont-weight: normal;\n\tpadding: 4px 3px;\n\ttext-align: left\n}\nthead.fixedHeader a, thead.fixedHeader a:link, thead.fixedHeader a:visited {\n\tcolor: #FFF;\n\tdisplay: block;\n\ttext-decoration: none;\n\twidth: 100%\n}\nthead.fixedHeader a:hover {\n\tcolor: #FFF;\n\tdisplay: block;\n\ttext-decoration: underline;\n\twidth: 100%\n}\nhead:first-child+body tbody[class].scrollContent {\n\tdisplay: block;\n\theight: 200px;\n\toverflow: auto;\n\twidth: 100%\n}\ntbody.scrollContent td, tbody.scrollContent tr.normalRow td {\n\tbackground: #FFF;\n\tpadding: 2px 3px 3px 4px\n}\ntbody.scrollContent tr.alternateRow td {\n\tbackground: #efebe7;\n\tpadding: 2px 3px 3px 4px\n}\ntbody.scrollContent tr.clickedRow td {\n\tbackground: #3858a5;\n\tpadding: 2px 3px 3px 4px\n}\nhead:first-child+body thead[class].fixedHeader th {\n\twidth: 30px\n}\nhead:first-child+body thead[class].fixedHeader th + th {\n\twidth: 60px\n}\nhead:first-child+body thead[class].fixedHeader th + th +th {\n\twidth: 150px\n}\nhead:first-child+body thead[class].fixedHeader th + th +th +th {\n\twidth: 150px\n}\nhead:first-child+body thead[class].fixedHeader th + th + th + th + th {\n\tborder-right: none;\n\tpadding: 4px 4px 4px 3px;\n\twidth: 76px\n}\nhead:first-child+body tbody[class].scrollContent td {\n\twidth: 30px\n}\nhead:first-child+body tbody[class].scrollContent td + td {\n\twidth: 60px\n}\nhead:first-child+body tbody[class].scrollContent td + td + td {\n\twidth: 150px\n}\nhead:first-child+body tbody[class].scrollContent td + td + td + td {\n\twidth: 150px\n}\nhead:first-child+body tbody[class].scrollContent td + td + td + td + td {\n\tborder-right: none;\n\tpadding: 2px 4px 2px 3px;\n\twidth: 60px\n}\nbody {\n\tfont-family:verdana, arial, sans-serif;\n\tfont-size:8pt;\n\tline-height:12pt;\n\tbackground:#FFFFFF;\n\tcolor:#333333;\n\tmargin-top:10px;\n}\n#wuinfopanel {\n\tfloat:left;\n\tpadding-left:2px;\n\theight: 224px;\n\twidth: 300px;\n}\n#fahmon {\n\twidth: 774px;\n\tmargin: auto;\n\theight: 245px;\n\tbackground: #efebe7;\n\tborder: 2px solid #3858a5;\n}\nTD {\n\tmargin-left:1px;\n\tmargin-right:1px;\n\tpadding:2px;\n}\n//-->\n</style>\n</head>\n"));
-
-		// The actual visible bits
-		textOS.WriteString(_T("<body>\n<div id=\"fahmon\">\n"));
-		textOS.WriteString(_T("<table style=\"border-collapse:collapse;width:774px;\"><tr bgcolor=\"#3858a5\"><td width=\"18px\"><img src=\"dialog_icon.png\" /></td><td><b><font color=\"#FFFFFF\">"));
-		textOS.WriteString(wxString::Format(_("%s Web View - Last updated: %s"), wxT(FMC_PRODUCT), updateDate.c_str()));
-		textOS.WriteString(_T("</font></b></td><td align=\"right\"><b><font color=\"#FFFFFF\">"));
-		textOS.WriteString(wxString::Format(_("Total PPD: %.2f"), totalPPD));
-		textOS.WriteString(_T("</font></b></td><td align=\"right\" onclick=\"javascript:window.close();\"><b><font color=\"#FFFFFF\">X</font></b></td></tr></table>\n"));
-		textOS.WriteString(wxString::Format(_T("<div id=\"tableContainer\" class=\"tableContainer\">\n<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" class=\"scrollTable\">\n<thead class=\"fixedHeader\" id=\"fixedHeader\">\n\t<tr>\n<th></th>\n<th><u>%s</u></th>\n<th><u>%s</u></th>\n<th><u>%s</u></th>\n<th><u>%s</u></th>\n\t</tr>\n</thead>\n<tbody class=\"scrollContent\">\n"), _("Progress"), _("Name"), _("ETA"), _("PPD") ));
-
-		// The client data
-		for(currentClient=0; currentClient<ClientsManager::GetInstance()->GetCount(); ++currentClient)
-		{
-			textOS.WriteString(wxString::Format(_T("<tr onclick=\"ChangeColor(this, true);\" id=\"%u\">\n"), currentClient + 1));
-			if(dataArray[currentClient][12] == _("Inaccessible"))
+			processLine = processLine + wxT("") + currentLine;
+			if (currentLine.Find(wxT("tpl//-->")) == wxNOT_FOUND)
 			{
-				textOS.WriteString(_T("<td><img src=\"list_client_inaccessible.png\" /></td>\n"));
-			}
-			else if(dataArray[currentClient][12] == _("Stopped"))
-			{
-				textOS.WriteString(_T("<td><img src=\"list_client_stopped.png\" /></td>\n"));
-			}
-			else if(dataArray[currentClient][12] == _("Inactive"))
-			{
-				textOS.WriteString(_T("<td><img src=\"list_client_inactive.png\" /></td>\n"));
-			}
-			else if(dataArray[currentClient][12] == _("Hung"))
-			{
-				textOS.WriteString(_T("<td><img src=\"list_client_stopped.png\" /></td>\n"));
-			}
-			else if(dataArray[currentClient][12] == _("Async"))
-			{
-				textOS.WriteString(_T("<td><img src=\"list_client_asynch.png\" /></td>\n"));
+				continueReading = true;
 			}
 			else
 			{
-				textOS.WriteString(_T("<td><img src=\"list_client_ok.png\" /></td>\n"));
+				continueReading = false;
+				if (processLine.Find(wxT("tpl_loop")) != wxNOT_FOUND)
+				{
+					startPos = processLine.Find(wxT("tpl_loop "))+8;
+					endPos = processLine.Find(wxT(" tpl//-->"));
+					textOS.WriteString(processLine.Mid(0,startPos-12));
+					searchString = processLine.Mid(startPos+1,endPos-startPos);
+					for(currentClient=0; currentClient<ClientsManager::GetInstance()->GetCount(); ++currentClient)
+					{
+						outputLine = searchString;
+						std::vector<wxString> v = TemplateToVector(searchString);
+
+						for(i=0;i<v.size();i++)
+						{
+							outputLine.Replace(v.at(i), DecodeTemplate(v.at(i), currentClient));
+						}
+						textOS.WriteString(outputLine + wxT("\n"));
+					}
+					textOS.WriteString(processLine.Mid(endPos+9, processLine.length()-endPos-9) + wxT("\n"));
+				}
+				else if (processLine.Find(wxT("tpl_static")) != wxNOT_FOUND)
+				{
+					outputLine = processLine;
+						//create a vector of wxStrings
+					std::vector<wxString> v = TemplateToVector(outputLine);
+					for(i=0;i<v.size();i++)
+					{
+						outputLine.Replace(v.at(i), DecodeTemplate(v.at(i), currentClient));
+					}
+					outputLine.Replace(wxT("<!--tpl_static "), wxT(""));
+					outputLine.Replace(wxT(" tpl//-->"), wxT(""));
+					textOS.WriteString(outputLine + wxT("\n"));
+				}
+					//must be last
+				processLine.clear();
 			}
-
-			textOS.WriteString(wxString::Format(_T("<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n</tr>\n"), dataArray[currentClient][0].c_str(), dataArray[currentClient][1].c_str(), dataArray[currentClient][2].c_str(), dataArray[currentClient][3].c_str()));
 		}
-
-		// The Wuinfo panel, static portions
-		textOS.WriteString(wxString::Format(_T("</tbody>\n</table>\n</div>\n<div id=\"wuinfopanel\">\n<table style=\"border-collapse: collapse;border:1px solid #d1c8bf;background:#efebe7;margin:1px;height:100%%;width:100%%;\">\n<tr>\n<td colspan=\"2\">%s</td>\n</tr>\n<tr>\n<td align=\"right\" width=\"50%%\"><b>%s</b></td>\n<td align=\"left\"><b><font color=\"#F00\" id=\"core\"></font></b></td>\n</tr>\n<tr>\n<td align=\"right\"><b>%s</b></td>\n<td align=\"left\" id=\"project\"></td>\n</tr>\n<tr>\n<td align=\"right\"><b>%s</b></td>\n<td align=\"left\" id=\"credit\"></td>\n</tr>\n<tr>\n<td align=\"right\"><b>%s</b></td>\n<td align=\"left\"><font color=\"#00F\" id=\"username\"></font></td>\n</tr>\n<tr>\n<td align=\"right\"><b>%s</b></td>\n<td align=\"left\" id=\"downloaded\"></td>\n</tr>\n<tr>\n<td align=\"right\"><b>%s</b></td>\n<td align=\"left\" id=\"preferred\"></td>\n</tr>\n<tr>\n<td align=\"right\"><b>%s</b></td>\n<td align=\"left\" id=\"final\"></td>\n</tr>\n</table>\n</div>\n</div>\n</body>\n</html>\n"), _("Work Unit Information"), _("Core:"), _("Project:"), _("Credit:"), _("Username:"), _("Downloaded:"), _("Preferred Deadline:"), _("Final Deadline:")));
-
-
-		fileOS.Close();
 	}
-	if(useSimpleWeb == true)
-	{
-		//WriteSimpleWeb(simpleWebLocation);
-		wxFileOutputStream   fileOS(simpleWebLocation);
-		wxTextOutputStream   textOS(fileOS);
 
-		// Could the file be opened?
-		if(fileOS.Ok() == false)
-		{
-			_LogMsgError(wxString::Format(_("Could not open file <%s> for writing!\nThe simple web output will not be created!"), simpleWebLocation.c_str()));
-			return;
-		}
-
-		// Write out the web header
-		textOS.WriteString(_T("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">\n<head>\n\t<meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\" />\n\t<meta http-equiv=\"Pragma\" content=\"no-cache\" />\n\t<meta http-equiv=\"refresh\" content=\"100\" />\n"));
-		textOS.WriteString(wxString::Format(_T("\t<title>%s</title>\n"), wxT(FMC_PRODUCT)));
-		textOS.WriteString(_T("<style type=\"text/css\">\n<!--\nTD {\npadding:2px;\nborder:1px solid #000;\n}\n//-->\n</style>\n</head>\n<body>\n<pre>\n<table style=\"border-collapse:collapse;border: 1px solid #000;\">\n<tr><td colspan=\"6\">"));
-		textOS.WriteString(wxString::Format(_("%s Web View - Last updated: %s"), wxT(FMC_PRODUCT), updateDate.c_str()));
-		textOS.WriteString(_T("</td><td colspan=\"2\">"));
-		textOS.WriteString(wxString::Format(_("Total PPD: %.2f"), totalPPD));
-		textOS.WriteString(wxString::Format(_T("</td></tr><tr bgcolor=\"#eeeeee\">\n<td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n"), _("State"), _("Progress"), _("Name"), _("ETA"), _("PPD"), _("PRCG"), _("Credit"), _("Downloaded")));
-
-		// Iterate through the clients and print data
-		for(currentClient=0; currentClient<ClientsManager::GetInstance()->GetCount(); ++currentClient)
-		{
-			textOS.WriteString(wxString::Format(_T("<tr><td bgcolor=\"%s\">%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n"), dataArray[currentClient][11].c_str(), dataArray[currentClient][12].c_str(), dataArray[currentClient][0].c_str(), dataArray[currentClient][1].c_str(), dataArray[currentClient][2].c_str(), dataArray[currentClient][3].c_str(), dataArray[currentClient][5].c_str(), dataArray[currentClient][6].c_str(), dataArray[currentClient][8].c_str()));
-		}
-
-		// Write out the web footer
-		textOS.WriteString(_T("</table>\n</pre>\n</body>\n</html>\n"));
-
-		fileOS.Close();
-	}
-	if(useSimpleText == true)
-	{
-		//WriteSimpleWeb(simpleWebLocation);
-		wxFileOutputStream   fileOS(simpleTextLocation);
-		wxTextOutputStream   textOS(fileOS);
-
-		// Could the file be opened?
-		if(fileOS.Ok() == false)
-		{
-			_LogMsgError(wxString::Format(_("Could not open file <%s> for writing!\nThe simple text output will not be created!"), simpleTextLocation.c_str()));
-			return;
-		}
-		textOS.WriteString(wxString::Format(_("FahMon Client Monitoring %s - Simple Text Output\n"), wxT(FMC_PRODUCT)));
-		textOS.WriteString(wxString::Format(_("Last updated: %s"), updateDate.c_str()));
-		textOS.WriteString(_T("   "));
-		textOS.WriteString(wxString::Format(_("Total PPD: %.2f\n\n"), totalPPD));
-		textOS.WriteString(wxString::Format(_T("%s|%s|%s|%s|%s|%s|%s\n"), PadToLength(_("State"),7).c_str(), PadToLength(_("Progress"),4).c_str(), PadToLength(_("Name"),20).c_str(), PadToLength(_("ETA"),15).c_str(), PadToLength(_("PPD"),7).c_str(), PadToLength(_("PRCG"),23).c_str(), PadToLength(_("Credit"),11).c_str()));
-		textOS.WriteString(_T("=======|====|====================|===============|=======|=======================|===========\n"));
-		// Iterate through the clients and print data
-		for(currentClient=0; currentClient<ClientsManager::GetInstance()->GetCount(); ++currentClient)
-		{
-			textOS.WriteString(wxString::Format(_T("%s|%s|%s|%s|%s|%s|%s\n"), PadToLength(dataArray[currentClient][12],7).c_str(), PadToLength(dataArray[currentClient][0],4).c_str(), PadToLength(dataArray[currentClient][1],20).c_str(), PadToLength(dataArray[currentClient][2],15).c_str(), PadToLength(dataArray[currentClient][3],7).c_str(), PadToLength(dataArray[currentClient][5],23).c_str(), PadToLength(dataArray[currentClient][6],11).c_str()));
-		}
-		textOS.WriteString(_T("\n"));
-	}
+	fileOS.Close();
 }
 
 wxString WebMonitor::PadToLength(wxString text, wxUint32 length)
@@ -517,4 +484,107 @@ wxString WebMonitor::PadToLength(wxString text, wxUint32 length)
 	{
 		return text.Pad((length - text.length()));
 	}
+}
+
+wxString WebMonitor::DecodeTemplate(wxString templateCode, wxUint32 clientId)
+{
+	//for reference: 0progress, 1client name, 2ETA, 3PPD, 4corename, 5projectID, 6credit, 7username/team, 8downloaded, 9preferred, 10final, 11bgcolor, 12state
+	//sigh, why can't we switch on wxStrings
+	wxUint32    startCount, endCount;
+	wxString    count, tCode;
+	double      tmpDouble;
+	wxUint32    padding;
+
+	startCount = templateCode.find(wxT("{"));
+	endCount = templateCode.find(wxT("}"));
+
+	count = templateCode.Mid(startCount, endCount-startCount+1);
+	templateCode.Replace(count, wxT(""));
+	count = count.Mid(1, count.Length()-2);
+
+	if(count.ToDouble(&tmpDouble) == false)
+		padding = 0;
+	padding = (wxUint32)tmpDouble;
+
+	if (templateCode == wxT("@PERCENTAGE@")) tCode = mDataArray[clientId][0];
+	else if (templateCode == wxT("@NAME@")) tCode = mDataArray[clientId][1];
+	else if (templateCode == wxT("@ETA@")) tCode = mDataArray[clientId][2];
+	else if (templateCode == wxT("@PPD@")) tCode = mDataArray[clientId][3];
+	else if (templateCode == wxT("@CORE@")) tCode = mDataArray[clientId][4];
+	else if (templateCode == wxT("@PRCG@")) tCode = mDataArray[clientId][5];
+	else if (templateCode == wxT("@POINTS@")) tCode = mDataArray[clientId][6];
+	else if (templateCode == wxT("@USER_TEAM@")) tCode = mDataArray[clientId][7];
+	else if (templateCode == wxT("@DOWNLOAD_DATE@")) tCode = mDataArray[clientId][8];
+	else if (templateCode == wxT("@PREFERRED_DATE@")) tCode = mDataArray[clientId][9];
+	else if (templateCode == wxT("@FINAL_DATE@")) tCode = mDataArray[clientId][10];
+	else if (templateCode == wxT("@STATE_COLOR@")) tCode = mDataArray[clientId][11];
+	else if (templateCode == wxT("@STATE@")) tCode = mDataArray[clientId][12];
+	else if (templateCode == wxT("@FAHMON_VERSION@")) tCode = wxT(FMC_PRODUCT);
+	else if (templateCode == wxT("@UPDATE_TIME@")) tCode = mUpdateDate;
+	else if (templateCode == wxT("@TOTAL_PPD@")) tCode = wxString::Format(wxT("%.2f"), MainDialog::GetInstance()->GetTotalPPD());
+	else if (templateCode == wxT("@STATE_IMAGE@"))
+	{
+		if(mDataArray[clientId][12] == _("Inaccessible"))
+		{
+			tCode = _T("list_client_inaccessible.png");
+		}
+		else if(mDataArray[clientId][12] == _("Stopped"))
+		{
+			tCode = _T("list_client_stopped.png");
+		}
+		else if(mDataArray[clientId][12] == _("Inactive"))
+		{
+			tCode = _T("list_client_inactive.png");
+		}
+		else if(mDataArray[clientId][12] == _("Hung"))
+		{
+			tCode = _T("list_client_stopped.png");
+		}
+		else if(mDataArray[clientId][12] == _("Async"))
+		{
+			tCode = _T("list_client_asynch.png");
+		}
+		else
+		{
+			tCode = _T("list_client_ok.png");
+		}
+	}
+	else if (templateCode == wxT("@CLIENT_ID@")) tCode = wxString::Format(wxT("%i"), clientId+1);
+
+	if(padding>0)
+		return PadToLength(tCode, padding);
+	else
+		return tCode;
+
+}
+
+std::vector<wxString> WebMonitor::TemplateToVector(wxString inputTemplate)
+{
+	//create a vector of wxStrings
+	std::vector<wxString> v;
+	wxUint32 firstAt = 0,secondAt = 0, i = 0;
+	bool isOpenTag = false;
+
+	for(i=0;i<inputTemplate.Length();i++)
+	{
+		switch(inputTemplate.GetChar(i))
+		{
+			case '@':
+				if(!isOpenTag)
+				{
+					isOpenTag = true;
+					firstAt = i;
+				}
+				else
+				{
+					isOpenTag = false;
+					secondAt = i;
+					v.push_back(inputTemplate.Mid(firstAt, secondAt-firstAt+1));
+				}
+				break;
+			default:
+				break;
+		}
+	}
+	return v;
 }
