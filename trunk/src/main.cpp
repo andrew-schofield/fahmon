@@ -38,9 +38,9 @@
 IMPLEMENT_APP(FahMonApp)
 
 BEGIN_EVENT_TABLE(FahMonApp, wxApp)
-EVT_QUERY_END_SESSION (FahMonApp::OnQueryEndSession)
-//EVT_END_SESSION (FahMonApp::OnEndSession)
-//EVT_SET_FOCUS (FahMonApp::TestEventHandler)
+	EVT_QUERY_END_SESSION (FahMonApp::OnQueryEndSession)
+	EVT_END_SESSION (FahMonApp::OnEndSession)
+	EVT_CLOSE (FahMonApp::OnClose)
 END_EVENT_TABLE()
 
 /**
@@ -199,7 +199,7 @@ int FahMonApp::OnExit(void)
 void FahMonApp::OnEndSession(wxCloseEvent& event)
 {
 	_LogMsgInfo(wxString::Format(wxT("Running OnEndSession")));
-	FahMonApp::OnExit();
+	MainDialog::GetInstance()->Close();
 }
 
 /**
@@ -207,9 +207,14 @@ void FahMonApp::OnEndSession(wxCloseEvent& event)
 **/
 void FahMonApp::OnQueryEndSession(wxCloseEvent& event)
 {
-//Tools::ErrorMsgBox(wxString::Format(wxT("This event is working")));
 	_LogMsgInfo(wxString::Format(wxT("Running OnQueryEndSession")));
-FahMonApp::OnExit();
+	MainDialog::GetInstance()->Close();
+}
+
+void FahMonApp::OnClose(wxCloseEvent& event)
+{
+	_LogMsgInfo(wxString::Format(wxT("Running OnClose")));
+	MainDialog::GetInstance()->Close();
 }
 
 /**

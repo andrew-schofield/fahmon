@@ -45,6 +45,7 @@ private:
 DECLARE_EVENT_TABLE()
 	void OnEndSession( wxCloseEvent& event );
 	void OnQueryEndSession( wxCloseEvent& event );
+	void OnClose( wxCloseEvent& event);
 	//void TestEventHandler( wxFocusEvent& event );
 
 };
