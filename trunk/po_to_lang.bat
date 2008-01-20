@@ -38,4 +38,3 @@ echo ============
 echo Copying translation template
 copy /y .\po\fahmon.pot .\lang\fahmon.pot
 move .\lang .\Release\
-pause

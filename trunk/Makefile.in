@@ -229,7 +229,8 @@ EXTRA_DIST = config.rpath  \
         README.win32.txt \
         po_to_lang.bat \
         doxconf \
-        TEMPLATE_SYNTAX
+        TEMPLATE_SYNTAX \
+        gen_msw.bat
 
 SUBDIRS = m4 src doc po src/include src/images resources templates
 appsdir = $(datadir)/applications
