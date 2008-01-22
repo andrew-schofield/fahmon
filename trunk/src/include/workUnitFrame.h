@@ -38,10 +38,11 @@ protected:
 	wxUint32 mDuration;               // In seconds
 	wxUint32 mElapsedSeconds;         // Elapsed time since this frame has been completed
 	wxUint32 mEffectiveDuration;      // Effective frame time value in seconds
+	wxUint32 mFrameCount;
 
 
 public:
-	WorkUnitFrame(FrameId id = 0, bool clientIsStopped = true, wxUint32 duration = 0, wxUint32 elapsedSeconds = 0, wxUint32 effectiveDuration = 0);
+	WorkUnitFrame(FrameId id = 0, bool clientIsStopped = true, wxUint32 duration = 0, wxUint32 elapsedSeconds = 0, wxUint32 effectiveDuration = 0, wxUint32 frames = 0);
 	~WorkUnitFrame(void);
 
 	// --- Getters
@@ -50,6 +51,7 @@ public:
 	wxUint32 GetDuration(void)            const {return mDuration;}
 	wxUint32 GetElapsedSeconds(void)      const {return mElapsedSeconds;}
 	wxUint32 GetEffectiveDuration(void)   const {return mEffectiveDuration;}
+	wxUint32 GetFrameCount(void)          const {return mFrameCount;}
 
 	// --- Setters
 	void SetId(FrameId id)                                {mId = id;}
@@ -57,6 +59,7 @@ public:
 	void SetDuration(wxUint32 duration)                   {mDuration = duration;}
 	void SetElapsedSeconds(wxUint32 seconds)              {mElapsedSeconds = seconds;}
 	void SetEffectiveDuration(wxUint32 effectiveDuration) {mEffectiveDuration = effectiveDuration;}
+	void SetFrameCount(wxUint32 frameCount)               {mFrameCount = frameCount;}
 };
 
 

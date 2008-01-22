@@ -48,6 +48,8 @@ protected:
 		FrameId     frameId;       // Valid when (type == LLT_FINISHED) or (type == LLT_COMPLETED)
 		wxDateTime  timestamp;
 		wxUint32    project;
+		wxUint32    completedSteps;
+		wxUint32    totalSteps;
 	} LogLine;
 
 

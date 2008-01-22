@@ -21,13 +21,14 @@
 /**
 * Constructor
 **/
-WorkUnitFrame::WorkUnitFrame(FrameId id, bool clientIsStopped, wxUint32 duration, wxUint32 elapsedSeconds, wxUint32 effectiveDuration)
+WorkUnitFrame::WorkUnitFrame(FrameId id, bool clientIsStopped, wxUint32 duration, wxUint32 elapsedSeconds, wxUint32 effectiveDuration, wxUint32 frames)
 {
 	mId                = id;
 	mDuration          = duration;
 	mElapsedSeconds    = elapsedSeconds;
 	mClientIsStopped   = clientIsStopped;
 	mEffectiveDuration = effectiveDuration;
+	mFrameCount        = frames;
 }
 
 

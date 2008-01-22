@@ -146,6 +146,7 @@ void Client::Reload(void)
 	wxTimeSpan        timeDiff;
 	const Project    *project;
 	const Benchmark **benchmarks;
+	wxUint32          frameCount;
 
 
 	_PrefsGetBool(PREF_OVERRIDE_TIMEZONE, overrideTZ);
@@ -212,6 +213,7 @@ void Client::Reload(void)
 	// Extract the duration of the last frame
 	lastFrame = FahLogAnalyzer::AnalyzeLastFrame(mLog);
 
+
 	project = ProjectsManager::GetInstance()->GetProject(mProjectId);
 
 	// Should we collect .xyz files?
@@ -223,6 +225,22 @@ void Client::Reload(void)
 	// Add this duration to the benchmarks for valid projects, but don't store the same frame twice
 	if(mProjectId != INVALID_PROJECT_ID && lastFrame != NULL && !lastFrame->ClientIsStopped() && lastFrame->GetId() != mPreviouslyAnalyzedFrameId)
 	{
+		frameCount = lastFrame->GetFrameCount();
+		if(project->GetCoreId() == Core::TINKER)
+		{
+			frameCount = 400;
+		}
+		else if (frameCount == 0)
+		{
+			frameCount = project->GetNbFrames();
+		}
+		if(frameCount != project->GetNbFrames())
+		{
+			//project->SetNbFrames(frameCount);
+			//this might be expensive, maybe just writing the single project back would be better
+			ProjectsManager::GetInstance()->AddProject(new Project(project->GetProjectId(), project->GetPreferredDeadlineInDays(), project->GetFinalDeadlineInDays(), frameCount, project->GetCredit(), project->GetCoreId()));
+			ProjectsManager::GetInstance()->Save();
+		}
 		mPreviouslyAnalyzedFrameId = lastFrame->GetId();
 		// Calculate effective frame time
 		timeNow = wxDateTime::Now();
@@ -239,9 +257,9 @@ void Client::Reload(void)
 		// sanity checking because WUs with odd frame numbers still write out the % not the frameID
 		if(project != INVALID_PROJECT_ID)
 		{
-			if ((project->GetNbFrames() != 100) && (project->GetCoreId() != Core::TINKER))
+			if ((frameCount != 100) && (project->GetCoreId() != Core::TINKER))
 			{
-				tempFloat = ((double)timeDiff.GetMinutes() * 60 / lastFrame->GetId()) / ((double)project->GetNbFrames()/100);
+				tempFloat = ((double)timeDiff.GetMinutes() * 60 / lastFrame->GetId()) / ((double)frameCount/100);
 			}
 			else
 			{
@@ -269,6 +287,7 @@ void Client::Reload(void)
 	// Needs to check state too, no point getting PPD for stopped or dead clients.
 	if (mProjectId != INVALID_PROJECT_ID && mState != ST_STOPPED && mState != ST_INACCESSIBLE && mState != ST_HUNG)
 	{
+		frameCount = lastFrame->GetFrameCount();
 		if (project != INVALID_PROJECT_ID)
 		{
 			benchmarks = BenchmarksManager::GetInstance()->GetBenchmarksList(mProjectId, nbBenchmarks);
@@ -284,19 +303,19 @@ void Client::Reload(void)
 						{
 							// ---
 							case PPDDS_ALL_FRAMES:
-								mPPD = (project->GetCredit() * 86400.0) / ((double)benchmarks[i]->GetAvgDuration() * (double)project->GetNbFrames());
+								mPPD = (project->GetCredit() * 86400.0) / ((double)benchmarks[i]->GetAvgDuration() * (double)frameCount);
 								break;
 
 							// ---
 							case PPDDS_LAST_FRAME:
 								if((double)benchmarks[i]->GetInstantDuration() != 0)
 								{
-									mPPD = (project->GetCredit() * 86400.0) / ((double)benchmarks[i]->GetInstantDuration() * (double)project->GetNbFrames());
+									mPPD = (project->GetCredit() * 86400.0) / ((double)benchmarks[i]->GetInstantDuration() * (double)frameCount);
 								}
 								else
 								{
 									//best guess based on avg frame time
-									mPPD = (project->GetCredit() * 86400.0) / ((double)benchmarks[i]->GetAvgDuration() * (double)project->GetNbFrames());
+									mPPD = (project->GetCredit() * 86400.0) / ((double)benchmarks[i]->GetAvgDuration() * (double)frameCount);
 								}
 								break;
 
@@ -304,24 +323,24 @@ void Client::Reload(void)
 							case PPDDS_THREE_FRAMES:
 								if((double)benchmarks[i]->Get3FrameDuration() != 0)
 								{
-									mPPD = (project->GetCredit() * 86400.0) / ((double)benchmarks[i]->Get3FrameDuration() * (double)project->GetNbFrames());
+									mPPD = (project->GetCredit() * 86400.0) / ((double)benchmarks[i]->Get3FrameDuration() * (double)frameCount);
 								}
 								else
 								{
 									//best guess based on avg frame time
-									mPPD = (project->GetCredit() * 86400.0) / ((double)benchmarks[i]->GetAvgDuration() * (double)project->GetNbFrames());
+									mPPD = (project->GetCredit() * 86400.0) / ((double)benchmarks[i]->GetAvgDuration() * (double)frameCount);
 								}
 								break;
 
 							case PPDDS_EFFECTIVE_FRAMES:
 								if((double)benchmarks[i]->GetEffectiveDuration() != 0)
 								{
-									mPPD = (project->GetCredit() * 86400.0) / ((double)benchmarks[i]->GetEffectiveDuration() * (double)project->GetNbFrames());
+									mPPD = (project->GetCredit() * 86400.0) / ((double)benchmarks[i]->GetEffectiveDuration() * (double)frameCount);
 								}
 								else
 								{
 									//best guess based on avg frame time
-									mPPD = (project->GetCredit() * 86400.0) / ((double)benchmarks[i]->GetAvgDuration() * (double)project->GetNbFrames());
+									mPPD = (project->GetCredit() * 86400.0) / ((double)benchmarks[i]->GetAvgDuration() * (double)frameCount);
 								}
 								break;
 
@@ -339,7 +358,8 @@ void Client::Reload(void)
 	{
 		if (project != INVALID_PROJECT_ID)
 		{
-			mProgress = wxUint32((double)project->GetNbFrames() / ((double)project->GetNbFrames() / (double)lastFrame->GetId()));
+			frameCount = lastFrame->GetFrameCount();
+			mProgress = wxUint32((double)frameCount / ((double)frameCount / (double)lastFrame->GetId()));
 			if(project->GetCoreId() == Core::TINKER)
 				mProgress = mProgress / 4;
 		}

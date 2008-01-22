@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2008-01-20 00:41+0000\n"
+"POT-Creation-Date: 2008-01-22 01:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -170,89 +170,89 @@ msgstr ""
 msgid "N/A"
 msgstr ""
 
-#: src/client.cpp:181
+#: src/client.cpp:182
 #, c-format
 msgid "Reloading %s"
 msgstr ""
 
-#: src/client.cpp:189
+#: src/client.cpp:190
 #, c-format
 msgid "Directory %s does not exist or cannot be read!"
 msgstr ""
 
-#: src/client.cpp:199
+#: src/client.cpp:200
 #, c-format
 msgid "Error while reading %sFAHlog.txt!"
 msgstr ""
 
-#: src/client.cpp:206
+#: src/client.cpp:207
 #, c-format
 msgid "Error while reading %squeue.dat"
 msgstr ""
 
-#: src/client.cpp:210
+#: src/client.cpp:211
 #, c-format
 msgid "Error while reading %sunitinfo.txt!"
 msgstr ""
 
-#: src/client.cpp:422
+#: src/client.cpp:442
 #, c-format
 msgid "The progress value in file %s could not be found/parsed"
 msgstr ""
 
-#: src/client.cpp:479
+#: src/client.cpp:499
 #, c-format
 msgid "Unable to save %s because it does not exist"
 msgstr ""
 
-#: src/client.cpp:486
+#: src/client.cpp:506
 #, c-format
 msgid "Unable to create directory %s"
 msgstr ""
 
-#: src/client.cpp:496
+#: src/client.cpp:516
 #, c-format
 msgid "Unable to copy %s to %s"
 msgstr ""
 
-#: src/client.cpp:520
+#: src/client.cpp:540
 #, c-format
 msgid "%s is on frame %u"
 msgstr ""
 
-#: src/client.cpp:524
+#: src/client.cpp:544
 #, c-format
 msgid "Cannot determine frame number for %s (this isn't a problem)"
 msgstr ""
 
-#: src/client.cpp:699
+#: src/client.cpp:719
 #, c-format
 msgid "%s has an unknown state (Unable to find a complete frame)"
 msgstr ""
 
-#: src/client.cpp:708
+#: src/client.cpp:728
 #, c-format
 msgid "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
 msgstr ""
 
-#: src/client.cpp:717
+#: src/client.cpp:737
 #, c-format
 msgid ""
 "%s has an unknown state (Unable to extract a valid elapsed time since the "
 "last completed frame)"
 msgstr ""
 
-#: src/client.cpp:725
+#: src/client.cpp:745
 #, c-format
 msgid "%s has been marked as having a asynchronous clock."
 msgstr ""
 
-#: src/client.cpp:752
+#: src/client.cpp:772
 #, c-format
 msgid "%s seems to have hung : Elapsed time is %um and limit is %um"
 msgstr ""
 
-#: src/client.cpp:757
+#: src/client.cpp:777
 #, c-format
 msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
 msgstr ""
@@ -303,7 +303,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#: src/fahlogAnalyzer.cpp:182
+#: src/fahlogAnalyzer.cpp:234
 msgid "Possible clock asynchrony detected!"
 msgstr ""
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl_PL\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2008-01-20 00:41+0000\n"
+"POT-Creation-Date: 2008-01-22 01:14+0000\n"
 "PO-Revision-Date: 2007-11-15 23:44+0000\n"
 "Last-Translator: Andrew Schofield <the.uncle.fungus@gmail.com>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -173,73 +173,73 @@ msgstr "anonimowy"
 msgid "N/A"
 msgstr "nieznany"
 
-#: src/client.cpp:181
+#: src/client.cpp:182
 #, c-format
 msgid "Reloading %s"
 msgstr "Odczyt statusu %s"
 
-#: src/client.cpp:189
+#: src/client.cpp:190
 #, c-format
 msgid "Directory %s does not exist or cannot be read!"
 msgstr "Katalog %s nie istnieje lub nie można go odczytać!"
 
-#: src/client.cpp:199
+#: src/client.cpp:200
 #, c-format
 msgid "Error while reading %sFAHlog.txt!"
 msgstr "Błąd podczas odczytu %sFAHlog.txt!"
 
-#: src/client.cpp:206
+#: src/client.cpp:207
 #, c-format
 msgid "Error while reading %squeue.dat"
 msgstr "Błąd podczas odczytu %squeue.dat!"
 
-#: src/client.cpp:210
+#: src/client.cpp:211
 #, c-format
 msgid "Error while reading %sunitinfo.txt!"
 msgstr "Błąd podczas odczytu %sunitinfo.txt!"
 
-#: src/client.cpp:422
+#: src/client.cpp:442
 #, c-format
 msgid "The progress value in file %s could not be found/parsed"
 msgstr "Wskaźnik postępu w pliku %s nie został odnaleziony/zinterpretowany"
 
-#: src/client.cpp:479
+#: src/client.cpp:499
 #, c-format
 msgid "Unable to save %s because it does not exist"
 msgstr "Nie można zapisać %s ponieważ nie został utworzony"
 
-#: src/client.cpp:486
+#: src/client.cpp:506
 #, c-format
 msgid "Unable to create directory %s"
 msgstr "Nie można utworzyć katalogu %s"
 
-#: src/client.cpp:496
+#: src/client.cpp:516
 #, c-format
 msgid "Unable to copy %s to %s"
 msgstr "Nie można skopiować %s do %s"
 
-#: src/client.cpp:520
+#: src/client.cpp:540
 #, c-format
 msgid "%s is on frame %u"
 msgstr "%s pracuje nad ramką %u"
 
-#: src/client.cpp:524
+#: src/client.cpp:544
 #, c-format
 msgid "Cannot determine frame number for %s (this isn't a problem)"
 msgstr "Nie można określić numeru ramki dla %s (nie jest to poważny problem)"
 
-#: src/client.cpp:699
+#: src/client.cpp:719
 #, c-format
 msgid "%s has an unknown state (Unable to find a complete frame)"
 msgstr ""
 "%s znajduje się w niewiadomym stanie (Nie odnaleziono ukończonej ramki)"
 
-#: src/client.cpp:708
+#: src/client.cpp:728
 #, c-format
 msgid "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
 msgstr "%s jest wyłączone (Znaleziono wpis \"Folding@Home Client Shutdown.\")"
 
-#: src/client.cpp:717
+#: src/client.cpp:737
 #, c-format
 msgid ""
 "%s has an unknown state (Unable to extract a valid elapsed time since the "
@@ -248,18 +248,18 @@ msgstr ""
 "%s znajduje się w niewiadomym stanie (Nie można określić czasu ukończenia po "
 "przetworzeniu poprzedniej ramki)"
 
-#: src/client.cpp:725
+#: src/client.cpp:745
 #, c-format
 msgid "%s has been marked as having a asynchronous clock."
 msgstr "%s został oznaczony jako posiadający rozsynchronizowany zegar."
 
-#: src/client.cpp:752
+#: src/client.cpp:772
 #, c-format
 msgid "%s seems to have hung : Elapsed time is %um and limit is %um"
 msgstr ""
 "%s wydaje się być zawieszony : Czas przetwarzania to %um, a graniczny to %um"
 
-#: src/client.cpp:757
+#: src/client.cpp:777
 #, c-format
 msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
 msgstr ""
@@ -317,7 +317,7 @@ msgstr ""
 "# \"Nazwa\"          \"Lokalizacja\"\n"
 "\n"
 
-#: src/fahlogAnalyzer.cpp:182
+#: src/fahlogAnalyzer.cpp:234
 msgid "Possible clock asynchrony detected!"
 msgstr "Wykryto prawdopodobne rozsynchronizowanie zegara!"
 

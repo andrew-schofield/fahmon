@@ -50,12 +50,10 @@ protected:
 	ProjectsManager(void);
 	~ProjectsManager(void);
 
-	void Save(void);
 	void Load(void);
 
 	void UpdateToV2(void);
 
-	void AddProject(Project* project);
 	bool ShouldPerformUpdate(void);
 
 	bool     Update_DownloadProjectsFile(wxString& fileName, ProgressManager& progressManager, wxString& errorMsg);
@@ -71,6 +69,8 @@ public:
 
 	void UpdateDatabaseThreaded(bool forced, bool silentMode);
 	bool UpdateDatabase(bool forced, bool silentMode);
+	void AddProject(Project* project);
+	void Save(void);
 
 	// Return NULL if the project is unknown
 	const Project* GetProject(ProjectId projectId);
