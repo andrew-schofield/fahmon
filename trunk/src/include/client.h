@@ -65,6 +65,7 @@ protected:
 	wxInt16    mGen;
 	double     mPPD;
 	wxDateTime mDownloadDate;
+	bool       mIsFrameCountAccurate;
 
 	void ComputeETA(WorkUnitFrame* lastFrame);
 	void FindCurrentState(WorkUnitFrame* lastFrame);
@@ -87,30 +88,32 @@ public:
 	wxString GetFahinfoURL(void)      const;
 
 	// -- 'Setters' --
-	void SetName(const wxString& name) {mName = name;}
+	void SetName(const wxString& name)            {mName = name;}
 	void SetLocation(const wxString& location);
+	void SetIsFrameCountAccurate(bool isAccurate) {mIsFrameCountAccurate = isAccurate;}
 
 	// -- 'Getters' --
-	bool              IsAccessible(void)      const {return mState != ST_INACCESSIBLE;}
-	bool              IsStopped(void)         const {return mState == ST_STOPPED;}
-	bool              IsInactive(void)        const {return mState == ST_INACTIVE;}
-	bool              IsRunning(void)         const {return mState == ST_RUNNING;}
-	bool              IsAsynch(void)          const {return mState == ST_ASYNCH;}
-	bool              IsHung(void)            const {return mState == ST_HUNG;}
-	wxString          GetName(void)           const {return mName;}
-	wxString          GetLocation(void)       const {return mLocation;}
-	wxString          GetLog(void)            const {return mLog;}
-	wxString          GetProjectString(void)  const {return mProjectString;}
-	wxUint32          GetProgress(void)       const {return mProgress;}
-	wxString          GetProgressString(void) const {return mProgressString;}
-	wxString          GetDonatorName(void)    const {return mUserName;}
-	wxUint32          GetTeamNumber(void)     const {return mTeamNumber;}
-	ProjectId         GetProjectId(void)      const {return mProjectId;}
-	wxInt16           GetProjectRun(void)     const {return mRun;}
-	wxInt16           GetProjectClone(void)   const {return mClone;}
-	wxInt16           GetProjectGen(void)     const {return mGen;}
-	double            GetPPD(void)            const {return mPPD;}
-	const wxDateTime& GetDownloadDate(void)   const {return mDownloadDate;}
+	bool              IsAccessible(void)            const {return mState != ST_INACCESSIBLE;}
+	bool              IsStopped(void)               const {return mState == ST_STOPPED;}
+	bool              IsInactive(void)              const {return mState == ST_INACTIVE;}
+	bool              IsRunning(void)               const {return mState == ST_RUNNING;}
+	bool              IsAsynch(void)                const {return mState == ST_ASYNCH;}
+	bool              IsHung(void)                  const {return mState == ST_HUNG;}
+	wxString          GetName(void)                 const {return mName;}
+	wxString          GetLocation(void)             const {return mLocation;}
+	wxString          GetLog(void)                  const {return mLog;}
+	wxString          GetProjectString(void)        const {return mProjectString;}
+	wxUint32          GetProgress(void)             const {return mProgress;}
+	wxString          GetProgressString(void)       const {return mProgressString;}
+	wxString          GetDonatorName(void)          const {return mUserName;}
+	wxUint32          GetTeamNumber(void)           const {return mTeamNumber;}
+	ProjectId         GetProjectId(void)            const {return mProjectId;}
+	wxInt16           GetProjectRun(void)           const {return mRun;}
+	wxInt16           GetProjectClone(void)         const {return mClone;}
+	wxInt16           GetProjectGen(void)           const {return mGen;}
+	double            GetPPD(void)                  const {return mPPD;}
+	const wxDateTime& GetDownloadDate(void)         const {return mDownloadDate;}
+	bool              GetIsFrameCountAccurate(void) const {return mIsFrameCountAccurate;}
 
 	bool ReloadNeeded(void) const;
 

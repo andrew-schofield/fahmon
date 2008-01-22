@@ -55,6 +55,7 @@
 
 // --- Colors
 #define FMC_COLOR_LIST_ODD_LINES  wxColour(228, 228, 228)
+#define FMC_COLOR_INNACURATE_PPD  wxColour(255, 221, 129)
 
 
 // --- Directories

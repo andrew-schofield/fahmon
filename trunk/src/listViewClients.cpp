@@ -385,6 +385,7 @@ void ListViewClients::UpdateClient(wxUint32 clientId)
 	if(client->IsAccessible() && !client->IsStopped() && !client->IsHung() && project != INVALID_PROJECT_ID)
 	{
 		PPD = wxString::Format(wxT("%.2f"), client->GetPPD());
+		if(!client->GetIsFrameCountAccurate()) PPD = PPD + wxT("*");
 	}
 
 	SetItem(clientIndex, LVC_PPD, PPD);
@@ -465,7 +466,6 @@ void ListViewClients::Sort(void)
 			#elif __WXMAC__
 			SetItemBackgroundColour(i, wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOWFRAME));
 			#endif
-
 		}
 		else
 		{

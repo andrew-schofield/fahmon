@@ -46,6 +46,7 @@ Client::Client(const wxString& name, const wxString& location)
 
 	SetName(name);
 	SetLocation(location);
+	SetIsFrameCountAccurate(false);
 
 	Reset();
 }
@@ -213,8 +214,32 @@ void Client::Reload(void)
 	// Extract the duration of the last frame
 	lastFrame = FahLogAnalyzer::AnalyzeLastFrame(mLog);
 
-
 	project = ProjectsManager::GetInstance()->GetProject(mProjectId);
+
+	if(lastFrame != NULL)
+	{
+		frameCount = lastFrame->GetFrameCount();
+		mIsFrameCountAccurate = true;
+		if(project->GetCoreId() == Core::TINKER)
+		{
+			frameCount = 400;
+		}
+		else if (frameCount == 0)
+		{
+			frameCount = project->GetNbFrames();
+			mIsFrameCountAccurate = false;
+		}
+		if(frameCount != project->GetNbFrames())
+		{
+			//this might be expensive, maybe just writing the single project back would be better
+			ProjectsManager::GetInstance()->AddProject(new Project(project->GetProjectId(), project->GetPreferredDeadlineInDays(), project->GetFinalDeadlineInDays(), frameCount, project->GetCredit(), project->GetCoreId()));
+			ProjectsManager::GetInstance()->Save();
+		}
+	}
+	else
+	{
+		frameCount = 100;
+	}
 
 	// Should we collect .xyz files?
 	_PrefsGetBool(PREF_FAHCLIENT_COLLECTXYZFILES, collectXYZFiles);
@@ -225,22 +250,6 @@ void Client::Reload(void)
 	// Add this duration to the benchmarks for valid projects, but don't store the same frame twice
 	if(mProjectId != INVALID_PROJECT_ID && lastFrame != NULL && !lastFrame->ClientIsStopped() && lastFrame->GetId() != mPreviouslyAnalyzedFrameId)
 	{
-		frameCount = lastFrame->GetFrameCount();
-		if(project->GetCoreId() == Core::TINKER)
-		{
-			frameCount = 400;
-		}
-		else if (frameCount == 0)
-		{
-			frameCount = project->GetNbFrames();
-		}
-		if(frameCount != project->GetNbFrames())
-		{
-			//project->SetNbFrames(frameCount);
-			//this might be expensive, maybe just writing the single project back would be better
-			ProjectsManager::GetInstance()->AddProject(new Project(project->GetProjectId(), project->GetPreferredDeadlineInDays(), project->GetFinalDeadlineInDays(), frameCount, project->GetCredit(), project->GetCoreId()));
-			ProjectsManager::GetInstance()->Save();
-		}
 		mPreviouslyAnalyzedFrameId = lastFrame->GetId();
 		// Calculate effective frame time
 		timeNow = wxDateTime::Now();
@@ -287,7 +296,6 @@ void Client::Reload(void)
 	// Needs to check state too, no point getting PPD for stopped or dead clients.
 	if (mProjectId != INVALID_PROJECT_ID && mState != ST_STOPPED && mState != ST_INACCESSIBLE && mState != ST_HUNG)
 	{
-		frameCount = lastFrame->GetFrameCount();
 		if (project != INVALID_PROJECT_ID)
 		{
 			benchmarks = BenchmarksManager::GetInstance()->GetBenchmarksList(mProjectId, nbBenchmarks);
@@ -358,7 +366,6 @@ void Client::Reload(void)
 	{
 		if (project != INVALID_PROJECT_ID)
 		{
-			frameCount = lastFrame->GetFrameCount();
 			mProgress = wxUint32((double)frameCount / ((double)frameCount / (double)lastFrame->GetId()));
 			if(project->GetCoreId() == Core::TINKER)
 				mProgress = mProgress / 4;

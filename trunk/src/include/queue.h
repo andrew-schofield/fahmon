@@ -101,13 +101,13 @@ protected:
  **/
 	typedef unsigned short u16;
 
-	ProjectId  mProjectId;
-	wxInt16    mRun;
-	wxInt16    mGen;
-	wxInt16    mClone;
-	wxDateTime mDownloadDate;
-	wxString   mUserName;
-	wxUint32   mTeamNumber;
+	ProjectId  mProjectId; /**< Object variable storing the WU project number */
+	wxInt16    mRun; /**< Object variable storing the WU run number */
+	wxInt16    mGen; /**< Object variable storing the WU generation number */
+	wxInt16    mClone; /**< Object variable storing the WU clone number */
+	wxDateTime mDownloadDate; /**< Object variable storing the WU download date */
+	wxString   mUserName; /**< Object variable storing the username associated with the WU assignment */
+	wxUint32   mTeamNumber; /**< Object variable storing the team number associated with the WU assignment */
 
 /**
  * Format of queue.dat.
@@ -212,17 +212,34 @@ protected:
 	void eswp(struct queueformat *bp, u32 qver, u32 systype);
 
 public:
+	/**
+	 * Contructor.
+	 * Constructs a new queue object.
+	 *
+	**/
 	Queue(void);
+
+	/**
+	 * Destructor.
+	**/
 	~Queue(void);
+
+	/**
+	 * Loads a given queue.dat file.
+	 * Processes queue.dat to extract useful information and stores it in protected object variables.
+	 * @param filename The input queue.dat file.
+	 * @param clientName The associated client name for the queue.
+	 * @returns true/false depending on whether the queue could be read successfully.
+	**/
 	bool LoadQueueFile(const wxString& filename, wxString clientName);
 
-	ProjectId         GetProjectId(void)    const {return mProjectId;}
-	wxInt16           GetProjectRun(void)   const {return mRun;}
-	wxInt16           GetProjectGen(void)   const {return mGen;}
-	wxInt16           GetProjectClone(void) const {return mClone;}
-	wxString          GetUserName(void)     const {return mUserName;}
-	wxUint32          GetTeamNumber(void)   const {return mTeamNumber;}
-	const wxDateTime& GetDownloadDate(void) const {return mDownloadDate;}
+	ProjectId         GetProjectId(void)    const {return mProjectId;} /**< Returns the WU project number */
+	wxInt16           GetProjectRun(void)   const {return mRun;} /**< Returns the WU run number */
+	wxInt16           GetProjectGen(void)   const {return mGen;} /**< Returns the WU generation number */
+	wxInt16           GetProjectClone(void) const {return mClone;} /**< Returns the WU clone number */
+	wxString          GetUserName(void)     const {return mUserName;} /**< Returns the user name associated with the assignment */
+	wxUint32          GetTeamNumber(void)   const {return mTeamNumber;} /**< Returns the team number associated with the assignment */
+	const wxDateTime& GetDownloadDate(void) const {return mDownloadDate;} /**< Returns the WU download date */
 
 /**
  * End qd
