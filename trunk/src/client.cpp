@@ -235,6 +235,10 @@ void Client::Reload(void)
 			ProjectsManager::GetInstance()->AddProject(new Project(project->GetProjectId(), project->GetPreferredDeadlineInDays(), project->GetFinalDeadlineInDays(), frameCount, project->GetCredit(), project->GetCoreId()));
 			ProjectsManager::GetInstance()->Save();
 		}
+		//correct for messed up WUs that run from 100%-200% etc.
+		if(project->GetCoreId() != Core::TINKER && lastFrame->GetId() > 100)
+			lastFrame->SetId(lastFrame->GetId() % 100);
+
 	}
 	else
 	{

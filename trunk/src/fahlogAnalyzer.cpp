@@ -296,6 +296,10 @@ void FahLogAnalyzer::ParseLogLine(wxString& lineToParse, LogLine& logLine)
 	{
 		logLine.type = LLT_COMPLETED;
 	}
+	else if(lineToParse.Find(wxT(" steps ")) != wxNOT_FOUND)
+	{
+		logLine.type = LLT_COMPLETED;
+	}
 	else if(lineToParse.StartsWith(wxT("Finished a frame")))
 	{
 		logLine.type = LLT_FINISHED;

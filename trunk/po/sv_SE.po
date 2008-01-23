@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv_SE\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2008-01-22 12:42+0000\n"
+"POT-Creation-Date: 2008-01-23 01:16+0000\n"
 "PO-Revision-Date: 2007-11-15 23:48+0000\n"
 "Last-Translator: Andrew Schofield <the.uncle.fungus@gmail.com>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -197,47 +197,47 @@ msgstr "Fel vid inläsning av %squeue.dat!"
 msgid "Error while reading %sunitinfo.txt!"
 msgstr "Fel vid inläsning av %sunitinfo.txt!"
 
-#: src/client.cpp:449
+#: src/client.cpp:453
 #, c-format
 msgid "The progress value in file %s could not be found/parsed"
 msgstr "Förloppet kunde inte utläsas ur %s"
 
-#: src/client.cpp:506
+#: src/client.cpp:510
 #, c-format
 msgid "Unable to save %s because it does not exist"
 msgstr "Kunde inte spara %s för att den inte finns"
 
-#: src/client.cpp:513
+#: src/client.cpp:517
 #, c-format
 msgid "Unable to create directory %s"
 msgstr "Kunde inte skapa katalogen %s"
 
-#: src/client.cpp:523
+#: src/client.cpp:527
 #, c-format
 msgid "Unable to copy %s to %s"
 msgstr "Kunde inte kopiera %s till %s"
 
-#: src/client.cpp:547
+#: src/client.cpp:551
 #, c-format
 msgid "%s is on frame %u"
 msgstr "%s är på bildruta %u"
 
-#: src/client.cpp:551
+#: src/client.cpp:555
 #, c-format
 msgid "Cannot determine frame number for %s (this isn't a problem)"
 msgstr "Kan inte bestämma bildruta för %s (det här är inget problem)"
 
-#: src/client.cpp:726
+#: src/client.cpp:730
 #, c-format
 msgid "%s has an unknown state (Unable to find a complete frame)"
 msgstr "%s är i okänt tillstånd (kunde inte hitta en hel bildruta)"
 
-#: src/client.cpp:735
+#: src/client.cpp:739
 #, c-format
 msgid "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
 msgstr "%s är stoppad (hittade raden \"Folding@Home Client Shutdown.\")"
 
-#: src/client.cpp:744
+#: src/client.cpp:748
 #, c-format
 msgid ""
 "%s has an unknown state (Unable to extract a valid elapsed time since the "
@@ -246,17 +246,17 @@ msgstr ""
 "%s är i okänt tillstånd (kunde inte beräkna en giltig tid sedan senast "
 "avklarade bildruta)"
 
-#: src/client.cpp:752
+#: src/client.cpp:756
 #, c-format
 msgid "%s has been marked as having a asynchronous clock."
 msgstr "%s har flaggats för en asynkron klocka"
 
-#: src/client.cpp:779
+#: src/client.cpp:783
 #, c-format
 msgid "%s seems to have hung : Elapsed time is %um and limit is %um"
 msgstr "%s verkar ha hängt sig : %um har förflutit och gränsen är %um"
 
-#: src/client.cpp:784
+#: src/client.cpp:788
 #, c-format
 msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
 msgstr "%s verkar vara inaktiv : %um har förflutit och gränsen är %um"
