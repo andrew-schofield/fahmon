@@ -30,6 +30,11 @@ v2.3.2
       year.
     * Fixed bug which crashed FahMon if it updates the database and psummary is
       missing the information required.
+    * Monitoring system now calculates how many markers are in a log file based
+      on FAHlog.txt analysis and only uses the psummary "frame" count if no
+      accurate determination can be made.
+    * Fixed behaviour when FAHlog reports odd completion percentages like 100%->
+      200% instead of 0%->100%.
 
     Windows
 
