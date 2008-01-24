@@ -229,7 +229,7 @@ void Client::Reload(void)
 
 	project = ProjectsManager::GetInstance()->GetProject(mProjectId);
 
-	if(lastFrame != NULL)
+	if(lastFrame != NULL && project != INVALID_PROJECT_ID)
 	{
 		frameCount = lastFrame->GetFrameCount();
 		mIsFrameCountAccurate = true;
