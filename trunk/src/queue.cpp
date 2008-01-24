@@ -16,6 +16,7 @@
 
 #include "fahmon.h"
 #include "queue.h"
+
 #include "messagesManager.h"
 #include "wx/file.h"
 
@@ -60,7 +61,9 @@ bool Queue::LoadQueueFile(const wxString& filename, wxString clientName)
 
 	// Try to open the file, check if it exists
 	if(!wxFileExists(filename))
+	{
 		return false;
+	}
 	if((fp = fopen(filename.mb_str(), "rb")) == NULL)
 	{
 		return false;
@@ -98,9 +101,9 @@ bool Queue::LoadQueueFile(const wxString& filename, wxString clientName)
 			case 7016:
 			case 7032:
 				queueversion = 324;
-				tl:				if (genome)
+tl:				if (genome)
 #ifdef __WXMAC_PPC__
-						q = "0Linux";
+					q = "0Linux";
 #else
 				q = "2Mac/PPC";
 				else
@@ -112,11 +115,11 @@ bool Queue::LoadQueueFile(const wxString& filename, wxString clientName)
 				goto tt;
 			case 7168:
 				queueversion = 500;
-				tt:				if (genome)
+tt:				if (genome)
 #ifdef __WXMAC_PPC__
-						q = "1Linux, Windows or Mac/x86";
+					q = "1Linux, Windows or Mac/x86";
 #else
-				q = "2Mac/PPC";
+					q = "2Mac/PPC";
 				else if (queuebuffer.version == 400)
 					q = "1Windows";
 #endif
@@ -245,14 +248,22 @@ void Queue::eswp(struct queueformat *bp, u32 qver, u32 systype)
 	{
 		p = &bp->entry[n];
 		if (qver < 324)
+		{
 			p = (struct queueformat::qs *) ((char *) p - 16 * n);
+		}
 		if (qver < 500)
+		{
 			p = (struct queueformat::qs *) ((char *) p - 8 * n);
+		}
 		if ((qver < 401) && (systype != 1))
+		{
 			p = (struct queueformat::qs *) ((char *) p - 4 * n);
+		}
 		p->stat = es32(p->stat);
 		if ((qver < 401) && (systype != 1))
+		{
 			p = (struct queueformat::qs *) ((char *) p - 4);
+		}
 		p->tdata[0] = es32(p->tdata[0]);
 		p->tdata[1] = es32(p->tdata[1]);
 		p->tdata[2] = es32(p->tdata[2]);
@@ -268,7 +279,9 @@ void Queue::eswp(struct queueformat *bp, u32 qver, u32 systype)
 		p->m184 = es32(p->m184);
 		p->dsiz = es32(p->dsiz);
 		if (((i = p->core) & 0xFF) == 0)
+		{
 			i = es32(i);
+		}
 		p->svr2 = es32(p->svr2);
 		p->port = es32(p->port);
 		p->expire = es32(p->expire);
@@ -287,7 +300,9 @@ void Queue::eswp(struct queueformat *bp, u32 qver, u32 systype)
 		}
 	}
 	if (qver < 500)
+	{
 		bp = (struct queueformat *) ((char *) bp - 80);
+	}
 	if (qver >= 324)
 	{
 		bp->pfract = es32(bp->pfract);

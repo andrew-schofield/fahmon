@@ -20,7 +20,7 @@
 #include "tools.h"
 #include "wx/dirdlg.h"
 #include "wx/button.h"
-#include "wx/intl.h"
+//#include "wx/intl.h"
 #include "mainDialog.h"
 #include "clientsManager.h"
 #include "staticBoldedText.h"
@@ -116,7 +116,9 @@ ClientDialog::~ClientDialog(void)
 ClientDialog* ClientDialog::GetInstance(wxWindow* parent)
 {
 	if(mInstance == NULL)
+	{
 		mInstance = new ClientDialog(parent);
+	}
 
 	return mInstance;
 }
@@ -181,7 +183,9 @@ void ClientDialog::OnBrowseButton(wxCommandEvent& event)
 
 	// Check if 'Ok' button was hit
 	if(selectedPath.empty() == false)
+	{
 		mClientLocationCtrl->SetValue(selectedPath);
+	}
 }
 
 

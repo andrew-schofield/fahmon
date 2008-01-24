@@ -161,7 +161,9 @@ bool FahMonApp::OnInit(void)
 	_PrefsGetBool(PREF_MAINDIALOG_START_MINIMISED,  startMinimised);
 	_PrefsGetBool(PREF_MAINDIALOG_ENABLE_TRAY_ICON, isTrayIconEnabled);
 	if (startMinimised != true)
+	{
 		MainDialog::GetInstance()->Show(true);
+	}
 	if (startMinimised == true && isTrayIconEnabled == false)
 	{
 		//show main window, then minimize it to taskbar

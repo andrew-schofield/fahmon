@@ -76,7 +76,9 @@ bool HTMLParser::NextToken(void)
 
 	// No more tokens if we reached the end of the file
 	if(Eof() == true)
+	{
 		return false;
+	}
 
 	// We can be either on a HTML tag, or on a piece of text
 	if(mParsedContent[0] == '<')
@@ -89,9 +91,13 @@ bool HTMLParser::NextToken(void)
 		{
 			// Ensure that there is some characters after '<'
 			if(mParsedContent.Len() > 1)
+			{
 				currentTag = mParsedContent.Mid(1);
+			}
 			else
+			{
 				currentTag = wxT("");
+			}
 
 			mParsedContent = wxT("");
 		}
@@ -145,13 +151,19 @@ HTMLParser::HTMLToken HTMLParser::TextToToken(const wxString& text)
 	// Perhaps are there some arguments with the tag, we need to ignore them (eg. <tr bgcolor="#ffffff">)
 	argumentPos = toConvert.Find(' ');
 	if(argumentPos != -1)
+	{
 		toConvert = toConvert.Mid(0, argumentPos);
+	}
 
 	// Simple comparisons...
 	if(toConvert.CmpNoCase(wxT("td")) == 0)
+	{
 		return TOKEN_TD;
+	}
 	else if(toConvert.CmpNoCase(wxT("tr")) == 0)
+	{
 		return TOKEN_TR;
+	}
 
 	return TOKEN_UNKNOWN;
 }
@@ -165,5 +177,7 @@ void HTMLParser::NextToken(wxUint32 nbTokensToSkip)
 	wxUint32 i;
 
 	for(i=0; i<nbTokensToSkip; ++i)
+	{
 		NextToken();
+	}
 }

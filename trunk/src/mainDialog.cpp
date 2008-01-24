@@ -169,8 +169,10 @@ MainDialog::MainDialog(void) : wxFrame(NULL, wxID_ANY, wxT(FMC_PRODUCT))
 	// this needs to be before the tray icon, otherwise you can still click the tray icon and crash FahMon
 	_PrefsGetBool(PREF_MAINDIALOG_UPDATE_CHECK, updateCheck);
 	if(updateCheck == true)
+	{
 		CheckForUpdates();
-	_LogMsgInfo(_T(""));
+		_LogMsgInfo(_T(""));
+	}
 
 	// The timer used for auto-reloading
 	mAutoReloadTimer.SetOwner(this);
@@ -179,7 +181,9 @@ MainDialog::MainDialog(void) : wxFrame(NULL, wxID_ANY, wxT(FMC_PRODUCT))
 	// The tray icon
 	_PrefsGetBool(PREF_MAINDIALOG_ENABLE_TRAY_ICON, trayIconEnabled);
 	if(trayIconEnabled == true)
+	{
 		TrayManager::GetInstance()->InstallIcon();
+	}
 
 }
 
@@ -249,9 +253,13 @@ bool MainDialog::Show(bool show)
 		// default one is useless if there are more than one client
 		// Of course, in the case of only one client, we can still select it
 		if(ClientsManager::GetInstance()->GetCount() == 1)
+		{
 			mClientsList->Select(0);
+		}
 		else
+		{
 			ShowClientInformation(INVALID_CLIENT_ID);
+		}
 
 		ClientsManager::GetInstance()->ReloadThreaded(CM_LOADALLF);
 	}
@@ -271,7 +279,9 @@ void MainDialog::SetAutoReloadTimer(void)
 
 	// First, we have to stop the timer if it is running, because preferences may be different from the last time
 	if(mAutoReloadTimer.IsRunning())
+	{
 		mAutoReloadTimer.Stop();
+	}
 
 	// Then, retrieve the (perhaps new) preferences
 	_PrefsGetBool(PREF_MAINDIALOG_AUTORELOAD,          isAutoReloadOn);
@@ -355,7 +365,9 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 		SetStatusText(wxT(""), STATUS_CLIENTNAME);
 
 		if(mLogFile->IsShown() == true)
+		{
 			mLogFile->SetValue(wxT(""));
+		}
 
 		return;
 	}
@@ -433,24 +445,33 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 			nbMinutes = nbMinutes % 60;
 			// Use a friendly format
 			if(nbDays != 0)
+			{
 				tempString = wxString::Format(wxT("%id %02ih %02imn"), nbDays, nbHours, nbMinutes);
+			}
 			else if(nbHours != 0)
+			{
 				tempString = wxString::Format(wxT("%ih %02imn"), nbHours, nbMinutes);
+			}
 			else
+			{
 				tempString = wxString::Format(wxT("%imn"), nbMinutes);
+			}
 
 			mDownloaded->SetLabel(wxString::Format(_("%s ago"), tempString.c_str()));
 		}
 		else if (deadlineDays == ETADS_DATE_DAY_MONTH)
 		{
 			mDownloaded->SetLabel(wxString::Format(wxT("%s"), downloadTime.Format(wxT("%d %B, %H:%M")).c_str()));
-		} else
+		}
+		else
 		{
 			mDownloaded->SetLabel(wxString::Format(wxT("%s"), downloadTime.Format(wxT("%B %d, %H:%M")).c_str()));
 		}
 	}
 	else
+	{
 		mDownloaded->SetLabel(_("N/A"));
+	}
 
 	if(client->GetProjectId() == INVALID_PROJECT_ID)
 	{
@@ -470,7 +491,8 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 	_PrefsGetBool(PREF_MAINDIALOG_AUTOUPDATEPROJECTS, autoUpdateProjects);
 
 	// This project can be unknown, if the database is not up to date
-	if(project == NULL && autoUpdateProjects){
+	if(project == NULL && autoUpdateProjects)
+	{
 		  ProjectsManager::GetInstance()->UpdateDatabase(false, false);
 		  project = ProjectsManager::GetInstance()->GetProject(client->GetProjectId());
 		  ClientsManager::GetInstance()->ReloadThreaded(CM_LOADALLF);
@@ -482,8 +504,9 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 		mPreferredDeadline->SetLabel(_("Unknown"));
 		mFinalDeadline->SetLabel(_("Unknown"));
 		_LogMsgWarning(wxString::Format(_("Project %u is unknown, you should try to update the projects database"), client->GetProjectId()));
-	} else {
-
+	}
+	else
+	{
 		// We do have project information
 		mCoreName->SetLabel(Core::IdToLongName(project->GetCoreId()));
 		mCredit->SetLabel(wxString::Format(_("%u points"), project->GetCredit()));
@@ -497,7 +520,10 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 			{
 				timeDiff = preferredDeadline.Subtract(timeNow);
 				timeInMinutes = timeDiff.GetMinutes();
-				if(timeDiff.GetMinutes() < 0) timeInMinutes = 0 - timeInMinutes;
+				if(timeDiff.GetMinutes() < 0)
+				{
+					timeInMinutes = 0 - timeInMinutes;
+				}
 
 				// Split the left time into days, hours and minutes
 				nbDays    = timeInMinutes / (24 * 60);
@@ -506,28 +532,41 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 				nbMinutes = nbMinutes % 60;
 				// Use a friendly format
 				if(nbDays != 0)
+				{
 					tempString = wxString::Format(wxT("%id %02ih %02imn"), nbDays, nbHours, nbMinutes);
+				}
 				else if(nbHours != 0)
+				{
 					tempString = wxString::Format(wxT("%ih %02imn"), nbHours, nbMinutes);
+				}
 				else
+				{
 					tempString = wxString::Format(wxT("%imn"), nbMinutes);
+				}
 
 				if(timeDiff.GetMinutes() < 0)
+				{
 					mPreferredDeadline->SetLabel(wxString::Format(_("%s ago"), tempString.c_str()));
+				}
 				else
+				{
 					mPreferredDeadline->SetLabel(wxString::Format(_("In %s"), tempString.c_str()));
+				}
 
 			}
 			else if (deadlineDays == ETADS_DATE_DAY_MONTH)
 			{
 				mPreferredDeadline->SetLabel(wxString::Format(wxT("%s"), preferredDeadline.Format(wxT("%d %B, %H:%M")).c_str()));
-			} else
+			}
+			else
 			{
 				mPreferredDeadline->SetLabel(wxString::Format(wxT("%s"), preferredDeadline.Format(wxT("%B %d, %H:%M")).c_str()));
 			}
 		}
 		else
+		{
 			mPreferredDeadline->SetLabel(_("N/A"));
+		}
 
 		// Final deadline: if it is equal to 0 day, there is no final deadline
 		if(client->GetDownloadDate().IsValid() && project->GetFinalDeadlineInDays() != 0)
@@ -538,7 +577,10 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 			{
 				timeDiff = finalDeadline.Subtract(timeNow);
 				timeInMinutes = timeDiff.GetMinutes();
-				if(timeDiff.GetMinutes() < 0) timeInMinutes = 0 - timeInMinutes;
+				if(timeDiff.GetMinutes() < 0)
+				{
+					timeInMinutes = 0 - timeInMinutes;
+				}
 
 				// Split the left time into days, hours and minutes
 				nbDays    = timeInMinutes / (24 * 60);
@@ -547,27 +589,40 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 				nbMinutes = nbMinutes % 60;
 				// Use a friendly format
 				if(nbDays != 0)
+				{
 					tempString = wxString::Format(wxT("%id %02ih %02imn"), nbDays, nbHours, nbMinutes);
+				}
 				else if(nbHours != 0)
+				{
 					tempString = wxString::Format(wxT("%ih %02imn"), nbHours, nbMinutes);
+				}
 				else
+				{
 					tempString = wxString::Format(wxT("%imn"), nbMinutes);
+				}
 
 				if(timeDiff.GetMinutes() < 0)
-				mFinalDeadline->SetLabel(wxString::Format(_("%s ago"), tempString.c_str()));
+				{
+					mFinalDeadline->SetLabel(wxString::Format(_("%s ago"), tempString.c_str()));
+				}
 				else
-				mFinalDeadline->SetLabel(wxString::Format(_("In %s"), tempString.c_str()));
+				{
+					mFinalDeadline->SetLabel(wxString::Format(_("In %s"), tempString.c_str()));
+				}
 			}
 			else if (deadlineDays == ETADS_DATE_DAY_MONTH)
 			{
 				mFinalDeadline->SetLabel(wxString::Format(wxT("%s"), finalDeadline.Format(wxT("%d %B, %H:%M")).c_str()));
-			} else
+			}
+			else
 			{
 				mFinalDeadline->SetLabel(wxString::Format(wxT("%s"), finalDeadline.Format(wxT("%B %d, %H:%M")).c_str()));
 			}
 		}
 		else
+		{
 			mFinalDeadline->SetLabel(_("N/A"));
+		}
 	}
 	// Get the total PPD to display next to progress bar
 	mWUTotalPPD->SetLabel(wxString::Format(_(" :: Total PPD: %.2f"), MainDialog::GetTotalPPD()));
@@ -837,9 +892,13 @@ inline void MainDialog::RestoreFrameState(void)
 	if(frameWidth <= 0 || frameHeight <= 0)
 	{
 		if(frameWidth == -2 && frameHeight == -2)
+		{
 			max = true;
+		}
 		else
+		{
 			max = false;
+		}
 		// -1 indicates defaults values
 		frameWidth  = -1;
 		frameHeight = -1;
@@ -874,7 +933,9 @@ void MainDialog::OnMenuReload(wxCommandEvent& event)
 	ClientId selectedClientId = mClientsList->GetSelectedClientId();
 
 	if(selectedClientId != INVALID_CLIENT_ID)
+	{
 		ClientsManager::GetInstance()->ReloadThreaded(selectedClientId);
+	}
 }
 
 
@@ -899,7 +960,9 @@ void MainDialog::OnMenuUpdateProjects(wxCommandEvent& event)
 
 	// If no error occurred while updating the database, we can then update the displayed information about clients
 	if(updateResult == true)
+	{
 		ClientsManager::GetInstance()->ReloadThreaded(CM_LOADALLF);
+	}
 }
 
 
@@ -923,9 +986,13 @@ void MainDialog::OnMenuToggleLog(wxCommandEvent& event)
 
 	// Resize the frame
 	if(isLogShown)
+	{
 		SetSize(-1, GetSize().GetHeight() + frameResizingOffset);
+	}
 	else
+	{
 		SetSize(-1, GetSize().GetHeight() - frameResizingOffset);
+	}
 
 	// Load the correct log file (if any) when we are going to show the wxTextCtrl
 	selectedClientId = mClientsList->GetSelectedClientId();
@@ -960,9 +1027,13 @@ void MainDialog::OnMenuBenchmarks(wxCommandEvent& event)
 	selectedClientId = mClientsList->GetSelectedClientId();
 
 	if(selectedClientId == INVALID_CLIENT_ID)
+	{
 		selectedProjectId = INVALID_PROJECT_ID;
+	}
 	else
+	{
 		selectedProjectId = ClientsManager::GetInstance()->Get(selectedClientId)->GetProjectId();
+	}
 
 	// Ok, display the dialog
 	BenchmarksDialog::GetInstance(this)->ShowModal(selectedProjectId);
@@ -997,15 +1068,22 @@ void MainDialog::OnMenuWeb(wxCommandEvent& event)
 			if(selectedClientId != INVALID_CLIENT_ID)
 			{
 				if(event.GetId() == MID_WWWJMOL)
+				{
 					Tools::OpenURLInBrowser(ClientsManager::GetInstance()->Get(selectedClientId)->GetJmolURL());
-				else
-				if(event.GetId() == MID_WWWFAHINFO)
+				}
+				else if(event.GetId() == MID_WWWFAHINFO)
+				{
 					Tools::OpenURLInBrowser(ClientsManager::GetInstance()->Get(selectedClientId)->GetFahinfoURL());
+				}
 				else
+				{
 					Tools::OpenURLInBrowser(ClientsManager::GetInstance()->Get(selectedClientId)->GetDonatorStatsURL());
+				}
 			}
 			else
+			{
 				Tools::ErrorMsgBox(_("You must first select a client!"));
+			}
 			break;
 
 		//--
@@ -1106,7 +1184,9 @@ void MainDialog::OnIconize(wxIconizeEvent& event)
 		_PrefsGetBool(PREF_MAINDIALOG_ENABLE_TRAY_ICON, isTrayIconEnabled);
 
 		if(isTrayIconEnabled)
+		{
 			Hide();
+		}
 	}
 }
 
@@ -1132,7 +1212,9 @@ void MainDialog::OnClientReloaded(wxCommandEvent& event)
 
 	// However, other information must be updated only if the client is the currently selected one
 	if(clientId == mClientsList->GetSelectedClientId())
+	{
 		ShowClientInformation(clientId);
+	}
 }
 
 
@@ -1154,8 +1236,12 @@ void MainDialog::OnNewClientAdded(wxCommandEvent& event)
 	// Re-display all clients, except the new one (not yet loaded)
 	clientId = (wxUint32)event.GetInt();
 	for(i=0; i<ClientsManager::GetInstance()->GetCount(); ++i)
+	{
 		if(i != clientId)
+		{
 			mClientsList->UpdateClient(i);
+		}
+	}
 
 	// Finally load the new one
 	// It will be automatically displayed when done
@@ -1178,7 +1264,9 @@ void MainDialog::OnClientDeleted(wxCommandEvent& event)
 
 	// Re-display all left clients
 	for(i=0; i<ClientsManager::GetInstance()->GetCount(); ++i)
+	{
 		mClientsList->UpdateClient(i);
+	}
 
 }
 
@@ -1263,9 +1351,13 @@ void MainDialog::OnTrayIconPrefChanged(void)
 
 	// And install/uninstall the icon as needed
 	if(isTrayIconEnabled)
+	{
 		TrayManager::GetInstance()->InstallIcon();
+	}
 	else
+	{
 		TrayManager::GetInstance()->UninstallIcon();
+	}
 }
 
 /**
@@ -1284,7 +1376,9 @@ void MainDialog::OnDeadlinePrefChanged(void)
 	ClientId selectedClientId = mClientsList->GetSelectedClientId();
 
 	if(selectedClientId != INVALID_CLIENT_ID)
+	{
 		ClientsManager::GetInstance()->ReloadThreaded(selectedClientId);
+	}
 }
 
 /**
@@ -1299,14 +1393,14 @@ double MainDialog::GetTotalPPD(void)
 
 	TotalPPD = 0;
 
-	for(i=0; i<mClientsList->GetItemCount(); ++i) {
+	for(i=0; i<mClientsList->GetItemCount(); ++i)
+	{
 		test = mClientsList->GetCellContentsString(i,4);
 		test.ToDouble(&tmpdouble);
 		TotalPPD = TotalPPD + tmpdouble;
 	}
 
 	return TotalPPD;
-
 }
 
 /**
@@ -1337,19 +1431,22 @@ void MainDialog::OnMenuToggleETADate(wxCommandEvent& event)
 	switch(etaStyle)
 	{
 		case ETADS_DATE_DAY_MONTH:
-		_PrefsSetUint(PREF_ETA_DISPLAYSTYLE, ETADS_DATE_MONTH_DAY);
-		OnETAStylePrefChanged();
-		break;
+			_PrefsSetUint(PREF_ETA_DISPLAYSTYLE, ETADS_DATE_MONTH_DAY);
+			OnETAStylePrefChanged();
+			break;
 
 		case ETADS_DATE_MONTH_DAY:
-		_PrefsSetUint(PREF_ETA_DISPLAYSTYLE, ETADS_LEFT_TIME);
-		OnETAStylePrefChanged();
-		break;
+			_PrefsSetUint(PREF_ETA_DISPLAYSTYLE, ETADS_LEFT_TIME);
+			OnETAStylePrefChanged();
+			break;
 
 		case ETADS_LEFT_TIME:
-		_PrefsSetUint(PREF_ETA_DISPLAYSTYLE, ETADS_DATE_DAY_MONTH);
-		OnETAStylePrefChanged();
-		break;
+			_PrefsSetUint(PREF_ETA_DISPLAYSTYLE, ETADS_DATE_DAY_MONTH);
+			OnETAStylePrefChanged();
+			break;
+
+		default:
+			break;
 	}
 }
 
@@ -1383,7 +1480,9 @@ void MainDialog::CheckForUpdates(void)
 
 		// Don't forget to remove the file before leaving, if it is needed
 		if(updateFile.IsEmpty() == false)
+		{
 			wxRemoveFile(updateFile);
+		}
 
 		// Stop there, since we cannot parse a non-existing file
 		return;
@@ -1391,7 +1490,9 @@ void MainDialog::CheckForUpdates(void)
 	progressManager.EndTask();
 
 	if(!wxFileExists(updateFile) || !in.Open(updateFile))
+	{
 		return;
+	}
 
 	versionInfo = in.GetLine(in.GetLineCount()-1);
 	_LogMsgInfo(wxString::Format(_("Your version: %s; New version: %s"), wxT(FMC_VERSION), versionInfo.c_str()));
@@ -1410,8 +1511,12 @@ void MainDialog::CheckForUpdates(void)
 	{
 		_LogMsgInfo(_("Update available"));
 		if(Tools::QuestionMsgBox(_("A newer version of FahMon is available\nDo you want to go to the FahMon website?")) == true)
+		{
 			Tools::OpenURLInBrowser(wxT("http://fahmon.net/download.html"));
-	} else {
+		}
+	}
+	else
+	{
 		_LogMsgInfo(_("No update found"));
 	}
 }
@@ -1434,7 +1539,9 @@ bool MainDialog::DownloadUpdateFile(wxString& fileName, ProgressManager& progres
 
 	// If nothing went wrong, we can stop here
 	if(downloadStatus == HTTPDownloader::STATUS_NO_ERROR)
+	{
 		return true;
+	}
 
 	// Otherwise, we create an explicit error message to specify what went wrong
 	switch(downloadStatus)

@@ -81,9 +81,13 @@ Preference::Preference(wxString name, const wxString& value, bool isHidden)
 	// Hidden strings are stored in the same way as 'normal' strings
 	// Only the method used to read/write them is different
 	if(isHidden == true)
+	{
 		mPrefType = PT_HIDDEN_STRING;
+	}
 	else
+	{
 		mPrefType = PT_STRING;
+	}
 
 	mPrefName    = name;
 	mStringValue = value;

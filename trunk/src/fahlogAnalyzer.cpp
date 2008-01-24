@@ -16,6 +16,7 @@
 
 #include "fahmon.h"
 #include "fahlogAnalyzer.h"
+
 #include "messagesManager.h"
 #include "preferencesManager.h"
 #include "mainDialog.h"

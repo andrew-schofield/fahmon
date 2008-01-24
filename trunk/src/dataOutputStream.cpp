@@ -32,7 +32,9 @@ DataOutputStream::DataOutputStream(const wxString& filename)
 	{
 		mBufferedOS = new wxBufferedOutputStream(*mFileOS);
 		if(mBufferedOS != NULL)
+		{
 			mDataOS = new wxDataOutputStream(*mBufferedOS);
+		}
 	}
 }
 
@@ -43,7 +45,9 @@ DataOutputStream::DataOutputStream(const wxString& filename)
 DataOutputStream::~DataOutputStream(void)
 {
 	if(mDataOS != NULL)
+	{
 		delete mDataOS;
+	}
 
 	if(mBufferedOS != NULL)
 	{
@@ -52,7 +56,9 @@ DataOutputStream::~DataOutputStream(void)
 	}
 
 	if(mFileOS != NULL)
+	{
 		delete mFileOS;
+	}
 }
 
 

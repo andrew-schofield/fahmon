@@ -86,11 +86,17 @@ inline wxString ETA::GetString_LeftTime(void) const
 
 	// Use a friendly format
 	if(nbDays != 0)
+	{
 		return wxString::Format(wxT("%ud %02uh %02umn"), nbDays, nbHours, nbMinutes);
+	}
 	else if(nbHours != 0)
+	{
 		return wxString::Format(wxT("%uh %02umn"), nbHours, nbMinutes);
+	}
 	else
+	{
 		return wxString::Format(wxT("%umn"), nbMinutes);
+	}
 }
 
 

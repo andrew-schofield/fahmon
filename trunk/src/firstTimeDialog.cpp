@@ -111,7 +111,9 @@ FirstTimeDialog::~FirstTimeDialog(void)
 FirstTimeDialog* FirstTimeDialog::GetInstance(void)
 {
 	if(mInstance == NULL)
+	{
 		mInstance = new FirstTimeDialog();
+	}
 
 	return mInstance;
 }

@@ -170,11 +170,17 @@ void WebMonitor::WriteApp(void)
 						nbMinutes = nbMinutes % 60;
 					// Use a friendly format
 						if(nbDays != 0)
+						{
 							tempString = wxString::Format(_T("%id %02ih %02imn"), nbDays, nbHours, nbMinutes);
+						}
 						else if(nbHours != 0)
+						{
 							tempString = wxString::Format(_T("%ih %02imn"), nbHours, nbMinutes);
+						}
 						else
+						{
 							tempString = wxString::Format(_T("%imn"), nbMinutes);
+						}
 
 						mDataArray[currentClient][8] = wxString::Format(_("%s ago"), tempString.c_str());
 						mUpdateDate = wxString::Format(wxT("%s"), timeNow.Format(wxT("%d %B, %H:%M")).c_str());
@@ -209,7 +215,9 @@ void WebMonitor::WriteApp(void)
 						mDataArray[currentClient][6] = _("N/A");
 						mDataArray[currentClient][9] = _("N/A");
 						mDataArray[currentClient][10] = _("N/A");
-					} else {
+					}
+					else
+					{
 						mDataArray[currentClient][6] = wxString::Format(_("%u points"), project->GetCredit());
 						mDataArray[currentClient][4] = Core::IdToLongName(project->GetCoreId());
 						if(client->GetDownloadDate().IsValid() && project->GetPreferredDeadlineInDays() != 0)
@@ -220,7 +228,10 @@ void WebMonitor::WriteApp(void)
 							{
 								timeDiff = preferredDeadline.Subtract(timeNow);
 								timeInMinutes = timeDiff.GetMinutes();
-								if(timeDiff.GetMinutes() < 0) timeInMinutes = 0 - timeInMinutes;
+								if(timeDiff.GetMinutes() < 0)
+								{
+									timeInMinutes = 0 - timeInMinutes;
+								}
 							// Split the left time into days, hours and minutes
 								nbDays    = timeInMinutes / (24 * 60);
 								nbMinutes = timeInMinutes % (24 * 60);
@@ -228,17 +239,26 @@ void WebMonitor::WriteApp(void)
 								nbMinutes = nbMinutes % 60;
 							// Use a friendly format
 								if(nbDays != 0)
+								{
 									tempString = wxString::Format(_T("%id %02ih %02imn"), nbDays, nbHours, nbMinutes);
+								}
 								else if(nbHours != 0)
+								{
 									tempString = wxString::Format(_T("%ih %02imn"), nbHours, nbMinutes);
+								}
 								else
+								{
 									tempString = wxString::Format(_T("%imn"), nbMinutes);
+								}
 
 								if(timeDiff.GetMinutes() < 0)
+								{
 									mDataArray[currentClient][9] = wxString::Format(_("%s ago"), tempString.c_str());
+								}
 								else
+								{
 									mDataArray[currentClient][9] = wxString::Format(_("In %s"), tempString.c_str());
-
+								}
 							}
 							else if (deadlineDays == ETADS_DATE_DAY_MONTH)
 							{
@@ -250,7 +270,9 @@ void WebMonitor::WriteApp(void)
 							}
 						}
 						else
+						{
 							mDataArray[currentClient][9] = _("N/A");
+						}
 
 					// Final deadline: if it is equal to 0 day, there is no final deadline
 						if(client->GetDownloadDate().IsValid() && project->GetFinalDeadlineInDays() != 0)
@@ -261,7 +283,10 @@ void WebMonitor::WriteApp(void)
 							{
 								timeDiff = finalDeadline.Subtract(timeNow);
 								timeInMinutes = timeDiff.GetMinutes();
-								if(timeDiff.GetMinutes() < 0) timeInMinutes = 0 - timeInMinutes;
+								if(timeDiff.GetMinutes() < 0)
+								{
+									timeInMinutes = 0 - timeInMinutes;
+								}
 							// Split the left time into days, hours and minutes
 								nbDays    = timeInMinutes / (24 * 60);
 								nbMinutes = timeInMinutes % (24 * 60);
@@ -269,16 +294,26 @@ void WebMonitor::WriteApp(void)
 								nbMinutes = nbMinutes % 60;
 							// Use a friendly format
 								if(nbDays != 0)
+								{
 									tempString = wxString::Format(_T("%id %02ih %02imn"), nbDays, nbHours, nbMinutes);
+								}
 								else if(nbHours != 0)
+								{
 									tempString = wxString::Format(_T("%ih %02imn"), nbHours, nbMinutes);
+								}
 								else
+								{
 									tempString = wxString::Format(_T("%imn"), nbMinutes);
+								}
 
 								if(timeDiff.GetMinutes() < 0)
+								{
 									mDataArray[currentClient][10] = wxString::Format(_("%s ago"), tempString.c_str());
+								}
 								else
+								{
 									mDataArray[currentClient][10] = wxString::Format(_("In %s"), tempString.c_str());
+								}
 							}
 							else if (deadlineDays == ETADS_DATE_DAY_MONTH)
 							{
@@ -290,7 +325,9 @@ void WebMonitor::WriteApp(void)
 							}
 						}
 						else
+						{
 							mDataArray[currentClient][10] = _("N/A");
+						}
 					}
 				}
 			}
@@ -329,11 +366,26 @@ void WebMonitor::WriteApp(void)
 			mDataArray[currentClient][0] = client->GetProgressString();
 			mDataArray[currentClient][1] = client->GetName();
 
-			if(client->GetProgress() == 100)                        mDataArray[currentClient][2] = _("Finished");
-			else if(!client->IsAccessible() || client->IsStopped()) mDataArray[currentClient][2] = _("N/A");
-			else if(!client->GetETA()->IsOk())                      mDataArray[currentClient][2] = _("N/A");
-			else if(client->IsHung())                               mDataArray[currentClient][2] = _("*Hung*");
-			else                                                    mDataArray[currentClient][2] = client->GetETA()->GetString().c_str();
+			if(client->GetProgress() == 100)
+			{
+				mDataArray[currentClient][2] = _("Finished");
+			}
+			else if(!client->IsAccessible() || client->IsStopped())
+			{
+				mDataArray[currentClient][2] = _("N/A");
+			}
+			else if(!client->GetETA()->IsOk())
+			{
+				mDataArray[currentClient][2] = _("N/A");
+			}
+			else if(client->IsHung())
+			{
+				mDataArray[currentClient][2] = _("*Hung*");
+			}
+			else
+			{
+				mDataArray[currentClient][2] = client->GetETA()->GetString().c_str();
+			}
 
 			mDataArray[currentClient][3] = _T("--");
 
@@ -549,12 +601,19 @@ wxString WebMonitor::DecodeTemplate(wxString templateCode, wxUint32 clientId)
 			tCode = _T("list_client_ok.png");
 		}
 	}
-	else if (templateCode == wxT("@CLIENT_ID@")) tCode = wxString::Format(wxT("%i"), clientId+1);
+	else if (templateCode == wxT("@CLIENT_ID@"))
+	{
+		tCode = wxString::Format(wxT("%i"), clientId+1);
+	}
 
 	if(padding>0)
+	{
 		return PadToLength(tCode, padding);
+	}
 	else
+	{
 		return tCode;
+	}
 
 }
 

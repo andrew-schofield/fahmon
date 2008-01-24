@@ -49,7 +49,9 @@ void* ProjectHelperThread::Entry(void)
 	// Post an event to the queue of the MainDialog to warn it that the job is done
 	// We do this only if everything went OK
 	if(updateResult == true)
+	{
 		MainDialog::GetInstance()->AddPendingEvent(event);
+	}
 
 	// Dummy return code
 	return NULL;

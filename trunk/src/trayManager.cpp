@@ -75,7 +75,9 @@ TrayManager::~TrayManager(void)
 TrayManager* TrayManager::GetInstance(void)
 {
 	if(mInstance == NULL)
+	{
 		mInstance = new TrayManager();
+	}
 
 	return mInstance;
 }
@@ -116,7 +118,9 @@ void TrayManager::InstallIcon(void)
 void TrayManager::UninstallIcon(void)
 {
 	if(IsIconInstalled() == true)
+	{
 		RemoveIcon();
+	}
 }
 
 
@@ -209,7 +213,9 @@ wxMenu* TrayManager::CreatePopupMenu()
 	if (MainDialog::GetInstance()->IsShown()) {
 		//hide item
 		traymenu->Append(TRAY_MENU_HIDE, _("Hide FahMon"));
-	} else {
+	}
+	else
+	{
 		//show item
 		traymenu->Append(TRAY_MENU_SHOW, _("Show FahMon"));
 	}
@@ -229,7 +235,7 @@ wxMenu* TrayManager::CreatePopupMenu()
 **/
 void TrayManager::Close(wxCommandEvent&)
 {
-		MainDialog::GetInstance()->Close();
+	MainDialog::GetInstance()->Close();
 }
 
 /**
@@ -237,16 +243,16 @@ void TrayManager::Close(wxCommandEvent&)
 **/
 void TrayManager::Show(wxCommandEvent&)
 {
-		MainDialog::GetInstance()->Show();
-		MainDialog::GetInstance()->Raise();
+	MainDialog::GetInstance()->Show();
+	MainDialog::GetInstance()->Raise();
 
-		MainDialog::GetInstance()->TrayReloadSelectedClient();
+	MainDialog::GetInstance()->TrayReloadSelectedClient();
 
-		// Fortunately, this function seems to keep track of the previous maximize state of the window;
-		// otherwise, we would have to do that
-		#ifdef _FAHMON_WIN32_
-		MainDialog::GetInstance()->Maximize(false);
-		#endif
+	// Fortunately, this function seems to keep track of the previous maximize state of the window;
+	// otherwise, we would have to do that
+	#ifdef _FAHMON_WIN32_
+	MainDialog::GetInstance()->Maximize(false);
+	#endif
 }
 
 /**
@@ -254,9 +260,9 @@ void TrayManager::Show(wxCommandEvent&)
 **/
 void TrayManager::Hide(wxCommandEvent&)
 {
-		// Must minimize to the task bar first so that we get the minimize animation :)
-		MainDialog::GetInstance()->Iconize();
-		MainDialog::GetInstance()->Hide();
+	// Must minimize to the task bar first so that we get the minimize animation :)
+	MainDialog::GetInstance()->Iconize();
+	MainDialog::GetInstance()->Hide();
 }
 
 /**

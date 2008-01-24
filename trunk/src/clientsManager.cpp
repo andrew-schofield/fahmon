@@ -109,7 +109,6 @@ void ClientsManager::Edit(wxUint32 clientId, const wxString& name, const wxStrin
 	mClients.Item(clientId)->SetLocation(location);
 
 	Save();
-
 }
 
 
@@ -133,7 +132,9 @@ inline void ClientsManager::Load(void)
 	// Try to open the file, check if it exists
 	inputFilename = PathManager::GetCfgPath() + wxT(FMC_FILE_CLIENTS);
 	if(wxFileExists(inputFilename) == false || in.Open(inputFilename) == false)
+	{
 		return;
+	}
 
 	// Retrieve each client, one by line
 	for(i=0; i<in.GetLineCount(); ++i)
@@ -229,7 +230,9 @@ void ClientsManager::ReloadThreaded(wxUint32 clientId)
 	wxUint32 i;
 
 	if(clientId != CM_LOADALL && clientId != CM_LOADALLF)
+	{
 		new ClientHelperThread(clientId);
+	}
 	else
 	{
 		for(i=0; i<GetCount(); ++i)
@@ -267,8 +270,12 @@ wxString ClientsManager::GetNameFromLocation(const wxString& location) const
 	wxUint32 i;
 
 	for(i=0; i<GetCount(); ++i)
+	{
 		if(location.Cmp(mClients[i]->GetLocation()) == 0)
+		{
 			return mClients[i]->GetName();
+		}
+	}
 
 	return wxT("");
 }

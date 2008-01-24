@@ -121,10 +121,14 @@ inline void ProjectsManager::Load(void)
 	}
 	in.ReadUint(version);
 	if(version < 1 || version > FMC_PROJECTS_VERSION)
+	{
 		version = 1;
+	}
 
 	if(version == 1)
+	{
 		UpdateToV2();
+	}
 }
 
 
@@ -147,7 +151,9 @@ inline void ProjectsManager::Save(void)
 	//  2) Then, each project is written
 	out.WriteUint(mProjectsHashMap.size());
 	for(iterator=mProjectsHashMap.begin(); iterator!=mProjectsHashMap.end(); ++iterator)
+	{
 		iterator->second->Write(out);
+	}
 	// write projects database version
 	out.WriteUint(FMC_PROJECTS_VERSION);
 }
@@ -175,9 +181,13 @@ const Project* ProjectsManager::GetProject(ProjectId projectId)
 	ProjectsListHashMap::iterator iterator = mProjectsHashMap.find(projectId);
 
 	if(iterator == mProjectsHashMap.end())
+	{
 		return NULL;
+	}
 	else
+	{
 		return iterator->second;
+	}
 }
 
 
@@ -197,7 +207,9 @@ bool ProjectsManager::ShouldPerformUpdate(void)
 
 	elapsedTime = (wxUint32)(wxGetLocalTime() - mLastUpdateTimestamp);
 	if(elapsedTime < intervalBetweenUpdates)
+	{
 		return false;
+	}
 
 	return true;
 }
@@ -233,7 +245,9 @@ bool ProjectsManager::UpdateDatabase(bool forced, bool silentMode)
 
 	// Don't perform this update if we shouldn't
 	if(forced == false && ShouldPerformUpdate() == false)
+	{
 		return false;
+	}
 
 	// This update will be the new reference
 	mLastUpdateTimestamp = wxGetLocalTime();
@@ -249,11 +263,15 @@ bool ProjectsManager::UpdateDatabase(bool forced, bool silentMode)
 	{
 		// Display the message only if we are not in silent mode
 		if(silentMode == false)
+		{
 			Tools::ErrorMsgBox(errorMsg);
+		}
 
 		// Don't forget to remove the file before leaving, if it is needed
 		if(projectFile.IsEmpty() == false)
+		{
 			wxRemoveFile(projectFile);
+		}
 
 		// Stop there, since we cannot parse a non-existing file
 		return false;
@@ -267,7 +285,9 @@ bool ProjectsManager::UpdateDatabase(bool forced, bool silentMode)
 	if(Update_ParseProjectsFile(projectFile, progressManager, errorMsg) == false)
 	{
 		if(silentMode == false)
+		{
 			Tools::ErrorMsgBox(errorMsg);
+		}
 	}
 	progressManager.EndTask();
 
@@ -323,7 +343,9 @@ bool ProjectsManager::Update_DownloadProjectsFile(wxString& fileName, ProgressMa
 
 		// If nothing went wrong, we can stop here
 		if(downloadStatus == HTTPDownloader::STATUS_NO_ERROR)
+		{
 			return true;
+		}
 
 		// Otherwise, we create an explicit error message to specify what went wrong
 		switch(downloadStatus)
@@ -354,25 +376,30 @@ bool ProjectsManager::Update_DownloadProjectsFile(wxString& fileName, ProgressMa
 				errorMsg = _("An unknown error happened!");
 				break;
 		}
-	} else {
+	}
+	else
+	{
 		fileexists = wxFileExists(projectLocalFile);
 		if(fileexists == false)
 		{
 			errorMsg = _("Local project update file doesn't exist!");
 			return false;
-		} else {
+		}
+		else
+		{
 			fileName = wxFileName::CreateTempFileName(wxT(FMC_APPNAME));
 			copied = wxCopyFile(projectLocalFile, fileName);
 			if(copied == false)
 			{
 				errorMsg = _("Unable to copy local project update file to temporary location");
 				return false;
-			} else {
+			}
+			else
+			{
 				return true;
 			}
 		}
 	}
-
 	return false;
 }
 
@@ -410,7 +437,9 @@ bool ProjectsManager::Update_ParseProjectsFile(const wxString& fileName, Progres
 		{
 			// The first line containing the searched string is the header of the table, so we simply ignore it
 			if(tableHeaderFound == false)
+			{
 				tableHeaderFound = true;
+			}
 			else
 			{
 				// 23 is the length of the string we've been looking for, projectInfo string won't contain it
@@ -420,7 +449,9 @@ bool ProjectsManager::Update_ParseProjectsFile(const wxString& fileName, Progres
 				// If the parser fails, store the error and continue with the next line
 				project = Update_ParseProjectInfo(projectInfo);
 				if(project != NULL)
+				{
 					AddProject(project);
+				}
 				else
 				{
 					errorMsg = wxString::Format(_("The line %u is not correctly formatted!\n\n%s"), i+1, currentLine.c_str());
@@ -465,7 +496,9 @@ Project* ProjectsManager::Update_ParseProjectInfo(const wxString& projectInfo) c
 	// The identifier
 	parser.NextToken(2);
 	if(parser.GetCurrentText().ToLong(&tmpLong) == false)
+	{
 		return NULL;
+	}
 	projectId = (ProjectId)tmpLong;
 
 	// Preferred deadline in days
@@ -473,11 +506,15 @@ Project* ProjectsManager::Update_ParseProjectInfo(const wxString& projectInfo) c
 	// of the value
 	parser.NextToken(12);
 	if(parser.GetCurrentText().Find(wxT("--")) != -1)
+	{
 		preferredDeadlineInDays = 0;
+	}
 	else
 	{
 		if(parser.GetCurrentText().ToDouble(&tmpDouble) == false)
+		{
 			return NULL;
+		}
 		preferredDeadlineInDays = (wxUint32)tmpDouble * 100;
 	}
 
@@ -485,30 +522,40 @@ Project* ProjectsManager::Update_ParseProjectInfo(const wxString& projectInfo) c
 	// This can also be the case for the final deadline
 	parser.NextToken(3);
 	if(parser.GetCurrentText().Find(wxT("--")) != -1)
+	{
 		finalDeadlineInDays = 0;
+	}
 	else
 	{
 		if(parser.GetCurrentText().ToDouble(&tmpDouble) == false)
+		{
 			return NULL;
+		}
 		finalDeadlineInDays = (wxUint32)tmpDouble * 100;
 	}
 
 	// Credit
 	parser.NextToken(3);
 	if(parser.GetCurrentText().ToDouble(&tmpDouble) == false)
+	{
 		return NULL;
+	}
 	credit = (WuCredit)tmpDouble;
 
 	// Number of frames
 	parser.NextToken(3);
 	if(parser.GetCurrentText().ToLong(&tmpLong) == false)
+	{
 		return NULL;
+	}
 	nbFrames = (FrameId)tmpLong;
 
 	// The erroneous Gromacs 33 '0 frame' issue is no longer present
 	// Thus apply a generic rule for if frames = 0 then frames = 100
 	if (nbFrames == 0)
+	{
 		nbFrames = 100;
+	}
 
 	// Core
 	parser.NextToken(3);

@@ -25,7 +25,9 @@ const wxChar* Base64Codec::mBase64Table = _T("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefgh
 wxChar Base64Codec::Base64IndexToChar(wxUint32 index)
 {
 	if(index < 64)
+	{
 		return mBase64Table[index];
+	}
 
 	_LogMsgError(_T("Base64Codec: The given base64 index is greater than 63!"));
 
@@ -37,19 +39,29 @@ wxChar Base64Codec::Base64IndexToChar(wxUint32 index)
 wxUint32 Base64Codec::CharToBase64Index(wxChar c)
 {
 	if(c >= 'A' && c <= 'Z')
+	{
 		return c - 'A';
+	}
 
 	if(c >= 'a' && c <= 'z')
+	{
 		return c - 'a' + 26;
+	}
 
 	if(c >= '0' && c <= '9')
+	{
 		return c - '0' + 52;
+	}
 
 	if(c == '+')
+	{
 		return 62;
+	}
 
 	if(c == '/')
+	{
 		return 63;
+	}
 
 	_LogMsgError(_T("Base64Codec: The given base64 character is invalid!"));
 

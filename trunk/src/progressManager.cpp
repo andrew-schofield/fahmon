@@ -51,7 +51,9 @@ ProgressManager::ProgressManager(bool isInSilentMode)
 ProgressManager::~ProgressManager(void)
 {
 	if(mIsInSilentMode == false)
+	{
 		delete mProgressDlg;
+	}
 }
 
 
@@ -66,7 +68,9 @@ bool ProgressManager::SetText(const wxString& text)
 	wxString textToDisplay;
 
 	if(mIsInSilentMode == true)
+	{
 		return true;
+	}
 
 	if(mIsATaskActive == true)
 	{
@@ -81,7 +85,9 @@ bool ProgressManager::SetText(const wxString& text)
 	}
 
 	if(progressToDisplay > 100)
+	{
 		progressToDisplay = 100;
+	}
 
 	return mProgressDlg->Update(progressToDisplay, textToDisplay);
 }
@@ -97,14 +103,18 @@ bool ProgressManager::SetProgress(wxUint32 progress)
 	wxUint32 progressToDisplay;
 
 	if(mIsInSilentMode == true)
+	{
 		return true;
+	}
 
 	// Decide whether the new progress is about the total progress, or the progress of the current task
 	if(mIsATaskActive == true)
 	{
 		mTaskCurrentProgress = progress;
 		if(mTaskCurrentProgress > 100)
+		{
 			mTaskCurrentProgress = 100;
+		}
 
 		progressToDisplay = mCurrentProgress + ((mTaskCurrentProgress * mTaskPercentageOfTotal) / 100);
 	}
@@ -112,7 +122,9 @@ bool ProgressManager::SetProgress(wxUint32 progress)
 	{
 		mCurrentProgress = progress;
 		if(mCurrentProgress > 100)
+		{
 			mCurrentProgress = 100;
+		}
 
 		progressToDisplay = mCurrentProgress;
 	}
@@ -146,7 +158,9 @@ bool ProgressManager::SetTextAndProgress(const wxString& text, wxUint32 progress
 void ProgressManager::CreateTask(wxUint32 percentageOfTotal)
 {
 	if(mIsInSilentMode == true)
+	{
 		return;
+	}
 
 	wxASSERT(mIsATaskActive == false);
 
@@ -162,7 +176,9 @@ void ProgressManager::CreateTask(wxUint32 percentageOfTotal)
 void ProgressManager::EndTask(void)
 {
 	if(mIsInSilentMode == true)
+	{
 		return;
+	}
 
 	wxASSERT(mIsATaskActive == true);
 

@@ -39,7 +39,9 @@ PathManager::PathManager(void)
 
 	homeDir = wxGetHomeDir();
 	if(homeDir.Last() != '/')
+	{
 		homeDir += wxT("/");
+	}
 
 	mImgPath = wxString::Format(wxT("%s/pixmaps/fahmon/"), wxT(DATADIR));
 	mGlobalTplPath = wxString::Format(wxT("%s/fahmon/templates/"), wxT(DATADIR));
@@ -68,7 +70,9 @@ PathManager::PathManager(void)
 const PathManager* PathManager::GetInstance(void)
 {
 	if(mInstance == NULL)
+	{
 		mInstance = new PathManager();
+	}
 
 	return mInstance;
 }

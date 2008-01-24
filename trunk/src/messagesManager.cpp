@@ -16,8 +16,8 @@
 
 #include "fahmon.h"
 #include "messagesManager.h"
-#include "pathManager.h"
 
+#include "pathManager.h"
 #include "mainDialog.h"
 #include "wx/datetime.h"
 #include "wx/txtstrm.h"
@@ -119,5 +119,7 @@ void MessagesManager::Log(const wxString& msg)
 	// Warn the main dialog about this message
 	// We can't directly call methods of MessagesFrame, we must use the main dialog to transfer the warning
 	if(MainDialog::HasBeenInstanciated() == true)
+	{
 		MainDialog::GetInstance()->AddPendingEvent(event);
+	}
 }

@@ -64,7 +64,6 @@ HTTPDownloader::DownloadStatus HTTPDownloader::DownloadFile(const wxString& host
 	DownloadStatus      returnValue;
 	wxFileOutputStream *out;
 
-
 	// --- Retrieve proxy configuration
 	_PrefsGetBool        (PREF_HTTPDOWNLOADER_USEPROXY,                   isUsingProxy);
 	_PrefsGetString      (PREF_HTTPDOWNLOADER_PROXYADDRESS,               proxyAddress);
@@ -73,15 +72,18 @@ HTTPDownloader::DownloadStatus HTTPDownloader::DownloadFile(const wxString& host
 	_PrefsGetString      (PREF_HTTPDOWNLOADER_PROXY_USERNAME,             proxyUsername);
 	_PrefsGetHiddenString(PREF_HTTPDOWNLOADER_PROXY_PASSWORD,             proxyPassword);
 
-
 	// --- Create a temporary local file and try to open it
 	localFileName = wxFileName::CreateTempFileName(wxT(FMC_APPNAME));
 	if(localFileName.empty() == true)
+	{
 		return STATUS_TEMP_FILE_CREATION_ERROR;
+	}
 
 	out = new wxFileOutputStream(localFileName);
 	if(out->Ok() == false)
+	{
 		return STATUS_TEMP_FILE_OPEN_ERROR;
+	}
 
 
 	// --- Forge the request, considering the proxy configuration, and fill the address of the 'real' host to contact
@@ -94,7 +96,9 @@ HTTPDownloader::DownloadStatus HTTPDownloader::DownloadFile(const wxString& host
 			request                   = wxString::Format(wxT("GET http://%s:%u/%s HTTP/1.0\nHost: %s\nProxy-Authorization: Basic %s\nUser-Agent: %s/%s\n\n"), host.c_str(), port, resource.c_str(), host.c_str(), base64ProxyAuthentication.c_str(), wxT(FMC_APPNAME), wxT(FMC_VERSION));
 		}
 		else
+		{
 			request = wxString::Format(wxT("GET http://%s:%u/%s HTTP/1.0\nHost: %s\nUser-Agent: %s/%s\n\n"), host.c_str(), port, resource.c_str(), host.c_str(), wxT(FMC_APPNAME), wxT(FMC_VERSION));
+		}
 
 		serverAddress.Hostname(proxyAddress);
 		serverAddress.Service(proxyPort);
@@ -102,7 +106,6 @@ HTTPDownloader::DownloadStatus HTTPDownloader::DownloadFile(const wxString& host
 	else
 	{
 		request = wxString::Format(wxT("GET /%s HTTP/1.0\nHost: %s\nUser-Agent: %s/%s\n\n"), resource.c_str(), host.c_str(), wxT(FMC_APPNAME), wxT(FMC_VERSION));
-
 		serverAddress.Hostname(host);
 		serverAddress.Service(port);
 	}
@@ -140,16 +143,22 @@ HTTPDownloader::DownloadStatus HTTPDownloader::DownloadFile(const wxString& host
 					}
 				}
 				else
+				{
 					moreDataToRead = false;
+				}
 
 				// Update the download speed
 				// The speed is only the average speed for the whole download (not the 'real' current speed)
 				// but this is should be enough, we are not developing a browser :-)
 				elapsedTime = wxGetLocalTimeMillis() - startingTime;
 				if(elapsedTime != 0)
+				{
 					downloadSpeed = (totalDataDownloaded * 1000.0) / (double)(elapsedTime.ToLong() * 1024);
+				}
 				else
+				{
 					downloadSpeed = 0.0;
+				}
 
 				if(progressManager.SetText(wxString::Format(_("%.1f KB/s"), downloadSpeed)) == false)
 				{
@@ -169,11 +178,14 @@ HTTPDownloader::DownloadStatus HTTPDownloader::DownloadFile(const wxString& host
 			}
 		}
 		else
+		{
 			returnValue = STATUS_SEND_REQUEST_ERROR;
+		}
 	}
 	else
+	{
 		returnValue = STATUS_CONNECT_ERROR;
-
+	}
 
 	// --- Clean everything before leaving
 	socket.Close();
@@ -204,7 +216,9 @@ wxUint32 HTTPDownloader::ExtractContentSize(wxByte* buffer, wxUint32 bufferSize)
 	// Find where the field starts
 	fieldPos = header.Find(wxT("Content-Length: "));
 	if(fieldPos == -1)
+	{
 		return 0;
+	}
 
 	// Remove leading data, and the field name itself
 	// 16 is the size of 'Content-Length: '
@@ -213,7 +227,9 @@ wxUint32 HTTPDownloader::ExtractContentSize(wxByte* buffer, wxUint32 bufferSize)
 	// Find where the value ends
 	valueEndPos = header.Find(wxT("\n"));
 	if(valueEndPos == -1)
+	{
 		return 0;
+	}
 
 	// Extract the part containing the size and convert it to a numerical value
 	header = header.Mid(0, valueEndPos);

@@ -54,7 +54,6 @@ MessagesFrame::MessagesFrame(wxWindow *parent) : wxFrame(parent, wxID_ANY, wxStr
 	// --- We don't really need a status bar, but with it on Windows a 'grip sizer' appears, so that users can see that the frame is resizable
 	CreateStatusBar();
 
-
 	// --- Construct the frame
 	// We use a panel so that it look better under Windows, and a fixed pitch font, because that's easier to
 	// read and to see if there's something wrong
@@ -67,7 +66,6 @@ MessagesFrame::MessagesFrame(wxWindow *parent) : wxFrame(parent, wxID_ANY, wxStr
 	mTextCtrl->SetFont(wxFont(9, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL));
 	topLevelSizer->Add(mainSizer, 1, wxEXPAND | wxALL, FMC_GUI_BORDER);
 	panel->SetSizer(topLevelSizer);
-
 
 	// --- Restore the size of the frame
 	_PrefsGetUint(PREF_MESSAGESFRAME_FRAMEWIDTH,  frameWidth);
@@ -90,7 +88,9 @@ MessagesFrame::~MessagesFrame(void)
 MessagesFrame* MessagesFrame::GetInstance(wxWindow* parent)
 {
 	if(mInstance == NULL)
+	{
 		mInstance = new MessagesFrame(parent);
+	}
 
 	return mInstance;
 }

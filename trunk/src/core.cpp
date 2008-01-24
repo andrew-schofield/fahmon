@@ -30,8 +30,12 @@ CoreId Core::ShortNameToId(const wxString& name)
 	CoreId identifier;
 
 	for(identifier=TINKER; identifier<CORE_ID_COUNT; ++identifier)
+	{
 		if(name.CmpNoCase(mCoreShortName[identifier]) == 0)
+		{
 			return identifier;
+		}
+	}
 
 	return UNKNOWN;
 }
@@ -43,7 +47,9 @@ CoreId Core::ShortNameToId(const wxString& name)
 wxString Core::IdToShortName(CoreId identifier)
 {
 	if(identifier >= CORE_ID_COUNT)
+	{
 		return mCoreShortName[UNKNOWN];
+	}
 
 	return mCoreShortName[identifier];
 }
@@ -55,7 +61,9 @@ wxString Core::IdToShortName(CoreId identifier)
 wxString Core::IdToLongName(CoreId identifier)
 {
 	if(identifier >= CORE_ID_COUNT)
+	{
 		return mCoreLongName[UNKNOWN];
+	}
 
 	return mCoreLongName[identifier];
 }

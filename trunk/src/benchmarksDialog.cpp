@@ -233,6 +233,14 @@ void BenchmarksDialog::ShowBenchmarks(ProjectId projectIdToShow)
 	wxString          clientName;
 	const Project    *project;
 	const Benchmark **benchmarks;
+	wxUint32          iFrameTime;
+	wxUint32          tFrameTime;
+	wxUint32          eFrameTime;
+	wxUint32          frameCount = 0;
+	wxUint32          credit = 0;
+	wxString          currentString;
+	wxString          r3fString;
+	wxString          effectiveString;
 
 	// Clear the text area if needed
 	if(projectIdToShow == INVALID_PROJECT_ID)
@@ -253,10 +261,12 @@ void BenchmarksDialog::ShowBenchmarks(ProjectId projectIdToShow)
 	project = ProjectsManager::GetInstance()->GetProject(projectIdToShow);
 	if(project != NULL)
 	{
+		frameCount = project->GetNbFrames();
+		credit = project->GetCredit();
 		infoString += wxT(" ") + wxString::Format(_("Project : %u\n"), projectIdToShow);
 		infoString += wxT(" ") + wxString::Format(_("Core    : %s\n"), Core::IdToLongName(project->GetCoreId()).c_str());
-		infoString += wxT(" ") + wxString::Format(_("Frames  : %u\n"), project->GetNbFrames());
-		infoString += wxT(" ") + wxString::Format(_("Credit  : %u\n"), project->GetCredit());
+		infoString += wxT(" ") + wxString::Format(_("Frames  : %u\n"), frameCount);
+		infoString += wxT(" ") + wxString::Format(_("Credit  : %u\n"), credit);
 	}
 	else
 	{
@@ -281,12 +291,13 @@ void BenchmarksDialog::ShowBenchmarks(ProjectId projectIdToShow)
 		// Best time
 		if(benchmarks[i]->GetMinDuration() != 0)
 		{
-			infoString += wxT(" ") + wxString::Format(_("Min. Time / Frame : %s"), Tools::FormatSeconds(benchmarks[i]->GetMinDuration()).c_str());
+			iFrameTime = benchmarks[i]->GetMinDuration();
+			infoString += wxT(" ") + wxString::Format(_("Min. Time / Frame : %s"), Tools::FormatSeconds(iFrameTime).c_str());
 
 			// Compute points per day if possible
 			if(project != NULL)
 			{
-				minPPD = (project->GetCredit() * 86400.0) / ((double)benchmarks[i]->GetMinDuration() * (double)project->GetNbFrames());    // There are 86400 seconds in a day
+				minPPD = (credit * 86400.0) / ((double)iFrameTime * (double)frameCount);    // There are 86400 seconds in a day
 				infoString += wxT(" ") + wxString::Format(_(" - %.2f ppd"), minPPD);
 			}
 		}
@@ -301,12 +312,13 @@ void BenchmarksDialog::ShowBenchmarks(ProjectId projectIdToShow)
 		// Average time
 		if(benchmarks[i]->GetAvgDuration() != 0)
 		{
-			infoString += wxT(" ") + wxString::Format(_("Avg. Time / Frame : %s"), Tools::FormatSeconds(benchmarks[i]->GetAvgDuration()).c_str());
+			iFrameTime = benchmarks[i]->GetAvgDuration();
+			infoString += wxT(" ") + wxString::Format(_("Avg. Time / Frame : %s"), Tools::FormatSeconds(iFrameTime).c_str());
 
 			// Compute points per day if possible
 			if(project != NULL)
 			{
-				avgPPD = (project->GetCredit() * 86400.0) / ((double)benchmarks[i]->GetAvgDuration() * (double)project->GetNbFrames());    // There are 86400 seconds in a day
+				avgPPD = (credit * 86400.0) / ((double)iFrameTime * (double)frameCount);    // There are 86400 seconds in a day
 				infoString += wxT(" ") + wxString::Format(_(" - %.2f ppd"), avgPPD);
 			}
 		}
@@ -321,61 +333,35 @@ void BenchmarksDialog::ShowBenchmarks(ProjectId projectIdToShow)
 		// Instantaneous time
 		if(benchmarks[i]->GetInstantDuration() != 0)
 		{
-			infoString += wxT(" ") + wxString::Format(_("Cur. Time / Frame : %s"), Tools::FormatSeconds(benchmarks[i]->GetInstantDuration()).c_str());
+			iFrameTime = benchmarks[i]->GetInstantDuration();
+			tFrameTime = benchmarks[i]->Get3FrameDuration();
+			eFrameTime = benchmarks[i]->GetEffectiveDuration();
+			currentString += wxT(" ") + wxString::Format(_("Cur. Time / Frame : %s"), Tools::FormatSeconds(iFrameTime).c_str());
+			r3fString += wxT(" ") + wxString::Format(_("R3F. Time / Frame : %s"), Tools::FormatSeconds(tFrameTime).c_str());
+			effectiveString += wxT(" ") + wxString::Format(_("Eff. Time / Frame : %s"), Tools::FormatSeconds(eFrameTime).c_str());
 
 			// Compute points per day if possible
 			if(project != NULL)
 			{
-				instantPPD = (project->GetCredit() * 86400.0) / ((double)benchmarks[i]->GetInstantDuration() * (double)project->GetNbFrames());    // There are 86400 seconds in a day
-				infoString += wxT(" ") + wxString::Format(_(" - %.2f ppd"), instantPPD);
+				instantPPD = (credit * 86400.0) / ((double)iFrameTime * (double)frameCount);    // There are 86400 seconds in a day
+				currentString += wxT(" ") + wxString::Format(_(" - %.2f ppd"), instantPPD);
+				tFramePPD = (credit * 86400.0) / ((double)tFrameTime * (double)frameCount);    // There are 86400 seconds in a day
+				r3fString += wxT(" ") + wxString::Format(_(" - %.2f ppd"), tFramePPD);
+				tFramePPD = (credit * 86400.0) / ((double)eFrameTime * (double)frameCount);    // There are 86400 seconds in a day
+				effectiveString += wxT(" ") + wxString::Format(_(" - %.2f ppd"), tFramePPD);
 			}
 		}
 		else
 		{
-			infoString += wxString::Format(wxT(" %s"), _("No Cur. Time / Frame"));
+			currentString += wxString::Format(wxT(" %s"), _("No Cur. Time / Frame"));
+			r3fString += wxString::Format(wxT(" %s"), _("No R3F. Time / Frame"));
+			effectiveString += wxString::Format(wxT(" %s"), _("No Eff. Time / Frame"));
 		}
 
-		infoString += wxT("\n");
-
-
-		// 3 frame rolling time
-		if(benchmarks[i]->GetInstantDuration() != 0)
-		{
-			infoString += wxT(" ") + wxString::Format(_("R3F. Time / Frame : %s"), Tools::FormatSeconds(benchmarks[i]->Get3FrameDuration()).c_str());
-
-			// Compute points per day if possible
-			if(project != NULL)
-			{
-				tFramePPD = (project->GetCredit() * 86400.0) / ((double)benchmarks[i]->Get3FrameDuration() * (double)project->GetNbFrames());    // There are 86400 seconds in a day
-				infoString += wxT(" ") + wxString::Format(_(" - %.2f ppd"), tFramePPD);
-			}
-		}
-		else
-		{
-			infoString += wxString::Format(wxT(" %s"), _("No R3F. Time / Frame"));
-		}
-
-		infoString += wxT("\n");
-
-
-		// effective time
-		if(benchmarks[i]->GetInstantDuration() != 0)
-		{
-			infoString += wxT(" ") + wxString::Format(_("Eff. Time / Frame : %s"), Tools::FormatSeconds(benchmarks[i]->GetEffectiveDuration()).c_str());
-
-			// Compute points per day if possible
-			if(project != NULL)
-			{
-				tFramePPD = (project->GetCredit() * 86400.0) / ((double)benchmarks[i]->GetEffectiveDuration() * (double)project->GetNbFrames());    // There are 86400 seconds in a day
-				infoString += wxT(" ") + wxString::Format(_(" - %.2f ppd"), tFramePPD);
-			}
-		}
-		else
-		{
-			infoString += wxString::Format(wxT(" %s"), _("No Eff. Time / Frame"));
-		}
-
-		infoString += wxT("\n");
+		currentString += wxT("\n");
+		r3fString += wxT("\n");
+		effectiveString += wxT("\n");
+		infoString += currentString + r3fString + effectiveString;
 	}
 
 	mBenchmarksInformation->SetValue(infoString);

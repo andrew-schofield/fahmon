@@ -147,9 +147,13 @@ ListViewClients::ListViewClients(wxWindow* parent, wxWindowID id, wxUint32 nbCli
 	_PrefsGetBool(PREF_LISTVIEWCLIENTS_SORTASCENDING, mSortAscending);
 
 	if(mSortAscending == true)
+	{
 		SetColumnImage(mSortColumn, LVI_UP_ARROW);
+	}
 	else
+	{
 		SetColumnImage(mSortColumn, LVI_DOWN_ARROW);
+	}
 
 	// --- Initialize the list with the given number of clients
 	Reset(nbClients);
@@ -199,9 +203,13 @@ int ListViewClients::CompareClients(wxUint32 clientId1, wxUint32 clientId2) cons
 	if(keepDeadLast == true)
 	{
 		if(!client1->IsAccessible())
+		{
 			return 1;
+		}
 		else if(!client2->IsAccessible())
+		{
 			return -1;
+		}
 	}
 
 	// If the two clients are valid, then we compare them using the correct sorting criterion
@@ -220,37 +228,78 @@ int ListViewClients::CompareClients(wxUint32 clientId1, wxUint32 clientId2) cons
 		// ---
 		case LVC_ETA:
 			if(client1->GetETA()->IsBefore(client2->GetETA()) == true)
+			{
 				comparisonResult = -1;
+			}
 			else
+			{
 				comparisonResult = 1;
+			}
 			break;
 
 		// ---
 		case LVC_PPD:
 			if(client1->GetPPD() > client2->GetPPD())
+			{
 				comparisonResult = -1;
+			}
 			else
+			{
 				comparisonResult = 1;
+			}
 			break;
 
 		// ---
 		case LVC_STATUS:
 			// enumerate the client statuses
-			if(!client1->IsAccessible()) Client1State = 0; // dead client
-			if(!client2->IsAccessible()) Client2State = 0;
-			if(client1->IsStopped()) Client1State = 1; // stopped client
-			if(client2->IsStopped()) Client2State = 1;
-			if(client1->IsHung()) Client1State = 2; // hung client
-			if(client2->IsHung()) Client2State = 2;
-			if(client1->IsInactive()) Client1State = 3; // inactive client
-			if(client2->IsInactive()) Client2State = 3;
-			if(client1->IsAccessible() && !client1->IsInactive() &&  !client1->IsStopped()) Client1State = 4; //active client
-			if(client2->IsAccessible() && !client2->IsInactive() &&  !client2->IsStopped()) Client2State = 4;
-
+			if(!client1->IsAccessible())
+			{
+				Client1State = 0; // dead client
+			}
+			if(!client2->IsAccessible())
+			{
+				Client2State = 0;
+			}
+			if(client1->IsStopped())
+			{
+				Client1State = 1; // stopped client
+			}
+			if(client2->IsStopped())
+			{
+				Client2State = 1;
+			}
+			if(client1->IsHung())
+			{
+				Client1State = 2; // hung client
+			}
+			if(client2->IsHung())
+			{
+				Client2State = 2;
+			}
+			if(client1->IsInactive())
+			{
+				Client1State = 3; // inactive client
+			}
+			if(client2->IsInactive())
+			{
+				Client2State = 3;
+			}
+			if(client1->IsAccessible() && !client1->IsInactive() && !client1->IsStopped())
+			{
+				Client1State = 4; //active client
+			}
+			if(client2->IsAccessible() && !client2->IsInactive() && !client2->IsStopped())
+			{
+				Client2State = 4;
+			}
 			if(Client1State > Client2State)
+			{
 				comparisonResult = -1;
+			}
 			else
+			{
 				comparisonResult = 1;
+			}
 			break;
 
 		// We should never fall here
@@ -262,7 +311,9 @@ int ListViewClients::CompareClients(wxUint32 clientId1, wxUint32 clientId2) cons
 
 	// We need to inverse the result of the comparison if we sort in a descending manner
 	if(mSortAscending == false)
+	{
 		return -comparisonResult;
+	}
 
 	return comparisonResult;
 }
@@ -277,7 +328,9 @@ wxUint32 ListViewClients::GetSelectedClientId(void) const
 
 	// Check that something is really selected!
 	if(selectedItemIndex == -1)
+	{
 		return INVALID_CLIENT_ID;
+	}
 
 	// Return the associated client identifier
 	return GetItemData(selectedItemIndex);
@@ -344,7 +397,9 @@ void ListViewClients::UpdateAllClients(void)
 	wxUint32 currentClient;
 
 	for(currentClient=0; currentClient<ClientsManager::GetInstance()->GetCount(); ++currentClient)
+	{
 		UpdateClient(currentClient);
+	}
 }
 
 
@@ -379,23 +434,44 @@ void ListViewClients::UpdateClient(wxUint32 clientId)
 	// Blank the PPD column
 	PPD = wxT("--");
 
-	if (client->IsAccessible()) project = ProjectsManager::GetInstance()->GetProject(client->GetProjectId());
+	if (client->IsAccessible())
+	{
+		project = ProjectsManager::GetInstance()->GetProject(client->GetProjectId());
+	}
 
 	// If it's possible to get the PPD, do so now
 	if(client->IsAccessible() && !client->IsStopped() && !client->IsHung() && project != INVALID_PROJECT_ID)
 	{
 		PPD = wxString::Format(wxT("%.2f"), client->GetPPD());
-		if(!client->GetIsFrameCountAccurate()) PPD = PPD + wxT("*");
+		if(!client->GetIsFrameCountAccurate())
+		{
+			PPD = PPD + wxT("*");
+		}
 	}
 
 	SetItem(clientIndex, LVC_PPD, PPD);
 
 	// ETA
-	if(client->GetProgress() == 100)                        SetItem(clientIndex, LVC_ETA, _("Finished"));
-	else if(!client->IsAccessible() || client->IsStopped()) SetItem(clientIndex, LVC_ETA, _("N/A"));
-	else if(!client->GetETA()->IsOk())                      SetItem(clientIndex, LVC_ETA, _("N/A"));
-	else if(client->IsHung())                               SetItem(clientIndex, LVC_ETA, _("*Hung*"));
-	else                                                    SetItem(clientIndex, LVC_ETA, client->GetETA()->GetString());
+	if(client->GetProgress() == 100)
+	{
+		SetItem(clientIndex, LVC_ETA, _("Finished"));
+	}
+	else if(!client->IsAccessible() || client->IsStopped())
+	{
+		SetItem(clientIndex, LVC_ETA, _("N/A"));
+	}
+	else if(!client->GetETA()->IsOk())
+	{
+		SetItem(clientIndex, LVC_ETA, _("N/A"));
+	}
+	else if(client->IsHung())
+	{
+		SetItem(clientIndex, LVC_ETA, _("*Hung*"));
+	}
+	else
+	{
+		SetItem(clientIndex, LVC_ETA, client->GetETA()->GetString());
+	}
 
 	// We use leading icons to indicate the status of the client
 	if(!client->IsAccessible())
@@ -518,9 +594,13 @@ void ListViewClients::OnColumnLeftClick(wxListEvent& event)
 
 	// Assign the correct sorting arrow to the current column
 	if(mSortAscending == true)
+	{
 		SetColumnImage(mSortColumn, LVI_UP_ARROW);
+	}
 	else
+	{
 		SetColumnImage(mSortColumn, LVI_DOWN_ARROW);
+	}
 
 	// We can finally sort items
 	Sort();
@@ -600,7 +680,9 @@ void ListViewClients::OnMenuReloadClient(wxCommandEvent& event)
 
 	// Ensure that something is really selected
 	if(selectedClientId != INVALID_CLIENT_ID)
+	{
 		ClientsManager::GetInstance()->ReloadThreaded(selectedClientId);
+	}
 }
 
 
@@ -623,7 +705,9 @@ void ListViewClients::OnMenuEditClient(wxCommandEvent& event)
 
 	// Ensure that something is really selected
 	if(selectedClientId == INVALID_CLIENT_ID)
+	{
 		return;
+	}
 
 	// Ask the main dialog to edit this client
 	ClientDialog::GetInstance(this)->ShowModal(selectedClientId, wxEmptyString);
@@ -641,7 +725,9 @@ void ListViewClients::OnMenuDeleteClient(wxCommandEvent& event)
 	// Ensure that something is really selected
 	selectedClientId = GetSelectedClientId();
 	if(selectedClientId == INVALID_CLIENT_ID)
+	{
 		return;
+	}
 
 	// Ensure that the user did not ask for deletion by error
 	if(Tools::QuestionMsgBox(_("Do you really want to delete this client?")) == true)
@@ -659,23 +745,23 @@ void ListViewClients::OnMenuDeleteClient(wxCommandEvent& event)
 **/
 wxString ListViewClients::GetCellContentsString( long row_number, int column )
 {
-wxListItem     row_info;
-wxString       cell_contents_string;
+	wxListItem     row_info;
+	wxString       cell_contents_string;
 
-// Set what row it is (m_itemId is a member of the regular wxListCtrl class)
-row_info.m_itemId = row_number;
-// Set what column of that row we want to query for information.
-row_info.m_col = column;
-// Set text mask
-row_info.m_mask = wxLIST_MASK_TEXT;
+	// Set what row it is (m_itemId is a member of the regular wxListCtrl class)
+	row_info.m_itemId = row_number;
+	// Set what column of that row we want to query for information.
+	row_info.m_col = column;
+	// Set text mask
+	row_info.m_mask = wxLIST_MASK_TEXT;
 
-// Get the info and store it in row_info variable.
-GetItem( row_info );
+	// Get the info and store it in row_info variable.
+	GetItem( row_info );
 
-// Extract the text out that cell
-cell_contents_string = row_info.m_text;
+	// Extract the text out that cell
+	cell_contents_string = row_info.m_text;
 
-return cell_contents_string;
+	return cell_contents_string;
 }
 
 /**
@@ -709,7 +795,9 @@ void ListViewClients::ShowClientFiles()
 
 	// Not sure why, but this *never* fails
 	if(wxExecute(FileManager + wxT(" ") + ClientLocation) == false)
+	{
 		Tools::ErrorMsgBox(_("Unable to launch the default filemanager.\n\nPlease check that the correct filemanager is set in Preferences"));
+	}
 }
 
 /**

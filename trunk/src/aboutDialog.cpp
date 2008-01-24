@@ -19,7 +19,7 @@
 
 #include "wx/image.h"
 #include "wx/sizer.h"
-#include "wx/intl.h"
+//#include "wx/intl.h"
 #include "wx/version.h"
 #include "wx/statbmp.h"
 #include "wx/statline.h"
@@ -96,7 +96,9 @@ AboutDialog::~AboutDialog(void)
 AboutDialog* AboutDialog::GetInstance(wxWindow* parent)
 {
 	if(mInstance == NULL)
+	{
 		mInstance = new AboutDialog(parent);
+	}
 
 	return mInstance;
 }

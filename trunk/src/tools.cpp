@@ -44,7 +44,9 @@ void Tools::OpenURLInBrowser(const wxString& url)
 
 	// CloseHandle() must be called to avoid handles leaks
 	if(ShellExecuteEx(&shellInfo))
+	{
 		CloseHandle(shellInfo.hProcess);
+	}
 
 #elif __WXGTK__
 
@@ -54,10 +56,14 @@ void Tools::OpenURLInBrowser(const wxString& url)
 	// If the latter is not set, use the environment variable 'BROWSER'
 	_PrefsGetString(PREF_TOOLS_BROWSER, browser);
 	if(browser.IsEmpty())
+	{
 		browser = wxGetenv(wxT("BROWSER"));
+	}
 
 	if(browser.IsEmpty() || wxExecute(browser + wxT(" ") + url) == false)
+	{
 		ErrorMsgBox(_("Unable to launch the default browser.\n\nPlease check that the environment variable BROWSER is defined or set it in Preferences."));
+	}
 
 #else
 
@@ -79,7 +85,9 @@ bool Tools::LoadFile(const wxString& filename, wxString& fileContent)
 
 	// Could the file be opened?
 	if(in.Ok() == false)
+	{
 		return false;
+	}
 
 	// Load the file into the wxString, and put a NULL character at the end to terminate it
 	fileSize     = in.GetSize();
@@ -92,7 +100,9 @@ bool Tools::LoadFile(const wxString& filename, wxString& fileContent)
 
 	// Could we read the whole content of the file?
 	if(in.LastRead() != fileSize)
+	{
 		return false;
+	}
 
 	return true;
 }
@@ -112,9 +122,15 @@ wxString Tools::FormatSeconds(wxUint32 nbSeconds)
 	nbSeconds = nbSeconds % 60;
 
 	if(nbHours != 0)
+	{
 		return wxString::Format(wxT("%uh %02umn %02us"), nbHours, nbMinutes, nbSeconds);
+	}
 	else if(nbMinutes != 0)
+	{
 		return wxString::Format(wxT("%umn %02us"), nbMinutes, nbSeconds);
+	}
 	else
+	{
 		return wxString::Format(wxT("%us"), nbSeconds);
+	}
 }

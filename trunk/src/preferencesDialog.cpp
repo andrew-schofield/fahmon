@@ -140,7 +140,9 @@ PreferencesDialog::~PreferencesDialog(void)
 PreferencesDialog* PreferencesDialog::GetInstance(wxWindow* parent)
 {
 	if(mInstance == NULL)
+	{
 		mInstance = new PreferencesDialog(parent);
+	}
 
 	return mInstance;
 }
@@ -177,7 +179,6 @@ inline wxPanel* PreferencesDialog::CreateGeneralTab(wxNotebook* parent)
 	mGeneralAutoUpdateProjectsDatabase  = new wxCheckBox(panel, wxID_ANY, _("Auto update projects database when needed"));
 	mGeneralKeepInaccessibleClientsLast = new wxCheckBox(panel, wxID_ANY, _("Always list inaccessible clients last"));
 	mGeneralUpdateCheck                 = new wxCheckBox(panel, wxID_ANY, _("Check for FahMon updates on startup"));
-
 
 	sizer->AddStretchSpacer();
 	sizer->Add(mGeneralEnableTrayIcon, 0, wxALIGN_LEFT);
@@ -798,7 +799,6 @@ inline void PreferencesDialog::SavePreferences(void)
 	_PrefsSetBool(PREF_LISTCLIENTS_KEEP_DEAD_LAST,    mGeneralKeepInaccessibleClientsLast->GetValue());
 	_PrefsSetBool(PREF_MAINDIALOG_UPDATE_CHECK,       mGeneralUpdateCheck->GetValue());
 
-
 	// -----===== Monitoring preferences =====-----
 	_PrefsSetBool(PREF_MAINDIALOG_ADVANCEDRELOAD,      mMonitoringAdvancedReload->GetValue());
 	_PrefsSetBool(PREF_MAINDIALOG_AUTORELOAD,          mMonitoringAutoReload->GetValue());
@@ -806,7 +806,6 @@ inline void PreferencesDialog::SavePreferences(void)
 	_PrefsSetUint(PREF_ETA_DISPLAYSTYLE,               mMonitoringETADisplayStyle->GetSelection());
 	_PrefsSetUint(PREF_PPD_DISPLAYSTYLE,               mMonitoringPPDType->GetSelection());
 	_PrefsSetBool(PREF_IGNORE_ASYNCHRONY,              mMonitoringIgnoreAsynchrony->GetValue());
-
 
 	// -----===== Networking preferences =====-----
 	proxyPort = wxAtoi(mNetworkingProxyPort->GetValue());
@@ -819,13 +818,11 @@ inline void PreferencesDialog::SavePreferences(void)
 	_PrefsSetString      (PREF_HTTPDOWNLOADER_PROXY_USERNAME,           mNetworkingProxyUsername->GetValue());
 	_PrefsSetHiddenString(PREF_HTTPDOWNLOADER_PROXY_PASSWORD,           mNetworkingProxyPassword->GetValue());
 
-
 	// -----===== Advanced preferences =====-----
 	_PrefsSetBool  (PREF_HTTPDOWNLOADER_USEALTERNATEUPDATE,              mAdvancedUseAlternateProjectSource->GetValue());
 	_PrefsSetString(PREF_HTTPDOWNLOADER_ALTERNATEUPDATEADDRESS,          mAdvancedAlternateProjectSourceLocationAddress->GetValue());
 	_PrefsSetBool  (PREF_HTTPDOWNLOADER_USELOCALFILE,                    mAdvancedUseLocalFile->GetValue());
 	_PrefsSetString(PREF_HTTPDOWNLOADER_LOCALFILELOCATION,               mAdvancedLocalFileLocation->GetValue());
-
 
 	// -----===== System preferences =====-----
 	_PrefsSetString(PREF_TOOLS_BROWSER,     mSystemBrowser->GetValue());
@@ -841,29 +838,42 @@ inline void PreferencesDialog::SavePreferences(void)
 	_PrefsSetBool(PREF_WEBAPP_SIMPLETEXT,           mWebAppUseSimpleText->GetValue());
 	_PrefsSetString(PREF_WEBAPP_SIMPLETEXTLOCATION, mWebAppSimpleTextLocation->GetValue());
 
-
 	// -----===== Alert components when important prefs have changed =====-----
 	if(mGeneralEnableTrayIcon->GetValue() != mInitEnableTrayIcon)
+	{
 		MainDialog::GetInstance()->OnTrayIconPrefChanged();
+	}
 
 	if(mMonitoringAdvancedReload->GetValue() != mInitAdvancedReload || (wxUint32)mMonitoringAutoReloadFrequency->GetValue() != mInitAutoReloadFrequency)
+	{
 		MainDialog::GetInstance()->OnAutoReloadPrefChanged();
+	}
 
 	if((wxUint32)mMonitoringETADisplayStyle->GetSelection() != mInitETADisplayStyle)
+	{
 		MainDialog::GetInstance()->OnETAStylePrefChanged();
+	}
 
 	if((wxUint32)mMonitoringPPDType->GetSelection() != mInitPPDDisplayStyle)
+	{
 		MainDialog::GetInstance()->OnPPDStylePrefChanged();
+	}
 
 	// these conditionals reuse functions in maindialog
 	if(mSystemOverrideTimezone->GetValue() != mInitOverrideTz)
+	{
 		MainDialog::GetInstance()->OnPPDStylePrefChanged();
+	}
 
 	if(mSystemTZ->GetValue() != mInitTimezone)
+	{
 		MainDialog::GetInstance()->OnPPDStylePrefChanged();
+	}
 
 	if(mMonitoringIgnoreAsynchrony->GetValue() != mInitIgnoreAsynchronousClocks)
+	{
 		MainDialog::GetInstance()->OnPPDStylePrefChanged();
+	}
 
 }
 
@@ -892,9 +902,9 @@ void PreferencesDialog::OnBrowseButton(wxCommandEvent& event)
 	wxFileDialog *OpenDialog = new wxFileDialog(this, _("Choose a local project data file"), wxT(""), mAdvancedLocalFileLocation->GetValue(),wxT("HTML Files (*.html)|*.html"), wxOPEN, wxDefaultPosition);
 	if (OpenDialog->ShowModal() == wxID_OK) // if the user click "Open" instead of "cancel"
 	{
-	selectedFile = OpenDialog->GetPath();
-	// Sets our current document to the file the user selected
-	mAdvancedLocalFileLocation->SetValue(selectedFile); //Opens that file
+		selectedFile = OpenDialog->GetPath();
+		// Sets our current document to the file the user selected
+		mAdvancedLocalFileLocation->SetValue(selectedFile); //Opens that file
 	}
 }
 
@@ -909,9 +919,9 @@ void PreferencesDialog::OnWebAppBrowseButton(wxCommandEvent& event)
 	wxFileDialog *OpenDialog = new wxFileDialog(this, _("Choose where to save the Web Application"), wxT(""), mWebAppWebAppLocation->GetValue(),wxT("HTML Files (*.html)|*.html"), wxSAVE, wxDefaultPosition);
 	if (OpenDialog->ShowModal() == wxID_OK) // if the user click "Open" instead of "cancel"
 	{
-	selectedFile = OpenDialog->GetPath();
-	// Sets our current document to the file the user selected
-	mWebAppWebAppLocation->SetValue(selectedFile); //Opens that file
+		selectedFile = OpenDialog->GetPath();
+		// Sets our current document to the file the user selected
+		mWebAppWebAppLocation->SetValue(selectedFile); //Opens that file
 	}
 }
 
@@ -926,9 +936,9 @@ void PreferencesDialog::OnSimpleWebBrowseButton(wxCommandEvent& event)
 	wxFileDialog *OpenDialog = new wxFileDialog(this, _("Choose where to save the simple web page"), wxT(""), mWebAppSimpleWebLocation->GetValue(),wxT("HTML Files (*.html)|*.html"), wxSAVE, wxDefaultPosition);
 	if (OpenDialog->ShowModal() == wxID_OK) // if the user click "Open" instead of "cancel"
 	{
-	selectedFile = OpenDialog->GetPath();
-	// Sets our current document to the file the user selected
-	mWebAppSimpleWebLocation->SetValue(selectedFile); //Opens that file
+		selectedFile = OpenDialog->GetPath();
+		// Sets our current document to the file the user selected
+		mWebAppSimpleWebLocation->SetValue(selectedFile); //Opens that file
 	}
 }
 
@@ -943,9 +953,9 @@ void PreferencesDialog::OnSimpleTextBrowseButton(wxCommandEvent& event)
 	wxFileDialog *OpenDialog = new wxFileDialog(this, _("Choose where to save the simple text file"), wxT(""), mWebAppSimpleTextLocation->GetValue(),wxT("Any File (*.*)|*.*"), wxSAVE, wxDefaultPosition);
 	if (OpenDialog->ShowModal() == wxID_OK) // if the user click "Open" instead of "cancel"
 	{
-	selectedFile = OpenDialog->GetPath();
-	// Sets our current document to the file the user selected
-	mWebAppSimpleTextLocation->SetValue(selectedFile); //Opens that file
+		selectedFile = OpenDialog->GetPath();
+		// Sets our current document to the file the user selected
+		mWebAppSimpleTextLocation->SetValue(selectedFile); //Opens that file
 	}
 }
 
@@ -1008,54 +1018,54 @@ void PreferencesDialog::OnCheckboxes(wxCommandEvent& event)
 
 		// ---
 		case CHK_USEALTERNATEPROJECTSOURCE:
-		mAdvancedAlternateProjectSourceLocationAddress->Enable(mAdvancedUseAlternateProjectSource->GetValue());
-		mAdvancedLabelLocationAddress->Enable(mAdvancedUseAlternateProjectSource->GetValue());
-		mAdvancedUseLocalFile->Enable(mAdvancedUseAlternateProjectSource->GetValue());
-		mAdvancedUseLocalFile->SetValue(false);
-		mAdvancedLocalFileLocation->Enable(false);
-		mAdvancedLabelLocalFile->Enable(false);
-		mAdvancedLocationChooser->Enable(false);
-		break;
+			mAdvancedAlternateProjectSourceLocationAddress->Enable(mAdvancedUseAlternateProjectSource->GetValue());
+			mAdvancedLabelLocationAddress->Enable(mAdvancedUseAlternateProjectSource->GetValue());
+			mAdvancedUseLocalFile->Enable(mAdvancedUseAlternateProjectSource->GetValue());
+			mAdvancedUseLocalFile->SetValue(false);
+			mAdvancedLocalFileLocation->Enable(false);
+			mAdvancedLabelLocalFile->Enable(false);
+			mAdvancedLocationChooser->Enable(false);
+			break;
 
 		// ---
 		case CHK_USELOCALFILE:
-		mAdvancedLocalFileLocation->Enable(mAdvancedUseLocalFile->GetValue());
-		mAdvancedLabelLocalFile->Enable(mAdvancedUseLocalFile->GetValue());
-		mAdvancedLocationChooser->Enable(mAdvancedUseLocalFile->GetValue());
+			mAdvancedLocalFileLocation->Enable(mAdvancedUseLocalFile->GetValue());
+			mAdvancedLabelLocalFile->Enable(mAdvancedUseLocalFile->GetValue());
+			mAdvancedLocationChooser->Enable(mAdvancedUseLocalFile->GetValue());
 
-		if(mAdvancedUseLocalFile->GetValue() == true)
-		{
-			mAdvancedAlternateProjectSourceLocationAddress->Enable(false);
-			mAdvancedLabelLocationAddress->Enable(false);
-		}
-		if(mAdvancedUseLocalFile->GetValue() == false)
-		{
-			mAdvancedAlternateProjectSourceLocationAddress->Enable(true);
-			mAdvancedLabelLocationAddress->Enable(true);
-		}
-		break;
-	// ---
-	case CHK_TZOVERRIDE:
-		mSystemTZ->Enable(mSystemOverrideTimezone->GetValue());
-		break;
+			if(mAdvancedUseLocalFile->GetValue() == true)
+			{
+				mAdvancedAlternateProjectSourceLocationAddress->Enable(false);
+				mAdvancedLabelLocationAddress->Enable(false);
+			}
+			if(mAdvancedUseLocalFile->GetValue() == false)
+			{
+				mAdvancedAlternateProjectSourceLocationAddress->Enable(true);
+				mAdvancedLabelLocationAddress->Enable(true);
+			}
+			break;
+		// ---
+		case CHK_TZOVERRIDE:
+			mSystemTZ->Enable(mSystemOverrideTimezone->GetValue());
+			break;
 
-	case CHK_USEWEBAPP:
-		mWebAppWebAppLabel->Enable(mWebAppUseWebApp->GetValue());
-		mWebAppWebAppLocation->Enable(mWebAppUseWebApp->GetValue());
-		mWebAppWebAppLocationChooser->Enable(mWebAppUseWebApp->GetValue());
-		break;
+		case CHK_USEWEBAPP:
+			mWebAppWebAppLabel->Enable(mWebAppUseWebApp->GetValue());
+			mWebAppWebAppLocation->Enable(mWebAppUseWebApp->GetValue());
+			mWebAppWebAppLocationChooser->Enable(mWebAppUseWebApp->GetValue());
+			break;
 
-	case CHK_USESIMPLEWEB:
-		mWebAppSimpleWebLabel->Enable(mWebAppUseSimpleWeb->GetValue());
-		mWebAppSimpleWebLocation->Enable(mWebAppUseSimpleWeb->GetValue());
-		mWebAppSimpleWebLocationChooser->Enable(mWebAppUseSimpleWeb->GetValue());
-		break;
+		case CHK_USESIMPLEWEB:
+			mWebAppSimpleWebLabel->Enable(mWebAppUseSimpleWeb->GetValue());
+			mWebAppSimpleWebLocation->Enable(mWebAppUseSimpleWeb->GetValue());
+			mWebAppSimpleWebLocationChooser->Enable(mWebAppUseSimpleWeb->GetValue());
+			break;
 
-	case CHK_USESIMPLETEXT:
-		mWebAppSimpleTextLabel->Enable(mWebAppUseSimpleText->GetValue());
-		mWebAppSimpleTextLocation->Enable(mWebAppUseSimpleText->GetValue());
-		mWebAppSimpleTextLocationChooser->Enable(mWebAppUseSimpleText->GetValue());
-		break;
+		case CHK_USESIMPLETEXT:
+			mWebAppSimpleTextLabel->Enable(mWebAppUseSimpleText->GetValue());
+			mWebAppSimpleTextLocation->Enable(mWebAppUseSimpleText->GetValue());
+			mWebAppSimpleTextLocationChooser->Enable(mWebAppUseSimpleText->GetValue());
+			break;
 
 		// We should never fall here
 		default:

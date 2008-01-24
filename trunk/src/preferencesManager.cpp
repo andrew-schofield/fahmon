@@ -93,7 +93,9 @@ void PreferencesManager::SetPref(Preference* preference)
 	// Let's first free the old preference if needed
 	iterator = mPrefsHashMap.find(preference->GetName());
 	if(iterator != mPrefsHashMap.end())
+	{
 		delete iterator->second;
+	}
 
 	// We can now insert the new value into the table
 	mPrefsHashMap[preference->GetName()] = preference;
@@ -108,7 +110,9 @@ inline Preference* PreferencesManager::GetPref(const wxString& name)
 	PreferencesHashMap::iterator iterator = mPrefsHashMap.find(name);
 
 	if(iterator == mPrefsHashMap.end())
+	{
 		return NULL;
+	}
 
 	return iterator->second;
 }
@@ -122,7 +126,9 @@ bool PreferencesManager::GetBool(const wxString& name, bool& value)
 	Preference *prefValue = GetPref(name);
 
 	if(prefValue == NULL)
+	{
 		return false;
+	}
 
 	wxASSERT(prefValue->IsABoolPref() == true);
 
@@ -139,7 +145,9 @@ bool PreferencesManager::GetUint(const wxString& name, wxUint32& value)
 	Preference *prefValue = GetPref(name);
 
 	if(prefValue == NULL)
+	{
 		return false;
+	}
 
 	wxASSERT(prefValue->IsAnUintPref() == true);
 
@@ -156,7 +164,9 @@ bool PreferencesManager::GetInt(const wxString& name, wxInt32& value)
 	Preference *prefValue = GetPref(name);
 
 	if(prefValue == NULL)
+	{
 		return false;
+	}
 
 	wxASSERT(prefValue->IsAnIntPref() == true);
 
@@ -173,7 +183,9 @@ bool PreferencesManager::GetDouble(const wxString& name, double& value)
 	Preference *prefValue = GetPref(name);
 
 	if(prefValue == NULL)
-	return false;
+	{
+		return false;
+	}
 
 	wxASSERT(prefValue->IsADoublePref() == true);
 
@@ -190,7 +202,9 @@ bool PreferencesManager::GetString(const wxString& name, wxString& value)
 	Preference *prefValue = GetPref(name);
 
 	if(prefValue == NULL)
+	{
 		return false;
+	}
 
 	wxASSERT(prefValue->IsAStringPref() == true);
 
@@ -207,7 +221,9 @@ bool PreferencesManager::GetHiddenString(const wxString& name, wxString& value)
 	Preference *prefValue = GetPref(name);
 
 	if(prefValue == NULL)
+	{
 		return false;
+	}
 
 	wxASSERT(prefValue->IsAnHiddenStringPref() == true);
 
@@ -262,5 +278,7 @@ inline void PreferencesManager::Save(void)
 	//  2) Then, each preference is written
 	out.WriteUint(mPrefsHashMap.size());
 	for(iterator = mPrefsHashMap.begin(); iterator != mPrefsHashMap.end(); ++iterator)
+	{
 		iterator->second->Write(out);
+	}
 }
