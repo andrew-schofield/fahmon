@@ -1,0 +1,1178 @@
+# translation of cs_CZ.po to British English
+# translation of cs_CZ.po to
+# Copyright (C) YEAR Andrew Schofield
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Martin Bednar <serafean@gmail.com>, 2007.
+# Andrew Schofield <the.uncle.fungus@gmail.com>, 2007.
+msgid ""
+msgstr ""
+"Project-Id-Version: cs_CZ\n"
+"Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
+"POT-Creation-Date: 2008-01-24 01:01+0000\n"
+"PO-Revision-Date: 2007-11-15 23:40+0000\n"
+"Last-Translator: Andrew Schofield <the.uncle.fungus@gmail.com>\n"
+"Language-Team: British English <en@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+
+#: src/aboutDialog.cpp:38 src/mainDialog.cpp:698 src/mainDialog.cpp:700
+#: src/mainDialog.cpp:702
+msgid "About"
+msgstr "O aplikaci"
+
+#: src/aboutDialog.cpp:49
+msgid "Author:"
+msgstr "Autor"
+
+#: src/aboutDialog.cpp:51
+msgid "Maintainer:"
+msgstr "udržbář"
+
+#: src/aboutDialog.cpp:53
+msgid "Homepage:"
+msgstr "Domovská stránka"
+
+#: src/aboutDialog.cpp:55
+msgid "Qd homepage:"
+msgstr ""
+
+#: src/aboutDialog.cpp:57
+msgid "Licence:"
+msgstr ""
+
+#: src/aboutDialog.cpp:61
+msgid "Library:"
+msgstr "Knihovna"
+
+#: src/benchmarksDialog.cpp:58 src/trayManager.cpp:206
+msgid "Benchmarks"
+msgstr "Benchmarky"
+
+#: src/benchmarksDialog.cpp:80
+msgid "Projects"
+msgstr "Projekty"
+
+#: src/benchmarksDialog.cpp:256
+msgid "No benchmarks for this project!"
+msgstr "žádné benchmarky pro tento projekt"
+
+#: src/benchmarksDialog.cpp:266
+#, c-format
+msgid "Project : %u\n"
+msgstr "projekt : %u\n"
+
+#: src/benchmarksDialog.cpp:267
+#, c-format
+msgid "Core    : %s\n"
+msgstr "Jádro    : %s\n"
+
+#: src/benchmarksDialog.cpp:268
+#, c-format
+msgid "Frames  : %u\n"
+msgstr "Obrázky  : %u\n"
+
+#: src/benchmarksDialog.cpp:269
+#, c-format
+msgid "Credit  : %u\n"
+msgstr "Kredit : %u\n"
+
+#: src/benchmarksDialog.cpp:273
+#, c-format
+msgid "Project : %u (Unknown)\n"
+msgstr "Projekt : %u (Neznámý)\n"
+
+#: src/benchmarksDialog.cpp:295
+#, c-format
+msgid "Min. Time / Frame : %s"
+msgstr "Minimální čas    / Obrázek : %s"
+
+#: src/benchmarksDialog.cpp:301 src/benchmarksDialog.cpp:322
+#: src/benchmarksDialog.cpp:347 src/benchmarksDialog.cpp:349
+#: src/benchmarksDialog.cpp:351
+#, c-format
+msgid " - %.2f ppd"
+msgstr " - %.2f ppd"
+
+#: src/benchmarksDialog.cpp:306
+msgid "No Min. Time / Frame"
+msgstr "žádný minimální čas / Obrázek"
+
+#: src/benchmarksDialog.cpp:316
+#, c-format
+msgid "Avg. Time / Frame : %s"
+msgstr "Průměerný čas / Obrázek : %s"
+
+#: src/benchmarksDialog.cpp:327
+msgid "No Avg. Time / Frame"
+msgstr "žádný průměrný čas / Obrázek"
+
+#: src/benchmarksDialog.cpp:339
+#, c-format
+msgid "Cur. Time / Frame : %s"
+msgstr "Současný čas / Obrázek : %s"
+
+#: src/benchmarksDialog.cpp:340
+#, c-format
+msgid "R3F. Time / Frame : %s"
+msgstr "R3F. čas     / obrázek:%s"
+
+#: src/benchmarksDialog.cpp:341
+#, c-format
+msgid "Eff. Time / Frame : %s"
+msgstr "Skutečný čas / Obrázek : %s"
+
+#: src/benchmarksDialog.cpp:356
+msgid "No Cur. Time / Frame"
+msgstr "žádný současný čas / Obrázek : %s"
+
+#: src/benchmarksDialog.cpp:357
+msgid "No R3F. Time / Frame"
+msgstr "žádný R3F čas / Obrázek"
+
+#: src/benchmarksDialog.cpp:358
+msgid "No Eff. Time / Frame"
+msgstr "žádný skutečný čas / Obrázek"
+
+#: src/benchmarksManager.cpp:152 src/preferencesManager.cpp:272
+#: src/projectsManager.cpp:145
+#, c-format
+msgid "Could not open file <%s> for writing!"
+msgstr "Nelze otevřít soubor <%s> pro zapisovani"
+
+#: src/benchmarksManager.cpp:316
+msgid "(Benchmarks) The maximum number of known clients has been reached!"
+msgstr "(Benchmaky) Maximální počet známých klienů byl dosažen!"
+
+#: src/benchmarksManager.cpp:464
+msgid "Unknown client"
+msgstr "Neznámý klient"
+
+#: src/client.cpp:95
+msgid "Log not loaded!"
+msgstr "Log nenahrán"
+
+#: src/client.cpp:98
+msgid "anonymous"
+msgstr "Anonymní"
+
+#: src/client.cpp:103 src/listViewClients.cpp:461 src/listViewClients.cpp:465
+#: src/mainDialog.cpp:473 src/mainDialog.cpp:478 src/mainDialog.cpp:479
+#: src/mainDialog.cpp:480 src/mainDialog.cpp:481 src/mainDialog.cpp:482
+#: src/mainDialog.cpp:568 src/mainDialog.cpp:624 src/webMonitor.cpp:139
+#: src/webMonitor.cpp:140 src/webMonitor.cpp:141 src/webMonitor.cpp:142
+#: src/webMonitor.cpp:143 src/webMonitor.cpp:144 src/webMonitor.cpp:145
+#: src/webMonitor.cpp:201 src/webMonitor.cpp:202 src/webMonitor.cpp:203
+#: src/webMonitor.cpp:204 src/webMonitor.cpp:205 src/webMonitor.cpp:213
+#: src/webMonitor.cpp:214 src/webMonitor.cpp:215 src/webMonitor.cpp:216
+#: src/webMonitor.cpp:217 src/webMonitor.cpp:274 src/webMonitor.cpp:329
+#: src/webMonitor.cpp:375 src/webMonitor.cpp:379
+msgid "N/A"
+msgstr "Není k dispozici"
+
+#: src/client.cpp:190
+#, c-format
+msgid "Reloading %s"
+msgstr "Znovu načítám %s"
+
+#: src/client.cpp:198
+#, c-format
+msgid "Directory %s does not exist or cannot be read!"
+msgstr "Složka %s neexistuje nebo ji nelze číst"
+
+#: src/client.cpp:210
+#, c-format
+msgid "Error while reading %sFAHlog.txt!"
+msgstr "Nastala chyba při načítání %sFAHlog.txt!"
+
+#: src/client.cpp:218
+#, c-format
+msgid "Error while reading %squeue.dat"
+msgstr "Nastala chyba při načítání %squeue.dat!"
+
+#: src/client.cpp:224
+#, c-format
+msgid "Error while reading %sunitinfo.txt!"
+msgstr "Nastala chyba při načítání %sunitinfo.txt!"
+
+#: src/client.cpp:484
+#, c-format
+msgid "The progress value in file %s could not be found/parsed"
+msgstr "Hodnotu postupu v souboru %s nelze najít/analyzovat"
+
+#: src/client.cpp:541
+#, c-format
+msgid "Unable to save %s because it does not exist"
+msgstr "Nelze uložit %s jelikož neexistuje"
+
+#: src/client.cpp:548
+#, c-format
+msgid "Unable to create directory %s"
+msgstr "Nelze vztořit složku %s"
+
+#: src/client.cpp:561
+#, c-format
+msgid "Unable to copy %s to %s"
+msgstr "Nelze kopírovat %s do %s"
+
+#: src/client.cpp:588
+#, c-format
+msgid "%s is on frame %u"
+msgstr "%s dělá obrázek %u"
+
+#: src/client.cpp:592
+#, c-format
+msgid "Cannot determine frame number for %s (this isn't a problem)"
+msgstr "Nelze určit číslo obrázku pro %s (toto není problém)"
+
+#: src/client.cpp:777
+#, c-format
+msgid "%s has an unknown state (Unable to find a complete frame)"
+msgstr "%s je v neznámém stavu (Nelze najít hotový obrázek)"
+
+#: src/client.cpp:786
+#, c-format
+msgid "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
+msgstr "%s je zastaven (\"Folding@Home Client Shutdown.\"nalezeno v logu)"
+
+#: src/client.cpp:795
+#, c-format
+msgid ""
+"%s has an unknown state (Unable to extract a valid elapsed time since the "
+"last completed frame)"
+msgstr ""
+"%s je v neznamem stavu (Nedaří se načíst platný uplynutý čas od posledniho "
+"hotového obrázku)"
+
+#: src/client.cpp:803
+#, c-format
+msgid "%s has been marked as having a asynchronous clock."
+msgstr "%s byl označen jako majíc nesynchronizované hodiny"
+
+#: src/client.cpp:838
+#, c-format
+msgid "%s seems to have hung : Elapsed time is %um and limit is %um"
+msgstr "y%s se zdá zablokovaný : Uplynulý čas je %um a limit je %um"
+
+#: src/client.cpp:843
+#, c-format
+msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
+msgstr "%s se zdá být neaktivní : Uplynulý čas je %um a limit je %um"
+
+#: src/clientDialog.cpp:53
+#, c-format
+msgid "Client Edition / %s"
+msgstr "Edice Klienta / %s"
+
+#: src/clientDialog.cpp:73
+msgid "Client information"
+msgstr "Informace o klientovi"
+
+#: src/clientDialog.cpp:76
+msgid "Name:"
+msgstr "Jméno:"
+
+#: src/clientDialog.cpp:78
+msgid "Location:"
+msgstr "Umístění"
+
+#: src/clientDialog.cpp:182
+msgid "Choose a folder"
+msgstr "Vyberte si složku"
+
+#: src/clientDialog.cpp:209
+msgid "You must fill the name AND the locations fields."
+msgstr "Musíte vyplnit "
+
+#: src/clientsManager.cpp:183
+#, c-format
+msgid "Error while parsing %s on line %u"
+msgstr "Chyba při analýze %s ne řádce %u"
+
+#: src/clientsManager.cpp:205
+#, c-format
+msgid ""
+"Could not open file <%s> for writing!\n"
+"The list of clients will not be saved!"
+msgstr ""
+"Soubor %s nelze otevřít pro zapisování!\n"
+"Seznam klientů nebude uložen."
+
+#: src/clientsManager.cpp:210
+#, c-format
+msgid ""
+"# %s : contains the list of clients\n"
+"#\n"
+"# \"Name\"          \"Location\"\n"
+"\n"
+msgstr "%s : obsahuje seznam klientů\n"
+
+#: src/fahlogAnalyzer.cpp:235
+msgid "Possible clock asynchrony detected!"
+msgstr "Zjištěna možná asznchronizace hodin!"
+
+#: src/firstTimeDialog.cpp:54
+#, c-format
+msgid "Welcome to %s!"
+msgstr "Vítejte ve %s"
+
+#: src/firstTimeDialog.cpp:63
+#, c-format
+msgid "Welcome to %s, a Folding@Home monitoring tool"
+msgstr "Vítejte ve %s, nástroj pro sledování Folding@Home"
+
+#: src/firstTimeDialog.cpp:67
+msgid ""
+"Project information (e.g. deadlines) is read from a local file, which must "
+"be regularly updated."
+msgstr ""
+"Informace o projektu (např. termíny) jsou načteny z lokální složky která "
+"musí být pravidelně aktualizovaná."
+
+#: src/firstTimeDialog.cpp:68
+msgid ""
+"Thus, you should first download the latest available information on "
+"currently running projects:"
+msgstr ""
+"Tudíž byste měli nejprve stáhnout nejatkuálnější informace o projektech "
+"aktuálně běžícich:"
+
+#: src/firstTimeDialog.cpp:69
+msgid ""
+"(NOTE: If you use a proxy for HTTP connections, you will need to change the "
+"preferences first!)"
+msgstr ""
+"(POZNÁMKA : jestliže používáte proxy pro HTTP připojení, budete nejprve "
+"muset změnit nastavení!)"
+
+#: src/firstTimeDialog.cpp:71
+msgid "Download current projects"
+msgstr "Stáhnout aktuální projekty"
+
+#: src/firstTimeDialog.cpp:73
+msgid ""
+"New updates are needed when no information on projects can be displayed (e."
+"g. deadlines)."
+msgstr ""
+"Nové aktualizace jsou zapotřrebí jestliže nemůžou býy zobrazeny žádné "
+"informace o projektech (např. termíny)."
+
+#: src/firstTimeDialog.cpp:74
+msgid "You will be able to perform them using the 'FahMon' menu."
+msgstr "Budete je moci vykonat pomocí nabídky 'FahMon'."
+
+#: src/firstTimeDialog.cpp:78
+msgid ""
+"To monitor a client, you need to add it by right-clicking on the list and "
+"choosing 'Add a new client'."
+msgstr ""
+"Pro sledování klienta ho budete nejprve přidat pravým kliknutím a vybráním "
+"'Přidat nového klienta'."
+
+#: src/firstTimeDialog.cpp:79
+msgid ""
+"The name you choose for a client is not important, you can think of it as a "
+"nickname."
+msgstr "Název kteý dáte klientovi není důležité, je to jako přezdívka."
+
+#: src/firstTimeDialog.cpp:80
+msgid ""
+"All further operations on clients (e.g. edition, deletion) are also made by "
+"right-clicking on the list."
+msgstr ""
+"Veškeré další operace s klienty (např. edice, mazání) jsou též provázeny "
+"praým kliknutím na seznam."
+
+#: src/firstTimeDialog.cpp:84
+#, c-format
+msgid ""
+"The latest version of %s will always be available on the official website:"
+msgstr ""
+"Nejaktuálnější verze %s bude vždy k dispozici na oficiálních stránkách : "
+
+#: src/firstTimeDialog.cpp:149 src/main.cpp:134
+#, c-format
+msgid "Could not create directory <%s>"
+msgstr "Složku <%s> nelze vztvořit."
+
+#: src/httpDownloader.cpp:163
+#, c-format
+msgid "%.1f KB/s"
+msgstr "%.1f KB/s"
+
+#: src/listViewClients.cpp:117
+msgid "Progress"
+msgstr "Postup"
+
+#: src/listViewClients.cpp:118
+msgid "Name"
+msgstr "Název"
+
+#: src/listViewClients.cpp:119
+msgid "ETA"
+msgstr "ETA"
+
+#: src/listViewClients.cpp:120
+msgid "PPD"
+msgstr "PPD"
+
+#: src/listViewClients.cpp:358
+msgid "Loading..."
+msgstr "Načítání"
+
+#: src/listViewClients.cpp:457 src/webMonitor.cpp:371
+msgid "Finished"
+msgstr "Dokončen"
+
+#: src/listViewClients.cpp:469 src/webMonitor.cpp:383
+msgid "*Hung*"
+msgstr "*Zablokovaný*"
+
+#: src/listViewClients.cpp:627 src/listViewClients.cpp:635
+msgid "Add a new client"
+msgstr "Přidat klienta"
+
+#: src/listViewClients.cpp:637
+msgid "Reload this client"
+msgstr "Znovu načíst klienta "
+
+#: src/listViewClients.cpp:638
+msgid "Edit this client"
+msgstr "Editovat klienta"
+
+#: src/listViewClients.cpp:639
+msgid "Delete this client"
+msgstr "Vymazat klienta"
+
+#: src/listViewClients.cpp:640
+msgid "View Client Files"
+msgstr "Zobrazit soubory klienta"
+
+#: src/listViewClients.cpp:733
+msgid "Do you really want to delete this client?"
+msgstr "Opravdu chcete smazat klienta?"
+
+#: src/listViewClients.cpp:799
+msgid ""
+"Unable to launch the default filemanager.\n"
+"\n"
+"Please check that the correct filemanager is set in Preferences"
+msgstr ""
+"Nelze spustit výchozí správce složek.\n"
+"\n"
+"Prosím zkontrolujte zda je správný správce nastaven v Nastavení."
+
+#: src/main.cpp:73
+#, c-format
+msgid "Another instance of %s is already running!"
+msgstr "Jiná instance %s již běží!"
+
+#: src/mainDialog.cpp:161
+#, c-format
+msgid "%s is licenced under the GNU GPL v2"
+msgstr ""
+
+#: src/mainDialog.cpp:162
+msgid "Copyright (C) 2003-2007 Francois Ingelrest"
+msgstr ""
+
+#: src/mainDialog.cpp:163
+msgid "Copyright (C) 2007-2008 Andrew Schofield"
+msgstr ""
+
+#: src/mainDialog.cpp:165
+msgid "FahMon contains code from qd, also licenced under the GNU GPL v2"
+msgstr ""
+
+#: src/mainDialog.cpp:166
+msgid "Copyright (C) 2002-2005 Richard P. Howell IV."
+msgstr ""
+
+#: src/mainDialog.cpp:167
+msgid "Copyright (C) 2005-2008 Sebastiaan Couwenberg"
+msgstr ""
+
+#: src/mainDialog.cpp:400
+msgid ""
+"Something is wrong with this client.\n"
+"Please check the messages (FahMon->Show/Hide Messages Window)."
+msgstr ""
+"Něco je v nepořádku s tímto klientem.\n"
+"Prosím zkontrolujte hlášení (FahMon -> Zobrazit/Skrýt Hlášky)."
+
+#: src/mainDialog.cpp:460 src/mainDialog.cpp:549 src/mainDialog.cpp:606
+#: src/webMonitor.cpp:185 src/webMonitor.cpp:256 src/webMonitor.cpp:311
+#, c-format
+msgid "%s ago"
+msgstr "pěed %s"
+
+#: src/mainDialog.cpp:502 src/mainDialog.cpp:503 src/mainDialog.cpp:504
+#: src/mainDialog.cpp:505
+#, fuzzy
+msgid "Unknown"
+msgstr "Neznámý klient"
+
+#: src/mainDialog.cpp:506
+#, c-format
+msgid "Project %u is unknown, you should try to update the projects database"
+msgstr ""
+"%u projektu je neznámé, měli byste zkusit aktualizovat databázi projektů."
+
+#: src/mainDialog.cpp:512 src/webMonitor.cpp:221
+#, c-format
+msgid "%u points"
+msgstr "%u bodů"
+
+#: src/mainDialog.cpp:553 src/mainDialog.cpp:610 src/webMonitor.cpp:260
+#: src/webMonitor.cpp:315
+#, c-format
+msgid "In %s"
+msgstr "Za %s"
+
+#: src/mainDialog.cpp:628
+#, c-format
+msgid " :: Total PPD: %.2f"
+msgstr "Celkový PPD: %.2f"
+
+#: src/mainDialog.cpp:653
+msgid "&Show/Hide Messages Window"
+msgstr "&Zobrazit/Skrýt Hlášky"
+
+#: src/mainDialog.cpp:653
+msgid "Toggle the messages window"
+msgstr "Přrepnout okno hlášek"
+
+#: src/mainDialog.cpp:654
+msgid "&Download New Projects"
+msgstr "Stáhnout nové projekty"
+
+#: src/mainDialog.cpp:654
+msgid "Update the local project database"
+msgstr "Aktualizovat lokální databázi projektů"
+
+#: src/mainDialog.cpp:656
+msgid "&Check for update"
+msgstr "zkontrolovat aktualizace"
+
+#: src/mainDialog.cpp:656
+msgid "Check online for the latest version of FahMon"
+msgstr "Zkontrolovat poslední verzi FahMon na Internetu."
+
+#: src/mainDialog.cpp:658
+msgid "&Benchmarks...\tCTRL+B"
+msgstr "Benchmarky...\tCTRL+B"
+
+#: src/mainDialog.cpp:658
+msgid "Open the benchmarks dialog"
+msgstr "Otevřít benchmarky"
+
+#: src/mainDialog.cpp:659
+msgid "&Preferences...\tCTRL+P"
+msgstr "&Nastavení...\tCTRT+P"
+
+#: src/mainDialog.cpp:659
+msgid "Open the preferences dialog"
+msgstr "Otevřít nastavení"
+
+#: src/mainDialog.cpp:663 src/mainDialog.cpp:665 src/mainDialog.cpp:667
+msgid "&Quit\tCtrl+Q"
+msgstr "&Vypnout\tCtrl+Q"
+
+#: src/mainDialog.cpp:663 src/mainDialog.cpp:665 src/mainDialog.cpp:667
+#: src/trayManager.cpp:227
+msgid "Quit"
+msgstr "Vzpnout"
+
+#: src/mainDialog.cpp:673
+msgid "Reload &Selection\tF5"
+msgstr "Znovu načíst &výběr\tF5"
+
+#: src/mainDialog.cpp:673
+msgid "Reload the selected client"
+msgstr "Znovu načíst vybraného klienta"
+
+#: src/mainDialog.cpp:674
+msgid "Reload &All\tF6"
+msgstr "Znovu načíst &vše\tF6"
+
+#: src/mainDialog.cpp:674
+msgid "Reload all the clients"
+msgstr "Znovu načíst všechny klienty"
+
+#: src/mainDialog.cpp:676
+msgid "&Show/Hide FAHLog\tF8"
+msgstr "&Zobrazit/skrýt FAHlog\tF8"
+
+#: src/mainDialog.cpp:676
+msgid "Toggle the log file"
+msgstr "Přrepnout logový soubor"
+
+#: src/mainDialog.cpp:678
+msgid "&Cycle ETA Style\tF9"
+msgstr "Procházet ETA styly"
+
+#: src/mainDialog.cpp:678
+msgid "Cycle through the different ETA display styles"
+msgstr "Procházet  různé styly ETA"
+
+#: src/mainDialog.cpp:679
+msgid "&Monitoring"
+msgstr "&Sledování"
+
+#: src/mainDialog.cpp:683
+msgid "&My Stats\tF2"
+msgstr "&Moje Statistika\tF2"
+
+#: src/mainDialog.cpp:683
+msgid "View the personal statistics for the selected client"
+msgstr "Zobrazit osobní statistiky vybraného klienta"
+
+#: src/mainDialog.cpp:684
+msgid "&Jmol\tF3"
+msgstr "&Jmol\tF3"
+
+#: src/mainDialog.cpp:684
+msgid "View the current project on the Jmol website"
+msgstr "Zobrazit aktuální projekt na stránkách Jmol"
+
+#: src/mainDialog.cpp:685
+msgid "&fahinfo\tF4"
+msgstr "&fahinfo\tF4"
+
+#: src/mainDialog.cpp:685
+msgid "View the current project on fahinfo.org"
+msgstr "Zobrazit aktuální projekt na fahinfo.org"
+
+#: src/mainDialog.cpp:687
+msgid "F@H &Website"
+msgstr "F@H &Stránky"
+
+#: src/mainDialog.cpp:687
+msgid "Open to the official Stanford website"
+msgstr "Zobrazit oficiální stránky Stanfordu"
+
+#: src/mainDialog.cpp:688
+msgid "Folding-&Community"
+msgstr "Folding-&Community"
+
+#: src/mainDialog.cpp:688
+msgid "Open the Folding@Home support forum"
+msgstr "Otevřít forum technické podpory Folding@Home"
+
+#: src/mainDialog.cpp:689
+msgid "&Projects Summary"
+msgstr "&Souhrn projektů"
+
+#: src/mainDialog.cpp:689
+msgid "Open the list of the current projects"
+msgstr "Otevřít seznam aktuálních projektů"
+
+#: src/mainDialog.cpp:690
+msgid "&Servers Status"
+msgstr "&Stav Serverů"
+
+#: src/mainDialog.cpp:690
+msgid "Open the list of the servers with their status"
+msgstr "Otevřít seznam serverů s jejich stavem"
+
+#: src/mainDialog.cpp:691
+msgid "&Web"
+msgstr "&Web"
+
+#: src/mainDialog.cpp:695
+msgid "&Help Contents\tF1"
+msgstr "Obsah Nápovědy\tF1"
+
+#: src/mainDialog.cpp:695
+msgid "See help contents"
+msgstr "Zobrazit obsah nápovědy"
+
+#: src/mainDialog.cpp:698 src/mainDialog.cpp:700 src/mainDialog.cpp:702
+msgid "&About"
+msgstr "&O Aplikaci"
+
+#: src/mainDialog.cpp:704
+msgid "&Help"
+msgstr "&Nápověda"
+
+#: src/mainDialog.cpp:736
+msgid "Work Unit Information"
+msgstr "Informace o Pracovní Jednotce"
+
+#: src/mainDialog.cpp:764
+msgid "Core:"
+msgstr "Jádro : "
+
+#: src/mainDialog.cpp:766
+msgid "Project:"
+msgstr "Projekt:"
+
+#: src/mainDialog.cpp:768
+msgid "Credit:"
+msgstr "Kredit:"
+
+#: src/mainDialog.cpp:770
+msgid "Username:"
+msgstr "Uživatelské jméno:"
+
+#: src/mainDialog.cpp:772
+msgid "Downloaded:"
+msgstr "Staženo:"
+
+#: src/mainDialog.cpp:774
+msgid "Preferred Deadline:"
+msgstr "Preferovaný Termín:"
+
+#: src/mainDialog.cpp:776
+msgid "Final Deadline:"
+msgstr "Konečný termín:"
+
+#: src/mainDialog.cpp:802
+msgid " :: Total PPD:"
+msgstr "Celkové PPD:"
+
+#: src/mainDialog.cpp:809
+msgid "Log file."
+msgstr "Log"
+
+#: src/mainDialog.cpp:1085
+msgid "You must first select a client!"
+msgstr "Musíte nejprve vybrat klienta!"
+
+#: src/mainDialog.cpp:1472
+msgid "Checking for FahMon updates"
+msgstr "Ověřuji dostupnos aktualizací FahMon"
+
+#: src/mainDialog.cpp:1475
+msgid "Checking for update"
+msgstr "Ověřuji dostupnost aktualizace"
+
+#: src/mainDialog.cpp:1498
+#, c-format
+msgid "Your version: %s; New version: %s"
+msgstr "Vaše verze : %s ; Nová verze : %s"
+
+#: src/mainDialog.cpp:1512
+msgid "Update available"
+msgstr "Aktualizace dostupna"
+
+#: src/mainDialog.cpp:1513
+msgid ""
+"A newer version of FahMon is available\n"
+"Do you want to go to the FahMon website?"
+msgstr ""
+"Nová verze FahMon je dostupná\n"
+"Chcete přejít na domovskou stránku FahMon?"
+
+#: src/mainDialog.cpp:1520
+msgid "No update found"
+msgstr "Nebyly nalezeny žádné aktualizace"
+
+#: src/mainDialog.cpp:1550 src/projectsManager.cpp:354
+msgid "Unable to create a temporary file!"
+msgstr "Nelze vytvořit dočasnou složku!"
+
+#: src/mainDialog.cpp:1554 src/projectsManager.cpp:358
+#, c-format
+msgid "Unable to open the temporary file <%s>"
+msgstr "Nelze vytvořit dočasnou složku <%s>"
+
+#: src/mainDialog.cpp:1558 src/projectsManager.cpp:362
+msgid "Unable to connect to the server!"
+msgstr "Nelze se připojit na server!"
+
+#: src/mainDialog.cpp:1562 src/projectsManager.cpp:366
+msgid "Unable to send the request to the server!"
+msgstr "Nelze poslat žádost serveru"
+
+#: src/mainDialog.cpp:1566 src/projectsManager.cpp:370
+msgid "Download aborted!"
+msgstr "Stahování přerušeno"
+
+#: src/mainDialog.cpp:1572 src/projectsManager.cpp:376
+msgid "An unknown error happened!"
+msgstr "Nastala neznámá chyba"
+
+#: src/messagesFrame.cpp:39
+#, c-format
+msgid "Messages / %s"
+msgstr "Hlášení / %s"
+
+#: src/messagesManager.cpp:110
+msgid ""
+"Could not open file for writing!\n"
+"The log will not be saved!"
+msgstr ""
+"Nelze otevřít soubor pro zapisování!\n"
+"Log nebude uložen!"
+
+#: src/preferencesDialog.cpp:88
+#, c-format
+msgid "Preferences / %s"
+msgstr "Nastavení / %s"
+
+#: src/preferencesDialog.cpp:98
+msgid "General"
+msgstr "Obecné"
+
+#: src/preferencesDialog.cpp:99
+msgid "Monitoring"
+msgstr "Sledování"
+
+#: src/preferencesDialog.cpp:100
+msgid "Networking"
+msgstr "Sít"
+
+#: src/preferencesDialog.cpp:101
+msgid "Advanced"
+msgstr "Pokročilé"
+
+#: src/preferencesDialog.cpp:102
+msgid "System"
+msgstr "Systém"
+
+#: src/preferencesDialog.cpp:104
+msgid "WebApp"
+msgstr "WebApp"
+
+#: src/preferencesDialog.cpp:176
+msgid "Enable system tray icon"
+msgstr "Povolit ikonu v "
+
+#: src/preferencesDialog.cpp:177
+msgid "Start minimized"
+msgstr "Spustit minimalizovaný"
+
+#: src/preferencesDialog.cpp:178
+msgid "Collect .xyz files"
+msgstr "Sbírat soubory .xyz"
+
+#: src/preferencesDialog.cpp:179
+msgid "Auto update projects database when needed"
+msgstr "Automaticky aktualizovat databázi projektů"
+
+#: src/preferencesDialog.cpp:180
+msgid "Always list inaccessible clients last"
+msgstr "Vždy zobrazit nedostupné klienty poslední"
+
+#: src/preferencesDialog.cpp:181
+msgid "Check for FahMon updates on startup"
+msgstr "Ověřit dostupnost aktualizací FahMon při spuštění"
+
+#: src/preferencesDialog.cpp:216
+msgid "A date (dd/mm)"
+msgstr "Datum (dd/mm)"
+
+#: src/preferencesDialog.cpp:216
+msgid "A date (mm/dd)"
+msgstr "Datum (mm/dd)"
+
+#: src/preferencesDialog.cpp:216
+msgid "Time left"
+msgstr "Zbývající čas"
+
+#: src/preferencesDialog.cpp:217
+msgid "All frames"
+msgstr "Všechny Obrázky"
+
+#: src/preferencesDialog.cpp:217
+msgid "Last frame only"
+msgstr "Pouze poslední obrázek"
+
+#: src/preferencesDialog.cpp:217
+msgid "Last 3 frames"
+msgstr "Poslední 3 Obrázek"
+
+#: src/preferencesDialog.cpp:217
+msgid "Effective rate"
+msgstr "Skutečná rychlost"
+
+#: src/preferencesDialog.cpp:227
+msgid "Auto reload clients"
+msgstr "Automaticky znovu načíst klienty"
+
+#: src/preferencesDialog.cpp:228
+msgid "Reload interval (mn)"
+msgstr "Interval znovunačítání (mn)"
+
+#: src/preferencesDialog.cpp:229
+msgid "Use experimental reload system"
+msgstr "Použit experimentální systém znovunačítání"
+
+#: src/preferencesDialog.cpp:233
+msgid "Ignore asynchronous clocks"
+msgstr "Ignorovat nesynchronizované hodiny"
+
+#: src/preferencesDialog.cpp:235
+msgid "Display dates as"
+msgstr "Zobrazit data jako"
+
+#: src/preferencesDialog.cpp:241
+msgid "Calculate PPD based on"
+msgstr "Vypočítat PPD na základě"
+
+#: src/preferencesDialog.cpp:284
+msgid "Use a proxy for HTTP connections"
+msgstr "Pouít proxy pro HTTP připojení"
+
+#: src/preferencesDialog.cpp:287
+msgid "Proxy requires authentication"
+msgstr "Proxy vyžaduje autentikaci"
+
+#: src/preferencesDialog.cpp:290 src/preferencesDialog.cpp:344
+msgid "Address:"
+msgstr "Adresa:"
+
+#: src/preferencesDialog.cpp:291
+msgid "Port:"
+msgstr "Port:"
+
+#: src/preferencesDialog.cpp:292
+msgid ""
+"Proxy\n"
+"Username:"
+msgstr ""
+"Proxy\n"
+"Uživatelské jméno:"
+
+#: src/preferencesDialog.cpp:293
+msgid ""
+"Proxy\n"
+"Password:"
+msgstr ""
+"Proxy\n"
+"Heslo:"
+
+#: src/preferencesDialog.cpp:342
+msgid "Use the following settings for new project downloads"
+msgstr "Použít náledující nastavení pro nové stahování projektů"
+
+#: src/preferencesDialog.cpp:345
+msgid "Use a local file for project data"
+msgstr "Použít lokálni soubor s daty o projektech"
+
+#: src/preferencesDialog.cpp:347 src/preferencesDialog.cpp:487
+#: src/preferencesDialog.cpp:492 src/preferencesDialog.cpp:497
+msgid "Filename:"
+msgstr "Název souboru:"
+
+#: src/preferencesDialog.cpp:394
+msgid "Web Browser:"
+msgstr "Prohlížeč:"
+
+#: src/preferencesDialog.cpp:395
+msgid "File Manager:"
+msgstr "Správce Složek:"
+
+#: src/preferencesDialog.cpp:397
+msgid "File Manager Command:"
+msgstr "Příkaz pro spávce složek:"
+
+#: src/preferencesDialog.cpp:398
+msgid "Manually set timezone to UTC +"
+msgstr "Manuálně nastavit časové pásmo na UTC +"
+
+#: src/preferencesDialog.cpp:402
+msgid "Windows Explorer"
+msgstr "Windows Explorer"
+
+#: src/preferencesDialog.cpp:402 src/preferencesDialog.cpp:405
+msgid "Other"
+msgstr "Ostatní"
+
+#: src/preferencesDialog.cpp:485
+msgid "Export Web Application"
+msgstr "Exportovat webovou aplikaci"
+
+#: src/preferencesDialog.cpp:490
+msgid "Export Simple Web page"
+msgstr "Exportovat jednoduchou webovou stránku"
+
+#: src/preferencesDialog.cpp:495
+msgid "Export Simple Text file"
+msgstr "Exportovat jednoduchý textový soubor"
+
+#: src/preferencesDialog.cpp:902
+msgid "Choose a local project data file"
+msgstr "Vyberte lokální složku s daty o projektech"
+
+#: src/preferencesDialog.cpp:919
+msgid "Choose where to save the Web Application"
+msgstr "Vybrat kam uložit webovou aplikaci"
+
+#: src/preferencesDialog.cpp:936
+msgid "Choose where to save the simple web page"
+msgstr "Vybrat kam uložit jednoduchou webovou stránku"
+
+#: src/preferencesDialog.cpp:953
+msgid "Choose where to save the simple text file"
+msgstr "Vybrat kam uložit jednoduchý textový soubor."
+
+#: src/preferencesManager.cpp:247
+msgid "There is no Preferences file, or it is not readable"
+msgstr "Nelze najít soubor Nastavení, nebo jej nelze číst"
+
+#: src/projectsManager.cpp:110
+msgid "There is no projects file, or it is not readable"
+msgstr "Nelze najít soubor Projektů, nebo jej nelze číst"
+
+#: src/projectsManager.cpp:255
+msgid "Updating projects database"
+msgstr "Aktualizace databáze projektů"
+
+#: src/projectsManager.cpp:259
+msgid "Downloading new projects"
+msgstr "Stahování nových projektů"
+
+#: src/projectsManager.cpp:283
+msgid "Adding the new projects to the database"
+msgstr "Přidávání nových projektů do databáze"
+
+#: src/projectsManager.cpp:385
+msgid "Local project update file doesn't exist!"
+msgstr "Lokaní soubor aktualizace projektu neexistuje!"
+
+#: src/projectsManager.cpp:394
+msgid "Unable to copy local project update file to temporary location"
+msgstr "Nelze kopírovet lokální soubor aktualizace projektu do dočasné složky."
+
+#: src/projectsManager.cpp:457
+#, c-format
+msgid ""
+"The line %u is not correctly formatted!\n"
+"\n"
+"%s"
+msgstr ""
+"řádka %u je v nesprávném formátu!\n"
+"\n"
+"%s"
+
+#: src/projectsManager.cpp:468
+msgid "Update aborted!"
+msgstr "Aktualizace zrušena!"
+
+#: src/tools.cpp:65
+msgid ""
+"Unable to launch the default browser.\n"
+"\n"
+"Please check that the environment variable BROWSER is defined or set it in "
+"Preferences."
+msgstr ""
+"Nelze spustit výchozí prohlížeč.\n"
+"\n"
+"Prosím zkontrolujte zda je proměnná BROWSER definována nebo nastavena v "
+"dialogu Nastavení"
+
+#: src/trayManager.cpp:197
+#, c-format
+msgid "Clients: %i"
+msgstr "Klienti : %i"
+
+#: src/trayManager.cpp:201
+#, c-format
+msgid "Total PPD: %.2f"
+msgstr "Celkový PPD: %.2f"
+
+#: src/trayManager.cpp:208
+msgid "Preferences"
+msgstr "Nastavení"
+
+#: src/trayManager.cpp:215
+msgid "Hide FahMon"
+msgstr "Skrýt FahMon"
+
+#: src/trayManager.cpp:220
+msgid "Show FahMon"
+msgstr "Zobrazit FahMon"
+
+#: src/webMonitor.cpp:337 src/webMonitor.cpp:579
+msgid "Inaccessible"
+msgstr "Nepřístupné"
+
+#: src/webMonitor.cpp:342 src/webMonitor.cpp:583
+msgid "Stopped"
+msgstr "Zastaveno"
+
+#: src/webMonitor.cpp:347 src/webMonitor.cpp:587
+msgid "Inactive"
+msgstr "Neaktivní"
+
+#: src/webMonitor.cpp:352 src/webMonitor.cpp:591
+msgid "Hung"
+msgstr "Zablokovaný"
+
+#: src/webMonitor.cpp:357 src/webMonitor.cpp:595
+msgid "Async"
+msgstr "Asynchroní"
+
+#: src/webMonitor.cpp:362
+msgid "Ok"
+msgstr "Ok"
+
+#: src/webMonitor.cpp:451
+#, fuzzy, c-format
+msgid ""
+"Could not open template file <%s> for reading!\n"
+"The web application will not be created!"
+msgstr ""
+"Nelze otevřít soubor <%s> pro zapisování!\n"
+"Webová aplikace nebude vytvořena!"
+
+#: src/webMonitor.cpp:456
+#, c-format
+msgid ""
+"Could not open file <%s> for writing!\n"
+"The web application will not be created!"
+msgstr ""
+"Nelze otevřít soubor <%s> pro zapisování!\n"
+"Webová aplikace nebude vytvořena!"
+
+#~ msgid "%s Web View - Last updated: %s"
+#~ msgstr "%s Webové zobrazení - posledně aktualizované : %s"
+
+#~ msgid ""
+#~ "Could not open file <%s> for writing!\n"
+#~ "The simple web output will not be created!"
+#~ msgstr ""
+#~ "Nelze otevřít soubor <%s> pro zapisování!\n"
+#~ "Jednoduchý webový výstup nebude vytvořen!"
+
+#~ msgid "State"
+#~ msgstr "Status"
+
+#~ msgid "PRCG"
+#~ msgstr "PRCG"
+
+#~ msgid "Credit"
+#~ msgstr "Kredit"
+
+#~ msgid "Downloaded"
+#~ msgstr "Staženo"
+
+#~ msgid ""
+#~ "Could not open file <%s> for writing!\n"
+#~ "The simple text output will not be created!"
+#~ msgstr ""
+#~ "Nelze otevřít soubor <%s> pro zapisování!\n"
+#~ "Jednoduchý textový výstup nebude vytvořen!"
+
+#~ msgid "FahMon Client Monitoring %s - Simple Text Output\n"
+#~ msgstr "Monitorování FahMon klienta %s - Jednoduchý textový výstup\n"
+
+#~ msgid "Last updated: %s"
+#~ msgstr "Posledně aktualizované : %s"
+
+#~ msgid ""
+#~ "Total PPD: %.2f\n"
+#~ "\n"
+#~ msgstr ""
+#~ "Celkový PPD: %.2f\n"
+#~ "\n"
+
+#~ msgid "Server:"
+#~ msgstr "Server:"
+
+#~ msgid "Resource:"
+#~ msgstr "Zdroj:"

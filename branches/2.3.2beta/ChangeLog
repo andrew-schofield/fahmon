@@ -1,0 +1,311 @@
+FahMon: The Folding@home client monitoring program
+
+v2.3.2
+
+    General
+
+    * Updated licence information.
+    * Included code from qd to retrieve PRCG, issue date, username and
+      teamnumber.
+    * Removed redundant (unstable) code.
+    * Fixed bug that prevented FahMon from being restored to maximised state.
+    * Fixed bug that formatted dates incorrectly in Web Output.
+    * Added total PPD and update dates to Simple Web and Text output.
+    * Fixed bug in progress calculation system that reported 100% as 0%
+    * Fixed bug that broke effective frame time for some clients.
+    * Fixed bug in monitoring system that broke PPD/ETA for projects with less
+      than 100 frames.
+    * Fixed proxy username text box sizing bug.
+    * Cleaned up project download settings. Users migrating from =< 2.3.1 will
+      need to enter their settings again if they were using an "alternate"
+      download location.
+    * WebApp web output now copies images automatically.
+    * Fixed bug in project update system that prevented client list reloading
+      data after an update.
+    * Client information box shows as much info as possible even if projects
+      database isn't up to date.
+    * Web output now uses a templating system, allowing users to create their
+      own output designs.
+    * Fixed bug which broke deadline dates if a WU was downloaded the previous
+      year.
+    * Fixed bug which crashed FahMon if it updates the database and psummary is
+      missing the information required.
+    * Monitoring system now calculates how many markers are in a log file based
+      on FAHlog.txt analysis and only uses the psummary "frame" count if no
+      accurate determination can be made.
+    * Fixed behaviour when FAHlog reports odd completion percentages like 100%->
+      200% instead of 0%->100%.
+
+    Windows
+
+    * Fixed bug which drew the FahMon icon over the progress dialog title.
+    * Fixed issue with VC8 resource compiler not accepting compressed vista
+      icons.
+    * Fixed issues with wxMSW 2.8.6 and network paths.
+    * Built Win32 version against wxMSW 2.8.6.
+    * Updated MSVC project to allow building of debug releases.
+
+    Linux
+
+    * Build requirements upped to wxGTK2.8.
+
+v2.3.1 (30/10/07)
+
+    General
+
+    * Updated and improved documentation (this is still "Work in Progress").
+    * Added Czech translation.
+    * Preferences dialog and client list now save changes immediately, which
+      should help in situations where FahMon crashes, like fast-user-switching
+      or closing RDP/VNC sessions.
+    * Added Drag-and-Drop function to the client list to allow new clients to be
+      added more easily.
+    * Add Gromacs SMP CVS (GROCVS) core support.
+    * Adjusted margin on the benchmarks dialog.
+    * Fixed bug in "Effective Duration" code that produced incorrect results
+      when calculating values for WUs with less than 100 frames.
+    * Detailed instructions on how to compile fahmon using the MS Free Tools are
+      now provided.
+    * Altered progress detection method to use FAHlog.txt, this should help with
+      cores that don't update unitinfo.txt in a timely fashion, or at all.
+      Unitinfo.txt is still used as a fallback if 1) The projectId is unknown,
+      2) The WU is still in the "startup" phase (i.e. yellow).
+    * Added WebApp module. You can now export the monitoring status to 3
+      different formats, WebApp - a fancy jscript powered web page that mimics
+      the FahMon interface; Simple Web - a simple web page containing useful
+      data arranged in a simple table; Simple Text - similar to Simple Web, but
+      optimised for shell based viewing - useful for monitoring over SSH.
+    * Removed redundant "display deadlines in days option". The format is now
+      controlled by the old "Display ETA as" option which has been renamed to
+      "Display dates as"
+    * Added menu item to cycle through ETA display styles as requested.
+    * Updated about dialog to use new website
+    * HTTP requests from FahMon now send a User-Agent string (i.e. FahMon/2.3.1)
+    * Update notification system added
+    * Added Dutch translation
+    * Added Brazilian Portuguese translation
+    * Added Spanish translation
+    * New application icon, including Vista-required dimensions
+
+v2.3.0 (10/09/07)
+
+    Linux
+
+    * Replaced scons with GNU build system (makes it easier for packagers).
+    * Altered image path to now use standard directory (like
+      /usr/share/pixmaps/fahmon).
+    * Altered message.log location to use ~/.fahmon/
+    * Above changes mean FahMon can be run from anywhere on the system without
+      worrying about being in the right directory first.
+    * Automatically creates Application Menu shortcut using GNU build system.
+    * Fixed typo that caused default file manager to be set to "Other" instead
+      of "Konqueror" on a fresh install.
+    * psummary parser altered to change the decimal point symbol on the fly,
+      thus allowing non-english users to display "," instead of "."
+
+    Windows
+
+    * Created new installer using NSIS
+
+    General
+
+    * Documentation altered to fit with GNU build system.
+    * Fixed regression that caused FahMon to lose settings on OS shutdown or
+      logoff.
+    * Added Double Gromacs B (DGROMACSB) core support.
+    * Adapted asynchronous client detection to work with updated timezone
+      conversion system. Asynchronous clients should no longer appear "hung"
+      when "ignore asynchronous clocks" is enabled. This has the potential to
+      display the state incorrectly for clients having very long frame times
+      (close to 1 day). For the most accurate state detection, client clocks
+      should be as in-sync as possible (use NTP).
+    * Fixed some items on the preferences dialog that didn't automatically
+      refresh the client list when the preferences were applied/saved.
+    * The information panel now shows the full PRCG data for the current client
+      (if readable).
+    * The "effective" rate can now be used to calculate ETA and PPD. This bases
+      the frame times on the total running time of the WU since it was
+      downloaded, thus takes into account times when the client was not actually
+      processing the WU.
+    * Fixed bug which caused incorrect sorting by PPD when there were stopped
+      clients in the list.
+    * Double clicking on clients will open the folder containing that client.
+    * Altered WU information panel to show deadlines as days, hours, minutes to
+      match the ETA display.
+    * Improved instance handling to raise the previous instance instead of
+      producing a warning message. Uses DDE on Win32 and Unix sockets on Unix.
+    * Made log processing routines more robust to cope with messy lines in
+      FAHlog.txt created by the Windows SMP client.
+    * Source package now contains all files necessary to build on Linux, MS
+      Windows and OSX. However, they are only guaranteed to compile sucessfully
+      on Linux. MS Windows can be made to work, OSX is unknown at this point.
+    * FahMon is now internationalised, and comes with translations for: British
+      English, French, Polish, Portuguese, Russian and Swedish.
+
+v2.2.2 (07/07/07)
+
+    * Added preliminary detection for hung clients
+    * Fixed bug which prevented reloading selected client data after being
+      restored from the system tray
+    * Fixed regression which caused inaccessible clients to report an incorrect
+      state on FahMon launch
+    * Fixed regression that often caused an incorrect xyz file to be saved when
+      experimental reload system was activated
+    * Fixed (longstanding) major issue with state detection and timezone
+      conversion which caused clients to have an unknown state when the local
+      timezone has passed 00:00 and the client hasn't.
+    * Fixed bug which prevented you from running FahMon in "start minimised"
+      mode without "enable tray icon" being set
+    * Fixed another bug relating to window size not restoring correctly. If the
+      frame is ever detected to be 0x0, default values are used instead
+    * Client list colour scheme now follows system on both Windows and Linux
+    * Made more code compatible with newer versions of wxWidgets (Win32)
+
+v2.2.1a (13/06/07)
+
+    * Reverted Win32 build back to wxWidgets 2.6.3 as 2.8.4 appeared to cause
+      file access problems for some users
+    * Altered projects database conversion system to work correctly
+
+v2.2.1 (13/06/07)
+
+    * Added "Start Minimized" option
+    * Added the blue color for unsynched clients, please check the help file for
+      more information
+    * Added experimental auto-reload code (thanks to athropos_666)
+    * Added option to base ETA and PPD on instantaneous frame time and rolling 3
+      frame average
+    * Added ability to override timezone detected by wxwidgets (whole hours
+      only)
+    * Message manager now writes out messages to messages.log
+    * Added Simulated Tempering Gromacs (GROSIMT) core support
+    * Added Dolphin as a filemanager option for Linux users in preparation for
+      it being the default FM in KDE4
+    * Added option to partially override state detection for clients with
+      unsynced clocks
+    * Fixed empty log crash bug
+    * Fixed state detection bug for verbose clients trying to upload results
+      periodically
+    * Fixed projects database to handle non-integer deadlines correctly
+    * Status images slightly altered
+    * Worked around bug in wxwidgets breaking DST timezones, see above
+    * Download times and deadlines are now displayed in local time instead of
+      UTC
+    * ETA times in the message log now displayed as HH:MM:SS instead of seconds
+    * Projects database now versioned
+    * Deadline and download dates can also be displayed as time elapsed or
+      remaining, in days
+    * Added missing declaration to allow compilation against wxWidgets 2.8
+    * Switched win32 version to wxWidgets 2.8.4
+
+v2.2.0 (25/03/07)
+
+    * Added full monitoring support for GPU and SMP clients
+    * Added SREM Gromacs (GROST) core support
+    * Added PPD display per client, and total
+    * Fixed bug which caused all unsaved settings to be lost when client was
+      left running on an OS shutdown or logoff.
+    * Fixed bugs which prevented code working correctly with gcc > 4 (thanks to
+      ck_wong and goober_dvd for the patches)
+    * A local file can now be used as a project data source, and the download
+      parameters can be changed
+    * Added a tray menu showing number of clients and PPD
+    * Right click menu for clients now allows you to open the client folder in
+      your file manager
+    * Client list can be sorted by PPD and Status
+    * Inaccessible clients can be included in sorting, by default they are
+      always displayed last.
+    * Web menu now includes a link to fahinfo.org, pointing to the relevant
+      project information page
+
+v2.1.5 (26/11/06)
+
+    * Added links to user's stats page in the right panel of the main window
+    * When tray icon is enabled, hide the main window when it is minimized
+      (thanks to Mihail Boev for the patch)
+
+v2.1.4 (13/11/06)
+
+    * Fixed refresh bug when changing selection
+    * When psummary file is corrupted, don't abort on first error and continue
+      to parse remaining lines
+    * Added preliminary support for the new cores (GPU and SMP)
+
+v2.1.3 (01/11/06)
+
+    * Fixed a GMT date management bug (Linux)
+    * Switched win32 version to wxWidgets 2.6.3
+
+v2.1.2 (29/10/06)
+
+    * Fixed the window size bug that occurred when FahMon was closed when
+      minimized (win32)
+    * Fixed operator precedence warnings for the alternating shading in list
+      controls (thanks to Mihail Boev for the patch)
+    * Fixed visual bug with resizing when showing/hiding the log window (thanks
+      again to Mihail Boev)
+    * Added a browser preference in Linux version (thanks to mdickinson for the
+      patch, sorry for the delay :-))
+
+v2.1.1 (18/07/06)
+
+    * Added support for Gromacs33 core (thanks to uncle_fungus for the patch)
+
+v2.1.0c (08/03/06)
+
+    * When client was stopped, best benchmark was deleted
+
+v2.1.0b (01/03/06)
+
+    * Clients were sometimes falsely detected as stopped
+
+v2.1.0 (25/02/06)
+
+    * Made Linux version more standard: configuration and .xyz files are now
+      stored in ~/.fahmon/
+    * Added the black color for inaccessible clients, please check the help
+      content for more information
+    * The download date (and thus preferred/final deadlines) was sometimes
+      corrupted
+    * The selected entry in the benchmarks dialog was not always visible
+    * Rewrote main parts of the benchmarking code, it should be more reliable
+    * Improved error handling when loading client information
+    * Improved the way inactivity is detected
+    * Miscellaneous small fixes
+
+v2.0.4 (12/02/06)
+
+    * FahMon was unusable on some non-english Linux systems
+    * Percentage of completion near the progress bar was not displayed until the
+      window was resized
+    * Fixed the 'Feburary' bug caused by some F@H cores
+
+v2.0.3 (30/10/05)
+
+    * The position of the frame is now saved and restored across sessions
+    * Updated Stanford web addresses (vspx27.stanford.edu is now
+      fah-web.stanford.edu)
+
+v2.0.2 (15/10/05)
+
+    * Added support for proxies that require authentication
+    * Added support for a system tray icon
+    * Fixed the bug that caused a blank window of Internet Explorer to appear in
+      the win32 version
+    * Miscellaneous small changes
+
+v2.0.1 (29/09/05)
+
+    * Fixed the inability to sort the list of clients using the ETA as the
+      sorting criterion
+    * Fixed the case where min. time / frame could be smaller than avg. time /
+      frame
+    * The correct dialog icon is now used in the win32 version
+    * The name of a client is displayed instead of its location in the
+      benchmarks dialog, if possible
+
+v2.0.0 (24/09/05)
+
+    * FahMon has been entirely rewritten and now works also with Linux. A lot of
+      changes have been done, just check them! (Beware that file formats have
+      changed and are not compatible with previous ones!)

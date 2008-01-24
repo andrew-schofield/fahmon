@@ -1,0 +1,1182 @@
+# translation of nl_NL.po to British English
+# Andrew Schofield <the.uncle.fungus@gmail.com>, 2007.
+msgid ""
+msgstr ""
+"Project-Id-Version: nl_NL\n"
+"Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
+"POT-Creation-Date: 2008-01-24 01:01+0000\n"
+"PO-Revision-Date: 2007-11-15 23:43+0000\n"
+"Last-Translator: Andrew Schofield <the.uncle.fungus@gmail.com>\n"
+"Language-Team: British English <en@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+
+#: src/aboutDialog.cpp:38 src/mainDialog.cpp:698 src/mainDialog.cpp:700
+#: src/mainDialog.cpp:702
+msgid "About"
+msgstr "Over"
+
+#: src/aboutDialog.cpp:49
+msgid "Author:"
+msgstr "Auteur:"
+
+#: src/aboutDialog.cpp:51
+msgid "Maintainer:"
+msgstr "Onderhouden door:"
+
+#: src/aboutDialog.cpp:53
+msgid "Homepage:"
+msgstr "Homepage:"
+
+#: src/aboutDialog.cpp:55
+msgid "Qd homepage:"
+msgstr ""
+
+#: src/aboutDialog.cpp:57
+msgid "Licence:"
+msgstr ""
+
+#: src/aboutDialog.cpp:61
+msgid "Library:"
+msgstr "Bibliotheek:"
+
+#: src/benchmarksDialog.cpp:58 src/trayManager.cpp:206
+msgid "Benchmarks"
+msgstr "Benchmarks"
+
+#: src/benchmarksDialog.cpp:80
+msgid "Projects"
+msgstr "Projecten"
+
+#: src/benchmarksDialog.cpp:256
+msgid "No benchmarks for this project!"
+msgstr "Geen benchmarks voor dit project!"
+
+#: src/benchmarksDialog.cpp:266
+#, c-format
+msgid "Project : %u\n"
+msgstr "Project    : %u\n"
+
+#: src/benchmarksDialog.cpp:267
+#, c-format
+msgid "Core    : %s\n"
+msgstr "Core       : %s\n"
+
+#: src/benchmarksDialog.cpp:268
+#, c-format
+msgid "Frames  : %u\n"
+msgstr "Frames     : %u\n"
+
+#: src/benchmarksDialog.cpp:269
+#, c-format
+msgid "Credit  : %u\n"
+msgstr "Waardering : %u\n"
+
+#: src/benchmarksDialog.cpp:273
+#, c-format
+msgid "Project : %u (Unknown)\n"
+msgstr "Project : %u (onbekend)\n"
+
+#: src/benchmarksDialog.cpp:295
+#, c-format
+msgid "Min. Time / Frame : %s"
+msgstr "Min. tijd / frame    : %s"
+
+#: src/benchmarksDialog.cpp:301 src/benchmarksDialog.cpp:322
+#: src/benchmarksDialog.cpp:347 src/benchmarksDialog.cpp:349
+#: src/benchmarksDialog.cpp:351
+#, c-format
+msgid " - %.2f ppd"
+msgstr " - %.2f ppd"
+
+#: src/benchmarksDialog.cpp:306
+msgid "No Min. Time / Frame"
+msgstr "Geen min. tijd / frame"
+
+#: src/benchmarksDialog.cpp:316
+#, c-format
+msgid "Avg. Time / Frame : %s"
+msgstr "Gem. tijd / frame    : %s"
+
+#: src/benchmarksDialog.cpp:327
+msgid "No Avg. Time / Frame"
+msgstr "Geen gem. tijd / frame"
+
+#: src/benchmarksDialog.cpp:339
+#, c-format
+msgid "Cur. Time / Frame : %s"
+msgstr "Huidige tijd / frame : %s"
+
+#: src/benchmarksDialog.cpp:340
+#, c-format
+msgid "R3F. Time / Frame : %s"
+msgstr "R3F. tijd / frame    : %s"
+
+#: src/benchmarksDialog.cpp:341
+#, c-format
+msgid "Eff. Time / Frame : %s"
+msgstr "Eff. tijd / frame    : %s"
+
+#: src/benchmarksDialog.cpp:356
+msgid "No Cur. Time / Frame"
+msgstr "Geen huidige tijd / frame"
+
+#: src/benchmarksDialog.cpp:357
+msgid "No R3F. Time / Frame"
+msgstr "Geen R3F. tijd / frame"
+
+#: src/benchmarksDialog.cpp:358
+msgid "No Eff. Time / Frame"
+msgstr "Geen eff. tijd / frame"
+
+#: src/benchmarksManager.cpp:152 src/preferencesManager.cpp:272
+#: src/projectsManager.cpp:145
+#, c-format
+msgid "Could not open file <%s> for writing!"
+msgstr "Kan bestand <%s> niet openen om te schrijven!"
+
+#: src/benchmarksManager.cpp:316
+msgid "(Benchmarks) The maximum number of known clients has been reached!"
+msgstr "(Benchmarks) Het maximum aantal clients is bereikt!"
+
+#: src/benchmarksManager.cpp:464
+msgid "Unknown client"
+msgstr "Onbekende client"
+
+#: src/client.cpp:95
+msgid "Log not loaded!"
+msgstr "Logbestand niet geladen!"
+
+#: src/client.cpp:98
+msgid "anonymous"
+msgstr "anoniem"
+
+#: src/client.cpp:103 src/listViewClients.cpp:461 src/listViewClients.cpp:465
+#: src/mainDialog.cpp:473 src/mainDialog.cpp:478 src/mainDialog.cpp:479
+#: src/mainDialog.cpp:480 src/mainDialog.cpp:481 src/mainDialog.cpp:482
+#: src/mainDialog.cpp:568 src/mainDialog.cpp:624 src/webMonitor.cpp:139
+#: src/webMonitor.cpp:140 src/webMonitor.cpp:141 src/webMonitor.cpp:142
+#: src/webMonitor.cpp:143 src/webMonitor.cpp:144 src/webMonitor.cpp:145
+#: src/webMonitor.cpp:201 src/webMonitor.cpp:202 src/webMonitor.cpp:203
+#: src/webMonitor.cpp:204 src/webMonitor.cpp:205 src/webMonitor.cpp:213
+#: src/webMonitor.cpp:214 src/webMonitor.cpp:215 src/webMonitor.cpp:216
+#: src/webMonitor.cpp:217 src/webMonitor.cpp:274 src/webMonitor.cpp:329
+#: src/webMonitor.cpp:375 src/webMonitor.cpp:379
+msgid "N/A"
+msgstr "N/A"
+
+#: src/client.cpp:190
+#, c-format
+msgid "Reloading %s"
+msgstr "Herladen %s"
+
+#: src/client.cpp:198
+#, c-format
+msgid "Directory %s does not exist or cannot be read!"
+msgstr "Directory %s bestaat niet of kan niet gelezen worden!"
+
+#: src/client.cpp:210
+#, c-format
+msgid "Error while reading %sFAHlog.txt!"
+msgstr "Fout tijdens lezen van %sFAHlog.txt!"
+
+#: src/client.cpp:218
+#, c-format
+msgid "Error while reading %squeue.dat"
+msgstr "Fout tijdens lezen van %squeue.dat!"
+
+#: src/client.cpp:224
+#, c-format
+msgid "Error while reading %sunitinfo.txt!"
+msgstr "Fout tijdens lezen van %sunitinfo.txt!"
+
+#: src/client.cpp:484
+#, c-format
+msgid "The progress value in file %s could not be found/parsed"
+msgstr "De voortgang in bestand %s kan niet gevonden of weergegeven worden"
+
+#: src/client.cpp:541
+#, c-format
+msgid "Unable to save %s because it does not exist"
+msgstr "Onmogelijk om %s op te slaan omdat deze niet bestaat"
+
+#: src/client.cpp:548
+#, c-format
+msgid "Unable to create directory %s"
+msgstr "Onmogelijk om directory %s aan te maken"
+
+#: src/client.cpp:561
+#, c-format
+msgid "Unable to copy %s to %s"
+msgstr "Onmogelijk om %s naar %s te kopiëren"
+
+#: src/client.cpp:588
+#, c-format
+msgid "%s is on frame %u"
+msgstr "%s is op frame %u"
+
+#: src/client.cpp:592
+#, c-format
+msgid "Cannot determine frame number for %s (this isn't a problem)"
+msgstr "Kan geen framenummer vinden voor %s (is geen probleem)"
+
+#: src/client.cpp:777
+#, c-format
+msgid "%s has an unknown state (Unable to find a complete frame)"
+msgstr ""
+"%s heeft een onbekende status (Niet mogelijk om een compleet frame te vinden)"
+
+#: src/client.cpp:786
+#, c-format
+msgid "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
+msgstr "%s is gestopt (De regel \"Folding@Home Client Shutdown.\" is gevonden)"
+
+#: src/client.cpp:795
+#, c-format
+msgid ""
+"%s has an unknown state (Unable to extract a valid elapsed time since the "
+"last completed frame)"
+msgstr ""
+"%s heeft een onbekende status (niet mogelijk om een goede tijdsduur te "
+"vinden sinds het laatst afgeronde frame)"
+
+#: src/client.cpp:803
+#, c-format
+msgid "%s has been marked as having a asynchronous clock."
+msgstr "%s is gemarkeerd dat deze een asynchrone klok heeft."
+
+#: src/client.cpp:838
+#, c-format
+msgid "%s seems to have hung : Elapsed time is %um and limit is %um"
+msgstr "%s lijkt te hangen: Verstreken tijd is %um en de limiet is %um"
+
+#: src/client.cpp:843
+#, c-format
+msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
+msgstr "%s lijkt inactief: verstreken tijd is %um en de limiet is %um"
+
+#: src/clientDialog.cpp:53
+#, c-format
+msgid "Client Edition / %s"
+msgstr "Client versie / %s"
+
+#: src/clientDialog.cpp:73
+msgid "Client information"
+msgstr "Client informatie"
+
+#: src/clientDialog.cpp:76
+msgid "Name:"
+msgstr "Naam:"
+
+#: src/clientDialog.cpp:78
+msgid "Location:"
+msgstr "Locatie:"
+
+#: src/clientDialog.cpp:182
+msgid "Choose a folder"
+msgstr "Kies een map"
+
+#: src/clientDialog.cpp:209
+msgid "You must fill the name AND the locations fields."
+msgstr "Je moet de naam EN de lokatie invullen."
+
+#: src/clientsManager.cpp:183
+#, c-format
+msgid "Error while parsing %s on line %u"
+msgstr "Fout bij het weergeven van %s op regel %u"
+
+#: src/clientsManager.cpp:205
+#, c-format
+msgid ""
+"Could not open file <%s> for writing!\n"
+"The list of clients will not be saved!"
+msgstr ""
+"Kan bestand <%s> niet openen om te schrijven!\n"
+"De lijst met clients kan niet worden opgeslagen!"
+
+#: src/clientsManager.cpp:210
+#, c-format
+msgid ""
+"# %s : contains the list of clients\n"
+"#\n"
+"# \"Name\"          \"Location\"\n"
+"\n"
+msgstr ""
+"# %s : bevat de clients lijst\n"
+"#\n"
+"# \"Naam\"          \"Locatie\"\n"
+"\n"
+
+#: src/fahlogAnalyzer.cpp:235
+msgid "Possible clock asynchrony detected!"
+msgstr "Mogelijke asynchrone klok gevonden!"
+
+#: src/firstTimeDialog.cpp:54
+#, c-format
+msgid "Welcome to %s!"
+msgstr "Welkom bij %s!"
+
+#: src/firstTimeDialog.cpp:63
+#, c-format
+msgid "Welcome to %s, a Folding@Home monitoring tool"
+msgstr "Welkom bij %s, een Folding@Home monitoring programma"
+
+#: src/firstTimeDialog.cpp:67
+msgid ""
+"Project information (e.g. deadlines) is read from a local file, which must "
+"be regularly updated."
+msgstr ""
+"Projectinformatie (e.g. tijdslimieten) worden gelezen uit een lokaal "
+"opgeslagen bestand, welke regelmatig moet worden bijgewerkt."
+
+#: src/firstTimeDialog.cpp:68
+msgid ""
+"Thus, you should first download the latest available information on "
+"currently running projects:"
+msgstr ""
+"Dus je moet eerst de nieuwste beschikbare informatie downloaden voor de "
+"huidige projecten:"
+
+#: src/firstTimeDialog.cpp:69
+msgid ""
+"(NOTE: If you use a proxy for HTTP connections, you will need to change the "
+"preferences first!)"
+msgstr ""
+"(Opmerking: als je een proxy gebruikt voor HTTP verbindingen, geef dit dan "
+"eerst aan bij de instellingen!)"
+
+#: src/firstTimeDialog.cpp:71
+msgid "Download current projects"
+msgstr "Download huidige projecten"
+
+#: src/firstTimeDialog.cpp:73
+msgid ""
+"New updates are needed when no information on projects can be displayed (e."
+"g. deadlines)."
+msgstr ""
+"Nieuwe updates zijn nodig als er geen informatie over projecten kan worden "
+"weergegeven (bijvoorbeeld tijdslimieten)."
+
+#: src/firstTimeDialog.cpp:74
+msgid "You will be able to perform them using the 'FahMon' menu."
+msgstr "Het is mogelijk om deze te gebruiken via het 'FahMon' menu."
+
+#: src/firstTimeDialog.cpp:78
+msgid ""
+"To monitor a client, you need to add it by right-clicking on the list and "
+"choosing 'Add a new client'."
+msgstr ""
+"Om een client te monitoren, klik op de rechter muisknop en kies voor 'Nieuwe "
+"client toevoegen'."
+
+#: src/firstTimeDialog.cpp:79
+msgid ""
+"The name you choose for a client is not important, you can think of it as a "
+"nickname."
+msgstr ""
+"De naam die voor een client gekozen wordt is niet belangrijk, je kunt deze "
+"zien als een bijnaam."
+
+#: src/firstTimeDialog.cpp:80
+msgid ""
+"All further operations on clients (e.g. edition, deletion) are also made by "
+"right-clicking on the list."
+msgstr ""
+"Alle verdere wijzigingen m.b.t. clients (bijv. wijzigen of verwijderen), kun "
+"je maken door eerst op de rechter muisknop te klikken."
+
+#: src/firstTimeDialog.cpp:84
+#, c-format
+msgid ""
+"The latest version of %s will always be available on the official website:"
+msgstr ""
+"De nieuwste versie van %s is altijd beschikbaar op de officiële homepage:"
+
+#: src/firstTimeDialog.cpp:149 src/main.cpp:134
+#, c-format
+msgid "Could not create directory <%s>"
+msgstr "Kan directory <%s> niet aanmaken"
+
+#: src/httpDownloader.cpp:163
+#, c-format
+msgid "%.1f KB/s"
+msgstr "%.1f KB/s"
+
+#: src/listViewClients.cpp:117
+msgid "Progress"
+msgstr "Voortgang"
+
+#: src/listViewClients.cpp:118
+msgid "Name"
+msgstr "Naam"
+
+#: src/listViewClients.cpp:119
+msgid "ETA"
+msgstr "ETA"
+
+#: src/listViewClients.cpp:120
+msgid "PPD"
+msgstr "PPD"
+
+#: src/listViewClients.cpp:358
+msgid "Loading..."
+msgstr "Laden..."
+
+#: src/listViewClients.cpp:457 src/webMonitor.cpp:371
+msgid "Finished"
+msgstr "Afgerond"
+
+#: src/listViewClients.cpp:469 src/webMonitor.cpp:383
+msgid "*Hung*"
+msgstr "*Hangt*"
+
+#: src/listViewClients.cpp:627 src/listViewClients.cpp:635
+msgid "Add a new client"
+msgstr "Nieuwe client toevoegen"
+
+#: src/listViewClients.cpp:637
+msgid "Reload this client"
+msgstr "Client opnieuw inlezen"
+
+#: src/listViewClients.cpp:638
+msgid "Edit this client"
+msgstr "Wijzig deze client"
+
+#: src/listViewClients.cpp:639
+msgid "Delete this client"
+msgstr "Verwijder deze client"
+
+#: src/listViewClients.cpp:640
+msgid "View Client Files"
+msgstr "Bekijk client bestanden"
+
+#: src/listViewClients.cpp:733
+msgid "Do you really want to delete this client?"
+msgstr "Zeker weten dat deze client moet worden verwijderd?"
+
+#: src/listViewClients.cpp:799
+msgid ""
+"Unable to launch the default filemanager.\n"
+"\n"
+"Please check that the correct filemanager is set in Preferences"
+msgstr ""
+"Niet mogelijk om de standaard filemanager te openen.\n"
+"\n"
+"Controleer of de juiste filemanager is aangegeven bij de instellingen"
+
+#: src/main.cpp:73
+#, c-format
+msgid "Another instance of %s is already running!"
+msgstr "Een ander proces van %s is reeds aktief!"
+
+#: src/mainDialog.cpp:161
+#, c-format
+msgid "%s is licenced under the GNU GPL v2"
+msgstr ""
+
+#: src/mainDialog.cpp:162
+msgid "Copyright (C) 2003-2007 Francois Ingelrest"
+msgstr ""
+
+#: src/mainDialog.cpp:163
+msgid "Copyright (C) 2007-2008 Andrew Schofield"
+msgstr ""
+
+#: src/mainDialog.cpp:165
+msgid "FahMon contains code from qd, also licenced under the GNU GPL v2"
+msgstr ""
+
+#: src/mainDialog.cpp:166
+msgid "Copyright (C) 2002-2005 Richard P. Howell IV."
+msgstr ""
+
+#: src/mainDialog.cpp:167
+msgid "Copyright (C) 2005-2008 Sebastiaan Couwenberg"
+msgstr ""
+
+#: src/mainDialog.cpp:400
+msgid ""
+"Something is wrong with this client.\n"
+"Please check the messages (FahMon->Show/Hide Messages Window)."
+msgstr ""
+"Er is iets mis met deze client.\n"
+"Controleer de berichten (FahMon->Show/Hide Messages Window)."
+
+#: src/mainDialog.cpp:460 src/mainDialog.cpp:549 src/mainDialog.cpp:606
+#: src/webMonitor.cpp:185 src/webMonitor.cpp:256 src/webMonitor.cpp:311
+#, c-format
+msgid "%s ago"
+msgstr "%s geleden"
+
+#: src/mainDialog.cpp:502 src/mainDialog.cpp:503 src/mainDialog.cpp:504
+#: src/mainDialog.cpp:505
+#, fuzzy
+msgid "Unknown"
+msgstr "Onbekende client"
+
+#: src/mainDialog.cpp:506
+#, c-format
+msgid "Project %u is unknown, you should try to update the projects database"
+msgstr "Project %u is onbekend, probeer de projectendatabase bij te werken"
+
+#: src/mainDialog.cpp:512 src/webMonitor.cpp:221
+#, c-format
+msgid "%u points"
+msgstr "%u punten"
+
+#: src/mainDialog.cpp:553 src/mainDialog.cpp:610 src/webMonitor.cpp:260
+#: src/webMonitor.cpp:315
+#, c-format
+msgid "In %s"
+msgstr "In %s"
+
+#: src/mainDialog.cpp:628
+#, c-format
+msgid " :: Total PPD: %.2f"
+msgstr " :: Totaal PPD: %.2f"
+
+#: src/mainDialog.cpp:653
+msgid "&Show/Hide Messages Window"
+msgstr "&Weergeven/verbergen berichtenvenster"
+
+#: src/mainDialog.cpp:653
+msgid "Toggle the messages window"
+msgstr "Selecteer het berichtenvenster"
+
+#: src/mainDialog.cpp:654
+msgid "&Download New Projects"
+msgstr "&Download nieuwe projecten"
+
+#: src/mainDialog.cpp:654
+msgid "Update the local project database"
+msgstr "Bijwerken van de lokale projectendatabase"
+
+#: src/mainDialog.cpp:656
+msgid "&Check for update"
+msgstr "&Controleer op updates"
+
+#: src/mainDialog.cpp:656
+msgid "Check online for the latest version of FahMon"
+msgstr "Controleer naar de laatste versie van FahMon"
+
+#: src/mainDialog.cpp:658
+msgid "&Benchmarks...\tCTRL+B"
+msgstr "&Benchmarks...\tCTRL+B"
+
+#: src/mainDialog.cpp:658
+msgid "Open the benchmarks dialog"
+msgstr "Open het benchmarks scherm"
+
+#: src/mainDialog.cpp:659
+msgid "&Preferences...\tCTRL+P"
+msgstr "&Instellingen...\tCTRL+P"
+
+#: src/mainDialog.cpp:659
+msgid "Open the preferences dialog"
+msgstr "Open het instellingen scherm"
+
+#: src/mainDialog.cpp:663 src/mainDialog.cpp:665 src/mainDialog.cpp:667
+msgid "&Quit\tCtrl+Q"
+msgstr "&Afsluiten\tCtrl+Q"
+
+#: src/mainDialog.cpp:663 src/mainDialog.cpp:665 src/mainDialog.cpp:667
+#: src/trayManager.cpp:227
+msgid "Quit"
+msgstr "Afsluiten"
+
+#: src/mainDialog.cpp:673
+msgid "Reload &Selection\tF5"
+msgstr "Herladen &selectie\tF5"
+
+#: src/mainDialog.cpp:673
+msgid "Reload the selected client"
+msgstr "Geselecteerde client herladen"
+
+#: src/mainDialog.cpp:674
+msgid "Reload &All\tF6"
+msgstr "Herladen &alles\tF6"
+
+#: src/mainDialog.cpp:674
+msgid "Reload all the clients"
+msgstr "Alle clients herladen"
+
+#: src/mainDialog.cpp:676
+msgid "&Show/Hide FAHLog\tF8"
+msgstr "&Weergeven/verbergen FAHLog\tF8"
+
+#: src/mainDialog.cpp:676
+msgid "Toggle the log file"
+msgstr "Selecteer de logfile"
+
+#: src/mainDialog.cpp:678
+msgid "&Cycle ETA Style\tF9"
+msgstr "&Wissel ETA stijl\tF9"
+
+#: src/mainDialog.cpp:678
+msgid "Cycle through the different ETA display styles"
+msgstr "Wissel tussen de verschillende ETA weergave stijlen"
+
+#: src/mainDialog.cpp:679
+msgid "&Monitoring"
+msgstr "&Monitoren"
+
+#: src/mainDialog.cpp:683
+msgid "&My Stats\tF2"
+msgstr "&Mijn statistieken\tF2"
+
+#: src/mainDialog.cpp:683
+msgid "View the personal statistics for the selected client"
+msgstr "Bekijk de persoonlijke statistieken voor de geselecteerde client"
+
+#: src/mainDialog.cpp:684
+msgid "&Jmol\tF3"
+msgstr "&Jmol\tF3"
+
+#: src/mainDialog.cpp:684
+msgid "View the current project on the Jmol website"
+msgstr "Bekijk het huidige project op de Jmol website"
+
+#: src/mainDialog.cpp:685
+msgid "&fahinfo\tF4"
+msgstr "&fahinfo\tF4"
+
+#: src/mainDialog.cpp:685
+msgid "View the current project on fahinfo.org"
+msgstr "Bekijk het huidige project op fahinfo.org"
+
+#: src/mainDialog.cpp:687
+msgid "F@H &Website"
+msgstr "F@H &Website"
+
+#: src/mainDialog.cpp:687
+msgid "Open to the official Stanford website"
+msgstr "Open de officiële Stanford website"
+
+#: src/mainDialog.cpp:688
+msgid "Folding-&Community"
+msgstr "Folding-&Community"
+
+#: src/mainDialog.cpp:688
+msgid "Open the Folding@Home support forum"
+msgstr "Open het Folding@Home support forum"
+
+#: src/mainDialog.cpp:689
+msgid "&Projects Summary"
+msgstr "&Projects Summary"
+
+#: src/mainDialog.cpp:689
+msgid "Open the list of the current projects"
+msgstr "Open de lijst met huidige projecten"
+
+#: src/mainDialog.cpp:690
+msgid "&Servers Status"
+msgstr "&Servers status"
+
+#: src/mainDialog.cpp:690
+msgid "Open the list of the servers with their status"
+msgstr "Open de lijst met de huidige status van de servers"
+
+#: src/mainDialog.cpp:691
+msgid "&Web"
+msgstr "&Web"
+
+#: src/mainDialog.cpp:695
+msgid "&Help Contents\tF1"
+msgstr "&Help inhoud\tF1"
+
+#: src/mainDialog.cpp:695
+msgid "See help contents"
+msgstr "Bekijk de inhoud van de help"
+
+#: src/mainDialog.cpp:698 src/mainDialog.cpp:700 src/mainDialog.cpp:702
+msgid "&About"
+msgstr "&Over"
+
+#: src/mainDialog.cpp:704
+msgid "&Help"
+msgstr "&Help"
+
+#: src/mainDialog.cpp:736
+msgid "Work Unit Information"
+msgstr "Work unit informatie"
+
+#: src/mainDialog.cpp:764
+msgid "Core:"
+msgstr "Core:"
+
+#: src/mainDialog.cpp:766
+msgid "Project:"
+msgstr "Project:"
+
+#: src/mainDialog.cpp:768
+msgid "Credit:"
+msgstr "Waardering:"
+
+#: src/mainDialog.cpp:770
+msgid "Username:"
+msgstr "Gebruikersnaam:"
+
+#: src/mainDialog.cpp:772
+msgid "Downloaded:"
+msgstr "Gedownload:"
+
+#: src/mainDialog.cpp:774
+msgid "Preferred Deadline:"
+msgstr "Gewenste inlevermoment:"
+
+#: src/mainDialog.cpp:776
+msgid "Final Deadline:"
+msgstr "Uiterste inlevermoment:"
+
+#: src/mainDialog.cpp:802
+msgid " :: Total PPD:"
+msgstr " :: Totaal PPD:"
+
+#: src/mainDialog.cpp:809
+msgid "Log file."
+msgstr "Logfile."
+
+#: src/mainDialog.cpp:1085
+msgid "You must first select a client!"
+msgstr "Je moet eerst een client selecteren!"
+
+#: src/mainDialog.cpp:1472
+msgid "Checking for FahMon updates"
+msgstr "Controleer op FahMon updates"
+
+#: src/mainDialog.cpp:1475
+msgid "Checking for update"
+msgstr "Controleren op updates"
+
+#: src/mainDialog.cpp:1498
+#, c-format
+msgid "Your version: %s; New version: %s"
+msgstr "Huidige versie: %s; Nieuwe versie: %s"
+
+#: src/mainDialog.cpp:1512
+msgid "Update available"
+msgstr "Update beschikbaar!"
+
+#: src/mainDialog.cpp:1513
+msgid ""
+"A newer version of FahMon is available\n"
+"Do you want to go to the FahMon website?"
+msgstr ""
+"Er is een nieuwe versie van FahMon beschikbaar\n"
+"Wil je naar de FahMon website?"
+
+#: src/mainDialog.cpp:1520
+msgid "No update found"
+msgstr "Geen update gevonden"
+
+#: src/mainDialog.cpp:1550 src/projectsManager.cpp:354
+msgid "Unable to create a temporary file!"
+msgstr "Onmogelijk om een tijdelijk bestand te maken!"
+
+#: src/mainDialog.cpp:1554 src/projectsManager.cpp:358
+#, c-format
+msgid "Unable to open the temporary file <%s>"
+msgstr "Onmogelijk om het tijdelijke bestand <%s> te openen"
+
+#: src/mainDialog.cpp:1558 src/projectsManager.cpp:362
+msgid "Unable to connect to the server!"
+msgstr "Onmogelijk om te verbinden met de server!"
+
+#: src/mainDialog.cpp:1562 src/projectsManager.cpp:366
+msgid "Unable to send the request to the server!"
+msgstr "Onmogelijk om het verzoek te verzenden naar de server!"
+
+#: src/mainDialog.cpp:1566 src/projectsManager.cpp:370
+msgid "Download aborted!"
+msgstr "Download afgebroken!"
+
+#: src/mainDialog.cpp:1572 src/projectsManager.cpp:376
+msgid "An unknown error happened!"
+msgstr "Een onbekende fout is opgetreden!"
+
+#: src/messagesFrame.cpp:39
+#, c-format
+msgid "Messages / %s"
+msgstr "Berichten / %s"
+
+#: src/messagesManager.cpp:110
+msgid ""
+"Could not open file for writing!\n"
+"The log will not be saved!"
+msgstr ""
+"Kan het bestand niet openen om te schrijven!\n"
+"De log wordt niet opgeslagen!"
+
+#: src/preferencesDialog.cpp:88
+#, c-format
+msgid "Preferences / %s"
+msgstr "Instellingen / %s"
+
+#: src/preferencesDialog.cpp:98
+msgid "General"
+msgstr "Algemeen"
+
+#: src/preferencesDialog.cpp:99
+msgid "Monitoring"
+msgstr "Monitoren"
+
+#: src/preferencesDialog.cpp:100
+msgid "Networking"
+msgstr "Netwerk"
+
+#: src/preferencesDialog.cpp:101
+msgid "Advanced"
+msgstr "Geavanceerd"
+
+#: src/preferencesDialog.cpp:102
+msgid "System"
+msgstr "Systeem"
+
+#: src/preferencesDialog.cpp:104
+msgid "WebApp"
+msgstr "WebApp"
+
+#: src/preferencesDialog.cpp:176
+msgid "Enable system tray icon"
+msgstr "Aanzetten systeembalkicoontje"
+
+#: src/preferencesDialog.cpp:177
+msgid "Start minimized"
+msgstr "Geminimaliseerd starten"
+
+#: src/preferencesDialog.cpp:178
+msgid "Collect .xyz files"
+msgstr "Verzamelen .xyz bestanden"
+
+#: src/preferencesDialog.cpp:179
+msgid "Auto update projects database when needed"
+msgstr "Automatisch projectendatabase bijwerken wanneer nodig"
+
+#: src/preferencesDialog.cpp:180
+msgid "Always list inaccessible clients last"
+msgstr "Altijd ontoegankelijke clients als laatste weergeven"
+
+#: src/preferencesDialog.cpp:181
+msgid "Check for FahMon updates on startup"
+msgstr "Controleer naar FahMon updates bij het opstarten"
+
+#: src/preferencesDialog.cpp:216
+msgid "A date (dd/mm)"
+msgstr "Een datum (dd/mm)"
+
+#: src/preferencesDialog.cpp:216
+msgid "A date (mm/dd)"
+msgstr "Een datum (mm/dd)"
+
+#: src/preferencesDialog.cpp:216
+msgid "Time left"
+msgstr "Tijd te gaan"
+
+#: src/preferencesDialog.cpp:217
+msgid "All frames"
+msgstr "Alle frames"
+
+#: src/preferencesDialog.cpp:217
+msgid "Last frame only"
+msgstr "Alleen laatste frame"
+
+#: src/preferencesDialog.cpp:217
+msgid "Last 3 frames"
+msgstr "Laatste 3 frames"
+
+#: src/preferencesDialog.cpp:217
+msgid "Effective rate"
+msgstr "Effectieve verhouding"
+
+#: src/preferencesDialog.cpp:227
+msgid "Auto reload clients"
+msgstr "Automatisch herladen clients"
+
+#: src/preferencesDialog.cpp:228
+msgid "Reload interval (mn)"
+msgstr "Herlaad interval (minuten)"
+
+#: src/preferencesDialog.cpp:229
+msgid "Use experimental reload system"
+msgstr "Gebruik experimenteel herlaad systeem"
+
+#: src/preferencesDialog.cpp:233
+msgid "Ignore asynchronous clocks"
+msgstr "Negeer asynchronische klokken"
+
+#: src/preferencesDialog.cpp:235
+msgid "Display dates as"
+msgstr "Geef data weer als"
+
+#: src/preferencesDialog.cpp:241
+msgid "Calculate PPD based on"
+msgstr "Berekende PPD gebaseerd op "
+
+#: src/preferencesDialog.cpp:284
+msgid "Use a proxy for HTTP connections"
+msgstr "Gebruik een proxy voor HTTP verbindingen"
+
+#: src/preferencesDialog.cpp:287
+msgid "Proxy requires authentication"
+msgstr "Proxy vereist authenticatie"
+
+#: src/preferencesDialog.cpp:290 src/preferencesDialog.cpp:344
+msgid "Address:"
+msgstr "Adres:"
+
+#: src/preferencesDialog.cpp:291
+msgid "Port:"
+msgstr "Poort:"
+
+#: src/preferencesDialog.cpp:292
+msgid ""
+"Proxy\n"
+"Username:"
+msgstr ""
+"Proxy\n"
+"Gebruikersnaam:"
+
+#: src/preferencesDialog.cpp:293
+msgid ""
+"Proxy\n"
+"Password:"
+msgstr ""
+"Proxy\n"
+"Wachtwoord:"
+
+#: src/preferencesDialog.cpp:342
+msgid "Use the following settings for new project downloads"
+msgstr ""
+"Gebruik de volgende instellingen voor het downloaden van nieuwe projecten"
+
+#: src/preferencesDialog.cpp:345
+msgid "Use a local file for project data"
+msgstr "Gebruik een lokaal bestand voor de projectgegevens"
+
+#: src/preferencesDialog.cpp:347 src/preferencesDialog.cpp:487
+#: src/preferencesDialog.cpp:492 src/preferencesDialog.cpp:497
+msgid "Filename:"
+msgstr "Bestandsnaam:"
+
+#: src/preferencesDialog.cpp:394
+msgid "Web Browser:"
+msgstr "Webbrowser:"
+
+#: src/preferencesDialog.cpp:395
+msgid "File Manager:"
+msgstr "File manager:"
+
+#: src/preferencesDialog.cpp:397
+msgid "File Manager Command:"
+msgstr "File manager commando:"
+
+#: src/preferencesDialog.cpp:398
+msgid "Manually set timezone to UTC +"
+msgstr "Zet tijdszone handmatig naar UTC +"
+
+#: src/preferencesDialog.cpp:402
+msgid "Windows Explorer"
+msgstr "Windows Explorer"
+
+#: src/preferencesDialog.cpp:402 src/preferencesDialog.cpp:405
+msgid "Other"
+msgstr "Anders"
+
+#: src/preferencesDialog.cpp:485
+msgid "Export Web Application"
+msgstr "Exporteer naar Web Application"
+
+#: src/preferencesDialog.cpp:490
+msgid "Export Simple Web page"
+msgstr "Exporteer naar webpagina"
+
+#: src/preferencesDialog.cpp:495
+msgid "Export Simple Text file"
+msgstr "Exporteer naar textbestand"
+
+#: src/preferencesDialog.cpp:902
+msgid "Choose a local project data file"
+msgstr "Kies een lokaal project data bestand"
+
+#: src/preferencesDialog.cpp:919
+msgid "Choose where to save the Web Application"
+msgstr "Kies waar er moet worden opgeslagen voor de Web Application"
+
+#: src/preferencesDialog.cpp:936
+msgid "Choose where to save the simple web page"
+msgstr "Kies waar er moet worden opgeslagen voor de webpagina"
+
+#: src/preferencesDialog.cpp:953
+msgid "Choose where to save the simple text file"
+msgstr "Kies waar er moet worden opgeslagen voor het tekstbestand"
+
+#: src/preferencesManager.cpp:247
+msgid "There is no Preferences file, or it is not readable"
+msgstr "Er is geen instellingenbestand, of deze is niet leesbaar"
+
+#: src/projectsManager.cpp:110
+msgid "There is no projects file, or it is not readable"
+msgstr "Er is geen project bestand, of het is niet leesbaar"
+
+#: src/projectsManager.cpp:255
+msgid "Updating projects database"
+msgstr "Bijwerken projecten database"
+
+#: src/projectsManager.cpp:259
+msgid "Downloading new projects"
+msgstr "Nieuwe projecten downloaden"
+
+#: src/projectsManager.cpp:283
+msgid "Adding the new projects to the database"
+msgstr "Nieuwe projecten toevoegen aan database"
+
+#: src/projectsManager.cpp:385
+msgid "Local project update file doesn't exist!"
+msgstr "Lokaal project bijwerk bestand bestaat niet!"
+
+#: src/projectsManager.cpp:394
+msgid "Unable to copy local project update file to temporary location"
+msgstr ""
+"Onmgelijk om het project update bestand te kopiëren naar een tijdelijke "
+"lokatie "
+
+#: src/projectsManager.cpp:457
+#, c-format
+msgid ""
+"The line %u is not correctly formatted!\n"
+"\n"
+"%s"
+msgstr ""
+"Regel %u heeft een onjuiste opmaak!\n"
+"\n"
+"%s"
+
+#: src/projectsManager.cpp:468
+msgid "Update aborted!"
+msgstr "Bijwerken is afgebroken!"
+
+#: src/tools.cpp:65
+msgid ""
+"Unable to launch the default browser.\n"
+"\n"
+"Please check that the environment variable BROWSER is defined or set it in "
+"Preferences."
+msgstr ""
+"Onmogelijk om de standaard browser te openen.\n"
+"\n"
+"Controleer of de omgevingsvariabele BROWSER is gedefinieerd of ingesteld is "
+"in de instellingen."
+
+#: src/trayManager.cpp:197
+#, c-format
+msgid "Clients: %i"
+msgstr "Clients: %i"
+
+#: src/trayManager.cpp:201
+#, c-format
+msgid "Total PPD: %.2f"
+msgstr "Totaal PPD: %.2f"
+
+#: src/trayManager.cpp:208
+msgid "Preferences"
+msgstr "Instellingen"
+
+#: src/trayManager.cpp:215
+msgid "Hide FahMon"
+msgstr "Verberg FahMon"
+
+#: src/trayManager.cpp:220
+msgid "Show FahMon"
+msgstr "FahMon weergeven"
+
+#: src/webMonitor.cpp:337 src/webMonitor.cpp:579
+msgid "Inaccessible"
+msgstr "Onbereikbaar"
+
+#: src/webMonitor.cpp:342 src/webMonitor.cpp:583
+msgid "Stopped"
+msgstr "Gestopt"
+
+#: src/webMonitor.cpp:347 src/webMonitor.cpp:587
+msgid "Inactive"
+msgstr "Inaktief"
+
+#: src/webMonitor.cpp:352 src/webMonitor.cpp:591
+msgid "Hung"
+msgstr "Hangt"
+
+#: src/webMonitor.cpp:357 src/webMonitor.cpp:595
+msgid "Async"
+msgstr "Async"
+
+#: src/webMonitor.cpp:362
+msgid "Ok"
+msgstr "Ok"
+
+#: src/webMonitor.cpp:451
+#, fuzzy, c-format
+msgid ""
+"Could not open template file <%s> for reading!\n"
+"The web application will not be created!"
+msgstr ""
+"Kan bestand <%s> niet openen om te schrijven!\n"
+"De web application kan niet worden opgeslagen!"
+
+#: src/webMonitor.cpp:456
+#, c-format
+msgid ""
+"Could not open file <%s> for writing!\n"
+"The web application will not be created!"
+msgstr ""
+"Kan bestand <%s> niet openen om te schrijven!\n"
+"De web application kan niet worden opgeslagen!"
+
+#~ msgid "%s Web View - Last updated: %s"
+#~ msgstr "%s Web View - Laatste update: %s"
+
+#~ msgid ""
+#~ "Could not open file <%s> for writing!\n"
+#~ "The simple web output will not be created!"
+#~ msgstr ""
+#~ "Kan bestand <%s> niet openen om te schrijven!\n"
+#~ "Het bestand voor webweergave kan niet worden opgeslagen!"
+
+#~ msgid "State"
+#~ msgstr "Status"
+
+#~ msgid "PRCG"
+#~ msgstr "PRCG"
+
+#~ msgid "Credit"
+#~ msgstr "Waardering"
+
+#~ msgid "Downloaded"
+#~ msgstr "Gedownload"
+
+#~ msgid ""
+#~ "Could not open file <%s> for writing!\n"
+#~ "The simple text output will not be created!"
+#~ msgstr ""
+#~ "Kan bestand <%s> niet openen om te schrijven!\n"
+#~ "Het bestand voor tekstweergave kan niet worden opgeslagen!"
+
+#~ msgid "FahMon Client Monitoring %s - Simple Text Output\n"
+#~ msgstr "FahMon Client Monitoring %s - Eenvoudig tekstweergave\n"
+
+#~ msgid "Last updated: %s"
+#~ msgstr "Laatste update: %s"
+
+#~ msgid ""
+#~ "Total PPD: %.2f\n"
+#~ "\n"
+#~ msgstr ""
+#~ "Totaal PPD: %.2f\n"
+#~ "\n"
+
+#~ msgid "Server:"
+#~ msgstr "Server:"
+
+#~ msgid "Resource:"
+#~ msgstr "Bron:"
