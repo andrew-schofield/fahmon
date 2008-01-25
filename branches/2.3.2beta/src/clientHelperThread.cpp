@@ -21,9 +21,6 @@
 #include "clientsManager.h"
 
 
-/**
-* Constructor
-**/
 ClientHelperThread::ClientHelperThread(wxUint32 clientId) : wxThread(wxTHREAD_DETACHED)
 {
 	mClientId = clientId;
@@ -33,9 +30,6 @@ ClientHelperThread::ClientHelperThread(wxUint32 clientId) : wxThread(wxTHREAD_DE
 }
 
 
-/**
-* This is the entry point of the thread, where the client is reloaded
-**/
 void* ClientHelperThread::Entry(void)
 {
 	wxCommandEvent event(EVT_CLIENTRELOADED);
