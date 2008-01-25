@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nl_NL\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2008-01-24 01:01+0000\n"
+"POT-Creation-Date: 2008-01-25 19:53+0000\n"
 "PO-Revision-Date: 2008-01-24 16:42+0100\n"
 "Last-Translator: Bastien <bastien@knife-edge.nl>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -13,135 +13,135 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: src/aboutDialog.cpp:38 src/mainDialog.cpp:698 src/mainDialog.cpp:700
+#: src/aboutDialog.cpp:34 src/mainDialog.cpp:698 src/mainDialog.cpp:700
 #: src/mainDialog.cpp:702
 msgid "About"
 msgstr "Over"
 
-#: src/aboutDialog.cpp:49
+#: src/aboutDialog.cpp:45
 msgid "Author:"
 msgstr "Auteur:"
 
-#: src/aboutDialog.cpp:51
+#: src/aboutDialog.cpp:47
 msgid "Maintainer:"
 msgstr "Onderhouden door:"
 
-#: src/aboutDialog.cpp:53
+#: src/aboutDialog.cpp:49
 msgid "Homepage:"
 msgstr "Homepage:"
 
-#: src/aboutDialog.cpp:55
+#: src/aboutDialog.cpp:51
 msgid "Qd homepage:"
 msgstr "Qd homepage:"
 
-#: src/aboutDialog.cpp:57
+#: src/aboutDialog.cpp:53
 msgid "Licence:"
 msgstr "Licentie:"
 
-#: src/aboutDialog.cpp:61
+#: src/aboutDialog.cpp:57
 msgid "Library:"
 msgstr "Bibliotheek:"
 
-#: src/benchmarksDialog.cpp:58 src/trayManager.cpp:206
+#: src/benchmarksDialog.cpp:55 src/trayManager.cpp:206
 msgid "Benchmarks"
 msgstr "Benchmarks"
 
-#: src/benchmarksDialog.cpp:80
+#: src/benchmarksDialog.cpp:77
 msgid "Projects"
 msgstr "Projecten"
 
-#: src/benchmarksDialog.cpp:256
+#: src/benchmarksDialog.cpp:232
 msgid "No benchmarks for this project!"
 msgstr "Geen benchmarks voor dit project!"
 
-#: src/benchmarksDialog.cpp:266
+#: src/benchmarksDialog.cpp:242
 #, c-format
 msgid "Project : %u\n"
 msgstr "Project    : %u\n"
 
-#: src/benchmarksDialog.cpp:267
+#: src/benchmarksDialog.cpp:243
 #, c-format
 msgid "Core    : %s\n"
 msgstr "Core       : %s\n"
 
-#: src/benchmarksDialog.cpp:268
+#: src/benchmarksDialog.cpp:244
 #, c-format
 msgid "Frames  : %u\n"
 msgstr "Frames     : %u\n"
 
-#: src/benchmarksDialog.cpp:269
+#: src/benchmarksDialog.cpp:245
 #, c-format
 msgid "Credit  : %u\n"
 msgstr "Waardering : %u\n"
 
-#: src/benchmarksDialog.cpp:273
+#: src/benchmarksDialog.cpp:249
 #, c-format
 msgid "Project : %u (Unknown)\n"
 msgstr "Project : %u (onbekend)\n"
 
-#: src/benchmarksDialog.cpp:295
+#: src/benchmarksDialog.cpp:271
 #, c-format
 msgid "Min. Time / Frame : %s"
 msgstr "Min. tijd / frame    : %s"
 
-#: src/benchmarksDialog.cpp:301 src/benchmarksDialog.cpp:322
-#: src/benchmarksDialog.cpp:347 src/benchmarksDialog.cpp:349
-#: src/benchmarksDialog.cpp:351
+#: src/benchmarksDialog.cpp:277 src/benchmarksDialog.cpp:298
+#: src/benchmarksDialog.cpp:323 src/benchmarksDialog.cpp:325
+#: src/benchmarksDialog.cpp:327
 #, c-format
 msgid " - %.2f ppd"
 msgstr " - %.2f ppd"
 
-#: src/benchmarksDialog.cpp:306
+#: src/benchmarksDialog.cpp:282
 msgid "No Min. Time / Frame"
 msgstr "Geen min. tijd / frame"
 
-#: src/benchmarksDialog.cpp:316
+#: src/benchmarksDialog.cpp:292
 #, c-format
 msgid "Avg. Time / Frame : %s"
 msgstr "Gem. tijd / frame    : %s"
 
-#: src/benchmarksDialog.cpp:327
+#: src/benchmarksDialog.cpp:303
 msgid "No Avg. Time / Frame"
 msgstr "Geen gem. tijd / frame"
 
-#: src/benchmarksDialog.cpp:339
+#: src/benchmarksDialog.cpp:315
 #, c-format
 msgid "Cur. Time / Frame : %s"
 msgstr "Huidige tijd / frame : %s"
 
-#: src/benchmarksDialog.cpp:340
+#: src/benchmarksDialog.cpp:316
 #, c-format
 msgid "R3F. Time / Frame : %s"
 msgstr "R3F. tijd / frame    : %s"
 
-#: src/benchmarksDialog.cpp:341
+#: src/benchmarksDialog.cpp:317
 #, c-format
 msgid "Eff. Time / Frame : %s"
 msgstr "Eff. tijd / frame    : %s"
 
-#: src/benchmarksDialog.cpp:356
+#: src/benchmarksDialog.cpp:332
 msgid "No Cur. Time / Frame"
 msgstr "Geen huidige tijd / frame"
 
-#: src/benchmarksDialog.cpp:357
+#: src/benchmarksDialog.cpp:333
 msgid "No R3F. Time / Frame"
 msgstr "Geen R3F. tijd / frame"
 
-#: src/benchmarksDialog.cpp:358
+#: src/benchmarksDialog.cpp:334
 msgid "No Eff. Time / Frame"
 msgstr "Geen eff. tijd / frame"
 
-#: src/benchmarksManager.cpp:152 src/preferencesManager.cpp:272
+#: src/benchmarksManager.cpp:137 src/preferencesManager.cpp:272
 #: src/projectsManager.cpp:145
 #, c-format
 msgid "Could not open file <%s> for writing!"
 msgstr "Kan bestand <%s> niet openen om te schrijven!"
 
-#: src/benchmarksManager.cpp:316
+#: src/benchmarksManager.cpp:292
 msgid "(Benchmarks) The maximum number of known clients has been reached!"
 msgstr "(Benchmarks) Het maximum aantal clients is bereikt!"
 
-#: src/benchmarksManager.cpp:464
+#: src/benchmarksManager.cpp:422
 msgid "Unknown client"
 msgstr "Onbekende client"
 
@@ -404,19 +404,19 @@ msgstr "Kan directory <%s> niet aanmaken"
 msgid "%.1f KB/s"
 msgstr "%.1f KB/s"
 
-#: src/listViewClients.cpp:117
+#: src/listViewClients.cpp:117 src/webMonitor.cpp:612
 msgid "Progress"
 msgstr "Voortgang"
 
-#: src/listViewClients.cpp:118
+#: src/listViewClients.cpp:118 src/webMonitor.cpp:613
 msgid "Name"
 msgstr "Naam"
 
-#: src/listViewClients.cpp:119
+#: src/listViewClients.cpp:119 src/webMonitor.cpp:614
 msgid "ETA"
 msgstr "ETA"
 
-#: src/listViewClients.cpp:120
+#: src/listViewClients.cpp:120 src/webMonitor.cpp:615
 msgid "PPD"
 msgstr "PPD"
 
@@ -697,35 +697,35 @@ msgstr "&Over"
 msgid "&Help"
 msgstr "&Help"
 
-#: src/mainDialog.cpp:736
+#: src/mainDialog.cpp:736 src/webMonitor.cpp:616
 msgid "Work Unit Information"
 msgstr "Work unit informatie"
 
-#: src/mainDialog.cpp:764
+#: src/mainDialog.cpp:764 src/webMonitor.cpp:617
 msgid "Core:"
 msgstr "Core:"
 
-#: src/mainDialog.cpp:766
+#: src/mainDialog.cpp:766 src/webMonitor.cpp:618
 msgid "Project:"
 msgstr "Project:"
 
-#: src/mainDialog.cpp:768
+#: src/mainDialog.cpp:768 src/webMonitor.cpp:619
 msgid "Credit:"
 msgstr "Waardering:"
 
-#: src/mainDialog.cpp:770
+#: src/mainDialog.cpp:770 src/webMonitor.cpp:620
 msgid "Username:"
 msgstr "Gebruikersnaam:"
 
-#: src/mainDialog.cpp:772
+#: src/mainDialog.cpp:772 src/webMonitor.cpp:628
 msgid "Downloaded:"
 msgstr "Gedownload:"
 
-#: src/mainDialog.cpp:774
+#: src/mainDialog.cpp:774 src/webMonitor.cpp:621
 msgid "Preferred Deadline:"
 msgstr "Gewenste inlevermoment:"
 
-#: src/mainDialog.cpp:776
+#: src/mainDialog.cpp:776 src/webMonitor.cpp:622
 msgid "Final Deadline:"
 msgstr "Uiterste inlevermoment:"
 
@@ -1132,6 +1132,42 @@ msgstr ""
 "Kan bestand <%s> niet openen om te schrijven!\n"
 "De web application kan niet worden opgeslagen!"
 
+#: src/webMonitor.cpp:608
+msgid "State"
+msgstr "Status"
+
+#: src/webMonitor.cpp:609
+msgid "PRCG"
+msgstr "PRCG"
+
+#: src/webMonitor.cpp:610
+msgid "Credit"
+msgstr "Waardering"
+
+#: src/webMonitor.cpp:611
+msgid "Downloaded"
+msgstr "Gedownload"
+
+#: src/webMonitor.cpp:623
+msgid "Total PPD:"
+msgstr "Totaal PPD:"
+
+#: src/webMonitor.cpp:624
+msgid "Web View"
+msgstr "Web View"
+
+#: src/webMonitor.cpp:625
+msgid "FahMon Client Monitoring"
+msgstr "FahMon Client Monitoring"
+
+#: src/webMonitor.cpp:626
+msgid "Simple Text Output"
+msgstr "Eenvoudig tekstweergave"
+
+#: src/webMonitor.cpp:627
+msgid "Last updated:"
+msgstr "Laatste update:"
+
 #~ msgid "%s Web View - Last updated: %s"
 #~ msgstr "%s Web View - Laatste update: %s"
 
@@ -1142,30 +1178,12 @@ msgstr ""
 #~ "Kan bestand <%s> niet openen om te schrijven!\n"
 #~ "Het bestand voor webweergave kan niet worden opgeslagen!"
 
-#~ msgid "State"
-#~ msgstr "Status"
-
-#~ msgid "PRCG"
-#~ msgstr "PRCG"
-
-#~ msgid "Credit"
-#~ msgstr "Waardering"
-
-#~ msgid "Downloaded"
-#~ msgstr "Gedownload"
-
 #~ msgid ""
 #~ "Could not open file <%s> for writing!\n"
 #~ "The simple text output will not be created!"
 #~ msgstr ""
 #~ "Kan bestand <%s> niet openen om te schrijven!\n"
 #~ "Het bestand voor tekstweergave kan niet worden opgeslagen!"
-
-#~ msgid "FahMon Client Monitoring %s - Simple Text Output\n"
-#~ msgstr "FahMon Client Monitoring %s - Eenvoudig tekstweergave\n"
-
-#~ msgid "Last updated: %s"
-#~ msgstr "Laatste update: %s"
 
 #~ msgid ""
 #~ "Total PPD: %.2f\n"

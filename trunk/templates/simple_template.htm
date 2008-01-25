@@ -18,18 +18,18 @@
 	<pre>
 		<table style="border-collapse:collapse;border: 1px solid #000;">
 			<tr>
-				<td colspan="6"><!--tpl_static @FAHMON_VERSION@ Web View - Last updated: @UPDATE_TIME@ tpl//--></td>
-				<td colspan="2">Total PPD: <!--tpl_static @TOTAL_PPD@ tpl//--></td>
+				<td colspan="6"><!--tpl_static @FAHMON_VERSION@ @_Web_View@ - @_Last_updated:@ @UPDATE_TIME@ tpl//--></td>
+				<td colspan="2"><!--tpl_static @_Total_PPD:@ @TOTAL_PPD@ tpl//--></td>
 			</tr>
 			<tr bgcolor="#eeeeee">
-				<td>State</td>
-				<td>Progress</td>
-				<td>Name</td>
-				<td>ETA</td>
-				<td>PPD</td>
-				<td>PRCG</td>
-				<td>Credit</td>
-				<td>Downloaded</td>
+				<!--tpl_static <td>State</td>
+				<td>@_Progress@</td>
+				<td>@_Name@</td>
+				<td>@_ETA@</td>
+				<td>@_PPD@</td>
+				<td>@_PRCG@</td>
+				<td>@_Credit@</td>
+				<td>@_Downloaded@</td> tpl//-->
 			</tr>
 			<!--tpl_loop <tr>
 				<td bgcolor="@STATE_COLOR@">@STATE@</td>
@@ -38,7 +38,7 @@
 				<td>@ETA@</td>
 				<td>@PPD@</td>
 				<td>@PRCG@</td>
-				<td>@POINTS@ points</td>
+				<td>@POINTS@</td>
 				<td>@DOWNLOAD_DATE@</td>
 			</tr> tpl//-->
 		</table>

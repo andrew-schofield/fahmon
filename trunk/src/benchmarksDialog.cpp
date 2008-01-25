@@ -52,9 +52,6 @@ END_EVENT_TABLE()
 BenchmarksDialog* BenchmarksDialog::mInstance = NULL;
 
 
-/**
-* Constructor
-**/
 BenchmarksDialog::BenchmarksDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, wxString::Format(wxT("%s / %s"), _("Benchmarks"), wxT(FMC_PRODUCT)), wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER)
 {
 	wxUint32    frameWidth;
@@ -101,17 +98,12 @@ BenchmarksDialog::BenchmarksDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY
 }
 
 
-/**
-* Destructor
-**/
+
 BenchmarksDialog::~BenchmarksDialog(void)
 {
 }
 
 
-/**
-* Retrieve the instance of BenchmarksDialog, create it if needed
-**/
 BenchmarksDialog* BenchmarksDialog::GetInstance(wxWindow* parent)
 {
 	if(mInstance == NULL)
@@ -123,9 +115,6 @@ BenchmarksDialog* BenchmarksDialog::GetInstance(wxWindow* parent)
 }
 
 
-/**
-* Destroy the instance of BenchmarksDialog, if any
-**/
 void BenchmarksDialog::DestroyInstance(void)
 {
 	if(mInstance != NULL)
@@ -142,10 +131,6 @@ void BenchmarksDialog::DestroyInstance(void)
 }
 
 
-/**
-* Show the window and automatically select the given project
-* If projectId is equal to INVALID_PROJECT_ID, the first available project is selected
-**/
 int BenchmarksDialog::ShowModal(ProjectId projectIdToSelect)
 {
 	// Fill the ListView with the correct list of known projects
@@ -157,11 +142,6 @@ int BenchmarksDialog::ShowModal(ProjectId projectIdToSelect)
 }
 
 
-/**
-* Fill the list with all the project identifiers for which a benchmark is registered
-* Select by default the given project
-* If there is no benchmark for this project, select the first entry
-**/
 void BenchmarksDialog::PopulateProjectsList(ProjectId projectIdToSelect)
 {
 	wxUint32   i;
@@ -216,10 +196,6 @@ void BenchmarksDialog::PopulateProjectsList(ProjectId projectIdToSelect)
 }
 
 
-/**
-* Show the known benchmark for the given project
-* If projectId is equal to INVALID_PROJECT_ID, clear information
-**/
 void BenchmarksDialog::ShowBenchmarks(ProjectId projectIdToShow)
 {
 	double            minPPD;
@@ -371,9 +347,6 @@ void BenchmarksDialog::ShowBenchmarks(ProjectId projectIdToShow)
 /************************************  EVENTS  ************************************/
 
 
-/**
-* The selected project has changed, display the registered benchmarks for the newly selected project
-**/
 void BenchmarksDialog::OnProjectChanged(wxListEvent& event)
 {
 	long selection = mListOfProjects->GetFirstSelected();
@@ -389,9 +362,6 @@ void BenchmarksDialog::OnProjectChanged(wxListEvent& event)
 }
 
 
-/**
-* The 'close' button has been pushed
-**/
 void BenchmarksDialog::OnCloseButton(wxCommandEvent& event)
 {
 	Close();

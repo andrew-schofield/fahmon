@@ -28,10 +28,6 @@
 #include "staticBoldedText.h"
 
 
-/**
- * Initialise instance.
- * Single instance of AboutDialog across the entire application.
- **/
 AboutDialog* AboutDialog::mInstance = NULL;
 
 

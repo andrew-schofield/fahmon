@@ -245,8 +245,8 @@ TD {
 		<table style="border-collapse:collapse;width:774px;">
 			<tr bgcolor="#3858a5">
 				<td width="18px"><img src="dialog_icon.png" /></td>
-				<td><b><font color="#FFFFFF"><!--tpl_static @FAHMON_VERSION@ Web View - Last updated: @UPDATE_TIME@ tpl//--></font></b></td>
-				<td align="right"><b><font color="#FFFFFF">Total PPD: <!--tpl_static @TOTAL_PPD@ tpl//--></font></b></td>
+				<td><b><font color="#FFFFFF"><!--tpl_static @FAHMON_VERSION@ @_Web_View@ - @_Last_updated:@ @UPDATE_TIME@ tpl//--></font></b></td>
+				<td align="right"><b><font color="#FFFFFF"><!--tpl_static @_Total_PPD:@ @TOTAL_PPD@ tpl//--></font></b></td>
 				<td align="right" onclick="javascript:window.close();"><b><font color="#FFFFFF">X</font></b></td>
 			</tr>
 		</table>
@@ -255,10 +255,10 @@ TD {
 				<thead class="fixedHeader" id="fixedHeader">
 					<tr>
 						<th></th>
-						<th><u>Progress</u></th>
-						<th><u>Name</u></th>
-						<th><u>ETA</u></th>
-						<th><u>PPD</u></th>
+						<!--tpl_static <th><u>@_Progress@</u></th>
+						<th><u>@_Name@</u></th>
+						<th><u>@_ETA@</u></th>
+						<th><u>@_PPD@</u></th> tpl//-->
 					</tr>
 				</thead>
 				<tbody class="scrollContent">
@@ -275,34 +275,34 @@ TD {
 		<div id="wuinfopanel">
 			<table style="border-collapse: collapse;border:1px solid #d1c8bf;background:#efebe7;margin:1px;height:100%;width:100%;">
 				<tr>
-					<td colspan="2">Work Unit Information</td>
+					<td colspan="2"><!--tpl_static @_Work_Unit_Information@ tpl//--></td>
 				</tr>
 				<tr>
-					<td align="right" width="50%"><b>Core:</b></td>
+					<td align="right" width="50%"><b><!--tpl_static @_Core:@ tpl//--></b></td>
 					<td align="left"><b><font color="#F00" id="core"></font></b></td>
 				</tr>
 				<tr>
-					<td align="right"><b>Project:</b></td>
+					<td align="right"><b><!--tpl_static @_Project:@ tpl//--></b></td>
 					<td align="left" id="project"></td>
 				</tr>
 				<tr>
-					<td align="right"><b>Credit:</b></td>
+					<td align="right"><b><!--tpl_static @_Credit:@ tpl//--></b></td>
 					<td align="left" id="credit"></td>
 				</tr>
 				<tr>
-					<td align="right"><b>Username:</b></td>
+				<td align="right"><b><!--tpl_static @_Username:@ tpl//--></b></td>
 					<td align="left"><font color="#00F" id="username"></font></td>
 				</tr>
 				<tr>
-					<td align="right"><b>Downloaded:</b></td>
+				<td align="right"><b><!--tpl_static @_Downloaded:@ tpl//--></b></td>
 					<td align="left" id="downloaded"></td>
 				</tr>
 				<tr>
-					<td align="right"><b>Preferred Deadline:</b></td>
+				<td align="right"><b><!--tpl_static @_Preferred_Deadline:@ tpl//--></b></td>
 					<td align="left" id="preferred"></td>
 				</tr>
 				<tr>
-					<td align="right"><b>Final Deadline:</b></td>
+				<td align="right"><b><!--tpl_static @_Final_Deadline:@ tpl//--></b></td>
 					<td align="left" id="final"></td>
 				</tr>
 			</table>
