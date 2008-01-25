@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pt_PT\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2008-01-25 00:00+0000\n"
+"POT-Creation-Date: 2008-01-25 00:50+0000\n"
 "PO-Revision-Date: 2007-11-15 23:46+0000\n"
 "Last-Translator: Andrew Schofield <the.uncle.fungus@gmail.com>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -413,19 +413,19 @@ msgstr "Impossível criar a directoria <%s>"
 msgid "%.1f KB/s"
 msgstr "%.1f KB/s"
 
-#: src/listViewClients.cpp:117
+#: src/listViewClients.cpp:117 src/webMonitor.cpp:612
 msgid "Progress"
 msgstr "Progresso"
 
-#: src/listViewClients.cpp:118
+#: src/listViewClients.cpp:118 src/webMonitor.cpp:613
 msgid "Name"
 msgstr "Nome"
 
-#: src/listViewClients.cpp:119
+#: src/listViewClients.cpp:119 src/webMonitor.cpp:614
 msgid "ETA"
 msgstr "Tempo Estimado de Conclusão"
 
-#: src/listViewClients.cpp:120
+#: src/listViewClients.cpp:120 src/webMonitor.cpp:615
 msgid "PPD"
 msgstr "PPD"
 
@@ -712,37 +712,37 @@ msgstr "&Acerca"
 msgid "&Help"
 msgstr "&Ajuda"
 
-#: src/mainDialog.cpp:736
+#: src/mainDialog.cpp:736 src/webMonitor.cpp:616
 msgid "Work Unit Information"
 msgstr "Informação da Unidade de Trabalho"
 
-#: src/mainDialog.cpp:764
+#: src/mainDialog.cpp:764 src/webMonitor.cpp:617
 msgid "Core:"
 msgstr "Núcleo:"
 
-#: src/mainDialog.cpp:766
+#: src/mainDialog.cpp:766 src/webMonitor.cpp:618
 msgid "Project:"
 msgstr "Projecto:"
 
-#: src/mainDialog.cpp:768
+#: src/mainDialog.cpp:768 src/webMonitor.cpp:619
 msgid "Credit:"
 msgstr "Crédito:"
 
-#: src/mainDialog.cpp:770
+#: src/mainDialog.cpp:770 src/webMonitor.cpp:620
 msgid "Username:"
 msgstr "Utilizador:"
 
-#: src/mainDialog.cpp:772
+#: src/mainDialog.cpp:772 src/webMonitor.cpp:628
 msgid "Downloaded:"
 msgstr "Descarregado:"
 
 # This translation seems to be too long in UI. I translated to 'Prazo Aconselhado' (it was 'Prazo de Entrega Aconselhado')
-#: src/mainDialog.cpp:774
+#: src/mainDialog.cpp:774 src/webMonitor.cpp:621
 msgid "Preferred Deadline:"
 msgstr "Prazo Aconselhado:"
 
 # This translation seems to be too long in UI. I translated to 'Prazo Final' (it was 'Prazo de Entrega Final')
-#: src/mainDialog.cpp:776
+#: src/mainDialog.cpp:776 src/webMonitor.cpp:622
 msgid "Final Deadline:"
 msgstr "Prazo Final:"
 
@@ -1154,6 +1154,45 @@ msgstr ""
 "Não foi possível abrir o ficheiro <%s> para escrita!\n"
 "A Aplicação Web não será criada!"
 
+#: src/webMonitor.cpp:608
+msgid "State"
+msgstr "Estado"
+
+#: src/webMonitor.cpp:609
+msgid "PRCG"
+msgstr "Projecto"
+
+#: src/webMonitor.cpp:610
+msgid "Credit"
+msgstr "Crédito"
+
+#: src/webMonitor.cpp:611
+msgid "Downloaded"
+msgstr "Descarregado"
+
+#: src/webMonitor.cpp:623
+#, fuzzy
+msgid "Total PPD:"
+msgstr " :: PPD Total:"
+
+#: src/webMonitor.cpp:624
+msgid "Web View"
+msgstr ""
+
+#: src/webMonitor.cpp:625
+#, fuzzy
+msgid "FahMon Client Monitoring"
+msgstr "Monitorização do Cliente FahMon %s - Texto Simples\n"
+
+#: src/webMonitor.cpp:626
+msgid "Simple Text Output"
+msgstr ""
+
+#: src/webMonitor.cpp:627
+#, fuzzy
+msgid "Last updated:"
+msgstr "Última actualização: %s"
+
 #~ msgid "%s Web View - Last updated: %s"
 #~ msgstr "%s Vista Web - Última actualização: %s"
 
@@ -1164,30 +1203,12 @@ msgstr ""
 #~ "Não foi possível abrir o ficheiro <%s> para escrita!\n"
 #~ "A Página Web não será criada!"
 
-#~ msgid "State"
-#~ msgstr "Estado"
-
-#~ msgid "PRCG"
-#~ msgstr "Projecto"
-
-#~ msgid "Credit"
-#~ msgstr "Crédito"
-
-#~ msgid "Downloaded"
-#~ msgstr "Descarregado"
-
 #~ msgid ""
 #~ "Could not open file <%s> for writing!\n"
 #~ "The simple text output will not be created!"
 #~ msgstr ""
 #~ "Não foi possível abrir o ficheiro <%s> para escrita!\n"
 #~ "O ficheiro de texto não será criado!"
-
-#~ msgid "FahMon Client Monitoring %s - Simple Text Output\n"
-#~ msgstr "Monitorização do Cliente FahMon %s - Texto Simples\n"
-
-#~ msgid "Last updated: %s"
-#~ msgstr "Última actualização: %s"
 
 #~ msgid ""
 #~ "Total PPD: %.2f\n"

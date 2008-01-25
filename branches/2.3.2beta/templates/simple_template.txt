@@ -1,6 +1,6 @@
-FahMon Client Monitoring <!--tpl_static @FAHMON_VERSION@ tpl//--> - Simple Text Output
-Last updated: <!--tpl_static @UPDATE_TIME@ tpl//-->   Total PPD: <!--tpl_static @TOTAL_PPD@ tpl//-->
+<!--tpl_static @_FahMon_Client_Monitoring@ @FAHMON_VERSION@ - @_Simple_Text_Output@ tpl//-->
+<!--tpl_static @_Last_updated:@ @UPDATE_TIME@   @_Total_PPD:@ @TOTAL_PPD@ tpl//-->
 
-State  |Prog|Name                |ETA            |PPD    |PRCG                   |Credit
+<!--tpl_static @_State{7}@|@_Progress{4}@|@_Name{20}@|@_ETA{15}@|@_PPD{7}@|@_PRCG{23}@|@_Credit{11}@ tpl//-->
 =======|====|====================|===============|=======|=======================|===========
 <!--tpl_loop @STATE{7}@|@PERCENTAGE{4}@|@NAME{20}@|@ETA{15}@|@PPD{7}@|@PRCG{23}@|@POINTS{11}@ tpl//-->

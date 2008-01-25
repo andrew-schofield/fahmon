@@ -605,6 +605,27 @@ wxString WebMonitor::DecodeTemplate(wxString templateCode, wxUint32 clientId)
 	{
 		tCode = wxString::Format(wxT("%i"), clientId+1);
 	}
+	else if (templateCode == wxT("@_State@")) tCode = _("State");
+	else if (templateCode == wxT("@_PRCG@")) tCode = _("PRCG");
+	else if (templateCode == wxT("@_Credit@")) tCode = _("Credit");
+	else if (templateCode == wxT("@_Downloaded@")) tCode = _("Downloaded");
+	else if (templateCode == wxT("@_Progress@")) tCode = _("Progress");
+	else if (templateCode == wxT("@_Name@")) tCode = _("Name");
+	else if (templateCode == wxT("@_ETA@")) tCode = _("ETA");
+	else if (templateCode == wxT("@_PPD@")) tCode = _("PPD");
+	else if (templateCode == wxT("@_Work_Unit_Information@")) tCode = _("Work Unit Information");
+	else if (templateCode == wxT("@_Core:@")) tCode = _("Core:");
+	else if (templateCode == wxT("@_Project:@")) tCode = _("Project:");
+	else if (templateCode == wxT("@_Credit:@")) tCode = _("Credit:");
+	else if (templateCode == wxT("@_Username:@")) tCode = _("Username:");
+	else if (templateCode == wxT("@_Preferred_Deadline:@")) tCode = _("Preferred Deadline:");
+	else if (templateCode == wxT("@_Final_Deadline:@")) tCode = _("Final Deadline:");
+	else if (templateCode == wxT("@_Total_PPD:@")) tCode = _("Total PPD:");
+	else if (templateCode == wxT("@_Web_View@")) tCode = _("Web View");
+	else if (templateCode == wxT("@_FahMon_Client_Monitoring@")) tCode = _("FahMon Client Monitoring");
+	else if (templateCode == wxT("@_Simple_Text_Output@")) tCode = _("Simple Text Output");
+	else if (templateCode == wxT("@_Last_updated:@")) tCode = _("Last updated:");
+	else if (templateCode == wxT("@_Downloaded:@")) tCode = _("Downloaded:");
 
 	if(padding>0)
 	{
