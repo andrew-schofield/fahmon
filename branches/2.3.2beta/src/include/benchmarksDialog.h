@@ -32,9 +32,6 @@
 #include "wx/splitter.h"
 
 
-/**
-* Preferences used by this class
-**/
 #define PREF_BENCHMARKSDIALOG_FRAMEWIDTH    wxT("BenchmarksDialog.FrameWidth") /**< Preference setting for benchmark dialog width */
 #define PREF_BENCHMARKSDIALOG_FRAMEWIDTH_DV 550 /**< Default value for benchmark dialog width */
 
@@ -50,7 +47,7 @@
 
 /**
  * Benchmarks Dialog class.
- * This class con only be instanciated once.
+ * This class can only be instanciated once.
  */
 class BenchmarksDialog : public wxDialog
 {
