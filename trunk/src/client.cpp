@@ -36,9 +36,6 @@
 wxMutex Client::mMutexXYZFiles;
 
 
-/**
-* Constructor
-**/
 Client::Client(const wxString& name, const wxString& location)
 {
 	mLastModification          = 0;
@@ -52,17 +49,11 @@ Client::Client(const wxString& name, const wxString& location)
 }
 
 
-/**
-* Destructor
-**/
 Client::~Client(void)
 {
 }
 
 
-/**
-* Change the location of the client
-**/
 void Client::SetLocation(const wxString& location)
 {
 	mLocation = location;
@@ -87,9 +78,6 @@ void Client::SetLocation(const wxString& location)
 }
 
 
-/**
-* Restore the initial state of the client: no information loaded
-**/
 void Client::Reset(void)
 {
 	mLog            = _("Log not loaded!");
@@ -107,9 +95,6 @@ void Client::Reset(void)
 }
 
 
-/**
-* Return true if some modification occurred since the last reload
-**/
 bool Client::ReloadNeeded(void) const
 {
 	if (wxFile::Exists(mLocation + wxT("FAHlog.txt")))
@@ -123,9 +108,6 @@ bool Client::ReloadNeeded(void) const
 }
 
 
-/**
-* (Re)Load this client
-**/
 void Client::Reload(void)
 {
 	bool              collectXYZFiles;
@@ -409,10 +391,6 @@ void Client::Reload(void)
 }
 
 
-/**
-* Load the file FAHlog.txt
-* Line returns are not converted, as it seems they are correctly taken into account by the text component used
-**/
 inline bool Client::LoadLogFile(const wxString& filename)
 {
 	if(wxFileExists(filename) == false || Tools::LoadFile(filename, mLog) == false)
@@ -424,12 +402,6 @@ inline bool Client::LoadLogFile(const wxString& filename)
 }
 
 
-/**
-* Load information from the unitinfo.txt file:
-*  - Project number
-*  - Download date
-*  - Current progress
-**/
 inline bool Client::LoadUnitInfoFile(const wxString& filename)
 {
 	bool              progressOk;
@@ -487,15 +459,7 @@ inline bool Client::LoadUnitInfoFile(const wxString& filename)
 	return false;
 }
 
-/**
-* Load lots of useful info from the queue.dat file
-* qd
-* Copyright (C) 2002-2005 Richard P. Howell IV.
-* Copyright (C) 2005-2007 Sebastiaan Couwenberg
-* This is free software; you can distribute it and/or modify it under
-* the terms of the GNU General Public License.  There is no warranty
-* whatsoever.
-*/
+
 inline bool Client::LoadQueueFile(const wxString& filename)
 {
 	Queue    *qf;
@@ -513,15 +477,8 @@ inline bool Client::LoadQueueFile(const wxString& filename)
 	}
 	return false;
 }
-/**
-* End qd
-**/
 
 
-/**
-* Save the file 'current.xyz' to the appropriate directory with the approppriate name
-* This method is thread-safe, two files won't be overwritten at the same time by two different threads
-**/
 inline void Client::SaveXYZFile(void) const
 {
 	// ----- Access Lock -----
@@ -563,9 +520,6 @@ inline void Client::SaveXYZFile(void) const
 }
 
 
-/**
-* Use registered benchmarks and the duration of the last frame to compute an ETA, if this is possible
-**/
 void Client::ComputeETA(WorkUnitFrame* lastFrame)
 {
 	wxUint32         totalFrames;
@@ -762,9 +716,6 @@ void Client::ComputeETA(WorkUnitFrame* lastFrame)
 }
 
 
-/**
-* Try to determine if the client is running or not
-**/
 void Client::FindCurrentState(WorkUnitFrame* lastFrame)
 {
 	wxUint32         trigger;
@@ -846,36 +797,24 @@ void Client::FindCurrentState(WorkUnitFrame* lastFrame)
 }
 
 
-/**
-* Return the URL of the user's stats
-**/
 wxString Client::GetDonatorStatsURL(void) const
 {
 	return wxString::Format(wxT("%s&teamnum=%u&username=%s"), wxT(FMC_URL_MYSTATS), mTeamNumber, mUserName.c_str());
 }
 
 
-/**
-* Return the URL of the user's team stats
-**/
 wxString Client::GetTeamStatsURL(void) const
 {
 	return wxString::Format(wxT("%s&teamnum=%u"), wxT(FMC_URL_TEAMSTATS), mTeamNumber);
 }
 
 
-/**
-* Returns the URL of the project page on Jmol website
-**/
 wxString Client::GetJmolURL(void) const
 {
 	return wxString::Format(wxT("%s%u"), wxT(FMC_URL_JMOL), GetProjectId());
 }
 
 
-/**
-* Returns the URL of the project page on fahinfo.org
-**/
 wxString Client::GetFahinfoURL(void) const
 {
 	return wxString::Format(wxT("%s%u"), wxT(FMC_URL_FAHINFO), GetProjectId());

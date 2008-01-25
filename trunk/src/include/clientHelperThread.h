@@ -14,6 +14,13 @@
 *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
+/**
+ * \file clientHelperThread
+ * Creates a thread launcher for the client reloader.
+ * \author François Ingelrest
+ * \author Andrew Schofield
+ **/
+
 #ifndef _CLIENTHELPERTHREAD_H
 #define _CLIENTHELPERTHREAD_H
 
@@ -22,6 +29,7 @@
 
 
 /**
+* The client launcher thread.
 * When instanciated, this class:
 *  - Asks the ClientsManager to reload information on a given client
 *  - Sends an EVT_CLIENTRELOADED event to the main dialog when done
@@ -31,12 +39,19 @@
 class ClientHelperThread : public wxThread
 {
 protected:
-	wxUint32 mClientId;
+	wxUint32 mClientId; /**< The client id to reload */
 
+	/**
+	 * This is the entry point of the thread, where the client is reloaded.
+	 **/
 	void* Entry(void);
 
 
 public:
+	/**
+	 * Constructor.
+	 * @param clientId The ID of the client to reload.
+	 **/
 	ClientHelperThread(wxUint32 clientId);
 };
 

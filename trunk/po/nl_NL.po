@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nl_NL\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2008-01-25 19:53+0000\n"
+"POT-Creation-Date: 2008-01-25 21:22+0000\n"
 "PO-Revision-Date: 2008-01-24 16:42+0100\n"
 "Last-Translator: Bastien <bastien@knife-edge.nl>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -145,15 +145,15 @@ msgstr "(Benchmarks) Het maximum aantal clients is bereikt!"
 msgid "Unknown client"
 msgstr "Onbekende client"
 
-#: src/client.cpp:95
+#: src/client.cpp:83
 msgid "Log not loaded!"
 msgstr "Logbestand niet geladen!"
 
-#: src/client.cpp:98
+#: src/client.cpp:86
 msgid "anonymous"
 msgstr "anoniem"
 
-#: src/client.cpp:103 src/listViewClients.cpp:461 src/listViewClients.cpp:465
+#: src/client.cpp:91 src/listViewClients.cpp:461 src/listViewClients.cpp:465
 #: src/mainDialog.cpp:473 src/mainDialog.cpp:478 src/mainDialog.cpp:479
 #: src/mainDialog.cpp:480 src/mainDialog.cpp:481 src/mainDialog.cpp:482
 #: src/mainDialog.cpp:568 src/mainDialog.cpp:624 src/webMonitor.cpp:139
@@ -167,73 +167,73 @@ msgstr "anoniem"
 msgid "N/A"
 msgstr "N/A"
 
-#: src/client.cpp:190
+#: src/client.cpp:172
 #, c-format
 msgid "Reloading %s"
 msgstr "Herladen %s"
 
-#: src/client.cpp:198
+#: src/client.cpp:180
 #, c-format
 msgid "Directory %s does not exist or cannot be read!"
 msgstr "Directory %s bestaat niet of kan niet gelezen worden!"
 
-#: src/client.cpp:210
+#: src/client.cpp:192
 #, c-format
 msgid "Error while reading %sFAHlog.txt!"
 msgstr "Fout tijdens lezen van %sFAHlog.txt!"
 
-#: src/client.cpp:218
+#: src/client.cpp:200
 #, c-format
 msgid "Error while reading %squeue.dat"
 msgstr "Fout tijdens lezen van %squeue.dat!"
 
-#: src/client.cpp:224
+#: src/client.cpp:206
 #, c-format
 msgid "Error while reading %sunitinfo.txt!"
 msgstr "Fout tijdens lezen van %sunitinfo.txt!"
 
-#: src/client.cpp:484
+#: src/client.cpp:456
 #, c-format
 msgid "The progress value in file %s could not be found/parsed"
 msgstr "De voortgang in bestand %s kan niet gevonden of weergegeven worden"
 
-#: src/client.cpp:541
+#: src/client.cpp:498
 #, c-format
 msgid "Unable to save %s because it does not exist"
 msgstr "Onmogelijk om %s op te slaan omdat deze niet bestaat"
 
-#: src/client.cpp:548
+#: src/client.cpp:505
 #, c-format
 msgid "Unable to create directory %s"
 msgstr "Onmogelijk om directory %s aan te maken"
 
-#: src/client.cpp:561
+#: src/client.cpp:518
 #, c-format
 msgid "Unable to copy %s to %s"
 msgstr "Onmogelijk om %s naar %s te kopiëren"
 
-#: src/client.cpp:588
+#: src/client.cpp:542
 #, c-format
 msgid "%s is on frame %u"
 msgstr "%s is op frame %u"
 
-#: src/client.cpp:592
+#: src/client.cpp:546
 #, c-format
 msgid "Cannot determine frame number for %s (this isn't a problem)"
 msgstr "Kan geen framenummer vinden voor %s (is geen probleem)"
 
-#: src/client.cpp:777
+#: src/client.cpp:728
 #, c-format
 msgid "%s has an unknown state (Unable to find a complete frame)"
 msgstr ""
 "%s heeft een onbekende status (Niet mogelijk om een compleet frame te vinden)"
 
-#: src/client.cpp:786
+#: src/client.cpp:737
 #, c-format
 msgid "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
 msgstr "%s is gestopt (De regel \"Folding@Home Client Shutdown.\" is gevonden)"
 
-#: src/client.cpp:795
+#: src/client.cpp:746
 #, c-format
 msgid ""
 "%s has an unknown state (Unable to extract a valid elapsed time since the "
@@ -242,17 +242,17 @@ msgstr ""
 "%s heeft een onbekende status (niet mogelijk om een goede tijdsduur te "
 "vinden sinds het laatst afgeronde frame)"
 
-#: src/client.cpp:803
+#: src/client.cpp:754
 #, c-format
 msgid "%s has been marked as having a asynchronous clock."
 msgstr "%s is gemarkeerd dat deze een asynchrone klok heeft."
 
-#: src/client.cpp:838
+#: src/client.cpp:789
 #, c-format
 msgid "%s seems to have hung : Elapsed time is %um and limit is %um"
 msgstr "%s lijkt te hangen: Verstreken tijd is %um en de limiet is %um"
 
-#: src/client.cpp:843
+#: src/client.cpp:794
 #, c-format
 msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
 msgstr "%s lijkt inactief: verstreken tijd is %um en de limiet is %um"
