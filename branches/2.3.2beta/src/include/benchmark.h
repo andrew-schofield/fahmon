@@ -15,8 +15,10 @@
 */
 
 /**
- * \file benchmark.h
- * Class definition a client benchmark
+ * \file benchmark
+ * Creates a class to store benchmarks.
+ * \author François Ingelrest
+ * \author Andrew Schofield
  **/
 
 #ifndef _BENCHMARK_H

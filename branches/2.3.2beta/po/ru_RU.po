@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru_RU\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2008-01-24 01:01+0000\n"
+"POT-Creation-Date: 2008-01-25 00:00+0000\n"
 "PO-Revision-Date: 2007-11-15 23:47+0000\n"
 "Last-Translator: Andrew Schofield <the.uncle.fungus@gmail.com>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -15,121 +15,121 @@ msgstr ""
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: src/aboutDialog.cpp:38 src/mainDialog.cpp:698 src/mainDialog.cpp:700
+#: src/aboutDialog.cpp:34 src/mainDialog.cpp:698 src/mainDialog.cpp:700
 #: src/mainDialog.cpp:702
 msgid "About"
 msgstr "О программе"
 
-#: src/aboutDialog.cpp:49
+#: src/aboutDialog.cpp:45
 msgid "Author:"
 msgstr "Автор:"
 
-#: src/aboutDialog.cpp:51
+#: src/aboutDialog.cpp:47
 msgid "Maintainer:"
 msgstr "Разработчик:"
 
-#: src/aboutDialog.cpp:53
+#: src/aboutDialog.cpp:49
 msgid "Homepage:"
 msgstr "Сайт программы:"
 
-#: src/aboutDialog.cpp:55
+#: src/aboutDialog.cpp:51
 msgid "Qd homepage:"
 msgstr ""
 
-#: src/aboutDialog.cpp:57
+#: src/aboutDialog.cpp:53
 msgid "Licence:"
 msgstr ""
 
-#: src/aboutDialog.cpp:61
+#: src/aboutDialog.cpp:57
 msgid "Library:"
 msgstr "Библиотека:"
 
-#: src/benchmarksDialog.cpp:58 src/trayManager.cpp:206
+#: src/benchmarksDialog.cpp:55 src/trayManager.cpp:206
 msgid "Benchmarks"
 msgstr "Производительность"
 
-#: src/benchmarksDialog.cpp:80
+#: src/benchmarksDialog.cpp:77
 msgid "Projects"
 msgstr "Задание"
 
-#: src/benchmarksDialog.cpp:256
+#: src/benchmarksDialog.cpp:232
 msgid "No benchmarks for this project!"
 msgstr "Нет производительности для этого задания!"
 
-#: src/benchmarksDialog.cpp:266
+#: src/benchmarksDialog.cpp:242
 #, c-format
 msgid "Project : %u\n"
 msgstr "Задание : %u\n"
 
-#: src/benchmarksDialog.cpp:267
+#: src/benchmarksDialog.cpp:243
 #, c-format
 msgid "Core    : %s\n"
 msgstr "Ядро    : %s\n"
 
-#: src/benchmarksDialog.cpp:268
+#: src/benchmarksDialog.cpp:244
 #, c-format
 msgid "Frames  : %u\n"
 msgstr "Фреймы  : %u\n"
 
-#: src/benchmarksDialog.cpp:269
+#: src/benchmarksDialog.cpp:245
 #, c-format
 msgid "Credit  : %u\n"
 msgstr "Очки    : %u\n"
 
-#: src/benchmarksDialog.cpp:273
+#: src/benchmarksDialog.cpp:249
 #, c-format
 msgid "Project : %u (Unknown)\n"
 msgstr "Задание : %u (Unknown)\n"
 
-#: src/benchmarksDialog.cpp:295
+#: src/benchmarksDialog.cpp:271
 #, c-format
 msgid "Min. Time / Frame : %s"
 msgstr "Мин. Время / Шаг : %s"
 
-#: src/benchmarksDialog.cpp:301 src/benchmarksDialog.cpp:322
-#: src/benchmarksDialog.cpp:347 src/benchmarksDialog.cpp:349
-#: src/benchmarksDialog.cpp:351
+#: src/benchmarksDialog.cpp:277 src/benchmarksDialog.cpp:298
+#: src/benchmarksDialog.cpp:323 src/benchmarksDialog.cpp:325
+#: src/benchmarksDialog.cpp:327
 #, c-format
 msgid " - %.2f ppd"
 msgstr " - %.2f ppd"
 
-#: src/benchmarksDialog.cpp:306
+#: src/benchmarksDialog.cpp:282
 msgid "No Min. Time / Frame"
 msgstr "Нет мин. времени / Шаг"
 
-#: src/benchmarksDialog.cpp:316
+#: src/benchmarksDialog.cpp:292
 #, c-format
 msgid "Avg. Time / Frame : %s"
 msgstr "Среднее время / Шаг : %s"
 
-#: src/benchmarksDialog.cpp:327
+#: src/benchmarksDialog.cpp:303
 msgid "No Avg. Time / Frame"
 msgstr "Нет среднего времени / Шаг"
 
-#: src/benchmarksDialog.cpp:339
+#: src/benchmarksDialog.cpp:315
 #, c-format
 msgid "Cur. Time / Frame : %s"
 msgstr "Текущее время / Шаг : %s"
 
-#: src/benchmarksDialog.cpp:340
+#: src/benchmarksDialog.cpp:316
 #, c-format
 msgid "R3F. Time / Frame : %s"
 msgstr "П3Ш. Время / Шаг : %s"
 
-#: src/benchmarksDialog.cpp:341
+#: src/benchmarksDialog.cpp:317
 #, c-format
 msgid "Eff. Time / Frame : %s"
 msgstr "Эфф. Время / Шаг : %s"
 
-#: src/benchmarksDialog.cpp:356
+#: src/benchmarksDialog.cpp:332
 msgid "No Cur. Time / Frame"
 msgstr "Нет текущего времени / Шага"
 
-#: src/benchmarksDialog.cpp:357
+#: src/benchmarksDialog.cpp:333
 msgid "No R3F. Time / Frame"
 msgstr "Нет П3Ш Времени / Шага"
 
-#: src/benchmarksDialog.cpp:358
+#: src/benchmarksDialog.cpp:334
 msgid "No Eff. Time / Frame"
 msgstr "Нет Эфф. Времени / Шага"
 

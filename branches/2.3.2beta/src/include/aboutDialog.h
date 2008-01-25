@@ -15,8 +15,11 @@
 */
 
 /**
- * \file aboutDialog.h
- * Class definition for the About Dialog
+ * \file aboutDialog
+ * About Dialog.
+ * Creates a recognised about dialog for FahMon.
+ * \author François Ingelrest
+ * \author Andrew Schofield
  **/
 
 #ifndef _ABOUTDIALOG_H
@@ -27,7 +30,7 @@
 
 /**
  * About Dialog class.
- * A singleton class.
+ * This class can only be instanciated once.
  **/
 class AboutDialog : public wxDialog
 {
