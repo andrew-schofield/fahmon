@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2008-01-25 00:50+0000\n"
+"POT-Creation-Date: 2008-01-25 19:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -134,17 +134,17 @@ msgstr ""
 msgid "No Eff. Time / Frame"
 msgstr ""
 
-#: src/benchmarksManager.cpp:152 src/preferencesManager.cpp:272
+#: src/benchmarksManager.cpp:137 src/preferencesManager.cpp:272
 #: src/projectsManager.cpp:145
 #, c-format
 msgid "Could not open file <%s> for writing!"
 msgstr ""
 
-#: src/benchmarksManager.cpp:316
+#: src/benchmarksManager.cpp:292
 msgid "(Benchmarks) The maximum number of known clients has been reached!"
 msgstr ""
 
-#: src/benchmarksManager.cpp:464
+#: src/benchmarksManager.cpp:422
 msgid "Unknown client"
 msgstr ""
 

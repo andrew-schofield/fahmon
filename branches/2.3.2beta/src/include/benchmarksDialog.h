@@ -78,14 +78,14 @@ protected:
 	 * Fill the list with all the project identifiers for which a benchmark is registered.
 	 * Select by default the given project.
 	 * If there is no benchmark for this project, select the first entry.
-	 * @param ProjectId The project number to select.
+	 * @param projectIdToSelect The project number to select.
 	 **/
 	void PopulateProjectsList(ProjectId projectIdToSelect);
 
 	/**
 	 * Show the known benchmark for the given project.
 	 * If projectId is equal to INVALID_PROJECT_ID, clear information.
-	 * @param ProjectId The project number to select.
+	 * @param projectIdToShow The project number to select.
 	 **/
 	void ShowBenchmarks(ProjectId projectIdToShow);
 
@@ -93,14 +93,14 @@ protected:
 	/**
 	 * Event: Project changed.
 	 * The selected project has changed, so display the registered benchmarks for the newly selected project.
-	 * @param wxListEvent& The event itself. This is sent automatically.
+	 * @param event The event itself. This is sent automatically.
 	 **/
 	void OnProjectChanged(wxListEvent& event);
 
 	/**
 	 * Event: The 'close' button has been pushed.
 	 * Closes the benchmarks dialog.
-	 * @param wxCommandEvent& The event itself. This is sent automatically.
+	 * @param event The event itself. This is sent automatically.
 	 **/
 	void OnCloseButton(wxCommandEvent& event);
 
@@ -124,7 +124,7 @@ public:
 	 * Show the Benchmarks Dialog.
 	 * Opens a modal window and centres it.
 	 * The given project is automatically selected. If the project is equal to INVALID_PROJECT_ID, the first available project is selected.
-	 * @param ProjectId The project number to select.
+	 * @param projectIdToSelect The project number to select.
 	 **/
 	int ShowModal(ProjectId projectIdToSelect);
 

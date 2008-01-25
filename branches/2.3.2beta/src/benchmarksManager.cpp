@@ -34,7 +34,10 @@ wxMutex BenchmarksManager::mMutexBenchmarksAccess;
 
 
 /**
-* Perform a quick sort on the given array
+* Perform a quick sort on the given array.
+* @param array[] Array to sort
+* @param lowerBound Lowest item in array to sort by
+* @param upperBound Highest item in array to sort by
 **/
 void SortArrayOfProjectId(ProjectId array[], wxInt32 lowerBound, wxInt32 upperBound)
 {
@@ -81,26 +84,17 @@ void SortArrayOfProjectId(ProjectId array[], wxInt32 lowerBound, wxInt32 upperBo
 }
 
 
-/**
-* Constructor
-**/
 BenchmarksManager::BenchmarksManager(void)
 {
 	mNextAvailableClientId = 0;
 }
 
 
-/**
-* Destructor
-**/
 BenchmarksManager::~BenchmarksManager(void)
 {
 }
 
 
-/**
-* Create the single instance of the BenchmarksManager
-**/
 void BenchmarksManager::CreateInstance(void)
 {
 	wxASSERT(mInstance == NULL);
@@ -110,9 +104,6 @@ void BenchmarksManager::CreateInstance(void)
 }
 
 
-/**
-* Destroy the single instance of the BenchmarksManager
-**/
 void BenchmarksManager::DestroyInstance(void)
 {
 	wxASSERT(mInstance != NULL);
@@ -124,9 +115,6 @@ void BenchmarksManager::DestroyInstance(void)
 }
 
 
-/**
-* Return the single instance of the BenchmarksManager
-**/
 BenchmarksManager* BenchmarksManager::GetInstance(void)
 {
 	wxASSERT(mInstance != NULL);
@@ -135,9 +123,6 @@ BenchmarksManager* BenchmarksManager::GetInstance(void)
 }
 
 
-/**
-* Save the benchmarks to the disk
-**/
 void BenchmarksManager::Save(void)
 {
 	DataOutputStream                 out(PathManager::GetCfgPath() + wxT(FMC_FILE_BENCHMARKS));
@@ -178,9 +163,6 @@ void BenchmarksManager::Save(void)
 }
 
 
-/**
-* Load the benchmarks from the disk
-**/
 void BenchmarksManager::Load(void)
 {
 	wxUint32          i;
@@ -250,9 +232,6 @@ void BenchmarksManager::Load(void)
 }
 
 
-/**
-* Return the known benchmark for the given couple {project, client}, NULL if none exists
-**/
 const Benchmark* BenchmarksManager::GetBenchmark(ProjectId projectId, const Client* client)
 {
 	wxMutexLocker mutexLocker(mMutexBenchmarksAccess);  // Lock access to this method
@@ -288,9 +267,6 @@ const Benchmark* BenchmarksManager::GetBenchmark(ProjectId projectId, const Clie
 }
 
 
-/**
-* Add a new benchmark
-**/
 void BenchmarksManager::Add(ProjectId projectId, const Client* client, const WorkUnitFrame* frame)
 {
 	wxMutexLocker mutexLocker(mMutexBenchmarksAccess);  // Lock access to this method
@@ -358,14 +334,6 @@ void BenchmarksManager::Add(ProjectId projectId, const Client* client, const Wor
 }
 
 
-/**
-* Fill the parameter nbProjects and return an array containing the list of ProjectId for which a benchmark is registered
-* Return NULL if there is no benchmarks at all
-* In any case, nbBenchmarks is filled with the correct value (thus 0 when NULL is returned)
-* The array is sorted in ascending order
-*
-* The array, if not NULL, must be deleted[] by the caller when needed!
-**/
 ProjectId* BenchmarksManager::GetBenchmarkedProjects(wxUint32 &nbProjects)
 {
 	wxMutexLocker mutexLocker(mMutexBenchmarksAccess);  // Lock access to this method
@@ -397,13 +365,6 @@ ProjectId* BenchmarksManager::GetBenchmarkedProjects(wxUint32 &nbProjects)
 }
 
 
-/**
-* Fill the parameter nbBenchmarks and return the list of known benchmarks for the given project
-* If there is no benchmark at all, return NULL
-* In any case, nbBenchmarks is filled with the correct value (thus 0 when NULL is returned)
-*
-* The array, if not NULL, must be deleted[] by the caller when needed!
-**/
 const Benchmark** BenchmarksManager::GetBenchmarksList(ProjectId projectId, wxUint32 &nbBenchmarks)
 {
 	wxMutexLocker mutexLocker(mMutexBenchmarksAccess);  // Lock access to this method
@@ -448,9 +409,6 @@ const Benchmark** BenchmarksManager::GetBenchmarksList(ProjectId projectId, wxUi
 }
 
 
-/**
-* Convert an internal ClientId to the corresponding client location
-**/
 wxString BenchmarksManager::GetClientLocationFromClientId(ClientId clientId)
 {
 	wxMutexLocker mutexLocker(mMutexBenchmarksAccess);  // Lock access to this method

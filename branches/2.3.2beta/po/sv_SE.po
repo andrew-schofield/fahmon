@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv_SE\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2008-01-25 00:50+0000\n"
+"POT-Creation-Date: 2008-01-25 19:53+0000\n"
 "PO-Revision-Date: 2007-11-15 23:48+0000\n"
 "Last-Translator: Andrew Schofield <the.uncle.fungus@gmail.com>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -136,17 +136,17 @@ msgstr "Inget snitt på senaste 3 bildrutor"
 msgid "No Eff. Time / Frame"
 msgstr "Ingen effektiv tid / bildruta"
 
-#: src/benchmarksManager.cpp:152 src/preferencesManager.cpp:272
+#: src/benchmarksManager.cpp:137 src/preferencesManager.cpp:272
 #: src/projectsManager.cpp:145
 #, c-format
 msgid "Could not open file <%s> for writing!"
 msgstr "Kunde inte öppna filen <%s> för att skriva till!"
 
-#: src/benchmarksManager.cpp:316
+#: src/benchmarksManager.cpp:292
 msgid "(Benchmarks) The maximum number of known clients has been reached!"
 msgstr "(Prestanda) Det maximala antalet kända klienter har uppnåtts!"
 
-#: src/benchmarksManager.cpp:464
+#: src/benchmarksManager.cpp:422
 msgid "Unknown client"
 msgstr "Okänd klient"
 

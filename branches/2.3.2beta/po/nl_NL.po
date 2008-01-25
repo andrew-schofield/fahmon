@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nl_NL\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2008-01-25 00:50+0000\n"
+"POT-Creation-Date: 2008-01-25 19:53+0000\n"
 "PO-Revision-Date: 2008-01-24 16:42+0100\n"
 "Last-Translator: Bastien <bastien@knife-edge.nl>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -131,17 +131,17 @@ msgstr "Geen R3F. tijd / frame"
 msgid "No Eff. Time / Frame"
 msgstr "Geen eff. tijd / frame"
 
-#: src/benchmarksManager.cpp:152 src/preferencesManager.cpp:272
+#: src/benchmarksManager.cpp:137 src/preferencesManager.cpp:272
 #: src/projectsManager.cpp:145
 #, c-format
 msgid "Could not open file <%s> for writing!"
 msgstr "Kan bestand <%s> niet openen om te schrijven!"
 
-#: src/benchmarksManager.cpp:316
+#: src/benchmarksManager.cpp:292
 msgid "(Benchmarks) The maximum number of known clients has been reached!"
 msgstr "(Benchmarks) Het maximum aantal clients is bereikt!"
 
-#: src/benchmarksManager.cpp:464
+#: src/benchmarksManager.cpp:422
 msgid "Unknown client"
 msgstr "Onbekende client"
 
