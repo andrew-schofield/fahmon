@@ -91,7 +91,6 @@ void WebMonitor::WriteApp(void)
 	bool           useWebApp;
 	bool           useSimpleWeb;
 	bool           useSimpleText;
-	bool           overrideTZ;
 	wxUint32       deadlineDays;
 	wxString       webAppLocation;
 	wxString       simpleWebLocation;
@@ -104,7 +103,6 @@ void WebMonitor::WriteApp(void)
 	wxInt32        nbDays;
 	wxInt32        nbHours;
 	wxInt32        nbMinutes;
-	wxInt32        TZ;
 	wxDateTime     preferredDeadline;
 	wxDateTime     finalDeadline;
 	wxDateTime     downloadTime;
@@ -117,8 +115,6 @@ void WebMonitor::WriteApp(void)
 		mDataArray[i] = new wxString[13];
 	}
 
-	_PrefsGetBool(PREF_OVERRIDE_TIMEZONE,           overrideTZ);
-	_PrefsGetInt (PREF_TZ,                          TZ);
 	_PrefsGetUint(PREF_ETA_DISPLAYSTYLE,            deadlineDays);
 
 	_PrefsGetBool(PREF_WEBAPP_WEBAPP,               useWebApp)
@@ -149,16 +145,8 @@ void WebMonitor::WriteApp(void)
 				mDataArray[currentClient][7] = wxString::Format(_T("%s (%u)"), client->GetDonatorName().c_str(), client->GetTeamNumber());
 				if(client->GetDownloadDate().IsValid())
 				{
-					if(overrideTZ)
-					{
-						downloadTime = client->GetDownloadDate().Add(wxTimeSpan::Hours(TZ));
-						timeNow = wxDateTime::Now()/*.Add(wxTimeSpan::Hours(TZ))*/;
-					}
-					else
-					{
-						downloadTime = client->GetDownloadDate().FromTimezone(wxDateTime::UTC);
-						timeNow = wxDateTime::Now()/*.FromTimezone(wxDateTime::UTC)*/;
-					}
+					timeNow = wxDateTime::Now();
+					downloadTime = client->GetDownloadDate();
 					if(deadlineDays == ETADS_LEFT_TIME)
 					{
 						timeDiff = timeNow.Subtract(downloadTime);
