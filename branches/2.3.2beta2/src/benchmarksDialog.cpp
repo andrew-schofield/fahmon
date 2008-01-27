@@ -312,9 +312,9 @@ void BenchmarksDialog::ShowBenchmarks(ProjectId projectIdToShow)
 			iFrameTime = benchmarks[i]->GetInstantDuration();
 			tFrameTime = benchmarks[i]->Get3FrameDuration();
 			eFrameTime = benchmarks[i]->GetEffectiveDuration();
-			currentString += wxT(" ") + wxString::Format(_("Cur. Time / Frame : %s"), Tools::FormatSeconds(iFrameTime).c_str());
-			r3fString += wxT(" ") + wxString::Format(_("R3F. Time / Frame : %s"), Tools::FormatSeconds(tFrameTime).c_str());
-			effectiveString += wxT(" ") + wxString::Format(_("Eff. Time / Frame : %s"), Tools::FormatSeconds(eFrameTime).c_str());
+			currentString = wxT(" ") + wxString::Format(_("Cur. Time / Frame : %s"), Tools::FormatSeconds(iFrameTime).c_str());
+			r3fString = wxT(" ") + wxString::Format(_("R3F. Time / Frame : %s"), Tools::FormatSeconds(tFrameTime).c_str());
+			effectiveString = wxT(" ") + wxString::Format(_("Eff. Time / Frame : %s"), Tools::FormatSeconds(eFrameTime).c_str());
 
 			// Compute points per day if possible
 			if(project != NULL)
@@ -329,9 +329,9 @@ void BenchmarksDialog::ShowBenchmarks(ProjectId projectIdToShow)
 		}
 		else
 		{
-			currentString += wxString::Format(wxT(" %s"), _("No Cur. Time / Frame"));
-			r3fString += wxString::Format(wxT(" %s"), _("No R3F. Time / Frame"));
-			effectiveString += wxString::Format(wxT(" %s"), _("No Eff. Time / Frame"));
+			currentString = wxString::Format(wxT(" %s"), _("No Cur. Time / Frame"));
+			r3fString = wxString::Format(wxT(" %s"), _("No R3F. Time / Frame"));
+			effectiveString = wxString::Format(wxT(" %s"), _("No Eff. Time / Frame"));
 		}
 
 		currentString += wxT("\n");

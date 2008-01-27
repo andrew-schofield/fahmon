@@ -223,13 +223,13 @@ tt:				if (genome)
 		wxString teamnumber(p->teamn, wxConvUTF8);
 		it = (genome ? le4(p->wuid.g.issue[0]) : le4(p->wuid.f.issue[0]));
 		mDownloadDate = it;/* what is going on here I wonder? Does wxwidgets also use 01/01/2000 as it's epoch? */
-		if(overrideTZ){
+		/*if(overrideTZ){
 			mDownloadDate.Add(wxTimeSpan::Hours(TZ));
 		}
 		else
 		{
 			mDownloadDate = mDownloadDate.FromTimezone(wxDateTime::UTC);
-		}
+		}*/
 		mUserName = username;
 		if(teamnumber.ToULong(&tmpLong) == true)
 		{

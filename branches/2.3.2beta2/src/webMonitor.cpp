@@ -57,7 +57,7 @@ WebMonitor::~WebMonitor(void)
 **/
 void WebMonitor::CreateInstance(void)
 {
-	wxASSERT(nInstance == NULL);
+	wxASSERT(mInstance == NULL);
 
 	mInstance = new WebMonitor();
 }
