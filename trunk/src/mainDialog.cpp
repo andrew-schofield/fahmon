@@ -323,10 +323,8 @@ void MainDialog::ShowClientInformation(ClientId clientId)
 **/
 void MainDialog::UpdateClientInformation(ClientId clientId)
 {
-	bool          overrideTZ;
 	bool          autoUpdateProjects;
 	wxUint32      deadlineDays;
-	wxInt32       TZ;
 	wxDateTime    preferredDeadline;
 	wxDateTime    finalDeadline;
 	wxDateTime    downloadTime;
@@ -340,8 +338,6 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 	wxInt32       nbMinutes;
 	wxString      tempString;
 
-	_PrefsGetBool(PREF_OVERRIDE_TIMEZONE, overrideTZ);
-	_PrefsGetInt (PREF_TZ,                TZ);
 	_PrefsGetUint(PREF_ETA_DISPLAYSTYLE, deadlineDays);
 
 	// Clear information for invalid clients
@@ -423,20 +419,12 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 
 	if(client->GetDownloadDate().IsValid())
 	{
-		if(overrideTZ)
-		{
-			downloadTime = client->GetDownloadDate().Add(wxTimeSpan::Hours(TZ));
-			timeNow = wxDateTime::Now()/*.Add(wxTimeSpan::Hours(TZ))*/;
-		}
-		else
-		{
-			downloadTime = client->GetDownloadDate().FromTimezone(wxDateTime::UTC);
-			timeNow = wxDateTime::Now()/*.FromTimezone(wxDateTime::UTC)*/;
-		}
+		timeNow = wxDateTime::Now();
+		downloadTime = client->GetDownloadDate();
 		if(deadlineDays == ETADS_LEFT_TIME)
 		{
-			timeDiff = timeNow.Subtract(downloadTime);
-			timeInMinutes = timeDiff.GetMinutes();
+			//timeDiff = timeNow.Subtract(downloadTime);
+			timeInMinutes = timeNow.Subtract(downloadTime).GetMinutes();
 
 			// Split the left time into days, hours and minutes
 			nbDays    = timeInMinutes / (24 * 60);
@@ -486,7 +474,6 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 
 	mProjectId->SetLabel(wxString::Format(wxT("%u (R%i, C%i, G%i)"), client->GetProjectId(), client->GetProjectRun(), client->GetProjectClone(), client->GetProjectGen()));
 	project = ProjectsManager::GetInstance()->GetProject(client->GetProjectId());
-
 
 	_PrefsGetBool(PREF_MAINDIALOG_AUTOUPDATEPROJECTS, autoUpdateProjects);
 

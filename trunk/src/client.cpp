@@ -111,14 +111,12 @@ bool Client::ReloadNeeded(void) const
 void Client::Reload(void)
 {
 	bool              collectXYZFiles;
-	bool              overrideTZ;
 	WorkUnitFrame    *lastFrame;
 	wxUint32	      nbBenchmarks;
 	wxUint32	      i;
 	wxUint32          ppdDisplay;
 	//wxInt32           portPosition;
 	//wxInt32           fslashPosition;
-	wxInt32           TZ;
 	float             tempFloat;
 	wxString	      PPD;
 	wxString	      clientLocation;
@@ -135,10 +133,6 @@ void Client::Reload(void)
 	const Benchmark **benchmarks;
 	wxUint32          frameCount;
 	wxUint32          frameTime;
-
-
-	_PrefsGetBool(PREF_OVERRIDE_TIMEZONE, overrideTZ);
-	_PrefsGetInt (PREF_TZ,                TZ);
 
 	templocation = mLocation;
 	/* Preparatory code for monitoring of web clients
@@ -251,21 +245,12 @@ void Client::Reload(void)
 	}
 
 	// Add this duration to the benchmarks for valid projects, but don't store the same frame twice
-	if(mProjectId != INVALID_PROJECT_ID && lastFrame != NULL && !lastFrame->ClientIsStopped() && lastFrame->GetId() != mPreviouslyAnalyzedFrameId)
+	if(mProjectId != INVALID_PROJECT_ID && lastFrame != NULL && !lastFrame->ClientIsStopped())
 	{
-		mPreviouslyAnalyzedFrameId = lastFrame->GetId();
 		// Calculate effective frame time
 		timeNow = wxDateTime::Now();
-		if(overrideTZ)
-		{
-			downloadTime = mDownloadDate.Add(wxTimeSpan::Hours(TZ));
-		}
-		else
-		{
-			downloadTime = mDownloadDate.FromTimezone(wxDateTime::UTC);
-		}
 		// There may be a cleaner way of doing this
-		timeDiff = timeNow.Subtract(downloadTime);
+		timeDiff = timeNow.Subtract(mDownloadDate);
 		// sanity checking because WUs with odd frame numbers still write out the % not the frameID
 		if(project != INVALID_PROJECT_ID)
 		{
@@ -283,7 +268,11 @@ void Client::Reload(void)
 			tempFloat = timeDiff.GetMinutes() * 60 / lastFrame->GetId();
 		}
 		lastFrame->SetEffectiveDuration(wxUint32(tempFloat));
-		BenchmarksManager::GetInstance()->Add(mProjectId, this, lastFrame);
+		if(lastFrame->GetId() != mPreviouslyAnalyzedFrameId)
+		{
+			BenchmarksManager::GetInstance()->Add(mProjectId, this, lastFrame);
+			mPreviouslyAnalyzedFrameId = lastFrame->GetId();
+		}
 	}
 
 
