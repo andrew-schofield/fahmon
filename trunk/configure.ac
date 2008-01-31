@@ -9,7 +9,7 @@
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 m4_include(m4/wxwin.m4)
 AC_INIT([FahMon],
-        [2.3.2beta],
+        [2.3.2beta3],
         [Andrew Schofield the.uncle.fungus@gmail.com],
         [FahMon])
 AC_PREFIX

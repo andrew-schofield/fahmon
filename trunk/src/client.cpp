@@ -228,6 +228,10 @@ void Client::Reload(void)
 		if(project->GetCoreId() != Core::TINKER && lastFrame->GetId() > 100)
 		{
 			lastFrame->SetId(lastFrame->GetId() % 100);
+			if(lastFrame->GetId()==0)
+			{
+				lastFrame->SetId(100);
+			}
 		}
 
 	}
