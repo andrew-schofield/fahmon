@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pl_PL\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
 "POT-Creation-Date: 2008-01-29 22:32+0000\n"
-"PO-Revision-Date: 2008-01-30 22:41+0100\n"
+"PO-Revision-Date: 2008-02-01 04:32+0100\n"
 "Last-Translator: Mariusz Pociask <mariusz-pociask@o2.pl>\n"
 "Language-Team: British English <en@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -46,7 +46,7 @@ msgstr "Licencja:"
 
 #: src/aboutDialog.cpp:57
 msgid "Library:"
-msgstr "Wykorzystana biblioteka:"
+msgstr "Wykorzystywana biblioteka:"
 
 #: src/benchmarksDialog.cpp:55 src/trayManager.cpp:206
 msgid "Benchmarks"
@@ -944,7 +944,7 @@ msgid ""
 "Username:"
 msgstr ""
 "Login\n"
-"do proxy:"
+"do proxy:  "
 
 #: src/preferencesDialog.cpp:293
 msgid ""
@@ -965,7 +965,7 @@ msgstr "Użyj własnego pliku z danymi projektów"
 #: src/preferencesDialog.cpp:347 src/preferencesDialog.cpp:487
 #: src/preferencesDialog.cpp:492 src/preferencesDialog.cpp:497
 msgid "Filename:"
-msgstr "Plik:"
+msgstr "Plik:    "
 
 #: src/preferencesDialog.cpp:394
 msgid "Web Browser:"
