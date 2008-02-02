@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv_SE\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2008-01-29 22:32+0000\n"
+"POT-Creation-Date: 2008-02-02 16:56+0000\n"
 "PO-Revision-Date: 2008-02-01 20:20+0100\n"
 "Last-Translator: Olof Persson <floffe@gmail.com>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -1055,7 +1055,7 @@ msgstr ""
 msgid "Update aborted!"
 msgstr "Uppdatering avbruten!"
 
-#: src/tools.cpp:65
+#: src/tools.cpp:55
 msgid ""
 "Unable to launch the default browser.\n"
 "\n"
