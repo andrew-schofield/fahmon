@@ -45,7 +45,7 @@ public:
 	 **/
 	enum _CORE_ID
 	{
-		TINKER, /**< Tinker (65)) */
+		TINKER, /**< Tinker (65) */
 		GROMACS, /**< Gromacs (78) */
 		DGROMACS, /**< Double Gromacs (79) */
 		GBGROMACS, /**< GB Gromacs (7a) */
