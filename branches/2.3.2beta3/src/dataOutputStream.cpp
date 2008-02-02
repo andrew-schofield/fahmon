@@ -20,9 +20,6 @@
 #include "base64Codec.h"
 
 
-/**
-* Constructor
-**/
 DataOutputStream::DataOutputStream(const wxString& filename)
 {
 	mDataOS = NULL;
@@ -39,9 +36,6 @@ DataOutputStream::DataOutputStream(const wxString& filename)
 }
 
 
-/**
-* Destructor
-**/
 DataOutputStream::~DataOutputStream(void)
 {
 	if(mDataOS != NULL)
@@ -62,9 +56,6 @@ DataOutputStream::~DataOutputStream(void)
 }
 
 
-/**
-* Hidden strings are not directly "human readable" from the disk
-**/
 void DataOutputStream::WriteHiddenString(const wxString& value)
 {
 	// The string is written in base64
