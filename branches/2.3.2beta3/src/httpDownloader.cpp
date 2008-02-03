@@ -30,17 +30,6 @@
 #define BUFFER_SIZE 1024
 
 
-/**
-* Create a temporary file and download the remote resource to this file
-*
-* The path to the temporary file is stored in the parameter localFileName, empty string if it could not be created
-* This file must be deleted by the caller, if this is needed, regardless of the return value
-*
-* Use the defined proxy in preferences, if any
-*
-* Using wxURL would have been a lot easier, but wxURL::SetProxy() doesn't work, and I can't ask
-* users to patch their version of wxWindows to compile this app
-**/
 HTTPDownloader::DownloadStatus HTTPDownloader::DownloadFile(const wxString& host, wxUint32 port, const wxString& resource, wxString& localFileName, ProgressManager& progressManager)
 {
 	bool                isUsingProxy;
@@ -196,12 +185,6 @@ HTTPDownloader::DownloadStatus HTTPDownloader::DownloadFile(const wxString& host
 }
 
 
-/**
-* Return the value of the content-length field, if found
-* Return 0 otherwise
-*
-* ! buffer will be modified !
-**/
 wxUint32 HTTPDownloader::ExtractContentSize(wxByte* buffer, wxUint32 bufferSize)
 {
 	long      value;
@@ -238,10 +221,7 @@ wxUint32 HTTPDownloader::ExtractContentSize(wxByte* buffer, wxUint32 bufferSize)
 	return (wxInt32)value;
 }
 
-/**
- * Decontructs a "real" url into its Server, Port and Resource fields
- * and downloads the file
- **/
+
 HTTPDownloader::DownloadStatus HTTPDownloader::Url(const wxString& url, wxString& localFileName, ProgressManager& progressManager)
 {
 	wxString      tempString;
