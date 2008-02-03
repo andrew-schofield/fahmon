@@ -22,29 +22,6 @@
 #include "mainDialog.h"
 
 
-/**
-* Return a pointer to a valid WorkUnitFrame object if information could be extracted, NULL otherwhise
-* It's up to the caller to free the WorkUnitFrame object when needed
-*
-*
-*
-* We are searching for a pattern like this one :
-*
-* [16:04:36] Completed 6900000 out of 12500000 steps  (55%)   <-- We know the run below is complete because of this line
-* ...
-* [16:25:32] Completed 7000000 out of 12500000 steps  (56%)   <-+
-* ...                                                           |-- Complete run
-* [16:52:12] Completed 7125000 out of 12500000 steps  (57%)   <-+
-*
-*
-*
-* For Tinker units, this pattern is sufficient :
-*
-* [16:26:42] Finished a frame (2) <-+
-* ...                               |-- Complete run
-* [16:38:42] Finished a frame (3) <-+
-*
-**/
 WorkUnitFrame* FahLogAnalyzer::AnalyzeLastFrame(const wxString& fahlogComplete)
 {
 	bool      completeRunFound, emptyLineFound, endOfLogReached, clientIsStopped, newWUStarted;
@@ -260,10 +237,6 @@ WorkUnitFrame* FahLogAnalyzer::AnalyzeLastFrame(const wxString& fahlogComplete)
 }
 
 
-/**
-* Take a line of a FAHLog file, and extract information from it
-* Beware that the 'lineToParse' parameter is modified by this function !
-**/
 void FahLogAnalyzer::ParseLogLine(wxString& lineToParse, LogLine& logLine)
 {
 	wxInt32       position, compPos, stepsPos, outOfPos;
