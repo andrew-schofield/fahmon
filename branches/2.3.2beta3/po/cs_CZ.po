@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cs_CZ\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2008-02-02 16:56+0000\n"
+"POT-Creation-Date: 2008-02-03 17:04+0000\n"
 "PO-Revision-Date: 2007-11-15 23:40+0000\n"
 "Last-Translator: Andrew Schofield <the.uncle.fungus@gmail.com>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -261,37 +261,37 @@ msgstr "y%s se zdá zablokovaný : Uplynulý čas je %um a limit je %um"
 msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
 msgstr "%s se zdá být neaktivní : Uplynulý čas je %um a limit je %um"
 
-#: src/clientDialog.cpp:53
+#: src/clientDialog.cpp:50
 #, c-format
 msgid "Client Edition / %s"
 msgstr "Edice Klienta / %s"
 
-#: src/clientDialog.cpp:73
+#: src/clientDialog.cpp:70
 msgid "Client information"
 msgstr "Informace o klientovi"
 
-#: src/clientDialog.cpp:76
+#: src/clientDialog.cpp:73
 msgid "Name:"
 msgstr "Jméno:"
 
-#: src/clientDialog.cpp:78
+#: src/clientDialog.cpp:75
 msgid "Location:"
 msgstr "Umístění"
 
-#: src/clientDialog.cpp:182
+#: src/clientDialog.cpp:163
 msgid "Choose a folder"
 msgstr "Vyberte si složku"
 
-#: src/clientDialog.cpp:209
+#: src/clientDialog.cpp:187
 msgid "You must fill the name AND the locations fields."
 msgstr "Musíte vyplnit "
 
-#: src/clientsManager.cpp:183
+#: src/clientsManager.cpp:159
 #, c-format
 msgid "Error while parsing %s on line %u"
 msgstr "Chyba při analýze %s ne řádce %u"
 
-#: src/clientsManager.cpp:205
+#: src/clientsManager.cpp:178
 #, c-format
 msgid ""
 "Could not open file <%s> for writing!\n"
@@ -300,7 +300,7 @@ msgstr ""
 "Soubor %s nelze otevřít pro zapisování!\n"
 "Seznam klientů nebude uložen."
 
-#: src/clientsManager.cpp:210
+#: src/clientsManager.cpp:183
 #, c-format
 msgid ""
 "# %s : contains the list of clients\n"

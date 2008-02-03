@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2008-02-03 16:18+0000\n"
+"POT-Creation-Date: 2008-02-03 17:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -282,19 +282,19 @@ msgstr ""
 msgid "You must fill the name AND the locations fields."
 msgstr ""
 
-#: src/clientsManager.cpp:183
+#: src/clientsManager.cpp:159
 #, c-format
 msgid "Error while parsing %s on line %u"
 msgstr ""
 
-#: src/clientsManager.cpp:205
+#: src/clientsManager.cpp:178
 #, c-format
 msgid ""
 "Could not open file <%s> for writing!\n"
 "The list of clients will not be saved!"
 msgstr ""
 
-#: src/clientsManager.cpp:210
+#: src/clientsManager.cpp:183
 #, c-format
 msgid ""
 "# %s : contains the list of clients\n"

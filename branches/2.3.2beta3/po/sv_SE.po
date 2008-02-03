@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv_SE\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2008-02-02 16:56+0000\n"
+"POT-Creation-Date: 2008-02-03 17:04+0000\n"
 "PO-Revision-Date: 2008-02-01 20:20+0100\n"
 "Last-Translator: Olof Persson <floffe@gmail.com>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -261,37 +261,37 @@ msgstr "%s verkar ha hängt sig : %um har förflutit och gränsen är %um"
 msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
 msgstr "%s verkar vara inaktiv : %um har förflutit och gränsen är %um"
 
-#: src/clientDialog.cpp:53
+#: src/clientDialog.cpp:50
 #, c-format
 msgid "Client Edition / %s"
 msgstr "Ändra klient / %s"
 
-#: src/clientDialog.cpp:73
+#: src/clientDialog.cpp:70
 msgid "Client information"
 msgstr "Klientinformation"
 
-#: src/clientDialog.cpp:76
+#: src/clientDialog.cpp:73
 msgid "Name:"
 msgstr "Namn:"
 
-#: src/clientDialog.cpp:78
+#: src/clientDialog.cpp:75
 msgid "Location:"
 msgstr "Plats:"
 
-#: src/clientDialog.cpp:182
+#: src/clientDialog.cpp:163
 msgid "Choose a folder"
 msgstr "Välj en katalog"
 
-#: src/clientDialog.cpp:209
+#: src/clientDialog.cpp:187
 msgid "You must fill the name AND the locations fields."
 msgstr "Du måste fylla i namnet OCH platsen."
 
-#: src/clientsManager.cpp:183
+#: src/clientsManager.cpp:159
 #, c-format
 msgid "Error while parsing %s on line %u"
 msgstr "Fel vid tolkning av %s på rad %u"
 
-#: src/clientsManager.cpp:205
+#: src/clientsManager.cpp:178
 #, c-format
 msgid ""
 "Could not open file <%s> for writing!\n"
@@ -300,7 +300,7 @@ msgstr ""
 "Kunde inte öppna <%s> for skrivning!\n"
 "Listan med klienter kommer inte att sparas!"
 
-#: src/clientsManager.cpp:210
+#: src/clientsManager.cpp:183
 #, c-format
 msgid ""
 "# %s : contains the list of clients\n"
