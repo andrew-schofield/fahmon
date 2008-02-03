@@ -48,9 +48,6 @@ END_EVENT_TABLE()
 FirstTimeDialog* FirstTimeDialog::mInstance = NULL;
 
 
-/**
-* Constructor
-**/
 FirstTimeDialog::FirstTimeDialog(void) : wxDialog(NULL, wxID_ANY, wxString::Format(_("Welcome to %s!"), wxT(FMC_PRODUCT)))
 {
 	wxBoxSizer *topLevelSizer;
@@ -97,17 +94,11 @@ FirstTimeDialog::FirstTimeDialog(void) : wxDialog(NULL, wxID_ANY, wxString::Form
 }
 
 
-/**
-* Destructor
-**/
 FirstTimeDialog::~FirstTimeDialog(void)
 {
 }
 
 
-/**
-* Retrieve the instance of FirstTimeDialog, create it if needed
-**/
 FirstTimeDialog* FirstTimeDialog::GetInstance(void)
 {
 	if(mInstance == NULL)
@@ -119,9 +110,6 @@ FirstTimeDialog* FirstTimeDialog::GetInstance(void)
 }
 
 
-/**
-* Destroy the instance of FirstTimeDialog, if any
-**/
 void FirstTimeDialog::DestroyInstance(void)
 {
 	if(mInstance != NULL)
@@ -132,12 +120,6 @@ void FirstTimeDialog::DestroyInstance(void)
 }
 
 
-/**
-* Center the dialog box before displaying it
-* Also create the configuration directory if it does not exist
-*
-* Return wxID_CANCEL if the directory could not be created
-**/
 int FirstTimeDialog::ShowModal(void)
 {
 	// Try to create the directory if it does not already exist
@@ -158,10 +140,6 @@ int FirstTimeDialog::ShowModal(void)
 }
 
 
-/**
-* Change the behaviour of the default close handler, so that it simulate a push on the OK button
-* Indeed, we don't want to return a wxID_CANCEL at this point
-**/
 void FirstTimeDialog::OnClose(wxCloseEvent& event)
 {
 	// I found this method in src/gtk/dialog.cpp, OnCloseWindow()
@@ -172,9 +150,6 @@ void FirstTimeDialog::OnClose(wxCloseEvent& event)
 }
 
 
-/**
-* Manage the 'update projects' button
-**/
 void FirstTimeDialog::OnUpdateButton(wxCommandEvent& event)
 {
 	ProjectsManager::GetInstance()->UpdateDatabase(true, false);
