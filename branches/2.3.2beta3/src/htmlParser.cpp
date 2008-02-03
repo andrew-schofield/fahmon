@@ -20,10 +20,6 @@
 #include "tools.h"
 
 
-/**
-* Constructor
-* ParseFile() or ParseString() must be called
-**/
 HTMLParser::HTMLParser(void)
 {
 	mIsStartingTag = false;
@@ -33,9 +29,6 @@ HTMLParser::HTMLParser(void)
 }
 
 
-/**
-* Load a file and (re)initialize the parser
-**/
 bool HTMLParser::ParseFile(const wxString& fileName)
 {
 	mIsStartingTag = false;
@@ -53,9 +46,6 @@ bool HTMLParser::ParseFile(const wxString& fileName)
 }
 
 
-/**
-* (re)initialize the parser to parse the given string
-**/
 void HTMLParser::ParseString(const wxString& string)
 {
 	mIsStartingTag = false;
@@ -65,9 +55,6 @@ void HTMLParser::ParseString(const wxString& string)
 }
 
 
-/**
-* Return true if a new token could be found, or false if the end of the file has been reached
-**/
 bool HTMLParser::NextToken(void)
 {
 	wxInt32  nextTagPos;
@@ -131,9 +118,6 @@ bool HTMLParser::NextToken(void)
 }
 
 
-/**
-* Convert a text into its corresponding token
-**/
 HTMLParser::HTMLToken HTMLParser::TextToToken(const wxString& text)
 {
 	wxInt32  argumentPos;
@@ -169,9 +153,6 @@ HTMLParser::HTMLToken HTMLParser::TextToToken(const wxString& text)
 }
 
 
-/**
-* Skip the given number of tokens
-**/
 void HTMLParser::NextToken(wxUint32 nbTokensToSkip)
 {
 	wxUint32 i;
