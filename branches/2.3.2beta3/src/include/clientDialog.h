@@ -14,6 +14,14 @@
 *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
+/**
+ * \file clientDialog
+ * The client edition dialog.
+ * Creates the dialog to add and edit new clients.
+ * \author François Ingelrest
+ * \author Andrew Schofield
+ **/
+
 #ifndef _CLIENTDIALOG_H
 #define _CLIENTDIALOG_H
 
@@ -23,29 +31,67 @@
 
 
 /**
-* This dialog box allows the user to create/edit clients
-* It's a singleton
+ * Client edition class.
+ * This class can only be instantiated once.
 **/
 class ClientDialog : public wxDialog
 {
 protected:
-	wxUint32             mClientId;
-	wxTextCtrl          *mClientNameCtrl;
-	wxTextCtrl          *mClientLocationCtrl;
-	static ClientDialog *mInstance;
+	wxUint32             mClientId; /**< The new/current client ID */
+	wxTextCtrl          *mClientNameCtrl;  /**< Name of client */
+	wxTextCtrl          *mClientLocationCtrl; /**< Location of client */
+	static ClientDialog *mInstance; /**< The single instance of the Client Dialog */
 
+	/**
+	 * Contructor.
+	 * Constructs a Client edition Dialog of type wxDialog with a title of "Client Edition"
+	 * @param parent The parent window of type wxWindow
+	 **/
 	ClientDialog(wxWindow* parent);
+
+	/**
+	 * Destructor.
+	 **/
 	~ClientDialog(void);
 
+	/**
+	 * Event: The 'browse' button has been pushed.
+	 * Manages the browse button: It displays the standard 'browse for directory...' dialog and fills the corresponding text field.
+	 * @param event The event itself. This is sent automatically.
+	 **/
 	void OnBrowseButton(wxCommandEvent& event);
+
+	/**
+	 * Event: The 'Ok' button has been pushed.
+	 * Manages the Ok button: The client can be validated only if the two textctrl have been filled.
+	 * @param event Thr event itself. This is sent automatically.
+	 **/
 	void OnOkButton(wxCommandEvent& event);
 
 
 public:
 	// Singleton pattern
+	/**
+	 * Retrieve the instance of ClientDialog.
+	 * If an instance doesn't already exist, create it.
+	 * @param parent The parent windows of type wxWindow.
+	 * @return An instance of class ClientDialog.
+	 **/
 	static ClientDialog* GetInstance(wxWindow* parent);
+
+	/**
+	 * Destroy the instance of ClientDialog.
+	 * Only if an instance exists.
+	 **/
 	static void DestroyInstance(void);
 
+	/**
+	 * Show the Client Dialog.
+	 * Opens a modal window and centres it.
+	 * If clientId is equal to INVALID_CLIENT_ID, then a new client will be created.
+	 * @param clientId The clientId to select.
+	 * @param filename The location of the client to add.
+	 **/
 	int ShowModal(wxUint32 clientId, wxString filename);
 
 

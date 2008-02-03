@@ -47,9 +47,6 @@ END_EVENT_TABLE()
 ClientDialog* ClientDialog::mInstance = NULL;
 
 
-/**
-* Constructor
-**/
 ClientDialog::ClientDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, wxString::Format(_("Client Edition / %s"), wxT(FMC_PRODUCT)))
 {
 	wxBoxSizer       *topLevelSizer;
@@ -102,17 +99,11 @@ ClientDialog::ClientDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, wxStri
 }
 
 
-/**
-* Destructor
-**/
 ClientDialog::~ClientDialog(void)
 {
 }
 
 
-/**
-* Retrieve the instance of ClientDialog, create it if needed
-**/
 ClientDialog* ClientDialog::GetInstance(wxWindow* parent)
 {
 	if(mInstance == NULL)
@@ -124,9 +115,6 @@ ClientDialog* ClientDialog::GetInstance(wxWindow* parent)
 }
 
 
-/**
-* Destroy the instance of AboutDialog, if any
-**/
 void ClientDialog::DestroyInstance(void)
 {
 	if(mInstance != NULL)
@@ -137,10 +125,6 @@ void ClientDialog::DestroyInstance(void)
 }
 
 
-/**
-* Show the dialog in order to edit the given client
-* If clientId is equal to INVALID_CLIENT_ID, then a new client will be created
-**/
 int ClientDialog::ShowModal(wxUint32 clientId, wxString filename)
 {
 	const Client* clientToEdit;
@@ -171,9 +155,6 @@ int ClientDialog::ShowModal(wxUint32 clientId, wxString filename)
 /************************************  EVENTS  ************************************/
 
 
-/**
-* Manage the browse button: It displays the standard 'browse for directory...' dialog and fill the corresponding text field
-**/
 void ClientDialog::OnBrowseButton(wxCommandEvent& event)
 {
 	wxString selectedPath;
@@ -189,9 +170,6 @@ void ClientDialog::OnBrowseButton(wxCommandEvent& event)
 }
 
 
-/**
-* Manage the Ok button: The client can be validated only if the two textctrl have been filled
-**/
 void ClientDialog::OnOkButton(wxCommandEvent& event)
 {
 	wxUint32       newClientId;

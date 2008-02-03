@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2008-02-02 16:56+0000\n"
+"POT-Creation-Date: 2008-02-03 16:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -257,28 +257,28 @@ msgstr ""
 msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
 msgstr ""
 
-#: src/clientDialog.cpp:53
+#: src/clientDialog.cpp:50
 #, c-format
 msgid "Client Edition / %s"
 msgstr ""
 
-#: src/clientDialog.cpp:73
+#: src/clientDialog.cpp:70
 msgid "Client information"
 msgstr ""
 
-#: src/clientDialog.cpp:76
+#: src/clientDialog.cpp:73
 msgid "Name:"
 msgstr ""
 
-#: src/clientDialog.cpp:78
+#: src/clientDialog.cpp:75
 msgid "Location:"
 msgstr ""
 
-#: src/clientDialog.cpp:182
+#: src/clientDialog.cpp:163
 msgid "Choose a folder"
 msgstr ""
 
-#: src/clientDialog.cpp:209
+#: src/clientDialog.cpp:187
 msgid "You must fill the name AND the locations fields."
 msgstr ""
 
