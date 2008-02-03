@@ -18,13 +18,40 @@
 #include "core.h"
 
 
-wxString Core::mCoreLongName[CORE_ID_COUNT] = {wxT("Tinker"), wxT("Gromacs"), wxT("Double Gromacs"), wxT("GBGromacs"), wxT("Amber"), wxT("QMD"), wxT("Unknown"), wxT("Gromacs 33"), wxT("SMP Gromacs"), wxT("GPU Gromacs"), wxT("SREM Gromacs"), wxT("SimT Gromacs"), wxT("Double Gromacs B"), wxT("SMP Gromacs CVS")};
-wxString Core::mCoreShortName[CORE_ID_COUNT] = {wxT("tinker"), wxT("gromacs"), wxT("dgromacs"), wxT("gbgromacs"), wxT("amber"), wxT("qmd"), wxT("Unknown"), wxT("gromacs33"), wxT("gro-smp"), wxT("grogpu"), wxT("grost"), wxT("grosimt"), wxT("dgromacsb"), wxT("grocvs")};
+wxString Core::mCoreLongName[CORE_ID_COUNT] = {
+	wxT("Tinker"),
+	wxT("Gromacs"),
+	wxT("Double Gromacs"),
+	wxT("GBGromacs"),
+	wxT("Amber"),
+	wxT("QMD"),
+	wxT("Unknown"),
+	wxT("Gromacs 33"),
+	wxT("SMP Gromacs"),
+	wxT("GPU Gromacs"),
+	wxT("SREM Gromacs"),
+	wxT("SimT Gromacs"),
+	wxT("Double Gromacs B"),
+	wxT("SMP Gromacs CVS")
+};
+wxString Core::mCoreShortName[CORE_ID_COUNT] = {
+	wxT("tinker"),
+	wxT("gromacs"),
+	wxT("dgromacs"),
+	wxT("gbgromacs"),
+	wxT("amber"),
+	wxT("qmd"),
+	wxT("Unknown"),
+	wxT("gromacs33"),
+	wxT("gro-smp"),
+	wxT("grogpu"),
+	wxT("grost"),
+	wxT("grosimt"),
+	wxT("dgromacsb"),
+	wxT("grocvs")
+};
 
 
-/**
-* Translate a short core name into a core identifier
-**/
 CoreId Core::ShortNameToId(const wxString& name)
 {
 	CoreId identifier;
@@ -41,9 +68,6 @@ CoreId Core::ShortNameToId(const wxString& name)
 }
 
 
-/**
-* Translate a core identifier into a (short) core name
-**/
 wxString Core::IdToShortName(CoreId identifier)
 {
 	if(identifier >= CORE_ID_COUNT)
@@ -55,9 +79,6 @@ wxString Core::IdToShortName(CoreId identifier)
 }
 
 
-/**
-* Translate a core identifier into a (long) core name
-**/
 wxString Core::IdToLongName(CoreId identifier)
 {
 	if(identifier >= CORE_ID_COUNT)

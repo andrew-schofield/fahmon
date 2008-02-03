@@ -18,9 +18,6 @@
 #include "workUnitFrame.h"
 
 
-/**
-* Constructor
-**/
 WorkUnitFrame::WorkUnitFrame(FrameId id, bool clientIsStopped, wxUint32 duration, wxUint32 elapsedSeconds, wxUint32 effectiveDuration, wxUint32 frames)
 {
 	mId                = id;
@@ -32,9 +29,6 @@ WorkUnitFrame::WorkUnitFrame(FrameId id, bool clientIsStopped, wxUint32 duration
 }
 
 
-/**
-* Destructor
-**/
 WorkUnitFrame::~WorkUnitFrame(void)
 {
 }

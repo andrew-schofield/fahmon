@@ -20,9 +20,6 @@
 #include "wx/font.h"
 
 
-/**
-* Constructor
-**/
 StaticBoldedText::StaticBoldedText(wxWindow* parent, wxWindowID id, const wxString& label, const wxPoint& pos, const wxSize& size, long style, const wxString& name) : wxStaticText(parent, id, label, pos, size, style, name)
 {
 	wxFont font;

@@ -21,16 +21,6 @@
 #include "preferencesManager.h"
 
 
-/**
-* Try to open the default browser on the given URL
-* Display an error message within a dialog box if something goes wrong
-*
-* The function provided by wxWidgets seems buggy under Windows:
-* When IE is the default browser, it opens two windows, one blank and the other on the given url
-* This is why this function is not used here, instead the method used in previous versions of FahMon is used (ShellExecuteEx())
-*
-* As it is very easy on Linux, it is neither used for this platform
-**/
 void Tools::OpenURLInBrowser(const wxString& url)
 {
 #ifdef _FAHMON_WIN32_
@@ -73,10 +63,6 @@ void Tools::OpenURLInBrowser(const wxString& url)
 }
 
 
-/**
-* Load the whole content of a file into a wxString, return false if something went wrong
-* A NULL character is appended to terminate the wxString
-**/
 bool Tools::LoadFile(const wxString& filename, wxString& fileContent)
 {
 	wxByte            *stringBuffer;
@@ -108,9 +94,6 @@ bool Tools::LoadFile(const wxString& filename, wxString& fileContent)
 }
 
 
-/**
-* Return a string with a formated time
-**/
 wxString Tools::FormatSeconds(wxUint32 nbSeconds)
 {
 	wxUint32 nbHours;

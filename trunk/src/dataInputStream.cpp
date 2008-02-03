@@ -20,9 +20,6 @@
 #include "base64Codec.h"
 
 
-/**
-* Constructor
-**/
 DataInputStream::DataInputStream(const wxString& filename)
 {
 	mFileIS     = NULL;
@@ -48,9 +45,6 @@ DataInputStream::DataInputStream(const wxString& filename)
 }
 
 
-/**
-* Destructor
-**/
 DataInputStream::~DataInputStream(void)
 {
 	if(mDataIS != NULL)
@@ -70,9 +64,6 @@ DataInputStream::~DataInputStream(void)
 }
 
 
-/**
-* Hidden strings are not directly "human readable" from the disk
-**/
 void DataInputStream::ReadHiddenString(wxString& value)
 {
 	wxString encodedString;

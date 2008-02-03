@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2008-01-29 22:32+0000\n"
+"POT-Creation-Date: 2008-02-02 16:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1016,7 +1016,7 @@ msgstr ""
 msgid "Update aborted!"
 msgstr ""
 
-#: src/tools.cpp:65
+#: src/tools.cpp:55
 msgid ""
 "Unable to launch the default browser.\n"
 "\n"

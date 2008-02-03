@@ -14,6 +14,13 @@
 *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
+/**
+ * \file staticBoldedText
+ * Creates a bold text object.
+ * \author François Ingelrest
+ * \author Andrew Schofield
+ **/
+
 #ifndef _STATICBOLDEDTEXT_H
 #define _STATICBOLDEDTEXT_H
 
@@ -21,10 +28,23 @@
 #include "wx/window.h"
 #include "wx/stattext.h"
 
-
+/**
+ * Creates a Bold Text object.
+ **/
 class StaticBoldedText : public wxStaticText
 {
-public:
+	public:
+	/**
+	 * Constructor.
+	 * Contructs the object.
+	 * @param parent The parent Window
+	 * @param id if of the Window.
+	 * @param label Text to be displayed.
+	 * @param pos Position of object
+	 * @param size Size of object
+	 * @param style Display style
+	 * @param name Objectname
+	 **/
 	StaticBoldedText(wxWindow* parent, wxWindowID id, const wxString& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& name = wxT("staticText"));
 };
 

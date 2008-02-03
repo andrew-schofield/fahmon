@@ -1,4 +1,4 @@
-# translation of sv_SE.po to British English
+# translation of sv_SE.po to Swedish
 # Copyright (C) YEAR Andrew Schofield
 # This file is distributed under the same license as the PACKAGE package.
 #
@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv_SE\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2008-01-29 22:32+0000\n"
-"PO-Revision-Date: 2007-11-15 23:48+0000\n"
-"Last-Translator: Andrew Schofield <the.uncle.fungus@gmail.com>\n"
+"POT-Creation-Date: 2008-02-02 16:56+0000\n"
+"PO-Revision-Date: 2008-02-01 20:20+0100\n"
+"Last-Translator: Olof Persson <floffe@gmail.com>\n"
 "Language-Team: British English <en@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -37,11 +37,11 @@ msgstr "Hemsida:"
 
 #: src/aboutDialog.cpp:51
 msgid "Qd homepage:"
-msgstr ""
+msgstr "Qd's webbplats:"
 
 #: src/aboutDialog.cpp:53
 msgid "Licence:"
-msgstr ""
+msgstr "Licens:"
 
 #: src/aboutDialog.cpp:57
 msgid "Library:"
@@ -478,27 +478,27 @@ msgstr "En annan upplaga av %s körs redan!"
 #: src/mainDialog.cpp:161
 #, c-format
 msgid "%s is licenced under the GNU GPL v2"
-msgstr ""
+msgstr "%s är licensierad under GNU GPL v2"
 
 #: src/mainDialog.cpp:162
 msgid "Copyright (C) 2003-2007 Francois Ingelrest"
-msgstr ""
+msgstr "Copyright (C) 2003-2007 Francois Ingelrest"
 
 #: src/mainDialog.cpp:163
 msgid "Copyright (C) 2007-2008 Andrew Schofield"
-msgstr ""
+msgstr "Copyright (C) 2007-2008 Andrew Schofield"
 
 #: src/mainDialog.cpp:165
 msgid "FahMon contains code from qd, also licenced under the GNU GPL v2"
-msgstr ""
+msgstr "FahMon innehåller kod från qd, också licensierat under GNU GPL v2"
 
 #: src/mainDialog.cpp:166
 msgid "Copyright (C) 2002-2005 Richard P. Howell IV."
-msgstr ""
+msgstr "Copyright (C) 2002-2005 Richard P. Howell IV."
 
 #: src/mainDialog.cpp:167
 msgid "Copyright (C) 2005-2008 Sebastiaan Couwenberg"
-msgstr ""
+msgstr "Copyright (C) 2005-2008 Sebastiaan Couwenberg"
 
 #: src/mainDialog.cpp:396
 msgid ""
@@ -516,9 +516,8 @@ msgstr "%s sedan"
 
 #: src/mainDialog.cpp:489 src/mainDialog.cpp:490 src/mainDialog.cpp:491
 #: src/mainDialog.cpp:492
-#, fuzzy
 msgid "Unknown"
-msgstr "Okänd klient"
+msgstr "Okänd"
 
 #: src/mainDialog.cpp:493
 #, c-format
@@ -1056,7 +1055,7 @@ msgstr ""
 msgid "Update aborted!"
 msgstr "Uppdatering avbruten!"
 
-#: src/tools.cpp:65
+#: src/tools.cpp:55
 msgid ""
 "Unable to launch the default browser.\n"
 "\n"
@@ -1115,12 +1114,12 @@ msgid "Ok"
 msgstr "OK"
 
 #: src/webMonitor.cpp:439
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not open template file <%s> for reading!\n"
 "The web application will not be created!"
 msgstr ""
-"Kunde inte skriva till filen <%s>!\n"
+"Kunde inte läsa in mallen <%s>!\n"
 "Webb-programmet kan inte skapas!"
 
 #: src/webMonitor.cpp:444
@@ -1149,27 +1148,24 @@ msgid "Downloaded"
 msgstr "Hämtad"
 
 #: src/webMonitor.cpp:611
-#, fuzzy
 msgid "Total PPD:"
 msgstr " :: Sammanlagd PPD:"
 
 #: src/webMonitor.cpp:612
 msgid "Web View"
-msgstr ""
+msgstr "Webb-vy"
 
 #: src/webMonitor.cpp:613
-#, fuzzy
 msgid "FahMon Client Monitoring"
-msgstr "FahMon klientövervakning %s - Enkel textrapport\n"
+msgstr "FahMon klientövervakning"
 
 #: src/webMonitor.cpp:614
 msgid "Simple Text Output"
-msgstr ""
+msgstr "Enkel textrapport"
 
 #: src/webMonitor.cpp:615
-#, fuzzy
 msgid "Last updated:"
-msgstr "Senast uppdaterad: %s"
+msgstr "Senast uppdaterad:"
 
 #~ msgid "%s Web View - Last updated: %s"
 #~ msgstr "%s Webbsida - Senast uppdaterad: %s"
