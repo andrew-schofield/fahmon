@@ -101,9 +101,6 @@ int wxCALLBACK ListViewClients_CompareFunction(long clientId1, long clientId2, l
 }
 
 
-/**
-* Constructor
-**/
 ListViewClients::ListViewClients(wxWindow* parent, wxWindowID id, wxUint32 nbClients) : wxListView(parent, id, wxDefaultPosition, wxDefaultSize, wxLC_REPORT | wxLC_SINGLE_SEL)
 {
 	wxUint32     progressColumnWidth;
@@ -162,9 +159,6 @@ ListViewClients::ListViewClients(wxWindow* parent, wxWindowID id, wxUint32 nbCli
 }
 
 
-/**
-* Destructor
-**/
 ListViewClients::~ListViewClients(void)
 {
 	// Save the width of the columns
@@ -178,9 +172,7 @@ ListViewClients::~ListViewClients(void)
 	_PrefsSetBool(PREF_LISTVIEWCLIENTS_SORTASCENDING, mSortAscending);
 }
 
-/**
-* Compare two clients according to the current sorting criterion
-**/
+
 int ListViewClients::CompareClients(wxUint32 clientId1, wxUint32 clientId2) const
 {
 	const Client  *client1;
@@ -319,9 +311,6 @@ int ListViewClients::CompareClients(wxUint32 clientId1, wxUint32 clientId2) cons
 }
 
 
-/**
-* Return the identifier of the currently selected client in the list
-**/
 wxUint32 ListViewClients::GetSelectedClientId(void) const
 {
 	wxInt32 selectedItemIndex = GetFirstSelected();
@@ -337,10 +326,6 @@ wxUint32 ListViewClients::GetSelectedClientId(void) const
 }
 
 
-/**
-* Initialize the list with the given number of clients
-* The list is cleared if there was already something in it
-**/
 void ListViewClients::Reset(wxUint32 nbClients)
 {
 	wxUint32 i;
@@ -388,10 +373,6 @@ void ListViewClients::Reset(wxUint32 nbClients)
 }
 
 
-/**
-* Helper method to update all clients.
-* It is the same as calling UpdateClient for each known client
-**/
 void ListViewClients::UpdateAllClients(void)
 {
 	wxUint32 currentClient;
@@ -403,9 +384,6 @@ void ListViewClients::UpdateAllClients(void)
 }
 
 
-/**
-* Update displayed information on the given client
-**/
 void ListViewClients::UpdateClient(wxUint32 clientId)
 {
 	wxUint32	clientIndex;
@@ -507,9 +485,6 @@ void ListViewClients::UpdateClient(wxUint32 clientId)
 }
 
 
-/**
-* Sort the list, according to the current sorting criterion
-**/
 void ListViewClients::Sort(void)
 {
 	wxUint32 i;
@@ -566,9 +541,6 @@ void ListViewClients::Sort(void)
 /************************************  EVENTS  ************************************/
 
 
-/**
-* Items are sorted when a column is clicked
-**/
 void ListViewClients::OnColumnLeftClick(wxListEvent& event)
 {
 	wxUint32 columnId;
@@ -607,10 +579,6 @@ void ListViewClients::OnColumnLeftClick(wxListEvent& event)
 }
 
 
-/**
-* Manage right clicks on the list
-* A context menu is displayed with miscellaneous entries, allowing the user to directly act on clients
-**/
 void ListViewClients::OnRightClick(wxMouseEvent& event)
 {
 	wxMenu  clientContextMenu;
@@ -644,9 +612,6 @@ void ListViewClients::OnRightClick(wxMouseEvent& event)
 }
 
 
-/**
-* Manage double clicks on the list
-**/
 void ListViewClients::OnDoubleClick(wxMouseEvent& event)
 {
 	wxInt32 hitItem;
@@ -671,9 +636,6 @@ void ListViewClients::OnDoubleClick(wxMouseEvent& event)
 }
 
 
-/**
-* Reload the selected client
-**/
 void ListViewClients::OnMenuReloadClient(wxCommandEvent& event)
 {
 	wxUint32 selectedClientId = GetSelectedClientId();
@@ -686,9 +648,6 @@ void ListViewClients::OnMenuReloadClient(wxCommandEvent& event)
 }
 
 
-/**
-* Add a new client
-**/
 void ListViewClients::OnMenuAddClient(wxCommandEvent& event)
 {
 	// INVALID_CLIENT_ID means that we want to create a new client, not to edit an existing one
@@ -696,9 +655,6 @@ void ListViewClients::OnMenuAddClient(wxCommandEvent& event)
 }
 
 
-/**
-* Edit the selected client
-**/
 void ListViewClients::OnMenuEditClient(wxCommandEvent& event)
 {
 	wxUint32 selectedClientId = GetSelectedClientId();
@@ -714,9 +670,6 @@ void ListViewClients::OnMenuEditClient(wxCommandEvent& event)
 }
 
 
-/**
-* Delete the selected client
-**/
 void ListViewClients::OnMenuDeleteClient(wxCommandEvent& event)
 {
 	wxUint32       selectedClientId;
@@ -740,9 +693,7 @@ void ListViewClients::OnMenuDeleteClient(wxCommandEvent& event)
 	}
 }
 
-/**
-* Extract "cell" text
-**/
+
 wxString ListViewClients::GetCellContentsString( long row_number, int column )
 {
 	wxListItem     row_info;
@@ -764,17 +715,13 @@ wxString ListViewClients::GetCellContentsString( long row_number, int column )
 	return cell_contents_string;
 }
 
-/**
-* View client files in filemanager
-**/
+
 void ListViewClients::OnMenuViewFiles(wxCommandEvent& event)
 {
 	ShowClientFiles();
 }
 
-/**
-* Launch filemanager to show client files
-**/
+
 void ListViewClients::ShowClientFiles()
 {
 
@@ -800,9 +747,7 @@ void ListViewClients::ShowClientFiles()
 	}
 }
 
-/**
-* Handle DND operations
-**/
+
 bool DropFiles::OnDropFiles (wxCoord x, wxCoord y, const wxArrayString& filenames)
 {
 	for (size_t n = 0; n < filenames.Count(); n++) {
