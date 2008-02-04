@@ -14,6 +14,14 @@
 *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
+/**
+ * \file benchmarksDialog.cpp
+ * The benchmarks dialog.
+ * Creates the dialog to list and display available benchmarks per project.
+ * \author François Ingelrest
+ * \author Andrew Schofield
+ **/
+
 #include "fahmon.h"
 #include "benchmarksDialog.h"
 

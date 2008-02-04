@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru_RU\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2008-02-03 17:04+0000\n"
+"POT-Creation-Date: 2008-02-04 00:12+0000\n"
 "PO-Revision-Date: 2007-11-15 23:47+0000\n"
 "Last-Translator: Andrew Schofield <the.uncle.fungus@gmail.com>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -15,148 +15,148 @@ msgstr ""
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: src/aboutDialog.cpp:34 src/mainDialog.cpp:685 src/mainDialog.cpp:687
+#: src/aboutDialog.cpp:42 src/mainDialog.cpp:685 src/mainDialog.cpp:687
 #: src/mainDialog.cpp:689
 msgid "About"
 msgstr "О программе"
 
-#: src/aboutDialog.cpp:45
+#: src/aboutDialog.cpp:53
 msgid "Author:"
 msgstr "Автор:"
 
-#: src/aboutDialog.cpp:47
+#: src/aboutDialog.cpp:55
 msgid "Maintainer:"
 msgstr "Разработчик:"
 
-#: src/aboutDialog.cpp:49
+#: src/aboutDialog.cpp:57
 msgid "Homepage:"
 msgstr "Сайт программы:"
 
-#: src/aboutDialog.cpp:51
+#: src/aboutDialog.cpp:59
 msgid "Qd homepage:"
 msgstr ""
 
-#: src/aboutDialog.cpp:53
+#: src/aboutDialog.cpp:61
 msgid "Licence:"
 msgstr ""
 
-#: src/aboutDialog.cpp:57
+#: src/aboutDialog.cpp:65
 msgid "Library:"
 msgstr "Библиотека:"
 
-#: src/benchmarksDialog.cpp:55 src/trayManager.cpp:206
+#: src/benchmarksDialog.cpp:63 src/trayManager.cpp:206
 msgid "Benchmarks"
 msgstr "Производительность"
 
-#: src/benchmarksDialog.cpp:77
+#: src/benchmarksDialog.cpp:85
 msgid "Projects"
 msgstr "Задание"
 
-#: src/benchmarksDialog.cpp:232
+#: src/benchmarksDialog.cpp:240
 msgid "No benchmarks for this project!"
 msgstr "Нет производительности для этого задания!"
 
-#: src/benchmarksDialog.cpp:242
+#: src/benchmarksDialog.cpp:250
 #, c-format
 msgid "Project : %u\n"
 msgstr "Задание : %u\n"
 
-#: src/benchmarksDialog.cpp:243
+#: src/benchmarksDialog.cpp:251
 #, c-format
 msgid "Core    : %s\n"
 msgstr "Ядро    : %s\n"
 
-#: src/benchmarksDialog.cpp:244
+#: src/benchmarksDialog.cpp:252
 #, c-format
 msgid "Frames  : %u\n"
 msgstr "Фреймы  : %u\n"
 
-#: src/benchmarksDialog.cpp:245
+#: src/benchmarksDialog.cpp:253
 #, c-format
 msgid "Credit  : %u\n"
 msgstr "Очки    : %u\n"
 
-#: src/benchmarksDialog.cpp:249
+#: src/benchmarksDialog.cpp:257
 #, c-format
 msgid "Project : %u (Unknown)\n"
 msgstr "Задание : %u (Unknown)\n"
 
-#: src/benchmarksDialog.cpp:271
+#: src/benchmarksDialog.cpp:279
 #, c-format
 msgid "Min. Time / Frame : %s"
 msgstr "Мин. Время / Шаг : %s"
 
-#: src/benchmarksDialog.cpp:277 src/benchmarksDialog.cpp:298
-#: src/benchmarksDialog.cpp:323 src/benchmarksDialog.cpp:325
-#: src/benchmarksDialog.cpp:327
+#: src/benchmarksDialog.cpp:285 src/benchmarksDialog.cpp:306
+#: src/benchmarksDialog.cpp:331 src/benchmarksDialog.cpp:333
+#: src/benchmarksDialog.cpp:335
 #, c-format
 msgid " - %.2f ppd"
 msgstr " - %.2f ppd"
 
-#: src/benchmarksDialog.cpp:282
+#: src/benchmarksDialog.cpp:290
 msgid "No Min. Time / Frame"
 msgstr "Нет мин. времени / Шаг"
 
-#: src/benchmarksDialog.cpp:292
+#: src/benchmarksDialog.cpp:300
 #, c-format
 msgid "Avg. Time / Frame : %s"
 msgstr "Среднее время / Шаг : %s"
 
-#: src/benchmarksDialog.cpp:303
+#: src/benchmarksDialog.cpp:311
 msgid "No Avg. Time / Frame"
 msgstr "Нет среднего времени / Шаг"
 
-#: src/benchmarksDialog.cpp:315
+#: src/benchmarksDialog.cpp:323
 #, c-format
 msgid "Cur. Time / Frame : %s"
 msgstr "Текущее время / Шаг : %s"
 
-#: src/benchmarksDialog.cpp:316
+#: src/benchmarksDialog.cpp:324
 #, c-format
 msgid "R3F. Time / Frame : %s"
 msgstr "П3Ш. Время / Шаг : %s"
 
-#: src/benchmarksDialog.cpp:317
+#: src/benchmarksDialog.cpp:325
 #, c-format
 msgid "Eff. Time / Frame : %s"
 msgstr "Эфф. Время / Шаг : %s"
 
-#: src/benchmarksDialog.cpp:332
+#: src/benchmarksDialog.cpp:340
 msgid "No Cur. Time / Frame"
 msgstr "Нет текущего времени / Шага"
 
-#: src/benchmarksDialog.cpp:333
+#: src/benchmarksDialog.cpp:341
 msgid "No R3F. Time / Frame"
 msgstr "Нет П3Ш Времени / Шага"
 
-#: src/benchmarksDialog.cpp:334
+#: src/benchmarksDialog.cpp:342
 msgid "No Eff. Time / Frame"
 msgstr "Нет Эфф. Времени / Шага"
 
-#: src/benchmarksManager.cpp:137 src/preferencesManager.cpp:272
+#: src/benchmarksManager.cpp:144 src/preferencesManager.cpp:272
 #: src/projectsManager.cpp:145
 #, c-format
 msgid "Could not open file <%s> for writing!"
 msgstr "Невозможно открыть файл <%s> для записи!"
 
-#: src/benchmarksManager.cpp:292
+#: src/benchmarksManager.cpp:299
 msgid "(Benchmarks) The maximum number of known clients has been reached!"
 msgstr ""
 "(Производительность) Максимальная скорость расчетов, достигнутая клиентами!"
 
-#: src/benchmarksManager.cpp:422
+#: src/benchmarksManager.cpp:429
 msgid "Unknown client"
 msgstr "Неизвестный клиент"
 
-#: src/client.cpp:83
+#: src/client.cpp:90
 msgid "Log not loaded!"
 msgstr "Лог не загружен!"
 
-#: src/client.cpp:86
+#: src/client.cpp:93
 msgid "anonymous"
 msgstr "аноним"
 
-#: src/client.cpp:91 src/listViewClients.cpp:461 src/listViewClients.cpp:465
+#: src/client.cpp:98 src/listViewClients.cpp:446 src/listViewClients.cpp:450
 #: src/mainDialog.cpp:461 src/mainDialog.cpp:466 src/mainDialog.cpp:467
 #: src/mainDialog.cpp:468 src/mainDialog.cpp:469 src/mainDialog.cpp:470
 #: src/mainDialog.cpp:555 src/mainDialog.cpp:611 src/webMonitor.cpp:135
@@ -170,73 +170,73 @@ msgstr "аноним"
 msgid "N/A"
 msgstr "Н/А"
 
-#: src/client.cpp:166
+#: src/client.cpp:173
 #, c-format
 msgid "Reloading %s"
 msgstr "Обновить %s"
 
-#: src/client.cpp:174
+#: src/client.cpp:181
 #, c-format
 msgid "Directory %s does not exist or cannot be read!"
 msgstr "Папка %s отсутствует или не может быть прочитана!"
 
-#: src/client.cpp:186
+#: src/client.cpp:193
 #, c-format
 msgid "Error while reading %sFAHlog.txt!"
 msgstr "Ошибка чтения %sFAHlog.txt!"
 
-#: src/client.cpp:194
+#: src/client.cpp:201
 #, c-format
 msgid "Error while reading %squeue.dat"
 msgstr "Ошибка чтения %squeue.dat!"
 
-#: src/client.cpp:200
+#: src/client.cpp:207
 #, c-format
 msgid "Error while reading %sunitinfo.txt!"
 msgstr "Ошибка чтения %sunitinfo.txt!"
 
-#: src/client.cpp:449
+#: src/client.cpp:456
 #, c-format
 msgid "The progress value in file %s could not be found/parsed"
 msgstr "Значение прогресса в файле %s не найдено/обработано"
 
-#: src/client.cpp:491
+#: src/client.cpp:498
 #, c-format
 msgid "Unable to save %s because it does not exist"
 msgstr "Невозможно сохранить %s потому что он не создан."
 
-#: src/client.cpp:498
+#: src/client.cpp:505
 #, c-format
 msgid "Unable to create directory %s"
 msgstr "Невозможно создать папку %s"
 
-#: src/client.cpp:511
+#: src/client.cpp:518
 #, c-format
 msgid "Unable to copy %s to %s"
 msgstr "Невозможно скопировать %s в %s"
 
-#: src/client.cpp:535
+#: src/client.cpp:542
 #, c-format
 msgid "%s is on frame %u"
 msgstr "%s находится на шаге %u"
 
-#: src/client.cpp:539
+#: src/client.cpp:546
 #, c-format
 msgid "Cannot determine frame number for %s (this isn't a problem)"
 msgstr ""
 "Невозможно определить количество шагов для %s (это не является проблемой)"
 
-#: src/client.cpp:721
+#: src/client.cpp:728
 #, c-format
 msgid "%s has an unknown state (Unable to find a complete frame)"
 msgstr "%s неизвестный статус (Невозможно найти законченный шаг)"
 
-#: src/client.cpp:730
+#: src/client.cpp:737
 #, c-format
 msgid "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
 msgstr "%s остановлен (Найдена строка \"Folding@Home Client Shutdown.\" )"
 
-#: src/client.cpp:739
+#: src/client.cpp:746
 #, c-format
 msgid ""
 "%s has an unknown state (Unable to extract a valid elapsed time since the "
@@ -245,53 +245,53 @@ msgstr ""
 "%s имеет неизвестный статус (Невозможно определить время окончания расчетов "
 "по последнему выполненному шагу)"
 
-#: src/client.cpp:747
+#: src/client.cpp:754
 #, c-format
 msgid "%s has been marked as having a asynchronous clock."
 msgstr "%s отмечен как работающих с асинхронной настройкой часов."
 
-#: src/client.cpp:782
+#: src/client.cpp:789
 #, c-format
 msgid "%s seems to have hung : Elapsed time is %um and limit is %um"
 msgstr "%s возможно завис: Время окончания расчета %um и лимит времени %um"
 
-#: src/client.cpp:787
+#: src/client.cpp:794
 #, c-format
 msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
 msgstr ""
 "%s возможно остановлен: Время окончания расчета %um и лимит времени %um"
 
-#: src/clientDialog.cpp:50
+#: src/clientDialog.cpp:58
 #, c-format
 msgid "Client Edition / %s"
 msgstr "Версия клиента / %s"
 
-#: src/clientDialog.cpp:70
+#: src/clientDialog.cpp:78
 msgid "Client information"
 msgstr "Информация о клиенте"
 
-#: src/clientDialog.cpp:73
+#: src/clientDialog.cpp:81
 msgid "Name:"
 msgstr "Имя:"
 
-#: src/clientDialog.cpp:75
+#: src/clientDialog.cpp:83
 msgid "Location:"
 msgstr "Расположение:"
 
-#: src/clientDialog.cpp:163
+#: src/clientDialog.cpp:171
 msgid "Choose a folder"
 msgstr "Выберите папку"
 
-#: src/clientDialog.cpp:187
+#: src/clientDialog.cpp:195
 msgid "You must fill the name AND the locations fields."
 msgstr "Вы должны заполнить строки Имя и Расположение."
 
-#: src/clientsManager.cpp:159
+#: src/clientsManager.cpp:166
 #, c-format
 msgid "Error while parsing %s on line %u"
 msgstr "Ошибка обработки %s на линии %u"
 
-#: src/clientsManager.cpp:178
+#: src/clientsManager.cpp:185
 #, c-format
 msgid ""
 "Could not open file <%s> for writing!\n"
@@ -300,7 +300,7 @@ msgstr ""
 "Невозможно открыть файл <%s> для записи!\n"
 "Список клиентов не сохранён!"
 
-#: src/clientsManager.cpp:183
+#: src/clientsManager.cpp:190
 #, c-format
 msgid ""
 "# %s : contains the list of clients\n"
@@ -313,21 +313,21 @@ msgstr ""
 "# \"Имя\"          \"Расположение\"\n"
 "\n"
 
-#: src/fahlogAnalyzer.cpp:235
+#: src/fahlogAnalyzer.cpp:219
 msgid "Possible clock asynchrony detected!"
 msgstr "Возможно асинхронность часов!"
 
-#: src/firstTimeDialog.cpp:54
+#: src/firstTimeDialog.cpp:59
 #, c-format
 msgid "Welcome to %s!"
 msgstr "Приветствуем в %s!"
 
-#: src/firstTimeDialog.cpp:63
+#: src/firstTimeDialog.cpp:68
 #, c-format
 msgid "Welcome to %s, a Folding@Home monitoring tool"
 msgstr "Приветствуем в %s, программе мониторинга Folding@Home"
 
-#: src/firstTimeDialog.cpp:67
+#: src/firstTimeDialog.cpp:72
 msgid ""
 "Project information (e.g. deadlines) is read from a local file, which must "
 "be regularly updated."
@@ -335,7 +335,7 @@ msgstr ""
 "Информация по заданиям (в т.ч. дедлайны) читаются из локального файла, "
 "который необходимо регулярно обновлять."
 
-#: src/firstTimeDialog.cpp:68
+#: src/firstTimeDialog.cpp:73
 msgid ""
 "Thus, you should first download the latest available information on "
 "currently running projects:"
@@ -343,7 +343,7 @@ msgstr ""
 "Таким образом, Вы должны сначала загрузить последнюю доступную информацию о "
 "запущенных заданиях:"
 
-#: src/firstTimeDialog.cpp:69
+#: src/firstTimeDialog.cpp:74
 msgid ""
 "(NOTE: If you use a proxy for HTTP connections, you will need to change the "
 "preferences first!)"
@@ -351,11 +351,11 @@ msgstr ""
 "(NB: Если Вы используете HTTP соединение, то должны изменить эту настройку "
 "первой!)"
 
-#: src/firstTimeDialog.cpp:71
+#: src/firstTimeDialog.cpp:76
 msgid "Download current projects"
 msgstr "Обновить базу текущих заданий"
 
-#: src/firstTimeDialog.cpp:73
+#: src/firstTimeDialog.cpp:78
 msgid ""
 "New updates are needed when no information on projects can be displayed (e."
 "g. deadlines)."
@@ -363,11 +363,11 @@ msgstr ""
 "Новые обновления необходимы, когда нет никакой информации по заданию (н-р: "
 "дедлайн)."
 
-#: src/firstTimeDialog.cpp:74
+#: src/firstTimeDialog.cpp:79
 msgid "You will be able to perform them using the 'FahMon' menu."
 msgstr "Вы можете сделать это использую меню 'FahMon'."
 
-#: src/firstTimeDialog.cpp:78
+#: src/firstTimeDialog.cpp:83
 msgid ""
 "To monitor a client, you need to add it by right-clicking on the list and "
 "choosing 'Add a new client'."
@@ -375,7 +375,7 @@ msgstr ""
 "Для мониторинга клиента Вам необходимо щелкнуть правой клавишей мышки по "
 "списку и выбрать 'Добавить нового клиента'"
 
-#: src/firstTimeDialog.cpp:79
+#: src/firstTimeDialog.cpp:84
 msgid ""
 "The name you choose for a client is not important, you can think of it as a "
 "nickname."
@@ -383,7 +383,7 @@ msgstr ""
 "Имя, которое Вы выбираете для клиента, не важно; Вы можете думать об этом "
 "как о прозвище."
 
-#: src/firstTimeDialog.cpp:80
+#: src/firstTimeDialog.cpp:85
 msgid ""
 "All further operations on clients (e.g. edition, deletion) are also made by "
 "right-clicking on the list."
@@ -391,75 +391,75 @@ msgstr ""
 "Все последующие операции с клиентами (н-р: изменение, удаление) также можно "
 "сделать по правому клику в этом списке."
 
-#: src/firstTimeDialog.cpp:84
+#: src/firstTimeDialog.cpp:89
 #, c-format
 msgid ""
 "The latest version of %s will always be available on the official website:"
 msgstr "Последняя версия %s всегда доступна на официальном сайте:"
 
-#: src/firstTimeDialog.cpp:149 src/main.cpp:134
+#: src/firstTimeDialog.cpp:139 src/main.cpp:140
 #, c-format
 msgid "Could not create directory <%s>"
 msgstr "Невозможно создать папку <%s>"
 
-#: src/httpDownloader.cpp:163
+#: src/httpDownloader.cpp:159
 #, c-format
 msgid "%.1f KB/s"
 msgstr "%.1f кБ/с"
 
-#: src/listViewClients.cpp:117 src/webMonitor.cpp:600
+#: src/listViewClients.cpp:121 src/webMonitor.cpp:600
 msgid "Progress"
 msgstr "Прогресс"
 
-#: src/listViewClients.cpp:118 src/webMonitor.cpp:601
+#: src/listViewClients.cpp:122 src/webMonitor.cpp:601
 msgid "Name"
 msgstr "Имя"
 
-#: src/listViewClients.cpp:119 src/webMonitor.cpp:602
+#: src/listViewClients.cpp:123 src/webMonitor.cpp:602
 msgid "ETA"
 msgstr "РВО"
 
-#: src/listViewClients.cpp:120 src/webMonitor.cpp:603
+#: src/listViewClients.cpp:124 src/webMonitor.cpp:603
 msgid "PPD"
 msgstr "PPD"
 
-#: src/listViewClients.cpp:358
+#: src/listViewClients.cpp:350
 msgid "Loading..."
 msgstr "Загрузка..."
 
-#: src/listViewClients.cpp:457 src/webMonitor.cpp:359
+#: src/listViewClients.cpp:442 src/webMonitor.cpp:359
 msgid "Finished"
 msgstr "Закончено"
 
-#: src/listViewClients.cpp:469 src/webMonitor.cpp:371
+#: src/listViewClients.cpp:454 src/webMonitor.cpp:371
 msgid "*Hung*"
 msgstr "*Завис*"
 
-#: src/listViewClients.cpp:627 src/listViewClients.cpp:635
+#: src/listViewClients.cpp:602 src/listViewClients.cpp:610
 msgid "Add a new client"
 msgstr "Добавить нового клиента"
 
-#: src/listViewClients.cpp:637
+#: src/listViewClients.cpp:612
 msgid "Reload this client"
 msgstr "Обновить информацию о клиенте"
 
-#: src/listViewClients.cpp:638
+#: src/listViewClients.cpp:613
 msgid "Edit this client"
 msgstr "Редактировать этого клиента"
 
-#: src/listViewClients.cpp:639
+#: src/listViewClients.cpp:614
 msgid "Delete this client"
 msgstr "Удалить этого клиента"
 
-#: src/listViewClients.cpp:640
+#: src/listViewClients.cpp:615
 msgid "View Client Files"
 msgstr "Просмотреть файлы клиента"
 
-#: src/listViewClients.cpp:733
+#: src/listViewClients.cpp:693
 msgid "Do you really want to delete this client?"
 msgstr "Вы действительно хотите удалить этого клиента?"
 
-#: src/listViewClients.cpp:799
+#: src/listViewClients.cpp:753
 msgid ""
 "Unable to launch the default filemanager.\n"
 "\n"
@@ -469,7 +469,7 @@ msgstr ""
 "\n"
 "Пожалуйста проверьте правильность параметров менеджера файлов в Настройках"
 
-#: src/main.cpp:73
+#: src/main.cpp:79
 #, c-format
 msgid "Another instance of %s is already running!"
 msgstr "Другая копия %s уже запущена!"
@@ -1054,7 +1054,7 @@ msgstr ""
 msgid "Update aborted!"
 msgstr "Обновление прервано!"
 
-#: src/tools.cpp:55
+#: src/tools.cpp:62
 msgid ""
 "Unable to launch the default browser.\n"
 "\n"

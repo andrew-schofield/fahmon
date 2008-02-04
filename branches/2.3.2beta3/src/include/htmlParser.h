@@ -15,7 +15,7 @@
 */
 
 /**
- * \file htmlParser
+ * \file htmlParser.h
  * Create a class for analyzing HTML.
  * Very primitive parsing.
  * \author François Ingelrest

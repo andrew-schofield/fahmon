@@ -15,7 +15,7 @@
 */
 
 /**
- * \file listViewClients
+ * \file listViewClients.cpp
  * Creates a list view class for displaying clients.
  * \author François Ingelrest
  * \author Andrew Schofield

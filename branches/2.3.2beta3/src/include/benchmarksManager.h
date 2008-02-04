@@ -15,7 +15,7 @@
 */
 
 /**
- * \file benchmarksManager
+ * \file benchmarksManager.h
  * Manages stored benchmarks.
  * \author François Ingelrest
  * \author Andrew Schofield

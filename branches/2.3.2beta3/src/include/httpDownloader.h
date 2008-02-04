@@ -15,7 +15,7 @@
 */
 
 /**
- * \file httpDownloader
+ * \file httpDownloader.h
  * Create a class to download files over http.
  * \author François Ingelrest
  * \author Andrew Schofield
@@ -107,7 +107,7 @@ class HTTPDownloader
 		 * @param host host part of the url
 		 * @param port port part of url (default is 80)
 		 * @param resource location of file on host
-		 * @param locaFileName Location to download file to
+		 * @param localFileName Location to download file to
 		 * @param progressManager The progressManager object
 		 * @return A download status object.
 		 **/

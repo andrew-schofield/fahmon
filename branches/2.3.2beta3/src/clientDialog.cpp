@@ -14,6 +14,14 @@
 *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
+/**
+ * \file clientDialog.cpp
+ * The client edition dialog.
+ * Creates the dialog to add and edit new clients.
+ * \author François Ingelrest
+ * \author Andrew Schofield
+ **/
+
 #include "fahmon.h"
 #include "clientDialog.h"
 

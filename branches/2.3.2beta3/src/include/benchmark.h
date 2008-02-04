@@ -15,7 +15,7 @@
 */
 
 /**
- * \file benchmark
+ * \file benchmark.h
  * Creates a class to store benchmarks.
  * \author François Ingelrest
  * \author Andrew Schofield

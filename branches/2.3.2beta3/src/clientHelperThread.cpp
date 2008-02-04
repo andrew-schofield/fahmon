@@ -14,6 +14,13 @@
 *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
+/**
+ * \file clientHelperThread.cpp
+ * Creates a thread launcher for the client reloader.
+ * \author François Ingelrest
+ * \author Andrew Schofield
+ **/
+
 #include "clientHelperThread.h"
 #include "fahmon.h"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv_SE\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2008-02-03 17:04+0000\n"
+"POT-Creation-Date: 2008-02-04 00:12+0000\n"
 "PO-Revision-Date: 2008-02-01 20:20+0100\n"
 "Last-Translator: Olof Persson <floffe@gmail.com>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -18,147 +18,147 @@ msgstr ""
 "X-Poedit-Country: SWEDEN\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: src/aboutDialog.cpp:34 src/mainDialog.cpp:685 src/mainDialog.cpp:687
+#: src/aboutDialog.cpp:42 src/mainDialog.cpp:685 src/mainDialog.cpp:687
 #: src/mainDialog.cpp:689
 msgid "About"
 msgstr "Om "
 
-#: src/aboutDialog.cpp:45
+#: src/aboutDialog.cpp:53
 msgid "Author:"
 msgstr "Författare:"
 
-#: src/aboutDialog.cpp:47
+#: src/aboutDialog.cpp:55
 msgid "Maintainer:"
 msgstr "Ansvarig:"
 
-#: src/aboutDialog.cpp:49
+#: src/aboutDialog.cpp:57
 msgid "Homepage:"
 msgstr "Hemsida:"
 
-#: src/aboutDialog.cpp:51
+#: src/aboutDialog.cpp:59
 msgid "Qd homepage:"
 msgstr "Qd's webbplats:"
 
-#: src/aboutDialog.cpp:53
+#: src/aboutDialog.cpp:61
 msgid "Licence:"
 msgstr "Licens:"
 
-#: src/aboutDialog.cpp:57
+#: src/aboutDialog.cpp:65
 msgid "Library:"
 msgstr "Bibliotek:"
 
-#: src/benchmarksDialog.cpp:55 src/trayManager.cpp:206
+#: src/benchmarksDialog.cpp:63 src/trayManager.cpp:206
 msgid "Benchmarks"
 msgstr "Prestanda"
 
-#: src/benchmarksDialog.cpp:77
+#: src/benchmarksDialog.cpp:85
 msgid "Projects"
 msgstr "Projekt"
 
-#: src/benchmarksDialog.cpp:232
+#: src/benchmarksDialog.cpp:240
 msgid "No benchmarks for this project!"
 msgstr "Inga riktmärken för detta projekt!"
 
-#: src/benchmarksDialog.cpp:242
+#: src/benchmarksDialog.cpp:250
 #, c-format
 msgid "Project : %u\n"
 msgstr "Projekt   : %u\n"
 
-#: src/benchmarksDialog.cpp:243
+#: src/benchmarksDialog.cpp:251
 #, c-format
 msgid "Core    : %s\n"
 msgstr "Kärna     : %s\n"
 
-#: src/benchmarksDialog.cpp:244
+#: src/benchmarksDialog.cpp:252
 #, c-format
 msgid "Frames  : %u\n"
 msgstr "Bildrutor : %u\n"
 
-#: src/benchmarksDialog.cpp:245
+#: src/benchmarksDialog.cpp:253
 #, c-format
 msgid "Credit  : %u\n"
 msgstr "Poäng     : %u\n"
 
-#: src/benchmarksDialog.cpp:249
+#: src/benchmarksDialog.cpp:257
 #, c-format
 msgid "Project : %u (Unknown)\n"
 msgstr "Projekt : %u (Okänt)\n"
 
-#: src/benchmarksDialog.cpp:271
+#: src/benchmarksDialog.cpp:279
 #, c-format
 msgid "Min. Time / Frame : %s"
 msgstr "   Min. tid / bildruta : %s"
 
-#: src/benchmarksDialog.cpp:277 src/benchmarksDialog.cpp:298
-#: src/benchmarksDialog.cpp:323 src/benchmarksDialog.cpp:325
-#: src/benchmarksDialog.cpp:327
+#: src/benchmarksDialog.cpp:285 src/benchmarksDialog.cpp:306
+#: src/benchmarksDialog.cpp:331 src/benchmarksDialog.cpp:333
+#: src/benchmarksDialog.cpp:335
 #, c-format
 msgid " - %.2f ppd"
 msgstr " - %.2f ppd"
 
-#: src/benchmarksDialog.cpp:282
+#: src/benchmarksDialog.cpp:290
 msgid "No Min. Time / Frame"
 msgstr "Ingen min.tid / bildruta"
 
-#: src/benchmarksDialog.cpp:292
+#: src/benchmarksDialog.cpp:300
 #, c-format
 msgid "Avg. Time / Frame : %s"
 msgstr "  Snitt-tid / bildruta : %s"
 
-#: src/benchmarksDialog.cpp:303
+#: src/benchmarksDialog.cpp:311
 msgid "No Avg. Time / Frame"
 msgstr "Ingen genomsnittlig tid / bildruta"
 
-#: src/benchmarksDialog.cpp:315
+#: src/benchmarksDialog.cpp:323
 #, c-format
 msgid "Cur. Time / Frame : %s"
 msgstr "   Nuv. tid / bildruta : %s"
 
-#: src/benchmarksDialog.cpp:316
+#: src/benchmarksDialog.cpp:324
 #, c-format
 msgid "R3F. Time / Frame : %s"
 msgstr "Snitt sen. 3 bildrutor : %s"
 
-#: src/benchmarksDialog.cpp:317
+#: src/benchmarksDialog.cpp:325
 #, c-format
 msgid "Eff. Time / Frame : %s"
 msgstr "   Eff. tid / bildruta : %s"
 
-#: src/benchmarksDialog.cpp:332
+#: src/benchmarksDialog.cpp:340
 msgid "No Cur. Time / Frame"
 msgstr "Ingen nuvarande tid / bildruta"
 
-#: src/benchmarksDialog.cpp:333
+#: src/benchmarksDialog.cpp:341
 msgid "No R3F. Time / Frame"
 msgstr "Inget snitt på senaste 3 bildrutor"
 
-#: src/benchmarksDialog.cpp:334
+#: src/benchmarksDialog.cpp:342
 msgid "No Eff. Time / Frame"
 msgstr "Ingen effektiv tid / bildruta"
 
-#: src/benchmarksManager.cpp:137 src/preferencesManager.cpp:272
+#: src/benchmarksManager.cpp:144 src/preferencesManager.cpp:272
 #: src/projectsManager.cpp:145
 #, c-format
 msgid "Could not open file <%s> for writing!"
 msgstr "Kunde inte öppna filen <%s> för att skriva till!"
 
-#: src/benchmarksManager.cpp:292
+#: src/benchmarksManager.cpp:299
 msgid "(Benchmarks) The maximum number of known clients has been reached!"
 msgstr "(Prestanda) Det maximala antalet kända klienter har uppnåtts!"
 
-#: src/benchmarksManager.cpp:422
+#: src/benchmarksManager.cpp:429
 msgid "Unknown client"
 msgstr "Okänd klient"
 
-#: src/client.cpp:83
+#: src/client.cpp:90
 msgid "Log not loaded!"
 msgstr "Logg ej inläst!"
 
-#: src/client.cpp:86
+#: src/client.cpp:93
 msgid "anonymous"
 msgstr "anonym"
 
-#: src/client.cpp:91 src/listViewClients.cpp:461 src/listViewClients.cpp:465
+#: src/client.cpp:98 src/listViewClients.cpp:446 src/listViewClients.cpp:450
 #: src/mainDialog.cpp:461 src/mainDialog.cpp:466 src/mainDialog.cpp:467
 #: src/mainDialog.cpp:468 src/mainDialog.cpp:469 src/mainDialog.cpp:470
 #: src/mainDialog.cpp:555 src/mainDialog.cpp:611 src/webMonitor.cpp:135
@@ -172,72 +172,72 @@ msgstr "anonym"
 msgid "N/A"
 msgstr "Ej tillgänglig"
 
-#: src/client.cpp:166
+#: src/client.cpp:173
 #, c-format
 msgid "Reloading %s"
 msgstr "Läser in %s igen"
 
-#: src/client.cpp:174
+#: src/client.cpp:181
 #, c-format
 msgid "Directory %s does not exist or cannot be read!"
 msgstr "Katalogen %s finns inte eller kan inte läsas!"
 
-#: src/client.cpp:186
+#: src/client.cpp:193
 #, c-format
 msgid "Error while reading %sFAHlog.txt!"
 msgstr "Fel vid inläsning av %sFAHlog.txt!"
 
-#: src/client.cpp:194
+#: src/client.cpp:201
 #, c-format
 msgid "Error while reading %squeue.dat"
 msgstr "Fel vid inläsning av %squeue.dat!"
 
-#: src/client.cpp:200
+#: src/client.cpp:207
 #, c-format
 msgid "Error while reading %sunitinfo.txt!"
 msgstr "Fel vid inläsning av %sunitinfo.txt!"
 
-#: src/client.cpp:449
+#: src/client.cpp:456
 #, c-format
 msgid "The progress value in file %s could not be found/parsed"
 msgstr "Förloppet kunde inte utläsas ur %s"
 
-#: src/client.cpp:491
+#: src/client.cpp:498
 #, c-format
 msgid "Unable to save %s because it does not exist"
 msgstr "Kunde inte spara %s för att den inte finns"
 
-#: src/client.cpp:498
+#: src/client.cpp:505
 #, c-format
 msgid "Unable to create directory %s"
 msgstr "Kunde inte skapa katalogen %s"
 
-#: src/client.cpp:511
+#: src/client.cpp:518
 #, c-format
 msgid "Unable to copy %s to %s"
 msgstr "Kunde inte kopiera %s till %s"
 
-#: src/client.cpp:535
+#: src/client.cpp:542
 #, c-format
 msgid "%s is on frame %u"
 msgstr "%s är på bildruta %u"
 
-#: src/client.cpp:539
+#: src/client.cpp:546
 #, c-format
 msgid "Cannot determine frame number for %s (this isn't a problem)"
 msgstr "Kan inte bestämma bildruta för %s (det här är inget problem)"
 
-#: src/client.cpp:721
+#: src/client.cpp:728
 #, c-format
 msgid "%s has an unknown state (Unable to find a complete frame)"
 msgstr "%s är i okänt tillstånd (kunde inte hitta en hel bildruta)"
 
-#: src/client.cpp:730
+#: src/client.cpp:737
 #, c-format
 msgid "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
 msgstr "%s är stoppad (hittade raden \"Folding@Home Client Shutdown.\")"
 
-#: src/client.cpp:739
+#: src/client.cpp:746
 #, c-format
 msgid ""
 "%s has an unknown state (Unable to extract a valid elapsed time since the "
@@ -246,52 +246,52 @@ msgstr ""
 "%s är i okänt tillstånd (kunde inte beräkna en giltig tid sedan senast "
 "avklarade bildruta)"
 
-#: src/client.cpp:747
+#: src/client.cpp:754
 #, c-format
 msgid "%s has been marked as having a asynchronous clock."
 msgstr "%s har flaggats för en asynkron klocka"
 
-#: src/client.cpp:782
+#: src/client.cpp:789
 #, c-format
 msgid "%s seems to have hung : Elapsed time is %um and limit is %um"
 msgstr "%s verkar ha hängt sig : %um har förflutit och gränsen är %um"
 
-#: src/client.cpp:787
+#: src/client.cpp:794
 #, c-format
 msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
 msgstr "%s verkar vara inaktiv : %um har förflutit och gränsen är %um"
 
-#: src/clientDialog.cpp:50
+#: src/clientDialog.cpp:58
 #, c-format
 msgid "Client Edition / %s"
 msgstr "Ändra klient / %s"
 
-#: src/clientDialog.cpp:70
+#: src/clientDialog.cpp:78
 msgid "Client information"
 msgstr "Klientinformation"
 
-#: src/clientDialog.cpp:73
+#: src/clientDialog.cpp:81
 msgid "Name:"
 msgstr "Namn:"
 
-#: src/clientDialog.cpp:75
+#: src/clientDialog.cpp:83
 msgid "Location:"
 msgstr "Plats:"
 
-#: src/clientDialog.cpp:163
+#: src/clientDialog.cpp:171
 msgid "Choose a folder"
 msgstr "Välj en katalog"
 
-#: src/clientDialog.cpp:187
+#: src/clientDialog.cpp:195
 msgid "You must fill the name AND the locations fields."
 msgstr "Du måste fylla i namnet OCH platsen."
 
-#: src/clientsManager.cpp:159
+#: src/clientsManager.cpp:166
 #, c-format
 msgid "Error while parsing %s on line %u"
 msgstr "Fel vid tolkning av %s på rad %u"
 
-#: src/clientsManager.cpp:178
+#: src/clientsManager.cpp:185
 #, c-format
 msgid ""
 "Could not open file <%s> for writing!\n"
@@ -300,7 +300,7 @@ msgstr ""
 "Kunde inte öppna <%s> for skrivning!\n"
 "Listan med klienter kommer inte att sparas!"
 
-#: src/clientsManager.cpp:183
+#: src/clientsManager.cpp:190
 #, c-format
 msgid ""
 "# %s : contains the list of clients\n"
@@ -313,21 +313,21 @@ msgstr ""
 "# \"Namn\"          \"Plats\"\n"
 "\n"
 
-#: src/fahlogAnalyzer.cpp:235
+#: src/fahlogAnalyzer.cpp:219
 msgid "Possible clock asynchrony detected!"
 msgstr "Möjligt klockfel upptäckt!"
 
-#: src/firstTimeDialog.cpp:54
+#: src/firstTimeDialog.cpp:59
 #, c-format
 msgid "Welcome to %s!"
 msgstr "Välkommen till %s!"
 
-#: src/firstTimeDialog.cpp:63
+#: src/firstTimeDialog.cpp:68
 #, c-format
 msgid "Welcome to %s, a Folding@Home monitoring tool"
 msgstr "Välkommen till %s, ett verktyg för att övervaka Folding@Home"
 
-#: src/firstTimeDialog.cpp:67
+#: src/firstTimeDialog.cpp:72
 msgid ""
 "Project information (e.g. deadlines) is read from a local file, which must "
 "be regularly updated."
@@ -335,7 +335,7 @@ msgstr ""
 "Projektinformation (t.ex. tidsgränser) läses från en lokal fil, som måste "
 "uppdateras regelbundet."
 
-#: src/firstTimeDialog.cpp:68
+#: src/firstTimeDialog.cpp:73
 msgid ""
 "Thus, you should first download the latest available information on "
 "currently running projects:"
@@ -343,7 +343,7 @@ msgstr ""
 "Alltså bör du först hämta den nyaste tillgängliga informationen om pågående "
 "projekt:"
 
-#: src/firstTimeDialog.cpp:69
+#: src/firstTimeDialog.cpp:74
 msgid ""
 "(NOTE: If you use a proxy for HTTP connections, you will need to change the "
 "preferences first!)"
@@ -351,11 +351,11 @@ msgstr ""
 "(OBS: Om du använder en proxyserver för HTTP-anslutningar behöver du ställa "
 "in den först!)"
 
-#: src/firstTimeDialog.cpp:71
+#: src/firstTimeDialog.cpp:76
 msgid "Download current projects"
 msgstr "Hämta pågående projekt"
 
-#: src/firstTimeDialog.cpp:73
+#: src/firstTimeDialog.cpp:78
 msgid ""
 "New updates are needed when no information on projects can be displayed (e."
 "g. deadlines)."
@@ -363,11 +363,11 @@ msgstr ""
 "Uppdateringar behövs när ingen information om projekt kan visas (t.ex. "
 "tidsgränser)."
 
-#: src/firstTimeDialog.cpp:74
+#: src/firstTimeDialog.cpp:79
 msgid "You will be able to perform them using the 'FahMon' menu."
 msgstr "Du kan utföra dem genom menyn \"FahMon\"."
 
-#: src/firstTimeDialog.cpp:78
+#: src/firstTimeDialog.cpp:83
 msgid ""
 "To monitor a client, you need to add it by right-clicking on the list and "
 "choosing 'Add a new client'."
@@ -375,14 +375,14 @@ msgstr ""
 "För att övervaka en klient behöver du lägga till den. Detta gör du genom att "
 "högerklicka i listan och välja \"Lägg till ny klient\"."
 
-#: src/firstTimeDialog.cpp:79
+#: src/firstTimeDialog.cpp:84
 msgid ""
 "The name you choose for a client is not important, you can think of it as a "
 "nickname."
 msgstr ""
 "Namnet du väljer för en klient spelar ingen roll, se det som ett smeknamn."
 
-#: src/firstTimeDialog.cpp:80
+#: src/firstTimeDialog.cpp:85
 msgid ""
 "All further operations on clients (e.g. edition, deletion) are also made by "
 "right-clicking on the list."
@@ -390,7 +390,7 @@ msgstr ""
 "Alla andra åtgärder som berör klienter (t.ex. ta bort eller ändra) görs "
 "också genom att högerklicka i listan."
 
-#: src/firstTimeDialog.cpp:84
+#: src/firstTimeDialog.cpp:89
 #, c-format
 msgid ""
 "The latest version of %s will always be available on the official website:"
@@ -398,69 +398,69 @@ msgstr ""
 "Den senaste versionen av %s finns alltid tillgänglig på den officiella "
 "webbplatsen:"
 
-#: src/firstTimeDialog.cpp:149 src/main.cpp:134
+#: src/firstTimeDialog.cpp:139 src/main.cpp:140
 #, c-format
 msgid "Could not create directory <%s>"
 msgstr "Kunde inte skapa katalogen <%s>"
 
-#: src/httpDownloader.cpp:163
+#: src/httpDownloader.cpp:159
 #, c-format
 msgid "%.1f KB/s"
 msgstr "%.1f KB/s"
 
-#: src/listViewClients.cpp:117 src/webMonitor.cpp:600
+#: src/listViewClients.cpp:121 src/webMonitor.cpp:600
 msgid "Progress"
 msgstr "Förlopp"
 
-#: src/listViewClients.cpp:118 src/webMonitor.cpp:601
+#: src/listViewClients.cpp:122 src/webMonitor.cpp:601
 msgid "Name"
 msgstr "Namn"
 
-#: src/listViewClients.cpp:119 src/webMonitor.cpp:602
+#: src/listViewClients.cpp:123 src/webMonitor.cpp:602
 msgid "ETA"
 msgstr "Beräknad sluttid"
 
-#: src/listViewClients.cpp:120 src/webMonitor.cpp:603
+#: src/listViewClients.cpp:124 src/webMonitor.cpp:603
 msgid "PPD"
 msgstr "PPD"
 
-#: src/listViewClients.cpp:358
+#: src/listViewClients.cpp:350
 msgid "Loading..."
 msgstr "Laddar..."
 
-#: src/listViewClients.cpp:457 src/webMonitor.cpp:359
+#: src/listViewClients.cpp:442 src/webMonitor.cpp:359
 msgid "Finished"
 msgstr "Färdig"
 
-#: src/listViewClients.cpp:469 src/webMonitor.cpp:371
+#: src/listViewClients.cpp:454 src/webMonitor.cpp:371
 msgid "*Hung*"
 msgstr "*Hängd*"
 
-#: src/listViewClients.cpp:627 src/listViewClients.cpp:635
+#: src/listViewClients.cpp:602 src/listViewClients.cpp:610
 msgid "Add a new client"
 msgstr "Lägg till ny klient"
 
-#: src/listViewClients.cpp:637
+#: src/listViewClients.cpp:612
 msgid "Reload this client"
 msgstr "Ladda om denna klient"
 
-#: src/listViewClients.cpp:638
+#: src/listViewClients.cpp:613
 msgid "Edit this client"
 msgstr "Redigera denna klient"
 
-#: src/listViewClients.cpp:639
+#: src/listViewClients.cpp:614
 msgid "Delete this client"
 msgstr "Ta bort denna klient"
 
-#: src/listViewClients.cpp:640
+#: src/listViewClients.cpp:615
 msgid "View Client Files"
 msgstr "Visa klientens filer"
 
-#: src/listViewClients.cpp:733
+#: src/listViewClients.cpp:693
 msgid "Do you really want to delete this client?"
 msgstr "Vill du verkligen ta bort denna klient?"
 
-#: src/listViewClients.cpp:799
+#: src/listViewClients.cpp:753
 msgid ""
 "Unable to launch the default filemanager.\n"
 "\n"
@@ -470,7 +470,7 @@ msgstr ""
 "\n"
 "Vänligen kontrollera att den är rätt inställd i Inställningar"
 
-#: src/main.cpp:73
+#: src/main.cpp:79
 #, c-format
 msgid "Another instance of %s is already running!"
 msgstr "En annan upplaga av %s körs redan!"
@@ -1055,7 +1055,7 @@ msgstr ""
 msgid "Update aborted!"
 msgstr "Uppdatering avbruten!"
 
-#: src/tools.cpp:55
+#: src/tools.cpp:62
 msgid ""
 "Unable to launch the default browser.\n"
 "\n"

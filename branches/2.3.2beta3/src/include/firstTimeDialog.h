@@ -15,7 +15,7 @@
 */
 
 /**
- * \file firstTimeDialog
+ * \file firstTimeDialog.h
  * The First time dialog.
  * Creates the dialog on first run to initially download projects etc.
  * \author François Ingelrest

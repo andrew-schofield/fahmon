@@ -15,7 +15,7 @@
 */
 
 /**
- * \file clientsManager
+ * \file clientsManager.h
  * Manages stored benchmarks.
  * \author François Ingelrest
  * \author Andrew Schofield

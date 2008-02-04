@@ -15,7 +15,7 @@
 */
 
 /**
- * \file main
+ * \file main.h
  * Creates the main class.
  * This is the application insertion point and also handles the single instance system.
  * \author François Ingelrest

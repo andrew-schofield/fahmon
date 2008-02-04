@@ -14,6 +14,14 @@
 *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
+/**
+ * \file htmlParser.cpp
+ * Create a class for analyzing HTML.
+ * Very primitive parsing.
+ * \author François Ingelrest
+ * \author Andrew Schofield
+ **/
+
 #include "fahmon.h"
 #include "htmlParser.h"
 

@@ -15,7 +15,7 @@
 */
 
 /**
- * \file clientDialog
+ * \file clientDialog.h
  * The client edition dialog.
  * Creates the dialog to add and edit new clients.
  * \author François Ingelrest

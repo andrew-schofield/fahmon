@@ -15,7 +15,7 @@
 */
 
 /**
- * \file fahlogAnalyzer
+ * \file fahlogAnalyzer.h
  * Creates a class for analyzing FAHlog.
  * \author François Ingelrest
  * \author Andrew Schofield

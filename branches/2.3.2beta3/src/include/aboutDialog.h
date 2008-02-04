@@ -15,7 +15,7 @@
 */
 
 /**
- * \file aboutDialog
+ * \file aboutDialog.h
  * About Dialog.
  * Creates a recognised about dialog for FahMon.
  * \author François Ingelrest

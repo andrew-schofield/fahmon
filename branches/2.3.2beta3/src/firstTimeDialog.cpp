@@ -14,6 +14,14 @@
 *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
+/**
+ * \file firstTimeDialog.cpp
+ * The First time dialog.
+ * Creates the dialog on first run to initially download projects etc.
+ * \author François Ingelrest
+ * \author Andrew Schofield
+ **/
+
 #include "fahmon.h"
 #include "firstTimeDialog.h"
 
