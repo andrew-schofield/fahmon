@@ -51,7 +51,9 @@
 
 WX_DEFINE_ARRAY_INT(int, ArrayOfIndexes); /**< Definition for index array */
 
-
+/**
+ * A subclass of wxListView.
+ **/
 class ListViewClients : public wxListView
 {
 friend class Dropfiles; /**< Make friends with the Dropfiles class */
