@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nl_NL\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2008-02-06 20:40+0000\n"
+"POT-Creation-Date: 2008-02-06 23:40+0000\n"
 "PO-Revision-Date: 2008-01-24 16:42+0100\n"
 "Last-Translator: Bastien <bastien@knife-edge.nl>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -795,12 +795,12 @@ msgstr "Download afgebroken!"
 msgid "An unknown error happened!"
 msgstr "Een onbekende fout is opgetreden!"
 
-#: src/messagesFrame.cpp:39
+#: src/messagesFrame.cpp:43
 #, c-format
 msgid "Messages / %s"
 msgstr "Berichten / %s"
 
-#: src/messagesManager.cpp:110
+#: src/messagesManager.cpp:99
 msgid ""
 "Could not open file for writing!\n"
 "The log will not be saved!"

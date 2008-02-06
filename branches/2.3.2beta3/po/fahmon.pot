@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2008-02-06 20:40+0000\n"
+"POT-Creation-Date: 2008-02-06 23:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -767,12 +767,12 @@ msgstr ""
 msgid "An unknown error happened!"
 msgstr ""
 
-#: src/messagesFrame.cpp:39
+#: src/messagesFrame.cpp:43
 #, c-format
 msgid "Messages / %s"
 msgstr ""
 
-#: src/messagesManager.cpp:110
+#: src/messagesManager.cpp:99
 msgid ""
 "Could not open file for writing!\n"
 "The log will not be saved!"
