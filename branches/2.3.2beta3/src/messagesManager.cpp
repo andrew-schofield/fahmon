@@ -14,6 +14,13 @@
 *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
+/**
+ * \file messagesManager.cpp
+ * Manages system messages.
+ * \author François Ingelrest
+ * \author Andrew Schofield
+ **/
+
 #include "fahmon.h"
 #include "messagesManager.h"
 
@@ -34,26 +41,17 @@ wxMutex MessagesManager::mMutexLog;
 MessagesManager* MessagesManager::mInstance = NULL;
 
 
-/**
-* Constructor
-**/
 MessagesManager::MessagesManager(void)
 {
 	mMessages = wxT("");
 }
 
 
-/**
-* Destructor
-**/
 MessagesManager::~MessagesManager(void)
 {
 }
 
 
-/**
-* Create the single instance of the MessagesManager
-**/
 void MessagesManager::CreateInstance(void)
 {
 	wxASSERT(mInstance == NULL);
@@ -62,9 +60,6 @@ void MessagesManager::CreateInstance(void)
 }
 
 
-/**
-* Destroy the single instance of the MessagesManager
-**/
 void MessagesManager::DestroyInstance(void)
 {
 	wxASSERT(mInstance != NULL);
@@ -74,9 +69,6 @@ void MessagesManager::DestroyInstance(void)
 }
 
 
-/**
-* Return the single instance of the MessagesManager
-**/
 MessagesManager* MessagesManager::GetInstance(void)
 {
 	wxASSERT(mInstance != NULL);
@@ -85,9 +77,6 @@ MessagesManager* MessagesManager::GetInstance(void)
 }
 
 
-/**
-* Log a new message
-**/
 void MessagesManager::Log(const wxString& msg)
 {
 	wxMutexLocker  mutexLocker(mMutexLog);        // --- Lock the access to this method
