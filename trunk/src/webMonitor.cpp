@@ -14,6 +14,13 @@
 *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
+/**
+ * \file webMonitor.cpp
+ * Web Monitoring.
+ * Creates the class or managing the web output options.
+ * \author Andrew Schofield
+ **/
+
 #include "fahmon.h"
 #include "webMonitor.h"
 
@@ -38,23 +45,17 @@ WebMonitor* WebMonitor::mInstance = NULL;
 // Prevents it from being called multiple times whilst already running
 wxMutex WebMonitor::mMutexWebMonitorAccess;
 
-/**
-* Constructor
-**/
+
 WebMonitor::WebMonitor(void)
 {
 }
 
-/**
-* Destructor
-**/
+
 WebMonitor::~WebMonitor(void)
 {
 }
 
-/**
-* Create the single instance of WebMonitor
-**/
+
 void WebMonitor::CreateInstance(void)
 {
 	wxASSERT(mInstance == NULL);
@@ -62,9 +63,7 @@ void WebMonitor::CreateInstance(void)
 	mInstance = new WebMonitor();
 }
 
-/**
-* Destroy the single instance of the WebMonitor
-*/
+
 void WebMonitor::DestroyInstance(void)
 {
 	wxASSERT(mInstance != NULL);
@@ -73,9 +72,7 @@ void WebMonitor::DestroyInstance(void)
 	mInstance = NULL;
 }
 
-/**
-* Return the single instance of WebMonitor
-**/
+
 WebMonitor* WebMonitor::GetInstance(void)
 {
 	wxASSERT(mInstance != NULL);
@@ -83,9 +80,7 @@ WebMonitor* WebMonitor::GetInstance(void)
 	return mInstance;
 }
 
-/**
-* Write the webmonitor applet
-**/
+
 void WebMonitor::WriteApp(void)
 {
 	bool           useWebApp;

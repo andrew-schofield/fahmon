@@ -14,32 +14,30 @@
 *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
+/**
+ * \file eta.cpp
+ * Creates a class for managing client ETAs.
+ * \author François Ingelrest
+ * \author Andrew Schofield
+ **/
+
 #include "fahmon.h"
 #include "eta.h"
 
 #include "preferencesManager.h"
 
 
-/**
-* Constructor
-**/
 ETA::ETA(void)
 {
 	mIsOk = false;
 }
 
 
-/**
-* Destructor
-**/
 ETA::~ETA(void)
 {
 }
 
 
-/**
-* Change the value, validate this ETA
-**/
 void ETA::SetLeftTimeInMinutes(wxUint32 leftTime)
 {
 	mIsOk              = true;
@@ -51,27 +49,18 @@ void ETA::SetLeftTimeInMinutes(wxUint32 leftTime)
 }
 
 
-/**
-* Return the ETA with the format day/month/year hour:minutes
-**/
 inline wxString ETA::GetString_Standard(void) const
 {
 	return mETA.Format(wxT("%d/%m/%y  %H:%M"));
 }
 
 
-/**
-* Return the ETA with the format month/day/year hour:minutes
-**/
 inline wxString ETA::GetString_American(void) const
 {
 	return mETA.Format(wxT("%m/%d/%y  %H:%M"));
 }
 
 
-/**
-* Return the ETA with the format days hour:minutes
-**/
 inline wxString ETA::GetString_LeftTime(void) const
 {
 	wxUint32 nbDays;
@@ -100,9 +89,6 @@ inline wxString ETA::GetString_LeftTime(void) const
 }
 
 
-/**
-* Return the ETA using the format defined in preferences
-**/
 wxString ETA::GetString(void) const
 {
 	wxUint32 displayStyle;

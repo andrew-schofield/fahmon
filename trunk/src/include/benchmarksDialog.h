@@ -15,7 +15,7 @@
 */
 
 /**
- * \file benchmarksDialog
+ * \file benchmarksDialog.h
  * The benchmarks dialog.
  * Creates the dialog to list and display available benchmarks per project.
  * \author François Ingelrest

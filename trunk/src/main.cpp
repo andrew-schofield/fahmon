@@ -14,6 +14,14 @@
 *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
+/**
+ * \file main.cpp
+ * Creates the main class.
+ * This is the application insertion point and also handles the single instance system.
+ * \author François Ingelrest
+ * \author Andrew Schofield
+ **/
+
 #include "fahmon.h"
 #include "main.h"
 
@@ -43,9 +51,7 @@ BEGIN_EVENT_TABLE(FahMonApp, wxApp)
 	EVT_CLOSE (FahMonApp::OnClose)
 END_EVENT_TABLE()
 
-/**
-* This is the entry point of the application
-**/
+
 bool FahMonApp::OnInit(void)
 {
 	bool               startMinimised;
@@ -175,9 +181,6 @@ bool FahMonApp::OnInit(void)
 }
 
 
-/**
-* This is called just before the application exits
-**/
 int FahMonApp::OnExit(void)
 {
 	// This frame is automatically destroyed by wxWidget, so we don't have to do it
@@ -195,18 +198,14 @@ int FahMonApp::OnExit(void)
 	return 0;
 }
 
-/**
-* This catches shutdown/logoff events
-**/
+
 void FahMonApp::OnEndSession(wxCloseEvent& event)
 {
 	_LogMsgInfo(wxString::Format(wxT("Running OnEndSession")));
 	MainDialog::GetInstance()->Close();
 }
 
-/**
-* This catches shutdown/logoff events
-**/
+
 void FahMonApp::OnQueryEndSession(wxCloseEvent& event)
 {
 	_LogMsgInfo(wxString::Format(wxT("Running OnQueryEndSession")));
@@ -218,11 +217,3 @@ void FahMonApp::OnClose(wxCloseEvent& event)
 	_LogMsgInfo(wxString::Format(wxT("Running OnClose")));
 	MainDialog::GetInstance()->Close();
 }
-
-/**
-* void FahMonApp::TestEventHandler(wxFocusEvent& event)
-* {
-*     // Hint don't enable this ;)
-*     //Tools::ErrorMsgBox(wxString::Format(wxT("This event is working")));
-* }
-**/

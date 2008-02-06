@@ -15,7 +15,7 @@
 */
 
 /**
- * \file clientHelperThread
+ * \file clientHelperThread.h
  * Creates a thread launcher for the client reloader.
  * \author François Ingelrest
  * \author Andrew Schofield

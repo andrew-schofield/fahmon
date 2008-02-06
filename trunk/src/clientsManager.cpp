@@ -14,6 +14,13 @@
 *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
+/**
+ * \file clientsManager.cpp
+ * Manages stored benchmarks.
+ * \author François Ingelrest
+ * \author Andrew Schofield
+ **/
+
 #include "fahmon.h"
 #include "clientsManager.h"
 
@@ -34,25 +41,16 @@
 ClientsManager* ClientsManager::mInstance = NULL;
 
 
-/**
-* Constructor
-**/
 ClientsManager::ClientsManager(void)
 {
 }
 
 
-/**
-* Destructor
-**/
 ClientsManager::~ClientsManager(void)
 {
 }
 
 
-/**
-* Create the single instance of the ClientsManager
-**/
 void ClientsManager::CreateInstance(void)
 {
 	wxASSERT(mInstance == NULL);
@@ -62,9 +60,6 @@ void ClientsManager::CreateInstance(void)
 }
 
 
-/**
-* Destroy the single instance of the ClientsManager
-**/
 void ClientsManager::DestroyInstance(void)
 {
 	wxASSERT(mInstance != NULL);
@@ -76,9 +71,6 @@ void ClientsManager::DestroyInstance(void)
 }
 
 
-/**
-* Return the single instance of the ClientsManager
-**/
 ClientsManager* ClientsManager::GetInstance(void)
 {
 	wxASSERT(mInstance != NULL);
@@ -87,9 +79,6 @@ ClientsManager* ClientsManager::GetInstance(void)
 }
 
 
-/**
-* Add a new client to the list, return the identifier of this new client
-**/
 wxUint32 ClientsManager::Add(const wxString& name, const wxString& location)
 {
 	mClients.Add(new Client(name, location));
@@ -100,9 +89,6 @@ wxUint32 ClientsManager::Add(const wxString& name, const wxString& location)
 }
 
 
-/**
-* Change the information associated with the given client
-**/
 void ClientsManager::Edit(wxUint32 clientId, const wxString& name, const wxString& location)
 {
 	mClients.Item(clientId)->SetName(name);
@@ -112,9 +98,6 @@ void ClientsManager::Edit(wxUint32 clientId, const wxString& name, const wxStrin
 }
 
 
-/**
-* Load the list of clients from the disk
-**/
 inline void ClientsManager::Load(void)
 {
 	bool       isNameOk;
@@ -188,9 +171,6 @@ inline void ClientsManager::Load(void)
 }
 
 
-/**
-* Save the list of clients to the disk
-**/
 inline void ClientsManager::Save(void)
 {
 	wxUint32             i;
@@ -220,11 +200,6 @@ inline void ClientsManager::Save(void)
 }
 
 
-/**
-* Create threads to reload the given client(s) and return immediately
-* EVT_CLIENTRELOADED events (one by client) are sent to the MainDialog when the job is done
-* If clientId is equal to CM_LOADALL, all clients are reloaded
-**/
 void ClientsManager::ReloadThreaded(wxUint32 clientId)
 {
 	wxUint32 i;
@@ -252,19 +227,12 @@ void ClientsManager::ReloadThreaded(wxUint32 clientId)
 }
 
 
-/**
-* Reload the given client and return only when the reloading is done
-**/
 void ClientsManager::Reload(wxUint32 clientId)
 {
 	mClients.Item(clientId)->Reload();
 }
 
 
-/**
-* Find the name of the client located at the given location
-* Return an empty string if there is no known client at this location
-**/
 wxString ClientsManager::GetNameFromLocation(const wxString& location) const
 {
 	wxUint32 i;

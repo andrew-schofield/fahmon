@@ -14,6 +14,13 @@
 *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
+/**
+ * \file client.h
+ * Creates a class for every client.
+ * \author François Ingelrest
+ * \author Andrew Schofield
+ **/
+
 #ifndef _CLIENT_H
 #define _CLIENT_H
 
@@ -22,13 +29,6 @@
 #include "wx/thread.h"
 #include "wx/datetime.h"
 #include "workUnitFrame.h"
-
-/**
- * \file client
- * Creates a class for every client.
- * \author François Ingelrest
- * \author Andrew Schofield
- **/
 
 
 /**

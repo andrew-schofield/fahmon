@@ -14,6 +14,13 @@
 *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
+/**
+ * \file listViewClients.h
+ * Creates a list view class for displaying clients.
+ * \author François Ingelrest
+ * \author Andrew Schofield
+ **/
+
 #ifndef _LISTVIEWCLIENTS_H
 #define _LISTVIEWCLIENTS_H
 
@@ -23,61 +30,166 @@
 #include "wx/dnd.h"
 
 
+#define PREF_LISTVIEWCLIENTS_PROGRESSCOLUMNWIDTH    wxT("ListViewClients.ProgressColumnWidth") /**< Preference setting for the progress column width */
+#define PREF_LISTVIEWCLIENTS_PROGRESSCOLUMNWIDTH_DV 82 /**< Default value for progress column width */
+
+#define PREF_LISTVIEWCLIENTS_NAMECOLUMNWIDTH        wxT("ListViewClients.NameColumnWidth") /**< Preference setting for the name column width */
+#define PREF_LISTVIEWCLIENTS_NAMECOLUMNWIDTH_DV     80 /**< Default value for name column width */
+
+#define PREF_LISTVIEWCLIENTS_ETACOLUMNWIDTH         wxT("ListViewClients.ETAColumnWidth") /**< Preference setting for the ETA column width */
+#define PREF_LISTVIEWCLIENTS_ETACOLUMNWIDTH_DV      100 /**< Default value for ETA column width */
+
+#define PREF_LISTVIEWCLIENTS_PPDCOLUMNWIDTH         wxT("ListViewClients.PPDColumnWidth") /**< Preference setting for the PPD column width */
+#define PREF_LISTVIEWCLIENTS_PPDCOLUMNWIDTH_DV      50 /**< Default value for PPD column width */
+
+#define PREF_LISTVIEWCLIENTS_SORTCOLUMN             wxT("ListViewClients.SortColumn") /**< Preference setting for column to sort by */
+#define PREF_LISTVIEWCLIENTS_SORTCOLUMN_DV          LVC_PROGRESS /**< Default value for sorting column */
+
+#define PREF_LISTVIEWCLIENTS_SORTASCENDING          wxT("ListViewClients.SortAscending") /**< Preference setting for ascending sort */
+#define PREF_LISTVIEWCLIENTS_SORTASCENDING_DV       false /**< Default value for acscending sort */
+
+
+WX_DEFINE_ARRAY_INT(int, ArrayOfIndexes); /**< Definition for index array */
+
 /**
-* Preferences used by this class
-**/
-#define PREF_LISTVIEWCLIENTS_PROGRESSCOLUMNWIDTH    wxT("ListViewClients.ProgressColumnWidth")
-#define PREF_LISTVIEWCLIENTS_PROGRESSCOLUMNWIDTH_DV 82
-
-#define PREF_LISTVIEWCLIENTS_NAMECOLUMNWIDTH        wxT("ListViewClients.NameColumnWidth")
-#define PREF_LISTVIEWCLIENTS_NAMECOLUMNWIDTH_DV     80
-
-#define PREF_LISTVIEWCLIENTS_ETACOLUMNWIDTH         wxT("ListViewClients.ETAColumnWidth")
-#define PREF_LISTVIEWCLIENTS_ETACOLUMNWIDTH_DV      100
-
-#define PREF_LISTVIEWCLIENTS_PPDCOLUMNWIDTH         wxT("ListViewClients.PPDColumnWidth")
-#define PREF_LISTVIEWCLIENTS_PPDCOLUMNWIDTH_DV      50
-
-#define PREF_LISTVIEWCLIENTS_SORTCOLUMN             wxT("ListViewClients.SortColumn")
-#define PREF_LISTVIEWCLIENTS_SORTCOLUMN_DV          LVC_PROGRESS
-
-#define PREF_LISTVIEWCLIENTS_SORTASCENDING          wxT("ListViewClients.SortAscending")
-#define PREF_LISTVIEWCLIENTS_SORTASCENDING_DV       false
-
-
-WX_DEFINE_ARRAY_INT(int, ArrayOfIndexes);
-
-
+ * A subclass of wxListView.
+ **/
 class ListViewClients : public wxListView
 {
-	friend class Dropfiles;
+friend class Dropfiles; /**< Make friends with the Dropfiles class */
 protected:
-	bool           mSortAscending;          // 'false' means descending order
-	wxUint32       mSortColumn;
-	ArrayOfIndexes mClientIdToIndex;
+	bool           mSortAscending; /**< Store the sort order */
+	wxUint32       mSortColumn; /**< Store the sort column */
+	ArrayOfIndexes mClientIdToIndex; /**< An array of client indices */
 
+	/**
+	 * Sort the list, according to the current sorting criterion.
+	 **/
 	void Sort(void);
+
+	/**
+	 * Event: Left click on column title.
+	 * Items are sorted when a column is clicked,
+	 * @param event The actual event. This is sent automatically.
+	 **/
 	void OnColumnLeftClick(wxListEvent& event);
+
+	/**
+	 * Event: Manage right clicks on the list.
+	 * A context menu is displayed with miscellaneous entries, allowing the user to directly act on clients
+	 * @param event The actual event. This is sent automatically.
+	 **/
 	void OnRightClick(wxMouseEvent& event);
+
+	/**
+	 * Event: Manage double clicks on the list.
+	 * Opens the default file manager at the location of the selected client.
+	 * @param event The actual event. This is sent automatically.
+	 **/
 	void OnDoubleClick(wxMouseEvent& event);
+
+	/**
+	 * Event: Manage the reload menu item.
+	 * Reloads the selected client.
+	 * @param event The actual event. This is sent automatically.
+	 **/
 	void OnMenuReloadClient(wxCommandEvent& event);
+
+	/**
+	 * Event: Manage the add new client menu item.
+	 * Add a new client.
+	  *@param event The actual event. This is sent automatically.
+	 **/
 	void OnMenuAddClient(wxCommandEvent& event);
+
+	/**
+	 * Event: Manage the edit client menu item.
+	 * Edit the selected client.
+	 * @param event The actual event. This is sent automatically.
+	 **/
 	void OnMenuEditClient(wxCommandEvent& event);
+
+	/**
+	 * Event: Manage the delete client menu item.
+	 * Delete the selected client.
+	 * @param event The actual event. This is sent automatically.
+	 **/
 	void OnMenuDeleteClient(wxCommandEvent& event);
+
+	/**
+	 * Event: Manage the view client files menu item.
+	 * View client files in filemanager.
+	 * @param event The actual event. This is sent automatically.
+	 **/
 	void OnMenuViewFiles(wxCommandEvent& event);
+
+	/**
+	 * Launch filemanager to show client files.
+	 **/
 	void ShowClientFiles(void);
 
 
 public:
+	/**
+	 * Constructor.
+	 * Contructs the ListViewClients object.
+	 * @param parent The parent window of type wxWindow.
+	 * @param id The windows id.
+	 * @param nbClients The number of clients to add to the list.
+	 **/
 	ListViewClients(wxWindow* parent, wxWindowID id, wxUint32 nbClients);
+
+	/**
+	 * Destructor.
+	 **/
 	~ListViewClients(void);
 
+	/**
+	 * Initialize the list with the given number of clients.
+	 * The list is cleared if there was already something in it.
+	 * @param nbClients The number of clients in the list.
+	 **/
 	void Reset(wxUint32 nbClients);
+
+	/**
+	 * Update displayed information on the given client.
+	 * @param clientId The client to update.
+	 **/
 	void UpdateClient(wxUint32 clientId);
+
+	/**
+	 * Helper method to update all clients.
+	 * It is the same as calling UpdateClient for each known client
+	 **/
 	void UpdateAllClients(void);
+
+	/**
+	 * Compare two clients according to the current sorting criterion.
+	 * @param clientId1 First client
+	 * @param clientId2 Second client
+	 * @return 1 or -1 depending on order
+	 **/
 	int CompareClients(wxUint32 clientId1, wxUint32 clientId2) const;
+
+	/**
+	 * Return the identifier of the currently selected client in the list.
+	 **/
 	wxUint32 GetSelectedClientId(void) const;
+
+	/**
+	 * Extract "cell" text.
+	 * This function allows access to single cells in the listView control, much like a grid object.
+	 * @param row_number The row of the cell
+	 * @param column The column of the cell
+	 * @return A string containing the contents of the cell.
+	 **/
 	wxString GetCellContentsString( long row_number, int column );
+
+	/**
+	 * Convert clientId to array index.
+	 * @param clientId The client to select.
+	 * @return The index of the given client.
+	 **/
 	wxUint32 ClientIdToIndex(wxUint32 clientId) { return mClientIdToIndex.Item(clientId); };
 
 
@@ -85,16 +197,30 @@ private:
 	DECLARE_EVENT_TABLE()
 };
 
+/**
+ * A class for managing drag and drop operations.
+ **/
 class DropFiles: public wxFileDropTarget
 {
 
 public:
+	/**
+	 * Contruct a DropFiles target on a given ListViewClients object.
+	 * @param ListView The object to create the DropFiles target on.
+	 **/
 	DropFiles (ListViewClients *ListView) {m_listview = ListView;}
 
+	/**
+	 * Handle dropping files onto the ListViewClients object.
+	 * Opens the client edition dialog for every given filename.
+	 * @param x X coordinate of dropped file. Ignored.
+	 * @param y Y coordinate of dropped file. Ignored.
+	 * @param filenames An array of filenames to add to the client list.
+	 **/
 	virtual bool OnDropFiles (wxCoord x, wxCoord y, const wxArrayString& filenames);
 
 private:
-	ListViewClients *m_listview;
+	ListViewClients *m_listview; /**< The ListViewClients object used as a drop target. */
 };
 
 

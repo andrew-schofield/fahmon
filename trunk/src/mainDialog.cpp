@@ -14,6 +14,14 @@
 *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
+/**
+ * \file mainDialog.cpp
+ * The main dialog.
+ * Creates the main window for FahMon.
+ * \author François Ingelrest
+ * \author Andrew Schofield
+ **/
+
 #include "fahmon.h"
 #include "mainDialog.h"
 
@@ -137,9 +145,6 @@ MainDialog* MainDialog::mInstance = NULL;
 wxMutex MainDialog::mMutexUpdateCheck;
 
 
-/**
-* Constructor
-**/
 MainDialog::MainDialog(void) : wxFrame(NULL, wxID_ANY, wxT(FMC_PRODUCT))
 {
 	bool trayIconEnabled;
@@ -188,17 +193,11 @@ MainDialog::MainDialog(void) : wxFrame(NULL, wxID_ANY, wxT(FMC_PRODUCT))
 }
 
 
-/**
-* Destructor
-**/
 MainDialog::~MainDialog(void)
 {
 }
 
 
-/**
-* Create the single instance of the MainDialog
-**/
 void MainDialog::CreateInstance(void)
 {
 	wxASSERT(mInstance == NULL);
@@ -207,9 +206,6 @@ void MainDialog::CreateInstance(void)
 }
 
 
-/**
-* Destroy the single instance of the MainDialog
-**/
 void MainDialog::DestroyInstance(void)
 {
 	wxASSERT(mInstance != NULL);
@@ -219,18 +215,12 @@ void MainDialog::DestroyInstance(void)
 }
 
 
-/**
-* Check whether this dialog has been already instanciated
-**/
 bool MainDialog::HasBeenInstanciated(void)
 {
 	return mInstance != NULL;
 }
 
 
-/**
-* Return the single instance of the MainDialog
-**/
 MainDialog* MainDialog::GetInstance(void)
 {
 	wxASSERT(mInstance != NULL);
@@ -239,9 +229,6 @@ MainDialog* MainDialog::GetInstance(void)
 }
 
 
-/**
-* Redefine the wxFrame::Show() method in order to perform some initializations before displaying the frame
-**/
 bool MainDialog::Show(bool show)
 {
 	// Showing the frame must be done before selecting a client, or the sash position won't be restored
@@ -268,9 +255,6 @@ bool MainDialog::Show(bool show)
 }
 
 
-/**
-* Create/Kill/Modify the timer for auto-reloading, according to the preferences
-**/
 void MainDialog::SetAutoReloadTimer(void)
 {
 	bool     isAutoReloadOn;
@@ -303,9 +287,6 @@ void MainDialog::SetAutoReloadTimer(void)
 }
 
 
-/**
-* Update the fields using the given client and refresh the GUI
-**/
 void MainDialog::ShowClientInformation(ClientId clientId)
 {
 	UpdateClientInformation(clientId);
@@ -317,10 +298,6 @@ void MainDialog::ShowClientInformation(ClientId clientId)
 }
 
 
-/**
-* Update the fields using the given client
-* This method does not affect the ListView
-**/
 void MainDialog::UpdateClientInformation(ClientId clientId)
 {
 	bool          autoUpdateProjects;
@@ -620,9 +597,6 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 /************************************  FRAME CREATION  ************************************/
 
 
-/**
-* Create the menubar
-**/
 inline void MainDialog::CreateMenuBar(void)
 {
 	wxMenu    *menu;
@@ -692,9 +666,6 @@ inline void MainDialog::CreateMenuBar(void)
 }
 
 
-/**
-* Create the needed widgets and place them in the frame
-**/
 inline void MainDialog::CreateLayout(void)
 {
 	wxPanel          *topLevelPanel;
@@ -812,14 +783,6 @@ inline void MainDialog::CreateLayout(void)
 }
 
 
-/**
-* Restore the frame as it was the last time, and center it
-* Restored items are:
-*  - The size of the frame
-*  - Its position
-*  - The visibility of the log
-*  - The size of the columns in the ListCtrl
-**/
 inline void MainDialog::RestoreFrameState(void)
 {
 	bool     isLogShown;
@@ -903,18 +866,12 @@ inline void MainDialog::RestoreFrameState(void)
 /************************************  EVENTS  ************************************/
 
 
-/**
-* Called when the user wants to quit the application
-**/
 void MainDialog::OnMenuQuit(wxCommandEvent& event)
 {
 	Close(true);
 }
 
 
-/**
-* Reload the selected client, if any
-**/
 void MainDialog::OnMenuReload(wxCommandEvent& event)
 {
 	ClientId selectedClientId = mClientsList->GetSelectedClientId();
@@ -926,18 +883,12 @@ void MainDialog::OnMenuReload(wxCommandEvent& event)
 }
 
 
-/**
-* Reload all the clients
-**/
 void MainDialog::OnMenuReloadAll(wxCommandEvent& event)
 {
 	ClientsManager::GetInstance()->ReloadThreaded(CM_LOADALLF);
 }
 
 
-/**
-* Refresh the projects database
-**/
 void MainDialog::OnMenuUpdateProjects(wxCommandEvent& event)
 {
 	bool updateResult;
@@ -953,10 +904,6 @@ void MainDialog::OnMenuUpdateProjects(wxCommandEvent& event)
 }
 
 
-/**
-* Show/Hide the log
-* The size of the frame is increased/decreased according to the new state of the log
-**/
 void MainDialog::OnMenuToggleLog(wxCommandEvent& event)
 {
 	bool          isLogShown;
@@ -993,18 +940,12 @@ void MainDialog::OnMenuToggleLog(wxCommandEvent& event)
 }
 
 
-/**
-* Show/Hide the information window
-**/
 void MainDialog::OnMenuToggleMessagesFrame(wxCommandEvent& event)
 {
 	MessagesFrame::GetInstance(this)->Toggle();
 }
 
 
-/**
-* Open the benchmarks dialog
-**/
 void MainDialog::OnMenuBenchmarks(wxCommandEvent& event)
 {
 	ClientId  selectedClientId;
@@ -1027,18 +968,12 @@ void MainDialog::OnMenuBenchmarks(wxCommandEvent& event)
 }
 
 
-/**
-* Open the preferences dialog
-**/
 void MainDialog::OnMenuPreferences(wxCommandEvent& event)
 {
 	PreferencesDialog::GetInstance(this)->ShowModal();
 }
 
 
-/**
-* Manage the menus which open Web pages
-**/
 void MainDialog::OnMenuWeb(wxCommandEvent& event)
 {
 	ClientId selectedClientId;
@@ -1107,18 +1042,12 @@ void MainDialog::OnMenuWeb(wxCommandEvent& event)
 }
 
 
-/**
-* Display the about box
-**/
 void MainDialog::OnMenuAbout(wxCommandEvent& event)
 {
 	AboutDialog::GetInstance(this)->ShowModal();
 }
 
 
-/**
-* The application is going to stop, perform some last actions and/or decide if we are really going to quit
-**/
 void MainDialog::OnClose(wxCloseEvent& event)
 {
 	// Don't save window size if it is iconized (win32 bug)
@@ -1159,9 +1088,7 @@ void MainDialog::OnClose(wxCloseEvent& event)
 	Destroy();
 }
 
-/**
-* Main dialog has been minimized or restored
-**/
+
 void MainDialog::OnIconize(wxIconizeEvent& event)
 {
 	if(event.Iconized())
@@ -1178,18 +1105,12 @@ void MainDialog::OnIconize(wxIconizeEvent& event)
 }
 
 
-/**
-* Current selection in the list has changed
-**/
 void MainDialog::OnListSelectionChanged(wxListEvent& event)
 {
 	ShowClientInformation(mClientsList->GetSelectedClientId());
 }
 
 
-/**
-* A client has been reloaded, update its information
-**/
 void MainDialog::OnClientReloaded(wxCommandEvent& event)
 {
 	ClientId clientId = event.GetInt();
@@ -1205,10 +1126,6 @@ void MainDialog::OnClientReloaded(wxCommandEvent& event)
 }
 
 
-/**
-* A new client has been added to the ClientsManager
-* The integer associated with the event gives the identifier of the new client
-**/
 void MainDialog::OnNewClientAdded(wxCommandEvent& event)
 {
 	wxUint32 i;
@@ -1236,9 +1153,6 @@ void MainDialog::OnNewClientAdded(wxCommandEvent& event)
 }
 
 
-/**
-* A client has been deleted
-**/
 void MainDialog::OnClientDeleted(wxCommandEvent& event)
 {
 	wxUint32 i;
@@ -1258,9 +1172,6 @@ void MainDialog::OnClientDeleted(wxCommandEvent& event)
 }
 
 
-/**
-* The database of projects has been updated
-**/
 void MainDialog::OnProjectsDatabaseUpdated(wxCommandEvent& event)
 {
 	// New projects are perhaps available, so we reload all clients to update the displayed information
@@ -1268,22 +1179,12 @@ void MainDialog::OnProjectsDatabaseUpdated(wxCommandEvent& event)
 }
 
 
-/**
-* This is needed, because MessagesManager cannot make calls to MessagesFrame:
-*
-* "You can't make GUI method calls from more than one thread. You need to
-* organize your app such that the GUI runs in the main thread and events/data
-* are transfered to/from worker threads in some thread safe manner."
-**/
 void MainDialog::OnNewMessageLogged(wxCommandEvent& event)
 {
 	MessagesFrame::OnNewMessage();
 }
 
 
-/**
-* Called by the timers used in this class
-**/
 void MainDialog::OnAutoReloadTimer(wxTimerEvent& event)
 {
 	bool isAdvancedReloadOn;
@@ -1304,31 +1205,18 @@ void MainDialog::OnAutoReloadTimer(wxTimerEvent& event)
 }
 
 
-/**
-* Create or modify the auto-reload timer
-**/
 void MainDialog::OnAutoReloadPrefChanged(void)
 {
 	SetAutoReloadTimer();
 }
 
 
-/**
-* Update the style used to display the ETA
-* We simply ask the list to reload all clients, ETA will thus automatically be updated
-*
-* In the future, we could perhaps add a method to the ListView to just update the ETA without reloading the clients
-* However this method is called very rarely, so why bother?
-**/
 void MainDialog::OnETAStylePrefChanged(void)
 {
 	mClientsList->UpdateAllClients();
 }
 
 
-/**
-* Enable/Disable tray icon
-**/
 void MainDialog::OnTrayIconPrefChanged(void)
 {
 	bool isTrayIconEnabled;
@@ -1347,17 +1235,13 @@ void MainDialog::OnTrayIconPrefChanged(void)
 	}
 }
 
-/**
-* Reload all clients on (but not limited to) PPD style change
-**/
+
 void MainDialog::OnPPDStylePrefChanged(void)
 {
 	ClientsManager::GetInstance()->ReloadThreaded(CM_LOADALLF);
 }
 
-/**
-* Reload selected client data on deadline style change
-**/
+
 void MainDialog::OnDeadlinePrefChanged(void)
 {
 	ClientId selectedClientId = mClientsList->GetSelectedClientId();
@@ -1368,9 +1252,7 @@ void MainDialog::OnDeadlinePrefChanged(void)
 	}
 }
 
-/**
-* Calculate total PPD from all active/inactive clients
-**/
+
 double MainDialog::GetTotalPPD(void)
 {
 	wxString  test;
@@ -1390,26 +1272,19 @@ double MainDialog::GetTotalPPD(void)
 	return TotalPPD;
 }
 
-/**
-* Get the number of clients monitored
-**/
+
 wxInt32 MainDialog::GetClientCount(void)
 {
 	return mClientsList->GetItemCount();
 }
 
-/**
-* Reload selected client data from traymenu
-**/
+
 void MainDialog::TrayReloadSelectedClient(void)
 {
 	ShowClientInformation(mClientsList->GetSelectedClientId());
 }
 
 
-/**
- * Toggle the ETA format
- **/
 void MainDialog::OnMenuToggleETADate(wxCommandEvent& event)
 {
 	wxUint32 etaStyle;
@@ -1437,9 +1312,7 @@ void MainDialog::OnMenuToggleETADate(wxCommandEvent& event)
 	}
 }
 
-/**
- * Check for updates to FahMon
-**/
+
 void MainDialog::OnUpdateCheck(wxCommandEvent& event)
 {
 	CheckForUpdates();
@@ -1508,12 +1381,7 @@ void MainDialog::CheckForUpdates(void)
 	}
 }
 
-/**
- * This method downloads the files with the current projects
- * Return false if something went wrong, true otherwise
- * In the case of an error, an explicit message is placed in errorMsg
- * The name of the file to which the downloaded data was written is in fileName, which will be empty in case of an error
- **/
+
 bool MainDialog::DownloadUpdateFile(wxString& fileName, ProgressManager& progressManager, wxString& errorMsg, wxString resource)
 {
 

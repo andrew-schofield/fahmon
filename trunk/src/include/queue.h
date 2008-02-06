@@ -30,6 +30,7 @@
  * all elements of a Folding@home or Genome@home queue.dat
  * In FahMon, only the PRCG, issue date, username and teamname are used for anything
  * useful.
+ * \author Andrew Schofield
  **/
 
 #ifndef _QUEUE_H

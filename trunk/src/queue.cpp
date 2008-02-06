@@ -14,6 +14,16 @@
 *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
+/**
+ * \file queue.cpp
+ * Structural definition of queue.dat.
+ * This file contains the structures and conversion routines to allow access to
+ * all elements of a Folding@home or Genome@home queue.dat
+ * In FahMon, only the PRCG, issue date, username and teamname are used for anything
+ * useful.
+ * \author Andrew Schofield
+ **/
+
 #include "fahmon.h"
 #include "queue.h"
 
@@ -24,18 +34,13 @@
 
 typedef unsigned int   u32;
 
-/**
- * Constructor
- **/
+
 Queue::Queue()
 {
 	mProjectId = INVALID_PROJECT_ID;
 }
 
 
-/**
- * Destructor
- **/
 Queue::~Queue(void)
 {
 }
@@ -240,17 +245,13 @@ tt:				if (genome)
 	return true;
 }
 
-/**
- * 4-byte endian swap.
- **/
+
 u32 Queue::es32(u32 i)
 {
 	return ((i << 24) | ((i & 0xFF00) << 8) | ((i & 0xFF0000) >> 8) | ((i & 0xFF000000) >> 24));
 }
 
-/**
- * Swap endianness of entire queue file.
- **/
+
 void Queue::eswp(struct queueformat *bp, u32 qver, u32 systype)
 {
 	int                     i, n;

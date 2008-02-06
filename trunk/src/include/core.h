@@ -15,7 +15,7 @@
 */
 
 /**
- * \file core
+ * \file core.h
  * Manages core definitions.
  * \author François Ingelrest
  * \author Andrew Schofield

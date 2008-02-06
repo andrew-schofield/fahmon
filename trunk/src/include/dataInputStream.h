@@ -15,7 +15,7 @@
 */
 
 /**
- * \file dataInputStream
+ * \file dataInputStream.h
  * Reads in data files
  * \author François Ingelrest
  * \author Andrew Schofield

@@ -14,6 +14,13 @@
 *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
+/**
+ * \file pathManager.cpp
+ * Manages important path locations.
+ * \author François Ingelrest
+ * \author Andrew Schofield
+ **/
+
 #include "fahmon.h"
 #include "pathManager.h"
 
@@ -24,9 +31,6 @@
 PathManager* PathManager::mInstance = NULL;
 
 
-/**
-* Constructor
-**/
 PathManager::PathManager(void)
 {
 #ifdef __WXGTK__
@@ -64,9 +68,6 @@ PathManager::PathManager(void)
 }
 
 
-/**
-* Retrieve the instance of PathManager, create it if needed
-**/
 const PathManager* PathManager::GetInstance(void)
 {
 	if(mInstance == NULL)

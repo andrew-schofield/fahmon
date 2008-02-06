@@ -15,7 +15,7 @@
 */
 
 /**
- * \file base64Codec
+ * \file base64Codec.h
  * Creates a class for encoding/decoding to base64.
  * \author François Ingelrest
  * \author Andrew Schofield
