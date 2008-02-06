@@ -101,7 +101,7 @@ private:
 	/**
 	 * Web Template preprocessor.
 	 * This scans the given string for template ids, and loads them into a vector.
-	 * @param imputTemplate The string to parse
+	 * @param inputTemplate The string to parse
 	 * @return A vector of template IDs
 	 **/
 	std::vector<wxString> TemplateToVector(wxString inputTemplate);

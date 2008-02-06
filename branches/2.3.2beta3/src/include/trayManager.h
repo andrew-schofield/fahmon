@@ -58,35 +58,30 @@ protected:
 	/**
 	 * Event: Manages the 'quit' menu item.
 	 * Closes FahMon.
-	 * @param event The event itself. This is sent automatically.
 	 **/
 	void Close(wxCommandEvent&);
 
 	/**
 	 * Event: Manages the 'show' menu item.
 	 * Opens the FahMon window.
-	 * @param event The event itself. This is sent automatically.
 	 **/
 	void Show(wxCommandEvent&);
 
 	/**
 	 * Event: Manages the 'hide' menu item.
 	 * Hides the  FahMon window.
-	 * @param event The event itself. This is sent automatically.
 	 **/
 	void Hide(wxCommandEvent&);
 
 	/**
 	 * Event: Manages the 'benchmarks' menu item.
 	 * Opens the benchmark window.
-	 * @param event The event itself. This is sent automatically.
 	 **/
 	void Benchmarks(wxCommandEvent&);
 
 	/**
 	 * Event: Manages the 'preferences' menu item.
 	 * Opens the preferences window.
-	 * @param event The event itself. This is sent automatically.
 	 **/
 	void Preferences(wxCommandEvent&);
 
