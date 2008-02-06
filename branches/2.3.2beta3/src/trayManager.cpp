@@ -14,6 +14,13 @@
 *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
+/**
+ * \file trayManager.cpp
+ * Manages system tray icon.
+ * \author François Ingelrest
+ * \author Andrew Schofield
+ **/
+
 #include "fahmon.h"
 #include "trayManager.h"
 
@@ -51,27 +58,18 @@ BEGIN_EVENT_TABLE(TrayManager, wxTaskBarIcon)
 END_EVENT_TABLE()
 
 
-/**
-* Constructor
-**/
 TrayManager::TrayManager(void)
 {
 	mTooltip = wxT(FMC_PRODUCT);
 }
 
 
-/**
-* Destructor
-**/
 TrayManager::~TrayManager(void)
 {
 	UninstallIcon();
 }
 
 
-/**
-* Retrieve the instance of TrayManager, create it if needed
-**/
 TrayManager* TrayManager::GetInstance(void)
 {
 	if(mInstance == NULL)
@@ -83,9 +81,6 @@ TrayManager* TrayManager::GetInstance(void)
 }
 
 
-/**
-* Destroy the instance of TrayManager, if any
-**/
 void TrayManager::DestroyInstance(void)
 {
 	if(mInstance != NULL)
@@ -96,9 +91,6 @@ void TrayManager::DestroyInstance(void)
 }
 
 
-/**
-* Install the icon in the systray if it is not already there
-**/
 void TrayManager::InstallIcon(void)
 {
 	if(IsIconInstalled() == false)
@@ -112,9 +104,6 @@ void TrayManager::InstallIcon(void)
 }
 
 
-/**
-* Uninstall the icon if it is present
-**/
 void TrayManager::UninstallIcon(void)
 {
 	if(IsIconInstalled() == true)
@@ -124,10 +113,6 @@ void TrayManager::UninstallIcon(void)
 }
 
 
-/**
-* Change the text of the tooltip associated with the icon
-* If the icon is installed in the systray, the tooltip is immediately updated
-**/
 void TrayManager::SetTooltip(const wxString& tooltip)
 {
 	double  TotalPPD;
@@ -150,9 +135,6 @@ void TrayManager::SetTooltip(const wxString& tooltip)
 }
 
 
-/**
-* The user has clicked on the systray icon
-**/
 void TrayManager::OnClick(wxTaskBarIconEvent& event)
 {
 	if(MainDialog::GetInstance()->IsShown())
@@ -176,9 +158,7 @@ void TrayManager::OnClick(wxTaskBarIconEvent& event)
 	}
 }
 
-/**
-* Creates a right-click popup menu from the tray icon
-**/
+
 wxMenu* TrayManager::CreatePopupMenu()
 {
 	double  TotalPPD;
@@ -230,17 +210,13 @@ wxMenu* TrayManager::CreatePopupMenu()
 
 }
 
-/**
-* The user has clicked close on the popup menu
-**/
+
 void TrayManager::Close(wxCommandEvent&)
 {
 	MainDialog::GetInstance()->Close();
 }
 
-/**
-* The user has clicked Show on the popup menu
-**/
+
 void TrayManager::Show(wxCommandEvent&)
 {
 	MainDialog::GetInstance()->Show();
@@ -255,9 +231,7 @@ void TrayManager::Show(wxCommandEvent&)
 	#endif
 }
 
-/**
-* The user has clicked Hide on the popup menu
-**/
+
 void TrayManager::Hide(wxCommandEvent&)
 {
 	// Must minimize to the task bar first so that we get the minimize animation :)
@@ -265,18 +239,13 @@ void TrayManager::Hide(wxCommandEvent&)
 	MainDialog::GetInstance()->Hide();
 }
 
-/**
-* The user has clicked Benchmarks on the popup menu
-**/
+
 void TrayManager::Benchmarks(wxCommandEvent&)
 {
 	BenchmarksDialog::GetInstance(MainDialog::GetInstance())->ShowModal(0);
 }
 
 
-/**
-* The user has clicked Preferences on the popup menu
-**/
 void TrayManager::Preferences(wxCommandEvent&)
 {
 	PreferencesDialog::GetInstance(MainDialog::GetInstance())->ShowModal();
