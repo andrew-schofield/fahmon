@@ -14,6 +14,13 @@
 *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
+/**
+ * \file projectHelperThread.cpp
+ * Manages threads for project database updates.
+ * \author François Ingelrest
+ * \author Andrew Schofield
+ **/
+
 #include "projectHelperThread.h"
 #include "fahmon.h"
 
@@ -21,9 +28,6 @@
 #include "projectsManager.h"
 
 
-/**
-* Constructor
-**/
 ProjectHelperThread::ProjectHelperThread(bool isForced, bool isInSilentMode) : wxThread(wxTHREAD_DETACHED)
 {
 	mIsForced       = isForced;
@@ -34,9 +38,6 @@ ProjectHelperThread::ProjectHelperThread(bool isForced, bool isInSilentMode) : w
 }
 
 
-/**
-* This is the entry point of the thread, where the database is updated
-**/
 void* ProjectHelperThread::Entry(void)
 {
 	bool           updateResult;
