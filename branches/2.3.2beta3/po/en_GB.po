@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2008-02-06 23:40+0000\n"
+"POT-Creation-Date: 2008-02-07 12:49+0000\n"
 "PO-Revision-Date: 2007-11-17 20:19+0000\n"
 "Last-Translator: Andrew Schofield <the.uncle.fungus@gmail.com>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -135,7 +135,7 @@ msgid "No Eff. Time / Frame"
 msgstr "No Eff. Time / Frame"
 
 #: src/benchmarksManager.cpp:144 src/preferencesManager.cpp:272
-#: src/projectsManager.cpp:145
+#: src/projectsManager.cpp:131
 #, c-format
 msgid "Could not open file <%s> for writing!"
 msgstr "Could not open file <%s> for writing!"
@@ -772,28 +772,28 @@ msgstr ""
 msgid "No update found"
 msgstr "No update found"
 
-#: src/mainDialog.cpp:1405 src/projectsManager.cpp:354
+#: src/mainDialog.cpp:1405 src/projectsManager.cpp:308
 msgid "Unable to create a temporary file!"
 msgstr "Unable to create a temporary file!"
 
-#: src/mainDialog.cpp:1409 src/projectsManager.cpp:358
+#: src/mainDialog.cpp:1409 src/projectsManager.cpp:312
 #, c-format
 msgid "Unable to open the temporary file <%s>"
 msgstr "Unable to open the temporary file <%s>"
 
-#: src/mainDialog.cpp:1413 src/projectsManager.cpp:362
+#: src/mainDialog.cpp:1413 src/projectsManager.cpp:316
 msgid "Unable to connect to the server!"
 msgstr "Unable to connect to the server!"
 
-#: src/mainDialog.cpp:1417 src/projectsManager.cpp:366
+#: src/mainDialog.cpp:1417 src/projectsManager.cpp:320
 msgid "Unable to send the request to the server!"
 msgstr "Unable to send the request to the server!"
 
-#: src/mainDialog.cpp:1421 src/projectsManager.cpp:370
+#: src/mainDialog.cpp:1421 src/projectsManager.cpp:324
 msgid "Download aborted!"
 msgstr "Download aborted!"
 
-#: src/mainDialog.cpp:1427 src/projectsManager.cpp:376
+#: src/mainDialog.cpp:1427 src/projectsManager.cpp:330
 msgid "An unknown error happened!"
 msgstr "An unknown error happened!"
 
@@ -1016,31 +1016,31 @@ msgstr "Choose where to save the simple text file"
 msgid "There is no Preferences file, or it is not readable"
 msgstr "There is no Preferences file, or it is not readable"
 
-#: src/projectsManager.cpp:110
+#: src/projectsManager.cpp:99
 msgid "There is no projects file, or it is not readable"
 msgstr "There is no projects file, or it is not readable"
 
-#: src/projectsManager.cpp:255
+#: src/projectsManager.cpp:215
 msgid "Updating projects database"
 msgstr "Updating projects database"
 
-#: src/projectsManager.cpp:259
+#: src/projectsManager.cpp:219
 msgid "Downloading new projects"
 msgstr "Downloading new projects"
 
-#: src/projectsManager.cpp:283
+#: src/projectsManager.cpp:243
 msgid "Adding the new projects to the database"
 msgstr "Adding the new projects to the database"
 
-#: src/projectsManager.cpp:385
+#: src/projectsManager.cpp:339
 msgid "Local project update file doesn't exist!"
 msgstr "Local project update file doesn't exist!"
 
-#: src/projectsManager.cpp:394
+#: src/projectsManager.cpp:348
 msgid "Unable to copy local project update file to temporary location"
 msgstr "Unable to copy local project update file to temporary location"
 
-#: src/projectsManager.cpp:457
+#: src/projectsManager.cpp:406
 #, c-format
 msgid ""
 "The line %u is not correctly formatted!\n"
@@ -1051,7 +1051,7 @@ msgstr ""
 "\n"
 "%s"
 
-#: src/projectsManager.cpp:468
+#: src/projectsManager.cpp:417
 msgid "Update aborted!"
 msgstr ""
 "The line %u is not correctly formatted!\n"

@@ -1,5 +1,4 @@
 ;NSIS Modern User Interface
-;Start Menu Folder Selection Example Script
 ;Written by Joost Verburg
 
 ;--------------------------------
@@ -37,7 +36,6 @@
 ;--------------------------------
 ;Pages
 
-  ;!insertmacro MUI_PAGE_LICENSE "${NSISDIR}\Docs\Modern UI\License.txt"
   !insertmacro MUI_PAGE_COMPONENTS
   !insertmacro MUI_PAGE_DIRECTORY
 

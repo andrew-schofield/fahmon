@@ -1841,7 +1841,6 @@ echo X"$prefix" |
   fi
 fi
 
-# AC_CONFIG_AUX_DIR(config)
 ac_config_headers="$ac_config_headers config.h"
 
 am__api_version='1.10'
@@ -2328,10 +2327,6 @@ am__tar='${AMTAR} chof - "$$tardir"'; am__untar='${AMTAR} xf -'
 
 
 
-# LF_CONFIGURE_CC
-# LF_CONFIGURE_CXX
-# LF_HOST_TYPE
-# LF_SET_WARNINGS
 ac_ext=cpp
 ac_cpp='$CXXCPP $CPPFLAGS'
 ac_compile='$CXX -c $CXXFLAGS $CPPFLAGS conftest.$ac_ext >&5'
@@ -3109,8 +3104,6 @@ else
 fi
 
 
-#AC_PROG_CC
-#AC_PROG_RANLIB
 
 
 

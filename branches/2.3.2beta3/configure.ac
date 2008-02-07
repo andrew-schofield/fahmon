@@ -13,17 +13,10 @@ AC_INIT([FahMon],
         [Andrew Schofield the.uncle.fungus@gmail.com],
         [FahMon])
 AC_PREFIX
-# AC_CONFIG_AUX_DIR(config)
 AM_CONFIG_HEADER(config.h)
 AM_INIT_AUTOMAKE([dist-bzip2])
 
-# LF_CONFIGURE_CC
-# LF_CONFIGURE_CXX
-# LF_HOST_TYPE
-# LF_SET_WARNINGS
 AC_PROG_CXX
-#AC_PROG_CC
-#AC_PROG_RANLIB
 
 AM_OPTIONS_WXCONFIG
 reqwx=2.8.0
