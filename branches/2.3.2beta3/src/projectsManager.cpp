@@ -14,6 +14,13 @@
 *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
+/**
+ * \file projectsManager.cpp
+ * Manages projects.
+ * \author François Ingelrest
+ * \author Andrew Schofield
+ **/
+
 #include "fahmon.h"
 #include "projectsManager.h"
 
@@ -40,9 +47,6 @@ ProjectsManager* ProjectsManager::mInstance = NULL;
 wxMutex ProjectsManager::mMutexUpdateDatabase;
 
 
-/**
-* Constructor
-**/
 ProjectsManager::ProjectsManager(void)
 {
 	// By setting this to 0, we ensure that the next update of the database will always be performed
@@ -50,17 +54,11 @@ ProjectsManager::ProjectsManager(void)
 }
 
 
-/**
-* Destructor
-**/
 ProjectsManager::~ProjectsManager(void)
 {
 }
 
 
-/**
-* Create the single instance of the ProjectsManager
-**/
 void ProjectsManager::CreateInstance(void)
 {
 	wxASSERT(mInstance == NULL);
@@ -70,9 +68,6 @@ void ProjectsManager::CreateInstance(void)
 }
 
 
-/**
-* Destroy the single instance of the ProjectsManager
-**/
 void ProjectsManager::DestroyInstance(void)
 {
 	wxASSERT(mInstance != NULL);
@@ -84,9 +79,6 @@ void ProjectsManager::DestroyInstance(void)
 }
 
 
-/**
-* Return the single instance of the ProjectsManager
-**/
 ProjectsManager* ProjectsManager::GetInstance(void)
 {
 	wxASSERT(mInstance != NULL);
@@ -95,9 +87,6 @@ ProjectsManager* ProjectsManager::GetInstance(void)
 }
 
 
-/**
-* Load the list of projects from the disk
-**/
 inline void ProjectsManager::Load(void)
 {
 	Project         *currentProject;
@@ -132,9 +121,6 @@ inline void ProjectsManager::Load(void)
 }
 
 
-/**
-* Save the list of projects to the disk
-**/
 inline void ProjectsManager::Save(void)
 {
 	DataOutputStream               out(PathManager::GetCfgPath() + wxT(FMC_FILE_PROJECTS));
@@ -159,10 +145,6 @@ inline void ProjectsManager::Save(void)
 }
 
 
-/**
-* Add a project to the database
-* If the project was already there, then it is replaced by the new one
-**/
 void ProjectsManager::AddProject(Project* project)
 {
 	wxASSERT(project != NULL);
@@ -172,10 +154,6 @@ void ProjectsManager::AddProject(Project* project)
 }
 
 
-/**
-* Retrieve the project corresponding to the given identifier
-* Return NULL if the project is unknown
-**/
 const Project* ProjectsManager::GetProject(ProjectId projectId)
 {
 	ProjectsListHashMap::iterator iterator = mProjectsHashMap.find(projectId);
@@ -194,10 +172,6 @@ const Project* ProjectsManager::GetProject(ProjectId projectId)
 /************************************  DATABASE UPDATE  ************************************/
 
 
-/**
-* Test if an update should be performed
-* This depends on the elapsed time since the last update
-**/
 bool ProjectsManager::ShouldPerformUpdate(void)
 {
 	wxUint32 elapsedTime;
@@ -215,9 +189,6 @@ bool ProjectsManager::ShouldPerformUpdate(void)
 }
 
 
-/**
-* Create threads to refresh the projects database
-**/
 void ProjectsManager::UpdateDatabaseThreaded(bool forced, bool silentMode)
 {
 	// Create a thread which will call the 'inlined' method
@@ -225,17 +196,6 @@ void ProjectsManager::UpdateDatabaseThreaded(bool forced, bool silentMode)
 }
 
 
-/**
-* Refresh the projects database by downloading the new projects from the official website
-* This method returns only when the refreshing is done
-*
-* This method is thread-safe
-*
-* If forced is false, the refresh is done only if the elapsed time since last one is great enough
-* If it is true, the refresh is always done
-*
-* Return true if the update has been done, or false if an error occured or if it was aborted
-**/
 bool ProjectsManager::UpdateDatabase(bool forced, bool silentMode)
 {
 	wxMutexLocker   mutexLocker(mMutexUpdateDatabase);        // --- Lock the access to this method
@@ -301,12 +261,6 @@ bool ProjectsManager::UpdateDatabase(bool forced, bool silentMode)
 }
 
 
-/**
-* This method downloads the files with the current projects
-* Return false if something went wrong, true otherwise
-* In the case of an error, an explicit message is placed in errorMsg
-* The name of the file to which the downloaded data was written is in fileName, which will be empty in case of an error
-**/
 bool ProjectsManager::Update_DownloadProjectsFile(wxString& fileName, ProgressManager& progressManager, wxString& errorMsg)
 {
 	bool     useAlternate;
@@ -404,11 +358,6 @@ bool ProjectsManager::Update_DownloadProjectsFile(wxString& fileName, ProgressMa
 }
 
 
-/**
-* Read the current projects from the given file
-* Return false is something goes wrong, true otherwise
-* In case of error, put a message in errorMsg
-**/
 bool ProjectsManager::Update_ParseProjectsFile(const wxString& fileName, ProgressManager& progressManager, wxString& errorMsg)
 {
 	bool        tableHeaderFound;
@@ -475,9 +424,6 @@ bool ProjectsManager::Update_ParseProjectsFile(const wxString& fileName, Progres
 }
 
 
-/**
-* Parse a line with project information from the PSummary file
-**/
 Project* ProjectsManager::Update_ParseProjectInfo(const wxString& projectInfo) const
 {
 	long       tmpLong;
@@ -564,9 +510,7 @@ Project* ProjectsManager::Update_ParseProjectInfo(const wxString& projectInfo) c
 	return new Project(projectId, preferredDeadlineInDays, finalDeadlineInDays, nbFrames, credit, coreId);
 }
 
-/**
-* Update all deadlines to be deadline*100 to allow storing of non integer deadlines
-**/
+
 void ProjectsManager::UpdateToV2(void)
 {
 	ProjectsListHashMap::iterator  iterator;
