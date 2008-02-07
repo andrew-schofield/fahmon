@@ -14,6 +14,13 @@
 *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
+/**
+ * \file preferencesManager.cpp
+ * Manages stored preferences.
+ * \author François Ingelrest
+ * \author Andrew Schofield
+ **/
+
 #include "fahmon.h"
 #include "preferencesManager.h"
 
@@ -28,25 +35,16 @@
 PreferencesManager* PreferencesManager::mInstance = NULL;
 
 
-/**
-* Constructor
-**/
 PreferencesManager::PreferencesManager(void)
 {
 }
 
 
-/**
-* Destructor
-**/
 PreferencesManager::~PreferencesManager(void)
 {
 }
 
 
-/**
-* Create the single instance of the PreferencesManager
-**/
 void PreferencesManager::CreateInstance(void)
 {
 	wxASSERT(mInstance == NULL);
@@ -56,9 +54,6 @@ void PreferencesManager::CreateInstance(void)
 }
 
 
-/**
-* Destroy the single instance of the PreferencesManager
-**/
 void PreferencesManager::DestroyInstance(void)
 {
 	wxASSERT(mInstance != NULL);
@@ -70,9 +65,6 @@ void PreferencesManager::DestroyInstance(void)
 }
 
 
-/**
-* Return the single instance of the PreferencesManager
-**/
 PreferencesManager* PreferencesManager::GetInstance(void)
 {
 	wxASSERT(mInstance != NULL);
@@ -81,9 +73,6 @@ PreferencesManager* PreferencesManager::GetInstance(void)
 }
 
 
-/**
-* Change/set the value of a preference
-**/
 void PreferencesManager::SetPref(Preference* preference)
 {
 	PreferencesHashMap::iterator iterator;
@@ -102,9 +91,6 @@ void PreferencesManager::SetPref(Preference* preference)
 }
 
 
-/**
-* Retrieve the value of a preference
-**/
 inline Preference* PreferencesManager::GetPref(const wxString& name)
 {
 	PreferencesHashMap::iterator iterator = mPrefsHashMap.find(name);
@@ -118,9 +104,6 @@ inline Preference* PreferencesManager::GetPref(const wxString& name)
 }
 
 
-/**
-* Retrieve the value of a boolean preference
-**/
 bool PreferencesManager::GetBool(const wxString& name, bool& value)
 {
 	Preference *prefValue = GetPref(name);
@@ -137,9 +120,6 @@ bool PreferencesManager::GetBool(const wxString& name, bool& value)
 }
 
 
-/**
-* Retrieve the value of an unsigned int preference
-**/
 bool PreferencesManager::GetUint(const wxString& name, wxUint32& value)
 {
 	Preference *prefValue = GetPref(name);
@@ -156,9 +136,6 @@ bool PreferencesManager::GetUint(const wxString& name, wxUint32& value)
 }
 
 
-/**
-* Retrieve the value of an signed int preference
-**/
 bool PreferencesManager::GetInt(const wxString& name, wxInt32& value)
 {
 	Preference *prefValue = GetPref(name);
@@ -175,9 +152,6 @@ bool PreferencesManager::GetInt(const wxString& name, wxInt32& value)
 }
 
 
-/**
-* Retrieve the value of a double preference
-**/
 bool PreferencesManager::GetDouble(const wxString& name, double& value)
 {
 	Preference *prefValue = GetPref(name);
@@ -194,9 +168,6 @@ bool PreferencesManager::GetDouble(const wxString& name, double& value)
 }
 
 
-/**
-* Retrieve the value of a string preference
-**/
 bool PreferencesManager::GetString(const wxString& name, wxString& value)
 {
 	Preference *prefValue = GetPref(name);
@@ -213,9 +184,6 @@ bool PreferencesManager::GetString(const wxString& name, wxString& value)
 }
 
 
-/**
-* Retrieve the value of an hidden string preference
-**/
 bool PreferencesManager::GetHiddenString(const wxString& name, wxString& value)
 {
 	Preference *prefValue = GetPref(name);
@@ -232,9 +200,6 @@ bool PreferencesManager::GetHiddenString(const wxString& name, wxString& value)
 }
 
 
-/**
-* Load the preferences from the disk
-**/
 inline void PreferencesManager::Load(void)
 {
 	wxUint32         nbPrefs, i;
@@ -259,9 +224,6 @@ inline void PreferencesManager::Load(void)
 }
 
 
-/**
-* Save all the preferences to the disk
-**/
 inline void PreferencesManager::Save(void)
 {
 	DataOutputStream             out(PathManager::GetCfgPath() + wxT(FMC_FILE_PREFS));
