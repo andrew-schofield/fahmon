@@ -14,6 +14,14 @@
 *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
+/**
+ * \file preferencesDialog.cpp
+ * The preferences dialog.
+ * Creates the dialog to reconfigure FahMon.
+ * \author François Ingelrest
+ * \author Andrew Schofield
+ **/
+
 #include "fahmon.h"
 #include "preferencesDialog.h"
 
@@ -82,9 +90,6 @@ END_EVENT_TABLE()
 PreferencesDialog* PreferencesDialog::mInstance = NULL;
 
 
-/**
-* Constructor
-**/
 PreferencesDialog::PreferencesDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, wxString::Format(_("Preferences / %s"), wxT(FMC_PRODUCT)))
 {
 	wxBoxSizer *topLevelSizer;
@@ -126,17 +131,11 @@ PreferencesDialog::PreferencesDialog(wxWindow* parent) : wxDialog(parent, wxID_A
 }
 
 
-/**
-* Destructor
-**/
 PreferencesDialog::~PreferencesDialog(void)
 {
 }
 
 
-/**
-* Retrieve the instance of PreferencesDialog, create it if needed
-**/
 PreferencesDialog* PreferencesDialog::GetInstance(wxWindow* parent)
 {
 	if(mInstance == NULL)
@@ -148,9 +147,6 @@ PreferencesDialog* PreferencesDialog::GetInstance(wxWindow* parent)
 }
 
 
-/**
-* Destroy the instance of PreferencesDialog, if any
-**/
 void PreferencesDialog::DestroyInstance(void)
 {
 	if(mInstance != NULL)
@@ -161,9 +157,6 @@ void PreferencesDialog::DestroyInstance(void)
 }
 
 
-/**
-* Create the tab containing general preferences
-**/
 inline wxPanel* PreferencesDialog::CreateGeneralTab(wxNotebook* parent)
 {
 	wxPanel    *panel;
@@ -201,9 +194,6 @@ inline wxPanel* PreferencesDialog::CreateGeneralTab(wxNotebook* parent)
 }
 
 
-/**
-* Create the tab containing monitoring preferences
-**/
 inline wxPanel* PreferencesDialog::CreateMonitoringTab(wxNotebook* parent)
 {
 	wxPanel    *panel;
@@ -264,9 +254,6 @@ inline wxPanel* PreferencesDialog::CreateMonitoringTab(wxNotebook* parent)
 }
 
 
-/**
-* Create the tab containing networking preferences
-**/
 inline wxPanel* PreferencesDialog::CreateNetworkingTab(wxNotebook* parent)
 {
 	wxPanel    *panel;
@@ -320,9 +307,7 @@ inline wxPanel* PreferencesDialog::CreateNetworkingTab(wxNotebook* parent)
 	return panel;
 }
 
-/**
-* Create the tab containing advanced preferences
-**/
+
 inline wxPanel* PreferencesDialog::CreateAdvancedTab(wxNotebook* parent)
 {
 	wxPanel    *panel;
@@ -370,9 +355,7 @@ inline wxPanel* PreferencesDialog::CreateAdvancedTab(wxNotebook* parent)
 	return panel;
 }
 
-/**
-* Create the tab containing system preferences
-**/
+
 inline wxPanel* PreferencesDialog::CreateSystemTab(wxNotebook* parent)
 {
 	wxPanel    *panel;
@@ -457,9 +440,6 @@ inline wxPanel* PreferencesDialog::CreateSystemTab(wxNotebook* parent)
 }*/
 
 
-/**
-* Create the tab containing web application preferences
-**/
 inline wxPanel* PreferencesDialog::CreateWebAppTab(wxNotebook* parent)
 {
 	wxPanel    *panel;
@@ -533,9 +513,6 @@ inline wxPanel* PreferencesDialog::CreateWebAppTab(wxNotebook* parent)
 }
 
 
-/**
-* Give the correct state to each control before displaying the dialog
-**/
 int PreferencesDialog::ShowModal(void)
 {
 	LoadPreferences();
@@ -545,9 +522,6 @@ int PreferencesDialog::ShowModal(void)
 }
 
 
-/**
-* Give the correct value to each controls using the preferences
-**/
 inline void PreferencesDialog::LoadPreferences(void)
 {
 	bool     useProxy;
@@ -784,9 +758,7 @@ inline void PreferencesDialog::LoadPreferences(void)
 
 }
 
-/**
-* Save the value of each control using the preferences
-**/
+
 inline void PreferencesDialog::SavePreferences(void)
 {
 	wxUint32 proxyPort;
@@ -881,9 +853,6 @@ inline void PreferencesDialog::SavePreferences(void)
 /************************************  EVENTS  ************************************/
 
 
-/**
-* Save preferences before exiting the dialog box
-**/
 void PreferencesDialog::OnOkButton(wxCommandEvent& event)
 {
 	SavePreferences();
@@ -892,9 +861,6 @@ void PreferencesDialog::OnOkButton(wxCommandEvent& event)
 }
 
 
-/**
-* Show file chooser dialog box
-**/
 void PreferencesDialog::OnBrowseButton(wxCommandEvent& event)
 {
 	wxString selectedFile;
@@ -909,9 +875,6 @@ void PreferencesDialog::OnBrowseButton(wxCommandEvent& event)
 }
 
 
-/**
-* Show file chooser dialog box
-**/
 void PreferencesDialog::OnWebAppBrowseButton(wxCommandEvent& event)
 {
 	wxString selectedFile;
@@ -926,9 +889,6 @@ void PreferencesDialog::OnWebAppBrowseButton(wxCommandEvent& event)
 }
 
 
-/**
-* Show file chooser dialog box
-**/
 void PreferencesDialog::OnSimpleWebBrowseButton(wxCommandEvent& event)
 {
 	wxString selectedFile;
@@ -943,9 +903,6 @@ void PreferencesDialog::OnSimpleWebBrowseButton(wxCommandEvent& event)
 }
 
 
-/**
-* Show file chooser dialog box
-**/
 void PreferencesDialog::OnSimpleTextBrowseButton(wxCommandEvent& event)
 {
 	wxString selectedFile;
@@ -960,9 +917,6 @@ void PreferencesDialog::OnSimpleTextBrowseButton(wxCommandEvent& event)
 }
 
 
-/**
-* Enable/Disable fields associated with some checkboxes
-**/
 void PreferencesDialog::OnCheckboxes(wxCommandEvent& event)
 {
 	switch(event.GetId())
@@ -1075,9 +1029,6 @@ void PreferencesDialog::OnCheckboxes(wxCommandEvent& event)
 }
 
 
-/**
-* Alter fields when choicebox values are changed
-**/
 void PreferencesDialog::OnChoices(wxCommandEvent& event)
 {
 	switch(event.GetId())
