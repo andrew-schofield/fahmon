@@ -38,6 +38,7 @@ v2.3.2
     * Offline documentation is now more informative and easier to follow.
     * Added SCEARD (PS3 Gromacs) support just in case we ever get access to PS3
       logs in the future.
+    * Fancy web output now renders satisfactorily on IE7.
 
     Windows
 
