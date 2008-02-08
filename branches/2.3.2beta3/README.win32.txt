@@ -10,16 +10,18 @@ Setting up the build environment
 ================================
 
 Download the following software (free)
-* Microsoft Visual C++ 2005 Express Edition (MSVC) (91.5MB)
-* Visual Studio 8 Service Pack 1 (43.5MB)
-* Microsoft Platform SDK for Windows Server 2003 R2 (384MB)
-* wxWidgets 2.6.3 (17.5MB)
+* Microsoft Visual C++ 2005 Express Edition (MSVC)
+* Visual Studio 8 Service Pack 1
+* Microsoft Platform SDK for Windows Server 2003 R2
+* wxWidgets >= 2.8.6
 
-The total size of the required installations sources is 537MB
+The total size of the required installations sources is >500MB
 
-* Install MSVC and it's service pack. (requires ~690MB)
-* Install the Platform SDK (requires ~950MB)
-* Install wxWidgets (requires ~95MB)
+* Install MSVC and it's service pack.
+* Install the Platform SDK.
+* Install wxWidgets.
+
+Installation of the required software will require >1GB of disk space.
 
 The rest of the documentation assumes that you installed everything into the
 default locations. So you may need to alter paths etc.
@@ -40,18 +42,18 @@ Configuring MSVC
 * Change "Show directories for:" to "Include files"
 * Add the following directories to the list:
   "c:\program files\microsoft platform sdk\include"
-  "c:\wxwidgets-2.6.3\include"
+  "c:\wxwidgets-2.8.7\include"
 * Change "Show directories for:" to "Library files"
 * Add the following directories to the list:
   "c:\program files\microsoft platform sdk\lib"
-  "c:\wxwidgets-2.6.3\lib\vc_lib"
+  "c:\wxwidgets-2.8.7\lib\vc_lib"
 * Close the options dialog (with OK).
 
 
 Compiling wxWidgets
 ===================
 
-* Navigate to c:\wxWidgets-2.6.3\build\msw and open wx.dsw.
+* Navigate to c:\wxWidgets-2.8.7\build\msw and open wx.dsw.
 * When prompted to open and convert the files, click "yes to all".
 * Change the build type to "Unicode Release" by default this is set to "Debug".
   This can be altered by selecting the option from the drop-down list between

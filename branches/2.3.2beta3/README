@@ -1,8 +1,25 @@
-Welcome to FahMon
-=================
-FahMon is free software. Please see the file COPYING for details.
-For documentation, please see the files in the doc subdirectory.
+FahMon README
 
+Version 2.3.2beta3
+
+Authors:
+========
+François Ingelrest
+Andrew Schofield
+
+Copyright:
+==========
+© François Ingelrest 2003-7
+© Andrew Schofield 2007-8
+
+For further details see AUTHORS and THANKS
+
+Licence:
+========
+FahMon is free software. Please see the file COPYING for details.
+
+About:
+======
 FahMon is an open-source tool (GPL license) that allows you to quickly check the
 progress of your Folding@Home client (or clients if you have multiple ones),
 avoiding you having to open different files and/or to go to the Internet (for
@@ -14,36 +31,34 @@ FahMon is entirely coded in C++ and uses the wxWidgets library, which allows
 FahMon to exist both for Linux and Windows. It is designed to be really easy to
 use, and you should thus not encounter any major problem.
 
-The following instructions do NOT apply to the precompiled Windows binaries.
+For a complete version history, please see the ChangeLog file.
 
-Compiling FahMon for Windows
-============================
-Please see README.win32.txt
+New in this release:
+====================
+To see what's new in this release, please read the NEWS and ChangeLog files.
 
-Compiling, Installing and Running FahMon for Linux
-==================================================
-For the build requirements of FahMon please see the REQUIRES file.
+System requirements:
+====================
+Windows - Any machine capable of running Windows 2000 or later.
+Linux - Any machine capable of running a modern X server.
+Broadly speaking any machine you are likely to want to run FahMon on will be
+sufficient.
 
-FahMon uses the familiar ./configure; make method for software building. Under
-normal circumstances these are the only commands you will need to run. Configure
-will detect and setup the necessary software and files, and make will compile
-the software for you.
+Software requirements:
+======================
+For additional software requirements see the REQUIRES file.
 
-Full installation instructions:
+Installations instructions:
+===========================
+Please see the INSTALL file.
 
- cd <fahmon source folder>
- ./configure
- make
- sudo make install
+Contact details:
+================
+Website: http://fahmon.net/
+Support site: http://trac.fahmon.net/
+email: andrew_s@fahmon.net
 
-Depending on your Linux distribution, you may not have (or use) sudo. In which
-case you need to login as root with `su`, run `make install`, then `exit`
-To run FahMon, either run "fahmon" from a shell (it will work from anywhere in
-the system, no more need for shell scripts), or launch it from your Desktop
-Environment's Applications menu (if supported). You can add a shortcut item
-manually if your DE is not supported.
-
-TRANSLATIONS
+Translations
 ============
 The translations provided with FahMon should work with no user intervention on
 both Linux and MS Windows provided they were installed correctly.
@@ -86,5 +101,6 @@ On Windows, make a folder under 'lang' with the name of your translation and
 copy fahmon.pot into it. Rename this to a .po file and start editing it. Once
 finished, save the .mo file as fahmon.mo and restart FahMon.
 
-Once you've created translations, please email the mo files to
-translations@fahinfo.org
+Once you've created translations, please create a support ticket using trac:
+http://trac.fahmon.net/ and attach your new .po file.
+Alternatively, email the .po file to andrew_s@fahmon.net
