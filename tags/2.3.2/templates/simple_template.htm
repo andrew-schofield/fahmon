@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="refresh" content="100" />
+	<title><!--tpl_static @FAHMON_VERSION@ tpl//--></title>
+	<style type="text/css">
+	<!--
+	TD {
+	padding:2px;
+	border:1px solid #000;
+	}
+	//-->
+	</style>
+</head>
+<body>
+	<pre>
+		<table style="border-collapse:collapse;border: 1px solid #000;">
+			<tr>
+				<td colspan="6"><!--tpl_static @FAHMON_VERSION@ @_Web_View@ - @_Last_updated:@ @UPDATE_TIME@ tpl//--></td>
+				<td colspan="2"><!--tpl_static @_Total_PPD:@ @TOTAL_PPD@ tpl//--></td>
+			</tr>
+			<tr bgcolor="#eeeeee">
+				<!--tpl_static <td>State</td>
+				<td>@_Progress@</td>
+				<td>@_Name@</td>
+				<td>@_ETA@</td>
+				<td>@_PPD@</td>
+				<td>@_PRCG@</td>
+				<td>@_Credit@</td>
+				<td>@_Downloaded@</td> tpl//-->
+			</tr>
+			<!--tpl_loop <tr>
+				<td bgcolor="@STATE_COLOR@">@STATE@</td>
+				<td>@PERCENTAGE@</td>
+				<td>@NAME@</td>
+				<td>@ETA@</td>
+				<td>@PPD@</td>
+				<td>@PRCG@</td>
+				<td>@POINTS@</td>
+				<td>@DOWNLOAD_DATE@</td>
+			</tr> tpl//-->
+		</table>
+	</pre>
+</body>
+</html>

@@ -1,0 +1,99 @@
+This file descibes the syntax used for creating templates for the web output
+system.
+
+Template pages can be written in whatever language you like, provided that the
+keywords used in the template definition are not reserved in that language.
+
+Throughout this document quotation marks "" are used to surround blocks of code.
+These are not part of the actual definitions.
+
+Defining Template Blocks
+========================
+
+Template blocks are opened and closed using modified html comments.
+To open a template block, use the following code:
+
+"<!--tpl_TYPE "
+
+To close a template block, use the following code:
+
+" tpl//-->"
+
+The leading and trailing spaces in the above two blocks of code are important
+and must be included.
+
+Template blocks can contain any text, in addition to a number of predefined
+variables which are demarkated by @ symbols, which are the only characters you
+can't include within the template blocks.
+
+There are two values that "TYPE" can take, these are "static" and "loop".
+A static template means that it is only processed once while reading the file.
+A loop template is processed for each monitored client whilst the file is read.
+
+For example the following template block will be transformed into a single line
+when the template file is processed. This is useful for showing data like total
+PPD or update time.
+
+"<!--tpl_static Total PPD: @TOTAL_PPD@ //-->"
+
+The output of this template would be:
+
+"Total PPD: 123.45"
+
+The following looped template block will be processed for all the clients being
+monitored by FahMon. This is used to list client data.
+
+"<!--tpl_loop @NAME@ - @ETA@ - @PPD@ tpl//->"
+
+The output of this template would be:
+
+"Client1 - 01/01/01 00:00 - 123.45"
+"Client2 - 02/01/01 03:45 - 246.80"
+"Client3 - 03/01/01 16:20 - 987.65"
+
+Template blocks can span multiple lines, however only one template block can
+appear on any one line.
+
+This is valid:
+
+"<!--tpl_loop <td>@NAME@</td>
+<td>@PPD@</td> tpl//-->"
+
+This is not valid:
+
+"<!--tpl_static @TOTAL_PPD@ tpl//-->Some text<!--tpl_static @UPDATE_TIME@
+ tpl//-->"
+
+Template Variables
+==================
+
+A number of template variables are defined to access data provided by FahMon:
+"@PERCENTAGE@"		Returns the progress of a client
+"@NAME@"			Returns the client name
+"@ETA@"				Returns the client ETA
+"@PPD@"				Returns the client PPD
+"@CORE@"			Returns the core of the project the client is working on
+"@PRCG@"			Returns the PRCG of the project the client is working on
+"@POINTS@"			Returns the points of the project the client is working on
+"@USER_TEAM@"		Returns the username and team of the client
+"@DOWNLOAD_DATE@"	Returns the download date for the client
+"@PREFERRED_DATE@"	Returns the preferred deadline for the client
+"@FINAL_DATE@"		Returns the final deadline for the client
+"@STATE_COLOR@"		Returns the hex color related to the clients state
+"@STATE@"			Returns a string related to the clients state
+"@FAHMON_VERSION@"	Returns the FahMon title bar string
+"@UPDATE_TIME@"		Returns the time of the last page update
+"@TOTAL_PPD@"		Returns the total PPD of all clients being monitored
+"@STATE_IMAGE@"		Returns the location of the client state image
+"@CLIENT_ID@"		Returns the ID of the current client
+
+Each template variable can also contain an optional string that will allow the
+output to be padded or truncated to a specific length. This is implemented so
+that the default simple text output is formatted correctly.
+To use this option, enclose the desired length in "{}" and put it directly
+preceding the closing "@".
+For example, the truncate the state string to only 5 characters:
+
+"@STATE{5}@"
+
+For more examples, examine the templates provided with FahMon.
