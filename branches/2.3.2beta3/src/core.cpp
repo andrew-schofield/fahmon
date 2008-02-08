@@ -39,7 +39,8 @@ wxString Core::mCoreLongName[CORE_ID_COUNT] = {
 	wxT("SREM Gromacs"),
 	wxT("SimT Gromacs"),
 	wxT("Double Gromacs B"),
-	wxT("SMP Gromacs CVS")
+	wxT("SMP Gromacs CVS"),
+	wxT("PS3 Gromacs (SCEARD2)")
 };
 wxString Core::mCoreShortName[CORE_ID_COUNT] = {
 	wxT("tinker"),
@@ -55,7 +56,8 @@ wxString Core::mCoreShortName[CORE_ID_COUNT] = {
 	wxT("grost"),
 	wxT("grosimt"),
 	wxT("dgromacsb"),
-	wxT("grocvs")
+	wxT("grocvs"),
+	wxT("gro-ps3")
 };
 
 

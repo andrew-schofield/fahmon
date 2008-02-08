@@ -59,6 +59,7 @@ public:
 		GROSIMT, /**< SimT Gromacs (81) */
 		DGROMACSB, /**< Double Gromacs B (7b) */
 		GROCVS, /**< SMP Gromacs CVS (a2) */
+		GROPS3, /**< PS3 Gromacs (SCEARD) */
 		CORE_ID_COUNT /**<  */
 	};
 
