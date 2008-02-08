@@ -1,17 +1,17 @@
-# translation of cs_CZ.po to British English
+# translation of cs_CZ.po to Czech
 # translation of cs_CZ.po to
 # Copyright (C) YEAR Andrew Schofield
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Martin Bednar <serafean@gmail.com>, 2007.
+# Martin Bednar <serafean@gmail.com>, 2007, 2008.
 # Andrew Schofield <andrew_s@fahmon.net>, 2007.
 msgid ""
 msgstr ""
 "Project-Id-Version: cs_CZ\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
 "POT-Creation-Date: 2008-02-08 10:51+0000\n"
-"PO-Revision-Date: 2007-11-15 23:40+0000\n"
-"Last-Translator: Andrew Schofield <andrew_s@fahmon.net>\n"
+"PO-Revision-Date: 2008-02-08 14:50+0100\n"
+"Last-Translator: Martin Bednar <serafean@gmail.com>\n"
 "Language-Team: British English <en@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -37,11 +37,11 @@ msgstr "Domovská stránka"
 
 #: src/aboutDialog.cpp:59
 msgid "Qd homepage:"
-msgstr ""
+msgstr "Domovská stránka QD:"
 
 #: src/aboutDialog.cpp:61
 msgid "Licence:"
-msgstr ""
+msgstr "Licence:"
 
 #: src/aboutDialog.cpp:65
 msgid "Library:"
@@ -472,27 +472,27 @@ msgstr "Jiná instance %s již běží!"
 #: src/mainDialog.cpp:166
 #, c-format
 msgid "%s is licenced under the GNU GPL v2"
-msgstr ""
+msgstr "%s uvolněn pod licencí GNU GPL v2"
 
 #: src/mainDialog.cpp:167
 msgid "Copyright (C) 2003-2007 Francois Ingelrest"
-msgstr ""
+msgstr "Copyright (C) 2003-2007 Francois Ingelrest"
 
 #: src/mainDialog.cpp:168
 msgid "Copyright (C) 2007-2008 Andrew Schofield"
-msgstr ""
+msgstr "Copyright (C) 2007-2008 Andrew Schofield"
 
 #: src/mainDialog.cpp:170
 msgid "FahMon contains code from qd, also licenced under the GNU GPL v2"
-msgstr ""
+msgstr "FahMon obsahuje kód z QD, také uvolněn pod licencí GNU GPL v2"
 
 #: src/mainDialog.cpp:171
 msgid "Copyright (C) 2002-2005 Richard P. Howell IV."
-msgstr ""
+msgstr "Copyright (C) 2002-2005 Richard P. Howell IV."
 
 #: src/mainDialog.cpp:172
 msgid "Copyright (C) 2005-2008 Sebastiaan Couwenberg"
-msgstr ""
+msgstr "Copyright (C) 2005-2008 Sebastiaan Couwenberg"
 
 #: src/mainDialog.cpp:373
 msgid ""
@@ -1163,33 +1163,3 @@ msgstr "Jednoduchý textový výstup"
 #: src/webMonitor.cpp:610
 msgid "Last updated:"
 msgstr "Posledně aktualizované:"
-
-#~ msgid "%s Web View - Last updated: %s"
-#~ msgstr "%s Webové zobrazení - posledně aktualizované : %s"
-
-#~ msgid ""
-#~ "Could not open file <%s> for writing!\n"
-#~ "The simple web output will not be created!"
-#~ msgstr ""
-#~ "Nelze otevřít soubor <%s> pro zapisování!\n"
-#~ "Jednoduchý webový výstup nebude vytvořen!"
-
-#~ msgid ""
-#~ "Could not open file <%s> for writing!\n"
-#~ "The simple text output will not be created!"
-#~ msgstr ""
-#~ "Nelze otevřít soubor <%s> pro zapisování!\n"
-#~ "Jednoduchý textový výstup nebude vytvořen!"
-
-#~ msgid ""
-#~ "Total PPD: %.2f\n"
-#~ "\n"
-#~ msgstr ""
-#~ "Celkový PPD: %.2f\n"
-#~ "\n"
-
-#~ msgid "Server:"
-#~ msgstr "Server:"
-
-#~ msgid "Resource:"
-#~ msgstr "Zdroj:"
