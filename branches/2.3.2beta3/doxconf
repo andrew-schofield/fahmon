@@ -11,7 +11,7 @@
 # Values that contain spaces should be placed between quotes (" ")
 
 PROJECT_NAME           = FahMon
-PROJECT_NUMBER         = 2.3.2beta3
+PROJECT_NUMBER         = 2.3.2
 OUTPUT_DIRECTORY       = doc
 CREATE_SUBDIRS         = NO
 OUTPUT_LANGUAGE        = English

@@ -1,10 +1,21 @@
 FahMon -- History of visible changes.
 
 Copyright (C) 2003-7, François Ingelrest <>
-Copyright (C) 2007-8, Andrew Schofield <the.uncle.fungus@gmail.com>
+Copyright (C) 2007-8, Andrew Schofield <andrew_s@fahmon.net>
 See the end for copying conditions.
 
-Please send FahMon bug reports to the.uncle.fungus@gmail.com.
+Please send FahMon bug reports to andrew_s@fahmon.net.
+
+Version 2.3.2
+
+* Lots of bug fixes in this release to make FahMon more stable, there should be
+  far fewer instances of FahMon crashing for no apparent reason, and CPU usage
+  whilst reloading clients has been decreased.
+* Several bits of data are now retreived using core code from qd (Queue Dumper)
+  http://linuxminded.xs4all.nl/?target=software-qd-tools.plc
+* Web output is now completely configurable thanks to a new templating system
+  which allows you to create custom output pages.
+* Documentation should now be much more understandable.
 
 Version 2.3.1
 
@@ -37,7 +48,7 @@ Version 2.3.0
 Copying information:
 
 Copyright (C) 2003-7, François Ingelrest <>
-Copyright (C) 2007-8, Andrew Schofield <the.uncle.fungus@gmail.com>
+Copyright (C) 2007-8, Andrew Schofield <andrew_s@fahmon.net>
 
    Permission is granted to anyone to make or distribute verbatim copies
    of this document as received, in any medium, provided that the
