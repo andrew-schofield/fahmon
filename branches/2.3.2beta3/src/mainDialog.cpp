@@ -459,7 +459,7 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 	{
 		  ProjectsManager::GetInstance()->UpdateDatabase(false, false);
 		  project = ProjectsManager::GetInstance()->GetProject(client->GetProjectId());
-		  ClientsManager::GetInstance()->ReloadThreaded(CM_LOADALLF);
+		  //ClientsManager::GetInstance()->ReloadThreaded(CM_LOADALLF);
 	}
 	if(project == NULL)
 	{
