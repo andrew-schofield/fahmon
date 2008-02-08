@@ -1,3 +1,4 @@
+<!-- This comment is a little trick to keep IE6/7 in quirks mode rather than trying to use it's incompetent standards compliant mode -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
@@ -79,7 +80,7 @@ window.onload = function() { stripedTable(); addIEonScroll(); }
 	<style type="text/css">
 <!--
 table, td, a {
-	color: #000;
+	color: #000000;
 	font: normal normal 12px Verdana, Geneva, Arial, Helvetica, sans-serif
 }
 
@@ -148,13 +149,13 @@ thead.fixedHeader th {
 	text-align: left
 }
 thead.fixedHeader a, thead.fixedHeader a:link, thead.fixedHeader a:visited {
-	color: #FFF;
+	color: #FFFFFF;
 	display: block;
 	text-decoration: none;
 	width: 100%
 }
 thead.fixedHeader a:hover {
-	color: #FFF;
+	color: #FFFFFF;
 	display: block;
 	text-decoration: underline;
 	width: 100%
@@ -166,7 +167,7 @@ head:first-child+body tbody[class].scrollContent {
 	width: 100%
 }
 tbody.scrollContent td, tbody.scrollContent tr.normalRow td {
-	background: #FFF;
+	background: #FFFFFF;
 	padding: 2px 3px 3px 4px
 }
 tbody.scrollContent tr.alternateRow td {
@@ -218,6 +219,9 @@ body {
 	background:#FFFFFF;
 	color:#333333;
 	margin-top:10px;
+}
+*html body #wuinfopanel/* */{
+	width: 318px;
 }
 #wuinfopanel {
 	float:left;
@@ -279,7 +283,7 @@ TD {
 				</tr>
 				<tr>
 					<td align="right" width="50%"><b><!--tpl_static @_Core:@ tpl//--></b></td>
-					<td align="left"><b><font color="#F00" id="core"></font></b></td>
+					<td align="left"><b><font color="#FF0000" id="core"></font></b></td>
 				</tr>
 				<tr>
 					<td align="right"><b><!--tpl_static @_Project:@ tpl//--></b></td>
@@ -291,7 +295,7 @@ TD {
 				</tr>
 				<tr>
 				<td align="right"><b><!--tpl_static @_Username:@ tpl//--></b></td>
-					<td align="left"><font color="#00F" id="username"></font></td>
+					<td align="left"><font color="#0000FF" id="username"></font></td>
 				</tr>
 				<tr>
 				<td align="right"><b><!--tpl_static @_Downloaded:@ tpl//--></b></td>
