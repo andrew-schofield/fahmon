@@ -1,10 +1,10 @@
 # translation of nl_NL.po to British English
-# Andrew Schofield <the.uncle.fungus@gmail.com>, 2007.
+# Andrew Schofield <andrew_s@fahmon.net>, 2007.
 msgid ""
 msgstr ""
 "Project-Id-Version: nl_NL\n"
-"Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2008-02-07 12:49+0000\n"
+"Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
+"POT-Creation-Date: 2008-02-08 10:51+0000\n"
 "PO-Revision-Date: 2008-01-24 16:42+0100\n"
 "Last-Translator: Bastien <bastien@knife-edge.nl>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -131,7 +131,7 @@ msgstr "Geen R3F. tijd / frame"
 msgid "No Eff. Time / Frame"
 msgstr "Geen eff. tijd / frame"
 
-#: src/benchmarksManager.cpp:144 src/preferencesManager.cpp:272
+#: src/benchmarksManager.cpp:144 src/preferencesManager.cpp:234
 #: src/projectsManager.cpp:131
 #, c-format
 msgid "Could not open file <%s> for writing!"
@@ -808,128 +808,128 @@ msgstr ""
 "Kan het bestand niet openen om te schrijven!\n"
 "De log wordt niet opgeslagen!"
 
-#: src/preferencesDialog.cpp:88
+#: src/preferencesDialog.cpp:93
 #, c-format
 msgid "Preferences / %s"
 msgstr "Instellingen / %s"
 
-#: src/preferencesDialog.cpp:98
+#: src/preferencesDialog.cpp:103
 msgid "General"
 msgstr "Algemeen"
 
-#: src/preferencesDialog.cpp:99
+#: src/preferencesDialog.cpp:104
 msgid "Monitoring"
 msgstr "Monitoren"
 
-#: src/preferencesDialog.cpp:100
+#: src/preferencesDialog.cpp:105
 msgid "Networking"
 msgstr "Netwerk"
 
-#: src/preferencesDialog.cpp:101
+#: src/preferencesDialog.cpp:106
 msgid "Advanced"
 msgstr "Geavanceerd"
 
-#: src/preferencesDialog.cpp:102
+#: src/preferencesDialog.cpp:107
 msgid "System"
 msgstr "Systeem"
 
-#: src/preferencesDialog.cpp:104
+#: src/preferencesDialog.cpp:109
 msgid "WebApp"
 msgstr "WebApp"
 
-#: src/preferencesDialog.cpp:176
+#: src/preferencesDialog.cpp:169
 msgid "Enable system tray icon"
 msgstr "Aanzetten systeembalkicoontje"
 
-#: src/preferencesDialog.cpp:177
+#: src/preferencesDialog.cpp:170
 msgid "Start minimized"
 msgstr "Geminimaliseerd starten"
 
-#: src/preferencesDialog.cpp:178
+#: src/preferencesDialog.cpp:171
 msgid "Collect .xyz files"
 msgstr "Verzamelen .xyz bestanden"
 
-#: src/preferencesDialog.cpp:179
+#: src/preferencesDialog.cpp:172
 msgid "Auto update projects database when needed"
 msgstr "Automatisch projectendatabase bijwerken wanneer nodig"
 
-#: src/preferencesDialog.cpp:180
+#: src/preferencesDialog.cpp:173
 msgid "Always list inaccessible clients last"
 msgstr "Altijd ontoegankelijke clients als laatste weergeven"
 
-#: src/preferencesDialog.cpp:181
+#: src/preferencesDialog.cpp:174
 msgid "Check for FahMon updates on startup"
 msgstr "Controleer naar FahMon updates bij het opstarten"
 
-#: src/preferencesDialog.cpp:216
+#: src/preferencesDialog.cpp:206
 msgid "A date (dd/mm)"
 msgstr "Een datum (dd/mm)"
 
-#: src/preferencesDialog.cpp:216
+#: src/preferencesDialog.cpp:206
 msgid "A date (mm/dd)"
 msgstr "Een datum (mm/dd)"
 
-#: src/preferencesDialog.cpp:216
+#: src/preferencesDialog.cpp:206
 msgid "Time left"
 msgstr "Tijd te gaan"
 
-#: src/preferencesDialog.cpp:217
+#: src/preferencesDialog.cpp:207
 msgid "All frames"
 msgstr "Alle frames"
 
-#: src/preferencesDialog.cpp:217
+#: src/preferencesDialog.cpp:207
 msgid "Last frame only"
 msgstr "Alleen laatste frame"
 
-#: src/preferencesDialog.cpp:217
+#: src/preferencesDialog.cpp:207
 msgid "Last 3 frames"
 msgstr "Laatste 3 frames"
 
-#: src/preferencesDialog.cpp:217
+#: src/preferencesDialog.cpp:207
 msgid "Effective rate"
 msgstr "Effectieve verhouding"
 
-#: src/preferencesDialog.cpp:227
+#: src/preferencesDialog.cpp:217
 msgid "Auto reload clients"
 msgstr "Automatisch herladen clients"
 
-#: src/preferencesDialog.cpp:228
+#: src/preferencesDialog.cpp:218
 msgid "Reload interval (mn)"
 msgstr "Herlaad interval (minuten)"
 
-#: src/preferencesDialog.cpp:229
+#: src/preferencesDialog.cpp:219
 msgid "Use experimental reload system"
 msgstr "Gebruik experimenteel herlaad systeem"
 
-#: src/preferencesDialog.cpp:233
+#: src/preferencesDialog.cpp:223
 msgid "Ignore asynchronous clocks"
 msgstr "Negeer asynchronische klokken"
 
-#: src/preferencesDialog.cpp:235
+#: src/preferencesDialog.cpp:225
 msgid "Display dates as"
 msgstr "Geef data weer als"
 
-#: src/preferencesDialog.cpp:241
+#: src/preferencesDialog.cpp:231
 msgid "Calculate PPD based on"
 msgstr "Berekende PPD gebaseerd op "
 
-#: src/preferencesDialog.cpp:284
+#: src/preferencesDialog.cpp:271
 msgid "Use a proxy for HTTP connections"
 msgstr "Gebruik een proxy voor HTTP verbindingen"
 
-#: src/preferencesDialog.cpp:287
+#: src/preferencesDialog.cpp:274
 msgid "Proxy requires authentication"
 msgstr "Proxy vereist authenticatie"
 
-#: src/preferencesDialog.cpp:290 src/preferencesDialog.cpp:344
+#: src/preferencesDialog.cpp:277 src/preferencesDialog.cpp:329
 msgid "Address:"
 msgstr "Adres:"
 
-#: src/preferencesDialog.cpp:291
+#: src/preferencesDialog.cpp:278
 msgid "Port:"
 msgstr "Poort:"
 
-#: src/preferencesDialog.cpp:292
+#: src/preferencesDialog.cpp:279
 msgid ""
 "Proxy\n"
 "Username:"
@@ -937,7 +937,7 @@ msgstr ""
 "Proxy\n"
 "Gebruikersnaam:"
 
-#: src/preferencesDialog.cpp:293
+#: src/preferencesDialog.cpp:280
 msgid ""
 "Proxy\n"
 "Password:"
@@ -945,73 +945,73 @@ msgstr ""
 "Proxy\n"
 "Wachtwoord:"
 
-#: src/preferencesDialog.cpp:342
+#: src/preferencesDialog.cpp:327
 msgid "Use the following settings for new project downloads"
 msgstr ""
 "Gebruik de volgende instellingen voor het downloaden van nieuwe projecten"
 
-#: src/preferencesDialog.cpp:345
+#: src/preferencesDialog.cpp:330
 msgid "Use a local file for project data"
 msgstr "Gebruik een lokaal bestand voor de projectgegevens"
 
-#: src/preferencesDialog.cpp:347 src/preferencesDialog.cpp:487
-#: src/preferencesDialog.cpp:492 src/preferencesDialog.cpp:497
+#: src/preferencesDialog.cpp:332 src/preferencesDialog.cpp:467
+#: src/preferencesDialog.cpp:472 src/preferencesDialog.cpp:477
 msgid "Filename:"
 msgstr "Bestandsnaam:"
 
-#: src/preferencesDialog.cpp:394
+#: src/preferencesDialog.cpp:377
 msgid "Web Browser:"
 msgstr "Webbrowser:"
 
-#: src/preferencesDialog.cpp:395
+#: src/preferencesDialog.cpp:378
 msgid "File Manager:"
 msgstr "File manager:"
 
-#: src/preferencesDialog.cpp:397
+#: src/preferencesDialog.cpp:380
 msgid "File Manager Command:"
 msgstr "File manager commando:"
 
-#: src/preferencesDialog.cpp:398
+#: src/preferencesDialog.cpp:381
 msgid "Manually set timezone to UTC +"
 msgstr "Zet tijdszone handmatig naar UTC +"
 
-#: src/preferencesDialog.cpp:402
+#: src/preferencesDialog.cpp:385
 msgid "Windows Explorer"
 msgstr "Windows Explorer"
 
-#: src/preferencesDialog.cpp:402 src/preferencesDialog.cpp:405
+#: src/preferencesDialog.cpp:385 src/preferencesDialog.cpp:388
 msgid "Other"
 msgstr "Anders"
 
-#: src/preferencesDialog.cpp:485
+#: src/preferencesDialog.cpp:465
 msgid "Export Web Application"
 msgstr "Exporteer naar Web Application"
 
-#: src/preferencesDialog.cpp:490
+#: src/preferencesDialog.cpp:470
 msgid "Export Simple Web page"
 msgstr "Exporteer naar webpagina"
 
-#: src/preferencesDialog.cpp:495
+#: src/preferencesDialog.cpp:475
 msgid "Export Simple Text file"
 msgstr "Exporteer naar textbestand"
 
-#: src/preferencesDialog.cpp:902
+#: src/preferencesDialog.cpp:868
 msgid "Choose a local project data file"
 msgstr "Kies een lokaal project data bestand"
 
-#: src/preferencesDialog.cpp:919
+#: src/preferencesDialog.cpp:882
 msgid "Choose where to save the Web Application"
 msgstr "Kies waar er moet worden opgeslagen voor de Web Application"
 
-#: src/preferencesDialog.cpp:936
+#: src/preferencesDialog.cpp:896
 msgid "Choose where to save the simple web page"
 msgstr "Kies waar er moet worden opgeslagen voor de webpagina"
 
-#: src/preferencesDialog.cpp:953
+#: src/preferencesDialog.cpp:910
 msgid "Choose where to save the simple text file"
 msgstr "Kies waar er moet worden opgeslagen voor het tekstbestand"
 
-#: src/preferencesManager.cpp:247
+#: src/preferencesManager.cpp:212
 msgid "There is no Preferences file, or it is not readable"
 msgstr "Er is geen instellingenbestand, of deze is niet leesbaar"
 

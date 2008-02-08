@@ -28,6 +28,7 @@
 ./src/project.cpp
 ./src/projectHelperThread.cpp
 ./src/projectsManager.cpp
+./src/queue.cpp
 ./src/staticBoldedText.cpp
 ./src/tools.cpp
 ./src/trayManager.cpp

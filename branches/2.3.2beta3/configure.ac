@@ -1,4 +1,4 @@
-# Copyright (C) 2007-8 Andrew Schofield <the.uncle.fungus@gmail.com>
+# Copyright (C) 2007-8 Andrew Schofield <andrew_s@fahmon.net>
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -10,7 +10,7 @@
 m4_include(m4/wxwin.m4)
 AC_INIT([FahMon],
         [2.3.2beta3],
-        [Andrew Schofield the.uncle.fungus@gmail.com],
+        [Andrew Schofield andrew_s@fahmon.net],
         [FahMon])
 AC_PREFIX
 AM_CONFIG_HEADER(config.h)

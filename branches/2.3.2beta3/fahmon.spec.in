@@ -13,7 +13,7 @@ License:    GPL
 Group:      System/Monitoring
 URL:        http://fahmon.net/
 Source:     %{name}-%{version}.tar.bz2
-Packager:   Andrew Schofield <the.uncle.fungus@gmail.com>
+Packager:   Andrew Schofield <andrew_s@fahmon.net>
 BuildRoot:  %{_tmppath}/%{name}-%{version}-root
 
 # Generic build requirements
@@ -82,17 +82,17 @@ rm -rf %{buildroot}
 %{_datadir}/locale/*/LC_MESSAGES/fahmon.mo
 
 %changelog
-* Thu Jan 17 2007 Andrew Schofield <the.uncle.fungus@gmail.com>
+* Thu Jan 17 2007 Andrew Schofield <andrew_s@fahmon.net>
 - Added GNU build macros to auto insert version number.
 
-* Tue Oct 30 2007 Andrew Schofield <the.uncle.fungus@gmail.com>
+* Tue Oct 30 2007 Andrew Schofield <andrew_s@fahmon.net>
 - Updated to 2.3.1
 
-* Mon Sep 10 2007 Andrew Schofield <the.uncle.fungus@gmail.com>
+* Mon Sep 10 2007 Andrew Schofield <andrew_s@fahmon.net>
 - Updated to 2.3.0
 
-* Wed Aug 01 2007 Andrew Schofield <the.uncle.fungus@gmail.com>
+* Wed Aug 01 2007 Andrew Schofield <andrew_s@fahmon.net>
 - Updated description
 
-* Thu Jul 12 2007 Andrew Schofield <the.uncle.fungus@gmail.com>
+* Thu Jul 12 2007 Andrew Schofield <andrew_s@fahmon.net>
 - New spec file for PCLinuxOS 2007, ripped apart from the pidgin 2.0.0beta7 spec file (http://pidgin.im)

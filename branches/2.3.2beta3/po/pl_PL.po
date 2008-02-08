@@ -2,12 +2,12 @@
 # Copyright (C) YEAR Andrew Schofield
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Andrew Schofield <the.uncle.fungus@gmail.com>, 2007.
+# Andrew Schofield <andrew_s@fahmon.net>, 2007.
 msgid ""
 msgstr ""
 "Project-Id-Version: pl_PL\n"
-"Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2008-02-07 12:49+0000\n"
+"Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
+"POT-Creation-Date: 2008-02-08 10:51+0000\n"
 "PO-Revision-Date: 2008-02-01 04:32+0100\n"
 "Last-Translator: Mariusz Pociask <mariusz-pociask@o2.pl>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -137,7 +137,7 @@ msgstr "Czas / ramkę wg OTR nieznany."
 msgid "No Eff. Time / Frame"
 msgstr "Efektywny czas / ramkę nieznany."
 
-#: src/benchmarksManager.cpp:144 src/preferencesManager.cpp:272
+#: src/benchmarksManager.cpp:144 src/preferencesManager.cpp:234
 #: src/projectsManager.cpp:131
 #, c-format
 msgid "Could not open file <%s> for writing!"
@@ -817,128 +817,128 @@ msgstr ""
 "Brak możliwości zapisu do pliku!\n"
 "Plik dziennika nie zostanie zachowany!"
 
-#: src/preferencesDialog.cpp:88
+#: src/preferencesDialog.cpp:93
 #, c-format
 msgid "Preferences / %s"
 msgstr "Ustawienia / %s"
 
-#: src/preferencesDialog.cpp:98
+#: src/preferencesDialog.cpp:103
 msgid "General"
 msgstr "Ogólne"
 
-#: src/preferencesDialog.cpp:99
+#: src/preferencesDialog.cpp:104
 msgid "Monitoring"
 msgstr "Monitorowanie"
 
-#: src/preferencesDialog.cpp:100
+#: src/preferencesDialog.cpp:105
 msgid "Networking"
 msgstr "Sieć"
 
-#: src/preferencesDialog.cpp:101
+#: src/preferencesDialog.cpp:106
 msgid "Advanced"
 msgstr "Zaawansowane"
 
-#: src/preferencesDialog.cpp:102
+#: src/preferencesDialog.cpp:107
 msgid "System"
 msgstr "System"
 
-#: src/preferencesDialog.cpp:104
+#: src/preferencesDialog.cpp:109
 msgid "WebApp"
 msgstr "IntSieciowy"
 
-#: src/preferencesDialog.cpp:176
+#: src/preferencesDialog.cpp:169
 msgid "Enable system tray icon"
 msgstr "Włącz ikonę w polu systemowym"
 
-#: src/preferencesDialog.cpp:177
+#: src/preferencesDialog.cpp:170
 msgid "Start minimized"
 msgstr "Uruchom w postaci zminimalizowanej"
 
-#: src/preferencesDialog.cpp:178
+#: src/preferencesDialog.cpp:171
 msgid "Collect .xyz files"
 msgstr "Zachowuj pliki .xyz"
 
-#: src/preferencesDialog.cpp:179
+#: src/preferencesDialog.cpp:172
 msgid "Auto update projects database when needed"
 msgstr "W razie potrzeby, aktualizuj bazę projektów automatycznie"
 
-#: src/preferencesDialog.cpp:180
+#: src/preferencesDialog.cpp:173
 msgid "Always list inaccessible clients last"
 msgstr "Grupuj niedostępne klienty zawsze na końcu"
 
-#: src/preferencesDialog.cpp:181
+#: src/preferencesDialog.cpp:174
 msgid "Check for FahMon updates on startup"
 msgstr "Wyszukaj aktualizacje FahMona przy starcie"
 
-#: src/preferencesDialog.cpp:216
+#: src/preferencesDialog.cpp:206
 msgid "A date (dd/mm)"
 msgstr "datę (dd/mm)"
 
-#: src/preferencesDialog.cpp:216
+#: src/preferencesDialog.cpp:206
 msgid "A date (mm/dd)"
 msgstr "datę (mm/dd)"
 
-#: src/preferencesDialog.cpp:216
+#: src/preferencesDialog.cpp:206
 msgid "Time left"
 msgstr "czas"
 
-#: src/preferencesDialog.cpp:217
+#: src/preferencesDialog.cpp:207
 msgid "All frames"
 msgstr "wszystkich ramek"
 
-#: src/preferencesDialog.cpp:217
+#: src/preferencesDialog.cpp:207
 msgid "Last frame only"
 msgstr "ostatniej ramki"
 
-#: src/preferencesDialog.cpp:217
+#: src/preferencesDialog.cpp:207
 msgid "Last 3 frames"
 msgstr "Ostatnich Trzech Ramek"
 
-#: src/preferencesDialog.cpp:217
+#: src/preferencesDialog.cpp:207
 msgid "Effective rate"
 msgstr "efektywnego czasu przetwarzania"
 
-#: src/preferencesDialog.cpp:227
+#: src/preferencesDialog.cpp:217
 msgid "Auto reload clients"
 msgstr "Automatycznie odświeżaj statusy klientów"
 
-#: src/preferencesDialog.cpp:228
+#: src/preferencesDialog.cpp:218
 msgid "Reload interval (mn)"
 msgstr "Czas pomiędzy odczytami (mn)              "
 
-#: src/preferencesDialog.cpp:229
+#: src/preferencesDialog.cpp:219
 msgid "Use experimental reload system"
 msgstr "Użyj eksperymentalnej metody odczytu"
 
-#: src/preferencesDialog.cpp:233
+#: src/preferencesDialog.cpp:223
 msgid "Ignore asynchronous clocks"
 msgstr "Ignoruj rozsynchronizowane zegary"
 
-#: src/preferencesDialog.cpp:235
+#: src/preferencesDialog.cpp:225
 msgid "Display dates as"
 msgstr "Wyświetlaj daty jako                                     "
 
-#: src/preferencesDialog.cpp:241
+#: src/preferencesDialog.cpp:231
 msgid "Calculate PPD based on"
 msgstr "Oblicz PPD na bazie     "
 
-#: src/preferencesDialog.cpp:284
+#: src/preferencesDialog.cpp:271
 msgid "Use a proxy for HTTP connections"
 msgstr "Użyj proxy dla połączeń HTTP"
 
-#: src/preferencesDialog.cpp:287
+#: src/preferencesDialog.cpp:274
 msgid "Proxy requires authentication"
 msgstr "Proxy wymaga zalogowania się"
 
-#: src/preferencesDialog.cpp:290 src/preferencesDialog.cpp:344
+#: src/preferencesDialog.cpp:277 src/preferencesDialog.cpp:329
 msgid "Address:"
 msgstr "Adres:"
 
-#: src/preferencesDialog.cpp:291
+#: src/preferencesDialog.cpp:278
 msgid "Port:"
 msgstr "Port:"
 
-#: src/preferencesDialog.cpp:292
+#: src/preferencesDialog.cpp:279
 msgid ""
 "Proxy\n"
 "Username:"
@@ -946,7 +946,7 @@ msgstr ""
 "Login\n"
 "do proxy:  "
 
-#: src/preferencesDialog.cpp:293
+#: src/preferencesDialog.cpp:280
 msgid ""
 "Proxy\n"
 "Password:"
@@ -954,72 +954,72 @@ msgstr ""
 "Hasło\n"
 "do proxy:"
 
-#: src/preferencesDialog.cpp:342
+#: src/preferencesDialog.cpp:327
 msgid "Use the following settings for new project downloads"
 msgstr "Użyj następujących parametrów do aktualizacji bazy projektów"
 
-#: src/preferencesDialog.cpp:345
+#: src/preferencesDialog.cpp:330
 msgid "Use a local file for project data"
 msgstr "Użyj własnego pliku z danymi projektów"
 
-#: src/preferencesDialog.cpp:347 src/preferencesDialog.cpp:487
-#: src/preferencesDialog.cpp:492 src/preferencesDialog.cpp:497
+#: src/preferencesDialog.cpp:332 src/preferencesDialog.cpp:467
+#: src/preferencesDialog.cpp:472 src/preferencesDialog.cpp:477
 msgid "Filename:"
 msgstr "Plik:    "
 
-#: src/preferencesDialog.cpp:394
+#: src/preferencesDialog.cpp:377
 msgid "Web Browser:"
 msgstr "Przeglądarka internetowa:"
 
-#: src/preferencesDialog.cpp:395
+#: src/preferencesDialog.cpp:378
 msgid "File Manager:"
 msgstr "Menedżer plików:"
 
-#: src/preferencesDialog.cpp:397
+#: src/preferencesDialog.cpp:380
 msgid "File Manager Command:"
 msgstr "Polecenie uruchamiające:"
 
-#: src/preferencesDialog.cpp:398
+#: src/preferencesDialog.cpp:381
 msgid "Manually set timezone to UTC +"
 msgstr "Ustaw strefę czasową ręcznie na UTC +   "
 
-#: src/preferencesDialog.cpp:402
+#: src/preferencesDialog.cpp:385
 msgid "Windows Explorer"
 msgstr "Eksplorator Windows"
 
-#: src/preferencesDialog.cpp:402 src/preferencesDialog.cpp:405
+#: src/preferencesDialog.cpp:385 src/preferencesDialog.cpp:388
 msgid "Other"
 msgstr "Inny"
 
-#: src/preferencesDialog.cpp:485
+#: src/preferencesDialog.cpp:465
 msgid "Export Web Application"
 msgstr "Eksportuj interfejs graficzny"
 
-#: src/preferencesDialog.cpp:490
+#: src/preferencesDialog.cpp:470
 msgid "Export Simple Web page"
 msgstr "Eksportuj prostą stronę"
 
-#: src/preferencesDialog.cpp:495
+#: src/preferencesDialog.cpp:475
 msgid "Export Simple Text file"
 msgstr "Eksportuj plik tekstowy"
 
-#: src/preferencesDialog.cpp:902
+#: src/preferencesDialog.cpp:868
 msgid "Choose a local project data file"
 msgstr "Wybierz lokalny plik z danymi projektów"
 
-#: src/preferencesDialog.cpp:919
+#: src/preferencesDialog.cpp:882
 msgid "Choose where to save the Web Application"
 msgstr "Wybierz miejsce zapisu interfejsu graficznego"
 
-#: src/preferencesDialog.cpp:936
+#: src/preferencesDialog.cpp:896
 msgid "Choose where to save the simple web page"
 msgstr "Wybierz miejsce zapisu strony"
 
-#: src/preferencesDialog.cpp:953
+#: src/preferencesDialog.cpp:910
 msgid "Choose where to save the simple text file"
 msgstr "Wybierz miejsce zapisu pliku tekstowego"
 
-#: src/preferencesManager.cpp:247
+#: src/preferencesManager.cpp:212
 msgid "There is no Preferences file, or it is not readable"
 msgstr "Brak pliku konfiguracyjnego lub jest on nieczytelny"
 
