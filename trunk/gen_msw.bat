@@ -34,4 +34,3 @@ del /F /Q .\Release\*.dep
 del /F /Q .\Release\*.log
 del /F /Q .\Release\*.idb
 rmdir /S /Q .\Release\config
-

@@ -1,4 +1,18 @@
-Software for building FahMon on Linux:
+Running FahMon
+==============
+
+Software for running FahMon on Linux
+REQUIRED
+* wxGTK >=2.8.0
+
+Software for running FahMon on Windows
+REQUIRED
+* None
+
+Building FahMon from source
+===========================
+
+Software for building FahMon on Linux
 REQUIRED
 * gcc-c++
 * wxGTK >=2.8.0
@@ -16,7 +30,7 @@ Software for building FahMon on MS Windows
 REQUIRED
 * Microsoft Visual Studio (or Visual C++ Express)
 * Microsoft Windows Server 2003 R2 SDK
-* wxWidgets 2.6.3 (2.8.4 causes problems with network shares)
+* wxWidgets 2.8.6
 
 OPTIONAL
 * a gettext catalog editor like poEdit (required to edit or create new

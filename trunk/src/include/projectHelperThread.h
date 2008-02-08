@@ -14,6 +14,13 @@
 *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
+/**
+ * \file projectHelperThread.h
+ * Manages threads for project database updates.
+ * \author François Ingelrest
+ * \author Andrew Schofield
+ **/
+
 #ifndef _PROJECTHELPERTHREAD_H
 #define _PROJECTHELPERTHREAD_H
 
@@ -22,22 +29,32 @@
 
 
 /**
-* When instanciated, this class:
-*  - Asks the ProjectsManager to update its database
-*  - Sends an EVT_PROJECTS_DATABASE_UPDATED event to the main dialog when done, if no error occurred
-*
-* This class should only be used by the ProjectsManager
-**/
+ * Manages threads for project database updates.
+ * When instanciated, this class:
+ *  - Asks the ProjectsManager to update its database
+ *  - Sends an EVT_PROJECTS_DATABASE_UPDATED event to the main dialog when done, if no error occurred
+ *
+ * This class should only be used by the ProjectsManager
+ **/
 class ProjectHelperThread : public wxThread
 {
 protected:
-	bool mIsForced;
-	bool mIsInSilentMode;
+	bool mIsForced; /**< Was the update forced? */
+	bool mIsInSilentMode; /**< Should the update be verbose? */
 
+	/**
+	 * This is the entry point of the thread, where the database is updated.
+	 **/
 	void* Entry(void);
 
 
 public:
+	/**
+	 * Constructor.
+	 * Contructs the thread launcher.
+	 * @param isForced Was the update forced?
+	  *@param isInSilentMode Should we be verbose?
+	 **/
 	ProjectHelperThread(bool isForced, bool isInSilentMode);
 };
 

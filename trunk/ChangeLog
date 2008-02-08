@@ -35,6 +35,9 @@ v2.3.2
       accurate determination can be made.
     * Fixed behaviour when FAHlog reports odd completion percentages like 100%->
       200% instead of 0%->100%.
+    * Offline documentation is now more informative and easier to follow.
+    * Added SCEARD (PS3 Gromacs) support just in case we ever get access to PS3
+      logs in the future.
 
     Windows
 

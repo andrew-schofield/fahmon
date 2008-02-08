@@ -1,4 +1,4 @@
-# Copyright (C) 2007-8 Andrew Schofield <the.uncle.fungus@gmail.com>
+# Copyright (C) 2007-8 Andrew Schofield <andrew_s@fahmon.net>
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -10,20 +10,13 @@
 m4_include(m4/wxwin.m4)
 AC_INIT([FahMon],
         [2.3.2beta3],
-        [Andrew Schofield the.uncle.fungus@gmail.com],
+        [Andrew Schofield andrew_s@fahmon.net],
         [FahMon])
 AC_PREFIX
-# AC_CONFIG_AUX_DIR(config)
 AM_CONFIG_HEADER(config.h)
 AM_INIT_AUTOMAKE([dist-bzip2])
 
-# LF_CONFIGURE_CC
-# LF_CONFIGURE_CXX
-# LF_HOST_TYPE
-# LF_SET_WARNINGS
 AC_PROG_CXX
-#AC_PROG_CC
-#AC_PROG_RANLIB
 
 AM_OPTIONS_WXCONFIG
 reqwx=2.8.0

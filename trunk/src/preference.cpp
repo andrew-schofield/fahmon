@@ -14,14 +14,18 @@
 *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
+/**
+ * \file preference.cpp
+ * Preference definition class.
+ * \author François Ingelrest
+ * \author Andrew Schofield
+ **/
+
 #include "preference.h"
 
 #include "tools.h"
 
 
-/**
-* Constructor
-**/
 Preference::Preference(void)
 {
 	mPrefName = wxT("");
@@ -29,9 +33,6 @@ Preference::Preference(void)
 }
 
 
-/**
-* Constructor
-**/
 Preference::Preference(wxString name, bool value)
 {
 	mPrefType  = PT_BOOL;
@@ -40,9 +41,6 @@ Preference::Preference(wxString name, bool value)
 }
 
 
-/**
-* Constructor
-**/
 Preference::Preference(wxString name, wxUint32 value)
 {
 	mPrefType  = PT_UINT;
@@ -51,9 +49,6 @@ Preference::Preference(wxString name, wxUint32 value)
 }
 
 
-/**
-* Constructor
-**/
 Preference::Preference(wxString name, wxInt32 value)
 {
 	mPrefType = PT_INT;
@@ -62,9 +57,6 @@ Preference::Preference(wxString name, wxInt32 value)
 }
 
 
-/**
-* Constructor
-**/
 Preference::Preference(wxString name, double value)
 {
 	mPrefType    = PT_DOUBLE;
@@ -73,9 +65,6 @@ Preference::Preference(wxString name, double value)
 }
 
 
-/**
-* Constructor
-**/
 Preference::Preference(wxString name, const wxString& value, bool isHidden)
 {
 	// Hidden strings are stored in the same way as 'normal' strings
@@ -94,9 +83,6 @@ Preference::Preference(wxString name, const wxString& value, bool isHidden)
 }
 
 
-/**
-* Read the preference from the given input stream
-**/
 void Preference::Read(DataInputStream& in)
 {
 	// 1) The type
@@ -140,9 +126,6 @@ void Preference::Read(DataInputStream& in)
 }
 
 
-/**
-* Write this preference to the given output stream
-**/
 void Preference::Write(DataOutputStream& out) const
 {
 	// 1) The type

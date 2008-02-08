@@ -14,13 +14,17 @@
 *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
+/**
+ * \file project.cpp
+ * Project object.
+ * \author François Ingelrest
+ * \author Andrew Schofield
+ **/
+
 #include "fahmon.h"
 #include "project.h"
 
 
-/**
-* Constructor
-**/
 Project::Project(ProjectId projectId, wxUint16 preferredDeadlineInDays, wxUint16 finalDeadlineInDays, wxUint16 nbFrames, WuCredit credit, CoreId coreId)
 {
 	SetProjectId(projectId);
@@ -32,9 +36,6 @@ Project::Project(ProjectId projectId, wxUint16 preferredDeadlineInDays, wxUint16
 }
 
 
-/**
-* Write this project to the disk
-**/
 void Project::Write(DataOutputStream& out) const
 {
 	out.Write(&mProjectId, sizeof(mProjectId));
@@ -46,9 +47,6 @@ void Project::Write(DataOutputStream& out) const
 }
 
 
-/**
-* Read the project from the disk
-**/
 void Project::Read(DataInputStream& in)
 {
 	in.Read(&mProjectId, sizeof(mProjectId));

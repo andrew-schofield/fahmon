@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: the.uncle.fungus@gmail.com\n"
-"POT-Creation-Date: 2008-02-06 20:40+0000\n"
+"Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
+"POT-Creation-Date: 2008-02-08 10:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -134,8 +134,8 @@ msgstr ""
 msgid "No Eff. Time / Frame"
 msgstr ""
 
-#: src/benchmarksManager.cpp:144 src/preferencesManager.cpp:272
-#: src/projectsManager.cpp:145
+#: src/benchmarksManager.cpp:144 src/preferencesManager.cpp:234
+#: src/projectsManager.cpp:131
 #, c-format
 msgid "Could not open file <%s> for writing!"
 msgstr ""
@@ -742,269 +742,269 @@ msgstr ""
 msgid "No update found"
 msgstr ""
 
-#: src/mainDialog.cpp:1405 src/projectsManager.cpp:354
+#: src/mainDialog.cpp:1405 src/projectsManager.cpp:308
 msgid "Unable to create a temporary file!"
 msgstr ""
 
-#: src/mainDialog.cpp:1409 src/projectsManager.cpp:358
+#: src/mainDialog.cpp:1409 src/projectsManager.cpp:312
 #, c-format
 msgid "Unable to open the temporary file <%s>"
 msgstr ""
 
-#: src/mainDialog.cpp:1413 src/projectsManager.cpp:362
+#: src/mainDialog.cpp:1413 src/projectsManager.cpp:316
 msgid "Unable to connect to the server!"
 msgstr ""
 
-#: src/mainDialog.cpp:1417 src/projectsManager.cpp:366
+#: src/mainDialog.cpp:1417 src/projectsManager.cpp:320
 msgid "Unable to send the request to the server!"
 msgstr ""
 
-#: src/mainDialog.cpp:1421 src/projectsManager.cpp:370
+#: src/mainDialog.cpp:1421 src/projectsManager.cpp:324
 msgid "Download aborted!"
 msgstr ""
 
-#: src/mainDialog.cpp:1427 src/projectsManager.cpp:376
+#: src/mainDialog.cpp:1427 src/projectsManager.cpp:330
 msgid "An unknown error happened!"
 msgstr ""
 
-#: src/messagesFrame.cpp:39
+#: src/messagesFrame.cpp:43
 #, c-format
 msgid "Messages / %s"
 msgstr ""
 
-#: src/messagesManager.cpp:110
+#: src/messagesManager.cpp:99
 msgid ""
 "Could not open file for writing!\n"
 "The log will not be saved!"
 msgstr ""
 
-#: src/preferencesDialog.cpp:88
+#: src/preferencesDialog.cpp:93
 #, c-format
 msgid "Preferences / %s"
 msgstr ""
 
-#: src/preferencesDialog.cpp:98
+#: src/preferencesDialog.cpp:103
 msgid "General"
 msgstr ""
 
-#: src/preferencesDialog.cpp:99
+#: src/preferencesDialog.cpp:104
 msgid "Monitoring"
 msgstr ""
 
-#: src/preferencesDialog.cpp:100
+#: src/preferencesDialog.cpp:105
 msgid "Networking"
 msgstr ""
 
-#: src/preferencesDialog.cpp:101
+#: src/preferencesDialog.cpp:106
 msgid "Advanced"
 msgstr ""
 
-#: src/preferencesDialog.cpp:102
+#: src/preferencesDialog.cpp:107
 msgid "System"
 msgstr ""
 
-#: src/preferencesDialog.cpp:104
+#: src/preferencesDialog.cpp:109
 msgid "WebApp"
 msgstr ""
 
-#: src/preferencesDialog.cpp:176
+#: src/preferencesDialog.cpp:169
 msgid "Enable system tray icon"
 msgstr ""
 
-#: src/preferencesDialog.cpp:177
+#: src/preferencesDialog.cpp:170
 msgid "Start minimized"
 msgstr ""
 
-#: src/preferencesDialog.cpp:178
+#: src/preferencesDialog.cpp:171
 msgid "Collect .xyz files"
 msgstr ""
 
-#: src/preferencesDialog.cpp:179
+#: src/preferencesDialog.cpp:172
 msgid "Auto update projects database when needed"
 msgstr ""
 
-#: src/preferencesDialog.cpp:180
+#: src/preferencesDialog.cpp:173
 msgid "Always list inaccessible clients last"
 msgstr ""
 
-#: src/preferencesDialog.cpp:181
+#: src/preferencesDialog.cpp:174
 msgid "Check for FahMon updates on startup"
 msgstr ""
 
-#: src/preferencesDialog.cpp:216
+#: src/preferencesDialog.cpp:206
 msgid "A date (dd/mm)"
 msgstr ""
 
-#: src/preferencesDialog.cpp:216
+#: src/preferencesDialog.cpp:206
 msgid "A date (mm/dd)"
 msgstr ""
 
-#: src/preferencesDialog.cpp:216
+#: src/preferencesDialog.cpp:206
 msgid "Time left"
 msgstr ""
 
-#: src/preferencesDialog.cpp:217
+#: src/preferencesDialog.cpp:207
 msgid "All frames"
 msgstr ""
 
-#: src/preferencesDialog.cpp:217
+#: src/preferencesDialog.cpp:207
 msgid "Last frame only"
 msgstr ""
 
-#: src/preferencesDialog.cpp:217
+#: src/preferencesDialog.cpp:207
 msgid "Last 3 frames"
 msgstr ""
 
-#: src/preferencesDialog.cpp:217
+#: src/preferencesDialog.cpp:207
 msgid "Effective rate"
 msgstr ""
 
-#: src/preferencesDialog.cpp:227
+#: src/preferencesDialog.cpp:217
 msgid "Auto reload clients"
 msgstr ""
 
-#: src/preferencesDialog.cpp:228
+#: src/preferencesDialog.cpp:218
 msgid "Reload interval (mn)"
 msgstr ""
 
-#: src/preferencesDialog.cpp:229
+#: src/preferencesDialog.cpp:219
 msgid "Use experimental reload system"
 msgstr ""
 
-#: src/preferencesDialog.cpp:233
+#: src/preferencesDialog.cpp:223
 msgid "Ignore asynchronous clocks"
 msgstr ""
 
-#: src/preferencesDialog.cpp:235
+#: src/preferencesDialog.cpp:225
 msgid "Display dates as"
 msgstr ""
 
-#: src/preferencesDialog.cpp:241
+#: src/preferencesDialog.cpp:231
 msgid "Calculate PPD based on"
 msgstr ""
 
-#: src/preferencesDialog.cpp:284
+#: src/preferencesDialog.cpp:271
 msgid "Use a proxy for HTTP connections"
 msgstr ""
 
-#: src/preferencesDialog.cpp:287
+#: src/preferencesDialog.cpp:274
 msgid "Proxy requires authentication"
 msgstr ""
 
-#: src/preferencesDialog.cpp:290 src/preferencesDialog.cpp:344
+#: src/preferencesDialog.cpp:277 src/preferencesDialog.cpp:329
 msgid "Address:"
 msgstr ""
 
-#: src/preferencesDialog.cpp:291
+#: src/preferencesDialog.cpp:278
 msgid "Port:"
 msgstr ""
 
-#: src/preferencesDialog.cpp:292
+#: src/preferencesDialog.cpp:279
 msgid ""
 "Proxy\n"
 "Username:"
 msgstr ""
 
-#: src/preferencesDialog.cpp:293
+#: src/preferencesDialog.cpp:280
 msgid ""
 "Proxy\n"
 "Password:"
 msgstr ""
 
-#: src/preferencesDialog.cpp:342
+#: src/preferencesDialog.cpp:327
 msgid "Use the following settings for new project downloads"
 msgstr ""
 
-#: src/preferencesDialog.cpp:345
+#: src/preferencesDialog.cpp:330
 msgid "Use a local file for project data"
 msgstr ""
 
-#: src/preferencesDialog.cpp:347 src/preferencesDialog.cpp:487
-#: src/preferencesDialog.cpp:492 src/preferencesDialog.cpp:497
+#: src/preferencesDialog.cpp:332 src/preferencesDialog.cpp:467
+#: src/preferencesDialog.cpp:472 src/preferencesDialog.cpp:477
 msgid "Filename:"
 msgstr ""
 
-#: src/preferencesDialog.cpp:394
+#: src/preferencesDialog.cpp:377
 msgid "Web Browser:"
 msgstr ""
 
-#: src/preferencesDialog.cpp:395
+#: src/preferencesDialog.cpp:378
 msgid "File Manager:"
 msgstr ""
 
-#: src/preferencesDialog.cpp:397
+#: src/preferencesDialog.cpp:380
 msgid "File Manager Command:"
 msgstr ""
 
-#: src/preferencesDialog.cpp:398
+#: src/preferencesDialog.cpp:381
 msgid "Manually set timezone to UTC +"
 msgstr ""
 
-#: src/preferencesDialog.cpp:402
+#: src/preferencesDialog.cpp:385
 msgid "Windows Explorer"
 msgstr ""
 
-#: src/preferencesDialog.cpp:402 src/preferencesDialog.cpp:405
+#: src/preferencesDialog.cpp:385 src/preferencesDialog.cpp:388
 msgid "Other"
 msgstr ""
 
-#: src/preferencesDialog.cpp:485
+#: src/preferencesDialog.cpp:465
 msgid "Export Web Application"
 msgstr ""
 
-#: src/preferencesDialog.cpp:490
+#: src/preferencesDialog.cpp:470
 msgid "Export Simple Web page"
 msgstr ""
 
-#: src/preferencesDialog.cpp:495
+#: src/preferencesDialog.cpp:475
 msgid "Export Simple Text file"
 msgstr ""
 
-#: src/preferencesDialog.cpp:902
+#: src/preferencesDialog.cpp:868
 msgid "Choose a local project data file"
 msgstr ""
 
-#: src/preferencesDialog.cpp:919
+#: src/preferencesDialog.cpp:882
 msgid "Choose where to save the Web Application"
 msgstr ""
 
-#: src/preferencesDialog.cpp:936
+#: src/preferencesDialog.cpp:896
 msgid "Choose where to save the simple web page"
 msgstr ""
 
-#: src/preferencesDialog.cpp:953
+#: src/preferencesDialog.cpp:910
 msgid "Choose where to save the simple text file"
 msgstr ""
 
-#: src/preferencesManager.cpp:247
+#: src/preferencesManager.cpp:212
 msgid "There is no Preferences file, or it is not readable"
 msgstr ""
 
-#: src/projectsManager.cpp:110
+#: src/projectsManager.cpp:99
 msgid "There is no projects file, or it is not readable"
 msgstr ""
 
-#: src/projectsManager.cpp:255
+#: src/projectsManager.cpp:215
 msgid "Updating projects database"
 msgstr ""
 
-#: src/projectsManager.cpp:259
+#: src/projectsManager.cpp:219
 msgid "Downloading new projects"
 msgstr ""
 
-#: src/projectsManager.cpp:283
+#: src/projectsManager.cpp:243
 msgid "Adding the new projects to the database"
 msgstr ""
 
-#: src/projectsManager.cpp:385
+#: src/projectsManager.cpp:339
 msgid "Local project update file doesn't exist!"
 msgstr ""
 
-#: src/projectsManager.cpp:394
+#: src/projectsManager.cpp:348
 msgid "Unable to copy local project update file to temporary location"
 msgstr ""
 
-#: src/projectsManager.cpp:457
+#: src/projectsManager.cpp:406
 #, c-format
 msgid ""
 "The line %u is not correctly formatted!\n"
@@ -1012,7 +1012,7 @@ msgid ""
 "%s"
 msgstr ""
 
-#: src/projectsManager.cpp:468
+#: src/projectsManager.cpp:417
 msgid "Update aborted!"
 msgstr ""
 

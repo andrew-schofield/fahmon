@@ -1,4 +1,4 @@
-# Copyright (C) 2007-8 Andrew Schofield <the.uncle.fungus@gmail.com>
+# Copyright (C) 2007-8 Andrew Schofield <andrew_s@fahmon.net>
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -12,17 +12,18 @@ EXTRA_DIST = config.rpath  \
 	reconf \
 	configure \
 	fahmon.desktop \
-        m4/Makefile.in \
-        src/gettext.h \
-        REQUIRES \
-        fahmon.sln \
-        fahmon.vcproj \
-        FahMon.nsi \
-        README.win32.txt \
-        po_to_lang.bat \
-        doxconf \
-        TEMPLATE_SYNTAX \
-        gen_msw.bat
+	m4/Makefile.in \
+	src/gettext.h \
+	REQUIRES \
+	fahmon.sln \
+	fahmon.vcproj \
+	FahMon.nsi \
+	README.win32.txt \
+	po_to_lang.bat \
+	doxconf \
+	TEMPLATE_SYNTAX \
+	gen_msw.bat \
+	fahmon.spec
 SUBDIRS = m4 src doc po src/include src/images resources templates
 
 appsdir = $(datadir)/applications

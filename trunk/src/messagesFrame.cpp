@@ -14,6 +14,13 @@
 *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
+/**
+ * \file messagesFrame.cpp
+ * The messages window.
+ * \author François Ingelrest
+ * \author Andrew Schofield
+ **/
+
 #include "fahmon.h"
 #include "messagesFrame.h"
 
@@ -33,9 +40,6 @@ END_EVENT_TABLE()
 MessagesFrame* MessagesFrame::mInstance = NULL;
 
 
-/**
-* Constructor
-**/
 MessagesFrame::MessagesFrame(wxWindow *parent) : wxFrame(parent, wxID_ANY, wxString::Format(_("Messages / %s"), wxT(FMC_PRODUCT)))
 {
 	wxUint32    frameWidth;
@@ -74,17 +78,11 @@ MessagesFrame::MessagesFrame(wxWindow *parent) : wxFrame(parent, wxID_ANY, wxStr
 }
 
 
-/**
-* Destructor
-**/
 MessagesFrame::~MessagesFrame(void)
 {
 }
 
 
-/**
-* Retrieve the instance of MessagesFrame, create it if needed
-**/
 MessagesFrame* MessagesFrame::GetInstance(wxWindow* parent)
 {
 	if(mInstance == NULL)
@@ -96,9 +94,6 @@ MessagesFrame* MessagesFrame::GetInstance(wxWindow* parent)
 }
 
 
-/**
-* Destroy the instance of MessagesFrame, if any
-**/
 void MessagesFrame::DestroyInstance(void)
 {
 	if(mInstance != NULL)
@@ -113,9 +108,6 @@ void MessagesFrame::DestroyInstance(void)
 }
 
 
-/**
-* Show/Hide the frame
-**/
 void MessagesFrame::Toggle(void)
 {
 	if(IsShown() == false)
@@ -136,18 +128,12 @@ void MessagesFrame::Toggle(void)
 /************************************  EVENTS  ************************************/
 
 
-/**
-* We don't allow the user to destroy the window, we simply hide it
-**/
 void MessagesFrame::OnClose(wxCloseEvent& event)
 {
 	Toggle();
 }
 
 
-/**
-* A new message has been logged, it will be added only if the frame exists AND is visible
-**/
 void MessagesFrame::OnNewMessage(void)
 {
 	if(mInstance != NULL && mInstance->IsShown() == true)

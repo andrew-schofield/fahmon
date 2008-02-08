@@ -14,6 +14,13 @@
 *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
+/**
+ * \file progressManager.cpp
+ * Manages progress bar.
+ * \author François Ingelrest
+ * \author Andrew Schofield
+ **/
+
 #include "fahmon.h"
 #include "progressManager.h"
 
@@ -21,11 +28,6 @@
 #include "pathManager.h"
 
 
-/**
-* Constructor
-*
-* If silent mode is on, future calls to methods won't do anything
-**/
 ProgressManager::ProgressManager(bool isInSilentMode)
 {
 	mIsInSilentMode        = isInSilentMode;
@@ -45,9 +47,6 @@ ProgressManager::ProgressManager(bool isInSilentMode)
 }
 
 
-/**
-* Destructor
-**/
 ProgressManager::~ProgressManager(void)
 {
 	if(mIsInSilentMode == false)
@@ -57,11 +56,6 @@ ProgressManager::~ProgressManager(void)
 }
 
 
-/**
-* Change the displayed text
-*
-* Return false if the user wants to cancel the process
-**/
 bool ProgressManager::SetText(const wxString& text)
 {
 	wxUint32 progressToDisplay;
@@ -93,11 +87,6 @@ bool ProgressManager::SetText(const wxString& text)
 }
 
 
-/**
-* Change the displayed progress
-*
-* Return false if the user wants to cancel the process
-**/
 bool ProgressManager::SetProgress(wxUint32 progress)
 {
 	wxUint32 progressToDisplay;
@@ -133,12 +122,6 @@ bool ProgressManager::SetProgress(wxUint32 progress)
 }
 
 
-/**
-* Change both text and progress
-* This is the same as calling SetText() and SetProgress()
-*
-* Return false if the user wants to cancel the process
-**/
 bool ProgressManager::SetTextAndProgress(const wxString& text, wxUint32 progress)
 {
 	bool textResult;
@@ -151,10 +134,6 @@ bool ProgressManager::SetTextAndProgress(const wxString& text, wxUint32 progress
 }
 
 
-/**
-* A task is represented by the percentage of the total work it represents
-* Only one task can be active at a time (EndTask() must be called before calling CreateTask() a second time)
-**/
 void ProgressManager::CreateTask(wxUint32 percentageOfTotal)
 {
 	if(mIsInSilentMode == true)
@@ -170,9 +149,6 @@ void ProgressManager::CreateTask(wxUint32 percentageOfTotal)
 }
 
 
-/**
-* End a task previously created with CreateTask()
-**/
 void ProgressManager::EndTask(void)
 {
 	if(mIsInSilentMode == true)
