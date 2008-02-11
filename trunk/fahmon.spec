@@ -79,10 +79,11 @@ rm -rf %{buildroot}
 %{_datadir}/pixmaps/fahmon
 %{_datadir}/icons/hicolor/*/apps/fahmon*
 %{_datadir}/applications/*
+%{_datadir}/fahmon/*
 %{_datadir}/locale/*/LC_MESSAGES/fahmon.mo
 
 %changelog
-* Thu Jan 17 2007 Andrew Schofield <andrew_s@fahmon.net>
+* Thu Jan 17 2008 Andrew Schofield <andrew_s@fahmon.net>
 - Added GNU build macros to auto insert version number.
 
 * Tue Oct 30 2007 Andrew Schofield <andrew_s@fahmon.net>
