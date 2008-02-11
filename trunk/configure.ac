@@ -38,7 +38,7 @@ CXXFLAGS="$CXXFLAGS $WX_CXXFLAGS_ONLY"
 CFLAGS="$CFLAGS $WX_CFLAGS_ONLY"
 LIBS="$LIBS $WX_LIBS"
 
-ALL_LINGUAS="en_GB fr_FR pt_PT ru_RU pl_PL sv_SE cs_CZ nl_NL pt_BR es_ES"
+ALL_LINGUAS="en_GB fr_FR pt_PT ru_RU pl_PL sv_SE cs_CZ nl_NL pt_BR es_ES de_DE"
 
 AM_GNU_GETTEXT([external])
 
