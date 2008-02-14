@@ -5,6 +5,7 @@ v2.3.3
     General
 
     * Added German translation.
+    * Fixed endian swap bug when monitoring PPC Macs.
 
 v2.3.2 (08/02/08)
 

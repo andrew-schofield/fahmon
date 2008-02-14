@@ -152,7 +152,7 @@ tt:				if (genome)
 		if (endianswap)
 		{
 			//wxINT32_SWAP_ALWAYS(i);
-			es32(i);
+			i = es32(i);
 		}
 		if (i > 9)
 		{
@@ -248,7 +248,8 @@ tt:				if (genome)
 
 u32 Queue::es32(u32 i)
 {
-	return ((i << 24) | ((i & 0xFF00) << 8) | ((i & 0xFF0000) >> 8) | ((i & 0xFF000000) >> 24));
+	//return ((i << 24) | ((i & 0xFF00) << 8) | ((i & 0xFF0000) >> 8) | ((i & 0xFF000000) >> 24));
+	return (i>>24) | ((i<<8) & 0x00FF0000) | ((i>>8) & 0x0000FF00) | (i<<24);
 }
 
 
@@ -256,7 +257,6 @@ void Queue::eswp(struct queueformat *bp, u32 qver, u32 systype)
 {
 	int                     i, n;
 	struct queueformat::qs *p;
-
 	bp->version = es32(bp->version);
 	bp->current = es32(bp->current);
 	for (n = 10; --n >= 0; )
