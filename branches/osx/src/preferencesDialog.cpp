@@ -82,6 +82,9 @@ BEGIN_EVENT_TABLE(PreferencesDialog, wxDialog)
 	EVT_CHECKBOX(CHK_USESIMPLETEXT,             PreferencesDialog::OnCheckboxes)
 	EVT_CHOICE(CHC_FILEMANAGER,                 PreferencesDialog::OnChoices)
 	// EVT_CHOICE(CHK_PPDTYPE, PreferencesDialog::OnChoices)
+	#ifdef __WXMAC__ 
+ 	EVT_CLOSE(PreferencesDialog::OnClose) 
+ 	#endif 
 
 END_EVENT_TABLE()
 
@@ -94,11 +97,19 @@ PreferencesDialog::PreferencesDialog(wxWindow* parent) : wxDialog(parent, wxID_A
 {
 	wxBoxSizer *topLevelSizer;
 	wxBoxSizer *mainSizer;
+#ifndef __WXMAC__
 	wxBoxSizer *buttonsSizer;
 	wxNotebook *noteBook;
+#else
+	wxChoicebook *noteBook;
+#endif
 
 	// Preferences are divided into groups, thanks to a wxNoteBook (tabbed control)
+#ifndef __WXMAC__
 	noteBook = new wxNotebook(this, wxID_ANY);
+#else
+	noteBook = new wxChoicebook(this, wxID_ANY);
+#endif
 
 	noteBook->AddPage(CreateGeneralTab(noteBook),    _("General"));
 	noteBook->AddPage(CreateMonitoringTab(noteBook), _("Monitoring"));
@@ -109,18 +120,22 @@ PreferencesDialog::PreferencesDialog(wxWindow* parent) : wxDialog(parent, wxID_A
 	noteBook->AddPage(CreateWebAppTab(noteBook),     _("WebApp"));
 
 	// Buttons 'Ok' and 'Cancel' are right-aligned
+#ifndef __WXMAC__
 	buttonsSizer = new wxBoxSizer(wxHORIZONTAL);
 
 	buttonsSizer->Add(new wxButton(this, wxID_CANCEL), 0, wxALIGN_RIGHT);
 	buttonsSizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	buttonsSizer->Add(new wxButton(this, wxID_OK), 0, wxALIGN_RIGHT);
+#endif
 
 	// Construct the dialog
 	mainSizer = new wxBoxSizer(wxVERTICAL);
 
 	mainSizer->Add(noteBook, 1, wxEXPAND);
 	mainSizer->AddSpacer(FMC_GUI_SPACING_HIGH);
+#ifndef __WXMAC__
 	mainSizer->Add(buttonsSizer, 0, wxALIGN_RIGHT);
+#endif
 
 	// The final sizer
 	topLevelSizer = new wxBoxSizer(wxVERTICAL);
@@ -157,7 +172,7 @@ void PreferencesDialog::DestroyInstance(void)
 }
 
 
-inline wxPanel* PreferencesDialog::CreateGeneralTab(wxNotebook* parent)
+inline wxPanel* PreferencesDialog::CreateGeneralTab(wxBookCtrlBase* parent)
 {
 	wxPanel    *panel;
 	wxBoxSizer *sizer;
@@ -166,15 +181,19 @@ inline wxPanel* PreferencesDialog::CreateGeneralTab(wxNotebook* parent)
 	panel                               = new wxPanel(parent);
 	sizer                               = new wxBoxSizer(wxVERTICAL);
 	topLevelSizer                       = new wxBoxSizer(wxVERTICAL);
+	#ifndef __WXMAC__
 	mGeneralEnableTrayIcon              = new wxCheckBox(panel, wxID_ANY, _("Enable system tray icon"));
+	#endif
 	mGeneralStartMinimised              = new wxCheckBox(panel, wxID_ANY, _("Start minimized"));
 	mGeneralCollectXYZFiles             = new wxCheckBox(panel, wxID_ANY, _("Collect .xyz files"));
 	mGeneralAutoUpdateProjectsDatabase  = new wxCheckBox(panel, wxID_ANY, _("Auto update projects database when needed"));
 	mGeneralKeepInaccessibleClientsLast = new wxCheckBox(panel, wxID_ANY, _("Always list inaccessible clients last"));
 	mGeneralUpdateCheck                 = new wxCheckBox(panel, wxID_ANY, _("Check for FahMon updates on startup"));
 
+	#ifndef __WXMAC__
 	sizer->AddStretchSpacer();
 	sizer->Add(mGeneralEnableTrayIcon, 0, wxALIGN_LEFT);
+	#endif
 	sizer->AddStretchSpacer();
 	sizer->Add(mGeneralCollectXYZFiles, 0, wxALIGN_LEFT);
 	sizer->AddStretchSpacer();
@@ -194,7 +213,7 @@ inline wxPanel* PreferencesDialog::CreateGeneralTab(wxNotebook* parent)
 }
 
 
-inline wxPanel* PreferencesDialog::CreateMonitoringTab(wxNotebook* parent)
+inline wxPanel* PreferencesDialog::CreateMonitoringTab(wxBookCtrlBase* parent)
 {
 	wxPanel    *panel;
 	wxBoxSizer *sizer;
@@ -254,7 +273,7 @@ inline wxPanel* PreferencesDialog::CreateMonitoringTab(wxNotebook* parent)
 }
 
 
-inline wxPanel* PreferencesDialog::CreateNetworkingTab(wxNotebook* parent)
+inline wxPanel* PreferencesDialog::CreateNetworkingTab(wxBookCtrlBase* parent)
 {
 	wxPanel    *panel;
 	wxBoxSizer *sizer;
@@ -308,7 +327,7 @@ inline wxPanel* PreferencesDialog::CreateNetworkingTab(wxNotebook* parent)
 }
 
 
-inline wxPanel* PreferencesDialog::CreateAdvancedTab(wxNotebook* parent)
+inline wxPanel* PreferencesDialog::CreateAdvancedTab(wxBookCtrlBase* parent)
 {
 	wxPanel    *panel;
 	wxBoxSizer *sizer;
@@ -330,7 +349,11 @@ inline wxPanel* PreferencesDialog::CreateAdvancedTab(wxNotebook* parent)
 	mAdvancedUseLocalFile                           = new wxCheckBox(panel, CHK_USELOCALFILE, _("Use a local file for project data"));
 	mAdvancedLocalFileLocation                      = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
 	mAdvancedLabelLocalFile                         = new wxStaticText(panel, wxID_ANY, _("Filename:"));
+#ifndef __WXMAC__
 	mAdvancedLocationChooser                        = new wxButton(panel, BTN_BROWSE, wxT("..."), wxDefaultPosition, wxSize(26, 26));
+#else
+	mAdvancedLocationChooser                        = new wxButton(panel, BTN_BROWSE, _("Choose"), wxDefaultPosition);
+#endif
 
 	LocalFileSizer->Add(mAdvancedLabelLocalFile, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
 	LocalFileSizer->Add(mAdvancedLocalFileLocation, 1, wxALIGN_CENTER_VERTICAL);
@@ -356,7 +379,7 @@ inline wxPanel* PreferencesDialog::CreateAdvancedTab(wxNotebook* parent)
 }
 
 
-inline wxPanel* PreferencesDialog::CreateSystemTab(wxNotebook* parent)
+inline wxPanel* PreferencesDialog::CreateSystemTab(wxBookCtrlBase* parent)
 {
 	wxPanel    *panel;
 	wxBoxSizer *sizer;
@@ -387,6 +410,9 @@ inline wxPanel* PreferencesDialog::CreateSystemTab(wxNotebook* parent)
 	#elif __WXGTK__
 	const wxString    fileManagers[5] = {wxT("Konqueror (KDE 3)"), wxT("Dolphin (KDE 4)"), wxT("Nautilus (Gnome)"), wxT("Thunar (Xfce 4.4)"), _("Other")};
 	mSystemFileManager     = new wxChoice(panel, CHC_FILEMANAGER, wxDefaultPosition, wxDefaultSize, 5, fileManagers);
+	#elif __WXMAC__
+	const wxString fileManagers[2] = {_("Finder"), _("Other")};
+	mSystemFileManager     = new wxChoice(panel, CHC_FILEMANAGER, wxDefaultPosition, wxDefaultSize, 2, fileManagers);
 	#endif
 
 	sizer->AddStretchSpacer();
@@ -430,7 +456,7 @@ inline wxPanel* PreferencesDialog::CreateSystemTab(wxNotebook* parent)
 /**
 * Create the tab containing fahinfo.org integration preferences
 **/
-/*inline wxPanel* PreferencesDialog::CreateFahinfoTab(wxNotebook* parent)
+/*inline wxPanel* PreferencesDialog::CreateFahinfoTab(wxBookCtrlBase* parent)
 {
 	wxPanel    *panel;
 
@@ -440,7 +466,7 @@ inline wxPanel* PreferencesDialog::CreateSystemTab(wxNotebook* parent)
 }*/
 
 
-inline wxPanel* PreferencesDialog::CreateWebAppTab(wxNotebook* parent)
+inline wxPanel* PreferencesDialog::CreateWebAppTab(wxBookCtrlBase* parent)
 {
 	wxPanel    *panel;
 	wxBoxSizer *sizer;
@@ -465,17 +491,29 @@ inline wxPanel* PreferencesDialog::CreateWebAppTab(wxNotebook* parent)
 	mWebAppUseWebApp                 = new wxCheckBox(panel, CHK_USEWEBAPP, _("Export Web Application"));
 	mWebAppWebAppLocation            = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
 	mWebAppWebAppLabel               = new wxStaticText(panel, wxID_ANY, _("Filename:"));
+#ifndef __WXMAC__
 	mWebAppWebAppLocationChooser     = new wxButton(panel, BTN_BROWSE_WEBAPP, wxT("..."), wxDefaultPosition, wxSize(26, 26));
+#else
+	mWebAppWebAppLocationChooser     = new wxButton(panel, BTN_BROWSE_WEBAPP, _("Choose"), wxDefaultPosition);
+#endif
 
 	mWebAppUseSimpleWeb              = new wxCheckBox(panel, CHK_USESIMPLEWEB, _("Export Simple Web page"));
 	mWebAppSimpleWebLocation         = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
 	mWebAppSimpleWebLabel            = new wxStaticText(panel, wxID_ANY, _("Filename:"));
+#ifndef __WXMAC__
 	mWebAppSimpleWebLocationChooser  = new wxButton(panel, BTN_BROWSE_SIMPLEWEB, wxT("..."), wxDefaultPosition, wxSize(26, 26));
+#else
+	mWebAppSimpleWebLocationChooser  = new wxButton(panel, BTN_BROWSE_SIMPLEWEB, _("Choose"), wxDefaultPosition);
+#endif
 
 	mWebAppUseSimpleText             = new wxCheckBox(panel, CHK_USESIMPLETEXT, _("Export Simple Text file"));
 	mWebAppSimpleTextLocation        = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
 	mWebAppSimpleTextLabel           = new wxStaticText(panel, wxID_ANY, _("Filename:"));
+#ifndef __WXMAC__
 	mWebAppSimpleTextLocationChooser = new wxButton(panel, BTN_BROWSE_SIMPLETEXT, wxT("..."), wxDefaultPosition, wxSize(26, 26));
+#else
+	mWebAppSimpleTextLocationChooser = new wxButton(panel, BTN_BROWSE_SIMPLETEXT, _("Choose"), wxDefaultPosition);
+#endif
 
 	webAppSizer->Add(mWebAppUseWebApp, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
 	webAppLocationSizer->Add(mWebAppWebAppLabel, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
@@ -551,14 +589,18 @@ inline void PreferencesDialog::LoadPreferences(void)
 	// -----===== General preferences =====-----
 	_PrefsGetBool(PREF_FAHCLIENT_COLLECTXYZFILES,     isCollectingXYZFiles);
 	_PrefsGetBool(PREF_MAINDIALOG_AUTOUPDATEPROJECTS, autoUpdateProjects);
+	#ifndef __WXMAC__
 	_PrefsGetBool(PREF_MAINDIALOG_ENABLE_TRAY_ICON,   mInitEnableTrayIcon);
+	#endif
 	_PrefsGetBool(PREF_LISTCLIENTS_KEEP_DEAD_LAST,    keepInaccessibleLast);
 	_PrefsGetBool(PREF_MAINDIALOG_START_MINIMISED,    startMinimised);
 	_PrefsGetBool(PREF_MAINDIALOG_UPDATE_CHECK,       updateCheck);
 
 
 	mGeneralCollectXYZFiles->SetValue(isCollectingXYZFiles);
+	#ifndef __WXMAC__
 	mGeneralEnableTrayIcon->SetValue(mInitEnableTrayIcon);
+	#endif
 	mGeneralAutoUpdateProjectsDatabase->SetValue(autoUpdateProjects);
 	mGeneralKeepInaccessibleClientsLast->SetValue(keepInaccessibleLast);
 	mGeneralStartMinimised->SetValue(startMinimised);
@@ -744,8 +786,16 @@ inline void PreferencesDialog::LoadPreferences(void)
 	{
 		mSystemFileManager->Select(4);
 	}
+	#elif __WXMAC__ 
+ 	if(filemanager == wxT("open")) 
+ 	{ 
+		mSystemFileManager->Select(0); 
+	} 
+ 	else // other filemanager 
+ 	{ 
+		mSystemFileManager->Select(1); 
+ 	}
 	#endif
-
 	if (mInitOverrideTz == true)
 	{
 		mSystemTZ->Enable(true);
@@ -766,7 +816,9 @@ inline void PreferencesDialog::SavePreferences(void)
 	// -----===== General preferences =====-----
 	_PrefsSetBool(PREF_FAHCLIENT_COLLECTXYZFILES,     mGeneralCollectXYZFiles->GetValue());
 	_PrefsSetBool(PREF_MAINDIALOG_START_MINIMISED,    mGeneralStartMinimised->GetValue());
+	#ifndef __WXMAC__
 	_PrefsSetBool(PREF_MAINDIALOG_ENABLE_TRAY_ICON,   mGeneralEnableTrayIcon->GetValue());
+	#endif
 	_PrefsSetBool(PREF_MAINDIALOG_AUTOUPDATEPROJECTS, mGeneralAutoUpdateProjectsDatabase->GetValue());
 	_PrefsSetBool(PREF_LISTCLIENTS_KEEP_DEAD_LAST,    mGeneralKeepInaccessibleClientsLast->GetValue());
 	_PrefsSetBool(PREF_MAINDIALOG_UPDATE_CHECK,       mGeneralUpdateCheck->GetValue());
@@ -811,10 +863,12 @@ inline void PreferencesDialog::SavePreferences(void)
 	_PrefsSetString(PREF_WEBAPP_SIMPLETEXTLOCATION, mWebAppSimpleTextLocation->GetValue());
 
 	// -----===== Alert components when important prefs have changed =====-----
+	#ifndef __WXMAC__
 	if(mGeneralEnableTrayIcon->GetValue() != mInitEnableTrayIcon)
 	{
 		MainDialog::GetInstance()->OnTrayIconPrefChanged();
 	}
+	#endif
 
 	if(mMonitoringAdvancedReload->GetValue() != mInitAdvancedReload || (wxUint32)mMonitoringAutoReloadFrequency->GetValue() != mInitAutoReloadFrequency)
 	{
@@ -1077,7 +1131,21 @@ void PreferencesDialog::OnChoices(wxCommandEvent& event)
 				default:
 					break;
 			}
+			#elif __WXMAC__ 
+			switch(mSystemFileManager->GetSelection()) 
+			{ 
+				// --- 
+				case 0: //Finder 
+					mSystemOtherFM->SetValue(wxT("open")); 
+					break;
 
+				case 1: //Other 
+					mSystemOtherFM->SetValue(wxT("")); 
+					break; 
+
+				default: 
+					break; 
+			}
 			#endif
 			break;
 
@@ -1086,3 +1154,15 @@ void PreferencesDialog::OnChoices(wxCommandEvent& event)
 		break;
 	}
 }
+
+#ifdef __WXMAC__ 
+/** 
+ * Mac Specific close routine to save the preferences: no close button 
+ **/ 
+void PreferencesDialog::OnClose(wxCloseEvent& event) 
+{ 
+	SavePreferences(); 
+	PreferencesManager::GetInstance()->Save(); 
+ 	event.Skip(); 
+} 
+#endif 

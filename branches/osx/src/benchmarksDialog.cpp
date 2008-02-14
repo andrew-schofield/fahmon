@@ -79,7 +79,11 @@ BenchmarksDialog::BenchmarksDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY
 	mSplitter->SetSashPosition(sashPosition);
 	mSplitter->SetMinimumPaneSize(20);
 
+#ifndef __WXMAC__
 	mBenchmarksInformation->SetFont(wxFont(8, wxFONTFAMILY_TELETYPE, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL));
+#else
+	mBenchmarksInformation->SetFont(wxFont(9, wxFONTFAMILY_TELETYPE, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL));
+#endif
 
 	_PrefsGetUint(PREF_BENCHMARKSDIALOG_COLUMNWIDTH, columnWidth);
 	mListOfProjects->InsertColumn(LC_PROJECT, _("Projects"));
@@ -90,7 +94,9 @@ BenchmarksDialog::BenchmarksDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY
 
 	mainSizer->Add(mSplitter, 1, wxEXPAND);
 	mainSizer->AddSpacer(FMC_GUI_SPACING_HIGH);
+#ifndef __WXMAC__
 	mainSizer->Add(new wxButton(this, wxID_CLOSE), 0, wxALIGN_CENTER_HORIZONTAL);
+#endif
 
 	// ---
 	topLevelSizer = new wxBoxSizer(wxVERTICAL);

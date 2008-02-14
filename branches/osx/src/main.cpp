@@ -28,6 +28,7 @@
 #include "tools.h"
 #include "wx/image.h"
 #include "wx/intl.h"
+#include "wx/filename.h"
 #include "mainDialog.h"
 #include "pathManager.h"
 #include "clientsManager.h"
@@ -59,6 +60,7 @@ bool FahMonApp::OnInit(void)
 	bool               requiresFirstRunDialog;
 
 	// Check for another instance
+	#ifndef __WXMAC__
 	mInstanceChecker = new wxSingleInstanceChecker(wxT(FMC_UID));
 	if(mInstanceChecker->IsAnotherRunning() == true)
 	{
@@ -86,6 +88,7 @@ bool FahMonApp::OnInit(void)
 		mServerIPC = NULL;
 		Tools::ErrorMsgBox(wxString::Format(_T("Could create socket, auto-raising will not function!")));
 	}
+	#endif
 
 	if ( !m_locale.Init(wxLANGUAGE_DEFAULT, wxLOCALE_CONV_ENCODING) )
 	{
@@ -104,6 +107,18 @@ bool FahMonApp::OnInit(void)
 #ifdef __WXGTK__
 	{
 		wxLocale::AddCatalogLookupPathPrefix(wxT(DATADIR));
+	}
+#endif
+#ifdef __WXMAC__
+	{
+		wxFileName appPath = wxFileName(wxTheApp->argv[0]).GetPath (wxPATH_GET_VOLUME);
+		appPath.RemoveLastDir();
+	
+		wxString resourcesPath = appPath.GetPath();
+	
+		resourcesPath += _T("/Contents/SharedSupport/lang/");
+		
+		wxLocale::AddCatalogLookupPathPrefix(resourcesPath);
 	}
 #endif
 	// Initialize the catalogs we'll be using
@@ -135,6 +150,17 @@ bool FahMonApp::OnInit(void)
 	requiresFirstRunDialog = false;
 	if(!wxDirExists(PathManager::GetCfgPath())) {
 		requiresFirstRunDialog = true;
+		// The following is necessary on OSX as the wxMkDir function doesn't seem to be able to create folders with more
+		// than one level at once. Therefore we need to create the "~/Library/Application Support/FahMon" folder first.
+		#ifdef __WXMAC__
+		wxFileName topPath = PathManager::GetCfgPath();
+		topPath.RemoveLastDir();
+		if(!wxMkdir(topPath.GetPath()))
+		{
+			Tools::ErrorMsgBox(wxString::Format(_("Could not create directory <%s>"), topPath.GetPath().c_str()));
+			return false;
+		}
+		#endif
 		if(!wxMkdir(PathManager::GetCfgPath()))
 		{
 			Tools::ErrorMsgBox(wxString::Format(_("Could not create directory <%s>"), PathManager::GetCfgPath().c_str()));
@@ -192,8 +218,11 @@ int FahMonApp::OnExit(void)
 	WebMonitor::DestroyInstance();
 	PreferencesManager::DestroyInstance();        // MUST be destroyed last, so that other managers can save their preferences when they are destroyed
 	MessagesManager::DestroyInstance();
-
-	delete mInstanceChecker;
+	
+#ifndef __WXMAC__
+	if (mInstanceChecker)
+		delete mInstanceChecker;
+#endif
 
 	return 0;
 }

@@ -62,6 +62,10 @@ void Tools::OpenURLInBrowser(const wxString& url)
 		ErrorMsgBox(_("Unable to launch the default browser.\n\nPlease check that the environment variable BROWSER is defined or set it in Preferences."));
 	}
 
+#elif __WXMAC__
+
+	wxLaunchDefaultBrowser(url);
+
 #else
 
 #error "You\'re talking to me?"

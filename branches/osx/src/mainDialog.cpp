@@ -45,6 +45,9 @@
 #include "preferencesDialog.h"
 #include "preferencesManager.h"
 #include "listViewClients.h"
+#ifdef __WXMAC__
+#include "wx/sysopt.h"
+#endif
 
 
 // Identifiers for the controls
@@ -58,7 +61,6 @@ enum _CONTROL_ID
 	MID_TOGGLE_MESSAGES_FRAME,
 	MID_TOGGLE_ETADATE,
 	MID_BENCHMARKS,
-	MID_PREFERENCES,
 	MID_WWWJMOL,
 	MID_WWWMYSTATS,
 	MID_WWWFOLDING,
@@ -108,7 +110,7 @@ BEGIN_EVENT_TABLE(MainDialog, wxFrame)
 	EVT_MENU    (MID_TOGGLE_MESSAGES_FRAME, MainDialog::OnMenuToggleMessagesFrame)
 	EVT_MENU    (MID_TOGGLE_ETADATE,        MainDialog::OnMenuToggleETADate)
 	EVT_MENU    (MID_BENCHMARKS,            MainDialog::OnMenuBenchmarks)
-	EVT_MENU    (MID_PREFERENCES,           MainDialog::OnMenuPreferences)
+	EVT_MENU    (wxID_PREFERENCES,          MainDialog::OnMenuPreferences)
 	EVT_MENU    (MID_WWWJMOL,               MainDialog::OnMenuWeb)
 	EVT_MENU    (MID_WWWFAHINFO,            MainDialog::OnMenuWeb)
 	EVT_MENU    (MID_WWWMYSTATS,            MainDialog::OnMenuWeb)
@@ -607,7 +609,6 @@ inline void MainDialog::CreateMenuBar(void)
 
 	// Create the menubar
 	menuBar = new wxMenuBar();
-	SetMenuBar(menuBar);
 
 	// The 'Main' menu
 	menu = new wxMenu();
@@ -617,7 +618,7 @@ inline void MainDialog::CreateMenuBar(void)
 	menu->Append(MID_UPDATECHECK, _("&Check for update"), _("Check online for the latest version of FahMon"));
 	menu->AppendSeparator();
 	menu->Append(MID_BENCHMARKS, _("&Benchmarks...\tCTRL+B"), _("Open the benchmarks dialog"));
-	menu->Append(MID_PREFERENCES, _("&Preferences...\tCTRL+P"), _("Open the preferences dialog"));
+	menu->Append(wxID_PREFERENCES, _("&Preferences...\tCTRL+P"), _("Open the preferences dialog"));
 	menu->AppendSeparator();
 #ifdef _FAHMON_WIN32_
 	// MSVC stupidity
@@ -627,23 +628,42 @@ inline void MainDialog::CreateMenuBar(void)
 #elif __WXMAC__
 	menu->Append(wxID_EXIT, _("&Quit\tCtrl+Q"), wxString::Format(_T("%s "FMC_APPNAME), _("Quit")));
 #endif
+#ifndef __WXMAC__
 	menuBar->Append(menu, wxString::Format(wxT("&%s"), wxT(FMC_APPNAME)));
+#else
+	menuBar->Append(menu, _("&Tools"));
+#endif
 
 	// The 'Monitoring' menu
 	menu = new wxMenu();
+	#ifndef __WXMAC__
 	menu->Append(MID_RELOAD, _("Reload &Selection\tF5"), _("Reload the selected client"));
 	menu->Append(MID_RELOAD_ALL, _("Reload &All\tF6"), _("Reload all the clients"));
 	menu->AppendSeparator();
 	menu->Append(MID_TOGGLELOG, _("&Show/Hide FAHLog\tF8"), _("Toggle the log file"));
 	menu->AppendSeparator();
 	menu->Append(MID_TOGGLE_ETADATE, _("&Cycle ETA Style\tF9"), _("Cycle through the different ETA display styles"));
+	#else
+	menu->Append(MID_RELOAD, _("Reload &Selection\tCtrl+R"), _("Reload the selected client"));
+	menu->Append(MID_RELOAD_ALL, _("Reload &All\tCtrl+Shift+R"), _("Reload all the clients"));
+	menu->AppendSeparator();
+	menu->Append(MID_TOGGLELOG, _("&Show/Hide FAHLog\tCtrl+L"), _("Toggle the log file"));
+	menu->AppendSeparator();
+	menu->Append(MID_TOGGLE_ETADATE, _("&Cycle ETA Style\tCtrl+E"), _("Cycle through the different ETA display styles"));
+	#endif
 	menuBar->Append(menu, _("&Monitoring"));
 
 	// The 'Web' menu
 	menu = new wxMenu();
+	#ifndef __WXMAC__
 	menu->Append(MID_WWWMYSTATS, _("&My Stats\tF2"), _("View the personal statistics for the selected client"));
 	menu->Append(MID_WWWJMOL, _("&Jmol\tF3"), _("View the current project on the Jmol website"));
 	menu->Append(MID_WWWFAHINFO, _("&fahinfo\tF4"), _("View the current project on fahinfo.org"));
+	#else
+	menu->Append(MID_WWWMYSTATS, _("&My Stats\tCtrl+Shift+M"), _("View the personal statistics for the selected client"));
+	menu->Append(MID_WWWJMOL, _("&Jmol\tCtrl+J"), _("View the current project on the Jmol website"));
+	menu->Append(MID_WWWFAHINFO, _("&fahinfo\tCtrl+F"), _("View the current project on fahinfo.org"));
+	#endif
 	menu->AppendSeparator();
 	menu->Append(MID_WWWFOLDING, _("F@H &Website"), _("Open to the official Stanford website"));
 	menu->Append(MID_WWWFCORG, _("Folding-&Community"), _("Open the Folding@Home support forum"));
@@ -653,7 +673,11 @@ inline void MainDialog::CreateMenuBar(void)
 
 	// The 'Help' menu
 	menu = new wxMenu();
+	#ifndef __WXMAC__
 	menu->Append(wxID_HELP_CONTENTS, _("&Help Contents\tF1"), _("See help contents"));
+	#else
+	menu->Append(wxID_HELP_CONTENTS, _("&Help Contents\tCtrl+?"), _("See help contents"));
+	#endif
 #ifdef _FAHMON_WIN32_
 	// MSVC stupidity
 	menu->Append(wxID_ABOUT, _("&About"), wxString::Format(_T("%s %s"),  _("About"), _T(FMC_APPNAME)));
@@ -662,7 +686,15 @@ inline void MainDialog::CreateMenuBar(void)
 #elif __WXMAC__
 	menu->Append(wxID_ABOUT, _("&About"), wxString::Format(_T("%s "FMC_APPNAME),  _("About")));
 #endif
+#ifdef __WXMAC__
+	{
+		//wxApp::s_macHelpMenuTitleName = _("&Help");
+	    wxApp::s_macAboutMenuItemId = wxID_ABOUT;
+	}
+#endif
 	menuBar->Append(menu, _("&Help"));
+	
+	SetMenuBar(menuBar);
 }
 
 
@@ -676,7 +708,9 @@ inline void MainDialog::CreateLayout(void)
 	wxBoxSizer       *userinfoSizer;
 	wxGridSizer      *infoSizer;
 	wxStaticBoxSizer *topRightSizer;
-
+#ifdef __WXMAC__ 
+ 	wxSystemOptions::SetOption(_T("mac.listctrl.always_use_generic"), 1); 
+#endif
 	// We need to use a panel as a top level component in our frame
 	// Without that, the frame looks ugly under Windows (dark grey background)
 	topLevelPanel = new wxPanel(this, wxID_ANY);

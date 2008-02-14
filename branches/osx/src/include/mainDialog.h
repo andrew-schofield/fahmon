@@ -96,6 +96,8 @@
 #define PREF_TOOLS_FILEMANAGER_DV wxT("explorer.exe"); /**< Default value for Windows filemanager */
 #elif __WXGTK__
 #define PREF_TOOLS_FILEMANAGER_DV wxT("konqueror --profile filemanagement"); /**< Default value for Linux filemanager */
+#elif __WXMAC__
+#define PREF_TOOLS_FILEMANAGER_DV wxT("open");
 #endif
 
 #define PREF_MAINDIALOG_UPDATE_CHECK wxT("MainDialog.UpdateCheck") /**< Preference setting for checking for new FahMon updates */

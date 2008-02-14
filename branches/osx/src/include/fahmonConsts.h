@@ -88,6 +88,8 @@
 #define FMC_GUI_BORDER 2     // GTK already have some borders
 #elif _FAHMON_WIN32_
 #define FMC_GUI_BORDER 5     // Windows does not have default borders, so we use ours
+#elif __WXMAC__
+#define FMC_GUI_BORDER 5
 #endif
 
 #define FMC_GUI_SPACING_LOW          5       // (Low) Spacing used bewteen controls
