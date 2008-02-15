@@ -267,6 +267,10 @@ void BenchmarksDialog::ShowBenchmarks(ProjectId projectIdToShow)
 	{
 		// Use the name of the client if found, its location otherwise
 		clientLocation = BenchmarksManager::GetInstance()->GetClientLocationFromClientId(benchmarks[i]->GetClientId());
+#ifdef _FAHMON_WIN32_
+		// fixes old benchmarks from version 2.3.1 and earlier which used forward slash instead of back slash
+		clientLocation.Replace(wxT("/"), wxT("\\"));
+#endif
 		clientName     = ClientsManager::GetInstance()->GetNameFromLocation(clientLocation);
 
 		if(clientName.IsEmpty() == false)

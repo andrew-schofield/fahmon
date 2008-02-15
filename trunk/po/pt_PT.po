@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pt_PT\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-02-15 18:49+0000\n"
+"POT-Creation-Date: 2008-02-15 21:49+0000\n"
 "PO-Revision-Date: 2008-02-09 01:46-0000\n"
 "Last-Translator: Filipe Rodrigues <shello@shello.org>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -84,55 +84,55 @@ msgstr "Crédito  : %u\n"
 msgid "Project : %u (Unknown)\n"
 msgstr "Projecto : %u (Unknown)\n"
 
-#: src/benchmarksDialog.cpp:285
+#: src/benchmarksDialog.cpp:289
 #, c-format
 msgid "Min. Time / Frame : %s"
 msgstr "Tempo mínimo / Frame:    %s"
 
-#: src/benchmarksDialog.cpp:291 src/benchmarksDialog.cpp:312
-#: src/benchmarksDialog.cpp:337 src/benchmarksDialog.cpp:339
-#: src/benchmarksDialog.cpp:341
+#: src/benchmarksDialog.cpp:295 src/benchmarksDialog.cpp:316
+#: src/benchmarksDialog.cpp:341 src/benchmarksDialog.cpp:343
+#: src/benchmarksDialog.cpp:345
 #, c-format
 msgid " - %.2f ppd"
 msgstr " - %.2f ppd"
 
-#: src/benchmarksDialog.cpp:296
+#: src/benchmarksDialog.cpp:300
 msgid "No Min. Time / Frame"
 msgstr "Sem Tempo Mínimo / Frame"
 
-#: src/benchmarksDialog.cpp:306
+#: src/benchmarksDialog.cpp:310
 #, c-format
 msgid "Avg. Time / Frame : %s"
 msgstr "Tempo Médio / Frame:     %s"
 
-#: src/benchmarksDialog.cpp:317
+#: src/benchmarksDialog.cpp:321
 msgid "No Avg. Time / Frame"
 msgstr "Sem Tempo Médio / Frame"
 
-#: src/benchmarksDialog.cpp:329
+#: src/benchmarksDialog.cpp:333
 #, c-format
 msgid "Cur. Time / Frame : %s"
 msgstr "Tempo / Frame Actual:    %s"
 
-#: src/benchmarksDialog.cpp:330
+#: src/benchmarksDialog.cpp:334
 #, c-format
 msgid "R3F. Time / Frame : %s"
 msgstr "R3F. Tempo / Frame:      %s"
 
-#: src/benchmarksDialog.cpp:331
+#: src/benchmarksDialog.cpp:335
 #, c-format
 msgid "Eff. Time / Frame : %s"
 msgstr "Tempo / Frame Efectivo : %s"
 
-#: src/benchmarksDialog.cpp:346
+#: src/benchmarksDialog.cpp:350
 msgid "No Cur. Time / Frame"
 msgstr "Sem Tempo / Frame Actual"
 
-#: src/benchmarksDialog.cpp:347
+#: src/benchmarksDialog.cpp:351
 msgid "No R3F. Time / Frame"
 msgstr "Sem R3F Tempo / Frame"
 
-#: src/benchmarksDialog.cpp:348
+#: src/benchmarksDialog.cpp:352
 msgid "No Eff. Time / Frame"
 msgstr "Sem Tempo / Frame Efectivo"
 
