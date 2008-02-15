@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: FahMon\n"
+"Project-Id-Version: FahMon Translation - de_DE 1.1.b1\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
 "POT-Creation-Date: 2008-02-15 17:45+0000\n"
-"PO-Revision-Date: 2008-02-11 08:11+0100\n"
+"PO-Revision-Date: 2008-02-15 09:45+0100\n"
 "Last-Translator: Mark Gerber <mark.gerber@web.de>\n"
 "Language-Team: Mark Gerber <mark.gerber@web.de>\n"
 "MIME-Version: 1.0\n"
@@ -11,6 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: German\n"
 "X-Poedit-Country: GERMANY\n"
+"X-Poedit-SourceCharset: utf-8\n"
 
 #: src/aboutDialog.cpp:42 src/mainDialog.cpp:683 src/mainDialog.cpp:685
 #: src/mainDialog.cpp:687
@@ -41,9 +42,10 @@ msgstr "Lizenz:"
 msgid "Library:"
 msgstr "Bibliothek:"
 
+# Die ursprüngliche Übersetzung "Auswertungen" ist etwas zu sperrig und kann bzgl. der Projekte fehlinterpretiert werden (wissenschaftliche Auswertungen). Die Bezeichnung "Benchmarks" trifft es auch im Deutschen recht gut. Denkbare Alternativen: "Leistungswerte", "Performance-Werte"
 #: src/benchmarksDialog.cpp:63 src/trayManager.cpp:186
 msgid "Benchmarks"
-msgstr "Auswertungen"
+msgstr "Benchmarks"
 
 #: src/benchmarksDialog.cpp:89
 msgid "Projects"
@@ -51,7 +53,7 @@ msgstr "Projekte"
 
 #: src/benchmarksDialog.cpp:246
 msgid "No benchmarks for this project!"
-msgstr "Keine Auswertungen für dieses Projekt vorhanden."
+msgstr "Keine Benchmarks für dieses Projekt vorhanden."
 
 #: src/benchmarksDialog.cpp:256
 #, c-format
@@ -139,7 +141,7 @@ msgstr "Kein Schreibzugriff auf die Datei <%s>."
 #: src/benchmarksManager.cpp:299
 msgid "(Benchmarks) The maximum number of known clients has been reached!"
 msgstr ""
-"(Auswertungen) Die maximale Anzahl bekannter Clients ist erreicht worden."
+"(Benchmarks) Die maximale Anzahl bekannter Clients ist erreicht worden."
 
 #: src/benchmarksManager.cpp:429
 msgid "Unknown client"
@@ -264,11 +266,11 @@ msgstr ""
 #: src/clientDialog.cpp:58
 #, c-format
 msgid "Client Edition / %s"
-msgstr "Client-Eintrag bearbeiten - %s"
+msgstr "Client-Eintrag bearbeiten / %s"
 
 #: src/clientDialog.cpp:80
 msgid "Client information"
-msgstr "Client-Information"
+msgstr "Angaben zum Client"
 
 #: src/clientDialog.cpp:86
 msgid "Location:"
@@ -339,8 +341,8 @@ msgid ""
 "Project information (e.g. deadlines) is read from a local file, which must "
 "be regularly updated."
 msgstr ""
-"Projektedaten (z. B. Fälligkeit) werden aus einer lokalen Datei gewonnen, "
-"die regelmäßig aktualisiert werden muss."
+"Projektedaten (z. B. die Fälligkeit) werden aus einer lokalen Datei "
+"gewonnen, die regelmäßig aktualisiert werden muss."
 
 #: src/firstTimeDialog.cpp:73
 msgid ""
@@ -366,7 +368,7 @@ msgid ""
 "g. deadlines)."
 msgstr ""
 "Eine Aktualisierung ist notwendig, wenn keine Projektinformation dargestellt "
-"werden kann (z. B. Fälligkeit)."
+"werden kann (z. B. die Fälligkeit)."
 
 #: src/firstTimeDialog.cpp:79
 msgid "You will be able to perform them using the 'FahMon' menu."
@@ -510,8 +512,8 @@ msgid ""
 "Please check the messages (FahMon->Show/Hide Messages Window)."
 msgstr ""
 "Mit dem Client ist etwas nicht in Ordnung.\n"
-"Überprüfe bitte die FahMon-Meldungen (FahMon | Meldungsfenster zeigen/"
-"verbergen)."
+"Überprüfe bitte die FahMon-Meldungen (Menübefehl \"FahMon | Meldungsfenster "
+"zeigen/verbergen\")."
 
 #: src/mainDialog.cpp:427 src/mainDialog.cpp:515 src/mainDialog.cpp:572
 #: src/webMonitor.cpp:168 src/webMonitor.cpp:239 src/webMonitor.cpp:294
@@ -574,11 +576,11 @@ msgstr "Führt eine Onlineprüfung auf ein Programmupdate durch."
 # Die ursprüngliche Tastenkombination habe ich wegen der gewohnten Programmbedienung beibehalten. "Ctrl" muss beibehalten werden, damit das Programm die Tastenkombination erkennt, "Strg" funktioniert nicht.
 #: src/mainDialog.cpp:620
 msgid "&Benchmarks...\tCTRL+B"
-msgstr "&Auswertungen...\tCtrl+B"
+msgstr "&Benchmarks...\tCtrl+B"
 
 #: src/mainDialog.cpp:620
 msgid "Open the benchmarks dialog"
-msgstr "Öffnet das Fenster mit Projektauswertungen."
+msgstr "Öffnet das Fenster mit Projekt-Benchmarks."
 
 #: src/mainDialog.cpp:621
 msgid "&Preferences...\tCTRL+P"
@@ -592,10 +594,12 @@ msgstr "Öffnet den Einstellungen-Dialog."
 msgid "&Quit\tCtrl+Q"
 msgstr "&Beenden\tCtrl+Q"
 
+# Eintrag im Kontextmenü des Symbols im Infobereich der Taskleiste als auch Hinweis in der Statuszeile zum Menüeintrag "FahMon | Beenden".
+# Bei letzterem wird vom Programm automatisch das Wort "FahMon" angehängt, so dass hier nur eingeschränkte Freiheiten bzgl. der Textgestaltung bestehen. Durch den Konflikt bei der Übersetzung sollte dem Kontextmenüeintrag Vorrang gegeben werden.
 #: src/mainDialog.cpp:625 src/mainDialog.cpp:627 src/mainDialog.cpp:629
 #: src/trayManager.cpp:207
 msgid "Quit"
-msgstr "Beendet"
+msgstr "Beenden"
 
 #: src/mainDialog.cpp:634
 msgid "&Tools"
@@ -607,7 +611,7 @@ msgstr "Auswahl ab&fragen\tF5"
 
 #: src/mainDialog.cpp:640 src/mainDialog.cpp:647
 msgid "Reload the selected client"
-msgstr "Fragt Information zum ausgewählten Client ab."
+msgstr "Fragt den Status des ausgewählten Clients ab."
 
 #: src/mainDialog.cpp:641
 msgid "Reload &All\tF6"
@@ -615,7 +619,7 @@ msgstr "&Alle abfragen\tF6"
 
 #: src/mainDialog.cpp:641 src/mainDialog.cpp:648
 msgid "Reload all the clients"
-msgstr "Fragt Information zu allen Clients ab."
+msgstr "Fragt die Status aller Clients ab."
 
 #: src/mainDialog.cpp:643
 msgid "&Show/Hide FAHLog\tF8"
@@ -627,11 +631,11 @@ msgstr "Zeigt oder verbirgt die Log-Datei."
 
 #: src/mainDialog.cpp:645
 msgid "&Cycle ETA Style\tF9"
-msgstr "&ETA-Anzeige umschalten\tF9"
+msgstr "&Zeitanzeigen umschalten\tF9"
 
 #: src/mainDialog.cpp:645 src/mainDialog.cpp:652
 msgid "Cycle through the different ETA display styles"
-msgstr "Durchläuft die verschiedenen ETA-Anzeigestile."
+msgstr "Durchläuft die verschiedenen Darstellungsarten für die Zeitanzeigen."
 
 #: src/mainDialog.cpp:647
 #, fuzzy
@@ -651,7 +655,7 @@ msgstr "FAH&log zeigen/verbergen\tF8"
 #: src/mainDialog.cpp:652
 #, fuzzy
 msgid "&Cycle ETA Style\tCtrl+E"
-msgstr "&ETA-Anzeige umschalten\tF9"
+msgstr "&Zeitanzeigen umschalten\tF9"
 
 #: src/mainDialog.cpp:654
 msgid "&Monitoring"
@@ -853,7 +857,7 @@ msgstr "Ein unbekannter Fehler ist aufgetreten."
 #: src/messagesFrame.cpp:43
 #, c-format
 msgid "Messages / %s"
-msgstr "Meldungen - %s"
+msgstr "Meldungen / %s"
 
 #: src/messagesManager.cpp:99
 msgid ""
@@ -866,7 +870,7 @@ msgstr ""
 #: src/preferencesDialog.cpp:96
 #, c-format
 msgid "Preferences / %s"
-msgstr "Einstellungen - %s"
+msgstr "Einstellungen / %s"
 
 #: src/preferencesDialog.cpp:114
 msgid "General"
@@ -938,11 +942,11 @@ msgstr "Letzter Frame"
 
 #: src/preferencesDialog.cpp:226
 msgid "Last 3 frames"
-msgstr "Die letzten 3 Frames"
+msgstr "Die letzten 3 Frames (L3F)"
 
 #: src/preferencesDialog.cpp:226
 msgid "Effective rate"
-msgstr "Effektive Rate"
+msgstr "Effektive Dauer"
 
 #: src/preferencesDialog.cpp:236
 msgid "Auto reload clients"
@@ -958,15 +962,15 @@ msgstr "Experimenteller Abfragemechanismus"
 
 #: src/preferencesDialog.cpp:242
 msgid "Ignore asynchronous clocks"
-msgstr "Asynchrone Uhrzeit ignorieren"
+msgstr "Asynchrone Systemuhren ignorieren"
 
 #: src/preferencesDialog.cpp:244
 msgid "Display dates as"
-msgstr "Datenanzeige:"
+msgstr "Zeitanzeigen:"
 
 #: src/preferencesDialog.cpp:250
 msgid "Calculate PPD based on"
-msgstr "Ausgangspunkt für PPD-Berechnung:"
+msgstr "Grundlage für PPD-Berechnung:"
 
 #: src/preferencesDialog.cpp:290
 msgid "Use a proxy for HTTP connections"
@@ -1143,11 +1147,11 @@ msgstr "Einstellungen"
 
 #: src/trayManager.cpp:195
 msgid "Hide FahMon"
-msgstr "Verberge FahMon"
+msgstr "Minimieren"
 
 #: src/trayManager.cpp:200
 msgid "Show FahMon"
-msgstr "Zeige FahMon"
+msgstr "Wiederherstellen"
 
 #: src/webMonitor.cpp:320 src/webMonitor.cpp:562
 msgid "Inaccessible"
