@@ -7,6 +7,7 @@ v2.3.3
     * Added German translation.
     * Fixed endian swap bug when monitoring PPC Macs.
     * FahMon now works on Macs running OS X.
+    * Fixed some minor translation bugs.
 
 v2.3.2 (08/02/08)
 

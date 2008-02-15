@@ -620,14 +620,7 @@ inline void MainDialog::CreateMenuBar(void)
 	menu->Append(MID_BENCHMARKS, _("&Benchmarks...\tCTRL+B"), _("Open the benchmarks dialog"));
 	menu->Append(wxID_PREFERENCES, _("&Preferences...\tCTRL+P"), _("Open the preferences dialog"));
 	menu->AppendSeparator();
-#ifdef _FAHMON_WIN32_
-	// MSVC stupidity
-	menu->Append(wxID_EXIT, _("&Quit\tCtrl+Q"), wxString::Format(_T("%s %s"),  _("Quit"), _T(FMC_APPNAME)));
-#elif __WXGTK__
-	menu->Append(wxID_EXIT, _("&Quit\tCtrl+Q"), wxString::Format(_T("%s "FMC_APPNAME), _("Quit")));
-#elif __WXMAC__
-	menu->Append(wxID_EXIT, _("&Quit\tCtrl+Q"), wxString::Format(_T("%s "FMC_APPNAME), _("Quit")));
-#endif
+	menu->Append(wxID_EXIT, _("&Quit\tCtrl+Q"), wxString::Format(_("Quit %s"), _T(FMC_APPNAME)));
 #ifndef __WXMAC__
 	menuBar->Append(menu, wxString::Format(wxT("&%s"), wxT(FMC_APPNAME)));
 #else
@@ -693,7 +686,7 @@ inline void MainDialog::CreateMenuBar(void)
 	}
 #endif
 	menuBar->Append(menu, _("&Help"));
-	
+
 	SetMenuBar(menuBar);
 }
 
@@ -708,8 +701,8 @@ inline void MainDialog::CreateLayout(void)
 	wxBoxSizer       *userinfoSizer;
 	wxGridSizer      *infoSizer;
 	wxStaticBoxSizer *topRightSizer;
-#ifdef __WXMAC__ 
- 	wxSystemOptions::SetOption(_T("mac.listctrl.always_use_generic"), 1); 
+#ifdef __WXMAC__
+ 	wxSystemOptions::SetOption(_T("mac.listctrl.always_use_generic"), 1);
 #endif
 	// We need to use a panel as a top level component in our frame
 	// Without that, the frame looks ugly under Windows (dark grey background)
