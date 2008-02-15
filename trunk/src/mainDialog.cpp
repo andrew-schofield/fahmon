@@ -1079,7 +1079,7 @@ void MainDialog::OnClose(wxCloseEvent& event)
 {
 	// Don't save window size if it is iconized (win32 bug)
 #ifdef _WIN32_
-	if(!IsIconized())
+	if(!IsIconized() && !IsMinimized())
 #endif
 	{
 		if( !IsMaximized())
