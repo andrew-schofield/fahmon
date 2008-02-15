@@ -642,24 +642,20 @@ msgid "Cycle through the different ETA display styles"
 msgstr "Rota los diferentes modos de mostrar ETA"
 
 #: src/mainDialog.cpp:647
-#, fuzzy
 msgid "Reload &Selection\tCtrl+R"
-msgstr "Actualizar &Selección\tF5"
+msgstr "Actualizar &Selección\tCtrl+R"
 
 #: src/mainDialog.cpp:648
-#, fuzzy
 msgid "Reload &All\tCtrl+Shift+R"
-msgstr "Actualizar &Todo\tF6"
+msgstr "Actualizar &Todo\tCtrl+Shift+R"
 
 #: src/mainDialog.cpp:650
-#, fuzzy
 msgid "&Show/Hide FAHLog\tCtrl+L"
-msgstr "&Muestra/Oculta el registro FAH\tF8"
+msgstr "&Muestra/Oculta el registro FAH\tCtrl+L"
 
 #: src/mainDialog.cpp:652
-#, fuzzy
 msgid "&Cycle ETA Style\tCtrl+E"
-msgstr "&Rota estilo ETA \tF9"
+msgstr "&Rota estilo ETA \tCtrl+E"
 
 #: src/mainDialog.cpp:654
 msgid "&Monitoring"
@@ -691,17 +687,15 @@ msgstr "Ver el proyecto actual en fahinfo.org"
 
 #: src/mainDialog.cpp:663
 msgid "&My Stats\tCtrl+Shift+M"
-msgstr ""
+msgstr "&Mis estadísticas\tCtrl+Shift+M"
 
 #: src/mainDialog.cpp:664
-#, fuzzy
 msgid "&Jmol\tCtrl+J"
-msgstr "&Jmol\tF3"
+msgstr "&Jmol\tCtrl+J"
 
 #: src/mainDialog.cpp:665
-#, fuzzy
 msgid "&fahinfo\tCtrl+F"
-msgstr "&fahinfo\tF4"
+msgstr "&fahinfo\tCtrl+F"
 
 #: src/mainDialog.cpp:668
 msgid "F@H &Website"
@@ -748,9 +742,8 @@ msgid "See help contents"
 msgstr "Ver el contenido de la ayuda"
 
 #: src/mainDialog.cpp:679
-#, fuzzy
 msgid "&Help Contents\tCtrl+?"
-msgstr "&Contenido de la ayuda\tF1"
+msgstr "&Contenido de la ayuda\tCtrl+?"
 
 #: src/mainDialog.cpp:683 src/mainDialog.cpp:685 src/mainDialog.cpp:687
 msgid "&About"

@@ -12,7 +12,7 @@ msgstr ""
 "POT-Creation-Date: 2008-02-15 17:45+0000\n"
 "PO-Revision-Date: 2008-02-08 14:50+0100\n"
 "Last-Translator: Martin Bednar <serafean@gmail.com>\n"
-"Language-Team: British English <en@li.org>\n"
+"Language-Team: Czech <en@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -627,24 +627,20 @@ msgid "Cycle through the different ETA display styles"
 msgstr "Procházet  různé styly ETA"
 
 #: src/mainDialog.cpp:647
-#, fuzzy
 msgid "Reload &Selection\tCtrl+R"
-msgstr "Znovu načíst &výběr\tF5"
+msgstr "Znovu načíst &výběr\tCtrl+R"
 
 #: src/mainDialog.cpp:648
-#, fuzzy
 msgid "Reload &All\tCtrl+Shift+R"
-msgstr "Znovu načíst &vše\tF6"
+msgstr "Znovu načíst &vše\tCtrl+Shift+R"
 
 #: src/mainDialog.cpp:650
-#, fuzzy
 msgid "&Show/Hide FAHLog\tCtrl+L"
-msgstr "&Zobrazit/skrýt FAHlog\tF8"
+msgstr "&Zobrazit/skrýt FAHlog\tCtrl+L"
 
 #: src/mainDialog.cpp:652
-#, fuzzy
 msgid "&Cycle ETA Style\tCtrl+E"
-msgstr "Procházet ETA styly"
+msgstr "&Procházet ETA styly\tCtrl+E"
 
 #: src/mainDialog.cpp:654
 msgid "&Monitoring"
@@ -676,17 +672,15 @@ msgstr "Zobrazit aktuální projekt na fahinfo.org"
 
 #: src/mainDialog.cpp:663
 msgid "&My Stats\tCtrl+Shift+M"
-msgstr ""
+msgstr "&Moje Statistika\tCtrl+Shift+M"
 
 #: src/mainDialog.cpp:664
-#, fuzzy
 msgid "&Jmol\tCtrl+J"
-msgstr "&Jmol\tF3"
+msgstr "&Jmol\tCtrl+J"
 
 #: src/mainDialog.cpp:665
-#, fuzzy
 msgid "&fahinfo\tCtrl+F"
-msgstr "&fahinfo\tF4"
+msgstr "&fahinfo\tCtrl+F"
 
 #: src/mainDialog.cpp:668
 msgid "F@H &Website"
@@ -733,9 +727,8 @@ msgid "See help contents"
 msgstr "Zobrazit obsah nápovědy"
 
 #: src/mainDialog.cpp:679
-#, fuzzy
 msgid "&Help Contents\tCtrl+?"
-msgstr "Obsah Nápovědy\tF1"
+msgstr "Obsah Nápovědy\tCtrl+?"
 
 #: src/mainDialog.cpp:683 src/mainDialog.cpp:685 src/mainDialog.cpp:687
 msgid "&About"

@@ -280,7 +280,7 @@ msgstr "Ort:"
 #: src/preferencesDialog.cpp:497 src/preferencesDialog.cpp:506
 #: src/preferencesDialog.cpp:515
 msgid "Choose"
-msgstr ""
+msgstr "Wählen"
 
 #: src/clientDialog.cpp:97
 msgid "Name:"
@@ -638,24 +638,20 @@ msgid "Cycle through the different ETA display styles"
 msgstr "Durchläuft die verschiedenen Darstellungsarten für die Zeitanzeigen."
 
 #: src/mainDialog.cpp:647
-#, fuzzy
 msgid "Reload &Selection\tCtrl+R"
-msgstr "Auswahl ab&fragen\tF5"
+msgstr "Auswahl ab&fragen\tCtrl+R"
 
 #: src/mainDialog.cpp:648
-#, fuzzy
 msgid "Reload &All\tCtrl+Shift+R"
-msgstr "&Alle abfragen\tF6"
+msgstr "&Alle abfragen\tCtrl+Shift+R"
 
 #: src/mainDialog.cpp:650
-#, fuzzy
 msgid "&Show/Hide FAHLog\tCtrl+L"
-msgstr "FAH&log zeigen/verbergen\tF8"
+msgstr "FAH&log zeigen/verbergen\tCtrl+L"
 
 #: src/mainDialog.cpp:652
-#, fuzzy
 msgid "&Cycle ETA Style\tCtrl+E"
-msgstr "&Zeitanzeigen umschalten\tF9"
+msgstr "&Zeitanzeigen umschalten\tCtrl+E"
 
 #: src/mainDialog.cpp:654
 msgid "&Monitoring"
@@ -687,17 +683,15 @@ msgstr "Öffnet fahinfo.org mit dem aktuellen Projekt."
 
 #: src/mainDialog.cpp:663
 msgid "&My Stats\tCtrl+Shift+M"
-msgstr ""
+msgstr "&Meine Statistik"
 
 #: src/mainDialog.cpp:664
-#, fuzzy
 msgid "&Jmol\tCtrl+J"
-msgstr "&Jmol\tF3"
+msgstr "&Jmol\tCtrl+J"
 
 #: src/mainDialog.cpp:665
-#, fuzzy
 msgid "&fahinfo\tCtrl+F"
-msgstr "&fahinfo\tF4"
+msgstr "&fahinfo\tCtrl+F"
 
 #: src/mainDialog.cpp:668
 msgid "F@H &Website"
@@ -744,9 +738,8 @@ msgid "See help contents"
 msgstr "Zeigt die Inhaltsübersicht der Hilfe (Web)."
 
 #: src/mainDialog.cpp:679
-#, fuzzy
 msgid "&Help Contents\tCtrl+?"
-msgstr "&Inhalt (Web)\tF1"
+msgstr "&Inhalt (Web)\tCtrl+?"
 
 #: src/mainDialog.cpp:683 src/mainDialog.cpp:685 src/mainDialog.cpp:687
 msgid "&About"

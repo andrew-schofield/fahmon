@@ -2,13 +2,13 @@
 # Copyright (C) YEAR Andrew Schofield
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Andrew Schofield <andrew_s@fahmon.net>, 2007.
+# Andrew Schofield <andrew_s@fahmon.net>, 2007, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
 "POT-Creation-Date: 2008-02-15 17:45+0000\n"
-"PO-Revision-Date: 2007-11-17 20:19+0000\n"
+"PO-Revision-Date: 2008-02-15 18:09+0000\n"
 "Last-Translator: Andrew Schofield <andrew_s@fahmon.net>\n"
 "Language-Team: British English <en@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -276,7 +276,7 @@ msgstr "Location:"
 #: src/preferencesDialog.cpp:497 src/preferencesDialog.cpp:506
 #: src/preferencesDialog.cpp:515
 msgid "Choose"
-msgstr ""
+msgstr "Choose"
 
 #: src/clientDialog.cpp:97
 msgid "Name:"
@@ -595,7 +595,7 @@ msgstr "Quit"
 
 #: src/mainDialog.cpp:634
 msgid "&Tools"
-msgstr ""
+msgstr "&Tools"
 
 #: src/mainDialog.cpp:640
 msgid "Reload &Selection\tF5"
@@ -630,24 +630,20 @@ msgid "Cycle through the different ETA display styles"
 msgstr "Cycle through the different ETA display styles"
 
 #: src/mainDialog.cpp:647
-#, fuzzy
 msgid "Reload &Selection\tCtrl+R"
-msgstr "Reload &Selection\tF5"
+msgstr "Reload &Selection\tCtrl+R"
 
 #: src/mainDialog.cpp:648
-#, fuzzy
 msgid "Reload &All\tCtrl+Shift+R"
-msgstr "Reload &All\tF6"
+msgstr "Reload &All\tCtrl+Shift+R"
 
 #: src/mainDialog.cpp:650
-#, fuzzy
 msgid "&Show/Hide FAHLog\tCtrl+L"
-msgstr "&Show/Hide FAHLog\tF8"
+msgstr "&Show/Hide FAHLog\tCtrl+L"
 
 #: src/mainDialog.cpp:652
-#, fuzzy
 msgid "&Cycle ETA Style\tCtrl+E"
-msgstr "&Cycle ETA Style\tF9"
+msgstr "&Cycle ETA Style\tCtrl+E"
 
 #: src/mainDialog.cpp:654
 msgid "&Monitoring"
@@ -679,17 +675,15 @@ msgstr "View the current project on fahinfo.org"
 
 #: src/mainDialog.cpp:663
 msgid "&My Stats\tCtrl+Shift+M"
-msgstr ""
+msgstr "&My Stats\tCtrl+Shirt+M"
 
 #: src/mainDialog.cpp:664
-#, fuzzy
 msgid "&Jmol\tCtrl+J"
-msgstr "&Jmol\tF3"
+msgstr "&Jmol\tCtrl+J"
 
 #: src/mainDialog.cpp:665
-#, fuzzy
 msgid "&fahinfo\tCtrl+F"
-msgstr "&fahinfo\tF4"
+msgstr "&fahinfo\tCtrl+F"
 
 #: src/mainDialog.cpp:668
 msgid "F@H &Website"
@@ -736,9 +730,8 @@ msgid "See help contents"
 msgstr "See help contents"
 
 #: src/mainDialog.cpp:679
-#, fuzzy
 msgid "&Help Contents\tCtrl+?"
-msgstr "&Help Contents\tF1"
+msgstr "&Help Contents\tCtrl+?"
 
 #: src/mainDialog.cpp:683 src/mainDialog.cpp:685 src/mainDialog.cpp:687
 msgid "&About"
@@ -1036,7 +1029,7 @@ msgstr "Other"
 
 #: src/preferencesDialog.cpp:414
 msgid "Finder"
-msgstr ""
+msgstr "Finder"
 
 #: src/preferencesDialog.cpp:491
 msgid "Export Web Application"
@@ -1223,33 +1216,3 @@ msgstr "Simple Text Output"
 #: src/webMonitor.cpp:610
 msgid "Last updated:"
 msgstr "Last updated:"
-
-#~ msgid "%s Web View - Last updated: %s"
-#~ msgstr "%s Web View - Last updated: %s"
-
-#~ msgid ""
-#~ "Could not open file <%s> for writing!\n"
-#~ "The simple web output will not be created!"
-#~ msgstr ""
-#~ "Could not open file <%s> for writing!\n"
-#~ "The simple web output will not be created!"
-
-#~ msgid ""
-#~ "Could not open file <%s> for writing!\n"
-#~ "The simple text output will not be created!"
-#~ msgstr ""
-#~ "Could not open file <%s> for writing!\n"
-#~ "The simple text output will not be created!"
-
-#~ msgid ""
-#~ "Total PPD: %.2f\n"
-#~ "\n"
-#~ msgstr ""
-#~ "Total PPD: %.2f\n"
-#~ "\n"
-
-#~ msgid "Server:"
-#~ msgstr "Server:"
-
-#~ msgid "Resource:"
-#~ msgstr "Resource:"

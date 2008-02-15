@@ -632,24 +632,20 @@ msgid "Cycle through the different ETA display styles"
 msgstr "Переключение между различными стилями показа РВО"
 
 #: src/mainDialog.cpp:647
-#, fuzzy
 msgid "Reload &Selection\tCtrl+R"
-msgstr "Обновить В&ыбранные\tF5"
+msgstr "Обновить В&ыбранные\tCtrl+R"
 
 #: src/mainDialog.cpp:648
-#, fuzzy
 msgid "Reload &All\tCtrl+Shift+R"
-msgstr "Обновить &Все\tF6"
+msgstr "Обновить &Все\tCtrl+Shift+R"
 
 #: src/mainDialog.cpp:650
-#, fuzzy
 msgid "&Show/Hide FAHLog\tCtrl+L"
-msgstr "&Показать/Скрыть FAHLog\tF8"
+msgstr "&Показать/Скрыть FAHLog\tCtrl+L"
 
 #: src/mainDialog.cpp:652
-#, fuzzy
 msgid "&Cycle ETA Style\tCtrl+E"
-msgstr "Переключить стиль &РВО\tF9"
+msgstr "Переключить стиль &РВО\tCtrl+E"
 
 #: src/mainDialog.cpp:654
 msgid "&Monitoring"
@@ -681,17 +677,15 @@ msgstr "Посмотреть статистику текущего задани�
 
 #: src/mainDialog.cpp:663
 msgid "&My Stats\tCtrl+Shift+M"
-msgstr ""
+msgstr "&Моя статистика\tCtrl+Shift+M"
 
 #: src/mainDialog.cpp:664
-#, fuzzy
 msgid "&Jmol\tCtrl+J"
-msgstr "&Jmol\tF3"
+msgstr "&Jmol\tCtrl+J"
 
 #: src/mainDialog.cpp:665
-#, fuzzy
 msgid "&fahinfo\tCtrl+F"
-msgstr "&База статистики fahinfo\tF4"
+msgstr "&База статистики fahinfo\tCtrl+F"
 
 #: src/mainDialog.cpp:668
 msgid "F@H &Website"
@@ -738,9 +732,8 @@ msgid "See help contents"
 msgstr "Онлайн помощь по программе FahMon"
 
 #: src/mainDialog.cpp:679
-#, fuzzy
 msgid "&Help Contents\tCtrl+?"
-msgstr "&Содержание помощи\tF1"
+msgstr "&Содержание помощи\tCtrl+?"
 
 #: src/mainDialog.cpp:683 src/mainDialog.cpp:685 src/mainDialog.cpp:687
 msgid "&About"
