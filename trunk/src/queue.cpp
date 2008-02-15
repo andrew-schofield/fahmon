@@ -64,9 +64,9 @@ bool Queue::LoadQueueFile(const wxString& filename, wxString clientName)
 	systype = 0;
 #elif _FAHMON_WIN32_
 	systype = 1;
-#elif __WXMAC_PPC__
+#elif defined(__ppc__) && defined(__WXMAC__)
 	systype = 2;
-#elif __WXMAC__
+#elif defined(__i386__) && defined(__WXMAC__)
 	systype = 3;
 #endif
 
@@ -114,7 +114,7 @@ bool Queue::LoadQueueFile(const wxString& filename, wxString clientName)
 			case 7032:
 				queueversion = 324;
 tl:				if (genome)
-#ifdef __WXMAC_PPC__
+#if defined(__ppc__) && defined(__WXMAC__)
 					q = "0Linux";
 #else
 				q = "2Mac/PPC";
@@ -128,7 +128,7 @@ tl:				if (genome)
 			case 7168:
 				queueversion = 500;
 tt:				if (genome)
-#ifdef __WXMAC_PPC__
+#if defined(__ppc__) && defined(__WXMAC__)
 					q = "1Linux, Windows or Mac/x86";
 #else
 					q = "2Mac/PPC";
@@ -141,7 +141,7 @@ tt:				if (genome)
 			systype = *q++ - '0';
 		//endian swap for PPC machines and queues
 		endianswap = FALSE;
-#ifdef __WXMAC_PPC__
+#if defined(__ppc__) && defined(__WXMAC__)
 		if (systype != 2)
 			endianswap = TRUE;
 #else
@@ -248,8 +248,7 @@ tt:				if (genome)
 
 u32 Queue::es32(u32 i)
 {
-	//return ((i << 24) | ((i & 0xFF00) << 8) | ((i & 0xFF0000) >> 8) | ((i & 0xFF000000) >> 24));
-	return (i>>24) | ((i<<8) & 0x00FF0000) | ((i>>8) & 0x0000FF00) | (i<<24);
+	return ((i << 24) | ((i & 0xFF00) << 8) | ((i & 0xFF0000) >> 8) | ((i & 0xFF000000) >> 24));
 }
 
 
@@ -257,6 +256,7 @@ void Queue::eswp(struct queueformat *bp, u32 qver, u32 systype)
 {
 	int                     i, n;
 	struct queueformat::qs *p;
+
 	bp->version = es32(bp->version);
 	bp->current = es32(bp->current);
 	for (n = 10; --n >= 0; )

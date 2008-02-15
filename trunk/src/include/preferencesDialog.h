@@ -29,7 +29,11 @@
 #include "wx/panel.h"
 #include "wx/dialog.h"
 #include "wx/choice.h"
-#include "wx/notebook.h"
+#ifndef __WXMAC__ 
+#include "wx/notebook.h" 
+#else 
+#include "wx/choicebk.h" 
+#endif 
 #include "wx/textctrl.h"
 #include "wx/checkbox.h"
 #include "wx/spinctrl.h"
@@ -138,43 +142,43 @@ protected:
 	 * @param parent The notebook object.
 	 * @return A wxPanel object.
 	 **/
-	wxPanel* CreateGeneralTab(wxNotebook* parent);
+	wxPanel* CreateGeneralTab(wxBookCtrlBase* parent);
 
 	/**
 	 * Create the tab containing monitoring preferences.
 	 * @param parent The notebook object.
 	 * @return A wxPanel object.
 	 **/
-	wxPanel* CreateMonitoringTab(wxNotebook* parent);
+	wxPanel* CreateMonitoringTab(wxBookCtrlBase* parent);
 
 	/**
 	 * Create the tab containing networking preferences.
 	 * @param parent The notebook object.
 	 * @return A wxPanel object.
 	 **/
-	wxPanel* CreateNetworkingTab(wxNotebook* parent);
+	wxPanel* CreateNetworkingTab(wxBookCtrlBase* parent);
 
 	/**
 	 * Create the tab containing advanced preferences.
 	 * @param parent The notebook object.
 	 * @return A wxPanel object.
 	 **/
-	wxPanel* CreateAdvancedTab(wxNotebook* parent);
+	wxPanel* CreateAdvancedTab(wxBookCtrlBase* parent);
 
 	/**
 	 * Create the tab containing system preferences.
 	 * @param parent The notebook object.
 	 * @return A wxPanel object.
 	 **/
-	wxPanel* CreateSystemTab(wxNotebook* parent);
-	//wxPanel* CreateFahinfoTab(wxNotebook* parent);
+	wxPanel* CreateSystemTab(wxBookCtrlBase* parent);
+	//wxPanel* CreateFahinfoTab(wxBookCtrlBase* parent);
 
 	/**
 	 * Create the tab containing web application preferences.
 	 * @param parent The notebook object.
 	 * @return A wxPanel object.
 	 **/
-	wxPanel* CreateWebAppTab(wxNotebook* parent);
+	wxPanel* CreateWebAppTab(wxBookCtrlBase* parent);
 
 	/**
 	 * Give the correct value to each controls using the preferences.
@@ -235,6 +239,9 @@ protected:
 	 **/
 	void OnChoices(wxCommandEvent& event);
 
+	#ifdef __WXMAC__ 
+	void OnClose(wxCloseEvent& event); 
+	#endif 
 
 public:
 	// Singleton pattern

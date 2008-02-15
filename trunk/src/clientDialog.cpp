@@ -18,7 +18,7 @@
  * \file clientDialog.cpp
  * The client edition dialog.
  * Creates the dialog to add and edit new clients.
- * \author François Ingelrest
+ * \author FranÃois Ingelrest
  * \author Andrew Schofield
  **/
 
@@ -57,49 +57,74 @@ ClientDialog* ClientDialog::mInstance = NULL;
 
 ClientDialog::ClientDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, wxString::Format(_("Client Edition / %s"), wxT(FMC_PRODUCT)))
 {
-	wxBoxSizer       *topLevelSizer;
-	wxBoxSizer       *mainSizer;
-	wxBoxSizer       *buttonsSizer;
-	wxBoxSizer       *locationSizer;
-	wxFlexGridSizer  *clientInfoSizer;
-	wxStaticBoxSizer *groupSizer;
+	wxBoxSizer             *topLevelSizer;
+	wxBoxSizer             *mainSizer;
+	wxBoxSizer             *buttonsSizer;
+	wxBoxSizer             *locationSizer;
+	wxBoxSizer             *nameSizer;
+	wxBoxSizer             *nameLSizer;
+	wxBoxSizer             *locationLSizer;
+	wxFlexGridSizer        *clientInfoSizer;
+	wxBoxSizer             *groupSizer;
+	wxButton                chooseButton;
 
 	// The wxTextCtrl used for the location has an associated button to show the directory chooser
-	// Beware of the cration order, it implicitly defines the tab order
+	// Beware of the creation order, it implicitly defines the tab order
+	topLevelSizer       = new wxBoxSizer(wxVERTICAL);
+	mainSizer           = new wxBoxSizer(wxVERTICAL);
 	locationSizer       = new wxBoxSizer(wxHORIZONTAL);
+	buttonsSizer        = new wxBoxSizer(wxHORIZONTAL);
+	nameSizer           = new wxBoxSizer(wxHORIZONTAL);
+	locationLSizer      = new wxBoxSizer(wxHORIZONTAL);
+	nameLSizer          = new wxBoxSizer(wxHORIZONTAL);
+	groupSizer          = new wxStaticBoxSizer(wxVERTICAL, this, _("Client information"));
+	clientInfoSizer     = new wxFlexGridSizer(2, FMC_GUI_SPACING_LOW, FMC_GUI_SPACING_LOW);
+	
 	mClientNameCtrl     = new wxTextCtrl(this, wxID_ANY, wxT(""), wxDefaultPosition, wxSize(FMC_GUI_TEXTCTRL_MIN_LENGTH, -1));
 	mClientLocationCtrl = new wxTextCtrl(this, wxID_ANY, wxT(""), wxDefaultPosition, wxSize(FMC_GUI_TEXTCTRL_MIN_LENGTH, -1));
 
+	locationLSizer->Add(new StaticBoldedText(this, wxID_ANY, _("Location:")),0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
+	locationLSizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	locationSizer->Add(mClientLocationCtrl, 1, wxALIGN_CENTER_VERTICAL);
 	locationSizer->AddSpacer(FMC_GUI_SPACING_LOW);
-	locationSizer->Add(new wxButton(this, BTN_BROWSE, wxT("..."), wxDefaultPosition, wxSize(26, 26)), 0, wxALIGN_CENTER_VERTICAL);
-
+#ifndef __WXMAC__
+    locationSizer->Add(new wxButton(this, BTN_BROWSE, wxT("..."), wxDefaultPosition, wxSize(26, 26)));
+#else
+	locationSizer->Add(new wxButton(this, BTN_BROWSE, _("Choose"), wxDefaultPosition));
+#endif
+	locationSizer->AddSpacer(FMC_GUI_SPACING_LOW);
+	
+	nameLSizer->Add(new StaticBoldedText(this, wxID_ANY, _("Name:")), 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
+	nameLSizer->AddSpacer(FMC_GUI_SPACING_LOW);
+	nameSizer->Add(mClientNameCtrl, 1, wxALIGN_CENTER_VERTICAL);
+	nameSizer->AddSpacer(FMC_GUI_SPACING_LOW);
+	
 	// The top part: it contains the two wxTextCtrl and their labels
-	groupSizer      = new wxStaticBoxSizer(wxVERTICAL, this, _("Client information"));
-	clientInfoSizer = new wxFlexGridSizer(2, FMC_GUI_SPACING_LOW, FMC_GUI_SPACING_LOW);
 
-	clientInfoSizer->Add(new StaticBoldedText(this, wxID_ANY, _("Name:")), 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
-	clientInfoSizer->Add(mClientNameCtrl, 0, wxALIGN_CENTER_VERTICAL | wxEXPAND);
-	clientInfoSizer->Add(new StaticBoldedText(this, wxID_ANY, _("Location:")), 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
-	clientInfoSizer->Add(locationSizer, 0, wxALIGN_CENTER_VERTICAL);
-	groupSizer->Add(clientInfoSizer, 1, wxEXPAND | wxALL, FMC_GUI_BORDER);
+	clientInfoSizer->Add(nameLSizer, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
+	clientInfoSizer->Add(nameSizer, 0, wxALIGN_CENTER_VERTICAL | wxEXPAND);
+	clientInfoSizer->AddSpacer(FMC_GUI_SPACING_LOW);
+	clientInfoSizer->AddSpacer(FMC_GUI_SPACING_LOW);
+	clientInfoSizer->Add(locationLSizer, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
+	clientInfoSizer->Add(locationSizer, 0, wxALIGN_CENTER_VERTICAL | wxEXPAND);
+	groupSizer->Add(clientInfoSizer);
 
 	// The bottom part contains the Ok and Cancel buttons
-	buttonsSizer = new wxBoxSizer(wxHORIZONTAL);
+	//buttonsSizer = new wxBoxSizer(wxHORIZONTAL);
 
 	buttonsSizer->Add(new wxButton(this, wxID_CANCEL), 0, wxALIGN_RIGHT);
 	buttonsSizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	buttonsSizer->Add(new wxButton(this, wxID_OK), 0, wxALIGN_RIGHT);
 
 	// Construct the main sizer
-	mainSizer = new wxBoxSizer(wxVERTICAL);
+	//mainSizer = new wxBoxSizer(wxVERTICAL);
 
 	mainSizer->Add(groupSizer, 1, wxEXPAND);
 	mainSizer->AddSpacer(FMC_GUI_SPACING_HIGH);
 	mainSizer->Add(buttonsSizer, 0, wxALIGN_RIGHT);
 
 	// And the top level sizer
-	topLevelSizer = new wxBoxSizer(wxVERTICAL);
+	//topLevelSizer = new wxBoxSizer(wxVERTICAL);
 
 	topLevelSizer->Add(mainSizer, 1, wxEXPAND | wxALL, FMC_GUI_BORDER);
 	SetSizer(topLevelSizer);
