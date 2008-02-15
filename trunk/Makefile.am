@@ -23,8 +23,9 @@ EXTRA_DIST = config.rpath  \
 	doxconf \
 	TEMPLATE_SYNTAX \
 	gen_msw.bat \
-	fahmon.spec
-SUBDIRS = m4 src doc po src/include src/images resources templates
+	fahmon.spec \
+	FahMon-Info.plist
+SUBDIRS = m4 src doc po src/include src/images resources templates FahMon.xcodeproj mac
 
 appsdir = $(datadir)/applications
 apps_in_files = fahmon.desktop

@@ -48,6 +48,7 @@ AC_CONFIG_FILES([
    FahMon.nsi
    fahmon.spec
    doxconf
+   FahMon-Info.plist
    doc/Makefile
    m4/Makefile
    po/Makefile.in
@@ -64,6 +65,9 @@ AC_CONFIG_FILES([
    src/images/icons/128/Makefile
    src/images/icons/256/Makefile
    templates/Makefile
+   FahMon.xcodeproj/Makefile
+   mac/FahMon-Info.plist
+   mac/Makefile
 ])
 
 AC_OUTPUT

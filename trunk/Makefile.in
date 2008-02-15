@@ -43,7 +43,8 @@ POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
 subdir = .
-DIST_COMMON = README $(am__configure_deps) $(srcdir)/FahMon.nsi.in \
+DIST_COMMON = README $(am__configure_deps) \
+	$(srcdir)/FahMon-Info.plist.in $(srcdir)/FahMon.nsi.in \
 	$(srcdir)/Makefile.am $(srcdir)/Makefile.in \
 	$(srcdir)/README.in $(srcdir)/config.h.in $(srcdir)/doxconf.in \
 	$(srcdir)/fahmon.spec.in $(top_srcdir)/configure ABOUT-NLS \
@@ -62,7 +63,8 @@ am__CONFIG_DISTCLEAN_FILES = config.status config.cache config.log \
  configure.lineno config.status.lineno
 mkinstalldirs = $(install_sh) -d
 CONFIG_HEADER = config.h
-CONFIG_CLEAN_FILES = README FahMon.nsi fahmon.spec doxconf
+CONFIG_CLEAN_FILES = README FahMon.nsi fahmon.spec doxconf \
+	FahMon-Info.plist
 SOURCES =
 DIST_SOURCES =
 RECURSIVE_TARGETS = all-recursive check-recursive dvi-recursive \
@@ -231,9 +233,10 @@ EXTRA_DIST = config.rpath  \
 	doxconf \
 	TEMPLATE_SYNTAX \
 	gen_msw.bat \
-	fahmon.spec
+	fahmon.spec \
+	FahMon-Info.plist
 
-SUBDIRS = m4 src doc po src/include src/images resources templates
+SUBDIRS = m4 src doc po src/include src/images resources templates FahMon.xcodeproj mac
 appsdir = $(datadir)/applications
 apps_in_files = fahmon.desktop
 apps_DATA = $(apps_in_files)
@@ -301,6 +304,8 @@ FahMon.nsi: $(top_builddir)/config.status $(srcdir)/FahMon.nsi.in
 fahmon.spec: $(top_builddir)/config.status $(srcdir)/fahmon.spec.in
 	cd $(top_builddir) && $(SHELL) ./config.status $@
 doxconf: $(top_builddir)/config.status $(srcdir)/doxconf.in
+	cd $(top_builddir) && $(SHELL) ./config.status $@
+FahMon-Info.plist: $(top_builddir)/config.status $(srcdir)/FahMon-Info.plist.in
 	cd $(top_builddir) && $(SHELL) ./config.status $@
 install-appsDATA: $(apps_DATA)
 	@$(NORMAL_INSTALL)
