@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fr_FR\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-02-15 21:49+0000\n"
+"POT-Creation-Date: 2008-02-15 23:34+0000\n"
 "PO-Revision-Date: 2007-11-15 23:42+0000\n"
 "Last-Translator: Andrew Schofield <andrew_s@fahmon.net>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -45,7 +45,7 @@ msgstr ""
 msgid "Library:"
 msgstr "Librairie:"
 
-#: src/benchmarksDialog.cpp:63 src/trayManager.cpp:186
+#: src/benchmarksDialog.cpp:63 src/trayManager.cpp:193
 msgid "Benchmarks"
 msgstr "Benchmarks"
 
@@ -791,28 +791,28 @@ msgstr " :: PPD total:"
 msgid "Log file."
 msgstr "Fichier de Log."
 
-#: src/mainDialog.cpp:1034
+#: src/mainDialog.cpp:1035
 msgid "You must first select a client!"
 msgstr "Vous devez commencer par sélectionner un client!"
 
-#: src/mainDialog.cpp:1359
+#: src/mainDialog.cpp:1360
 msgid "Checking for FahMon updates"
 msgstr "Recherche de mises à jour de FahMon"
 
-#: src/mainDialog.cpp:1362
+#: src/mainDialog.cpp:1363
 msgid "Checking for update"
 msgstr "Recherche de mise a jour"
 
-#: src/mainDialog.cpp:1385
+#: src/mainDialog.cpp:1386
 #, c-format
 msgid "Your version: %s; New version: %s"
 msgstr "Votre version: %s; Nouvelle version: %s"
 
-#: src/mainDialog.cpp:1399
+#: src/mainDialog.cpp:1400
 msgid "Update available"
 msgstr "Mise a jour disponible"
 
-#: src/mainDialog.cpp:1400
+#: src/mainDialog.cpp:1401
 msgid ""
 "A newer version of FahMon is available\n"
 "Do you want to go to the FahMon website?"
@@ -820,32 +820,32 @@ msgstr ""
 "Une nouvelle version de FahMon est disponible.Voulez-vous vous rendre sur le "
 "site de FahMon ?"
 
-#: src/mainDialog.cpp:1407
+#: src/mainDialog.cpp:1408
 msgid "No update found"
 msgstr "Aucune mise à jour trouvée"
 
-#: src/mainDialog.cpp:1432 src/projectsManager.cpp:308
+#: src/mainDialog.cpp:1433 src/projectsManager.cpp:308
 msgid "Unable to create a temporary file!"
 msgstr "Impossible de créer un fichier temporaire!"
 
-#: src/mainDialog.cpp:1436 src/projectsManager.cpp:312
+#: src/mainDialog.cpp:1437 src/projectsManager.cpp:312
 #, c-format
 msgid "Unable to open the temporary file <%s>"
 msgstr "Impossible d'ouvrir le fichier temporaire <%s>"
 
-#: src/mainDialog.cpp:1440 src/projectsManager.cpp:316
+#: src/mainDialog.cpp:1441 src/projectsManager.cpp:316
 msgid "Unable to connect to the server!"
 msgstr "Impossible de se connecter au serveur!"
 
-#: src/mainDialog.cpp:1444 src/projectsManager.cpp:320
+#: src/mainDialog.cpp:1445 src/projectsManager.cpp:320
 msgid "Unable to send the request to the server!"
 msgstr "Impossible d'envoyer une requête au serveur!"
 
-#: src/mainDialog.cpp:1448 src/projectsManager.cpp:324
+#: src/mainDialog.cpp:1449 src/projectsManager.cpp:324
 msgid "Download aborted!"
 msgstr "Téléchargement abandonné!"
 
-#: src/mainDialog.cpp:1454 src/projectsManager.cpp:330
+#: src/mainDialog.cpp:1455 src/projectsManager.cpp:330
 msgid "An unknown error happened!"
 msgstr "Une erreur inconnue s'est produite!"
 
@@ -1128,29 +1128,29 @@ msgstr ""
 "Merci de vérifier que la variable d'environnement BROWSER est correctement "
 "réglée dans les Préférences."
 
-#: src/trayManager.cpp:177
+#: src/trayManager.cpp:184
 #, c-format
 msgid "Clients: %i"
 msgstr "Clients: %i"
 
-#: src/trayManager.cpp:181
+#: src/trayManager.cpp:188
 #, c-format
 msgid "Total PPD: %.2f"
 msgstr "Total PPD: %.2f"
 
-#: src/trayManager.cpp:188
+#: src/trayManager.cpp:195
 msgid "Preferences"
 msgstr "Préférences"
 
-#: src/trayManager.cpp:195
+#: src/trayManager.cpp:202
 msgid "Hide FahMon"
 msgstr "Cacher FahMon"
 
-#: src/trayManager.cpp:200
+#: src/trayManager.cpp:207
 msgid "Show FahMon"
 msgstr "Afficher FahMon"
 
-#: src/trayManager.cpp:207
+#: src/trayManager.cpp:214
 msgid "Quit"
 msgstr "Quitter"
 

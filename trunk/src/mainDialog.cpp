@@ -880,6 +880,7 @@ inline void MainDialog::RestoreFrameState(void)
 		frameWidth  = -1;
 		frameHeight = -1;
 	}
+
 	// We now have correct values, resize and move the frame
 	SetSize(frameWidth, frameHeight);
 	Move(framePosX, framePosY);
@@ -1078,8 +1079,8 @@ void MainDialog::OnMenuAbout(wxCommandEvent& event)
 void MainDialog::OnClose(wxCloseEvent& event)
 {
 	// Don't save window size if it is iconized (win32 bug)
-#ifdef _WIN32_
-	if(!IsIconized() && !IsMinimized())
+#ifdef _FAHMON_WIN32_
+	if(!IsIconized())
 #endif
 	{
 		if( !IsMaximized())

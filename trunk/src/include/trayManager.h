@@ -36,6 +36,7 @@ class TrayManager : public wxTaskBarIcon
 protected:
 	wxString            mTooltip; /**< Tooltip string */
 	static TrayManager* mInstance; /**< The single instance of the TrayManager */
+	bool                mMaximised;
 
 	/**
 	 * Contructor.
@@ -117,6 +118,10 @@ public:
 	 * Uninstall the icon if it is present.
 	 **/
 	void UninstallIcon(void);
+
+	void SetMaximised(bool maximised) {mMaximised = maximised;}
+
+	bool GetMaximised(void) {return mMaximised;}
 
 
 private:

@@ -139,6 +139,10 @@ void TrayManager::OnClick(wxTaskBarIconEvent& event)
 {
 	if(MainDialog::GetInstance()->IsShown())
 	{
+		if(MainDialog::GetInstance()->IsMaximized())
+			SetMaximised(true);
+		else
+			SetMaximised(false);
 		// Must minimize to the task bar first so that we get the minimize animation :)
 		MainDialog::GetInstance()->Iconize();
 		MainDialog::GetInstance()->Hide();
@@ -153,7 +157,10 @@ void TrayManager::OnClick(wxTaskBarIconEvent& event)
 		// Fortunately, this function seems to keep track of the previous maximize state of the window;
 		// otherwise, we would have to do that
 		#ifdef _FAHMON_WIN32_
-		MainDialog::GetInstance()->Maximize(false);
+		if (GetMaximised())
+			MainDialog::GetInstance()->Maximize(true);
+		else
+			MainDialog::GetInstance()->Maximize(false);
 		#endif
 	}
 }
@@ -227,13 +234,20 @@ void TrayManager::Show(wxCommandEvent&)
 	// Fortunately, this function seems to keep track of the previous maximize state of the window;
 	// otherwise, we would have to do that
 	#ifdef _FAHMON_WIN32_
-	MainDialog::GetInstance()->Maximize(false);
+		if (GetMaximised())
+			MainDialog::GetInstance()->Maximize(true);
+		else
+			MainDialog::GetInstance()->Maximize(false);
 	#endif
 }
 
 
 void TrayManager::Hide(wxCommandEvent&)
 {
+	if(MainDialog::GetInstance()->IsMaximized())
+		SetMaximised(true);
+	else
+		SetMaximised(false);
 	// Must minimize to the task bar first so that we get the minimize animation :)
 	MainDialog::GetInstance()->Iconize();
 	MainDialog::GetInstance()->Hide();
