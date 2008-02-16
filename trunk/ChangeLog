@@ -1,6 +1,6 @@
 FahMon: The Folding@home client monitoring program
 
-v2.3.3
+v2.3.2a (16/02/08)
 
     General
 
@@ -8,6 +8,13 @@ v2.3.3
     * Fixed endian swap bug when monitoring PPC Macs.
     * FahMon now works on Macs running OS X.
     * Fixed some minor translation bugs.
+
+    Windows
+
+    * Fixed window state bug that caused FahMon to to restore correctly from the
+      system tray icon or the taskbar.
+    * Fixed regression in the benchmarks dialog that would always display old
+      benchmarks by location rather than name.
 
 v2.3.2 (08/02/08)
 
@@ -48,6 +55,7 @@ v2.3.2 (08/02/08)
     * Added SCEARD (PS3 Gromacs) support just in case we ever get access to PS3
       logs in the future.
     * Fancy web output now renders satisfactorily on IE7.
+    * Potentially inaccurate ETA and PPD values are marked with an asterisk (*).
 
     Windows
 

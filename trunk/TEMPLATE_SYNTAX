@@ -92,8 +92,32 @@ output to be padded or truncated to a specific length. This is implemented so
 that the default simple text output is formatted correctly.
 To use this option, enclose the desired length in "{}" and put it directly
 preceding the closing "@".
-For example, the truncate the state string to only 5 characters:
+For example, to truncate the state string to only 5 characters:
 
 "@STATE{5}@"
 
 For more examples, examine the templates provided with FahMon.
+
+The following template variable strings are automatically translated to your
+native language if possible.
+"@_State@"
+"@_PRCG@"
+"@_Credit@"
+"@_Downloaded@"
+"@_Progress@"
+"@_Name@"
+"@_ETA@"
+"@_PPD@"
+"@_Work_Unit_Information@"
+"@_Core:@"
+"@_Project:@"
+"@_Credit:@"
+"@_Username:@"
+"@_Preferred_Deadline:@"
+"@_Final_Deadline:@"
+"@_Total_PPD:@"
+"@_Web_View@"
+"@_FahMon_Client_Monitoring@"
+"@_Simple_Text_Output@"
+"@_Last_updated:@"
+"@_Downloaded:@"

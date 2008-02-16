@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv_SE\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-02-15 23:34+0000\n"
+"POT-Creation-Date: 2008-02-16 01:11+0000\n"
 "PO-Revision-Date: 2008-02-01 20:20+0100\n"
 "Last-Translator: Olof Persson <floffe@gmail.com>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -487,8 +487,9 @@ msgid "%s is licenced under the GNU GPL v2"
 msgstr "%s är licensierad under GNU GPL v2"
 
 #: src/mainDialog.cpp:169
-msgid "Copyright (C) 2003-2007 Francois Ingelrest"
-msgstr "Copyright (C) 2003-2007 Francois Ingelrest"
+#, fuzzy
+msgid "Copyright (C) 2003-2007 François Ingelrest"
+msgstr "Copyright (C) 2003-2007 François Ingelrest"
 
 #: src/mainDialog.cpp:170
 msgid "Copyright (C) 2007-2008 Andrew Schofield"

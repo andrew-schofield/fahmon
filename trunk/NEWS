@@ -6,6 +6,12 @@ See the end for copying conditions.
 
 Please send FahMon bug reports to andrew_s@fahmon.net.
 
+Version 2.3.2a
+
+* FahMon now runs on Mac OS X!
+* Several annoying Win32 bugs have been squashed, and the endian swap bug has
+  been fixed.
+
 Version 2.3.2
 
 * Lots of bug fixes in this release to make FahMon more stable, there should be

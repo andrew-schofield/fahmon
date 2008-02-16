@@ -9,6 +9,10 @@ Software for running FahMon on Windows
 REQUIRED
 * None
 
+Software for running FahMon on OS X
+REQUIRED
+* None
+
 Building FahMon from source
 ===========================
 
@@ -40,7 +44,7 @@ NOTE
 It may be possible to compile for Windows using ming32w, however it won't work
 with the makefiles provided.
 
-Software for building FahMon on Mac OS X (not supported, for developers only)
+Software for building FahMon on Mac OS X
 REQUIRED
 * Xcode
-* wxWidgets (available from MacPorts, or compile from source)
+* wxWidgets 2.8.6 (available from MacPorts, or compile from source)

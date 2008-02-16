@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FahMon Translation - de_DE 1.1.b1\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-02-15 23:34+0000\n"
+"POT-Creation-Date: 2008-02-16 01:11+0000\n"
 "PO-Revision-Date: 2008-02-15 09:45+0100\n"
 "Last-Translator: Mark Gerber <mark.gerber@web.de>\n"
 "Language-Team: Mark Gerber <mark.gerber@web.de>\n"
@@ -486,8 +486,8 @@ msgid "%s is licenced under the GNU GPL v2"
 msgstr "%s steht unter der Lizenz GNU GPL v2."
 
 #: src/mainDialog.cpp:169
-msgid "Copyright (C) 2003-2007 Francois Ingelrest"
-msgstr "Copyright (C) 2003-2007 Francois Ingelrest"
+msgid "Copyright (C) 2003-2007 François Ingelrest"
+msgstr "Copyright (C) 2003-2007 François Ingelrest"
 
 #: src/mainDialog.cpp:170
 msgid "Copyright (C) 2007-2008 Andrew Schofield"

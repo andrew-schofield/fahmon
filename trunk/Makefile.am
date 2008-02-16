@@ -24,7 +24,8 @@ EXTRA_DIST = config.rpath  \
 	TEMPLATE_SYNTAX \
 	gen_msw.bat \
 	fahmon.spec \
-	FahMon-Info.plist
+	FahMon-Info.plist \
+	mac-lang
 SUBDIRS = m4 src doc po src/include src/images resources templates FahMon.xcodeproj mac
 
 appsdir = $(datadir)/applications
