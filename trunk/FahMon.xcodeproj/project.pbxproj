@@ -7,13 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3397B24D0D667B8C00580155 /* fahmon.mo in Copy cs_CZ translation */ = {isa = PBXBuildFile; fileRef = 3397B22A0D667AA300580155 /* fahmon.mo */; };
+		3397B2510D667BD000580155 /* fahmon.mo in Copy de_DE translation */ = {isa = PBXBuildFile; fileRef = 3397B22C0D667AA300580155 /* fahmon.mo */; };
+		3397B2540D667BF300580155 /* fahmon.mo in Copy en_GB translation */ = {isa = PBXBuildFile; fileRef = 3397B22E0D667AA300580155 /* fahmon.mo */; };
+		3397B2570D667C3B00580155 /* fahmon.mo in Copy es_ES translation */ = {isa = PBXBuildFile; fileRef = 3397B2300D667AA300580155 /* fahmon.mo */; };
+		3397B25A0D667C5D00580155 /* fahmon.mo in Copy fr_FR translation */ = {isa = PBXBuildFile; fileRef = 3397B2320D667AA300580155 /* fahmon.mo */; };
+		3397B25D0D667C8200580155 /* fahmon.mo in Copy nl_NL translation */ = {isa = PBXBuildFile; fileRef = 3397B2340D667AA300580155 /* fahmon.mo */; };
+		3397B2600D667CA100580155 /* fahmon.mo in Copy pl_PL translation */ = {isa = PBXBuildFile; fileRef = 3397B2360D667AA300580155 /* fahmon.mo */; };
+		3397B2630D667CC000580155 /* fahmon.mo in Copy pt_BR translation */ = {isa = PBXBuildFile; fileRef = 3397B2380D667AA300580155 /* fahmon.mo */; };
+		3397B2660D667CDF00580155 /* fahmon.mo in Copy pt_PT translation */ = {isa = PBXBuildFile; fileRef = 3397B23A0D667AA300580155 /* fahmon.mo */; };
+		3397B2690D667D0700580155 /* fahmon.mo in Copy ru_RU translation */ = {isa = PBXBuildFile; fileRef = 3397B23C0D667AA300580155 /* fahmon.mo */; };
+		3397B26C0D667D2D00580155 /* fahmon.mo in Copy sv_SE translation */ = {isa = PBXBuildFile; fileRef = 3397B23E0D667AA300580155 /* fahmon.mo */; };
 		33C2057E0D64BC30006EE977 /* fahmon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 33C2057D0D64BC30006EE977 /* fahmon.icns */; };
 		33C205800D64BC79006EE977 /* FahMon-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 33C2057F0D64BC79006EE977 /* FahMon-Info.plist */; };
 		33C205890D64BE31006EE977 /* fancy_template.htm in Resources */ = {isa = PBXBuildFile; fileRef = 33C205860D64BE31006EE977 /* fancy_template.htm */; };
 		33C2058A0D64BE31006EE977 /* simple_template.htm in Resources */ = {isa = PBXBuildFile; fileRef = 33C205870D64BE31006EE977 /* simple_template.htm */; };
 		33C2058B0D64BE31006EE977 /* simple_template.txt in Resources */ = {isa = PBXBuildFile; fileRef = 33C205880D64BE31006EE977 /* simple_template.txt */; };
 		33C205960D64BEC5006EE977 /* list_client_asynch.png in Resources */ = {isa = PBXBuildFile; fileRef = 33C2058D0D64BEC5006EE977 /* list_client_asynch.png */; };
-		33C205970D64BEC5006EE977 /* list_client_error.png in Resources */ = {isa = PBXBuildFile; fileRef = 33C2058E0D64BEC5006EE977 /* list_client_error.png */; };
 		33C205980D64BEC5006EE977 /* list_client_inaccessible.png in Resources */ = {isa = PBXBuildFile; fileRef = 33C2058F0D64BEC5006EE977 /* list_client_inaccessible.png */; };
 		33C205990D64BEC5006EE977 /* list_client_inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = 33C205900D64BEC5006EE977 /* list_client_inactive.png */; };
 		33C2059A0D64BEC5006EE977 /* list_client_ok.png in Resources */ = {isa = PBXBuildFile; fileRef = 33C205910D64BEC5006EE977 /* list_client_ok.png */; };
@@ -59,21 +69,151 @@
 		33C205EA0D64C17E006EE977 /* webMonitor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 33C205D70D64C17E006EE977 /* webMonitor.cpp */; };
 		33C205EB0D64C17E006EE977 /* workUnitFrame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 33C205D80D64C17E006EE977 /* workUnitFrame.cpp */; };
 		33DFF5430D626A2F0095F52F /* libwx_macu-2.8.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 33DFF53D0D626A2F0095F52F /* libwx_macu-2.8.a */; };
-		33DFF5440D626A2F0095F52F /* libwxexpat-2.8.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 33DFF53E0D626A2F0095F52F /* libwxexpat-2.8.a */; };
-		33DFF5450D626A2F0095F52F /* libwxjpeg-2.8.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 33DFF53F0D626A2F0095F52F /* libwxjpeg-2.8.a */; };
 		33DFF5460D626A2F0095F52F /* libwxpng-2.8.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 33DFF5400D626A2F0095F52F /* libwxpng-2.8.a */; };
-		33DFF5470D626A2F0095F52F /* libwxregexu-2.8.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 33DFF5410D626A2F0095F52F /* libwxregexu-2.8.a */; };
-		33DFF5480D626A2F0095F52F /* libwxtiff-2.8.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 33DFF5420D626A2F0095F52F /* libwxtiff-2.8.a */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		3397B2270D667A7100580155 /* Copy cs_CZ translation */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = lang/cs_CZ;
+			dstSubfolderSpec = 12;
+			files = (
+				3397B24D0D667B8C00580155 /* fahmon.mo in Copy cs_CZ translation */,
+			);
+			name = "Copy cs_CZ translation";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3397B24F0D667BB000580155 /* Copy de_DE translation */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = lang/de_DE;
+			dstSubfolderSpec = 12;
+			files = (
+				3397B2510D667BD000580155 /* fahmon.mo in Copy de_DE translation */,
+			);
+			name = "Copy de_DE translation";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3397B2520D667BD700580155 /* Copy en_GB translation */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = lang/en_GB;
+			dstSubfolderSpec = 12;
+			files = (
+				3397B2540D667BF300580155 /* fahmon.mo in Copy en_GB translation */,
+			);
+			name = "Copy en_GB translation";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3397B2550D667C1C00580155 /* Copy es_ES translation */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = lang/es_ES;
+			dstSubfolderSpec = 12;
+			files = (
+				3397B2570D667C3B00580155 /* fahmon.mo in Copy es_ES translation */,
+			);
+			name = "Copy es_ES translation";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3397B2580D667C4400580155 /* Copy fr_FR translation */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = lang/fr_FR;
+			dstSubfolderSpec = 12;
+			files = (
+				3397B25A0D667C5D00580155 /* fahmon.mo in Copy fr_FR translation */,
+			);
+			name = "Copy fr_FR translation";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3397B25B0D667C6800580155 /* Copy nl_NL translation */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = lang/nl_NL;
+			dstSubfolderSpec = 12;
+			files = (
+				3397B25D0D667C8200580155 /* fahmon.mo in Copy nl_NL translation */,
+			);
+			name = "Copy nl_NL translation";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3397B25E0D667C8700580155 /* Copy pl_PL translation */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = lang/pl_PL;
+			dstSubfolderSpec = 12;
+			files = (
+				3397B2600D667CA100580155 /* fahmon.mo in Copy pl_PL translation */,
+			);
+			name = "Copy pl_PL translation";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3397B2610D667CA700580155 /* Copy pt_BR translation */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = lang/pt_BR;
+			dstSubfolderSpec = 12;
+			files = (
+				3397B2630D667CC000580155 /* fahmon.mo in Copy pt_BR translation */,
+			);
+			name = "Copy pt_BR translation";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3397B2640D667CC500580155 /* Copy pt_PT translation */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = lang/pt_PT;
+			dstSubfolderSpec = 12;
+			files = (
+				3397B2660D667CDF00580155 /* fahmon.mo in Copy pt_PT translation */,
+			);
+			name = "Copy pt_PT translation";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3397B2670D667CE600580155 /* Copy ru_RU translation */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = lang/ru_RU;
+			dstSubfolderSpec = 12;
+			files = (
+				3397B2690D667D0700580155 /* fahmon.mo in Copy ru_RU translation */,
+			);
+			name = "Copy ru_RU translation";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3397B26A0D667D1100580155 /* Copy sv_SE translation */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = lang/sv_SE;
+			dstSubfolderSpec = 12;
+			files = (
+				3397B26C0D667D2D00580155 /* fahmon.mo in Copy sv_SE translation */,
+			);
+			name = "Copy sv_SE translation";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		3397B22A0D667AA300580155 /* fahmon.mo */ = {isa = PBXFileReference; lastKnownFileType = file; path = fahmon.mo; sourceTree = "<group>"; };
+		3397B22C0D667AA300580155 /* fahmon.mo */ = {isa = PBXFileReference; lastKnownFileType = file; path = fahmon.mo; sourceTree = "<group>"; };
+		3397B22E0D667AA300580155 /* fahmon.mo */ = {isa = PBXFileReference; lastKnownFileType = file; path = fahmon.mo; sourceTree = "<group>"; };
+		3397B2300D667AA300580155 /* fahmon.mo */ = {isa = PBXFileReference; lastKnownFileType = file; path = fahmon.mo; sourceTree = "<group>"; };
+		3397B2320D667AA300580155 /* fahmon.mo */ = {isa = PBXFileReference; lastKnownFileType = file; path = fahmon.mo; sourceTree = "<group>"; };
+		3397B2340D667AA300580155 /* fahmon.mo */ = {isa = PBXFileReference; lastKnownFileType = file; path = fahmon.mo; sourceTree = "<group>"; };
+		3397B2360D667AA300580155 /* fahmon.mo */ = {isa = PBXFileReference; lastKnownFileType = file; path = fahmon.mo; sourceTree = "<group>"; };
+		3397B2380D667AA300580155 /* fahmon.mo */ = {isa = PBXFileReference; lastKnownFileType = file; path = fahmon.mo; sourceTree = "<group>"; };
+		3397B23A0D667AA300580155 /* fahmon.mo */ = {isa = PBXFileReference; lastKnownFileType = file; path = fahmon.mo; sourceTree = "<group>"; };
+		3397B23C0D667AA300580155 /* fahmon.mo */ = {isa = PBXFileReference; lastKnownFileType = file; path = fahmon.mo; sourceTree = "<group>"; };
+		3397B23E0D667AA300580155 /* fahmon.mo */ = {isa = PBXFileReference; lastKnownFileType = file; path = fahmon.mo; sourceTree = "<group>"; };
 		33C2057D0D64BC30006EE977 /* fahmon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = fahmon.icns; path = mac/fahmon.icns; sourceTree = "<group>"; };
 		33C2057F0D64BC79006EE977 /* FahMon-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; name = "FahMon-Info.plist"; path = "mac/FahMon-Info.plist"; sourceTree = "<group>"; };
 		33C205860D64BE31006EE977 /* fancy_template.htm */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.html; name = fancy_template.htm; path = templates/fancy_template.htm; sourceTree = "<group>"; };
 		33C205870D64BE31006EE977 /* simple_template.htm */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.html; name = simple_template.htm; path = templates/simple_template.htm; sourceTree = "<group>"; };
 		33C205880D64BE31006EE977 /* simple_template.txt */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = simple_template.txt; path = templates/simple_template.txt; sourceTree = "<group>"; };
 		33C2058D0D64BEC5006EE977 /* list_client_asynch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = list_client_asynch.png; path = src/images/list_client_asynch.png; sourceTree = "<group>"; };
-		33C2058E0D64BEC5006EE977 /* list_client_error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = list_client_error.png; path = src/images/list_client_error.png; sourceTree = "<group>"; };
 		33C2058F0D64BEC5006EE977 /* list_client_inaccessible.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = list_client_inaccessible.png; path = src/images/list_client_inaccessible.png; sourceTree = "<group>"; };
 		33C205900D64BEC5006EE977 /* list_client_inactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = list_client_inactive.png; path = src/images/list_client_inactive.png; sourceTree = "<group>"; };
 		33C205910D64BEC5006EE977 /* list_client_ok.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = list_client_ok.png; path = src/images/list_client_ok.png; sourceTree = "<group>"; };
@@ -161,11 +301,7 @@
 		33C206140D64C1CE006EE977 /* workUnitFrame.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = workUnitFrame.h; path = src/include/workUnitFrame.h; sourceTree = "<group>"; };
 		33DFF4890D6255770095F52F /* FahMon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FahMon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33DFF53D0D626A2F0095F52F /* libwx_macu-2.8.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libwx_macu-2.8.a"; sourceTree = "<group>"; };
-		33DFF53E0D626A2F0095F52F /* libwxexpat-2.8.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libwxexpat-2.8.a"; sourceTree = "<group>"; };
-		33DFF53F0D626A2F0095F52F /* libwxjpeg-2.8.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libwxjpeg-2.8.a"; sourceTree = "<group>"; };
 		33DFF5400D626A2F0095F52F /* libwxpng-2.8.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libwxpng-2.8.a"; sourceTree = "<group>"; };
-		33DFF5410D626A2F0095F52F /* libwxregexu-2.8.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libwxregexu-2.8.a"; sourceTree = "<group>"; };
-		33DFF5420D626A2F0095F52F /* libwxtiff-2.8.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libwxtiff-2.8.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,17 +310,130 @@
 			buildActionMask = 2147483647;
 			files = (
 				33DFF5430D626A2F0095F52F /* libwx_macu-2.8.a in Frameworks */,
-				33DFF5440D626A2F0095F52F /* libwxexpat-2.8.a in Frameworks */,
-				33DFF5450D626A2F0095F52F /* libwxjpeg-2.8.a in Frameworks */,
 				33DFF5460D626A2F0095F52F /* libwxpng-2.8.a in Frameworks */,
-				33DFF5470D626A2F0095F52F /* libwxregexu-2.8.a in Frameworks */,
-				33DFF5480D626A2F0095F52F /* libwxtiff-2.8.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3397B2290D667AA300580155 /* cs_CZ */ = {
+			isa = PBXGroup;
+			children = (
+				3397B22A0D667AA300580155 /* fahmon.mo */,
+			);
+			name = cs_CZ;
+			path = lang/cs_CZ;
+			sourceTree = "<group>";
+		};
+		3397B22B0D667AA300580155 /* de_DE */ = {
+			isa = PBXGroup;
+			children = (
+				3397B22C0D667AA300580155 /* fahmon.mo */,
+			);
+			name = de_DE;
+			path = lang/de_DE;
+			sourceTree = "<group>";
+		};
+		3397B22D0D667AA300580155 /* en_GB */ = {
+			isa = PBXGroup;
+			children = (
+				3397B22E0D667AA300580155 /* fahmon.mo */,
+			);
+			name = en_GB;
+			path = lang/en_GB;
+			sourceTree = "<group>";
+		};
+		3397B22F0D667AA300580155 /* es_ES */ = {
+			isa = PBXGroup;
+			children = (
+				3397B2300D667AA300580155 /* fahmon.mo */,
+			);
+			name = es_ES;
+			path = lang/es_ES;
+			sourceTree = "<group>";
+		};
+		3397B2310D667AA300580155 /* fr_FR */ = {
+			isa = PBXGroup;
+			children = (
+				3397B2320D667AA300580155 /* fahmon.mo */,
+			);
+			name = fr_FR;
+			path = lang/fr_FR;
+			sourceTree = "<group>";
+		};
+		3397B2330D667AA300580155 /* nl_NL */ = {
+			isa = PBXGroup;
+			children = (
+				3397B2340D667AA300580155 /* fahmon.mo */,
+			);
+			name = nl_NL;
+			path = lang/nl_NL;
+			sourceTree = "<group>";
+		};
+		3397B2350D667AA300580155 /* pl_PL */ = {
+			isa = PBXGroup;
+			children = (
+				3397B2360D667AA300580155 /* fahmon.mo */,
+			);
+			name = pl_PL;
+			path = lang/pl_PL;
+			sourceTree = "<group>";
+		};
+		3397B2370D667AA300580155 /* pt_BR */ = {
+			isa = PBXGroup;
+			children = (
+				3397B2380D667AA300580155 /* fahmon.mo */,
+			);
+			name = pt_BR;
+			path = lang/pt_BR;
+			sourceTree = "<group>";
+		};
+		3397B2390D667AA300580155 /* pt_PT */ = {
+			isa = PBXGroup;
+			children = (
+				3397B23A0D667AA300580155 /* fahmon.mo */,
+			);
+			name = pt_PT;
+			path = lang/pt_PT;
+			sourceTree = "<group>";
+		};
+		3397B23B0D667AA300580155 /* ru_RU */ = {
+			isa = PBXGroup;
+			children = (
+				3397B23C0D667AA300580155 /* fahmon.mo */,
+			);
+			name = ru_RU;
+			path = lang/ru_RU;
+			sourceTree = "<group>";
+		};
+		3397B23D0D667AA300580155 /* sv_SE */ = {
+			isa = PBXGroup;
+			children = (
+				3397B23E0D667AA300580155 /* fahmon.mo */,
+			);
+			name = sv_SE;
+			path = lang/sv_SE;
+			sourceTree = "<group>";
+		};
+		3397B24C0D667B5400580155 /* lang */ = {
+			isa = PBXGroup;
+			children = (
+				3397B2290D667AA300580155 /* cs_CZ */,
+				3397B22B0D667AA300580155 /* de_DE */,
+				3397B22D0D667AA300580155 /* en_GB */,
+				3397B22F0D667AA300580155 /* es_ES */,
+				3397B2310D667AA300580155 /* fr_FR */,
+				3397B2330D667AA300580155 /* nl_NL */,
+				3397B2350D667AA300580155 /* pl_PL */,
+				3397B2370D667AA300580155 /* pt_BR */,
+				3397B2390D667AA300580155 /* pt_PT */,
+				3397B23B0D667AA300580155 /* ru_RU */,
+				3397B23D0D667AA300580155 /* sv_SE */,
+			);
+			name = lang;
+			sourceTree = "<group>";
+		};
 		33C205530D64BA55006EE977 /* src */ = {
 			isa = PBXGroup;
 			children = (
@@ -246,7 +495,6 @@
 			children = (
 				33C2059F0D64BF07006EE977 /* dialog_icon.png */,
 				33C2058D0D64BEC5006EE977 /* list_client_asynch.png */,
-				33C2058E0D64BEC5006EE977 /* list_client_error.png */,
 				33C2058F0D64BEC5006EE977 /* list_client_inaccessible.png */,
 				33C205900D64BEC5006EE977 /* list_client_inactive.png */,
 				33C205910D64BEC5006EE977 /* list_client_ok.png */,
@@ -317,15 +565,12 @@
 		33DFF4790D6255580095F52F = {
 			isa = PBXGroup;
 			children = (
+				3397B24C0D667B5400580155 /* lang */,
 				33C205780D64BB9C006EE977 /* mac */,
 				33C2055B0D64BB07006EE977 /* templates */,
 				33C205530D64BA55006EE977 /* src */,
 				33DFF53D0D626A2F0095F52F /* libwx_macu-2.8.a */,
-				33DFF53E0D626A2F0095F52F /* libwxexpat-2.8.a */,
-				33DFF53F0D626A2F0095F52F /* libwxjpeg-2.8.a */,
 				33DFF5400D626A2F0095F52F /* libwxpng-2.8.a */,
-				33DFF5410D626A2F0095F52F /* libwxregexu-2.8.a */,
-				33DFF5420D626A2F0095F52F /* libwxtiff-2.8.a */,
 				33DFF48A0D6255770095F52F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -348,6 +593,17 @@
 				33DFF4850D6255770095F52F /* Resources */,
 				33DFF4860D6255770095F52F /* Sources */,
 				33DFF4870D6255770095F52F /* Frameworks */,
+				3397B2270D667A7100580155 /* Copy cs_CZ translation */,
+				3397B24F0D667BB000580155 /* Copy de_DE translation */,
+				3397B2520D667BD700580155 /* Copy en_GB translation */,
+				3397B2550D667C1C00580155 /* Copy es_ES translation */,
+				3397B2580D667C4400580155 /* Copy fr_FR translation */,
+				3397B25B0D667C6800580155 /* Copy nl_NL translation */,
+				3397B25E0D667C8700580155 /* Copy pl_PL translation */,
+				3397B2610D667CA700580155 /* Copy pt_BR translation */,
+				3397B2640D667CC500580155 /* Copy pt_PT translation */,
+				3397B2670D667CE600580155 /* Copy ru_RU translation */,
+				3397B26A0D667D1100580155 /* Copy sv_SE translation */,
 			);
 			buildRules = (
 			);
@@ -385,7 +641,6 @@
 				33C2058A0D64BE31006EE977 /* simple_template.htm in Resources */,
 				33C2058B0D64BE31006EE977 /* simple_template.txt in Resources */,
 				33C205960D64BEC5006EE977 /* list_client_asynch.png in Resources */,
-				33C205970D64BEC5006EE977 /* list_client_error.png in Resources */,
 				33C205980D64BEC5006EE977 /* list_client_inaccessible.png in Resources */,
 				33C205990D64BEC5006EE977 /* list_client_inactive.png in Resources */,
 				33C2059A0D64BEC5006EE977 /* list_client_ok.png in Resources */,
