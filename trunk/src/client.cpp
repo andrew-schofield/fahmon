@@ -490,7 +490,7 @@ inline void Client::SaveXYZFile(void) const
 
 	// Create the complete path of the files
 	xyzInFile  = mLocation + wxT("work/current.xyz");
-	xyzOutFile = PathManager::GetXYZPath() + mProjectString + wxT(".xyz");
+	xyzOutFile = PathManager::GetXYZPath() + wxString::Format(wxT("%i"), mProjectId) + wxT(".xyz");
 
 	// Check that the file to save exists
 	if(!wxFileExists(xyzInFile))

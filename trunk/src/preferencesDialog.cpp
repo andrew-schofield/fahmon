@@ -82,9 +82,9 @@ BEGIN_EVENT_TABLE(PreferencesDialog, wxDialog)
 	EVT_CHECKBOX(CHK_USESIMPLETEXT,             PreferencesDialog::OnCheckboxes)
 	EVT_CHOICE(CHC_FILEMANAGER,                 PreferencesDialog::OnChoices)
 	// EVT_CHOICE(CHK_PPDTYPE, PreferencesDialog::OnChoices)
-	#ifdef __WXMAC__ 
- 	EVT_CLOSE(PreferencesDialog::OnClose) 
- 	#endif 
+	#ifdef __WXMAC__
+ 	EVT_CLOSE(PreferencesDialog::OnClose)
+ 	#endif
 
 END_EVENT_TABLE()
 
@@ -786,14 +786,14 @@ inline void PreferencesDialog::LoadPreferences(void)
 	{
 		mSystemFileManager->Select(4);
 	}
-	#elif __WXMAC__ 
- 	if(filemanager == wxT("open")) 
- 	{ 
-		mSystemFileManager->Select(0); 
-	} 
- 	else // other filemanager 
- 	{ 
-		mSystemFileManager->Select(1); 
+	#elif __WXMAC__
+ 	if(filemanager == wxT("open"))
+ 	{
+		mSystemFileManager->Select(0);
+	}
+ 	else // other filemanager
+ 	{
+		mSystemFileManager->Select(1);
  	}
 	#endif
 	if (mInitOverrideTz == true)
@@ -1131,20 +1131,20 @@ void PreferencesDialog::OnChoices(wxCommandEvent& event)
 				default:
 					break;
 			}
-			#elif __WXMAC__ 
-			switch(mSystemFileManager->GetSelection()) 
-			{ 
-				// --- 
-				case 0: //Finder 
-					mSystemOtherFM->SetValue(wxT("open")); 
+			#elif __WXMAC__
+			switch(mSystemFileManager->GetSelection())
+			{
+				// ---
+				case 0: //Finder
+					mSystemOtherFM->SetValue(wxT("open"));
 					break;
 
-				case 1: //Other 
-					mSystemOtherFM->SetValue(wxT("")); 
-					break; 
+				case 1: //Other
+					mSystemOtherFM->SetValue(wxT(""));
+					break;
 
-				default: 
-					break; 
+				default:
+					break;
 			}
 			#endif
 			break;
@@ -1155,14 +1155,14 @@ void PreferencesDialog::OnChoices(wxCommandEvent& event)
 	}
 }
 
-#ifdef __WXMAC__ 
-/** 
- * Mac Specific close routine to save the preferences: no close button 
- **/ 
-void PreferencesDialog::OnClose(wxCloseEvent& event) 
-{ 
-	SavePreferences(); 
-	PreferencesManager::GetInstance()->Save(); 
- 	event.Skip(); 
-} 
-#endif 
+#ifdef __WXMAC__
+/**
+ * Mac Specific close routine to save the preferences: no close button
+ **/
+void PreferencesDialog::OnClose(wxCloseEvent& event)
+{
+	SavePreferences();
+	PreferencesManager::GetInstance()->Save();
+ 	event.Skip();
+}
+#endif

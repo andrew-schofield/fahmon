@@ -1,5 +1,11 @@
 FahMon: The Folding@home client monitoring program
 
+v2.3.2b
+
+    General
+
+    * Fixed bug that caused xyz files to be saved with no project number
+
 v2.3.2a (16/02/08)
 
     General
