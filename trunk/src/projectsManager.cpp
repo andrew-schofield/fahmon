@@ -403,8 +403,8 @@ bool ProjectsManager::Update_ParseProjectsFile(const wxString& fileName, Progres
 				}
 				else
 				{
-					errorMsg = wxString::Format(_("The line %u is not correctly formatted!\n\n%s"), i+1, currentLine.c_str());
-					errorOccured = true;
+					_LogMsgWarning(wxString::Format(_("Line %u is not correctly formatted! %s"), i+1, currentLine.c_str()));
+					//errorOccured = true;
 				}
 			}
 		}

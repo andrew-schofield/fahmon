@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pt_PT\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-02-16 01:11+0000\n"
+"POT-Creation-Date: 2008-03-31 18:03+0100\n"
 "PO-Revision-Date: 2008-02-09 01:46-0000\n"
 "Last-Translator: Filipe Rodrigues <shello@shello.org>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -1110,11 +1110,8 @@ msgstr ""
 "localização temporária"
 
 #: src/projectsManager.cpp:406
-#, c-format
-msgid ""
-"The line %u is not correctly formatted!\n"
-"\n"
-"%s"
+#, fuzzy, c-format
+msgid "Line %u is not correctly formatted! %s"
 msgstr ""
 "a linha %u não está formatada correctamente!\n"
 "\n"

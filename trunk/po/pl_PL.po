@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl_PL\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-02-16 01:11+0000\n"
+"POT-Creation-Date: 2008-03-31 18:03+0100\n"
 "PO-Revision-Date: 2008-02-01 04:32+0100\n"
 "Last-Translator: Mariusz Pociask <mariusz-pociask@o2.pl>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -1098,11 +1098,8 @@ msgstr ""
 "tymczasowego"
 
 #: src/projectsManager.cpp:406
-#, c-format
-msgid ""
-"The line %u is not correctly formatted!\n"
-"\n"
-"%s"
+#, fuzzy, c-format
+msgid "Line %u is not correctly formatted! %s"
 msgstr ""
 "Linia %u ma nieprawidłowy format!\n"
 "\n"

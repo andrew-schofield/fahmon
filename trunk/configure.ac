@@ -9,7 +9,7 @@
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 m4_include(m4/wxwin.m4)
 AC_INIT([FahMon],
-        [2.3.2a],
+        [2.3.2b],
         [Andrew Schofield andrew_s@fahmon.net],
         [FahMon])
 AC_PREFIX
@@ -55,6 +55,7 @@ AC_CONFIG_FILES([
    resources/Makefile
    src/Makefile
    src/include/Makefile
+   src/include/fahmonConsts.h
    src/images/Makefile
    src/images/icons/Makefile
    src/images/icons/16/Makefile

@@ -3,7 +3,7 @@
 %{!?perl_vendorarch: %define perl_vendorarch %(eval "`%{__perl} -V:installvendorarch`"; echo $installvendorarch)}
 %{!?perl_archlib: %define perl_archlib %(eval "`%{__perl} -V:installarchlib`"; echo $installarchlib)}
 
-%define fahmonver 2.3.2a
+%define fahmonver 2.3.2b
 
 Summary:    A wxGTK based monitor for Folding@home clients
 Name:       FahMon

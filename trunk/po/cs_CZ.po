@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cs_CZ\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-02-16 01:11+0000\n"
+"POT-Creation-Date: 2008-03-31 18:03+0100\n"
 "PO-Revision-Date: 2008-02-08 14:50+0100\n"
 "Last-Translator: Martin Bednar <serafean@gmail.com>\n"
 "Language-Team: Czech <en@li.org>\n"
@@ -1085,11 +1085,8 @@ msgid "Unable to copy local project update file to temporary location"
 msgstr "Nelze kopírovet lokální soubor aktualizace projektu do dočasné složky."
 
 #: src/projectsManager.cpp:406
-#, c-format
-msgid ""
-"The line %u is not correctly formatted!\n"
-"\n"
-"%s"
+#, fuzzy, c-format
+msgid "Line %u is not correctly formatted! %s"
 msgstr ""
 "řádka %u je v nesprávném formátu!\n"
 "\n"

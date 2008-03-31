@@ -10,8 +10,8 @@
 ;General
 
   ;Name and file
-  Name "FahMon-2.3.2a"
-  OutFile "FahMon-2.3.2a-Installer.exe"
+  Name "FahMon-2.3.2b"
+  OutFile "FahMon-2.3.2b-Installer.exe"
 
   ;Default installation folder
   InstallDir "$PROGRAMFILES\FahMon"
@@ -59,7 +59,7 @@
 ;--------------------------------
 ;Installer Sections
 
-Section "!FahMon 2.3.2a" SecFahMon
+Section "!FahMon 2.3.2b" SecFahMon
 
   SetOutPath "$INSTDIR"
 

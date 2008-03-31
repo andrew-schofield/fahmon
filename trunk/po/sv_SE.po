@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv_SE\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-02-16 01:11+0000\n"
+"POT-Creation-Date: 2008-03-31 18:03+0100\n"
 "PO-Revision-Date: 2008-02-01 20:20+0100\n"
 "Last-Translator: Olof Persson <floffe@gmail.com>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -1089,11 +1089,8 @@ msgstr ""
 "Kunde inte kopiera lokal projektinformationsfil till en tillfällig plats"
 
 #: src/projectsManager.cpp:406
-#, c-format
-msgid ""
-"The line %u is not correctly formatted!\n"
-"\n"
-"%s"
+#, fuzzy, c-format
+msgid "Line %u is not correctly formatted! %s"
 msgstr ""
 "Raden %u är inte rätt formaterad!\n"
 "\n"
