@@ -7,6 +7,7 @@ v2.3.2b
     * Fixed bug that caused xyz files to be saved with no project number.
     * A badly formatted psummary no longer produces error message, rather logs a
       warning silently to the log.
+    * Added Italian translation.
 
 v2.3.2a (16/02/08)
 
