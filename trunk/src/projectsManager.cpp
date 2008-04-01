@@ -461,7 +461,7 @@ Project* ProjectsManager::Update_ParseProjectInfo(const wxString& projectInfo) c
 		{
 			return NULL;
 		}
-		preferredDeadlineInDays = (wxUint32)tmpDouble * 100;
+		preferredDeadlineInDays = (wxUint32)(tmpDouble * 100);
 	}
 
 	// Final deadline in days
@@ -477,7 +477,7 @@ Project* ProjectsManager::Update_ParseProjectInfo(const wxString& projectInfo) c
 		{
 			return NULL;
 		}
-		finalDeadlineInDays = (wxUint32)tmpDouble * 100;
+		finalDeadlineInDays = (wxUint32)(tmpDouble * 100);
 	}
 
 	// Credit
