@@ -18,7 +18,7 @@
  * \file mainDialog.cpp
  * The main dialog.
  * Creates the main window for FahMon.
- * \author Fran�ois Ingelrest
+ * \author François Ingelrest
  * \author Andrew Schofield
  **/
 
@@ -865,21 +865,8 @@ inline void MainDialog::RestoreFrameState(void)
 		framePosX = -1;
 		framePosY = -1;
 	}
-	max = false;
-	if(frameWidth <= 0 || frameHeight <= 0)
-	{
-		if(frameWidth == -2 && frameHeight == -2)
-		{
-			max = true;
-		}
-		else
-		{
-			max = false;
-		}
-		// -1 indicates defaults values
-		frameWidth  = -1;
-		frameHeight = -1;
-	}
+
+	_PrefsGetBool(PREF_MAINDIALOG_MAXIMISE, max);
 
 	// We now have correct values, resize and move the frame
 	SetSize(frameWidth, frameHeight);
@@ -887,6 +874,7 @@ inline void MainDialog::RestoreFrameState(void)
 	if(max)
 	{
 		Maximize(true);
+		TrayManager::GetInstance()->SetMaximised(true);
 	}
 }
 
@@ -1092,10 +1080,9 @@ void MainDialog::OnClose(wxCloseEvent& event)
 			// Save the position of the frame
 			_PrefsSetInt(PREF_MAINDIALOG_FRAME_POS_X, GetPosition().x);
 			_PrefsSetInt(PREF_MAINDIALOG_FRAME_POS_Y, GetPosition().y);
-		} else {
-			_PrefsSetInt(PREF_MAINDIALOG_FRAMEWIDTH,  -2);
-			_PrefsSetInt(PREF_MAINDIALOG_FRAMEHEIGHT, -2);
 		}
+
+		_PrefsSetBool(PREF_MAINDIALOG_MAXIMISE, IsMaximized());
 	}
 
 	// Save the position of the sash

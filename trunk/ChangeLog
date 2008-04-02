@@ -10,6 +10,10 @@ v2.3.2b
     * Added Italian translation.
     * Fixed bug with fractional deadlines still being truncated.
 
+    Windows
+
+    * Maximised restoring from system tray now works. Finally.
+
 v2.3.2a (16/02/08)
 
     General

@@ -90,6 +90,9 @@
 #define PREF_IGNORE_ASYNCHRONY wxT("MainDialog.IgnoreClockAsynchrony") /**<  Preference setting for ignoring clock asychrony */
 #define PREF_IGNORE_ASYNCHRONY_DV false /**< Default value for ignoring clock asynchrony */
 
+#define PREF_MAINDIALOG_MAXIMISE    wxT("MainDialog.Maxmise") /**< Preference setting for maximised window */
+#define PREF_MAINDIALOG_MAXIMISE_DV false /**< Default value for maximised window state */
+
 #define PREF_TOOLS_FILEMANAGER   wxT("MainDialog.FileManager") /**< Preference setting for filemanager */
 
 #ifdef _FAHMON_WIN32_
