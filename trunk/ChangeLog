@@ -13,6 +13,7 @@ v2.3.2b
     Windows
 
     * Maximised restoring from system tray now works. Finally.
+    * Updated MSVC project to version 9.
 
 v2.3.2a (16/02/08)
 

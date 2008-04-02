@@ -1,8 +1,9 @@
 # translation of sv_SE.po to Swedish
-# Copyright (C) YEAR Andrew Schofield
-# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) 2007-8 Andrew Schofield
+# This file is distributed under the same license as the FahMon package.
 #
-# Andrew Schofield <andrew_s@fahmon.net>, 2007.
+# Olof Persson <floffe@gmail.com>, 2007, 2008.
+# Andrew Schofield <andrew_s@fahmon.net>, 2007, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: sv_SE\n"
@@ -487,7 +488,6 @@ msgid "%s is licenced under the GNU GPL v2"
 msgstr "%s är licensierad under GNU GPL v2"
 
 #: src/mainDialog.cpp:169
-#, fuzzy
 msgid "Copyright (C) 2003-2007 François Ingelrest"
 msgstr "Copyright (C) 2003-2007 François Ingelrest"
 
@@ -1089,12 +1089,9 @@ msgstr ""
 "Kunde inte kopiera lokal projektinformationsfil till en tillfällig plats"
 
 #: src/projectsManager.cpp:406
-#, fuzzy, c-format
+#, c-format
 msgid "Line %u is not correctly formatted! %s"
-msgstr ""
-"Raden %u är inte rätt formaterad!\n"
-"\n"
-"%s"
+msgstr "Raden %u är inte rätt formaterad! %s"
 
 #: src/projectsManager.cpp:417
 msgid "Update aborted!"

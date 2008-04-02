@@ -1,8 +1,8 @@
-# translation of es_ES.po to British English
-# Copyright (C) YEAR Andrew Schofield
-# This file is distributed under the same license as the PACKAGE package.
+# translation of es_ES.po to Spanish
+# Copyright (C) 2007-8 Andrew Schofield
+# This file is distributed under the same license as the FahMon package.
 #
-# Andrew Schofield <andrew_s@fahmon.net>, 2007.
+# Andrew Schofield <andrew_s@fahmon.net>, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: es_ES\n"
@@ -1105,10 +1105,7 @@ msgstr ""
 #: src/projectsManager.cpp:406
 #, fuzzy, c-format
 msgid "Line %u is not correctly formatted! %s"
-msgstr ""
-"¡La línea %u no está correctamente formateada!\n"
-"\n"
-"%s"
+msgstr "¡Línea %u no está correctamente formateada! %s"
 
 #: src/projectsManager.cpp:417
 msgid "Update aborted!"

@@ -1,5 +1,8 @@
-# translation of ru_RU.po to British English
-# Andrew Schofield <andrew_s@fahmon.net>, 2007.
+# translation of ru_RU.po to Russian
+# Copyright (C) 2007-8 Andrew Schofield
+# This file is distributed under the same license as the FahMon package.
+#
+# Andrew Schofield <andrew_s@fahmon.net>, 2007, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: ru_RU\n"
@@ -1087,12 +1090,9 @@ msgstr ""
 "Невозможно скопировать локальный файл с данными заданий во временную папку."
 
 #: src/projectsManager.cpp:406
-#, fuzzy, c-format
+#, c-format
 msgid "Line %u is not correctly formatted! %s"
-msgstr ""
-"Линия %u имеет неправильный формат!\n"
-"\n"
-"%s"
+msgstr "Линия %u имеет неправильный формат! %s"
 
 #: src/projectsManager.cpp:417
 msgid "Update aborted!"

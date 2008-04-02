@@ -1,10 +1,9 @@
 # translation of cs_CZ.po to Czech
-# translation of cs_CZ.po to
-# Copyright (C) YEAR Andrew Schofield
-# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) 2007-8 Andrew Schofield
+# This file is distributed under the same license as the FahMon package.
 #
 # Martin Bednar <serafean@gmail.com>, 2007, 2008.
-# Andrew Schofield <andrew_s@fahmon.net>, 2007.
+# Andrew Schofield <andrew_s@fahmon.net>, 2007, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: cs_CZ\n"
@@ -1085,12 +1084,9 @@ msgid "Unable to copy local project update file to temporary location"
 msgstr "Nelze kopírovet lokální soubor aktualizace projektu do dočasné složky."
 
 #: src/projectsManager.cpp:406
-#, fuzzy, c-format
+#, c-format
 msgid "Line %u is not correctly formatted! %s"
-msgstr ""
-"řádka %u je v nesprávném formátu!\n"
-"\n"
-"%s"
+msgstr "řádka %u je v nesprávném formátu! %s"
 
 #: src/projectsManager.cpp:417
 msgid "Update aborted!"

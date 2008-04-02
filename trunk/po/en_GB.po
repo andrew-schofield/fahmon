@@ -1,6 +1,6 @@
 # translation of en_GB.po to British English
-# Copyright (C) YEAR Andrew Schofield
-# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) 2007-8 Andrew Schofield
+# This file is distributed under the same license as the FahMon package.
 #
 # Andrew Schofield <andrew_s@fahmon.net>, 2007, 2008.
 msgid ""
@@ -1088,12 +1088,9 @@ msgid "Unable to copy local project update file to temporary location"
 msgstr "Unable to copy local project update file to temporary location"
 
 #: src/projectsManager.cpp:406
-#, fuzzy, c-format
+#, c-format
 msgid "Line %u is not correctly formatted! %s"
-msgstr ""
-"The line %u is not correctly formatted!\n"
-"\n"
-"%s"
+msgstr "Line %u is not correctly formatted! %s"
 
 #: src/projectsManager.cpp:417
 msgid "Update aborted!"

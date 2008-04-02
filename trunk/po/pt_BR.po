@@ -1,10 +1,9 @@
-# translation of pt_BR.po to British English
-# translation of fahmon.po to
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# translation of pt_BR.po to Brazilian Portuguese
+# Copyright (C) 2007-8 Andrew Schofield
+# This file is distributed under the same license as the FahMon package.
 #
-# João Pedro Rodrigues <joao.rodrigues@student.bioq.uc.pt>, 2007.
-# Andrew Schofield <andrew_s@fahmon.net>, 2007.
+# João Pedro Rodrigues <joao.rodrigues@student.bioq.uc.pt>, 2007, 2008.
+# Andrew Schofield <andrew_s@fahmon.net>, 2007, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: pt_BR\n"
@@ -491,7 +490,6 @@ msgid "%s is licenced under the GNU GPL v2"
 msgstr "%s está licenciado sobre a GNU GPL v2"
 
 #: src/mainDialog.cpp:169
-#, fuzzy
 msgid "Copyright (C) 2003-2007 François Ingelrest"
 msgstr "Direitos Autorais (C) 2003-2007 François Ingelrest"
 
@@ -1105,12 +1103,9 @@ msgstr ""
 "localização temporária"
 
 #: src/projectsManager.cpp:406
-#, fuzzy, c-format
+#, c-format
 msgid "Line %u is not correctly formatted! %s"
-msgstr ""
-"A linha %u não está formatada corretamente!\n"
-"\n"
-"%s"
+msgstr "A linha %u não está formatada corretamente! %s"
 
 #: src/projectsManager.cpp:417
 msgid "Update aborted!"

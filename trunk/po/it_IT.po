@@ -1,3 +1,9 @@
+# translation of it_IT.po to Italian
+# Copyright (C) 2007-8 Andrew Schofield
+# This file is distributed under the same license as the FahMon package.
+#
+# Zurgo <zurgo@virgilio.it>, 2008.
+# Andrew Schofield <andrew_s@fahmon.net>, 2007, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: it-IT\n"
@@ -1094,12 +1100,9 @@ msgstr ""
 "temporaneo"
 
 #: src/projectsManager.cpp:406
-#, fuzzy, c-format
+#, c-format
 msgid "Line %u is not correctly formatted! %s"
-msgstr ""
-"La linea %u non è correttamente formattata!\n"
-"\n"
-"%s"
+msgstr "La linea %u non è correttamente formattata! %s"
 
 #: src/projectsManager.cpp:417
 msgid "Update aborted!"

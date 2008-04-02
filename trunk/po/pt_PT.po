@@ -1,10 +1,9 @@
-# translation of pt_PT.po to British English
-# translation of fahmon.po to
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# translation of pt_PT.po to Portuguese
+# Copyright (C) 2007-8 Andrew Schofield
+# This file is distributed under the same license as the FahMon package.
 #
-# João Pedro Rodrigues <joao.rodrigues@student.bioq.uc.pt>, 2007.
-# Andrew Schofield <andrew_s@fahmon.net>, 2007.
+# Filipe Rodrigues <shello@shello.org>, 2007, 2008.
+# Andrew Schofield <andrew_s@fahmon.net>, 2007, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: pt_PT\n"
@@ -1110,12 +1109,9 @@ msgstr ""
 "localização temporária"
 
 #: src/projectsManager.cpp:406
-#, fuzzy, c-format
+#, c-format
 msgid "Line %u is not correctly formatted! %s"
-msgstr ""
-"a linha %u não está formatada correctamente!\n"
-"\n"
-"%s"
+msgstr "a linha %u não está formatada correctamente! %s"
 
 #: src/projectsManager.cpp:417
 msgid "Update aborted!"

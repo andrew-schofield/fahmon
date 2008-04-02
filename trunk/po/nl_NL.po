@@ -1,5 +1,9 @@
-# translation of nl_NL.po to British English
-# Andrew Schofield <andrew_s@fahmon.net>, 2007.
+# translation of nl_NL.po to Dutch
+# Copyright (C) 2007-8 Andrew Schofield
+# This file is distributed under the same license as the FahMon package.
+#
+# Bastien <bastien@knife-edge.nl>, 2007, 2008.
+# Andrew Schofield <andrew_s@fahmon.net>, 2007, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: nl_NL\n"
@@ -1089,12 +1093,9 @@ msgstr ""
 "lokatie "
 
 #: src/projectsManager.cpp:406
-#, fuzzy, c-format
+#, c-format
 msgid "Line %u is not correctly formatted! %s"
-msgstr ""
-"Regel %u heeft een onjuiste opmaak!\n"
-"\n"
-"%s"
+msgstr "Regel %u heeft een onjuiste opmaak! %s"
 
 #: src/projectsManager.cpp:417
 msgid "Update aborted!"

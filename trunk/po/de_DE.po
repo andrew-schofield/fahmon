@@ -1,3 +1,9 @@
+# translation of cs_CZ.po to Czech
+# Copyright (C) 2007-8 Andrew Schofield
+# This file is distributed under the same license as the FahMon package.
+#
+# Mark Gerber <mark.gerber@web.de>, 2007, 2008.
+# Andrew Schofield <andrew_s@fahmon.net>, 2007, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: FahMon Translation - de_DE 1.1.b1\n"
@@ -1098,12 +1104,9 @@ msgstr ""
 "werden."
 
 #: src/projectsManager.cpp:406
-#, fuzzy, c-format
+#, c-format
 msgid "Line %u is not correctly formatted! %s"
-msgstr ""
-"Die Zeile %u ist nicht richtig formatiert.\n"
-"\n"
-"%s"
+msgstr "Zeile %u ist nicht richtig formatiert. %s"
 
 #: src/projectsManager.cpp:417
 msgid "Update aborted!"

@@ -1,8 +1,9 @@
-# translation of pl_PL.po to British English
-# Copyright (C) YEAR Andrew Schofield
-# This file is distributed under the same license as the PACKAGE package.
+# translation of pl_PL.po to Polish
+# Copyright (C) 2007-8 Andrew Schofield
+# This file is distributed under the same license as the FahMon package.
 #
-# Andrew Schofield <andrew_s@fahmon.net>, 2007.
+# Mariusz Pociask <mariusz-pociask@o2.pl>, 2007, 2008.
+# Andrew Schofield <andrew_s@fahmon.net>, 2007, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: pl_PL\n"
@@ -491,7 +492,6 @@ msgid "%s is licenced under the GNU GPL v2"
 msgstr "%s korzysta z licencji GNU GPL v2"
 
 #: src/mainDialog.cpp:169
-#, fuzzy
 msgid "Copyright (C) 2003-2007 François Ingelrest"
 msgstr "Prawa autorskie © 2003-2007 François Ingelrest"
 
@@ -1098,12 +1098,9 @@ msgstr ""
 "tymczasowego"
 
 #: src/projectsManager.cpp:406
-#, fuzzy, c-format
+#, c-format
 msgid "Line %u is not correctly formatted! %s"
-msgstr ""
-"Linia %u ma nieprawidłowy format!\n"
-"\n"
-"%s"
+msgstr "Linia %u ma nieprawidłowy format! %s"
 
 #: src/projectsManager.cpp:417
 msgid "Update aborted!"
