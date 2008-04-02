@@ -382,6 +382,13 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 	{
 		// Arghhhhh, it takes *ages* on wxGTK to load the log file within the wxTextCtrl!!
 		mLogFile->SetValue(client->GetLog());
+
+		// This appears to be the only way to get the log to scroll on OSX
+#ifdef __WXMAC__
+		::wxYield();
+		mLogFile->AppendText(wxT("\n"));
+#endif
+
 		mLogFile->ShowPosition(mLogFile->GetLastPosition());
 	}
 
