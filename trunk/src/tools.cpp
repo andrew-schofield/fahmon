@@ -95,6 +95,12 @@ bool Tools::LoadFile(const wxString& filename, wxString& fileContent)
 	fileContent = wxString::FromAscii((const char*)stringBuffer);
 	delete[] stringBuffer;
 
+	// special case fo wxMac which can't cope with windows CRLF and interprets them as \n\n
+	// this means that the log has a newline after every entry
+#ifdef __WXMAC__
+	fileContent.Replace(wxT("\r\n"), wxT("\n"));
+#endif
+
 	// Could we read the whole content of the file?
 	if(in.LastRead() != fileSize)
 	{
