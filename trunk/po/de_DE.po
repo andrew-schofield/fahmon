@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FahMon Translation - de_DE 1.1.b1\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-03-31 18:03+0100\n"
+"POT-Creation-Date: 2008-04-02 02:03+0100\n"
 "PO-Revision-Date: 2008-02-15 09:45+0100\n"
 "Last-Translator: Mark Gerber <mark.gerber@web.de>\n"
 "Language-Team: Mark Gerber <mark.gerber@web.de>\n"
@@ -43,7 +43,7 @@ msgid "Library:"
 msgstr "Bibliothek:"
 
 # Die ursprüngliche Übersetzung "Auswertungen" ist etwas zu sperrig und kann bzgl. der Projekte fehlinterpretiert werden (wissenschaftliche Auswertungen). Die Bezeichnung "Benchmarks" trifft es auch im Deutschen recht gut. Denkbare Alternativen: "Leistungswerte", "Performance-Werte"
-#: src/benchmarksDialog.cpp:63 src/trayManager.cpp:193
+#: src/benchmarksDialog.cpp:63 src/trayManager.cpp:192
 msgid "Benchmarks"
 msgstr "Benchmarks"
 
@@ -789,28 +789,28 @@ msgstr "  -  PPD total:"
 msgid "Log file."
 msgstr "Log-Datei."
 
-#: src/mainDialog.cpp:1035
+#: src/mainDialog.cpp:1023
 msgid "You must first select a client!"
 msgstr "Wähle bitte zuerst einen Client aus."
 
-#: src/mainDialog.cpp:1360
+#: src/mainDialog.cpp:1347
 msgid "Checking for FahMon updates"
 msgstr "Suche nach Programmupdate"
 
-#: src/mainDialog.cpp:1363
+#: src/mainDialog.cpp:1350
 msgid "Checking for update"
 msgstr "Suche nach Programmupdate"
 
-#: src/mainDialog.cpp:1386
+#: src/mainDialog.cpp:1373
 #, c-format
 msgid "Your version: %s; New version: %s"
 msgstr "Deine Version: %s - Neue Version: %s"
 
-#: src/mainDialog.cpp:1400
+#: src/mainDialog.cpp:1387
 msgid "Update available"
 msgstr "Update verfügbar."
 
-#: src/mainDialog.cpp:1401
+#: src/mainDialog.cpp:1388
 msgid ""
 "A newer version of FahMon is available\n"
 "Do you want to go to the FahMon website?"
@@ -818,32 +818,32 @@ msgstr ""
 "Eine neue FahMon-Version ist verfügbar.\n"
 "Möchtes Du die FahMon-Website öffnen?"
 
-#: src/mainDialog.cpp:1408
+#: src/mainDialog.cpp:1395
 msgid "No update found"
 msgstr "Kein Update gefunden."
 
-#: src/mainDialog.cpp:1433 src/projectsManager.cpp:308
+#: src/mainDialog.cpp:1420 src/projectsManager.cpp:308
 msgid "Unable to create a temporary file!"
 msgstr "Ein temporäres Verzeichnis kann nicht erstellt werden."
 
-#: src/mainDialog.cpp:1437 src/projectsManager.cpp:312
+#: src/mainDialog.cpp:1424 src/projectsManager.cpp:312
 #, c-format
 msgid "Unable to open the temporary file <%s>"
 msgstr "Die temporäre Datei <%s> kann nicht geöffnet werden."
 
-#: src/mainDialog.cpp:1441 src/projectsManager.cpp:316
+#: src/mainDialog.cpp:1428 src/projectsManager.cpp:316
 msgid "Unable to connect to the server!"
 msgstr "Es kann keine Verbindung zum Server hergestellt werden."
 
-#: src/mainDialog.cpp:1445 src/projectsManager.cpp:320
+#: src/mainDialog.cpp:1432 src/projectsManager.cpp:320
 msgid "Unable to send the request to the server!"
 msgstr "Die Anfrage kann nicht an den Server gesendet werden."
 
-#: src/mainDialog.cpp:1449 src/projectsManager.cpp:324
+#: src/mainDialog.cpp:1436 src/projectsManager.cpp:324
 msgid "Download aborted!"
 msgstr "Download abgebrochen."
 
-#: src/mainDialog.cpp:1455 src/projectsManager.cpp:330
+#: src/mainDialog.cpp:1442 src/projectsManager.cpp:330
 msgid "An unknown error happened!"
 msgstr "Ein unbekannter Fehler ist aufgetreten."
 
@@ -1121,31 +1121,31 @@ msgstr ""
 "Überprüfe bitte, ob die Umgebungsvariable BROWSER definiert ist, oder richte "
 "die entsprechende Einstellung ein."
 
-#: src/trayManager.cpp:184
+#: src/trayManager.cpp:183
 #, c-format
 msgid "Clients: %i"
 msgstr "Clients: %i"
 
-#: src/trayManager.cpp:188
+#: src/trayManager.cpp:187
 #, c-format
 msgid "Total PPD: %.2f"
 msgstr "PPD total: %.2f"
 
-#: src/trayManager.cpp:195
+#: src/trayManager.cpp:194
 msgid "Preferences"
 msgstr "Einstellungen"
 
-#: src/trayManager.cpp:202
+#: src/trayManager.cpp:201
 msgid "Hide FahMon"
 msgstr "Minimieren"
 
-#: src/trayManager.cpp:207
+#: src/trayManager.cpp:206
 msgid "Show FahMon"
 msgstr "Wiederherstellen"
 
 # Eintrag im Kontextmenü des Symbols im Infobereich der Taskleiste als auch Hinweis in der Statuszeile zum Menüeintrag "FahMon | Beenden".
 # Bei letzterem wird vom Programm automatisch das Wort "FahMon" angehängt, so dass hier nur eingeschränkte Freiheiten bzgl. der Textgestaltung bestehen. Durch den Konflikt bei der Übersetzung sollte dem Kontextmenüeintrag Vorrang gegeben werden.
-#: src/trayManager.cpp:214
+#: src/trayManager.cpp:213
 msgid "Quit"
 msgstr "Beenden"
 
