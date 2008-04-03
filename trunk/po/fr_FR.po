@@ -39,7 +39,7 @@ msgstr "Page d'accueil de Qd:"
 
 #: src/aboutDialog.cpp:61
 msgid "Licence:"
-msgstr ""
+msgstr "Licence"
 
 #: src/aboutDialog.cpp:65
 msgid "Library:"
@@ -281,7 +281,7 @@ msgstr "Localisation:"
 #: src/preferencesDialog.cpp:497 src/preferencesDialog.cpp:506
 #: src/preferencesDialog.cpp:515
 msgid "Choose"
-msgstr ""
+msgstr "Choisir"
 
 #: src/clientDialog.cpp:97
 msgid "Name:"
@@ -492,11 +492,11 @@ msgstr ""
 
 #: src/mainDialog.cpp:169
 msgid "Copyright (C) 2003-2007 Fran\\u00E7ois Ingelrest"
-msgstr ""
+msgstr "Copyright (C) 2003-2007 François Ingelrest"
 
 #: src/mainDialog.cpp:170
 msgid "Copyright (C) 2007-2008 Andrew Schofield"
-msgstr ""
+msgstr "Copyright (C) 2007-2008 Andrew Schofield"
 
 #: src/mainDialog.cpp:172
 msgid "FahMon contains code from qd, also licenced under the GNU GPL v2"
@@ -504,11 +504,11 @@ msgstr ""
 
 #: src/mainDialog.cpp:173
 msgid "Copyright (C) 2002-2005 Richard P. Howell IV."
-msgstr ""
+msgstr "Copyright (C) 2002-2005 Richard P. Howell IV."
 
 #: src/mainDialog.cpp:174
 msgid "Copyright (C) 2005-2008 Sebastiaan Couwenberg"
-msgstr ""
+msgstr "Copyright (C) 2005-2008 Sebastiaan Couwenberg"
 
 #: src/mainDialog.cpp:375
 msgid ""
@@ -1040,7 +1040,7 @@ msgstr "Autre"
 
 #: src/preferencesDialog.cpp:414
 msgid "Finder"
-msgstr ""
+msgstr "Finder"
 
 #: src/preferencesDialog.cpp:491
 msgid "Export Web Application"
@@ -1172,12 +1172,12 @@ msgid "Ok"
 msgstr "Ok"
 
 #: src/webMonitor.cpp:434
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not open template file <%s> for reading!\n"
 "The web application will not be created!"
 msgstr ""
-"Ne peut ouvrir le fichier <%s> pour écriture!\n"
+"Ne peut ouvrir le fichier formulaire <%s> pour écriture!\n"
 "L'application Web ne sera pas créée!"
 
 #: src/webMonitor.cpp:439
@@ -1206,27 +1206,24 @@ msgid "Downloaded"
 msgstr "Téléchargé le"
 
 #: src/webMonitor.cpp:606
-#, fuzzy
 msgid "Total PPD:"
-msgstr " :: PPD total:"
+msgstr "Total PPD:"
 
 #: src/webMonitor.cpp:607
 msgid "Web View"
-msgstr ""
+msgstr "View Web"
 
 #: src/webMonitor.cpp:608
-#, fuzzy
 msgid "FahMon Client Monitoring"
-msgstr "Moniteur FahMon Client %s - Fichier texte seul\n"
+msgstr "Moniteur FahMon Client"
 
 #: src/webMonitor.cpp:609
 msgid "Simple Text Output"
 msgstr ""
 
 #: src/webMonitor.cpp:610
-#, fuzzy
 msgid "Last updated:"
-msgstr "Dernière mise à jour: %s"
+msgstr "Dernière mise à jour:"
 
 #~ msgid "%s Web View - Last updated: %s"
 #~ msgstr "%s Vue Web - Dernière mise à jour: %s"
