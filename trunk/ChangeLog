@@ -21,6 +21,7 @@ v2.3.2b
 
     * Fixed log window not scrolling.
     * Fixed line encoding bug when monitoring MSW clients.
+    * Altered progress bar to decrease CPU usage.
 
 v2.3.2a (16/02/08)
 

@@ -35,6 +35,9 @@
 #include "wx/textctrl.h"
 #include "wx/stattext.h"
 #include "wx/hyperlink.h"
+#include "wx/dcbuffer.h"
+#include "wx/dcscreen.h"
+#include "wx/window.h"
 #include "listViewClients.h"
 #include "progressManager.h"
 
@@ -114,6 +117,30 @@ DECLARE_EVENT_TYPE(EVT_PROJECTS_DATABASE_UPDATED, -1) /**< Sent when the project
 DECLARE_EVENT_TYPE(EVT_NEW_MESSAGE_LOGGED, -1) /**< Sent when a new message has been added to the MessagesManager */
 
 
+
+#ifdef __WXMAC__
+class OSXProgressBar: public wxWindow
+{
+protected:
+	wxUint32    mTotal;
+	wxUint32    mCurrentProgress;
+	
+	void OnPaint(wxPaintEvent& event);
+	void OnResize(wxSizeEvent& event);
+	void PaintBackground(wxDC& dc);
+	void FillProgress(wxDC& dc);
+public:
+	OSXProgressBar(wxWindow* parent, wxWindowID, wxUint32 total, const wxPoint& pos, const wxSize& size);
+	virtual ~OSXProgressBar();
+	
+	void SetValue(wxUint32 value);
+private:
+	DECLARE_EVENT_TABLE()
+	
+};
+
+#endif
+
 /**
 * This is the main dialog box.
 * This class can only be instantiated once.
@@ -125,7 +152,11 @@ protected:
 	static wxMutex     mMutexUpdateCheck; /**< Locks access to the update method */
 
 	// Widgets used in the frame
+#ifndef __WXMAC__
 	wxGauge          *mWUProgressGauge; /**< Progress bar control */
+#else
+	OSXProgressBar   *mWUProgressGauge;
+#endif
 	wxHyperlinkCtrl  *mUsername; /**< Username hyperlink control */
 	wxHyperlinkCtrl  *mTeamNumber; /**< Team Number hyperlink control */
 	wxBoxSizer       *mTopLevelSizer; /**< Sizer control for the whole window */

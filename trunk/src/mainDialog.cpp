@@ -786,7 +786,11 @@ inline void MainDialog::CreateLayout(void)
 	// It contains the progress bar (gauge) and a simple label
 	// The label keeps its minimum size, while the gauge fill the available left space
 	midSizer         = new wxBoxSizer(wxHORIZONTAL);
+	#ifndef __WXMAC__
 	mWUProgressGauge = new wxGauge(topLevelPanel, wxID_ANY, 100, wxDefaultPosition, wxSize(0, 18));
+	#else
+	mWUProgressGauge = new OSXProgressBar(topLevelPanel, wxID_ANY, 100, wxDefaultPosition, wxSize(0, 18));
+	#endif
 	mWUProgressText  = new wxStaticText(topLevelPanel, wxID_ANY, wxT(""));
 	mWUTotalPPD = new wxStaticText(topLevelPanel, wxID_ANY, _(" :: Total PPD:"));
 
@@ -1450,3 +1454,63 @@ bool MainDialog::DownloadUpdateFile(wxString& fileName, ProgressManager& progres
 	}
 	return false;
 }
+
+#ifdef __WXMAC__
+
+BEGIN_EVENT_TABLE(OSXProgressBar, wxWindow)
+	EVT_PAINT(OSXProgressBar::OnPaint)
+	EVT_SIZE(OSXProgressBar::OnResize)
+END_EVENT_TABLE()
+
+OSXProgressBar::OSXProgressBar(wxWindow* parent, wxWindowID, wxUint32 total, const wxPoint& pos, const wxSize& size) : wxWindow(parent, wxID_ANY, pos, size, wxSUNKEN_BORDER)
+{
+	SetBackgroundColour(*wxWHITE);
+	mTotal = total;
+	mCurrentProgress = 0;
+}
+
+OSXProgressBar::~OSXProgressBar()
+{
+}
+
+void OSXProgressBar::SetValue(wxUint32 value)
+{
+	mCurrentProgress = value;
+	Refresh();
+}
+
+void OSXProgressBar::OnPaint(wxPaintEvent& event)
+{
+	wxBufferedPaintDC dc(this);
+	
+	PaintBackground(dc);
+	
+	FillProgress(dc);
+}
+
+void OSXProgressBar::OnResize(wxSizeEvent& event)
+{
+	Refresh();
+}
+
+void OSXProgressBar::PaintBackground(wxDC& dc)
+{
+	wxColour bacgroundColour = *wxWHITE;
+	
+	dc.SetBrush(wxBrush(bacgroundColour));
+	
+	dc.Clear();
+}
+
+void OSXProgressBar::FillProgress(wxDC& dc)
+{
+
+	wxInt32 progress = ((float)mCurrentProgress / (float)mTotal) * GetClientSize().x;
+	dc.SetPen(wxPen(*wxLIGHT_GREY, 1));
+	dc.SetBrush(wxBrush(*wxLIGHT_GREY));
+	
+	dc.DrawRectangle(0,1,progress,GetClientSize().y);
+	
+}
+
+#endif

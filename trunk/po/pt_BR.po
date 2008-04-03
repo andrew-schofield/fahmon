@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pt_BR\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-04-03 13:00+0100\n"
+"POT-Creation-Date: 2008-04-03 17:18+0100\n"
 "PO-Revision-Date: 2008-02-03 11:48-0300\n"
 "Last-Translator: Custódio Marcelino de Jesus <custodiomdj@gmail.com>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -785,36 +785,36 @@ msgstr "Prazo Desejado:"
 msgid "Final Deadline:"
 msgstr "Prazo Final:"
 
-#: src/mainDialog.cpp:791
+#: src/mainDialog.cpp:795
 msgid " :: Total PPD:"
 msgstr " :: PPD Total:"
 
-#: src/mainDialog.cpp:798
+#: src/mainDialog.cpp:802
 msgid "Log file."
 msgstr "Arquivo de Registro."
 
-#: src/mainDialog.cpp:1027
+#: src/mainDialog.cpp:1031
 msgid "You must first select a client!"
 msgstr "Deve selecionar um cliente primeiro!"
 
-#: src/mainDialog.cpp:1351
+#: src/mainDialog.cpp:1355
 msgid "Checking for FahMon updates"
 msgstr "Verificando por atualizações do FahMon"
 
-#: src/mainDialog.cpp:1354
+#: src/mainDialog.cpp:1358
 msgid "Checking for update"
 msgstr "Verificando por atualizações"
 
-#: src/mainDialog.cpp:1377
+#: src/mainDialog.cpp:1381
 #, c-format
 msgid "Your version: %s; New version: %s"
 msgstr "Sua versão: %s; Nova versão: %s"
 
-#: src/mainDialog.cpp:1391
+#: src/mainDialog.cpp:1395
 msgid "Update available"
 msgstr "Atualização disponível"
 
-#: src/mainDialog.cpp:1392
+#: src/mainDialog.cpp:1396
 msgid ""
 "A newer version of FahMon is available\n"
 "Do you want to go to the FahMon website?"
@@ -822,32 +822,32 @@ msgstr ""
 "Uma nova versão do FahMon está disponível\n"
 "Você quer ir ao website do FahMon?"
 
-#: src/mainDialog.cpp:1399 src/mainDialog.cpp:1401
+#: src/mainDialog.cpp:1403 src/mainDialog.cpp:1405
 msgid "No update found"
 msgstr "Nenhuma atualização encontrada"
 
-#: src/mainDialog.cpp:1426 src/projectsManager.cpp:308
+#: src/mainDialog.cpp:1430 src/projectsManager.cpp:308
 msgid "Unable to create a temporary file!"
 msgstr "Impossível criar um arquivo temporário!"
 
-#: src/mainDialog.cpp:1430 src/projectsManager.cpp:312
+#: src/mainDialog.cpp:1434 src/projectsManager.cpp:312
 #, c-format
 msgid "Unable to open the temporary file <%s>"
 msgstr "Impossível abrir o arquivo temporário <%s>"
 
-#: src/mainDialog.cpp:1434 src/projectsManager.cpp:316
+#: src/mainDialog.cpp:1438 src/projectsManager.cpp:316
 msgid "Unable to connect to the server!"
 msgstr "Impossível conectar ao servidor!"
 
-#: src/mainDialog.cpp:1438 src/projectsManager.cpp:320
+#: src/mainDialog.cpp:1442 src/projectsManager.cpp:320
 msgid "Unable to send the request to the server!"
 msgstr "Impossível enviar o pedido ao servidor!"
 
-#: src/mainDialog.cpp:1442 src/projectsManager.cpp:324
+#: src/mainDialog.cpp:1446 src/projectsManager.cpp:324
 msgid "Download aborted!"
 msgstr "Descarregamento Abortado!"
 
-#: src/mainDialog.cpp:1448 src/projectsManager.cpp:330
+#: src/mainDialog.cpp:1452 src/projectsManager.cpp:330
 msgid "An unknown error happened!"
 msgstr "Aconteceu um erro desconhecido!"
 
