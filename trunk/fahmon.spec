@@ -80,6 +80,7 @@ rm -rf %{buildroot}
 %{_datadir}/icons/hicolor/*/apps/fahmon*
 %{_datadir}/applications/*
 %{_datadir}/locale/*/LC_MESSAGES/fahmon.mo
+%{_datadir}/fahmon/templates/*
 
 %changelog
 * Thu Jan 17 2008 Andrew Schofield <andrew_s@fahmon.net>

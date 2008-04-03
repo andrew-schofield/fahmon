@@ -6,6 +6,13 @@ See the end for copying conditions.
 
 Please send FahMon bug reports to andrew_s@fahmon.net.
 
+Version 2.3.2b
+
+* Several behavioural fixes to dialogs and a number of visual fixes including
+  displaying fractional deadlines correctly.
+* Windows now maximises from the System tray correctly. Finally.
+* A number of performance and behaviour tweaks to the OS X build.
+
 Version 2.3.2a
 
 * FahMon now runs on Mac OS X!
