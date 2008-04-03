@@ -24,7 +24,7 @@
 #include "fahmon.h"
 #include "tools.h"
 
-#include "wx/wfstream.h"
+#include "wx/textfile.h"
 #include "preferencesManager.h"
 
 
@@ -76,32 +76,21 @@ void Tools::OpenURLInBrowser(const wxString& url)
 
 bool Tools::LoadFile(const wxString& filename, wxString& fileContent)
 {
-	wxByte            *stringBuffer;
-	wxUint32           fileSize;
-	wxFileInputStream  in(filename);
+	wxTextFile  in;
 
 	// Could the file be opened?
-	if(in.Ok() == false)
+	if(in.Open(filename, wxConvFile))
 	{
+		fileContent = wxT("");
+		wxString str;
+		for ( str = in.GetFirstLine(); !in.Eof(); str = in.GetNextLine() )
+		{
+			fileContent += str + wxT("\n");
+		}
+		return true;
+	} else {
 		return false;
 	}
-
-	// Load the file into the wxString, and put a NULL character at the end to terminate it
-	fileSize     = in.GetSize();
-	stringBuffer = new wxByte[fileSize+1];
-
-	in.Read(stringBuffer, fileSize);
-	stringBuffer[fileSize] = '\0';
-	fileContent = wxString::FromAscii((const char*)stringBuffer);
-	delete[] stringBuffer;
-
-	// Could we read the whole content of the file?
-	if(in.LastRead() != fileSize)
-	{
-		return false;
-	}
-
-	return true;
 }
 
 
