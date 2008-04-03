@@ -1334,11 +1334,11 @@ void MainDialog::OnMenuToggleETADate(wxCommandEvent& event)
 
 void MainDialog::OnUpdateCheck(wxCommandEvent& event)
 {
-	CheckForUpdates();
+	CheckForUpdates(false);
 }
 
 
-void MainDialog::CheckForUpdates(void)
+void MainDialog::CheckForUpdates(bool silent)
 {
 	wxMutexLocker   mutexLocker(mMutexUpdateCheck);        // --- Lock the access to this method
 	wxString        updateFile;
@@ -1397,6 +1397,8 @@ void MainDialog::CheckForUpdates(void)
 	else
 	{
 		_LogMsgInfo(_("No update found"));
+		if (!silent)
+			Tools::InfoMsgBox(_("No update found"));
 	}
 }
 

@@ -9,6 +9,7 @@ v2.3.2b
       warning silently to the log.
     * Added Italian translation.
     * Fixed bug with fractional deadlines still being truncated.
+    * Checking for updates from the menu now informs you if no update was found.
 
     Windows
 

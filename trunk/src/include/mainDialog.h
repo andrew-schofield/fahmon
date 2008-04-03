@@ -354,8 +354,9 @@ protected:
 
 	/**
 	 * Check online for FahMon updates.
+	 * @param silent Whether a message is displayed when no update is found.
 	 **/
-	void CheckForUpdates(void);
+	void CheckForUpdates(bool silent = true);
 
 
 public:
