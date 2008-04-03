@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nl_NL\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-04-03 11:05+0100\n"
+"POT-Creation-Date: 2008-04-03 13:00+0100\n"
 "PO-Revision-Date: 2008-01-24 16:42+0100\n"
 "Last-Translator: Bastien <bastien@knife-edge.nl>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -487,7 +487,7 @@ msgid "%s is licenced under the GNU GPL v2"
 msgstr "%s valt onder de licentie van GNU GPL v2"
 
 #: src/mainDialog.cpp:169
-msgid "Copyright (C) 2003-2007 François Ingelrest"
+msgid "Copyright (C) 2003-2007 Fran\\u00E7ois Ingelrest"
 msgstr "Copyright (C) 2003-2007 François Ingelrest"
 
 #: src/mainDialog.cpp:170

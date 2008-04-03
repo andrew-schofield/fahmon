@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cs_CZ\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-04-03 11:05+0100\n"
+"POT-Creation-Date: 2008-04-03 13:00+0100\n"
 "PO-Revision-Date: 2008-02-08 14:50+0100\n"
 "Last-Translator: Martin Bednar <serafean@gmail.com>\n"
 "Language-Team: Czech <en@li.org>\n"
@@ -480,7 +480,7 @@ msgid "%s is licenced under the GNU GPL v2"
 msgstr "%s uvolněn pod licencí GNU GPL v2"
 
 #: src/mainDialog.cpp:169
-msgid "Copyright (C) 2003-2007 François Ingelrest"
+msgid "Copyright (C) 2003-2007 Fran\\u00E7ois Ingelrest"
 msgstr "Copyright (C) 2003-2007 François Ingelrest"
 
 #: src/mainDialog.cpp:170

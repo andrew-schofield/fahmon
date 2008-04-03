@@ -166,7 +166,7 @@ MainDialog::MainDialog(void) : wxFrame(NULL, wxID_ANY, wxT(FMC_PRODUCT))
 	RestoreFrameState();     // MUST be called when all controls have been created !
 
 	_LogMsgInfo(wxString::Format(_("%s is licenced under the GNU GPL v2"), wxT(FMC_PRODUCT)));
-	_LogMsgInfo(_("Copyright (C) 2003-2007 François Ingelrest"));
+	_LogMsgInfo(_("Copyright (C) 2003-2007 Fran\u00E7ois Ingelrest"));
 	_LogMsgInfo(_("Copyright (C) 2007-2008 Andrew Schofield"));
 	_LogMsgInfo(_T(""));
 	_LogMsgInfo(_("FahMon contains code from qd, also licenced under the GNU GPL v2"));
