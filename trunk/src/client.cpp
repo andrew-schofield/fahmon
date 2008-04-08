@@ -675,7 +675,8 @@ void Client::ComputeETA(WorkUnitFrame* lastFrame)
 		}
 		else
 		{
-			nbLeftSeconds = referenceDuration * (totalFrames - (lastFrame->GetId() * (totalFrames/100))); //correction for odd gromacs WUs
+			nbLeftSeconds = referenceDuration * (totalFrames - (int)((lastFrame->GetId() * ((float)totalFrames/100)))); //correction for odd gromacs WUs
+			//logLine += wxString::Format(wxT(" | fl=%i"), totalFrames - (int)((lastFrame->GetId() * ((float)totalFrames/100)))); //debug line
 		}
 
 		// Make a more accurate value by using the elapsed time since the end of the last frame

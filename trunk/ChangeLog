@@ -11,6 +11,7 @@ v2.3.2b
     * Fixed bug with fractional deadlines still being truncated.
     * Checking for updates from the menu now informs you if no update was found.
     * Added GPUv2 core support.
+    * Fixed ETA calculation for WUs with less than 100 % markers.
 
     Windows
 

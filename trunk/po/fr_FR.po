@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fr_FR\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-04-03 17:18+0100\n"
+"POT-Creation-Date: 2008-04-08 12:02+0100\n"
 "PO-Revision-Date: 2007-11-15 23:42+0000\n"
 "Last-Translator: Andrew Schofield <andrew_s@fahmon.net>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -227,18 +227,18 @@ msgstr ""
 "Impossible de déterminer le nombre de frames pour %s (Ceci n'est pas un "
 "problème)"
 
-#: src/client.cpp:728
+#: src/client.cpp:729
 #, c-format
 msgid "%s has an unknown state (Unable to find a complete frame)"
 msgstr "%s a un état inconnu (Impossible de trouver une frame compléte)"
 
-#: src/client.cpp:737
+#: src/client.cpp:738
 #, c-format
 msgid "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
 msgstr ""
 "%s est stoppé (La ligne \"Folding@Home Client Shutdown.\" a été trouvée)"
 
-#: src/client.cpp:746
+#: src/client.cpp:747
 #, c-format
 msgid ""
 "%s has an unknown state (Unable to extract a valid elapsed time since the "
@@ -247,18 +247,18 @@ msgstr ""
 "%s est dans un état inconnu (Impossible d'extraire une durée valide du temps "
 "écoulé depuis la derniére frame terminée)"
 
-#: src/client.cpp:754
+#: src/client.cpp:755
 #, c-format
 msgid "%s has been marked as having a asynchronous clock."
 msgstr "%s est indiqué comme ayant une horloge désynchronisée."
 
-#: src/client.cpp:789
+#: src/client.cpp:790
 #, c-format
 msgid "%s seems to have hung : Elapsed time is %um and limit is %um"
 msgstr ""
 "%s semble être en pause : Le temps écoulé est de %um et la limite est %um"
 
-#: src/client.cpp:794
+#: src/client.cpp:795
 #, c-format
 msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
 msgstr ""
