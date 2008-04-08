@@ -60,6 +60,7 @@ public:
 		DGROMACSB, /**< Double Gromacs B (7b) */
 		GROCVS, /**< SMP Gromacs CVS (a2) */
 		GROPS3, /**< PS3 Gromacs (SCEARD) */
+		GROGPU2, /**< GPU2 Gromacs (11) */
 		CORE_ID_COUNT /**<  */
 	};
 

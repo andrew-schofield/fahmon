@@ -1,6 +1,6 @@
 FahMon: The Folding@home client monitoring program
 
-v2.3.2b (03/04/08)
+v2.3.2b
 
     General
 
@@ -10,6 +10,7 @@ v2.3.2b (03/04/08)
     * Added Italian translation.
     * Fixed bug with fractional deadlines still being truncated.
     * Checking for updates from the menu now informs you if no update was found.
+    * Added GPUv2 core support.
 
     Windows
 
