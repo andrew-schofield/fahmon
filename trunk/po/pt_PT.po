@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pt_PT\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-04-08 12:02+0100\n"
+"POT-Creation-Date: 2008-04-08 21:10+0100\n"
 "PO-Revision-Date: 2008-02-09 01:46-0000\n"
 "Last-Translator: Filipe Rodrigues <shello@shello.org>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -798,24 +798,24 @@ msgstr "Ficheiro de Registo."
 msgid "You must first select a client!"
 msgstr "Deve seleccionar um cliente primeiro!"
 
-#: src/mainDialog.cpp:1355
+#: src/mainDialog.cpp:1356
 msgid "Checking for FahMon updates"
 msgstr "A verificar a existência de actualizações do FahMon"
 
-#: src/mainDialog.cpp:1358
+#: src/mainDialog.cpp:1359
 msgid "Checking for update"
 msgstr "A verificar a existência de actualizações"
 
-#: src/mainDialog.cpp:1381
+#: src/mainDialog.cpp:1382
 #, c-format
 msgid "Your version: %s; New version: %s"
 msgstr "Versão actual: %s; Nova versão: %s"
 
-#: src/mainDialog.cpp:1395
+#: src/mainDialog.cpp:1396
 msgid "Update available"
 msgstr "Actualização existente"
 
-#: src/mainDialog.cpp:1396
+#: src/mainDialog.cpp:1397
 msgid ""
 "A newer version of FahMon is available\n"
 "Do you want to go to the FahMon website?"
@@ -823,32 +823,32 @@ msgstr ""
 "Está disponível uma nova versão do FahMon\n"
 "Deseja ir para o website do FahMon?"
 
-#: src/mainDialog.cpp:1403 src/mainDialog.cpp:1405
+#: src/mainDialog.cpp:1404 src/mainDialog.cpp:1406
 msgid "No update found"
 msgstr "Actualizações não encontradas"
 
-#: src/mainDialog.cpp:1430 src/projectsManager.cpp:308
+#: src/mainDialog.cpp:1431 src/projectsManager.cpp:308
 msgid "Unable to create a temporary file!"
 msgstr "Impossível criar um ficheiro temporário!"
 
-#: src/mainDialog.cpp:1434 src/projectsManager.cpp:312
+#: src/mainDialog.cpp:1435 src/projectsManager.cpp:312
 #, c-format
 msgid "Unable to open the temporary file <%s>"
 msgstr "Impossível abrir o ficheiro temporário <%s>"
 
-#: src/mainDialog.cpp:1438 src/projectsManager.cpp:316
+#: src/mainDialog.cpp:1439 src/projectsManager.cpp:316
 msgid "Unable to connect to the server!"
 msgstr "Impossível ligar ao servidor!"
 
-#: src/mainDialog.cpp:1442 src/projectsManager.cpp:320
+#: src/mainDialog.cpp:1443 src/projectsManager.cpp:320
 msgid "Unable to send the request to the server!"
 msgstr "Impossível enviar o pedido ao servidor!"
 
-#: src/mainDialog.cpp:1446 src/projectsManager.cpp:324
+#: src/mainDialog.cpp:1447 src/projectsManager.cpp:324
 msgid "Download aborted!"
 msgstr "Descarregamento Abortado!"
 
-#: src/mainDialog.cpp:1452 src/projectsManager.cpp:330
+#: src/mainDialog.cpp:1453 src/projectsManager.cpp:330
 msgid "An unknown error happened!"
 msgstr "Aconteceu um erro desconhecido!"
 

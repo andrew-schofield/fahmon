@@ -1333,6 +1333,7 @@ void MainDialog::OnMenuToggleETADate(wxCommandEvent& event)
 		default:
 			break;
 	}
+	ShowClientInformation(mClientsList->GetSelectedClientId());
 }
 
 
@@ -1482,9 +1483,9 @@ void OSXProgressBar::SetValue(wxUint32 value)
 void OSXProgressBar::OnPaint(wxPaintEvent& event)
 {
 	wxBufferedPaintDC dc(this);
-	
+
 	PaintBackground(dc);
-	
+
 	FillProgress(dc);
 }
 
@@ -1496,9 +1497,9 @@ void OSXProgressBar::OnResize(wxSizeEvent& event)
 void OSXProgressBar::PaintBackground(wxDC& dc)
 {
 	wxColour bacgroundColour = *wxWHITE;
-	
+
 	dc.SetBrush(wxBrush(bacgroundColour));
-	
+
 	dc.Clear();
 }
 
@@ -1508,9 +1509,9 @@ void OSXProgressBar::FillProgress(wxDC& dc)
 	wxInt32 progress = ((float)mCurrentProgress / (float)mTotal) * GetClientSize().x;
 	dc.SetPen(wxPen(*wxLIGHT_GREY, 1));
 	dc.SetBrush(wxBrush(*wxLIGHT_GREY));
-	
+
 	dc.DrawRectangle(0,1,progress,GetClientSize().y);
-	
+
 }
 
 #endif
