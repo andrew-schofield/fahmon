@@ -59,7 +59,7 @@ wxString Core::mCoreShortName[CORE_ID_COUNT] = {
 	wxT("dgromacsb"),
 	wxT("grocvs"),
 	wxT("gro-ps3"),
-	wxT("gpugpu2")
+	wxT("grogpu2")
 };
 
 
