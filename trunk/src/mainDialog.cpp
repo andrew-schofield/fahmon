@@ -675,14 +675,7 @@ inline void MainDialog::CreateMenuBar(void)
 	#else
 	menu->Append(wxID_HELP_CONTENTS, _("&Help Contents\tCtrl+?"), _("See help contents"));
 	#endif
-#ifdef _FAHMON_WIN32_
-	// MSVC stupidity
-	menu->Append(wxID_ABOUT, _("&About"), wxString::Format(_T("%s %s"),  _("About"), _T(FMC_APPNAME)));
-#elif __WXGTK__
-	menu->Append(wxID_ABOUT, _("&About"), wxString::Format(_T("%s "FMC_APPNAME),  _("About")));
-#elif __WXMAC__
-	menu->Append(wxID_ABOUT, _("&About"), wxString::Format(_T("%s "FMC_APPNAME),  _("About")));
-#endif
+	menu->Append(wxID_ABOUT, _("&About"), wxString::Format(_("About %s"),  _T(FMC_APPNAME)));
 #ifdef __WXMAC__
 	{
 		//wxApp::s_macHelpMenuTitleName = _("&Help");
