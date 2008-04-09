@@ -58,6 +58,7 @@ bool FahMonApp::OnInit(void)
 	bool               startMinimised;
 	bool               isTrayIconEnabled;
 	bool               requiresFirstRunDialog;
+	bool               startMaximised;
 
 	// Check for another instance
 	#ifndef __WXMAC__
@@ -192,6 +193,7 @@ bool FahMonApp::OnInit(void)
 	// Let's start with the main dialog box
 	_PrefsGetBool(PREF_MAINDIALOG_START_MINIMISED,  startMinimised);
 	_PrefsGetBool(PREF_MAINDIALOG_ENABLE_TRAY_ICON, isTrayIconEnabled);
+	_PrefsGetBool(PREF_MAINDIALOG_MAXIMISE, startMaximised);
 	if (startMinimised != true)
 	{
 		MainDialog::GetInstance()->Show(true);
@@ -202,7 +204,10 @@ bool FahMonApp::OnInit(void)
 		MainDialog::GetInstance()->Show(true);
 		MainDialog::GetInstance()->Iconize();
 	}
-
+	if (isTrayIconEnabled == true)
+	{
+		TrayManager::GetInstance()->SetMaximised(startMaximised);
+	}
 	return true;
 }
 
