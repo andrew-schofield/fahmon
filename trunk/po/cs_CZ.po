@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cs_CZ\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-04-10 16:53+0100\n"
+"POT-Creation-Date: 2008-04-10 17:01+0100\n"
 "PO-Revision-Date: 2008-02-08 14:50+0100\n"
 "Last-Translator: Martin Bednar <serafean@gmail.com>\n"
 "Language-Team: Czech <en@li.org>\n"
@@ -731,6 +731,11 @@ msgstr "Obsah Nápovědy\tCtrl+?"
 #: src/mainDialog.cpp:678
 msgid "&About"
 msgstr "&O Aplikaci"
+
+#: src/mainDialog.cpp:678
+#, fuzzy, c-format
+msgid "About %s"
+msgstr "O aplikaci"
 
 #: src/mainDialog.cpp:685
 msgid "&Help"

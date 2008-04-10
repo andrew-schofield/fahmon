@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nl_NL\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-04-10 16:53+0100\n"
+"POT-Creation-Date: 2008-04-10 17:01+0100\n"
 "PO-Revision-Date: 2008-01-24 16:42+0100\n"
 "Last-Translator: Bastien <bastien@knife-edge.nl>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -737,6 +737,11 @@ msgstr "&Help inhoud\tCtrl+?"
 #: src/mainDialog.cpp:678
 msgid "&About"
 msgstr "&Over"
+
+#: src/mainDialog.cpp:678
+#, fuzzy, c-format
+msgid "About %s"
+msgstr "Over"
 
 #: src/mainDialog.cpp:685
 msgid "&Help"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pt_PT\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-04-10 16:53+0100\n"
+"POT-Creation-Date: 2008-04-10 17:01+0100\n"
 "PO-Revision-Date: 2008-02-09 01:46-0000\n"
 "Last-Translator: Filipe Rodrigues <shello@shello.org>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -746,6 +746,11 @@ msgstr "Topicos de &Ajuda\tCtrl+?"
 #: src/mainDialog.cpp:678
 msgid "&About"
 msgstr "&Acerca"
+
+#: src/mainDialog.cpp:678
+#, fuzzy, c-format
+msgid "About %s"
+msgstr "Acerca"
 
 #: src/mainDialog.cpp:685
 msgid "&Help"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv_SE\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-04-10 16:53+0100\n"
+"POT-Creation-Date: 2008-04-10 17:01+0100\n"
 "PO-Revision-Date: 2008-02-01 20:20+0100\n"
 "Last-Translator: Olof Persson <floffe@gmail.com>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -738,6 +738,11 @@ msgstr "&Hjälp\tCtrl+?"
 #: src/mainDialog.cpp:678
 msgid "&About"
 msgstr "&Om"
+
+#: src/mainDialog.cpp:678
+#, fuzzy, c-format
+msgid "About %s"
+msgstr "Om "
 
 #: src/mainDialog.cpp:685
 msgid "&Help"
