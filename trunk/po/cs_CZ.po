@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cs_CZ\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-04-08 21:10+0100\n"
+"POT-Creation-Date: 2008-04-10 16:53+0100\n"
 "PO-Revision-Date: 2008-02-08 14:50+0100\n"
 "Last-Translator: Martin Bednar <serafean@gmail.com>\n"
 "Language-Team: Czech <en@li.org>\n"
@@ -17,8 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: src/aboutDialog.cpp:42 src/mainDialog.cpp:680 src/mainDialog.cpp:682
-#: src/mainDialog.cpp:684
+#: src/aboutDialog.cpp:42
 msgid "About"
 msgstr "O aplikaci"
 
@@ -397,7 +396,7 @@ msgid ""
 msgstr ""
 "Nejaktuálnější verze %s bude vždy k dispozici na oficiálních stránkách : "
 
-#: src/firstTimeDialog.cpp:139 src/main.cpp:160 src/main.cpp:166
+#: src/firstTimeDialog.cpp:139 src/main.cpp:161 src/main.cpp:167
 #, c-format
 msgid "Could not create directory <%s>"
 msgstr "Složku <%s> nelze vztvořit."
@@ -469,7 +468,7 @@ msgstr ""
 "\n"
 "Prosím zkontrolujte zda je správný správce nastaven v Nastavení."
 
-#: src/main.cpp:81
+#: src/main.cpp:82
 #, c-format
 msgid "Another instance of %s is already running!"
 msgstr "Jiná instance %s již běží!"
@@ -729,76 +728,76 @@ msgstr "Zobrazit obsah nápovědy"
 msgid "&Help Contents\tCtrl+?"
 msgstr "Obsah Nápovědy\tCtrl+?"
 
-#: src/mainDialog.cpp:680 src/mainDialog.cpp:682 src/mainDialog.cpp:684
+#: src/mainDialog.cpp:678
 msgid "&About"
 msgstr "&O Aplikaci"
 
-#: src/mainDialog.cpp:692
+#: src/mainDialog.cpp:685
 msgid "&Help"
 msgstr "&Nápověda"
 
-#: src/mainDialog.cpp:725 src/webMonitor.cpp:599
+#: src/mainDialog.cpp:718 src/webMonitor.cpp:599
 msgid "Work Unit Information"
 msgstr "Informace o Pracovní Jednotce"
 
-#: src/mainDialog.cpp:753 src/webMonitor.cpp:600
+#: src/mainDialog.cpp:746 src/webMonitor.cpp:600
 msgid "Core:"
 msgstr "Jádro : "
 
-#: src/mainDialog.cpp:755 src/webMonitor.cpp:601
+#: src/mainDialog.cpp:748 src/webMonitor.cpp:601
 msgid "Project:"
 msgstr "Projekt:"
 
-#: src/mainDialog.cpp:757 src/webMonitor.cpp:602
+#: src/mainDialog.cpp:750 src/webMonitor.cpp:602
 msgid "Credit:"
 msgstr "Kredit:"
 
-#: src/mainDialog.cpp:759 src/webMonitor.cpp:603
+#: src/mainDialog.cpp:752 src/webMonitor.cpp:603
 msgid "Username:"
 msgstr "Uživatelské jméno:"
 
-#: src/mainDialog.cpp:761 src/webMonitor.cpp:611
+#: src/mainDialog.cpp:754 src/webMonitor.cpp:611
 msgid "Downloaded:"
 msgstr "Staženo:"
 
-#: src/mainDialog.cpp:763 src/webMonitor.cpp:604
+#: src/mainDialog.cpp:756 src/webMonitor.cpp:604
 msgid "Preferred Deadline:"
 msgstr "Preferovaný Termín:"
 
-#: src/mainDialog.cpp:765 src/webMonitor.cpp:605
+#: src/mainDialog.cpp:758 src/webMonitor.cpp:605
 msgid "Final Deadline:"
 msgstr "Konečný termín:"
 
-#: src/mainDialog.cpp:795
+#: src/mainDialog.cpp:788
 msgid " :: Total PPD:"
 msgstr "Celkové PPD:"
 
-#: src/mainDialog.cpp:802
+#: src/mainDialog.cpp:795
 msgid "Log file."
 msgstr "Log"
 
-#: src/mainDialog.cpp:1031
+#: src/mainDialog.cpp:1024
 msgid "You must first select a client!"
 msgstr "Musíte nejprve vybrat klienta!"
 
-#: src/mainDialog.cpp:1356
+#: src/mainDialog.cpp:1350
 msgid "Checking for FahMon updates"
 msgstr "Ověřuji dostupnos aktualizací FahMon"
 
-#: src/mainDialog.cpp:1359
+#: src/mainDialog.cpp:1353
 msgid "Checking for update"
 msgstr "Ověřuji dostupnost aktualizace"
 
-#: src/mainDialog.cpp:1382
+#: src/mainDialog.cpp:1376
 #, c-format
 msgid "Your version: %s; New version: %s"
 msgstr "Vaše verze : %s ; Nová verze : %s"
 
-#: src/mainDialog.cpp:1396
+#: src/mainDialog.cpp:1390
 msgid "Update available"
 msgstr "Aktualizace dostupna"
 
-#: src/mainDialog.cpp:1397
+#: src/mainDialog.cpp:1391
 msgid ""
 "A newer version of FahMon is available\n"
 "Do you want to go to the FahMon website?"
@@ -806,32 +805,32 @@ msgstr ""
 "Nová verze FahMon je dostupná\n"
 "Chcete přejít na domovskou stránku FahMon?"
 
-#: src/mainDialog.cpp:1404 src/mainDialog.cpp:1406
+#: src/mainDialog.cpp:1398 src/mainDialog.cpp:1400
 msgid "No update found"
 msgstr "Nebyly nalezeny žádné aktualizace"
 
-#: src/mainDialog.cpp:1431 src/projectsManager.cpp:308
+#: src/mainDialog.cpp:1425 src/projectsManager.cpp:308
 msgid "Unable to create a temporary file!"
 msgstr "Nelze vytvořit dočasnou složku!"
 
-#: src/mainDialog.cpp:1435 src/projectsManager.cpp:312
+#: src/mainDialog.cpp:1429 src/projectsManager.cpp:312
 #, c-format
 msgid "Unable to open the temporary file <%s>"
 msgstr "Nelze vytvořit dočasnou složku <%s>"
 
-#: src/mainDialog.cpp:1439 src/projectsManager.cpp:316
+#: src/mainDialog.cpp:1433 src/projectsManager.cpp:316
 msgid "Unable to connect to the server!"
 msgstr "Nelze se připojit na server!"
 
-#: src/mainDialog.cpp:1443 src/projectsManager.cpp:320
+#: src/mainDialog.cpp:1437 src/projectsManager.cpp:320
 msgid "Unable to send the request to the server!"
 msgstr "Nelze poslat žádost serveru"
 
-#: src/mainDialog.cpp:1447 src/projectsManager.cpp:324
+#: src/mainDialog.cpp:1441 src/projectsManager.cpp:324
 msgid "Download aborted!"
 msgstr "Stahování přerušeno"
 
-#: src/mainDialog.cpp:1453 src/projectsManager.cpp:330
+#: src/mainDialog.cpp:1447 src/projectsManager.cpp:330
 msgid "An unknown error happened!"
 msgstr "Nastala neznámá chyba"
 

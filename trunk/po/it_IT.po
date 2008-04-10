@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it-IT\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-04-08 21:10+0100\n"
+"POT-Creation-Date: 2008-04-10 16:53+0100\n"
 "PO-Revision-Date: 2008-02-25 12:46+0100\n"
 "Last-Translator: Zurgo <zurgo@virgilio.it>\n"
 "Language-Team:  <zurgo@virgilio.it>\n"
@@ -18,8 +18,7 @@ msgstr ""
 "X-Poedit-Language: Italian\n"
 "X-Poedit-Country: ITALY\n"
 
-#: src/aboutDialog.cpp:42 src/mainDialog.cpp:680 src/mainDialog.cpp:682
-#: src/mainDialog.cpp:684
+#: src/aboutDialog.cpp:42
 msgid "About"
 msgstr "Informazioni"
 
@@ -407,7 +406,7 @@ msgid ""
 "The latest version of %s will always be available on the official website:"
 msgstr "L'ultima versione di %s sarà sempre disponibile sul sito ufficiale:"
 
-#: src/firstTimeDialog.cpp:139 src/main.cpp:160 src/main.cpp:166
+#: src/firstTimeDialog.cpp:139 src/main.cpp:161 src/main.cpp:167
 #, c-format
 msgid "Could not create directory <%s>"
 msgstr "Impossibile creare la directory <%s>"
@@ -480,7 +479,7 @@ msgstr ""
 "\n"
 "Verificare che il filemanager sia correttamente impostato in Preferenze"
 
-#: src/main.cpp:81
+#: src/main.cpp:82
 #, c-format
 msgid "Another instance of %s is already running!"
 msgstr "Un'altra istanza di %s è già in esecuzione!"
@@ -743,76 +742,76 @@ msgstr "Visualizza i contenuti d'aiuto"
 msgid "&Help Contents\tCtrl+?"
 msgstr "Aiuto\tCtrl+?"
 
-#: src/mainDialog.cpp:680 src/mainDialog.cpp:682 src/mainDialog.cpp:684
+#: src/mainDialog.cpp:678
 msgid "&About"
 msgstr "&Informazioni"
 
-#: src/mainDialog.cpp:692
+#: src/mainDialog.cpp:685
 msgid "&Help"
 msgstr "&Aiuto"
 
-#: src/mainDialog.cpp:725 src/webMonitor.cpp:599
+#: src/mainDialog.cpp:718 src/webMonitor.cpp:599
 msgid "Work Unit Information"
 msgstr "Informazioni sull'unità in lavorazione"
 
-#: src/mainDialog.cpp:753 src/webMonitor.cpp:600
+#: src/mainDialog.cpp:746 src/webMonitor.cpp:600
 msgid "Core:"
 msgstr "Nucleo:"
 
-#: src/mainDialog.cpp:755 src/webMonitor.cpp:601
+#: src/mainDialog.cpp:748 src/webMonitor.cpp:601
 msgid "Project:"
 msgstr "Progetto:"
 
-#: src/mainDialog.cpp:757 src/webMonitor.cpp:602
+#: src/mainDialog.cpp:750 src/webMonitor.cpp:602
 msgid "Credit:"
 msgstr "Crediti:"
 
-#: src/mainDialog.cpp:759 src/webMonitor.cpp:603
+#: src/mainDialog.cpp:752 src/webMonitor.cpp:603
 msgid "Username:"
 msgstr "Nome utente:"
 
-#: src/mainDialog.cpp:761 src/webMonitor.cpp:611
+#: src/mainDialog.cpp:754 src/webMonitor.cpp:611
 msgid "Downloaded:"
 msgstr "Scaricato il:"
 
-#: src/mainDialog.cpp:763 src/webMonitor.cpp:604
+#: src/mainDialog.cpp:756 src/webMonitor.cpp:604
 msgid "Preferred Deadline:"
 msgstr "Scadenda consigliata:"
 
-#: src/mainDialog.cpp:765 src/webMonitor.cpp:605
+#: src/mainDialog.cpp:758 src/webMonitor.cpp:605
 msgid "Final Deadline:"
 msgstr "Scadenza definitiva:"
 
-#: src/mainDialog.cpp:795
+#: src/mainDialog.cpp:788
 msgid " :: Total PPD:"
 msgstr " :: PPD Totali:"
 
-#: src/mainDialog.cpp:802
+#: src/mainDialog.cpp:795
 msgid "Log file."
 msgstr "File di Log."
 
-#: src/mainDialog.cpp:1031
+#: src/mainDialog.cpp:1024
 msgid "You must first select a client!"
 msgstr "Devi prima selezionare un client!"
 
-#: src/mainDialog.cpp:1356
+#: src/mainDialog.cpp:1350
 msgid "Checking for FahMon updates"
 msgstr "Controlla gli aggiornamenti di FahMon"
 
-#: src/mainDialog.cpp:1359
+#: src/mainDialog.cpp:1353
 msgid "Checking for update"
 msgstr "Controlla gli aggiornamenti"
 
-#: src/mainDialog.cpp:1382
+#: src/mainDialog.cpp:1376
 #, c-format
 msgid "Your version: %s; New version: %s"
 msgstr "Tua versione: %s; Nuova versione: %s"
 
-#: src/mainDialog.cpp:1396
+#: src/mainDialog.cpp:1390
 msgid "Update available"
 msgstr "Aggiornamenti disponibili"
 
-#: src/mainDialog.cpp:1397
+#: src/mainDialog.cpp:1391
 msgid ""
 "A newer version of FahMon is available\n"
 "Do you want to go to the FahMon website?"
@@ -820,32 +819,32 @@ msgstr ""
 "È disponibile una nuova versione di FahMon\n"
 "Vuoi andare sul sito di FahMon?"
 
-#: src/mainDialog.cpp:1404 src/mainDialog.cpp:1406
+#: src/mainDialog.cpp:1398 src/mainDialog.cpp:1400
 msgid "No update found"
 msgstr "Nessun aggiornamento disponibile"
 
-#: src/mainDialog.cpp:1431 src/projectsManager.cpp:308
+#: src/mainDialog.cpp:1425 src/projectsManager.cpp:308
 msgid "Unable to create a temporary file!"
 msgstr "Impossibile creare il file temporaneo!"
 
-#: src/mainDialog.cpp:1435 src/projectsManager.cpp:312
+#: src/mainDialog.cpp:1429 src/projectsManager.cpp:312
 #, c-format
 msgid "Unable to open the temporary file <%s>"
 msgstr "Impossibile creare il file temporaneo <%s>"
 
-#: src/mainDialog.cpp:1439 src/projectsManager.cpp:316
+#: src/mainDialog.cpp:1433 src/projectsManager.cpp:316
 msgid "Unable to connect to the server!"
 msgstr "Impossibile connettersi al server!"
 
-#: src/mainDialog.cpp:1443 src/projectsManager.cpp:320
+#: src/mainDialog.cpp:1437 src/projectsManager.cpp:320
 msgid "Unable to send the request to the server!"
 msgstr "Impossibile inviare la richiesta al server!"
 
-#: src/mainDialog.cpp:1447 src/projectsManager.cpp:324
+#: src/mainDialog.cpp:1441 src/projectsManager.cpp:324
 msgid "Download aborted!"
 msgstr "Scaricamento interrotto!"
 
-#: src/mainDialog.cpp:1453 src/projectsManager.cpp:330
+#: src/mainDialog.cpp:1447 src/projectsManager.cpp:330
 msgid "An unknown error happened!"
 msgstr "È accaduto un errore sconosciuto!"
 

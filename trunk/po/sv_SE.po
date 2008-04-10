@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv_SE\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-04-08 21:10+0100\n"
+"POT-Creation-Date: 2008-04-10 16:53+0100\n"
 "PO-Revision-Date: 2008-02-01 20:20+0100\n"
 "Last-Translator: Olof Persson <floffe@gmail.com>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -19,8 +19,7 @@ msgstr ""
 "X-Poedit-Country: SWEDEN\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: src/aboutDialog.cpp:42 src/mainDialog.cpp:680 src/mainDialog.cpp:682
-#: src/mainDialog.cpp:684
+#: src/aboutDialog.cpp:42
 msgid "About"
 msgstr "Om "
 
@@ -405,7 +404,7 @@ msgstr ""
 "Den senaste versionen av %s finns alltid tillgänglig på den officiella "
 "webbplatsen:"
 
-#: src/firstTimeDialog.cpp:139 src/main.cpp:160 src/main.cpp:166
+#: src/firstTimeDialog.cpp:139 src/main.cpp:161 src/main.cpp:167
 #, c-format
 msgid "Could not create directory <%s>"
 msgstr "Kunde inte skapa katalogen <%s>"
@@ -477,7 +476,7 @@ msgstr ""
 "\n"
 "Vänligen kontrollera att den är rätt inställd i Inställningar"
 
-#: src/main.cpp:81
+#: src/main.cpp:82
 #, c-format
 msgid "Another instance of %s is already running!"
 msgstr "En annan upplaga av %s körs redan!"
@@ -736,76 +735,76 @@ msgstr "Se hjälpinnehållet"
 msgid "&Help Contents\tCtrl+?"
 msgstr "&Hjälp\tCtrl+?"
 
-#: src/mainDialog.cpp:680 src/mainDialog.cpp:682 src/mainDialog.cpp:684
+#: src/mainDialog.cpp:678
 msgid "&About"
 msgstr "&Om"
 
-#: src/mainDialog.cpp:692
+#: src/mainDialog.cpp:685
 msgid "&Help"
 msgstr "&Hjälp"
 
-#: src/mainDialog.cpp:725 src/webMonitor.cpp:599
+#: src/mainDialog.cpp:718 src/webMonitor.cpp:599
 msgid "Work Unit Information"
 msgstr "Information om arbetsenhet"
 
-#: src/mainDialog.cpp:753 src/webMonitor.cpp:600
+#: src/mainDialog.cpp:746 src/webMonitor.cpp:600
 msgid "Core:"
 msgstr "Kärna: "
 
-#: src/mainDialog.cpp:755 src/webMonitor.cpp:601
+#: src/mainDialog.cpp:748 src/webMonitor.cpp:601
 msgid "Project:"
 msgstr "Projekt:"
 
-#: src/mainDialog.cpp:757 src/webMonitor.cpp:602
+#: src/mainDialog.cpp:750 src/webMonitor.cpp:602
 msgid "Credit:"
 msgstr "Poäng:"
 
-#: src/mainDialog.cpp:759 src/webMonitor.cpp:603
+#: src/mainDialog.cpp:752 src/webMonitor.cpp:603
 msgid "Username:"
 msgstr "Användarnamn:"
 
-#: src/mainDialog.cpp:761 src/webMonitor.cpp:611
+#: src/mainDialog.cpp:754 src/webMonitor.cpp:611
 msgid "Downloaded:"
 msgstr "Hämtad:"
 
-#: src/mainDialog.cpp:763 src/webMonitor.cpp:604
+#: src/mainDialog.cpp:756 src/webMonitor.cpp:604
 msgid "Preferred Deadline:"
 msgstr "Föredragen tidsgräns:"
 
-#: src/mainDialog.cpp:765 src/webMonitor.cpp:605
+#: src/mainDialog.cpp:758 src/webMonitor.cpp:605
 msgid "Final Deadline:"
 msgstr "Slutgiltig tidsgräns:"
 
-#: src/mainDialog.cpp:795
+#: src/mainDialog.cpp:788
 msgid " :: Total PPD:"
 msgstr " :: Sammanlagd PPD:"
 
-#: src/mainDialog.cpp:802
+#: src/mainDialog.cpp:795
 msgid "Log file."
 msgstr "Loggfil."
 
-#: src/mainDialog.cpp:1031
+#: src/mainDialog.cpp:1024
 msgid "You must first select a client!"
 msgstr "Du måste först välja en klient!"
 
-#: src/mainDialog.cpp:1356
+#: src/mainDialog.cpp:1350
 msgid "Checking for FahMon updates"
 msgstr "Letar efter uppdateringar till FahMon"
 
-#: src/mainDialog.cpp:1359
+#: src/mainDialog.cpp:1353
 msgid "Checking for update"
 msgstr "Letar efter uppdatering"
 
-#: src/mainDialog.cpp:1382
+#: src/mainDialog.cpp:1376
 #, c-format
 msgid "Your version: %s; New version: %s"
 msgstr "Din version: %s; Ny version: %s"
 
-#: src/mainDialog.cpp:1396
+#: src/mainDialog.cpp:1390
 msgid "Update available"
 msgstr "Nyare version hittad"
 
-#: src/mainDialog.cpp:1397
+#: src/mainDialog.cpp:1391
 msgid ""
 "A newer version of FahMon is available\n"
 "Do you want to go to the FahMon website?"
@@ -813,32 +812,32 @@ msgstr ""
 "En nyare version av FahMon är tillgänglig\n"
 "Vill du gå till FahMons webbplats?"
 
-#: src/mainDialog.cpp:1404 src/mainDialog.cpp:1406
+#: src/mainDialog.cpp:1398 src/mainDialog.cpp:1400
 msgid "No update found"
 msgstr "Ingen nyare version hittades"
 
-#: src/mainDialog.cpp:1431 src/projectsManager.cpp:308
+#: src/mainDialog.cpp:1425 src/projectsManager.cpp:308
 msgid "Unable to create a temporary file!"
 msgstr "Kunde inte skapa en tillfällig fil!"
 
-#: src/mainDialog.cpp:1435 src/projectsManager.cpp:312
+#: src/mainDialog.cpp:1429 src/projectsManager.cpp:312
 #, c-format
 msgid "Unable to open the temporary file <%s>"
 msgstr "Kunde inte öppna den tillfälliga filen <%s>"
 
-#: src/mainDialog.cpp:1439 src/projectsManager.cpp:316
+#: src/mainDialog.cpp:1433 src/projectsManager.cpp:316
 msgid "Unable to connect to the server!"
 msgstr "Kunde inte ansluta till servern!"
 
-#: src/mainDialog.cpp:1443 src/projectsManager.cpp:320
+#: src/mainDialog.cpp:1437 src/projectsManager.cpp:320
 msgid "Unable to send the request to the server!"
 msgstr "kunde inte skicka förfrågan till servern!"
 
-#: src/mainDialog.cpp:1447 src/projectsManager.cpp:324
+#: src/mainDialog.cpp:1441 src/projectsManager.cpp:324
 msgid "Download aborted!"
 msgstr "Hämtning avbruten!"
 
-#: src/mainDialog.cpp:1453 src/projectsManager.cpp:330
+#: src/mainDialog.cpp:1447 src/projectsManager.cpp:330
 msgid "An unknown error happened!"
 msgstr "Ett okänt fel har uppstått!"
 
