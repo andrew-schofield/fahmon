@@ -1,15 +1,9 @@
-# translation of cs_CZ.po to Czech
-# Copyright (C) 2007-8 Andrew Schofield
-# This file is distributed under the same license as the FahMon package.
-#
-# Mark Gerber <mark.gerber@web.de>, 2007, 2008.
-# Andrew Schofield <andrew_s@fahmon.net>, 2007, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: FahMon Translation - de_DE 1.1.b1\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
 "POT-Creation-Date: 2008-04-10 17:01+0100\n"
-"PO-Revision-Date: 2008-02-15 09:45+0100\n"
+"PO-Revision-Date: 2008-04-10 22:30+0100\n"
 "Last-Translator: Mark Gerber <mark.gerber@web.de>\n"
 "Language-Team: Mark Gerber <mark.gerber@web.de>\n"
 "MIME-Version: 1.0\n"
@@ -37,7 +31,7 @@ msgstr "Homepage:"
 
 #: src/aboutDialog.cpp:59
 msgid "Qd homepage:"
-msgstr "Qd-Homepage:"
+msgstr "qd-Homepage:"
 
 #: src/aboutDialog.cpp:61
 msgid "Licence:"
@@ -47,7 +41,6 @@ msgstr "Lizenz:"
 msgid "Library:"
 msgstr "Bibliothek:"
 
-# Die ursprüngliche Übersetzung "Auswertungen" ist etwas zu sperrig und kann bzgl. der Projekte fehlinterpretiert werden (wissenschaftliche Auswertungen). Die Bezeichnung "Benchmarks" trifft es auch im Deutschen recht gut. Denkbare Alternativen: "Leistungswerte", "Performance-Werte"
 #: src/benchmarksDialog.cpp:63 src/trayManager.cpp:192
 msgid "Benchmarks"
 msgstr "Benchmarks"
@@ -141,7 +134,7 @@ msgstr "Keine effektive Frame-Dauer"
 #: src/projectsManager.cpp:131
 #, c-format
 msgid "Could not open file <%s> for writing!"
-msgstr "Kein Schreibzugriff auf die Datei <%s>."
+msgstr "Es ist kein Schreibzugriff auf die Datei <%s> möglich."
 
 #: src/benchmarksManager.cpp:299
 msgid "(Benchmarks) The maximum number of known clients has been reached!"
@@ -241,7 +234,7 @@ msgstr ""
 #: src/client.cpp:738
 #, c-format
 msgid "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
-msgstr "%s ist beendet (Zeile \"Folding@Home Client Shutdown.\" gefunden)."
+msgstr "%s ist angehalten (Zeile \"Folding@Home Client Shutdown.\" gefunden)."
 
 #: src/client.cpp:747
 #, c-format
@@ -275,7 +268,7 @@ msgstr "Client-Eintrag bearbeiten / %s"
 
 #: src/clientDialog.cpp:80
 msgid "Client information"
-msgstr "Angaben zum Client"
+msgstr "Client"
 
 #: src/clientDialog.cpp:86
 msgid "Location:"
@@ -285,7 +278,7 @@ msgstr "Ort:"
 #: src/preferencesDialog.cpp:497 src/preferencesDialog.cpp:506
 #: src/preferencesDialog.cpp:515
 msgid "Choose"
-msgstr "Wählen"
+msgstr "Auswahl"
 
 #: src/clientDialog.cpp:97
 msgid "Name:"
@@ -297,7 +290,7 @@ msgstr "Bitte den Ordner wählen, in dem sich der F@H-Client befindet:"
 
 #: src/clientDialog.cpp:220
 msgid "You must fill the name AND the locations fields."
-msgstr "Gib bitte Name UND Ort an."
+msgstr "Gib bitte sowohl einen Namen als auch einen Ort an."
 
 #: src/clientsManager.cpp:166
 #, c-format
@@ -346,8 +339,8 @@ msgid ""
 "Project information (e.g. deadlines) is read from a local file, which must "
 "be regularly updated."
 msgstr ""
-"Projektedaten (z. B. die Fälligkeit) werden aus einer lokalen Datei "
-"gewonnen, die regelmäßig aktualisiert werden muss."
+"Projektedaten (z. B. Fälligkeit) werden aus einer lokalen Datei gewonnen, "
+"die regelmäßig aktualisiert werden muss."
 
 #: src/firstTimeDialog.cpp:73
 msgid ""
@@ -373,7 +366,7 @@ msgid ""
 "g. deadlines)."
 msgstr ""
 "Eine Aktualisierung ist notwendig, wenn keine Projektinformation dargestellt "
-"werden kann (z. B. die Fälligkeit)."
+"werden kann (z. B. Fälligkeit)."
 
 #: src/firstTimeDialog.cpp:79
 msgid "You will be able to perform them using the 'FahMon' menu."
@@ -492,7 +485,7 @@ msgstr "%s steht unter der Lizenz GNU GPL v2."
 
 #: src/mainDialog.cpp:169
 msgid "Copyright (C) 2003-2007 Fran\\u00E7ois Ingelrest"
-msgstr "Copyright (C) 2003-2007 François Ingelrest"
+msgstr "Copyright (C) 2003-2007 Fran\\u00E7ois Ingelrest"
 
 #: src/mainDialog.cpp:170
 msgid "Copyright (C) 2007-2008 Andrew Schofield"
@@ -517,8 +510,8 @@ msgid ""
 "Please check the messages (FahMon->Show/Hide Messages Window)."
 msgstr ""
 "Mit dem Client ist etwas nicht in Ordnung.\n"
-"Überprüfe bitte die FahMon-Meldungen (Menübefehl \"FahMon | Meldungsfenster "
-"zeigen/verbergen\")."
+"Überprüfe bitte die FahMon-Meldungen (FahMon | Meldungsfenster zeigen/"
+"verbergen)."
 
 #: src/mainDialog.cpp:431 src/mainDialog.cpp:519 src/mainDialog.cpp:576
 #: src/webMonitor.cpp:168 src/webMonitor.cpp:239 src/webMonitor.cpp:294
@@ -578,14 +571,13 @@ msgstr "Auf Programm&update prüfen"
 msgid "Check online for the latest version of FahMon"
 msgstr "Führt eine Onlineprüfung auf ein Programmupdate durch."
 
-# Die ursprüngliche Tastenkombination habe ich wegen der gewohnten Programmbedienung beibehalten. "Ctrl" muss beibehalten werden, damit das Programm die Tastenkombination erkennt, "Strg" funktioniert nicht.
 #: src/mainDialog.cpp:624
 msgid "&Benchmarks...\tCTRL+B"
 msgstr "&Benchmarks...\tCtrl+B"
 
 #: src/mainDialog.cpp:624
 msgid "Open the benchmarks dialog"
-msgstr "Öffnet das Fenster mit Projekt-Benchmarks."
+msgstr "Öffnet das Fenster mit Projekte-Benchmarks."
 
 #: src/mainDialog.cpp:625
 msgid "&Preferences...\tCTRL+P"
@@ -599,16 +591,14 @@ msgstr "Öffnet den Einstellungen-Dialog."
 msgid "&Quit\tCtrl+Q"
 msgstr "&Beenden\tCtrl+Q"
 
-# Eintrag im Kontextmenü des Symbols im Infobereich der Taskleiste als auch Hinweis in der Statuszeile zum Menüeintrag "FahMon | Beenden".
-# Bei letzterem wird vom Programm automatisch das Wort "FahMon" angehängt, so dass hier nur eingeschränkte Freiheiten bzgl. der Textgestaltung bestehen. Durch den Konflikt bei der Übersetzung sollte dem Kontextmenüeintrag Vorrang gegeben werden.
 #: src/mainDialog.cpp:627
 #, c-format
 msgid "Quit %s"
-msgstr "Beendet %s"
+msgstr "Beendet %s."
 
 #: src/mainDialog.cpp:631
 msgid "&Tools"
-msgstr ""
+msgstr "E&xtras"
 
 #: src/mainDialog.cpp:637
 msgid "Reload &Selection\tF5"
@@ -616,7 +606,7 @@ msgstr "Auswahl ab&fragen\tF5"
 
 #: src/mainDialog.cpp:637 src/mainDialog.cpp:644
 msgid "Reload the selected client"
-msgstr "Fragt den Status des ausgewählten Clients ab."
+msgstr "Fragt Information zum ausgewählten Client ab."
 
 #: src/mainDialog.cpp:638
 msgid "Reload &All\tF6"
@@ -624,7 +614,7 @@ msgstr "&Alle abfragen\tF6"
 
 #: src/mainDialog.cpp:638 src/mainDialog.cpp:645
 msgid "Reload all the clients"
-msgstr "Fragt die Status aller Clients ab."
+msgstr "Fragt Information zu allen Clients ab."
 
 #: src/mainDialog.cpp:640
 msgid "&Show/Hide FAHLog\tF8"
@@ -688,7 +678,7 @@ msgstr "Öffnet fahinfo.org mit dem aktuellen Projekt."
 
 #: src/mainDialog.cpp:660
 msgid "&My Stats\tCtrl+Shift+M"
-msgstr "&Meine Statistik"
+msgstr "&Meine Statistik\tCtrl+Shift+M"
 
 #: src/mainDialog.cpp:661
 msgid "&Jmol\tCtrl+J"
@@ -716,7 +706,7 @@ msgstr "Öffnet das Forum der Folding-Community."
 
 #: src/mainDialog.cpp:667
 msgid "&Projects Summary"
-msgstr "&Projektübersicht"
+msgstr "&Projekteübersicht"
 
 #: src/mainDialog.cpp:667
 msgid "Open the list of the current projects"
@@ -751,9 +741,9 @@ msgid "&About"
 msgstr "&Info über FahMon"
 
 #: src/mainDialog.cpp:678
-#, fuzzy, c-format
+#, c-format
 msgid "About %s"
-msgstr "Info über FahMon"
+msgstr "Zeigt allgemeine Programminformation über %s an."
 
 #: src/mainDialog.cpp:685
 msgid "&Help"
@@ -761,7 +751,7 @@ msgstr "&Hilfe"
 
 #: src/mainDialog.cpp:718 src/webMonitor.cpp:599
 msgid "Work Unit Information"
-msgstr "Work Unit-Information"
+msgstr "Work Unit"
 
 #: src/mainDialog.cpp:746 src/webMonitor.cpp:600
 msgid "Core:"
@@ -773,7 +763,7 @@ msgstr "Projekt:"
 
 #: src/mainDialog.cpp:750 src/webMonitor.cpp:602
 msgid "Credit:"
-msgstr "Punkte:"
+msgstr "Gutschrift:"
 
 #: src/mainDialog.cpp:752 src/webMonitor.cpp:603
 msgid "Username:"
@@ -814,7 +804,7 @@ msgstr "Suche nach Programmupdate"
 #: src/mainDialog.cpp:1376
 #, c-format
 msgid "Your version: %s; New version: %s"
-msgstr "Deine Version: %s - Neue Version: %s"
+msgstr "Deine Version: %s - Verfügbare Version: %s"
 
 #: src/mainDialog.cpp:1390
 msgid "Update available"
@@ -826,7 +816,7 @@ msgid ""
 "Do you want to go to the FahMon website?"
 msgstr ""
 "Eine neue FahMon-Version ist verfügbar.\n"
-"Möchtes Du die FahMon-Website öffnen?"
+"Soll die FahMon-Website geöffnet werden?"
 
 #: src/mainDialog.cpp:1398 src/mainDialog.cpp:1400
 msgid "No update found"
@@ -1047,7 +1037,7 @@ msgstr "Anderer"
 
 #: src/preferencesDialog.cpp:414
 msgid "Finder"
-msgstr ""
+msgstr "Finder"
 
 #: src/preferencesDialog.cpp:491
 msgid "Export Web Application"
@@ -1150,8 +1140,6 @@ msgstr "Minimieren"
 msgid "Show FahMon"
 msgstr "Wiederherstellen"
 
-# Eintrag im Kontextmenü des Symbols im Infobereich der Taskleiste als auch Hinweis in der Statuszeile zum Menüeintrag "FahMon | Beenden".
-# Bei letzterem wird vom Programm automatisch das Wort "FahMon" angehängt, so dass hier nur eingeschränkte Freiheiten bzgl. der Textgestaltung bestehen. Durch den Konflikt bei der Übersetzung sollte dem Kontextmenüeintrag Vorrang gegeben werden.
 #: src/trayManager.cpp:213
 msgid "Quit"
 msgstr "Beenden"
@@ -1234,9 +1222,6 @@ msgstr "Einfache Textausgabe"
 msgid "Last updated:"
 msgstr "Zuletzt aktualisiert:"
 
-#~ msgid "Error while reading %sclient.cfg!"
-#~ msgstr "Fehler beim Lesen von %sclient.cfg."
-
 #~ msgid "Couldn't Open FAHlog.txt"
 #~ msgstr "FAHlog.txt kann nicht geöffnet werden."
 
@@ -1245,9 +1230,6 @@ msgstr "Zuletzt aktualisiert:"
 
 #~ msgid "No valid project number was found for %s in FAHlog.txt"
 #~ msgstr "Keine gültige Projektnummer für %s in FAHlog.txt gefunden."
-
-#~ msgid "The download date in file %s could not be parsed"
-#~ msgstr "Das Downloaddatum in der Datei %s kann nicht gefunden werden."
 
 #~ msgid "No valid username were found in file %s"
 #~ msgstr "Keinen gültigen Benutzernamen in Datei %s gefunden."
