@@ -1,0 +1,38 @@
+FahMon THANKS file
+
+FahMon was originally written by François Ingelrest. It is now maintained and
+developed by Andrew Schofield.
+Many people have further contributed to FahMon by reporting problems, suggesting
+various improvements, or submitting actual code. Here is a list of these people.
+Help me keep it complete and exempt of errors.
+* indicates real name unknown.
+
+
+ck_wong*
+goober_dvd*
+Mihail Boev
+Filipe Rodrigues
+Kevin Bernhagen
+Dieter Vrancken
+Christian Bargmann
+Bruce Borden
+Mark Gerber
+
+
+Translation team:
+
+Czech (cs_CZ)        Martin Bednar
+Dutch (nl_NL)        Bastien*
+English (en_GB)      Andrew Schofield
+French (fr_FR)       Patrice Le Garrec, Guillaume Carret
+German (de_DE)       Mark Gerber
+Italian (it_IT)      zurgo*
+Polish (pl_PL)       Mariusz Pociask
+Portuguese (pt_BR)   Custodio Marcelino de Jesus
+Portuguese (pt_PT)   João Pedro Rodrigues, Filipe Rodrigues
+Russian (ru_RU)      Evgeniy Chorpita
+Spanish (es_ES)      Trotador*
+Swedish (sv_SE)      Olof Persson
+
+For instructions on how you can help with the translation effort, please see the
+TRANSLATIONS section of README.
