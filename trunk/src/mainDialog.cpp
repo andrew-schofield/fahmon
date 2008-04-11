@@ -674,7 +674,7 @@ inline void MainDialog::CreateMenuBar(void)
 	#else
 	menu->Append(wxID_HELP_CONTENTS, _("&Help Contents\tCtrl+?"), _("See help contents"));
 	#endif
-	menu->Append(wxID_ABOUT, _("&About"), wxString::Format(_T("About %s"), _T(FMC_APPNAME)));
+	menu->Append(wxID_ABOUT, _("&About"), wxString::Format(_("About %s"), _T(FMC_APPNAME)));
 #ifdef __WXMAC__
 	{
 		//wxApp::s_macHelpMenuTitleName = _("&Help");

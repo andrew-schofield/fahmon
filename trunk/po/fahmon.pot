@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-04-11 18:32+0100\n"
+"POT-Creation-Date: 2008-04-11 20:17+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -706,6 +706,11 @@ msgstr ""
 
 #: src/mainDialog.cpp:677
 msgid "&About"
+msgstr ""
+
+#: src/mainDialog.cpp:677
+#, c-format
+msgid "About %s"
 msgstr ""
 
 #: src/mainDialog.cpp:684

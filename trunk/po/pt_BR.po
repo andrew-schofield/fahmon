@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pt_BR\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-04-11 18:32+0100\n"
+"POT-Creation-Date: 2008-04-11 20:17+0100\n"
 "PO-Revision-Date: 2008-02-03 11:48-0300\n"
 "Last-Translator: Custódio Marcelino de Jesus <custodiomdj@gmail.com>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -748,6 +748,11 @@ msgstr "Tópicos de &Ajuda\tCtrl+?"
 msgid "&About"
 msgstr "&Sobre"
 
+#: src/mainDialog.cpp:677
+#, fuzzy, c-format
+msgid "About %s"
+msgstr "Sobre"
+
 #: src/mainDialog.cpp:684
 msgid "&Help"
 msgstr "&Ajuda"
@@ -1223,10 +1228,6 @@ msgstr "Saída de Texto Simples"
 #: src/webMonitor.cpp:610
 msgid "Last updated:"
 msgstr "Última atualização:"
-
-#, fuzzy
-#~ msgid "About %s"
-#~ msgstr "Sobre"
 
 #~ msgid "Clients: %i"
 #~ msgstr "Clientes: %i"

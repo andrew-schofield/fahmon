@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-04-11 18:32+0100\n"
+"POT-Creation-Date: 2008-04-11 20:17+0100\n"
 "PO-Revision-Date: 2008-02-15 18:09+0000\n"
 "Last-Translator: Andrew Schofield <andrew_s@fahmon.net>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -736,6 +736,11 @@ msgstr "&Help Contents\tCtrl+?"
 msgid "&About"
 msgstr "&About"
 
+#: src/mainDialog.cpp:677
+#, c-format
+msgid "About %s"
+msgstr "About %s"
+
 #: src/mainDialog.cpp:684
 msgid "&Help"
 msgstr "&Help"
@@ -1111,12 +1116,15 @@ msgstr ""
 "Preferences."
 
 #: src/trayManager.cpp:125
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%s\n"
 "Clients: %i\n"
 "Total PPD: %.2f"
-msgstr " :: Total PPD: %.2f"
+msgstr ""
+"%s\n"
+"Clients: %i\n"
+"Total PPD: %.2f"
 
 #: src/trayManager.cpp:204
 msgid "Preferences"
@@ -1211,10 +1219,6 @@ msgstr "Simple Text Output"
 #: src/webMonitor.cpp:610
 msgid "Last updated:"
 msgstr "Last updated:"
-
-#, fuzzy
-#~ msgid "About %s"
-#~ msgstr "About %s"
 
 #~ msgid "Clients: %i"
 #~ msgstr "Clients: %i"

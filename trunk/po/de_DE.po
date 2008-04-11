@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FahMon Translation - de_DE 1.1.b1\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-04-11 18:32+0100\n"
+"POT-Creation-Date: 2008-04-11 20:17+0100\n"
 "PO-Revision-Date: 2008-04-10 22:30+0100\n"
 "Last-Translator: Mark Gerber <mark.gerber@web.de>\n"
 "Language-Team: Mark Gerber <mark.gerber@web.de>\n"
@@ -740,6 +740,11 @@ msgstr "&Inhalt (Web)\tCtrl+?"
 msgid "&About"
 msgstr "&Info über FahMon"
 
+#: src/mainDialog.cpp:677
+#, c-format
+msgid "About %s"
+msgstr "Zeigt allgemeine Programminformation über %s an."
+
 #: src/mainDialog.cpp:684
 msgid "&Help"
 msgstr "&Hilfe"
@@ -1114,12 +1119,12 @@ msgstr ""
 "die entsprechende Einstellung ein."
 
 #: src/trayManager.cpp:125
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%s\n"
 "Clients: %i\n"
 "Total PPD: %.2f"
-msgstr "  -  PPD total: %.2f"
+msgstr ""
 
 #: src/trayManager.cpp:204
 msgid "Preferences"
@@ -1214,9 +1219,6 @@ msgstr "Einfache Textausgabe"
 #: src/webMonitor.cpp:610
 msgid "Last updated:"
 msgstr "Zuletzt aktualisiert:"
-
-#~ msgid "About %s"
-#~ msgstr "Zeigt allgemeine Programminformation über %s an."
 
 #~ msgid "Clients: %i"
 #~ msgstr "Clients: %i"
