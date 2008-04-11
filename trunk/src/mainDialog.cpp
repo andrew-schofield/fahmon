@@ -241,7 +241,7 @@ bool MainDialog::Show(bool show)
 		// Items surely won't keep their order when they will be loaded because of sorting, so selecting a
 		// default one is useless if there are more than one client
 		// Of course, in the case of only one client, we can still select it
-		if(ClientsManager::GetInstance()->GetCount() == 1)
+		if(ClientsManager::GetInstance()->GetCount() > 0)
 		{
 			mClientsList->Select(0);
 		}
@@ -249,7 +249,6 @@ bool MainDialog::Show(bool show)
 		{
 			ShowClientInformation(INVALID_CLIENT_ID);
 		}
-
 		ClientsManager::GetInstance()->ReloadThreaded(CM_LOADALLF);
 	}
 
@@ -675,7 +674,7 @@ inline void MainDialog::CreateMenuBar(void)
 	#else
 	menu->Append(wxID_HELP_CONTENTS, _("&Help Contents\tCtrl+?"), _("See help contents"));
 	#endif
-	menu->Append(wxID_ABOUT, _("&About"), wxString::Format(_("About %s"), _T(FMC_APPNAME)));
+	menu->Append(wxID_ABOUT, _("&About"), wxString::Format(_T("About %s"), _T(FMC_APPNAME)));
 #ifdef __WXMAC__
 	{
 		//wxApp::s_macHelpMenuTitleName = _("&Help");

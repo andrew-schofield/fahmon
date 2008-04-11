@@ -35,6 +35,7 @@
 #include "messagesManager.h"
 #include "clientHelperThread.h"
 #include "webMonitor.h"
+#include "trayManager.h"
 
 
 // The single instance of ClientsManager accross the application
@@ -224,6 +225,7 @@ void ClientsManager::ReloadThreaded(wxUint32 clientId)
 		}
 	}
 	WebMonitor::GetInstance()->WriteApp();
+	TrayManager::GetInstance()->SetTooltip(wxT(""));
 }
 
 

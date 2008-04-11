@@ -122,7 +122,7 @@ void TrayManager::SetTooltip(const wxString& tooltip)
 
 	TotalPPD = MainDialog::GetInstance()->GetTotalPPD();
 
-	mTooltip = wxString::Format(_T("%s / %s\n%i clients for %.2fPPD"), wxT(FMC_PRODUCT), tooltip.c_str(), ClientCount, TotalPPD);
+	mTooltip = wxString::Format(_("%s\nClients: %i\nTotal PPD: %.2f"), wxT(FMC_PRODUCT), ClientCount, TotalPPD);
 
 	if(IsIconInstalled() == true)
 	{
@@ -167,27 +167,37 @@ void TrayManager::OnClick(wxTaskBarIconEvent& event)
 
 wxMenu* TrayManager::CreatePopupMenu()
 {
-	double  TotalPPD;
-	wxInt32  ClientCount;
+	//double  TotalPPD;
+	//wxInt32  ClientCount;
 
 	wxMenu *traymenu = new wxMenu();
+	//wxMenuItem *menuTitle;
+	//wxMenuItem *menuClients;
+	//wxMenuItem *menuPPD;
 
+
+	//menuTitle = new wxMenuItem(traymenu, TRAY_MENU_NULL, wxString::Format(wxT("%s"), wxT(FMC_PRODUCT)));
 	// fahmon Version
-	traymenu->Append(TRAY_MENU_NULL, wxString::Format(wxT("%s"), wxT(FMC_PRODUCT)));
+	//traymenu->Append(menuTitle);
+	//menuTitle->Enable(false);
 
 	// Separator
-	traymenu->AppendSeparator();
+	//traymenu->AppendSeparator();
 
-	ClientCount = MainDialog::GetInstance()->GetClientCount();
+	//ClientCount = MainDialog::GetInstance()->GetClientCount();
 
-	traymenu->Append(TRAY_MENU_NULL, wxString::Format(_("Clients: %i"), ClientCount));
+	//menuClients = new wxMenuItem(traymenu,TRAY_MENU_NULL, wxString::Format(_("Clients: %i"), ClientCount));
+	//traymenu->Append(menuClients);
+	//menuClients->Enable(false);
 
-	TotalPPD = MainDialog::GetInstance()->GetTotalPPD();
+	//TotalPPD = MainDialog::GetInstance()->GetTotalPPD();
 
-	traymenu->Append(TRAY_MENU_NULL, wxString::Format(_("Total PPD: %.2f"), TotalPPD));
+	//menuPPD = new wxMenuItem(traymenu, TRAY_MENU_NULL, wxString::Format(_("Total PPD: %.2f"), TotalPPD));
+	//traymenu->Append(menuPPD);
+	//menuPPD->Enable(false);
 
 	// Separator
-	traymenu->AppendSeparator();
+	//traymenu->AppendSeparator();
 
 	traymenu->Append(TRAY_MENU_BENCHMARKS, _("Benchmarks"));
 
@@ -198,12 +208,14 @@ wxMenu* TrayManager::CreatePopupMenu()
 
 	if (MainDialog::GetInstance()->IsShown()) {
 		//hide item
-		traymenu->Append(TRAY_MENU_HIDE, _("Hide FahMon"));
+		wxMenuItem *hideMenu = new wxMenuItem(traymenu,TRAY_MENU_HIDE, _("Hide FahMon"));
+		traymenu->Append(hideMenu);
 	}
 	else
 	{
 		//show item
-		traymenu->Append(TRAY_MENU_SHOW, _("Show FahMon"));
+		wxMenuItem *showMenu = new wxMenuItem(traymenu,TRAY_MENU_SHOW, _("Show FahMon"));
+		traymenu->Append(showMenu);
 	}
 
 	// Separator
