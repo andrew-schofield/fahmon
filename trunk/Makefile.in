@@ -241,8 +241,6 @@ SUBDIRS = m4 src doc po src/include src/images resources templates FahMon.xcodep
 appsdir = $(datadir)/applications
 apps_in_files = fahmon.desktop
 apps_DATA = $(apps_in_files)
-
-# DISTCLEANFILES= fahmon.desktop
 ACLOCAL_AMFLAGS = -I m4
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-recursive

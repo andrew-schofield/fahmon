@@ -32,7 +32,6 @@ appsdir = $(datadir)/applications
 apps_in_files = fahmon.desktop
 apps_DATA = $(apps_in_files)
 
-# DISTCLEANFILES= fahmon.desktop
 ACLOCAL_AMFLAGS = -I m4
 
 check-gettext:

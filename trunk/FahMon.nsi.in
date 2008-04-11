@@ -1,40 +1,18 @@
-;NSIS Modern User Interface
-;Written by Joost Verburg
-
-;--------------------------------
-;Include Modern UI
-
   !include "MUI.nsh"
 
-;--------------------------------
-;General
-
-  ;Name and file
   Name "@PACKAGE_NAME@-@PACKAGE_VERSION@"
   OutFile "@PACKAGE_NAME@-@PACKAGE_VERSION@-Installer.exe"
 
-  ;Default installation folder
   InstallDir "$PROGRAMFILES\FahMon"
 
-  ;Get installation folder from registry if available
   InstallDirRegKey HKCU "Software\FahMon" ""
 
-  ;Vista redirects $SMPROGRAMS to all users without this
   RequestExecutionLevel admin
-
-;--------------------------------
-;Variables
 
   Var MUI_TEMP
   Var STARTMENU_FOLDER
 
-;--------------------------------
-;Interface Settings
-
   !define MUI_ABORTWARNING
-
-;--------------------------------
-;Pages
 
   !insertmacro MUI_PAGE_COMPONENTS
   !insertmacro MUI_PAGE_DIRECTORY
@@ -51,19 +29,12 @@
   !insertmacro MUI_UNPAGE_CONFIRM
   !insertmacro MUI_UNPAGE_INSTFILES
 
-;--------------------------------
-;Languages
-
   !insertmacro MUI_LANGUAGE "English"
-
-;--------------------------------
-;Installer Sections
 
 Section "!@PACKAGE_NAME@ @PACKAGE_VERSION@" SecFahMon
 
   SetOutPath "$INSTDIR"
 
-  ;ADD YOUR OWN FILES HERE...
   File "fahmon.exe"
   SetOutPath "$INSTDIR\images"
   File "images\list_client_asynch.png"
@@ -91,15 +62,12 @@ Section "!@PACKAGE_NAME@ @PACKAGE_VERSION@" SecFahMon
 
   SetOutPath "$INSTDIR"
 
-  ;Store installation folder
   WriteRegStr HKCU "Software\FahMon" "" $INSTDIR
 
-  ;Create uninstaller
   WriteUninstaller "$INSTDIR\Uninstall.exe"
 
   !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
 
-    ;Create shortcuts
     CreateDirectory "$SMPROGRAMS\$STARTMENU_FOLDER"
     CreateShortcut "$SMPROGRAMS\$STARTMENU_FOLDER\FahMon.lnk" "$INSTDIR\fahmon.exe"
     CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Uninstall.lnk" "$INSTDIR\Uninstall.exe"
@@ -197,10 +165,6 @@ Section /o "Italian" secLangitIT
 SectionEnd
 SectionGroupEnd
 
-;--------------------------------
-;Descriptions
-
-  ;Language strings
   LangString DESC_SecFahMon ${LANG_ENGLISH} "Install FahMon"
   LangString DESC_SecLang ${LANG_ENGLISH} "Install optional language components"
   LangString DESC_SecLangenGB ${LANG_ENGLISH} "Install British English translation"
@@ -216,7 +180,6 @@ SectionGroupEnd
   LangString DESC_SecLangesES ${LANG_ENGLISH} "Install Spanish translation"
   LangString DESC_SecLangsvSE ${LANG_ENGLISH} "Install Swedish translation"
 
-  ;Assign language strings to sections
   !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
     !insertmacro MUI_DESCRIPTION_TEXT ${SecFahMon} $(DESC_SecFahMon)
     !insertmacro MUI_DESCRIPTION_TEXT ${SecLang} $(DESC_SecLang)
@@ -233,12 +196,7 @@ SectionGroupEnd
     !insertmacro MUI_DESCRIPTION_TEXT ${SecLangsvSE} $(DESC_SecLangsvSE)
   !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
-;--------------------------------
-;Uninstaller Section
-
 Section "Uninstall"
-
-  ;ADD YOUR OWN FILES HERE...
 
   Delete "$INSTDIR\fahmon.exe"
   Delete "$INSTDIR\messages.log"
@@ -266,7 +224,6 @@ Section "Uninstall"
   Delete "$SMPROGRAMS\$MUI_TEMP\Help.lnk"
   Delete "$SMPROGRAMS\$MUI_TEMP\README.lnk"
 
-  ;Delete empty start menu parent diretories
   StrCpy $MUI_TEMP "$SMPROGRAMS\$MUI_TEMP"
 
   startMenuDeleteLoop:
