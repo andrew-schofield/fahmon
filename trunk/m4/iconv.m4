@@ -8,28 +8,16 @@ dnl From Bruno Haible.
 
 AC_DEFUN([AM_ICONV_LINKFLAGS_BODY],
 [
-  dnl Prerequisites of AC_LIB_LINKFLAGS_BODY.
   AC_REQUIRE([AC_LIB_PREPARE_PREFIX])
   AC_REQUIRE([AC_LIB_RPATH])
 
-  dnl Search for libiconv and define LIBICONV, LTLIBICONV and INCICONV
-  dnl accordingly.
   AC_LIB_LINKFLAGS_BODY([iconv])
 ])
 
 AC_DEFUN([AM_ICONV_LINK],
 [
-  dnl Some systems have iconv in libc, some have it in libiconv (OSF/1 and
-  dnl those with the standalone portable GNU libiconv installed).
-
-  dnl Search for libiconv and define LIBICONV, LTLIBICONV and INCICONV
-  dnl accordingly.
   AC_REQUIRE([AM_ICONV_LINKFLAGS_BODY])
 
-  dnl Add $INCICONV to CPPFLAGS before performing the following checks,
-  dnl because if the user has installed libiconv and not disabled its use
-  dnl via --without-libiconv-prefix, he wants to use it. The first
-  dnl AC_TRY_LINK will then fail, the second AC_TRY_LINK will succeed.
   am_save_CPPFLAGS="$CPPFLAGS"
   AC_LIB_APPENDTOVAR([CPPFLAGS], [$INCICONV])
 
@@ -62,8 +50,6 @@ AC_DEFUN([AM_ICONV_LINK],
     AC_MSG_CHECKING([how to link with libiconv])
     AC_MSG_RESULT([$LIBICONV])
   else
-    dnl If $LIBICONV didn't lead to a usable library, we don't need $INCICONV
-    dnl either.
     CPPFLAGS="$am_save_CPPFLAGS"
     LIBICONV=
     LTLIBICONV=

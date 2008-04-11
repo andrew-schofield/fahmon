@@ -18,14 +18,8 @@ dnl   Ulrich Drepper <drepper@cygnus.com>, 1996.
 
 AC_PREREQ(2.50)
 
-# Search path for a program which passes the given test.
-
-dnl AM_PATH_PROG_WITH_TEST(VARIABLE, PROG-TO-CHECK-FOR,
-dnl   TEST-PERFORMED-ON-FOUND_PROGRAM [, VALUE-IF-NOT-FOUND [, PATH]])
 AC_DEFUN([AM_PATH_PROG_WITH_TEST],
 [
-# Prepare PATH_SEPARATOR.
-# The user is always right.
 if test "${PATH_SEPARATOR+set}" != set; then
   echo "#! /bin/sh" >conf$$.sh
   echo  "exit 0"   >>conf$$.sh
@@ -38,8 +32,6 @@ if test "${PATH_SEPARATOR+set}" != set; then
   rm -f conf$$.sh
 fi
 
-# Find out how to test for executable files. Don't use a zero-byte file,
-# as systems may use methods other than mode bits to determine executability.
 cat >conf$$.file <<_ASEOF
 #! /bin/sh
 exit 0
@@ -52,7 +44,6 @@ else
 fi
 rm -f conf$$.file
 
-# Extract the first word of "$2", so it can be a program name with args.
 set dummy $2; ac_word=[$]2
 AC_MSG_CHECKING([for $ac_word])
 AC_CACHE_VAL(ac_cv_path_$1,
@@ -76,8 +67,6 @@ AC_CACHE_VAL(ac_cv_path_$1,
       done
     done
     IFS="$ac_save_IFS"
-dnl If no 4th arg is given, leave the cache variable unset,
-dnl so AC_PATH_PROGS will keep looking.
 ifelse([$4], , , [  test -z "[$]ac_cv_path_$1" && ac_cv_path_$1="$4"
 ])dnl
     ;;
