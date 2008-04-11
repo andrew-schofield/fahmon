@@ -12,6 +12,7 @@ v2.3.2b
     * Checking for updates from the menu now informs you if no update was found.
     * Added GPUv2 core support.
     * Fixed ETA calculation for WUs with less than 100 % markers.
+    * Non-standard system tray menu items moved to icon tooltip.
 
     Windows
 
