@@ -33,8 +33,8 @@ OPTIONAL
 Software for building FahMon on MS Windows
 REQUIRED
 * Microsoft Visual Studio (or Visual C++ Express)
-* Microsoft Windows Server 2003 R2 SDK
-* wxWidgets 2.8.6
+* Microsoft Windows SDK
+* wxWidgets 2.8.7
 
 OPTIONAL
 * a gettext catalog editor like poEdit (required to edit or create new
@@ -47,4 +47,4 @@ with the makefiles provided.
 Software for building FahMon on Mac OS X
 REQUIRED
 * Xcode
-* wxWidgets 2.8.6 (available from MacPorts, or compile from source)
+* wxWidgets 2.8.0 (available from MacPorts, or compile from source)
