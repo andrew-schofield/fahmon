@@ -58,7 +58,7 @@ typedef enum _PPD_DISPLAY_STYLE
 #define PREF_ETA_DISPLAYSTYLE_DV ETADS_LEFT_TIME /**< Default value for ETA display style */
 
 #define PREF_PPD_DISPLAYSTYLE  wxT("ETA.PPDStyle") /**< Preference setting for PPD display style */
-#define PREF_PPD_DISPLAYSTYLE_DV PPDDS_ALL_FRAMES /**< Default value for PPD display style */
+#define PREF_PPD_DISPLAYSTYLE_DV PPDDS_THREE_FRAMES /**< Default value for PPD display style */
 
 
 /**
