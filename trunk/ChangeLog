@@ -6,6 +6,7 @@ v2.3.2c
 
     * Added Double Gromacs C core support.
     * Made "Last 3 Frames" the default PPD/ETA calculation method.
+    * Added multiple new data columns.
 
 v2.3.2b (11/04/08)
 

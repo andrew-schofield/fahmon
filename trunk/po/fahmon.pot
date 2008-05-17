@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#: src/listViewClients.cpp:624 src/listViewClients.cpp:678
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-04-11 20:17+0100\n"
+"POT-Creation-Date: 2008-05-18 00:41+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -155,7 +156,7 @@ msgstr ""
 msgid "anonymous"
 msgstr ""
 
-#: src/client.cpp:98 src/listViewClients.cpp:446 src/listViewClients.cpp:450
+#: src/client.cpp:98 src/listViewClients.cpp:696 src/listViewClients.cpp:700
 #: src/mainDialog.cpp:443 src/mainDialog.cpp:448 src/mainDialog.cpp:449
 #: src/mainDialog.cpp:450 src/mainDialog.cpp:451 src/mainDialog.cpp:452
 #: src/mainDialog.cpp:537 src/mainDialog.cpp:593 src/webMonitor.cpp:130
@@ -388,59 +389,103 @@ msgstr ""
 msgid "%.1f KB/s"
 msgstr ""
 
-#: src/listViewClients.cpp:121 src/webMonitor.cpp:595
+#: src/listViewClients.cpp:156 src/listViewClients.cpp:888
+#: src/webMonitor.cpp:595
 msgid "Progress"
 msgstr ""
 
-#: src/listViewClients.cpp:122 src/webMonitor.cpp:596
+#: src/listViewClients.cpp:157 src/listViewClients.cpp:889
+#: src/webMonitor.cpp:596
 msgid "Name"
 msgstr ""
 
-#: src/listViewClients.cpp:123 src/webMonitor.cpp:597
+#: src/listViewClients.cpp:158 src/listViewClients.cpp:890
+#: src/webMonitor.cpp:597
 msgid "ETA"
 msgstr ""
 
-#: src/listViewClients.cpp:124 src/webMonitor.cpp:598
+#: src/listViewClients.cpp:159 src/listViewClients.cpp:891
+#: src/webMonitor.cpp:598
 msgid "PPD"
 msgstr ""
 
-#: src/listViewClients.cpp:350
+#: src/listViewClients.cpp:160 src/listViewClients.cpp:892
+msgid "Core"
+msgstr ""
+
+#: src/listViewClients.cpp:162 src/listViewClients.cpp:894
+#: src/webMonitor.cpp:593
+msgid "Credit"
+msgstr ""
+
+#: src/listViewClients.cpp:163 src/listViewClients.cpp:895
+#: src/webMonitor.cpp:594
+msgid "Downloaded"
+msgstr ""
+
+#: src/listViewClients.cpp:164 src/listViewClients.cpp:896
+msgid "Deadline"
+msgstr ""
+
+#: src/listViewClients.cpp:470
 msgid "Loading..."
 msgstr ""
 
-#: src/listViewClients.cpp:442 src/webMonitor.cpp:354
+#: src/listViewClients.cpp:580 src/mainDialog.cpp:481 src/webMonitor.cpp:204
+#, c-format
+msgid "%u points"
+msgstr ""
+
+#: src/listViewClients.cpp:611 src/listViewClients.cpp:659
+#: src/mainDialog.cpp:430 src/mainDialog.cpp:518 src/mainDialog.cpp:575
+#: src/webMonitor.cpp:168 src/webMonitor.cpp:239 src/webMonitor.cpp:294
+#, c-format
+msgid "%s ago"
+msgstr ""
+
+#: src/listViewClients.cpp:663 src/mainDialog.cpp:522 src/mainDialog.cpp:579
+#: src/webMonitor.cpp:243 src/webMonitor.cpp:298
+#, c-format
+msgid "In %s"
+msgstr ""
+
+#: src/listViewClients.cpp:692 src/webMonitor.cpp:354
 msgid "Finished"
 msgstr ""
 
-#: src/listViewClients.cpp:454 src/webMonitor.cpp:366
+#: src/listViewClients.cpp:704 src/webMonitor.cpp:366
 msgid "*Hung*"
 msgstr ""
 
-#: src/listViewClients.cpp:602 src/listViewClients.cpp:610
+#: src/listViewClients.cpp:853 src/listViewClients.cpp:861
 msgid "Add a new client"
 msgstr ""
 
-#: src/listViewClients.cpp:612
+#: src/listViewClients.cpp:863
 msgid "Reload this client"
 msgstr ""
 
-#: src/listViewClients.cpp:613
+#: src/listViewClients.cpp:864
 msgid "Edit this client"
 msgstr ""
 
-#: src/listViewClients.cpp:614
+#: src/listViewClients.cpp:865
 msgid "Delete this client"
 msgstr ""
 
-#: src/listViewClients.cpp:615
+#: src/listViewClients.cpp:866
 msgid "View Client Files"
 msgstr ""
 
-#: src/listViewClients.cpp:693
+#: src/listViewClients.cpp:893 src/webMonitor.cpp:592
+msgid "PRCG"
+msgstr ""
+
+#: src/listViewClients.cpp:994
 msgid "Do you really want to delete this client?"
 msgstr ""
 
-#: src/listViewClients.cpp:753
+#: src/listViewClients.cpp:1054
 msgid ""
 "Unable to launch the default filemanager.\n"
 "\n"
@@ -483,12 +528,6 @@ msgid ""
 "Please check the messages (FahMon->Show/Hide Messages Window)."
 msgstr ""
 
-#: src/mainDialog.cpp:430 src/mainDialog.cpp:518 src/mainDialog.cpp:575
-#: src/webMonitor.cpp:168 src/webMonitor.cpp:239 src/webMonitor.cpp:294
-#, c-format
-msgid "%s ago"
-msgstr ""
-
 #: src/mainDialog.cpp:471 src/mainDialog.cpp:472 src/mainDialog.cpp:473
 #: src/mainDialog.cpp:474
 msgid "Unknown"
@@ -497,17 +536,6 @@ msgstr ""
 #: src/mainDialog.cpp:475
 #, c-format
 msgid "Project %u is unknown, you should try to update the projects database"
-msgstr ""
-
-#: src/mainDialog.cpp:481 src/webMonitor.cpp:204
-#, c-format
-msgid "%u points"
-msgstr ""
-
-#: src/mainDialog.cpp:522 src/mainDialog.cpp:579 src/webMonitor.cpp:243
-#: src/webMonitor.cpp:298
-#, c-format
-msgid "In %s"
 msgstr ""
 
 #: src/mainDialog.cpp:597
@@ -1136,18 +1164,6 @@ msgstr ""
 
 #: src/webMonitor.cpp:591
 msgid "State"
-msgstr ""
-
-#: src/webMonitor.cpp:592
-msgid "PRCG"
-msgstr ""
-
-#: src/webMonitor.cpp:593
-msgid "Credit"
-msgstr ""
-
-#: src/webMonitor.cpp:594
-msgid "Downloaded"
 msgstr ""
 
 #: src/webMonitor.cpp:606

@@ -50,7 +50,12 @@ enum _LISTVIEW_COLUMN
 	LVC_PROGRESS,
 	LVC_NAME,
 	LVC_ETA,
-	LVC_PPD
+	LVC_PPD,
+	LVC_CORE,
+	LVC_PRCG,
+	LVC_CREDIT,
+	LVC_DOWNLOADED,
+	LVC_DEADLINE
 };
 
 
@@ -75,7 +80,17 @@ enum _CONTROL_ID
 	MID_ADDCLIENT,
 	MID_EDITCLIENT,
 	MID_DELETECLIENT,
-	MID_VIEWFILES
+	MID_VIEWFILES,
+	MID_STATE,
+	MID_PROGRESS,
+	MID_NAME,
+	MID_ETA,
+	MID_PPD,
+	MID_CORE,
+	MID_PRCG,
+	MID_CREDIT,
+	MID_DOWNLOADED,
+	MID_DEADLINE
 };
 
 
@@ -88,10 +103,24 @@ BEGIN_EVENT_TABLE(ListViewClients, wxListView)
 	EVT_MENU    (MID_DELETECLIENT,   ListViewClients::OnMenuDeleteClient)
 	EVT_MENU    (MID_VIEWFILES,      ListViewClients::OnMenuViewFiles)
 
+	EVT_MENU    (MID_STATE,          ListViewClients::OnMenuState)
+	EVT_MENU    (MID_PROGRESS,       ListViewClients::OnMenuProgress)
+	EVT_MENU    (MID_NAME,           ListViewClients::OnMenuName)
+	EVT_MENU    (MID_ETA,            ListViewClients::OnMenuETA)
+	EVT_MENU    (MID_PPD,            ListViewClients::OnMenuPPD)
+	EVT_MENU    (MID_CORE,           ListViewClients::OnMenuCore)
+	EVT_MENU    (MID_PRCG,           ListViewClients::OnMenuPRCG)
+	EVT_MENU    (MID_CREDIT,         ListViewClients::OnMenuCredit)
+	EVT_MENU    (MID_DOWNLOADED,     ListViewClients::OnMenuDownloaded)
+	EVT_MENU    (MID_DEADLINE,       ListViewClients::OnMenuDeadline)
+
 	// List events
-	EVT_LIST_COL_CLICK    (wxID_ANY, ListViewClients::OnColumnLeftClick)
-	EVT_RIGHT_DOWN        (          ListViewClients::OnRightClick)
-	EVT_LEFT_DCLICK       (          ListViewClients::OnDoubleClick)
+	EVT_LIST_COL_CLICK      (wxID_ANY, ListViewClients::OnColumnLeftClick)
+	EVT_LIST_COL_RIGHT_CLICK(wxID_ANY, ListViewClients::OnColumnRightClick)
+	EVT_RIGHT_DOWN          (          ListViewClients::OnRightClick)
+	EVT_LEFT_DCLICK         (          ListViewClients::OnDoubleClick)
+
+	EVT_LIST_COL_BEGIN_DRAG(wxID_ANY, ListViewClients::OnColBeginDrag)
 END_EVENT_TABLE()
 
 
@@ -108,12 +137,18 @@ int wxCALLBACK ListViewClients_CompareFunction(long clientId1, long clientId2, l
 }
 
 
-ListViewClients::ListViewClients(wxWindow* parent, wxWindowID id, wxUint32 nbClients) : wxListView(parent, id, wxDefaultPosition, wxDefaultSize, wxLC_REPORT | wxLC_SINGLE_SEL)
+ListViewClients::ListViewClients(wxWindow* parent, wxWindowID id, wxUint32 nbClients) : wxListView(parent, id, wxDefaultPosition, wxDefaultSize, wxLC_REPORT | wxLC_SINGLE_SEL | wxLC_HRULES)
 {
+	wxUint32     statusColumnWidth;
 	wxUint32     progressColumnWidth;
 	wxUint32     nameColumnWidth;
 	wxUint32     etaColumnWidth;
 	wxUint32     ppdColumnWidth;
+	wxUint32     coreColumnWidth;
+	wxUint32     prcgColumnWidth;
+	wxUint32     creditColumnWidth;
+	wxUint32     downloadedColumnWidth;
+	wxUint32     deadlineColumnWidth;
 	wxImageList *imageList;
 
 	// --- Create the columns and restore their size
@@ -122,17 +157,55 @@ ListViewClients::ListViewClients(wxWindow* parent, wxWindowID id, wxUint32 nbCli
 	InsertColumn(LVC_NAME,     _("Name"));
 	InsertColumn(LVC_ETA,      _("ETA"));
 	InsertColumn(LVC_PPD,      _("PPD"));
+	InsertColumn(LVC_CORE,     _("Core"));
+	InsertColumn(LVC_PRCG,     _T("PRCG"));
+	InsertColumn(LVC_CREDIT,   _("Credit"));
+	InsertColumn(LVC_DOWNLOADED, _("Downloaded"));
+	InsertColumn(LVC_DEADLINE, _("Deadline"));
 
-	_PrefsGetUint(PREF_LISTVIEWCLIENTS_PROGRESSCOLUMNWIDTH, progressColumnWidth);
-	_PrefsGetUint(PREF_LISTVIEWCLIENTS_NAMECOLUMNWIDTH,     nameColumnWidth);
-	_PrefsGetUint(PREF_LISTVIEWCLIENTS_ETACOLUMNWIDTH,      etaColumnWidth);
-	_PrefsGetUint(PREF_LISTVIEWCLIENTS_PPDCOLUMNWIDTH,      ppdColumnWidth);
+	_PrefsGetUint(PREF_LISTVIEWCLIENTS_PROGRESSCOLUMNWIDTH,   progressColumnWidth);
+	_PrefsGetUint(PREF_LISTVIEWCLIENTS_NAMECOLUMNWIDTH,       nameColumnWidth);
+	_PrefsGetUint(PREF_LISTVIEWCLIENTS_ETACOLUMNWIDTH,        etaColumnWidth);
+	_PrefsGetUint(PREF_LISTVIEWCLIENTS_PPDCOLUMNWIDTH,        ppdColumnWidth);
+	_PrefsGetUint(PREF_LISTVIEWCLIENTS_CORECOLUMNWIDTH,       coreColumnWidth);
+	_PrefsGetUint(PREF_LISTVIEWCLIENTS_PRCGCOLUMNWIDTH,       prcgColumnWidth);
+	_PrefsGetUint(PREF_LISTVIEWCLIENTS_CREDITCOLUMNWIDTH,     creditColumnWidth);
+	_PrefsGetUint(PREF_LISTVIEWCLIENTS_DOWNLOADEDCOLUMNWIDTH, downloadedColumnWidth);
+	_PrefsGetUint(PREF_LISTVIEWCLIENTS_DEADLINECOLUMNWIDTH,   deadlineColumnWidth);
+
+
+	_PrefsGetBool(PREF_LISTVIEWCLIENTS_STATECOLUMNENABLED,      mStateEnabled);
+	_PrefsGetBool(PREF_LISTVIEWCLIENTS_PROGRESSCOLUMNENABLED,   mProgressEnabled);
+	_PrefsGetBool(PREF_LISTVIEWCLIENTS_NAMECOLUMNENABLED,       mNameEnabled);
+	_PrefsGetBool(PREF_LISTVIEWCLIENTS_ETACOLUMNENABLED,        mETAEnabled);
+	_PrefsGetBool(PREF_LISTVIEWCLIENTS_PPDCOLUMNENABLED,        mPPDEnabled);
+	_PrefsGetBool(PREF_LISTVIEWCLIENTS_CORECOLUMNENABLED,       mCoreEnabled);
+	_PrefsGetBool(PREF_LISTVIEWCLIENTS_PRCGCOLUMNENABLED,       mPRCGEnabled);
+	_PrefsGetBool(PREF_LISTVIEWCLIENTS_CREDITCOLUMNENABLED,     mCreditEnabled);
+	_PrefsGetBool(PREF_LISTVIEWCLIENTS_DOWNLOADEDCOLUMNENABLED, mDownloadedEnabled);
+	_PrefsGetBool(PREF_LISTVIEWCLIENTS_DEADLINECOLUMNENABLED,   mDeadlineEnabled);
+
+	progressColumnWidth = (mProgressEnabled) ? progressColumnWidth : 0;
+	nameColumnWidth = (mNameEnabled) ? nameColumnWidth : 0;
+	etaColumnWidth = (mETAEnabled) ? etaColumnWidth : 0;
+	ppdColumnWidth = (mPPDEnabled) ? ppdColumnWidth : 0;
+	statusColumnWidth = (mStateEnabled) ? 30 : 0;
+	coreColumnWidth = (mCoreEnabled) ? coreColumnWidth : 0;
+	prcgColumnWidth = (mPRCGEnabled) ? prcgColumnWidth : 0;
+	creditColumnWidth = (mCreditEnabled) ? creditColumnWidth : 0;
+	downloadedColumnWidth = (mDownloadedEnabled) ? downloadedColumnWidth : 0;
+	deadlineColumnWidth = (mDeadlineEnabled) ? deadlineColumnWidth : 0;
 
 	SetColumnWidth(LVC_PROGRESS, progressColumnWidth);
 	SetColumnWidth(LVC_NAME,     nameColumnWidth);
 	SetColumnWidth(LVC_ETA,      etaColumnWidth);
 	SetColumnWidth(LVC_PPD,      ppdColumnWidth);
-	SetColumnWidth(LVC_STATUS, 30);
+	SetColumnWidth(LVC_STATUS, statusColumnWidth);
+	SetColumnWidth(LVC_CORE, coreColumnWidth);
+	SetColumnWidth(LVC_PRCG, prcgColumnWidth);
+	SetColumnWidth(LVC_CREDIT, creditColumnWidth);
+	SetColumnWidth(LVC_DOWNLOADED, downloadedColumnWidth);
+	SetColumnWidth(LVC_DEADLINE, deadlineColumnWidth);
 
 	// --- Create the ImageList associated with this ListView
 	//     Images must be loaded in the order defined by the enum _LISTVIEW_ICON
@@ -169,10 +242,26 @@ ListViewClients::ListViewClients(wxWindow* parent, wxWindowID id, wxUint32 nbCli
 ListViewClients::~ListViewClients(void)
 {
 	// Save the width of the columns
-	_PrefsSetUint(PREF_LISTVIEWCLIENTS_PROGRESSCOLUMNWIDTH, GetColumnWidth(LVC_PROGRESS));
-	_PrefsSetUint(PREF_LISTVIEWCLIENTS_NAMECOLUMNWIDTH,     GetColumnWidth(LVC_NAME));
-	_PrefsSetUint(PREF_LISTVIEWCLIENTS_ETACOLUMNWIDTH,      GetColumnWidth(LVC_ETA));
-	_PrefsSetUint(PREF_LISTVIEWCLIENTS_PPDCOLUMNWIDTH,      GetColumnWidth(LVC_PPD));
+	_PrefsSetUint(PREF_LISTVIEWCLIENTS_PROGRESSCOLUMNWIDTH,   GetColumnWidth(LVC_PROGRESS));
+	_PrefsSetUint(PREF_LISTVIEWCLIENTS_NAMECOLUMNWIDTH,       GetColumnWidth(LVC_NAME));
+	_PrefsSetUint(PREF_LISTVIEWCLIENTS_ETACOLUMNWIDTH,        GetColumnWidth(LVC_ETA));
+	_PrefsSetUint(PREF_LISTVIEWCLIENTS_PPDCOLUMNWIDTH,        GetColumnWidth(LVC_PPD));
+	_PrefsSetUint(PREF_LISTVIEWCLIENTS_CORECOLUMNWIDTH,       GetColumnWidth(LVC_CORE));
+	_PrefsSetUint(PREF_LISTVIEWCLIENTS_PRCGCOLUMNWIDTH,       GetColumnWidth(LVC_PRCG));
+	_PrefsSetUint(PREF_LISTVIEWCLIENTS_CREDITCOLUMNWIDTH,     GetColumnWidth(LVC_CREDIT));
+	_PrefsSetUint(PREF_LISTVIEWCLIENTS_DOWNLOADEDCOLUMNWIDTH, GetColumnWidth(LVC_DOWNLOADED));
+	_PrefsSetUint(PREF_LISTVIEWCLIENTS_DEADLINECOLUMNWIDTH,   GetColumnWidth(LVC_DEADLINE));
+
+	//Save the enabled state of the columns
+	_PrefsSetBool(PREF_LISTVIEWCLIENTS_PROGRESSCOLUMNENABLED,   mProgressEnabled);
+	_PrefsSetBool(PREF_LISTVIEWCLIENTS_NAMECOLUMNENABLED,       mNameEnabled);
+	_PrefsSetBool(PREF_LISTVIEWCLIENTS_ETACOLUMNENABLED,        mETAEnabled);
+	_PrefsSetBool(PREF_LISTVIEWCLIENTS_PPDCOLUMNENABLED,        mPPDEnabled);
+	_PrefsSetBool(PREF_LISTVIEWCLIENTS_CORECOLUMNENABLED,       mCoreEnabled);
+	_PrefsSetBool(PREF_LISTVIEWCLIENTS_PRCGCOLUMNENABLED,       mPRCGEnabled);
+	_PrefsSetBool(PREF_LISTVIEWCLIENTS_CREDITCOLUMNENABLED,     mCreditEnabled);
+	_PrefsSetBool(PREF_LISTVIEWCLIENTS_DOWNLOADEDCOLUMNENABLED, mDownloadedEnabled);
+	_PrefsSetBool(PREF_LISTVIEWCLIENTS_DEADLINECOLUMNENABLED,   mDeadlineEnabled);
 
 	// Save the sorting order
 	_PrefsSetUint(PREF_LISTVIEWCLIENTS_SORTCOLUMN,    mSortColumn);
@@ -247,6 +336,37 @@ int ListViewClients::CompareClients(wxUint32 clientId1, wxUint32 clientId2) cons
 				comparisonResult = 1;
 			}
 			break;
+
+		/*case LVC_CORE:
+			if(client1->IsAccessible() && client2->IsAccessible())
+			{
+				comparisonResult = Core::IdToLongName(ProjectsManager::GetInstance()->GetProject(client1->GetProjectId())->GetCoreId()).CmpNoCase(Core::IdToLongName(ProjectsManager::GetInstance()->GetProject(client2->GetProjectId())->GetCoreId()));
+			}
+			else if(!client1->IsAccessible() && !client2->IsAccessible())
+			{
+				comparisonResult = 1;
+			}
+			else
+			{
+				comparisonResult = -1;
+			}
+			break;
+
+
+		case LVC_CORE:
+			if(client1->IsAccessible() && client2->IsAccessible())
+			{
+				comparisonResult = Core::IdToLongName(ProjectsManager::GetInstance()->GetProject(client1->GetProjectId())->GetCoreId()).CmpNoCase(Core::IdToLongName(ProjectsManager::GetInstance()->GetProject(client2->GetProjectId())->GetCoreId()));
+			}
+			else if(!client1->IsAccessible() && !client2->IsAccessible())
+			{
+				comparisonResult = 1;
+			}
+			else
+			{
+				comparisonResult = -1;
+			}
+			break;*/
 
 		// ---
 		case LVC_STATUS:
@@ -399,6 +519,20 @@ void ListViewClients::UpdateClient(wxUint32 clientId)
 	wxString	clientName;
 	const Client *client;
 	const Project *project;
+	wxInt32       timeInMinutes;
+	wxInt32       nbDays;
+	wxInt32       nbHours;
+	wxInt32       nbMinutes;
+	wxString      tempString;
+	wxUint32      deadlineDays;
+	wxDateTime    preferredDeadline;
+	wxDateTime    finalDeadline;
+	wxDateTime    downloadTime;
+	wxDateTime    timeNow;
+	wxTimeSpan    timeDiff;
+
+
+	_PrefsGetUint(PREF_ETA_DISPLAYSTYLE, deadlineDays);
 
 	// The identifier MUST be stored in our translation table
 	wxASSERT(clientId < mClientIdToIndex.GetCount());
@@ -434,6 +568,122 @@ void ListViewClients::UpdateClient(wxUint32 clientId)
 		}
 	}
 
+	// we're less stringent about when we display other data
+	if(client->IsAccessible() && !client->IsHung() && project != INVALID_PROJECT_ID)
+	{
+		//PRCG
+		SetItem(clientIndex, LVC_PRCG, wxString::Format(wxT("P%i (R%i, C%i, G%i)"), client->GetProjectId(), client->GetProjectRun(), client->GetProjectClone(), client->GetProjectGen()));
+
+		//core name
+		SetItem(clientIndex, LVC_CORE, Core::IdToLongName(project->GetCoreId()));
+		//credit
+		SetItem(clientIndex, LVC_CREDIT, wxString::Format(_("%u points"), project->GetCredit()));
+		//downloaded
+		if(client->GetDownloadDate().IsValid())
+		{
+
+			timeNow = wxDateTime::Now();
+			downloadTime = client->GetDownloadDate();
+			if(deadlineDays == ETADS_LEFT_TIME)
+			{
+			//timeDiff = timeNow.Subtract(downloadTime);
+				timeInMinutes = timeNow.Subtract(downloadTime).GetMinutes();
+
+			// Split the left time into days, hours and minutes
+				nbDays    = timeInMinutes / (24 * 60);
+				nbMinutes = timeInMinutes % (24 * 60);
+				nbHours   = nbMinutes / 60;
+				nbMinutes = nbMinutes % 60;
+			// Use a friendly format
+				if(nbDays != 0)
+				{
+					tempString = wxString::Format(wxT("%id %02ih %02imn"), nbDays, nbHours, nbMinutes);
+				}
+				else if(nbHours != 0)
+				{
+					tempString = wxString::Format(wxT("%ih %02imn"), nbHours, nbMinutes);
+				}
+				else
+				{
+					tempString = wxString::Format(wxT("%imn"), nbMinutes);
+				}
+
+				SetItem(clientIndex, LVC_DOWNLOADED, wxString::Format(_("%s ago"), tempString.c_str()));
+			}
+			else if (deadlineDays == ETADS_DATE_DAY_MONTH)
+			{
+				SetItem(clientIndex, LVC_DOWNLOADED, wxString::Format(wxT("%s"), downloadTime.Format(wxT("%d %B, %H:%M")).c_str()));
+			}
+			else
+			{
+				SetItem(clientIndex, LVC_DOWNLOADED, wxString::Format(wxT("%s"), downloadTime.Format(wxT("%B %d, %H:%M")).c_str()));
+			}
+		}
+		else
+		{
+			SetItem(clientIndex, LVC_DOWNLOADED, _(""));
+		}if(client->GetDownloadDate().IsValid() && project->GetPreferredDeadlineInDays() != 0)
+		{
+			preferredDeadline = downloadTime;
+			preferredDeadline.Add(wxTimeSpan::Seconds(project->GetPreferredDeadlineInDays() * 864));
+			if(deadlineDays == ETADS_LEFT_TIME)
+			{
+				timeDiff = preferredDeadline.Subtract(timeNow);
+				timeInMinutes = timeDiff.GetMinutes();
+				if(timeDiff.GetMinutes() < 0)
+				{
+					timeInMinutes = 0 - timeInMinutes;
+				}
+
+				// Split the left time into days, hours and minutes
+				nbDays    = timeInMinutes / (24 * 60);
+				nbMinutes = timeInMinutes % (24 * 60);
+				nbHours   = nbMinutes / 60;
+				nbMinutes = nbMinutes % 60;
+				// Use a friendly format
+				if(nbDays != 0)
+				{
+					tempString = wxString::Format(wxT("%id %02ih %02imn"), nbDays, nbHours, nbMinutes);
+				}
+				else if(nbHours != 0)
+				{
+					tempString = wxString::Format(wxT("%ih %02imn"), nbHours, nbMinutes);
+				}
+				else
+				{
+					tempString = wxString::Format(wxT("%imn"), nbMinutes);
+				}
+
+				if(timeDiff.GetMinutes() < 0)
+				{
+					SetItem(clientIndex, LVC_DEADLINE, wxString::Format(_("%s ago"), tempString.c_str()));
+				}
+				else
+				{
+					SetItem(clientIndex, LVC_DEADLINE, wxString::Format(_("In %s"), tempString.c_str()));
+				}
+
+			}
+			else if (deadlineDays == ETADS_DATE_DAY_MONTH)
+			{
+				SetItem(clientIndex, LVC_DEADLINE, wxString::Format(wxT("%s"), preferredDeadline.Format(wxT("%d %B, %H:%M")).c_str()));
+			}
+			else
+			{
+				SetItem(clientIndex, LVC_DEADLINE, wxString::Format(wxT("%s"), preferredDeadline.Format(wxT("%B %d, %H:%M")).c_str()));
+			}
+		}
+		else
+		{
+			SetItem(clientIndex, LVC_DEADLINE, _(""));
+		}
+	} else {
+		SetItem(clientIndex, LVC_PRCG, wxT(""));
+		SetItem(clientIndex, LVC_CORE, wxT(""));
+		SetItem(clientIndex, LVC_CREDIT, wxT(""));
+		SetItem(clientIndex, LVC_DOWNLOADED, wxT(""));
+		SetItem(clientIndex, LVC_DEADLINE, wxT(""));
+	}
 	SetItem(clientIndex, LVC_PPD, PPD);
 
 	// ETA
@@ -483,6 +733,7 @@ void ListViewClients::UpdateClient(wxUint32 clientId)
 	{
 		SetItemImage(clientIndex, LVI_CLIENT_OK);
 	}
+
 
 	// Re-enable refresh
 	Thaw();
@@ -616,6 +867,56 @@ void ListViewClients::OnRightClick(wxMouseEvent& event)
 	}
 
 	PopupMenu(&clientContextMenu);
+}
+
+
+void ListViewClients::OnColumnRightClick(wxListEvent& event)
+{
+	wxMenu*   columnContextMenu = new wxMenu();
+	//wxMenuItem* stateMenu;
+	wxMenuItem* progressMenu;
+	wxMenuItem* nameMenu;
+	wxMenuItem* etaMenu;
+	wxMenuItem* ppdMenu;
+	wxMenuItem* coreMenu;
+	wxMenuItem* prcgMenu;
+	wxMenuItem* creditMenu;
+	wxMenuItem* downloadedMenu;
+	wxMenuItem* deadlineMenu;
+
+	//stateMenu = new wxMenuItem(columnContextMenu, MID_STATE, _("State"), wxEmptyString, wxITEM_CHECK);
+	progressMenu = new wxMenuItem(columnContextMenu, MID_PROGRESS, _("Progress"), wxEmptyString, wxITEM_CHECK);
+	nameMenu = new wxMenuItem(columnContextMenu, MID_NAME, _("Name"), wxEmptyString, wxITEM_CHECK);
+	etaMenu = new wxMenuItem(columnContextMenu, MID_ETA, _("ETA"), wxEmptyString, wxITEM_CHECK);
+	ppdMenu = new wxMenuItem(columnContextMenu, MID_PPD, _("PPD"), wxEmptyString, wxITEM_CHECK);
+	coreMenu = new wxMenuItem(columnContextMenu, MID_CORE, _("Core"), wxEmptyString, wxITEM_CHECK);
+	prcgMenu = new wxMenuItem(columnContextMenu, MID_PRCG, _("PRCG"), wxEmptyString, wxITEM_CHECK);
+	creditMenu = new wxMenuItem(columnContextMenu, MID_CREDIT, _("Credit"), wxEmptyString, wxITEM_CHECK);
+	downloadedMenu = new wxMenuItem(columnContextMenu, MID_DOWNLOADED, _("Downloaded"), wxEmptyString, wxITEM_CHECK);
+	deadlineMenu = new wxMenuItem(columnContextMenu, MID_DEADLINE, _("Deadline"), wxEmptyString, wxITEM_CHECK);
+
+	//columnContextMenu->Append(stateMenu);
+	//stateMenu->Check(mStateEnabled);
+	columnContextMenu->Append(progressMenu);
+	progressMenu->Check(mProgressEnabled);
+	columnContextMenu->Append(nameMenu);
+	nameMenu->Check(mNameEnabled);
+	columnContextMenu->Append(etaMenu);
+	etaMenu->Check(mETAEnabled);
+	columnContextMenu->Append(ppdMenu);
+	ppdMenu->Check(mPPDEnabled);
+	columnContextMenu->Append(coreMenu);
+	coreMenu->Check(mCoreEnabled);
+	columnContextMenu->Append(prcgMenu);
+	prcgMenu->Check(mPRCGEnabled);
+	columnContextMenu->Append(creditMenu);
+	creditMenu->Check(mCreditEnabled);
+	columnContextMenu->Append(downloadedMenu);
+	downloadedMenu->Check(mDownloadedEnabled);
+	columnContextMenu->Append(deadlineMenu);
+	deadlineMenu->Check(mDeadlineEnabled);
+
+	PopupMenu(columnContextMenu);
 }
 
 
@@ -761,4 +1062,123 @@ bool DropFiles::OnDropFiles (wxCoord x, wxCoord y, const wxArrayString& filename
 		ClientDialog::GetInstance(MainDialog::GetInstance())->ShowModal(INVALID_CLIENT_ID, filenames[n]);
 	}
 	return TRUE;
+}
+
+
+void ListViewClients::OnColBeginDrag(wxListEvent& event)
+{
+	if ( event.GetColumn() == LVC_STATUS )
+	{
+		event.Veto();
+	}
+}
+
+//when enabling columns, use default widths to prevent a size of 0 being used
+void ListViewClients::OnMenuState(wxCommandEvent& event)
+{
+	wxUint32  width;
+
+	mStateEnabled = !mStateEnabled;
+
+	width = mStateEnabled ? 30 : 0;
+	SetColumnWidth(LVC_STATUS, width);
+}
+
+
+void ListViewClients::OnMenuProgress(wxCommandEvent& event)
+{
+	wxUint32  width;
+
+	mProgressEnabled = !mProgressEnabled;
+
+	width = mProgressEnabled ? (wxUint32)PREF_LISTVIEWCLIENTS_PROGRESSCOLUMNWIDTH_DV : 0;
+	SetColumnWidth(LVC_PROGRESS, width);
+}
+
+
+void ListViewClients::OnMenuName(wxCommandEvent& event)
+{
+	wxUint32  width;
+
+	mNameEnabled = !mNameEnabled;
+
+	width = mNameEnabled ? (wxUint32)PREF_LISTVIEWCLIENTS_NAMECOLUMNWIDTH_DV : 0;
+	SetColumnWidth(LVC_NAME, width);
+}
+
+
+void ListViewClients::OnMenuETA(wxCommandEvent& event)
+{
+	wxUint32  width;
+
+	mETAEnabled = !mETAEnabled;
+
+	width = mETAEnabled ? (wxUint32)PREF_LISTVIEWCLIENTS_ETACOLUMNWIDTH_DV : 0;
+	SetColumnWidth(LVC_ETA, width);
+}
+
+
+void ListViewClients::OnMenuPPD(wxCommandEvent& event)
+{
+	wxUint32  width;
+
+	mPPDEnabled = !mPPDEnabled;
+
+	width = mPPDEnabled ? (wxUint32)PREF_LISTVIEWCLIENTS_PPDCOLUMNWIDTH_DV : 0;
+	SetColumnWidth(LVC_PPD, width);
+}
+
+
+void ListViewClients::OnMenuCore(wxCommandEvent& event)
+{
+	wxUint32  width;
+
+	mCoreEnabled = !mCoreEnabled;
+
+	width = mCoreEnabled ? (wxUint32)PREF_LISTVIEWCLIENTS_CORECOLUMNWIDTH_DV : 0;
+	SetColumnWidth(LVC_CORE, width);
+}
+
+
+void ListViewClients::OnMenuPRCG(wxCommandEvent& event)
+{
+	wxUint32  width;
+
+	mPRCGEnabled = !mPRCGEnabled;
+
+	width = mPRCGEnabled ? (wxUint32)PREF_LISTVIEWCLIENTS_PRCGCOLUMNWIDTH_DV : 0;
+	SetColumnWidth(LVC_PRCG, width);
+}
+
+
+void ListViewClients::OnMenuCredit(wxCommandEvent& event)
+{
+	wxUint32  width;
+
+	mCreditEnabled = !mCreditEnabled;
+
+	width = mCreditEnabled ? (wxUint32)PREF_LISTVIEWCLIENTS_CREDITCOLUMNWIDTH_DV : 0;
+	SetColumnWidth(LVC_CREDIT, width);
+}
+
+
+void ListViewClients::OnMenuDownloaded(wxCommandEvent& event)
+{
+	wxUint32  width;
+
+	mDownloadedEnabled = !mDownloadedEnabled;
+
+	width = mDownloadedEnabled ? (wxUint32)PREF_LISTVIEWCLIENTS_DOWNLOADEDCOLUMNWIDTH_DV : 0;
+	SetColumnWidth(LVC_DOWNLOADED, width);
+}
+
+
+void ListViewClients::OnMenuDeadline(wxCommandEvent& event)
+{
+	wxUint32  width;
+
+	mDeadlineEnabled = !mDeadlineEnabled;
+
+	width = mDeadlineEnabled ? (wxUint32)PREF_LISTVIEWCLIENTS_DEADLINECOLUMNWIDTH_DV : 0;
+	SetColumnWidth(LVC_DEADLINE, width);
 }

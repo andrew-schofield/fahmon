@@ -30,17 +30,63 @@
 #include "wx/dnd.h"
 
 
+#define PREF_LISTVIEWCLIENTS_STATECOLUMNENABLED    wxT("ListViewClients.StateColumnEnabled")
+#define PREF_LISTVIEWCLIENTS_STATECOLUMNENABLED_DV true
+
 #define PREF_LISTVIEWCLIENTS_PROGRESSCOLUMNWIDTH    wxT("ListViewClients.ProgressColumnWidth") /**< Preference setting for the progress column width */
 #define PREF_LISTVIEWCLIENTS_PROGRESSCOLUMNWIDTH_DV 82 /**< Default value for progress column width */
+
+#define PREF_LISTVIEWCLIENTS_PROGRESSCOLUMNENABLED    wxT("ListViewClients.ProgressColumnEnabled")
+#define PREF_LISTVIEWCLIENTS_PROGRESSCOLUMNENABLED_DV true
 
 #define PREF_LISTVIEWCLIENTS_NAMECOLUMNWIDTH        wxT("ListViewClients.NameColumnWidth") /**< Preference setting for the name column width */
 #define PREF_LISTVIEWCLIENTS_NAMECOLUMNWIDTH_DV     80 /**< Default value for name column width */
 
+#define PREF_LISTVIEWCLIENTS_NAMECOLUMNENABLED    wxT("ListViewClients.NameColumnEnabled")
+#define PREF_LISTVIEWCLIENTS_NAMECOLUMNENABLED_DV true
+
 #define PREF_LISTVIEWCLIENTS_ETACOLUMNWIDTH         wxT("ListViewClients.ETAColumnWidth") /**< Preference setting for the ETA column width */
 #define PREF_LISTVIEWCLIENTS_ETACOLUMNWIDTH_DV      100 /**< Default value for ETA column width */
 
+#define PREF_LISTVIEWCLIENTS_ETACOLUMNENABLED    wxT("ListViewClients.ETAColumnEnabled")
+#define PREF_LISTVIEWCLIENTS_ETACOLUMNENABLED_DV true
+
 #define PREF_LISTVIEWCLIENTS_PPDCOLUMNWIDTH         wxT("ListViewClients.PPDColumnWidth") /**< Preference setting for the PPD column width */
 #define PREF_LISTVIEWCLIENTS_PPDCOLUMNWIDTH_DV      50 /**< Default value for PPD column width */
+
+#define PREF_LISTVIEWCLIENTS_PPDCOLUMNENABLED    wxT("ListViewClients.PPDColumnEnabled")
+#define PREF_LISTVIEWCLIENTS_PPDCOLUMNENABLED_DV true
+
+#define PREF_LISTVIEWCLIENTS_CORECOLUMNWIDTH         wxT("ListViewClients.CoreColumnWidth")
+#define PREF_LISTVIEWCLIENTS_CORECOLUMNWIDTH_DV      110
+
+#define PREF_LISTVIEWCLIENTS_CORECOLUMNENABLED    wxT("ListViewClients.CoreColumnEnabled")
+#define PREF_LISTVIEWCLIENTS_CORECOLUMNENABLED_DV false
+
+#define PREF_LISTVIEWCLIENTS_PRCGCOLUMNWIDTH         wxT("ListViewClients.PRCGColumnWidth")
+#define PREF_LISTVIEWCLIENTS_PRCGCOLUMNWIDTH_DV      150
+
+#define PREF_LISTVIEWCLIENTS_PRCGCOLUMNENABLED    wxT("ListViewClients.PrcgColumnEnabled")
+#define PREF_LISTVIEWCLIENTS_PRCGCOLUMNENABLED_DV false
+
+#define PREF_LISTVIEWCLIENTS_CREDITCOLUMNWIDTH         wxT("ListViewClients.CREDITColumnWidth")
+#define PREF_LISTVIEWCLIENTS_CREDITCOLUMNWIDTH_DV      60
+
+#define PREF_LISTVIEWCLIENTS_CREDITCOLUMNENABLED    wxT("ListViewClients.CreditColumnEnabled")
+#define PREF_LISTVIEWCLIENTS_CREDITCOLUMNENABLED_DV false
+
+#define PREF_LISTVIEWCLIENTS_DOWNLOADEDCOLUMNWIDTH         wxT("ListViewClients.DOWNLOADEDColumnWidth")
+#define PREF_LISTVIEWCLIENTS_DOWNLOADEDCOLUMNWIDTH_DV      100
+
+#define PREF_LISTVIEWCLIENTS_DOWNLOADEDCOLUMNENABLED    wxT("ListViewClients.DownloadedColumnEnabled")
+#define PREF_LISTVIEWCLIENTS_DOWNLOADEDCOLUMNENABLED_DV false
+
+#define PREF_LISTVIEWCLIENTS_DEADLINECOLUMNWIDTH         wxT("ListViewClients.DEADLINEColumnWidth")
+#define PREF_LISTVIEWCLIENTS_DEADLINECOLUMNWIDTH_DV      100
+
+#define PREF_LISTVIEWCLIENTS_DEADLINECOLUMNENABLED    wxT("ListViewClients.DeadlineColumnEnabled")
+#define PREF_LISTVIEWCLIENTS_DEADLINECOLUMNENABLED_DV false
+
 
 #define PREF_LISTVIEWCLIENTS_SORTCOLUMN             wxT("ListViewClients.SortColumn") /**< Preference setting for column to sort by */
 #define PREF_LISTVIEWCLIENTS_SORTCOLUMN_DV          LVC_PROGRESS /**< Default value for sorting column */
@@ -62,6 +108,17 @@ protected:
 	wxUint32       mSortColumn; /**< Store the sort column */
 	ArrayOfIndexes mClientIdToIndex; /**< An array of client indices */
 
+	bool           mStateEnabled;
+	bool           mProgressEnabled;
+	bool           mNameEnabled;
+	bool           mETAEnabled;
+	bool           mPPDEnabled;
+	bool           mCoreEnabled;
+	bool           mPRCGEnabled;
+	bool           mCreditEnabled;
+	bool           mDownloadedEnabled;
+	bool           mDeadlineEnabled;
+
 	/**
 	 * Sort the list, according to the current sorting criterion.
 	 **/
@@ -73,6 +130,8 @@ protected:
 	 * @param event The actual event. This is sent automatically.
 	 **/
 	void OnColumnLeftClick(wxListEvent& event);
+
+	void OnColumnRightClick(wxListEvent& event);
 
 	/**
 	 * Event: Manage right clicks on the list.
@@ -122,6 +181,19 @@ protected:
 	 * @param event The actual event. This is sent automatically.
 	 **/
 	void OnMenuViewFiles(wxCommandEvent& event);
+
+	void OnMenuState(wxCommandEvent& event);
+	void OnMenuProgress(wxCommandEvent& event);
+	void OnMenuName(wxCommandEvent& event);
+	void OnMenuETA(wxCommandEvent& event);
+	void OnMenuPPD(wxCommandEvent& event);
+	void OnMenuCore(wxCommandEvent& event);
+	void OnMenuPRCG(wxCommandEvent& event);
+	void OnMenuCredit(wxCommandEvent& event);
+	void OnMenuDownloaded(wxCommandEvent& event);
+	void OnMenuDeadline(wxCommandEvent& event);
+
+	void OnColBeginDrag(wxListEvent& event);
 
 	/**
 	 * Launch filemanager to show client files.
