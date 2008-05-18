@@ -154,12 +154,18 @@ protected:
 	 **/
 	void OnMenuReloadClient(wxCommandEvent& event);
 
-	/**
-	 * Event: Manage the add new client menu item.
-	 * Add a new client.
-	  *@param event The actual event. This is sent automatically.
-	 **/
-	void OnMenuAddClient(wxCommandEvent& event);
+	void OnMenuState(wxCommandEvent& event);
+	void OnMenuProgress(wxCommandEvent& event);
+	void OnMenuName(wxCommandEvent& event);
+	void OnMenuETA(wxCommandEvent& event);
+	void OnMenuPPD(wxCommandEvent& event);
+	void OnMenuCore(wxCommandEvent& event);
+	void OnMenuPRCG(wxCommandEvent& event);
+	void OnMenuCredit(wxCommandEvent& event);
+	void OnMenuDownloaded(wxCommandEvent& event);
+	void OnMenuDeadline(wxCommandEvent& event);
+
+	void OnColBeginDrag(wxListEvent& event);
 
 	/**
 	 * Event: Manage the edit client menu item.
@@ -181,24 +187,6 @@ protected:
 	 * @param event The actual event. This is sent automatically.
 	 **/
 	void OnMenuViewFiles(wxCommandEvent& event);
-
-	void OnMenuState(wxCommandEvent& event);
-	void OnMenuProgress(wxCommandEvent& event);
-	void OnMenuName(wxCommandEvent& event);
-	void OnMenuETA(wxCommandEvent& event);
-	void OnMenuPPD(wxCommandEvent& event);
-	void OnMenuCore(wxCommandEvent& event);
-	void OnMenuPRCG(wxCommandEvent& event);
-	void OnMenuCredit(wxCommandEvent& event);
-	void OnMenuDownloaded(wxCommandEvent& event);
-	void OnMenuDeadline(wxCommandEvent& event);
-
-	void OnColBeginDrag(wxListEvent& event);
-
-	/**
-	 * Launch filemanager to show client files.
-	 **/
-	void ShowClientFiles(void);
 
 
 public:
@@ -263,6 +251,18 @@ public:
 	 * @return The index of the given client.
 	 **/
 	wxUint32 ClientIdToIndex(wxUint32 clientId) { return mClientIdToIndex.Item(clientId); };
+
+	/**
+	 * Event: Manage the add new client menu item.
+	 * Add a new client.
+	 *@param event The actual event. This is sent automatically.
+	 **/
+	void OnMenuAddClient(wxCommandEvent& event);
+
+	/**
+	 * Launch filemanager to show client files.
+	 **/
+	void ShowClientFiles(void);
 
 
 private:

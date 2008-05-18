@@ -68,7 +68,11 @@ enum _CONTROL_ID
 	MID_WWWPROJECTS,
 	MID_WWWSERVERS,
 	MID_WWWFAHINFO,
- 	MID_UPDATECHECK,
+	MID_UPDATECHECK,
+	MID_ADDCLIENT,
+	MID_EDITCLIENT,
+	MID_DELETECLIENT,
+	MID_VIEWCLIENT,
 
 	// --- ListView
 	LST_CLIENTS
@@ -121,6 +125,10 @@ BEGIN_EVENT_TABLE(MainDialog, wxFrame)
 	EVT_MENU    (wxID_HELP_CONTENTS,        MainDialog::OnMenuWeb)
 	EVT_MENU    (wxID_ABOUT,                MainDialog::OnMenuAbout)
 	EVT_MENU    (MID_UPDATECHECK,           MainDialog::OnUpdateCheck)
+	EVT_MENU    (MID_ADDCLIENT,             ListViewClients::OnMenuAddClient)
+	EVT_MENU    (MID_EDITCLIENT,            MainDialog::OnMenuEditClient)
+	EVT_MENU    (MID_DELETECLIENT,          MainDialog::OnMenuDeleteClient)
+	EVT_MENU    (MID_VIEWCLIENT,            MainDialog::OnMenuViewFiles)
 
 	// --- Frame
 	EVT_CLOSE   (MainDialog::OnClose)
@@ -629,6 +637,15 @@ inline void MainDialog::CreateMenuBar(void)
 #else
 	menuBar->Append(menu, _("&Tools"));
 #endif
+
+	//The 'Clients' menu
+	menu = new wxMenu();
+	menu->Append(MID_ADDCLIENT, _("Add a new client"));
+	menu->AppendSeparator();
+	menu->Append(MID_EDITCLIENT, _("Edit selected client"));
+	menu->Append(MID_DELETECLIENT, _("Delete selected client"));
+	menu->Append(MID_VIEWCLIENT, _("View selected client files"));
+	menuBar->Append(menu, _("&Clients"));
 
 	// The 'Monitoring' menu
 	menu = new wxMenu();
@@ -1448,6 +1465,58 @@ bool MainDialog::DownloadUpdateFile(wxString& fileName, ProgressManager& progres
 	}
 	return false;
 }
+
+
+void MainDialog::OnMenuEditClient(wxCommandEvent& event)
+{
+	wxUint32 selectedClientId = mClientsList->GetSelectedClientId();
+
+	// Ensure that something is really selected
+	if(selectedClientId == INVALID_CLIENT_ID)
+	{
+		return;
+	}
+
+	// Ask the main dialog to edit this client
+	ClientDialog::GetInstance(this)->ShowModal(selectedClientId, wxEmptyString);
+}
+
+
+void MainDialog::OnMenuDeleteClient(wxCommandEvent& event)
+{
+	wxUint32       selectedClientId;
+	wxCommandEvent deleteEvent(EVT_CLIENTDELETED);
+
+	// Ensure that something is really selected
+	selectedClientId = mClientsList->GetSelectedClientId();
+	if(selectedClientId == INVALID_CLIENT_ID)
+	{
+		return;
+	}
+
+	// Ensure that the user did not ask for deletion by error
+	if(Tools::QuestionMsgBox(_("Do you really want to delete this client?")) == true)
+	{
+		// Delete the client
+		ClientsManager::GetInstance()->Delete(selectedClientId);
+
+		// And warn the main dialog
+		AddPendingEvent(deleteEvent);
+	}
+}
+
+
+void MainDialog::OnMenuViewFiles(wxCommandEvent& event)
+{
+	wxUint32       selectedClientId;
+	selectedClientId = mClientsList->GetSelectedClientId();
+	if(selectedClientId == INVALID_CLIENT_ID)
+	{
+		return;
+	}
+	mClientsList->ShowClientFiles();
+}
+
 
 #ifdef __WXMAC__
 

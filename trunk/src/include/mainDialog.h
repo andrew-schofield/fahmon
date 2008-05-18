@@ -124,7 +124,7 @@ class OSXProgressBar: public wxWindow
 protected:
 	wxUint32    mTotal;
 	wxUint32    mCurrentProgress;
-	
+
 	void OnPaint(wxPaintEvent& event);
 	void OnResize(wxSizeEvent& event);
 	void PaintBackground(wxDC& dc);
@@ -132,11 +132,11 @@ protected:
 public:
 	OSXProgressBar(wxWindow* parent, wxWindowID, wxUint32 total, const wxPoint& pos, const wxSize& size);
 	virtual ~OSXProgressBar();
-	
+
 	void SetValue(wxUint32 value);
 private:
 	DECLARE_EVENT_TABLE()
-	
+
 };
 
 #endif
@@ -388,6 +388,12 @@ protected:
 	 * @param silent Whether a message is displayed when no update is found.
 	 **/
 	void CheckForUpdates(bool silent = true);
+
+	void OnMenuEditClient(wxCommandEvent& event);
+
+	void OnMenuDeleteClient(wxCommandEvent& event);
+
+	void OnMenuViewFiles(wxCommandEvent& event);
 
 
 public:
