@@ -73,6 +73,7 @@ enum _CONTROL_ID
 	MID_EDITCLIENT,
 	MID_DELETECLIENT,
 	MID_VIEWCLIENT,
+	MID_TOGGLE_INFOPANEL,
 
 	// --- ListView
 	LST_CLIENTS
@@ -129,6 +130,7 @@ BEGIN_EVENT_TABLE(MainDialog, wxFrame)
 	EVT_MENU    (MID_EDITCLIENT,            MainDialog::OnMenuEditClient)
 	EVT_MENU    (MID_DELETECLIENT,          MainDialog::OnMenuDeleteClient)
 	EVT_MENU    (MID_VIEWCLIENT,            MainDialog::OnMenuViewFiles)
+	EVT_MENU    (MID_TOGGLE_INFOPANEL,      MainDialog::OnMenuToggleInfoPanel)
 
 	// --- Frame
 	EVT_CLOSE   (MainDialog::OnClose)
@@ -623,48 +625,50 @@ inline void MainDialog::CreateMenuBar(void)
 
 	// The 'Main' menu
 	menu = new wxMenu();
-	menu->Append(MID_TOGGLE_MESSAGES_FRAME, _("&Show/Hide Messages Window"), _("Toggle the messages window"));
-	menu->Append(MID_UPDATEPROJECTS, _("&Download New Projects"), _("Update the local project database"));
-	menu->AppendSeparator();
 	menu->Append(MID_UPDATECHECK, _("&Check for update"), _("Check online for the latest version of FahMon"));
 	menu->AppendSeparator();
-	menu->Append(MID_BENCHMARKS, _("&Benchmarks...\tCTRL+B"), _("Open the benchmarks dialog"));
 	menu->Append(wxID_PREFERENCES, _("&Preferences...\tCTRL+P"), _("Open the preferences dialog"));
 	menu->AppendSeparator();
 	menu->Append(wxID_EXIT, _("&Quit\tCtrl+Q"), wxString::Format(_("Quit %s"), _T(FMC_APPNAME)));
-#ifndef __WXMAC__
 	menuBar->Append(menu, wxString::Format(wxT("&%s"), wxT(FMC_APPNAME)));
-#else
-	menuBar->Append(menu, _("&Tools"));
-#endif
 
 	//The 'Clients' menu
 	menu = new wxMenu();
-	menu->Append(MID_ADDCLIENT, _("Add a new client"));
+	menu->Append(MID_ADDCLIENT, _("Add a new client"), _("Add a new client to be monitored"));
 	menu->AppendSeparator();
-	menu->Append(MID_EDITCLIENT, _("Edit selected client"));
-	menu->Append(MID_DELETECLIENT, _("Delete selected client"));
-	menu->Append(MID_VIEWCLIENT, _("View selected client files"));
+	menu->Append(MID_EDITCLIENT, _("Edit client"), _("Edit the selected client settings"));
+	menu->Append(MID_DELETECLIENT, _("Delete client"), _("Delete the selected client"));
+	menu->Append(MID_VIEWCLIENT, _("View client files"), _("Open file browser in client folder"));
+	menu->AppendSeparator();
+	#ifndef __WXMAC__
+	menu->Append(MID_RELOAD, _("Reload &Selection\tF5"), _("Reload the selected client"));
+	menu->Append(MID_RELOAD_ALL, _("Reload &All\tF6"), _("Reload all the clients"));
+	#else
+	menu->Append(MID_RELOAD, _("Reload &Selection\tCtrl+R"), _("Reload the selected client"));
+	menu->Append(MID_RELOAD_ALL, _("Reload &All\tCtrl+Shift+R"), _("Reload all the clients"));
+	#endif
 	menuBar->Append(menu, _("&Clients"));
 
 	// The 'Monitoring' menu
 	menu = new wxMenu();
 	#ifndef __WXMAC__
-	menu->Append(MID_RELOAD, _("Reload &Selection\tF5"), _("Reload the selected client"));
-	menu->Append(MID_RELOAD_ALL, _("Reload &All\tF6"), _("Reload all the clients"));
-	menu->AppendSeparator();
 	menu->Append(MID_TOGGLELOG, _("&Show/Hide FAHLog\tF8"), _("Toggle the log file"));
 	menu->AppendSeparator();
 	menu->Append(MID_TOGGLE_ETADATE, _("&Cycle ETA Style\tF9"), _("Cycle through the different ETA display styles"));
 	#else
-	menu->Append(MID_RELOAD, _("Reload &Selection\tCtrl+R"), _("Reload the selected client"));
-	menu->Append(MID_RELOAD_ALL, _("Reload &All\tCtrl+Shift+R"), _("Reload all the clients"));
-	menu->AppendSeparator();
 	menu->Append(MID_TOGGLELOG, _("&Show/Hide FAHLog\tCtrl+L"), _("Toggle the log file"));
 	menu->AppendSeparator();
 	menu->Append(MID_TOGGLE_ETADATE, _("&Cycle ETA Style\tCtrl+E"), _("Cycle through the different ETA display styles"));
 	#endif
-	menuBar->Append(menu, _("&Monitoring"));
+	menu->AppendSeparator();
+	menu->Append(MID_TOGGLE_INFOPANEL, _("Show/Hide &WU Info panel"), _("Toggle the display of the Work Unit Information panel"));
+	menuBar->Append(menu, _("&View"));
+
+	menu = new wxMenu();
+	menu->Append(MID_TOGGLE_MESSAGES_FRAME, _("&Show/Hide Messages Window"), _("Toggle the messages window"));
+	menu->Append(MID_BENCHMARKS, _("&Benchmarks...\tCTRL+B"), _("Open the benchmarks dialog"));
+	menu->Append(MID_UPDATEPROJECTS, _("&Download New Projects"), _("Update the local project database"));
+	menuBar->Append(menu, _("&Tools"));
 
 	// The 'Web' menu
 	menu = new wxMenu();
@@ -707,7 +711,6 @@ inline void MainDialog::CreateMenuBar(void)
 inline void MainDialog::CreateLayout(void)
 {
 	wxPanel          *topLevelPanel;
-	wxPanel          *topRightPanel;
 	wxBoxSizer       *mainSizer;
 	wxBoxSizer       *topSizer;
 	wxBoxSizer       *midSizer;
@@ -730,23 +733,23 @@ inline void MainDialog::CreateLayout(void)
 
 	// --- The top right part
 	// It contains labels to display information on the currently selected client
-	topRightPanel      = new wxPanel(mSplitterWindow, wxID_ANY);
-	topRightSizer      = new wxStaticBoxSizer(wxVERTICAL, topRightPanel, _("Work Unit Information"));
+	mTopRightPanel      = new wxPanel(mSplitterWindow, wxID_ANY);
+	topRightSizer      = new wxStaticBoxSizer(wxVERTICAL, mTopRightPanel, _("Work Unit Information"));
 	infoSizer          = new wxGridSizer(2, FMC_GUI_SPACING_HIGH, FMC_GUI_SPACING_LOW);
 	userinfoSizer      = new wxBoxSizer(wxHORIZONTAL);
-	mCoreName          = new StaticBoldedText(topRightPanel, wxID_ANY, wxT(""));
-	mProjectId         = new wxStaticText(topRightPanel, wxID_ANY, wxT(""));
-	mCredit            = new wxStaticText(topRightPanel, wxID_ANY, wxT(""));
-	mDownloaded        = new wxStaticText(topRightPanel, wxID_ANY, wxT(""));
-	mPreferredDeadline = new wxStaticText(topRightPanel, wxID_ANY, wxT(""));
-	mFinalDeadline     = new wxStaticText(topRightPanel, wxID_ANY, wxT(""));
+	mCoreName          = new StaticBoldedText(mTopRightPanel, wxID_ANY, wxT(""));
+	mProjectId         = new wxStaticText(mTopRightPanel, wxID_ANY, wxT(""));
+	mCredit            = new wxStaticText(mTopRightPanel, wxID_ANY, wxT(""));
+	mDownloaded        = new wxStaticText(mTopRightPanel, wxID_ANY, wxT(""));
+	mPreferredDeadline = new wxStaticText(mTopRightPanel, wxID_ANY, wxT(""));
+	mFinalDeadline     = new wxStaticText(mTopRightPanel, wxID_ANY, wxT(""));
 
 	// User's information: username and team number
-	mUsername    =  new wxHyperlinkCtrl(topRightPanel, wxID_ANY, wxT(""), wxT(""));
+	mUsername    =  new wxHyperlinkCtrl(mTopRightPanel, wxID_ANY, wxT(""), wxT(""));
 	mUsername->SetNormalColour(*wxBLUE);
 	mUsername->SetHoverColour(*wxRED);
 	mUsername->SetVisitedColour(*wxBLUE);
-	mTeamNumber   = new wxHyperlinkCtrl(topRightPanel, wxID_ANY, wxT(""), wxT(""));
+	mTeamNumber   = new wxHyperlinkCtrl(mTopRightPanel, wxID_ANY, wxT(""), wxT(""));
 	mTeamNumber->SetNormalColour(*wxBLUE);
 	mTeamNumber->SetHoverColour(*wxRED);
 	mTeamNumber->SetVisitedColour(*wxBLUE);
@@ -759,19 +762,19 @@ inline void MainDialog::CreateLayout(void)
 	mCoreName->SetForegroundColour(*wxRED);
 
 	// Information on the current client is stored using a GridSizer
-	infoSizer->Add(new StaticBoldedText(topRightPanel, wxID_ANY, _("Core:")), 0, wxALIGN_RIGHT);
+	infoSizer->Add(new StaticBoldedText(mTopRightPanel, wxID_ANY, _("Core:")), 0, wxALIGN_RIGHT);
 	infoSizer->Add(mCoreName, 0, wxALIGN_LEFT);
-	infoSizer->Add(new StaticBoldedText(topRightPanel, wxID_ANY, _("Project:")), 0, wxALIGN_RIGHT);
+	infoSizer->Add(new StaticBoldedText(mTopRightPanel, wxID_ANY, _("Project:")), 0, wxALIGN_RIGHT);
 	infoSizer->Add(mProjectId, 0, wxALIGN_LEFT);
-	infoSizer->Add(new StaticBoldedText(topRightPanel, wxID_ANY, _("Credit:")), 0, wxALIGN_RIGHT);
+	infoSizer->Add(new StaticBoldedText(mTopRightPanel, wxID_ANY, _("Credit:")), 0, wxALIGN_RIGHT);
 	infoSizer->Add(mCredit, 0, wxALIGN_LEFT);
-	infoSizer->Add(new StaticBoldedText(topRightPanel, wxID_ANY, _("Username:")), 0, wxALIGN_RIGHT);
+	infoSizer->Add(new StaticBoldedText(mTopRightPanel, wxID_ANY, _("Username:")), 0, wxALIGN_RIGHT);
 	infoSizer->Add(userinfoSizer, 0, wxALIGN_LEFT);
-	infoSizer->Add(new StaticBoldedText(topRightPanel, wxID_ANY, _("Downloaded:")), 0, wxALIGN_RIGHT);
+	infoSizer->Add(new StaticBoldedText(mTopRightPanel, wxID_ANY, _("Downloaded:")), 0, wxALIGN_RIGHT);
 	infoSizer->Add(mDownloaded, 0, wxALIGN_LEFT);
-	infoSizer->Add(new StaticBoldedText(topRightPanel, wxID_ANY, _("Preferred Deadline:")), 0, wxALIGN_RIGHT);
+	infoSizer->Add(new StaticBoldedText(mTopRightPanel, wxID_ANY, _("Preferred Deadline:")), 0, wxALIGN_RIGHT);
 	infoSizer->Add(mPreferredDeadline, 0, wxALIGN_LEFT);
-	infoSizer->Add(new StaticBoldedText(topRightPanel, wxID_ANY, _("Final Deadline:")), 0, wxALIGN_RIGHT);
+	infoSizer->Add(new StaticBoldedText(mTopRightPanel, wxID_ANY, _("Final Deadline:")), 0, wxALIGN_RIGHT);
 	infoSizer->Add(mFinalDeadline, 0, wxALIGN_LEFT);
 
 	// We use AddStretchSpacer() to keep the information vertically centered
@@ -780,7 +783,7 @@ inline void MainDialog::CreateLayout(void)
 	topRightSizer->Add(infoSizer, 0, wxALIGN_CENTER);
 	topRightSizer->AddStretchSpacer();
 
-	topRightPanel->SetSizer(topRightSizer);
+	mTopRightPanel->SetSizer(topRightSizer);
 
 	// --- The top part
 	// It contains:
@@ -789,7 +792,7 @@ inline void MainDialog::CreateLayout(void)
 	topSizer = new wxBoxSizer(wxHORIZONTAL);
 
 	topSizer->Add(mSplitterWindow, 1, wxEXPAND);
-	mSplitterWindow->SplitVertically(mClientsList, topRightPanel);
+	mSplitterWindow->SplitVertically(mClientsList, mTopRightPanel);
 
 	// --- The middle part
 	// It contains the progress bar (gauge) and a simple label
@@ -823,6 +826,7 @@ inline void MainDialog::CreateLayout(void)
 	mTopLevelSizer = new wxBoxSizer(wxVERTICAL);
 
 	mTopLevelSizer->Add(mainSizer, 1, wxEXPAND | wxALL, FMC_GUI_BORDER);
+
 	topLevelPanel->SetSizer(mTopLevelSizer);
 }
 
@@ -838,6 +842,7 @@ inline void MainDialog::RestoreFrameState(void)
 	wxInt32  frameHeight;
 	wxUint32 sashPosition;
 	bool     max;
+	bool     isInfoPanelShown;
 
 	// --- State of the log
 	_PrefsGetBool(PREF_MAINDIALOG_SHOWLOG, isLogShown);
@@ -856,6 +861,10 @@ inline void MainDialog::RestoreFrameState(void)
 
 	mSplitterWindow->SetMinimumPaneSize(20);
 	mSplitterWindow->SetSashPosition(sashPosition, true);
+
+	_PrefsGetBool(PREF_MAINDIALOG_SHOWINFOPANEL, isInfoPanelShown);
+	if(!isInfoPanelShown)
+		mSplitterWindow->Unsplit();
 
 	// --- Size and position of the frame
 	// Retrieve saved values
@@ -1107,6 +1116,8 @@ void MainDialog::OnClose(wxCloseEvent& event)
 
 	// Save the state of the log
 	_PrefsSetBool(PREF_MAINDIALOG_SHOWLOG, mLogFile->IsShown());
+
+	_PrefsSetBool(PREF_MAINDIALOG_SHOWINFOPANEL, mSplitterWindow->IsSplit());
 
 	// Delete any dialog we could have displayed / Objects we could have used
 	TrayManager::DestroyInstance();
@@ -1515,6 +1526,19 @@ void MainDialog::OnMenuViewFiles(wxCommandEvent& event)
 		return;
 	}
 	mClientsList->ShowClientFiles();
+}
+
+
+void MainDialog::OnMenuToggleInfoPanel(wxCommandEvent& event)
+{
+	if(mSplitterWindow->IsSplit())
+	{
+		mSplitterWindow->Unsplit();
+	}
+	else
+	{
+		mSplitterWindow->SplitVertically(mClientsList, mTopRightPanel);
+	}
 }
 
 

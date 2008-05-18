@@ -38,6 +38,7 @@
 #include "wx/dcbuffer.h"
 #include "wx/dcscreen.h"
 #include "wx/window.h"
+#include "wx/panel.h"
 #include "listViewClients.h"
 #include "progressManager.h"
 
@@ -59,6 +60,9 @@
 
 #define PREF_MAINDIALOG_SHOWLOG    wxT("MainDialog.ShowLog") /**< Preference setting for showing log */
 #define PREF_MAINDIALOG_SHOWLOG_DV false /**< Default value for showing log */
+
+#define PREF_MAINDIALOG_SHOWINFOPANEL    wxT("MainDialog.ShowInfoPanel")
+#define PREF_MAINDIALOG_SHOWINFOPANEL_DV true
 
 #define PREF_MAINDIALOG_AUTOUPDATEPROJECTS    wxT("MainDialog.AutoUpdateProjects") /**< Preference setting for auto updating projects */
 #define PREF_MAINDIALOG_AUTOUPDATEPROJECTS_DV true /**< Default value for auto updating projects */
@@ -171,6 +175,7 @@ protected:
 	wxStaticText     *mFinalDeadline; /**< Text control for the final deadline date */
 	ListViewClients  *mClientsList; /**< Client list view control */
 	wxSplitterWindow *mSplitterWindow; /**< Pane splitting control */
+	wxPanel          *mTopRightPanel;
 
 	// Misc
 	wxTimer       mAutoReloadTimer; /**< Timer object for reloading clients */
@@ -394,6 +399,8 @@ protected:
 	void OnMenuDeleteClient(wxCommandEvent& event);
 
 	void OnMenuViewFiles(wxCommandEvent& event);
+
+	void OnMenuToggleInfoPanel(wxCommandEvent& event);
 
 
 public:
