@@ -1,7 +1,7 @@
   !include "MUI.nsh"
 
-  Name "FahMon-2.3.2b"
-  OutFile "FahMon-2.3.2b-Installer.exe"
+  Name "FahMon-2.3.3svn"
+  OutFile "FahMon-2.3.3svn-Installer.exe"
 
   InstallDir "$PROGRAMFILES\FahMon"
 
@@ -31,7 +31,7 @@
 
   !insertmacro MUI_LANGUAGE "English"
 
-Section "!FahMon 2.3.2b" SecFahMon
+Section "!FahMon 2.3.3svn" SecFahMon
 
   SetOutPath "$INSTDIR"
 
