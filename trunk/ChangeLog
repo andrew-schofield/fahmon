@@ -11,6 +11,10 @@ v2.3.2c
     * Made main window menus more intuitive.
     * Added ability to remove the "WU Info" panel from view.
 
+    Linux
+
+    * Fixed an issue with latest GCC and inline functions (thanks to KB3LWJ).
+
 v2.3.2b (11/04/08)
 
     General
@@ -29,7 +33,7 @@ v2.3.2b (11/04/08)
 
     * Maximised restoring from system tray now works. Finally.
     * Updated MSVC project to version 9.
-    * Fixed display of ç character in François.
+    * Fixed display of Ã§ character in FranÃ§ois.
 
     OS X
 

@@ -17,7 +17,7 @@
 /**
  * \file projectsManager.cpp
  * Manages projects.
- * \author François Ingelrest
+ * \author Franï¿½ois Ingelrest
  * \author Andrew Schofield
  **/
 
@@ -87,7 +87,7 @@ ProjectsManager* ProjectsManager::GetInstance(void)
 }
 
 
-inline void ProjectsManager::Load(void)
+void ProjectsManager::Load(void)
 {
 	Project         *currentProject;
 	wxUint32         nbProjects, i, version;
@@ -121,7 +121,7 @@ inline void ProjectsManager::Load(void)
 }
 
 
-inline void ProjectsManager::Save(void)
+void ProjectsManager::Save(void)
 {
 	DataOutputStream               out(PathManager::GetCfgPath() + wxT(FMC_FILE_PROJECTS));
 	ProjectsListHashMap::iterator  iterator;
