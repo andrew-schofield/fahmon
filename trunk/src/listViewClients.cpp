@@ -17,7 +17,7 @@
 /**
  * \file listViewClients.cpp
  * Creates a list view class for displaying clients.
- * \author François Ingelrest
+ * \author Franï¿½ois Ingelrest
  * \author Andrew Schofield
  **/
 
@@ -115,12 +115,12 @@ BEGIN_EVENT_TABLE(ListViewClients, wxListView)
 	EVT_MENU    (MID_DEADLINE,       ListViewClients::OnMenuDeadline)
 
 	// List events
-	EVT_LIST_COL_CLICK      (wxID_ANY, ListViewClients::OnColumnLeftClick)
-	EVT_LIST_COL_RIGHT_CLICK(wxID_ANY, ListViewClients::OnColumnRightClick)
-	EVT_RIGHT_DOWN          (          ListViewClients::OnRightClick)
-	EVT_LEFT_DCLICK         (          ListViewClients::OnDoubleClick)
+	EVT_LIST_COL_CLICK       (wxID_ANY, ListViewClients::OnColumnLeftClick)
+	EVT_LIST_COL_RIGHT_CLICK (wxID_ANY, ListViewClients::OnColumnRightClick)
+	EVT_RIGHT_DOWN           (          ListViewClients::OnRightClick)
+	EVT_LEFT_DCLICK          (          ListViewClients::OnDoubleClick)
 
-	EVT_LIST_COL_BEGIN_DRAG(wxID_ANY, ListViewClients::OnColBeginDrag)
+	EVT_LIST_COL_BEGIN_DRAG (wxID_ANY, ListViewClients::OnColBeginDrag)
 END_EVENT_TABLE()
 
 
@@ -152,16 +152,16 @@ ListViewClients::ListViewClients(wxWindow* parent, wxWindowID id, wxUint32 nbCli
 	wxImageList *imageList;
 
 	// --- Create the columns and restore their size
-	InsertColumn(LVC_STATUS, wxT(""));
-	InsertColumn(LVC_PROGRESS, _("Progress"));
-	InsertColumn(LVC_NAME,     _("Name"));
-	InsertColumn(LVC_ETA,      _("ETA"));
-	InsertColumn(LVC_PPD,      _("PPD"));
-	InsertColumn(LVC_CORE,     _("Core"));
-	InsertColumn(LVC_PRCG,     _T("PRCG"));
-	InsertColumn(LVC_CREDIT,   _("Credit"));
+	InsertColumn(LVC_STATUS,     wxT(""));
+	InsertColumn(LVC_PROGRESS,   _("Progress"));
+	InsertColumn(LVC_NAME,       _("Name"));
+	InsertColumn(LVC_ETA,        _("ETA"));
+	InsertColumn(LVC_PPD,        _("PPD"));
+	InsertColumn(LVC_CORE,       _("Core"));
+	InsertColumn(LVC_PRCG,       _T("PRCG"));
+	InsertColumn(LVC_CREDIT,     _("Credit"));
 	InsertColumn(LVC_DOWNLOADED, _("Downloaded"));
-	InsertColumn(LVC_DEADLINE, _("Deadline"));
+	InsertColumn(LVC_DEADLINE,   _("Deadline"));
 
 	_PrefsGetUint(PREF_LISTVIEWCLIENTS_PROGRESSCOLUMNWIDTH,   progressColumnWidth);
 	_PrefsGetUint(PREF_LISTVIEWCLIENTS_NAMECOLUMNWIDTH,       nameColumnWidth);
@@ -185,27 +185,27 @@ ListViewClients::ListViewClients(wxWindow* parent, wxWindowID id, wxUint32 nbCli
 	_PrefsGetBool(PREF_LISTVIEWCLIENTS_DOWNLOADEDCOLUMNENABLED, mDownloadedEnabled);
 	_PrefsGetBool(PREF_LISTVIEWCLIENTS_DEADLINECOLUMNENABLED,   mDeadlineEnabled);
 
-	progressColumnWidth = (mProgressEnabled) ? progressColumnWidth : 0;
-	nameColumnWidth = (mNameEnabled) ? nameColumnWidth : 0;
-	etaColumnWidth = (mETAEnabled) ? etaColumnWidth : 0;
-	ppdColumnWidth = (mPPDEnabled) ? ppdColumnWidth : 0;
-	statusColumnWidth = (mStateEnabled) ? 30 : 0;
-	coreColumnWidth = (mCoreEnabled) ? coreColumnWidth : 0;
-	prcgColumnWidth = (mPRCGEnabled) ? prcgColumnWidth : 0;
-	creditColumnWidth = (mCreditEnabled) ? creditColumnWidth : 0;
+	progressColumnWidth =   (mProgressEnabled)   ? progressColumnWidth   : 0;
+	nameColumnWidth =       (mNameEnabled)       ? nameColumnWidth       : 0;
+	etaColumnWidth =        (mETAEnabled)        ? etaColumnWidth        : 0;
+	ppdColumnWidth =        (mPPDEnabled)        ? ppdColumnWidth        : 0;
+	statusColumnWidth =     (mStateEnabled)      ? 30                    : 0;
+	coreColumnWidth =       (mCoreEnabled)       ? coreColumnWidth       : 0;
+	prcgColumnWidth =       (mPRCGEnabled)       ? prcgColumnWidth       : 0;
+	creditColumnWidth =     (mCreditEnabled)     ? creditColumnWidth     : 0;
 	downloadedColumnWidth = (mDownloadedEnabled) ? downloadedColumnWidth : 0;
-	deadlineColumnWidth = (mDeadlineEnabled) ? deadlineColumnWidth : 0;
+	deadlineColumnWidth =   (mDeadlineEnabled)   ? deadlineColumnWidth   : 0;
 
-	SetColumnWidth(LVC_PROGRESS, progressColumnWidth);
-	SetColumnWidth(LVC_NAME,     nameColumnWidth);
-	SetColumnWidth(LVC_ETA,      etaColumnWidth);
-	SetColumnWidth(LVC_PPD,      ppdColumnWidth);
-	SetColumnWidth(LVC_STATUS, statusColumnWidth);
-	SetColumnWidth(LVC_CORE, coreColumnWidth);
-	SetColumnWidth(LVC_PRCG, prcgColumnWidth);
-	SetColumnWidth(LVC_CREDIT, creditColumnWidth);
+	SetColumnWidth(LVC_PROGRESS,   progressColumnWidth);
+	SetColumnWidth(LVC_NAME,       nameColumnWidth);
+	SetColumnWidth(LVC_ETA,        etaColumnWidth);
+	SetColumnWidth(LVC_PPD,        ppdColumnWidth);
+	SetColumnWidth(LVC_STATUS,     statusColumnWidth);
+	SetColumnWidth(LVC_CORE,       coreColumnWidth);
+	SetColumnWidth(LVC_PRCG,       prcgColumnWidth);
+	SetColumnWidth(LVC_CREDIT,     creditColumnWidth);
 	SetColumnWidth(LVC_DOWNLOADED, downloadedColumnWidth);
-	SetColumnWidth(LVC_DEADLINE, deadlineColumnWidth);
+	SetColumnWidth(LVC_DEADLINE,   deadlineColumnWidth);
 
 	// --- Create the ImageList associated with this ListView
 	//     Images must be loaded in the order defined by the enum _LISTVIEW_ICON
@@ -337,37 +337,6 @@ int ListViewClients::CompareClients(wxUint32 clientId1, wxUint32 clientId2) cons
 			}
 			break;
 
-		/*case LVC_CORE:
-			if(client1->IsAccessible() && client2->IsAccessible())
-			{
-				comparisonResult = Core::IdToLongName(ProjectsManager::GetInstance()->GetProject(client1->GetProjectId())->GetCoreId()).CmpNoCase(Core::IdToLongName(ProjectsManager::GetInstance()->GetProject(client2->GetProjectId())->GetCoreId()));
-			}
-			else if(!client1->IsAccessible() && !client2->IsAccessible())
-			{
-				comparisonResult = 1;
-			}
-			else
-			{
-				comparisonResult = -1;
-			}
-			break;
-
-
-		case LVC_CORE:
-			if(client1->IsAccessible() && client2->IsAccessible())
-			{
-				comparisonResult = Core::IdToLongName(ProjectsManager::GetInstance()->GetProject(client1->GetProjectId())->GetCoreId()).CmpNoCase(Core::IdToLongName(ProjectsManager::GetInstance()->GetProject(client2->GetProjectId())->GetCoreId()));
-			}
-			else if(!client1->IsAccessible() && !client2->IsAccessible())
-			{
-				comparisonResult = 1;
-			}
-			else
-			{
-				comparisonResult = -1;
-			}
-			break;*/
-
 		// ---
 		case LVC_STATUS:
 			// enumerate the client statuses
@@ -420,6 +389,48 @@ int ListViewClients::CompareClients(wxUint32 clientId1, wxUint32 clientId2) cons
 				comparisonResult = 1;
 			}
 			break;
+
+		case LVC_DOWNLOADED:
+			if(client1->GetDownloadDate().IsEarlierThan(client2->GetDownloadDate()) == true)
+			{
+				comparisonResult = 1;
+			}
+			else
+			{
+				comparisonResult = -1;
+			}
+			break;
+
+		/*case LVC_CORE:
+			if(client1->IsAccessible() && client2->IsAccessible())
+			{
+				comparisonResult = Core::IdToLongName(ProjectsManager::GetInstance()->GetProject(client1->GetProjectId())->GetCoreId()).CmpNoCase(Core::IdToLongName(ProjectsManager::GetInstance()->GetProject(client2->GetProjectId())->GetCoreId()));
+			}
+			else if(!client1->IsAccessible() && !client2->IsAccessible())
+			{
+				comparisonResult = 1;
+			}
+			else
+			{
+				comparisonResult = 1;
+			}
+			break;*/
+
+
+		/*case LVC_CORE:
+			if(client1->IsAccessible() && client2->IsAccessible())
+			{
+			comparisonResult = Core::IdToLongName(ProjectsManager::GetInstance()->GetProject(client1->GetProjectId())->GetCoreId()).CmpNoCase(Core::IdToLongName(ProjectsManager::GetInstance()->GetProject(client2->GetProjectId())->GetCoreId()));
+	}
+			else if(!client1->IsAccessible() && !client2->IsAccessible())
+			{
+			comparisonResult = 1;
+	}
+			else
+			{
+			comparisonResult = -1;
+	}
+			break;*/
 
 		// We should never fall here
 		default:
