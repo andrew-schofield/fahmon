@@ -11,6 +11,7 @@ SVN
     * Made main window menus more intuitive.
     * Added ability to remove the "WU Info" panel from view.
     * Updated queue structure to qd FR 069
+    * Add ability to select custom web output templates.
 
     Linux
 

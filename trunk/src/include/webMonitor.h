@@ -26,6 +26,7 @@
 
 #include "wx/thread.h"
 #include "listViewClients.h"
+#include "pathManager.h"
 #include <vector>
 
 
@@ -46,6 +47,15 @@
 
 #define PREF_WEBAPP_SIMPLETEXTLOCATION   wxT("WebMonitor.SimpleTextLocation") /**< Preference setting for location of simple text output page */
 #define PREF_WEBAPP_SIMPLETEXTLOCATION_DV wxT("") /**< Default value for location of simple text output page */
+
+#define PREF_WEBAPP_WEBAPPTEMPLATELOCATION   wxT("WebMonitor.WebAppTemplateLocation") /**< Preference setting for location of fancy web output page */
+#define PREF_WEBAPP_WEBAPPTEMPLATELOCATION_DV wxString::Format(wxT("%sfancy_template.htm"),PathManager::GetGlobalTplPath().c_str()) /**< Default value for location of fancy web output page */
+
+#define PREF_WEBAPP_SIMPLEWEBTEMPLATELOCATION   wxT("WebMonitor.SimpleWebTemplateLocation") /**< Preference setting for location of simple web output page */
+#define PREF_WEBAPP_SIMPLEWEBTEMPLATELOCATION_DV wxString::Format(wxT("%ssimple_template.htm"),PathManager::GetGlobalTplPath().c_str()) /**< Default value for location of simple web output page */
+
+#define PREF_WEBAPP_SIMPLETEXTTEMPLATELOCATION   wxT("WebMonitor.SimpleTextTemplateLocation") /**< Preference setting for location of simple text output page */
+#define PREF_WEBAPP_SIMPLETEXTTEMPLATELOCATION_DV wxString::Format(wxT("%ssimple_template.txt"),PathManager::GetGlobalTplPath().c_str()) /**< Default value for location of simple text output page */
 
 /**
  * WebMonitor class.

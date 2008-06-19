@@ -18,22 +18,21 @@
  * \file preferencesDialog.h
  * The preferences dialog.
  * Creates the dialog to reconfigure FahMon.
- * \author François Ingelrest
+ * \author Franï¿½ois Ingelrest
  * \author Andrew Schofield
  **/
 
 #ifndef _PREFERENCESDIALOG_H
 #define _PREFERENCESDIALOG_H
 
-
 #include "wx/panel.h"
 #include "wx/dialog.h"
 #include "wx/choice.h"
-#ifndef __WXMAC__ 
-#include "wx/notebook.h" 
-#else 
-#include "wx/choicebk.h" 
-#endif 
+#ifndef __WXMAC__
+#include "wx/notebook.h"
+#else
+#include "wx/choicebk.h"
+#endif
 #include "wx/textctrl.h"
 #include "wx/checkbox.h"
 #include "wx/spinctrl.h"
@@ -102,14 +101,26 @@ protected:
 	wxTextCtrl   *mWebAppWebAppLocation; /**< Input box for fancy web output location */
 	wxStaticText *mWebAppWebAppLabel; /**< Text control for fancy web output location */
 	wxButton     *mWebAppWebAppLocationChooser; /**< Button to open file chooser for fancy web output location */
+	wxTextCtrl   *mWebAppWebAppTemplateLocation; /**< Input box for fancy web output location */
+	wxStaticText *mWebAppWebAppFilenameLabel; /**< Text control for fancy web output location */
+	wxStaticText *mWebAppWebAppTemplateLabel; /**< Text control for fancy web output location */
+	wxButton     *mWebAppWebAppTemplateLocationChooser; /**< Button to open file chooser for fancy web output location */
 	wxCheckBox   *mWebAppUseWebApp; /**< Checkbox for use of fancy web output */
 	wxTextCtrl   *mWebAppSimpleWebLocation; /**< Input box for simple web output location */
 	wxStaticText *mWebAppSimpleWebLabel; /**< Text control for simple web output location */
 	wxButton     *mWebAppSimpleWebLocationChooser; /**< Button to open file chooser for simple web output location */
+	wxTextCtrl   *mWebAppSimpleWebTemplateLocation; /**< Input box for simple web output location */
+	wxStaticText *mWebAppSimpleWebFilenameLabel; /**< Text control for simple web output location */
+	wxStaticText *mWebAppSimpleWebTemplateLabel; /**< Text control for simple web output location */
+	wxButton     *mWebAppSimpleWebTemplateLocationChooser; /**< Button to open file chooser for simple web output location */
 	wxCheckBox   *mWebAppUseSimpleWeb; /**< Checkbox for use of simple web output */
 	wxTextCtrl   *mWebAppSimpleTextLocation; /**< Input box for simple text output location */
 	wxStaticText *mWebAppSimpleTextLabel; /**< Text control for simple text output location */
 	wxButton     *mWebAppSimpleTextLocationChooser; /**< Button to open file chooser for simple text output location */
+	wxTextCtrl   *mWebAppSimpleTextTemplateLocation; /**< Input box for simple text output location */
+	wxStaticText *mWebAppSimpleTextFilenameLabel; /**< Text control for simple text output location */
+	wxStaticText *mWebAppSimpleTextTemplateLabel; /**< Text control for simple text output location */
+	wxButton     *mWebAppSimpleTextTemplateLocationChooser; /**< Button to open file chooser for simple text output location */
 	wxCheckBox   *mWebAppUseSimpleText; /**< Checkbox for use of simple text output */
 
 	// Storage for the initial value of some important preferences
@@ -178,7 +189,14 @@ protected:
 	 * @param parent The notebook object.
 	 * @return A wxPanel object.
 	 **/
-	wxPanel* CreateWebAppTab(wxBookCtrlBase* parent);
+	wxPanel* CreateWebApp1Tab(wxBookCtrlBase* parent);
+
+	/**
+	 * Create the tab containing web application preferences.
+	 * @param parent The notebook object.
+	 * @return A wxPanel object.
+	 **/
+	wxPanel* CreateWebApp2Tab(wxBookCtrlBase* parent);
 
 	/**
 	 * Give the correct value to each controls using the preferences.
@@ -226,6 +244,27 @@ protected:
 	void OnSimpleTextBrowseButton(wxCommandEvent& event);
 
 	/**
+	 * Event: Manages the 'browse' button for web application output.
+	 * Show file chooser dialog box.
+	 * @param event The event itself. This is sent automatically.
+	 **/
+	void OnWebAppTemplateBrowseButton(wxCommandEvent& event);
+
+	/**
+	 * Event: Manages the 'browse' button for simple web output.
+	 * Show file chooser dialog box.
+	 * @param event The event itself. This is sent automatically.
+	 **/
+	void OnSimpleWebTemplateBrowseButton(wxCommandEvent& event);
+
+	/**
+	 * Event: Manages the 'browse' button for simple text output.
+	 * Show file chooser dialog box.
+	 * @param event The event itself. This is sent automatically.
+	 **/
+	void OnSimpleTextTemplateBrowseButton(wxCommandEvent& event);
+
+	/**
 	 * Event: Manages the checkbox clicks.
 	 * Enable/Disable fields associated with some checkboxes.
 	 * @param event The event itself. This is sent automatically.
@@ -239,9 +278,9 @@ protected:
 	 **/
 	void OnChoices(wxCommandEvent& event);
 
-	#ifdef __WXMAC__ 
-	void OnClose(wxCloseEvent& event); 
-	#endif 
+	#ifdef __WXMAC__
+	void OnClose(wxCloseEvent& event);
+	#endif
 
 public:
 	// Singleton pattern

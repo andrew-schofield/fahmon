@@ -18,7 +18,7 @@
  * \file preferencesDialog.cpp
  * The preferences dialog.
  * Creates the dialog to reconfigure FahMon.
- * \author François Ingelrest
+ * \author Franï¿½ois Ingelrest
  * \author Andrew Schofield
  **/
 
@@ -55,6 +55,9 @@ enum _CONTROL_ID
 	BTN_BROWSE_WEBAPP,
 	BTN_BROWSE_SIMPLEWEB,
 	BTN_BROWSE_SIMPLETEXT,
+	BTN_BROWSE_WEBAPP_TEMPLATE,
+	BTN_BROWSE_SIMPLEWEB_TEMPLATE,
+	BTN_BROWSE_SIMPLETEXT_TEMPLATE,
 	BTN_BROWSE = wxID_HIGHEST
 };
 
@@ -67,6 +70,9 @@ BEGIN_EVENT_TABLE(PreferencesDialog, wxDialog)
 	EVT_BUTTON(BTN_BROWSE_WEBAPP,     PreferencesDialog::OnWebAppBrowseButton)
 	EVT_BUTTON(BTN_BROWSE_SIMPLEWEB,  PreferencesDialog::OnSimpleWebBrowseButton)
 	EVT_BUTTON(BTN_BROWSE_SIMPLETEXT, PreferencesDialog::OnSimpleTextBrowseButton)
+	EVT_BUTTON(BTN_BROWSE_WEBAPP_TEMPLATE,     PreferencesDialog::OnWebAppTemplateBrowseButton)
+	EVT_BUTTON(BTN_BROWSE_SIMPLEWEB_TEMPLATE,  PreferencesDialog::OnSimpleWebTemplateBrowseButton)
+	EVT_BUTTON(BTN_BROWSE_SIMPLETEXT_TEMPLATE, PreferencesDialog::OnSimpleTextTemplateBrowseButton)
 	EVT_BUTTON(wxID_OK,               PreferencesDialog::OnOkButton)
 
 	// --- Checkboxes
@@ -117,7 +123,8 @@ PreferencesDialog::PreferencesDialog(wxWindow* parent) : wxDialog(parent, wxID_A
 	noteBook->AddPage(CreateAdvancedTab(noteBook),   _("Advanced"));
 	noteBook->AddPage(CreateSystemTab(noteBook),     _("System"));
 	//noteBook->AddPage(CreateFahinfoTab(noteBook),    _T("fahinfo.org"));
-	noteBook->AddPage(CreateWebAppTab(noteBook),     _("WebApp"));
+	noteBook->AddPage(CreateWebApp1Tab(noteBook),     _("WebApp 1"));
+	noteBook->AddPage(CreateWebApp2Tab(noteBook),     _("WebApp 2"));
 
 	// Buttons 'Ok' and 'Cancel' are right-aligned
 #ifndef __WXMAC__
@@ -192,18 +199,18 @@ inline wxPanel* PreferencesDialog::CreateGeneralTab(wxBookCtrlBase* parent)
 
 	#ifndef __WXMAC__
 	sizer->AddStretchSpacer();
-	sizer->Add(mGeneralEnableTrayIcon, 0, wxALIGN_LEFT);
+	sizer->Add(mGeneralEnableTrayIcon, 0, wxALIGN_LEFT | wxALIGN_TOP);
 	#endif
 	sizer->AddStretchSpacer();
-	sizer->Add(mGeneralCollectXYZFiles, 0, wxALIGN_LEFT);
+	sizer->Add(mGeneralCollectXYZFiles, 0, wxALIGN_LEFT | wxALIGN_TOP );
 	sizer->AddStretchSpacer();
-	sizer->Add(mGeneralAutoUpdateProjectsDatabase, 0, wxALIGN_LEFT);
+	sizer->Add(mGeneralAutoUpdateProjectsDatabase, 0, wxALIGN_LEFT | wxALIGN_TOP);
 	sizer->AddStretchSpacer();
-	sizer->Add(mGeneralKeepInaccessibleClientsLast, 0, wxALIGN_LEFT);
+	sizer->Add(mGeneralKeepInaccessibleClientsLast, 0, wxALIGN_LEFT | wxALIGN_TOP);
 	sizer->AddStretchSpacer();
-	sizer->Add(mGeneralStartMinimised, 0, wxALIGN_LEFT);
+	sizer->Add(mGeneralStartMinimised, 0, wxALIGN_LEFT | wxALIGN_TOP);
 	sizer->AddStretchSpacer();
-	sizer->Add(mGeneralUpdateCheck, 0, wxALIGN_LEFT);
+	sizer->Add(mGeneralUpdateCheck, 0, wxALIGN_LEFT | wxALIGN_TOP);
 	sizer->AddStretchSpacer();
 
 	topLevelSizer->Add(sizer, 1, wxEXPAND | wxALL, FMC_GUI_BORDER);
@@ -466,7 +473,7 @@ inline wxPanel* PreferencesDialog::CreateSystemTab(wxBookCtrlBase* parent)
 }*/
 
 
-inline wxPanel* PreferencesDialog::CreateWebAppTab(wxBookCtrlBase* parent)
+inline wxPanel* PreferencesDialog::CreateWebApp1Tab(wxBookCtrlBase* parent)
 {
 	wxPanel    *panel;
 	wxBoxSizer *sizer;
@@ -478,41 +485,41 @@ inline wxPanel* PreferencesDialog::CreateWebAppTab(wxBookCtrlBase* parent)
 	wxBoxSizer *simpleTextSizer;
 	wxBoxSizer *simpleTextLocationSizer;
 
-	panel                   = new wxPanel(parent);
-	sizer                   = new wxBoxSizer(wxVERTICAL);
-	topLevelSizer           = new wxBoxSizer(wxVERTICAL);
-	webAppSizer             = new wxBoxSizer(wxHORIZONTAL);
-	webAppLocationSizer     = new wxBoxSizer(wxHORIZONTAL);
-	simpleWebSizer          = new wxBoxSizer(wxHORIZONTAL);
-	simpleWebLocationSizer  = new wxBoxSizer(wxHORIZONTAL);
-	simpleTextSizer         = new wxBoxSizer(wxHORIZONTAL);
-	simpleTextLocationSizer = new wxBoxSizer(wxHORIZONTAL);
+	panel                           = new wxPanel(parent);
+	sizer                           = new wxBoxSizer(wxVERTICAL);
+	topLevelSizer                   = new wxBoxSizer(wxVERTICAL);
+	webAppSizer                     = new wxBoxSizer(wxHORIZONTAL);
+	webAppLocationSizer             = new wxBoxSizer(wxHORIZONTAL);
+	simpleWebSizer                  = new wxBoxSizer(wxHORIZONTAL);
+	simpleWebLocationSizer          = new wxBoxSizer(wxHORIZONTAL);
+	simpleTextSizer                 = new wxBoxSizer(wxHORIZONTAL);
+	simpleTextLocationSizer         = new wxBoxSizer(wxHORIZONTAL);
 
 	mWebAppUseWebApp                 = new wxCheckBox(panel, CHK_USEWEBAPP, _("Export Web Application"));
 	mWebAppWebAppLocation            = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
 	mWebAppWebAppLabel               = new wxStaticText(panel, wxID_ANY, _("Filename:"));
 #ifndef __WXMAC__
-	mWebAppWebAppLocationChooser     = new wxButton(panel, BTN_BROWSE_WEBAPP, wxT("..."), wxDefaultPosition, wxSize(26, 26));
+	mWebAppWebAppLocationChooser             = new wxButton(panel, BTN_BROWSE_WEBAPP, wxT("..."), wxDefaultPosition, wxSize(26, 26));
 #else
-	mWebAppWebAppLocationChooser     = new wxButton(panel, BTN_BROWSE_WEBAPP, _("Choose"), wxDefaultPosition);
+	mWebAppWebAppLocationChooser             = new wxButton(panel, BTN_BROWSE_WEBAPP, _("Choose"), wxDefaultPosition);
 #endif
 
-	mWebAppUseSimpleWeb              = new wxCheckBox(panel, CHK_USESIMPLEWEB, _("Export Simple Web page"));
-	mWebAppSimpleWebLocation         = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
-	mWebAppSimpleWebLabel            = new wxStaticText(panel, wxID_ANY, _("Filename:"));
+	mWebAppUseSimpleWeb               = new wxCheckBox(panel, CHK_USESIMPLEWEB, _("Export Simple Web page"));
+	mWebAppSimpleWebLocation          = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
+	mWebAppSimpleWebLabel             = new wxStaticText(panel, wxID_ANY, _("Filename:"));
 #ifndef __WXMAC__
-	mWebAppSimpleWebLocationChooser  = new wxButton(panel, BTN_BROWSE_SIMPLEWEB, wxT("..."), wxDefaultPosition, wxSize(26, 26));
+	mWebAppSimpleWebLocationChooser          = new wxButton(panel, BTN_BROWSE_SIMPLEWEB, wxT("..."), wxDefaultPosition, wxSize(26, 26));
 #else
-	mWebAppSimpleWebLocationChooser  = new wxButton(panel, BTN_BROWSE_SIMPLEWEB, _("Choose"), wxDefaultPosition);
+	mWebAppSimpleWebLocationChooser          = new wxButton(panel, BTN_BROWSE_SIMPLEWEB, _("Choose"), wxDefaultPosition);
 #endif
 
-	mWebAppUseSimpleText             = new wxCheckBox(panel, CHK_USESIMPLETEXT, _("Export Simple Text file"));
-	mWebAppSimpleTextLocation        = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
-	mWebAppSimpleTextLabel           = new wxStaticText(panel, wxID_ANY, _("Filename:"));
+	mWebAppUseSimpleText               = new wxCheckBox(panel, CHK_USESIMPLETEXT, _("Export Simple Text file"));
+	mWebAppSimpleTextLocation          = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
+	mWebAppSimpleTextLabel             = new wxStaticText(panel, wxID_ANY, _("Filename:"));
 #ifndef __WXMAC__
-	mWebAppSimpleTextLocationChooser = new wxButton(panel, BTN_BROWSE_SIMPLETEXT, wxT("..."), wxDefaultPosition, wxSize(26, 26));
+	mWebAppSimpleTextLocationChooser         = new wxButton(panel, BTN_BROWSE_SIMPLETEXT, wxT("..."), wxDefaultPosition, wxSize(26, 26));
 #else
-	mWebAppSimpleTextLocationChooser = new wxButton(panel, BTN_BROWSE_SIMPLETEXT, _("Choose"), wxDefaultPosition);
+	mWebAppSimpleTextLocationChooser         = new wxButton(panel, BTN_BROWSE_SIMPLETEXT, _("Choose"), wxDefaultPosition);
 #endif
 
 	webAppSizer->Add(mWebAppUseWebApp, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
@@ -542,6 +549,91 @@ inline wxPanel* PreferencesDialog::CreateWebAppTab(wxBookCtrlBase* parent)
 	sizer->AddStretchSpacer();
 	sizer->Add(simpleTextSizer, 0, wxALIGN_LEFT | wxEXPAND);
 	sizer->Add(simpleTextLocationSizer, 0, wxALIGN_LEFT | wxEXPAND);
+	sizer->AddStretchSpacer();
+
+	topLevelSizer->Add(sizer, 1, wxEXPAND | wxALL, FMC_GUI_BORDER);
+	panel->SetSizer(topLevelSizer);
+
+	return panel;
+}
+
+
+inline wxPanel* PreferencesDialog::CreateWebApp2Tab(wxBookCtrlBase* parent)
+{
+	wxPanel    *panel;
+	wxBoxSizer *sizer;
+	wxBoxSizer *topLevelSizer;
+	wxBoxSizer *webAppSizer;
+	wxBoxSizer *webAppLocationTemplateSizer;
+	wxBoxSizer *simpleWebSizer;
+	wxBoxSizer *simpleWebLocationTemplateSizer;
+	wxBoxSizer *simpleTextSizer;
+	wxBoxSizer *simpleTextLocationTemplateSizer;
+
+	panel                           = new wxPanel(parent);
+	sizer                           = new wxBoxSizer(wxVERTICAL);
+	topLevelSizer                   = new wxBoxSizer(wxVERTICAL);
+	webAppSizer                     = new wxBoxSizer(wxHORIZONTAL);
+	webAppLocationTemplateSizer     = new wxBoxSizer(wxHORIZONTAL);
+	simpleWebSizer                  = new wxBoxSizer(wxHORIZONTAL);
+	simpleWebLocationTemplateSizer  = new wxBoxSizer(wxHORIZONTAL);
+	simpleTextSizer                 = new wxBoxSizer(wxHORIZONTAL);
+	simpleTextLocationTemplateSizer = new wxBoxSizer(wxHORIZONTAL);
+
+	mWebAppWebAppTemplateLabel       = new wxStaticText(panel, wxID_ANY, _("Custom Web Application Template"));
+	mWebAppWebAppTemplateLocation    = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
+	mWebAppWebAppFilenameLabel       = new wxStaticText(panel, wxID_ANY, _("Filename:"));
+#ifndef __WXMAC__
+	mWebAppWebAppTemplateLocationChooser     = new wxButton(panel, BTN_BROWSE_WEBAPP_TEMPLATE, wxT("..."), wxDefaultPosition, wxSize(26, 26));
+#else
+	mWebAppWebAppTemplateLocationChooser     = new wxButton(panel, BTN_BROWSE_WEBAPP_TEMPLATE, _("Choose"), wxDefaultPosition);
+#endif
+
+	mWebAppSimpleWebTemplateLabel     = new wxStaticText(panel, wxID_ANY, _("Custom Simple Web Template"));
+	mWebAppSimpleWebTemplateLocation  = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
+	mWebAppSimpleWebFilenameLabel     = new wxStaticText(panel, wxID_ANY, _("Filename:"));
+#ifndef __WXMAC__
+	mWebAppSimpleWebTemplateLocationChooser  = new wxButton(panel, BTN_BROWSE_SIMPLEWEB_TEMPLATE, wxT("..."), wxDefaultPosition, wxSize(26, 26));
+#else
+	mWebAppSimpleWebLocationTemplateChooser  = new wxButton(panel, BTN_BROWSE_SIMPLEWEB_TEMPLATE, _("Choose"), wxDefaultPosition);
+#endif
+
+	mWebAppSimpleTextTemplateLabel     = new wxStaticText(panel, wxID_ANY, _("Custom Simple Text Template"));
+	mWebAppSimpleTextTemplateLocation  = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
+	mWebAppSimpleTextFilenameLabel     = new wxStaticText(panel, wxID_ANY, _("Filename:"));
+#ifndef __WXMAC__
+	mWebAppSimpleTextTemplateLocationChooser = new wxButton(panel, BTN_BROWSE_SIMPLETEXT_TEMPLATE, wxT("..."), wxDefaultPosition, wxSize(26, 26));
+#else
+	mWebAppSimpleTextTemplateLocationChooser = new wxButton(panel, BTN_BROWSE_SIMPLETEXT_TEMPLATE, _("Choose"), wxDefaultPosition);
+#endif
+
+	webAppSizer->Add(mWebAppWebAppTemplateLabel, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
+	webAppLocationTemplateSizer->Add(mWebAppWebAppFilenameLabel, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
+	webAppLocationTemplateSizer->Add(mWebAppWebAppTemplateLocation, 1, wxALIGN_CENTER_VERTICAL);
+	webAppLocationTemplateSizer->AddSpacer(FMC_GUI_SPACING_LOW);
+	webAppLocationTemplateSizer->Add(mWebAppWebAppTemplateLocationChooser, 0, wxALIGN_CENTER_VERTICAL);
+
+	simpleWebSizer->Add(mWebAppSimpleWebTemplateLabel, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
+	simpleWebLocationTemplateSizer->Add(mWebAppSimpleWebFilenameLabel, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
+	simpleWebLocationTemplateSizer->Add(mWebAppSimpleWebTemplateLocation, 1, wxALIGN_CENTER_VERTICAL);
+	simpleWebLocationTemplateSizer->AddSpacer(FMC_GUI_SPACING_LOW);
+	simpleWebLocationTemplateSizer->Add(mWebAppSimpleWebTemplateLocationChooser, 0, wxALIGN_CENTER_VERTICAL);
+
+	simpleTextSizer->Add(mWebAppSimpleTextTemplateLabel, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
+	simpleTextLocationTemplateSizer->Add(mWebAppSimpleTextFilenameLabel, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
+	simpleTextLocationTemplateSizer->Add(mWebAppSimpleTextTemplateLocation, 1, wxALIGN_CENTER_VERTICAL);
+	simpleTextLocationTemplateSizer->AddSpacer(FMC_GUI_SPACING_LOW);
+	simpleTextLocationTemplateSizer->Add(mWebAppSimpleTextTemplateLocationChooser, 0, wxALIGN_CENTER_VERTICAL);
+
+	sizer->AddStretchSpacer();
+	sizer->Add(webAppSizer, 0, wxALIGN_LEFT | wxEXPAND);
+	sizer->Add(webAppLocationTemplateSizer, 0, wxALIGN_LEFT | wxEXPAND);
+	sizer->AddStretchSpacer();
+	sizer->Add(simpleWebSizer, 0, wxALIGN_LEFT | wxEXPAND);
+	sizer->Add(simpleWebLocationTemplateSizer, 0, wxALIGN_LEFT | wxEXPAND);
+	sizer->AddStretchSpacer();
+	sizer->Add(simpleTextSizer, 0, wxALIGN_LEFT | wxEXPAND);
+	sizer->Add(simpleTextLocationTemplateSizer, 0, wxALIGN_LEFT | wxEXPAND);
 	sizer->AddStretchSpacer();
 
 	topLevelSizer->Add(sizer, 1, wxEXPAND | wxALL, FMC_GUI_BORDER);
@@ -585,6 +677,9 @@ inline void PreferencesDialog::LoadPreferences(void)
 	wxString webAppLocation;
 	wxString simpleWebLocation;
 	wxString simpleTextLocation;
+	wxString webAppTemplateLocation;
+	wxString simpleWebTemplateLocation;
+	wxString simpleTextTemplateLocation;
 
 	// -----===== General preferences =====-----
 	_PrefsGetBool(PREF_FAHCLIENT_COLLECTXYZFILES,     isCollectingXYZFiles);
@@ -740,6 +835,9 @@ inline void PreferencesDialog::LoadPreferences(void)
 	_PrefsGetString(PREF_WEBAPP_WEBAPPLOCATION,     webAppLocation);
 	_PrefsGetString(PREF_WEBAPP_SIMPLEWEBLOCATION,  simpleWebLocation);
 	_PrefsGetString(PREF_WEBAPP_SIMPLETEXTLOCATION, simpleTextLocation);
+	_PrefsGetString(PREF_WEBAPP_WEBAPPTEMPLATELOCATION,     webAppTemplateLocation);
+	_PrefsGetString(PREF_WEBAPP_SIMPLEWEBTEMPLATELOCATION,  simpleWebTemplateLocation);
+	_PrefsGetString(PREF_WEBAPP_SIMPLETEXTTEMPLATELOCATION, simpleTextTemplateLocation);
 	mWebAppUseWebApp->SetValue(useWebApp);
 	mWebAppUseSimpleWeb->SetValue(useSimpleWeb);
 	mWebAppUseSimpleText->SetValue(useSimpleText);
@@ -755,6 +853,9 @@ inline void PreferencesDialog::LoadPreferences(void)
 	mWebAppWebAppLocationChooser->Enable(useWebApp);
 	mWebAppSimpleWebLocationChooser->Enable(useSimpleWeb);
 	mWebAppSimpleTextLocationChooser->Enable(useSimpleText);
+	mWebAppWebAppTemplateLocation->SetValue(webAppTemplateLocation);
+	mWebAppSimpleWebTemplateLocation->SetValue(simpleWebTemplateLocation);
+	mWebAppSimpleTextTemplateLocation->SetValue(simpleTextTemplateLocation);
 
 	#ifdef _FAHMON_WIN32_
 	if(filemanager == wxT("explorer.exe"))
@@ -854,13 +955,18 @@ inline void PreferencesDialog::SavePreferences(void)
 	_PrefsSetBool(PREF_OVERRIDE_TIMEZONE,   mSystemOverrideTimezone->GetValue());
 	_PrefsSetInt (PREF_TZ,                  mSystemTZ->GetValue());
 
-	// -----===== WebApp preferences =====-----
+	// -----===== WebApp 1 preferences =====-----
 	_PrefsSetBool(PREF_WEBAPP_WEBAPP,               mWebAppUseWebApp->GetValue());
 	_PrefsSetString(PREF_WEBAPP_WEBAPPLOCATION,     mWebAppWebAppLocation->GetValue());
 	_PrefsSetBool(PREF_WEBAPP_SIMPLEWEB,            mWebAppUseSimpleWeb->GetValue());
 	_PrefsSetString(PREF_WEBAPP_SIMPLEWEBLOCATION,  mWebAppSimpleWebLocation->GetValue());
 	_PrefsSetBool(PREF_WEBAPP_SIMPLETEXT,           mWebAppUseSimpleText->GetValue());
 	_PrefsSetString(PREF_WEBAPP_SIMPLETEXTLOCATION, mWebAppSimpleTextLocation->GetValue());
+
+	// -----===== WebApp 2 preferences =====-----
+	_PrefsSetString(PREF_WEBAPP_WEBAPPTEMPLATELOCATION,     mWebAppWebAppTemplateLocation->GetValue());
+	_PrefsSetString(PREF_WEBAPP_SIMPLEWEBTEMPLATELOCATION,  mWebAppSimpleWebTemplateLocation->GetValue());
+	_PrefsSetString(PREF_WEBAPP_SIMPLETEXTTEMPLATELOCATION, mWebAppSimpleTextTemplateLocation->GetValue());
 
 	// -----===== Alert components when important prefs have changed =====-----
 	#ifndef __WXMAC__
@@ -967,6 +1073,48 @@ void PreferencesDialog::OnSimpleTextBrowseButton(wxCommandEvent& event)
 		selectedFile = OpenDialog->GetPath();
 		// Sets our current document to the file the user selected
 		mWebAppSimpleTextLocation->SetValue(selectedFile); //Opens that file
+	}
+}
+
+
+void PreferencesDialog::OnWebAppTemplateBrowseButton(wxCommandEvent& event)
+{
+	wxString selectedFile;
+
+	wxFileDialog *OpenDialog = new wxFileDialog(this, _("Choose the Web Application Template"), wxT(""), mWebAppWebAppTemplateLocation->GetValue(),wxT("HTML Files (*.html;*.htm)|*.html;*.htm"), wxOPEN, wxDefaultPosition);
+	if (OpenDialog->ShowModal() == wxID_OK) // if the user click "Open" instead of "cancel"
+	{
+		selectedFile = OpenDialog->GetPath();
+		// Sets our current document to the file the user selected
+		mWebAppWebAppTemplateLocation->SetValue(selectedFile); //Opens that file
+	}
+}
+
+
+void PreferencesDialog::OnSimpleWebTemplateBrowseButton(wxCommandEvent& event)
+{
+	wxString selectedFile;
+
+	wxFileDialog *OpenDialog = new wxFileDialog(this, _("Choose the Simple Web Page Template"), wxT(""), mWebAppSimpleWebTemplateLocation->GetValue(),wxT("HTML Files (*.html;*.htm)|*.html;*.htm"), wxOPEN, wxDefaultPosition);
+	if (OpenDialog->ShowModal() == wxID_OK) // if the user click "Open" instead of "cancel"
+	{
+		selectedFile = OpenDialog->GetPath();
+		// Sets our current document to the file the user selected
+		mWebAppSimpleWebTemplateLocation->SetValue(selectedFile); //Opens that file
+	}
+}
+
+
+void PreferencesDialog::OnSimpleTextTemplateBrowseButton(wxCommandEvent& event)
+{
+	wxString selectedFile;
+
+	wxFileDialog *OpenDialog = new wxFileDialog(this, _("Choose the Simple Text File Template"), wxT(""), mWebAppSimpleTextTemplateLocation->GetValue(),wxT("Any File (*.*)|*.*"), wxOPEN, wxDefaultPosition);
+	if (OpenDialog->ShowModal() == wxID_OK) // if the user click "Open" instead of "cancel"
+	{
+		selectedFile = OpenDialog->GetPath();
+		// Sets our current document to the file the user selected
+		mWebAppSimpleTextTemplateLocation->SetValue(selectedFile); //Opens that file
 	}
 }
 

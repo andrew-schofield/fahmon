@@ -384,36 +384,21 @@ void WebMonitor::WriteApp(void)
 
 	if(useWebApp)
 	{
-		if(wxFileExists(PathManager::GetUserTplPath() + wxT("/fancy_template.htm")))
-		{
-			ProcessTemplate(PathManager::GetUserTplPath() + wxT("/fancy_template.htm"), webAppLocation);
-		}
-		else
-		{
-			ProcessTemplate(PathManager::GetGlobalTplPath() + wxT("/fancy_template.htm"), webAppLocation);
-		}
+		wxString webAppTemplateLocation;
+		_PrefsGetString(PREF_WEBAPP_WEBAPPTEMPLATELOCATION,     webAppTemplateLocation);
+		ProcessTemplate(webAppTemplateLocation, webAppLocation);
 	}
 	if(useSimpleWeb)
 	{
-		if(wxFileExists(PathManager::GetUserTplPath() + wxT("/simple_template.htm")))
-		{
-			ProcessTemplate(PathManager::GetUserTplPath() + wxT("/simple_template.htm"), simpleWebLocation);
-		}
-		else
-		{
-			ProcessTemplate(PathManager::GetGlobalTplPath() + wxT("/simple_template.htm"), simpleWebLocation);
-		}
+		wxString simpleWebTemplateLocation;
+		_PrefsGetString(PREF_WEBAPP_SIMPLEWEBTEMPLATELOCATION,  simpleWebTemplateLocation);
+		ProcessTemplate(simpleWebTemplateLocation, simpleWebLocation);
 	}
 	if(useSimpleText)
 	{
-		if(wxFileExists(PathManager::GetUserTplPath() + wxT("/simple_template.txt")))
-		{
-			ProcessTemplate(PathManager::GetUserTplPath() + wxT("/simple_template.txt"), simpleTextLocation);
-		}
-		else
-		{
-			ProcessTemplate(PathManager::GetGlobalTplPath() + wxT("/simple_template.txt"), simpleTextLocation);
-		}
+		wxString simpleTextTemplateLocation;
+		_PrefsGetString(PREF_WEBAPP_SIMPLETEXTTEMPLATELOCATION, simpleTextTemplateLocation);
+		ProcessTemplate(simpleTextTemplateLocation, simpleTextLocation);
 	}
 }
 
