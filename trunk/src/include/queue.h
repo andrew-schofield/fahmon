@@ -109,6 +109,7 @@ protected:
 	wxDateTime mDownloadDate; /**< Object variable storing the WU download date */
 	wxString   mUserName; /**< Object variable storing the username associated with the WU assignment */
 	wxUint32   mTeamNumber; /**< Object variable storing the team number associated with the WU assignment */
+	wxInt32    mFlops; /**< Object variable storing the flop count associated with the current WU */
 
 /**
  * Format of queue.dat.
@@ -121,16 +122,16 @@ protected:
 		u32 current; /**< 0004 Current index number */
 		struct qs
 		{
-			u32  stat;     /**< 000 Status */
-			char z004[4];  /**< 004 Pad for Windows, others as of v4.01 */
-			u32  tdata[8]; /**< 008 Time data (epoch 0000 1jan00 UTC) */
-			u32  svr1;     /**< 040 Server IP address (until v3.0) */
-			u32  ustat;    /**< 044 Upload status */
-			char url[128]; /**< 048 Web address for core downloads */
-			u32  m176;     /**< 176 Misc1a */
-			u32  core;     /**< 180 Core_xx number (hex) */
-			u32  m184;     /**< 184 Misc1b */
-			u32  dsiz;     /**< 188 wudata_xx.dat file size */
+			u32  stat;         /**< 000 Status */
+			char use_cores[4]; /**< 004 Pad for Windows, others as of v4.01, as of v6.01 number of SMP Cores to use (LE) */
+			u32  tdata[8];     /**< 008 Time data (epoch 0000 1jan00 UTC) */
+			u32  svr1;         /**< 040 Server IP address (until v3.0) */
+			u32  ustat;        /**< 044 Upload status */
+			char url[128];     /**< 048 Web address for core downloads */
+			u32  m176;         /**< 176 Misc1a */
+			u32  core;         /**< 180 Core_xx number (hex) */
+			u32  m184;         /**< 184 Misc1b */
+			u32  dsiz;         /**< 188 wudata_xx.dat file size */
 			char z192[16];
 			union
 			{
@@ -152,43 +153,46 @@ protected:
 				} g; /**< Genome@home data */
 			} wuid; /**< 208 Work unit ID information */
 			char z224[36];
-			char mid[4];    /**< 260 Machine ID (LE) */
-			u32  svr2;      /**< 264 Server IP address */
-			u32  port;      /**< 268 Server port number */
-			char type[64];  /**< 272 Work unit type */
-			char uname[64]; /**< 336 User Name */
-			char teamn[64]; /**< 400 Team Number */
-			char uid[8];    /**< 464 Stored ID for unit (UserID + MachineID) (LE or BE, usually BE) */
-			char bench[4];  /**< 472 Benchmark (as of v3.24) (LE) */
-			char m476[4];   /**< 476 Misc3b (unused as of v3.24) (LE) */
-			u32  cpu_type;  /**< 480 CPU type (LE or BE, sometimes 0) */
-			u32  os_type;   /**< 484 OS type (LE or BE, sometimes 0) */
-			u32  cpu_spec;  /**< 488 CPU species (LE or BE, sometimes 0) */
-			u32  os_spec;   /**< 492 OS species (LE or BE, sometimes 0) */
-			u32  expire;    /**< 496 Allowed time to return (seconds) */
+			char mid[4];      /**< 260 Machine ID (LE) */
+			u32  svr2;        /**< 264 Server IP address */
+			u32  port;        /**< 268 Server port number */
+			char type[64];    /**< 272 Work unit type */
+			char uname[64];   /**< 336 User Name */
+			char teamn[64];   /**< 400 Team Number */
+			char uid[8];      /**< 464 Stored ID for unit (UserID + MachineID) (LE or BE, usually BE) */
+			char bench[4];    /**< 472 Benchmark (as of v3.24) (LE) */
+			char m476[4];     /**< 476 Misc3b (unused as of v3.24) (LE) */
+			u32  cpu_type;    /**< 480 CPU type (LE or BE, sometimes 0) */
+			u32  os_type;     /**< 484 OS type (LE or BE, sometimes 0) */
+			u32  cpu_spec;    /**< 488 CPU species (LE or BE, sometimes 0) */
+			u32  os_spec;     /**< 492 OS species (LE or BE, sometimes 0) */
+			u32  expire;      /**< 496 Allowed time to return (seconds) */
 			char z500[8];
-			char aiflag[4]; /**< 508 Assignment info present flag (LE or BE) */
-			char aitime[4]; /**< 512 Assignment timestamp (LE or BE) */
-			char aidata[4]; /**< 516 Assignment info (LE or BE) */
-			char csip[4];   /**< 520 Collection server IP address (as of v5.00) (LE) */
-			char dstart[4]; /**< 524 Download started time (as of v5.00) (BE) */
+			char aiflag[4];   /**< 508 Assignment info present flag (LE or BE) */
+			char aitime[4];   /**< 512 Assignment timestamp (LE or BE) */
+			char aidata[4];   /**< 516 Assignment info (LE or BE) */
+			char csip[4];     /**< 520 Collection server IP address (as of v5.00) (LE) */
+			char dstart[4];   /**< 524 Download started time (as of v5.00) (BE) */
 			char z528[16];
-			char cores[4];  /**< 544 Number of SMP cores (as of v5.91) (BE) */
-			char tag[16];   /**< 548 Tag of Work Unit (as of v5.00) */
-			char z564[52];
-			char memory[4]; /**< 616 Available memory (as of v6.00) (BE) */
+			char cores[4];    /**< 544 Number of SMP cores (as of v5.91) (BE) */
+			char tag[16];     /**< 548 Tag of Work Unit (as of v5.00) */
+			char z564[16];
+			char passkey[32]; /**< 580 Passkey (as of v6.00) */
+			char flops[4];    /**< 612 Flops per CPU (core) (as of v6.00) (BE) */
+			char memory[4];   /**< 616 Available memory (as of v6.00) (BE) */
 			char z620[68];
-			u32  due[4];    /**< 688 WU expiration time */
-			u32  plimit;    /**< 704 Packet size limit (as of v5.00) */
-			u32  uploads;   /**< 708 Number of upload failures (as of v5.00) */
+			u32  due[4];      /**< 688 WU expiration time */
+			u32  plimit;      /**< 704 Packet size limit (as of v5.00) */
+			u32  uploads;     /**< 708 Number of upload failures (as of v5.00) */
 		} entry[10]; /**< 0008 Array of ten queue entries */
-		u32  pfract;    /**< 7128 Performance fraction (as of v3.24) */
-		u32  punits;    /**< 7132 Performance fraction unit weight (as of v3.24) */
-		u32  drate;     /**< 7136 Download rate sliding average (as of v4.00) */
-		u32  dunits;    /**< 7140 Download rate unit weight (as of v4.00) */
-		u32  urate;     /**< 7144 Upload rate sliding average (as of v4.00) */
-		u32  uunits;    /**< 7148 Upload rate unit weight (as of v4.00) */
-		char z7152[16]; /**< 7152 (as of v5.00) ...all zeros after queue conversion... */
+		u32  pfract;          /**< 7128 Performance fraction (as of v3.24) */
+		u32  punits;          /**< 7132 Performance fraction unit weight (as of v3.24) */
+		u32  drate;           /**< 7136 Download rate sliding average (as of v4.00) */
+		u32  dunits;          /**< 7140 Download rate unit weight (as of v4.00) */
+		u32  urate;           /**< 7144 Upload rate sliding average (as of v4.00) */
+		u32  uunits;          /**< 7148 Upload rate unit weight (as of v4.00) */
+		char results_sent[4]; /**< 7152 Results successfully sent (after upload failures) (as of v5.00) (LE) */
+		char z7156[12];       /**< 7152 (as of v5.00) ...all zeros after queue conversion... */
 	};
 
 /**
@@ -241,6 +245,7 @@ public:
 	wxString          GetUserName(void)     const {return mUserName;} /**< Returns the user name associated with the assignment */
 	wxUint32          GetTeamNumber(void)   const {return mTeamNumber;} /**< Returns the team number associated with the assignment */
 	const wxDateTime& GetDownloadDate(void) const {return mDownloadDate;} /**< Returns the WU download date */
+	wxInt32           GetFlopCount(void)    const {return mFlops;} /**< Returns the WU flop count */
 
 /**
  * End qd

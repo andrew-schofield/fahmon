@@ -240,6 +240,19 @@ tt:				if (genome)
 		{
 			mTeamNumber  = (wxUint32)tmpLong;
 		}
+		if (queueversion >= 501) {
+			if(be4(p->flops) > 0) {
+
+				double mflops;
+
+				mflops = be4(p->flops) / 1000000.000000;
+				mFlops = (wxInt32)mflops;
+			}
+		}
+		else
+		{
+			mFlops = 0;
+		}
 		return true;
 	}
 	return true;
