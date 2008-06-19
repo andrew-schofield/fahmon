@@ -17,7 +17,7 @@
 /**
  * \file client.h
  * Creates a class for every client.
- * \author François Ingelrest
+ * \author Franï¿½ois Ingelrest
  * \author Andrew Schofield
  **/
 
@@ -80,6 +80,7 @@ protected:
 	double     mPPD; /**< PPD for client */
 	wxDateTime mDownloadDate; /**< Download date for current WU */
 	bool       mIsFrameCountAccurate; /**< Is frame count being guessed? */
+	wxString   mCore; /**< Core for current client */
 
 	/**
 	 * Calculate the client's ETA.
@@ -209,6 +210,7 @@ public:
 	const wxDateTime& GetDownloadDate(void)         const {return mDownloadDate;} /**< Returns client download date */
 	bool              GetIsFrameCountAccurate(void) const {return mIsFrameCountAccurate;} /**< Returns whether frame count is accurate or not */
 	const ETA*        GetETA(void)                  const {return &mETA;} /**< Returns client ETA */
+	wxString          GetCore(void)                 const {return mCore;} /**< Returns client core */
 
 	/**
 	 * Return true if some modification occurred since the last reload

@@ -4,12 +4,12 @@
 #
 # Bastien <bastien@knife-edge.nl>, 2007, 2008.
 # Andrew Schofield <andrew_s@fahmon.net>, 2007, 2008.
-#: src/listViewClients.cpp:635 src/listViewClients.cpp:689
+#: src/listViewClients.cpp:609 src/listViewClients.cpp:663
 msgid ""
 msgstr ""
 "Project-Id-Version: nl_NL\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-06-18 17:08+0100\n"
+"POT-Creation-Date: 2008-06-19 15:11+0100\n"
 "PO-Revision-Date: 2008-01-24 16:42+0100\n"
 "Last-Translator: Bastien <bastien@knife-edge.nl>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -157,7 +157,7 @@ msgstr "Logbestand niet geladen!"
 msgid "anonymous"
 msgstr "anoniem"
 
-#: src/client.cpp:98 src/listViewClients.cpp:707 src/listViewClients.cpp:711
+#: src/client.cpp:98 src/listViewClients.cpp:681 src/listViewClients.cpp:685
 #: src/mainDialog.cpp:453 src/mainDialog.cpp:458 src/mainDialog.cpp:459
 #: src/mainDialog.cpp:460 src/mainDialog.cpp:461 src/mainDialog.cpp:462
 #: src/mainDialog.cpp:547 src/mainDialog.cpp:603 src/webMonitor.cpp:130
@@ -196,48 +196,48 @@ msgstr "Fout tijdens lezen van %squeue.dat!"
 msgid "Error while reading %sunitinfo.txt!"
 msgstr "Fout tijdens lezen van %sunitinfo.txt!"
 
-#: src/client.cpp:456
+#: src/client.cpp:459
 #, c-format
 msgid "The progress value in file %s could not be found/parsed"
 msgstr "De voortgang in bestand %s kan niet gevonden of weergegeven worden"
 
-#: src/client.cpp:498
+#: src/client.cpp:501
 #, c-format
 msgid "Unable to save %s because it does not exist"
 msgstr "Onmogelijk om %s op te slaan omdat deze niet bestaat"
 
-#: src/client.cpp:505
+#: src/client.cpp:508
 #, c-format
 msgid "Unable to create directory %s"
 msgstr "Onmogelijk om directory %s aan te maken"
 
-#: src/client.cpp:518
+#: src/client.cpp:521
 #, c-format
 msgid "Unable to copy %s to %s"
 msgstr "Onmogelijk om %s naar %s te kopiëren"
 
-#: src/client.cpp:542
+#: src/client.cpp:545
 #, c-format
 msgid "%s is on frame %u"
 msgstr "%s is op frame %u"
 
-#: src/client.cpp:546
+#: src/client.cpp:549
 #, c-format
 msgid "Cannot determine frame number for %s (this isn't a problem)"
 msgstr "Kan geen framenummer vinden voor %s (is geen probleem)"
 
-#: src/client.cpp:729
+#: src/client.cpp:732
 #, c-format
 msgid "%s has an unknown state (Unable to find a complete frame)"
 msgstr ""
 "%s heeft een onbekende status (Niet mogelijk om een compleet frame te vinden)"
 
-#: src/client.cpp:738
+#: src/client.cpp:741
 #, c-format
 msgid "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
 msgstr "%s is gestopt (De regel \"Folding@Home Client Shutdown.\" is gevonden)"
 
-#: src/client.cpp:747
+#: src/client.cpp:750
 #, c-format
 msgid ""
 "%s has an unknown state (Unable to extract a valid elapsed time since the "
@@ -246,17 +246,17 @@ msgstr ""
 "%s heeft een onbekende status (niet mogelijk om een goede tijdsduur te "
 "vinden sinds het laatst afgeronde frame)"
 
-#: src/client.cpp:755
+#: src/client.cpp:758
 #, c-format
 msgid "%s has been marked as having a asynchronous clock."
 msgstr "%s is gemarkeerd dat deze een asynchrone klok heeft."
 
-#: src/client.cpp:790
+#: src/client.cpp:793
 #, c-format
 msgid "%s seems to have hung : Elapsed time is %um and limit is %um"
 msgstr "%s lijkt te hangen: Verstreken tijd is %um en de limiet is %um"
 
-#: src/client.cpp:795
+#: src/client.cpp:798
 #, c-format
 msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
 msgstr "%s lijkt inactief: verstreken tijd is %um en de limiet is %um"
@@ -414,106 +414,106 @@ msgstr "Kan directory <%s> niet aanmaken"
 msgid "%.1f KB/s"
 msgstr "%.1f KB/s"
 
-#: src/listViewClients.cpp:156 src/listViewClients.cpp:899
+#: src/listViewClients.cpp:156 src/listViewClients.cpp:873
 #: src/webMonitor.cpp:595
 msgid "Progress"
 msgstr "Voortgang"
 
-#: src/listViewClients.cpp:157 src/listViewClients.cpp:900
+#: src/listViewClients.cpp:157 src/listViewClients.cpp:874
 #: src/webMonitor.cpp:596
 msgid "Name"
 msgstr "Naam"
 
-#: src/listViewClients.cpp:158 src/listViewClients.cpp:901
+#: src/listViewClients.cpp:158 src/listViewClients.cpp:875
 #: src/webMonitor.cpp:597
 msgid "ETA"
 msgstr "ETA"
 
-#: src/listViewClients.cpp:159 src/listViewClients.cpp:902
+#: src/listViewClients.cpp:159 src/listViewClients.cpp:876
 #: src/webMonitor.cpp:598
 msgid "PPD"
 msgstr "PPD"
 
-#: src/listViewClients.cpp:160 src/listViewClients.cpp:903
+#: src/listViewClients.cpp:160 src/listViewClients.cpp:877
 #, fuzzy
 msgid "Core"
 msgstr "Core:"
 
-#: src/listViewClients.cpp:162 src/listViewClients.cpp:905
+#: src/listViewClients.cpp:162 src/listViewClients.cpp:879
 #: src/webMonitor.cpp:593
 msgid "Credit"
 msgstr "Waardering"
 
-#: src/listViewClients.cpp:163 src/listViewClients.cpp:906
+#: src/listViewClients.cpp:163 src/listViewClients.cpp:880
 #: src/webMonitor.cpp:594
 msgid "Downloaded"
 msgstr "Gedownload"
 
-#: src/listViewClients.cpp:164 src/listViewClients.cpp:907
+#: src/listViewClients.cpp:164 src/listViewClients.cpp:881
 #, fuzzy
 msgid "Deadline"
 msgstr "Uiterste inlevermoment:"
 
-#: src/listViewClients.cpp:481
+#: src/listViewClients.cpp:455
 msgid "Loading..."
 msgstr "Laden..."
 
-#: src/listViewClients.cpp:591 src/mainDialog.cpp:491 src/webMonitor.cpp:204
+#: src/listViewClients.cpp:565 src/mainDialog.cpp:491 src/webMonitor.cpp:204
 #, c-format
 msgid "%u points"
 msgstr "%u punten"
 
-#: src/listViewClients.cpp:622 src/listViewClients.cpp:670
+#: src/listViewClients.cpp:596 src/listViewClients.cpp:644
 #: src/mainDialog.cpp:440 src/mainDialog.cpp:528 src/mainDialog.cpp:585
 #: src/webMonitor.cpp:168 src/webMonitor.cpp:239 src/webMonitor.cpp:294
 #, c-format
 msgid "%s ago"
 msgstr "%s geleden"
 
-#: src/listViewClients.cpp:674 src/mainDialog.cpp:532 src/mainDialog.cpp:589
+#: src/listViewClients.cpp:648 src/mainDialog.cpp:532 src/mainDialog.cpp:589
 #: src/webMonitor.cpp:243 src/webMonitor.cpp:298
 #, c-format
 msgid "In %s"
 msgstr "In %s"
 
-#: src/listViewClients.cpp:703 src/webMonitor.cpp:354
+#: src/listViewClients.cpp:677 src/webMonitor.cpp:354
 msgid "Finished"
 msgstr "Afgerond"
 
-#: src/listViewClients.cpp:715 src/webMonitor.cpp:366
+#: src/listViewClients.cpp:689 src/webMonitor.cpp:366
 msgid "*Hung*"
 msgstr "*Hangt*"
 
-#: src/listViewClients.cpp:864 src/listViewClients.cpp:872
+#: src/listViewClients.cpp:838 src/listViewClients.cpp:846
 #: src/mainDialog.cpp:637
 msgid "Add a new client"
 msgstr "Nieuwe client toevoegen"
 
-#: src/listViewClients.cpp:874
+#: src/listViewClients.cpp:848
 msgid "Reload this client"
 msgstr "Client opnieuw inlezen"
 
-#: src/listViewClients.cpp:875
+#: src/listViewClients.cpp:849
 msgid "Edit this client"
 msgstr "Wijzig deze client"
 
-#: src/listViewClients.cpp:876
+#: src/listViewClients.cpp:850
 msgid "Delete this client"
 msgstr "Verwijder deze client"
 
-#: src/listViewClients.cpp:877
+#: src/listViewClients.cpp:851
 msgid "View Client Files"
 msgstr "Bekijk client bestanden"
 
-#: src/listViewClients.cpp:904 src/webMonitor.cpp:592
+#: src/listViewClients.cpp:878 src/webMonitor.cpp:592
 msgid "PRCG"
 msgstr "PRCG"
 
-#: src/listViewClients.cpp:1005 src/mainDialog.cpp:1509
+#: src/listViewClients.cpp:979 src/mainDialog.cpp:1509
 msgid "Do you really want to delete this client?"
 msgstr "Zeker weten dat deze client moet worden verwijderd?"
 
-#: src/listViewClients.cpp:1065
+#: src/listViewClients.cpp:1039
 msgid ""
 "Unable to launch the default filemanager.\n"
 "\n"

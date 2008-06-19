@@ -17,7 +17,7 @@
 /**
  * \file client.cpp
  * Creates a class for every client.
- * \author François Ingelrest
+ * \author Franï¿½ois Ingelrest
  * \author Andrew Schofield
  **/
 
@@ -212,6 +212,8 @@ void Client::Reload(void)
 
 	project = ProjectsManager::GetInstance()->GetProject(mProjectId);
 
+	mCore = wxT("");
+
 	if(lastFrame != NULL && project != INVALID_PROJECT_ID)
 	{
 		frameCount = lastFrame->GetFrameCount();
@@ -240,6 +242,7 @@ void Client::Reload(void)
 				lastFrame->SetId(100);
 			}
 		}
+		mCore = Core::IdToLongName(project->GetCoreId());
 
 	}
 	else

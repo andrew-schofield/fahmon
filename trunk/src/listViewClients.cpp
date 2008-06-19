@@ -401,36 +401,10 @@ int ListViewClients::CompareClients(wxUint32 clientId1, wxUint32 clientId2) cons
 			}
 			break;
 
-		/*case LVC_CORE:
-			if(client1->IsAccessible() && client2->IsAccessible())
-			{
-				comparisonResult = Core::IdToLongName(ProjectsManager::GetInstance()->GetProject(client1->GetProjectId())->GetCoreId()).CmpNoCase(Core::IdToLongName(ProjectsManager::GetInstance()->GetProject(client2->GetProjectId())->GetCoreId()));
-			}
-			else if(!client1->IsAccessible() && !client2->IsAccessible())
-			{
-				comparisonResult = 1;
-			}
-			else
-			{
-				comparisonResult = 1;
-			}
-			break;*/
-
-
-		/*case LVC_CORE:
-			if(client1->IsAccessible() && client2->IsAccessible())
-			{
-			comparisonResult = Core::IdToLongName(ProjectsManager::GetInstance()->GetProject(client1->GetProjectId())->GetCoreId()).CmpNoCase(Core::IdToLongName(ProjectsManager::GetInstance()->GetProject(client2->GetProjectId())->GetCoreId()));
-	}
-			else if(!client1->IsAccessible() && !client2->IsAccessible())
-			{
-			comparisonResult = 1;
-	}
-			else
-			{
-			comparisonResult = -1;
-	}
-			break;*/
+		// ---
+		case LVC_CORE:
+			comparisonResult = client1->GetCore().CmpNoCase(client2->GetCore());
+			break;
 
 		// We should never fall here
 		default:
@@ -586,7 +560,7 @@ void ListViewClients::UpdateClient(wxUint32 clientId)
 		SetItem(clientIndex, LVC_PRCG, wxString::Format(wxT("P%i (R%i, C%i, G%i)"), client->GetProjectId(), client->GetProjectRun(), client->GetProjectClone(), client->GetProjectGen()));
 
 		//core name
-		SetItem(clientIndex, LVC_CORE, Core::IdToLongName(project->GetCoreId()));
+		SetItem(clientIndex, LVC_CORE, client->GetCore());
 		//credit
 		SetItem(clientIndex, LVC_CREDIT, wxString::Format(_("%u points"), project->GetCredit()));
 		//downloaded
