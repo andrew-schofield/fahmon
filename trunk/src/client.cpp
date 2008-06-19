@@ -96,7 +96,10 @@ void Client::Reset(void)
 	mDownloadDate   = wxInvalidDateTime;
 	mProjectString  = wxT("");
 	mProgressString = _("N/A");
-	mPPD = 0;
+	mPPD            = 0;
+	mCore           = wxT("");
+	mCredit         = 0;
+	mDeadlineDate   = wxInvalidDateTime;
 
 	mETA.Invalidate();
 }
@@ -244,6 +247,11 @@ void Client::Reload(void)
 		}
 		mCore = Core::IdToLongName(project->GetCoreId());
 		mCredit = project->GetCredit();
+		if(mDownloadDate.IsValid() && project->GetPreferredDeadlineInDays() != 0)
+		{
+			mDeadlineDate = mDownloadDate;
+			mDeadlineDate.Add(wxTimeSpan::Seconds(project->GetPreferredDeadlineInDays() * 864));
+		}
 
 	}
 	else

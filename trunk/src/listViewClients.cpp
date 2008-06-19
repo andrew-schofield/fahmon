@@ -425,6 +425,14 @@ int ListViewClients::CompareClients(wxUint32 clientId1, wxUint32 clientId2) cons
 
 		// ---
 		case LVC_DEADLINE:
+			if(client1->GetDeadlineDate().IsEarlierThan(client2->GetDeadlineDate()) == true)
+			{
+				comparisonResult = 1;
+			}
+			else
+			{
+				comparisonResult = -1;
+			}
 			break;
 
 		// We should never fall here
@@ -630,8 +638,7 @@ void ListViewClients::UpdateClient(wxUint32 clientId)
 			SetItem(clientIndex, LVC_DOWNLOADED, _(""));
 		}if(client->GetDownloadDate().IsValid() && project->GetPreferredDeadlineInDays() != 0)
 		{
-			preferredDeadline = downloadTime;
-			preferredDeadline.Add(wxTimeSpan::Seconds(project->GetPreferredDeadlineInDays() * 864));
+			preferredDeadline = client->GetDeadlineDate();
 			if(deadlineDays == ETADS_LEFT_TIME)
 			{
 				timeDiff = preferredDeadline.Subtract(timeNow);

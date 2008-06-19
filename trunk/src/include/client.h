@@ -82,6 +82,7 @@ protected:
 	bool       mIsFrameCountAccurate; /**< Is frame count being guessed? */
 	wxString   mCore; /**< Core for current client */
 	wxUint32   mCredit; /**< Credit for current client */
+	wxDateTime mDeadlineDate; /**< Preferred deadline for current client */
 
 	/**
 	 * Calculate the client's ETA.
@@ -213,6 +214,7 @@ public:
 	const ETA*        GetETA(void)                  const {return &mETA;} /**< Returns client ETA */
 	wxString          GetCore(void)                 const {return mCore;} /**< Returns client core */
 	wxUint32          GetCredit(void)               const {return mCredit;} /**< Returns client credit */
+	const wxDateTime& GetDeadlineDate(void)         const {return mDeadlineDate;} /** Returns client preferred deadline date */
 
 	/**
 	 * Return true if some modification occurred since the last reload
