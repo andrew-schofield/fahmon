@@ -406,6 +406,27 @@ int ListViewClients::CompareClients(wxUint32 clientId1, wxUint32 clientId2) cons
 			comparisonResult = client1->GetCore().CmpNoCase(client2->GetCore());
 			break;
 
+		// ---
+		case LVC_PRCG:
+			comparisonResult = wxString::Format(wxT("P%i (R%i, C%i, G%i)"), client1->GetProjectId(), client1->GetProjectRun(), client1->GetProjectClone(), client1->GetProjectGen()).CmpNoCase(wxString::Format(wxT("P%i (R%i, C%i, G%i)"), client2->GetProjectId(), client2->GetProjectRun(), client2->GetProjectClone(), client2->GetProjectGen()));
+			break;
+
+		// ---
+		case LVC_CREDIT:
+			if(client1->GetCredit() > client2->GetCredit())
+			{
+				comparisonResult = -1;
+			}
+			else
+			{
+				comparisonResult = 1;
+			}
+			break;
+
+		// ---
+		case LVC_DEADLINE:
+			break;
+
 		// We should never fall here
 		default:
 			wxASSERT(false);
@@ -562,7 +583,7 @@ void ListViewClients::UpdateClient(wxUint32 clientId)
 		//core name
 		SetItem(clientIndex, LVC_CORE, client->GetCore());
 		//credit
-		SetItem(clientIndex, LVC_CREDIT, wxString::Format(_("%u points"), project->GetCredit()));
+		SetItem(clientIndex, LVC_CREDIT, wxString::Format(_("%u points"), client->GetCredit()));
 		//downloaded
 		if(client->GetDownloadDate().IsValid())
 		{

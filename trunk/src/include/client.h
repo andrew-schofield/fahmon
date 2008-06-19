@@ -81,6 +81,7 @@ protected:
 	wxDateTime mDownloadDate; /**< Download date for current WU */
 	bool       mIsFrameCountAccurate; /**< Is frame count being guessed? */
 	wxString   mCore; /**< Core for current client */
+	wxUint32   mCredit; /**< Credit for current client */
 
 	/**
 	 * Calculate the client's ETA.
@@ -211,6 +212,7 @@ public:
 	bool              GetIsFrameCountAccurate(void) const {return mIsFrameCountAccurate;} /**< Returns whether frame count is accurate or not */
 	const ETA*        GetETA(void)                  const {return &mETA;} /**< Returns client ETA */
 	wxString          GetCore(void)                 const {return mCore;} /**< Returns client core */
+	wxUint32          GetCredit(void)               const {return mCredit;} /**< Returns client credit */
 
 	/**
 	 * Return true if some modification occurred since the last reload

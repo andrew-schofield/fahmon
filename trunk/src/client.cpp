@@ -243,6 +243,7 @@ void Client::Reload(void)
 			}
 		}
 		mCore = Core::IdToLongName(project->GetCoreId());
+		mCredit = project->GetCredit();
 
 	}
 	else
