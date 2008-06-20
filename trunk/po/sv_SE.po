@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv_SE\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-06-20 00:25+0100\n"
+"POT-Creation-Date: 2008-06-20 14:42+0100\n"
 "PO-Revision-Date: 2008-02-01 20:20+0100\n"
 "Last-Translator: Olof Persson <floffe@gmail.com>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -25,12 +25,12 @@ msgid "About"
 msgstr "Om "
 
 #: src/aboutDialog.cpp:53
-msgid "Author:"
-msgstr "Författare:"
+msgid "Lead Developer:"
+msgstr ""
 
 #: src/aboutDialog.cpp:55
-msgid "Maintainer:"
-msgstr "Ansvarig:"
+msgid "Retired Developer:"
+msgstr ""
 
 #: src/aboutDialog.cpp:57
 msgid "Homepage:"
@@ -1320,6 +1320,12 @@ msgstr "Enkel textrapport"
 #: src/webMonitor.cpp:595
 msgid "Last updated:"
 msgstr "Senast uppdaterad:"
+
+#~ msgid "Author:"
+#~ msgstr "Författare:"
+
+#~ msgid "Maintainer:"
+#~ msgstr "Ansvarig:"
 
 #, fuzzy
 #~ msgid "View selected client files"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nl_NL\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-06-20 00:25+0100\n"
+"POT-Creation-Date: 2008-06-20 14:42+0100\n"
 "PO-Revision-Date: 2008-01-24 16:42+0100\n"
 "Last-Translator: Bastien <bastien@knife-edge.nl>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -23,12 +23,12 @@ msgid "About"
 msgstr "Over"
 
 #: src/aboutDialog.cpp:53
-msgid "Author:"
-msgstr "Auteur:"
+msgid "Lead Developer:"
+msgstr ""
 
 #: src/aboutDialog.cpp:55
-msgid "Maintainer:"
-msgstr "Onderhouden door:"
+msgid "Retired Developer:"
+msgstr ""
 
 #: src/aboutDialog.cpp:57
 msgid "Homepage:"
@@ -1324,6 +1324,12 @@ msgstr "Eenvoudig tekstweergave"
 #: src/webMonitor.cpp:595
 msgid "Last updated:"
 msgstr "Laatste update:"
+
+#~ msgid "Author:"
+#~ msgstr "Auteur:"
+
+#~ msgid "Maintainer:"
+#~ msgstr "Onderhouden door:"
 
 #, fuzzy
 #~ msgid "View selected client files"

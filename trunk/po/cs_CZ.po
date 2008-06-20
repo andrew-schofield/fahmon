@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cs_CZ\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-06-20 00:25+0100\n"
+"POT-Creation-Date: 2008-06-20 14:42+0100\n"
 "PO-Revision-Date: 2008-02-08 14:50+0100\n"
 "Last-Translator: Martin Bednar <serafean@gmail.com>\n"
 "Language-Team: Czech <en@li.org>\n"
@@ -23,12 +23,12 @@ msgid "About"
 msgstr "O aplikaci"
 
 #: src/aboutDialog.cpp:53
-msgid "Author:"
-msgstr "Autor"
+msgid "Lead Developer:"
+msgstr ""
 
 #: src/aboutDialog.cpp:55
-msgid "Maintainer:"
-msgstr "udržbář"
+msgid "Retired Developer:"
+msgstr ""
 
 #: src/aboutDialog.cpp:57
 msgid "Homepage:"
@@ -1315,6 +1315,12 @@ msgstr "Jednoduchý textový výstup"
 #: src/webMonitor.cpp:595
 msgid "Last updated:"
 msgstr "Posledně aktualizované:"
+
+#~ msgid "Author:"
+#~ msgstr "Autor"
+
+#~ msgid "Maintainer:"
+#~ msgstr "udržbář"
 
 #, fuzzy
 #~ msgid "View selected client files"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it-IT\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-06-20 00:25+0100\n"
+"POT-Creation-Date: 2008-06-20 14:42+0100\n"
 "PO-Revision-Date: 2008-02-25 12:46+0100\n"
 "Last-Translator: Zurgo <zurgo@virgilio.it>\n"
 "Language-Team:  <zurgo@virgilio.it>\n"
@@ -24,12 +24,12 @@ msgid "About"
 msgstr "Informazioni"
 
 #: src/aboutDialog.cpp:53
-msgid "Author:"
-msgstr "Autore:"
+msgid "Lead Developer:"
+msgstr ""
 
 #: src/aboutDialog.cpp:55
-msgid "Maintainer:"
-msgstr "Gestore:"
+msgid "Retired Developer:"
+msgstr ""
 
 #: src/aboutDialog.cpp:57
 msgid "Homepage:"
@@ -1332,6 +1332,12 @@ msgstr "Risultato in testo semplice"
 #: src/webMonitor.cpp:595
 msgid "Last updated:"
 msgstr "Ultimo aggiornamento:"
+
+#~ msgid "Author:"
+#~ msgstr "Autore:"
+
+#~ msgid "Maintainer:"
+#~ msgstr "Gestore:"
 
 #, fuzzy
 #~ msgid "View selected client files"

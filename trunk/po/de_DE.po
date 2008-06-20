@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FahMon Translation - de_DE 1.1.b1\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-06-20 00:25+0100\n"
+"POT-Creation-Date: 2008-06-20 14:42+0100\n"
 "PO-Revision-Date: 2008-04-10 22:30+0100\n"
 "Last-Translator: Mark Gerber <mark.gerber@web.de>\n"
 "Language-Team: Mark Gerber <mark.gerber@web.de>\n"
@@ -19,12 +19,12 @@ msgid "About"
 msgstr "Info über FahMon"
 
 #: src/aboutDialog.cpp:53
-msgid "Author:"
-msgstr "Autor:"
+msgid "Lead Developer:"
+msgstr ""
 
 #: src/aboutDialog.cpp:55
-msgid "Maintainer:"
-msgstr "Wartung:"
+msgid "Retired Developer:"
+msgstr ""
 
 #: src/aboutDialog.cpp:57
 msgid "Homepage:"
@@ -1325,6 +1325,12 @@ msgstr "Einfache Textausgabe"
 #: src/webMonitor.cpp:595
 msgid "Last updated:"
 msgstr "Zuletzt aktualisiert:"
+
+#~ msgid "Author:"
+#~ msgstr "Autor:"
+
+#~ msgid "Maintainer:"
+#~ msgstr "Wartung:"
 
 #, fuzzy
 #~ msgid "View selected client files"

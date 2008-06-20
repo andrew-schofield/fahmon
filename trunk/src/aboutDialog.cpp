@@ -50,10 +50,10 @@ AboutDialog::AboutDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, wxString
 	// ---
 	authorHomepageSizer = new wxFlexGridSizer(2, FMC_GUI_SPACING_LOW, FMC_GUI_SPACING_LOW);
 
-	authorHomepageSizer->Add(new StaticBoldedText(this, wxID_ANY, _("Author:")), 0, wxALIGN_RIGHT);
-	authorHomepageSizer->Add(new wxStaticText(this, wxID_ANY, wxT(" Fran\u00E7ois Ingelrest")), 0, wxALIGN_LEFT);
-	authorHomepageSizer->Add(new StaticBoldedText(this, wxID_ANY, _("Maintainer:")), 0, wxALIGN_RIGHT);
+	authorHomepageSizer->Add(new StaticBoldedText(this, wxID_ANY, _("Lead Developer:")), 0, wxALIGN_RIGHT);
 	authorHomepageSizer->Add(new wxStaticText(this, wxID_ANY, wxT(" Andrew Schofield")), 0, wxALIGN_LEFT);
+	authorHomepageSizer->Add(new StaticBoldedText(this, wxID_ANY, _("Retired Developer:")), 0, wxALIGN_RIGHT);
+	authorHomepageSizer->Add(new wxStaticText(this, wxID_ANY, wxT(" Fran\u00E7ois Ingelrest")), 0, wxALIGN_LEFT);
 	authorHomepageSizer->Add(new StaticBoldedText(this, wxID_ANY, _("Homepage:")), 0, wxALIGN_RIGHT);
 	authorHomepageSizer->Add(new wxHyperlinkCtrl(this, wxID_ANY, wxT(FMC_URL_FAHMON), wxT(FMC_URL_FAHMON)));
 	authorHomepageSizer->Add(new StaticBoldedText(this, wxID_ANY, _("Qd homepage:")), 0, wxALIGN_RIGHT);

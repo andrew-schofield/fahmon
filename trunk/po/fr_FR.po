@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fr_FR\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-06-20 00:25+0100\n"
+"POT-Creation-Date: 2008-06-20 14:42+0100\n"
 "PO-Revision-Date: 2007-11-15 23:42+0000\n"
 "Last-Translator: Andrew Schofield <andrew_s@fahmon.net>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -22,12 +22,12 @@ msgid "About"
 msgstr "A propos"
 
 #: src/aboutDialog.cpp:53
-msgid "Author:"
-msgstr "Auteur:"
+msgid "Lead Developer:"
+msgstr ""
 
 #: src/aboutDialog.cpp:55
-msgid "Maintainer:"
-msgstr "Responsable:"
+msgid "Retired Developer:"
+msgstr ""
 
 #: src/aboutDialog.cpp:57
 msgid "Homepage:"
@@ -1332,6 +1332,12 @@ msgstr ""
 #: src/webMonitor.cpp:595
 msgid "Last updated:"
 msgstr "Dernière mise à jour:"
+
+#~ msgid "Author:"
+#~ msgstr "Auteur:"
+
+#~ msgid "Maintainer:"
+#~ msgstr "Responsable:"
 
 #, fuzzy
 #~ msgid "View selected client files"
