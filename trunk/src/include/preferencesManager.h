@@ -17,7 +17,7 @@
 /**
  * \file preferencesManager.h
  * Manages stored preferences.
- * \author François Ingelrest
+ * \author FranÃ§ois Ingelrest
  * \author Andrew Schofield
  **/
 

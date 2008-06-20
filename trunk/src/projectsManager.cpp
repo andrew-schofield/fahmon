@@ -17,7 +17,7 @@
 /**
  * \file projectsManager.cpp
  * Manages projects.
- * \author Fran�ois Ingelrest
+ * \author François Ingelrest
  * \author Andrew Schofield
  **/
 

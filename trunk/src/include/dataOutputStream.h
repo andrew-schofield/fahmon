@@ -17,7 +17,7 @@
 /**
  * \file dataOutputStream.h
  * Writes out data files
- * \author François Ingelrest
+ * \author FranÃ§ois Ingelrest
  * \author Andrew Schofield
  **/
 

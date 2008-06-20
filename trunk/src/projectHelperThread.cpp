@@ -17,7 +17,7 @@
 /**
  * \file projectHelperThread.cpp
  * Manages threads for project database updates.
- * \author François Ingelrest
+ * \author FranÃ§ois Ingelrest
  * \author Andrew Schofield
  **/
 

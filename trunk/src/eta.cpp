@@ -17,7 +17,7 @@
 /**
  * \file eta.cpp
  * Creates a class for managing client ETAs.
- * \author François Ingelrest
+ * \author FranÃ§ois Ingelrest
  * \author Andrew Schofield
  **/
 

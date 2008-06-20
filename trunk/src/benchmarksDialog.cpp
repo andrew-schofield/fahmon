@@ -18,7 +18,7 @@
  * \file benchmarksDialog.cpp
  * The benchmarks dialog.
  * Creates the dialog to list and display available benchmarks per project.
- * \author François Ingelrest
+ * \author FranÃ§ois Ingelrest
  * \author Andrew Schofield
  **/
 

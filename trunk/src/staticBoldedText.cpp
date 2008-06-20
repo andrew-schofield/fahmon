@@ -17,7 +17,7 @@
 /**
  * \file staticBoldedText.cpp
  * Creates a bold text object.
- * \author François Ingelrest
+ * \author FranÃ§ois Ingelrest
  * \author Andrew Schofield
  **/
 

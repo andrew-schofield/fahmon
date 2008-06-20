@@ -17,7 +17,7 @@
 /**
  * \file messagesFrame.h
  * The messages window.
- * \author François Ingelrest
+ * \author FranÃ§ois Ingelrest
  * \author Andrew Schofield
  **/
 

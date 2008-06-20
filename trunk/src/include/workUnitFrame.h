@@ -17,7 +17,7 @@
 /**
  * \file workUnitFrame.h
  * Create a class to store data about a frame.
- * \author François Ingelrest
+ * \author FranÃ§ois Ingelrest
  * \author Andrew Schofield
  **/
 

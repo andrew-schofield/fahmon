@@ -17,7 +17,7 @@
 /**
  * \file client.h
  * Creates a class for every client.
- * \author Fran�ois Ingelrest
+ * \author François Ingelrest
  * \author Andrew Schofield
  **/
 

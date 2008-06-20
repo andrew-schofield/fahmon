@@ -17,7 +17,7 @@
 /**
  * \file tools.cpp
  * A collection of useful tools.
- * \author François Ingelrest
+ * \author FranÃ§ois Ingelrest
  * \author Andrew Schofield
  **/
 

@@ -17,7 +17,7 @@
 /**
  * \file project.cpp
  * Project object.
- * \author François Ingelrest
+ * \author FranÃ§ois Ingelrest
  * \author Andrew Schofield
  **/
 

@@ -18,7 +18,7 @@
  * \file main.h
  * Creates the main class.
  * This is the application insertion point and also handles the single instance system.
- * \author François Ingelrest
+ * \author FranÃ§ois Ingelrest
  * \author Andrew Schofield
  **/
 
@@ -59,7 +59,7 @@
  * compiling on Linux. OS X is not currently supported, however the nature of wxWidgets
  * means it should theoretically be able to run on a Mac with the appropriate modifications.
  * \section Legal
- * FahMon is Copryright François Ingelrest (Original Author) 2003-2007
+ * FahMon is Copryright FranÃ§ois Ingelrest (Original Author) 2003-2007
  * and Andrew Schofield (Current Maintainer) 2007-2008
  *
  * FahMon is free software and released under the GNU Public Licence (GPL). As such you are

@@ -17,7 +17,7 @@
 /**
  * \file progressManager.h
  * Manages progress bar.
- * \author François Ingelrest
+ * \author FranÃ§ois Ingelrest
  * \author Andrew Schofield
  **/
 

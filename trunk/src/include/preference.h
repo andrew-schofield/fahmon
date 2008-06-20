@@ -17,7 +17,7 @@
 /**
  * \file preference.h
  * Preference definition class.
- * \author François Ingelrest
+ * \author FranÃ§ois Ingelrest
  * \author Andrew Schofield
  **/
 

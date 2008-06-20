@@ -18,7 +18,7 @@
  * \file mainDialog.h
  * The main dialog.
  * Creates the main window for FahMon.
- * \author François Ingelrest
+ * \author FranÃ§ois Ingelrest
  * \author Andrew Schofield
  **/
 

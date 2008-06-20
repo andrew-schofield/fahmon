@@ -18,7 +18,7 @@
  * \file preferencesDialog.cpp
  * The preferences dialog.
  * Creates the dialog to reconfigure FahMon.
- * \author Fran�ois Ingelrest
+ * \author François Ingelrest
  * \author Andrew Schofield
  **/
 

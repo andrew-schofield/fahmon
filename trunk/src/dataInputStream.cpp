@@ -17,7 +17,7 @@
 /**
  * \file dataInputStream.cpp
  * Reads in data files
- * \author François Ingelrest
+ * \author FranÃ§ois Ingelrest
  * \author Andrew Schofield
  **/
 

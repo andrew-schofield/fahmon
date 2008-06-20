@@ -17,7 +17,7 @@
 /**
  * \file projectsManager.h
  * Manages projects.
- * \author François Ingelrest
+ * \author FranÃ§ois Ingelrest
  * \author Andrew Schofield
  **/
 

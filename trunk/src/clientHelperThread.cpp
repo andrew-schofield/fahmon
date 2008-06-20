@@ -17,7 +17,7 @@
 /**
  * \file clientHelperThread.cpp
  * Creates a thread launcher for the client reloader.
- * \author François Ingelrest
+ * \author FranÃ§ois Ingelrest
  * \author Andrew Schofield
  **/
 

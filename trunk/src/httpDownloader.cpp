@@ -17,7 +17,7 @@
 /**
  * \file httpDownloader.cpp
  * Create a class to download files over http.
- * \author François Ingelrest
+ * \author FranÃ§ois Ingelrest
  * \author Andrew Schofield
  **/
 

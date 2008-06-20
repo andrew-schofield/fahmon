@@ -17,7 +17,7 @@
 /**
  * \file trayManager.h
  * Manages system tray icon.
- * \author François Ingelrest
+ * \author FranÃ§ois Ingelrest
  * \author Andrew Schofield
  **/
 

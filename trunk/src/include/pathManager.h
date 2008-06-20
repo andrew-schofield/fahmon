@@ -17,7 +17,7 @@
 /**
  * \file pathManager.h
  * Manages important path locations.
- * \author François Ingelrest
+ * \author FranÃ§ois Ingelrest
  * \author Andrew Schofield
  **/
 

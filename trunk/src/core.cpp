@@ -17,7 +17,7 @@
 /**
  * \file core.cpp
  * Manages core definitions.
- * \author François Ingelrest
+ * \author FranÃ§ois Ingelrest
  * \author Andrew Schofield
  **/
 

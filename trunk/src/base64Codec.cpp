@@ -17,7 +17,7 @@
 /**
  * \file base64Codec.cpp
  * Creates a class for encoding/decoding to base64.
- * \author François Ingelrest
+ * \author FranÃ§ois Ingelrest
  * \author Andrew Schofield
  **/
 

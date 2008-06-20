@@ -18,7 +18,7 @@
  * \file clientDialog.cpp
  * The client edition dialog.
  * Creates the dialog to add and edit new clients.
- * \author FranÁois Ingelrest
+ * \author François Ingelrest
  * \author Andrew Schofield
  **/
 
@@ -79,7 +79,7 @@ ClientDialog::ClientDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, wxStri
 	nameLSizer          = new wxBoxSizer(wxHORIZONTAL);
 	groupSizer          = new wxStaticBoxSizer(wxVERTICAL, this, _("Client information"));
 	clientInfoSizer     = new wxFlexGridSizer(2, FMC_GUI_SPACING_LOW, FMC_GUI_SPACING_LOW);
-	
+
 	mClientNameCtrl     = new wxTextCtrl(this, wxID_ANY, wxT(""), wxDefaultPosition, wxSize(FMC_GUI_TEXTCTRL_MIN_LENGTH, -1));
 	mClientLocationCtrl = new wxTextCtrl(this, wxID_ANY, wxT(""), wxDefaultPosition, wxSize(FMC_GUI_TEXTCTRL_MIN_LENGTH, -1));
 
@@ -93,12 +93,12 @@ ClientDialog::ClientDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, wxStri
 	locationSizer->Add(new wxButton(this, BTN_BROWSE, _("Choose"), wxDefaultPosition));
 #endif
 	locationSizer->AddSpacer(FMC_GUI_SPACING_LOW);
-	
+
 	nameLSizer->Add(new StaticBoldedText(this, wxID_ANY, _("Name:")), 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
 	nameLSizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	nameSizer->Add(mClientNameCtrl, 1, wxALIGN_CENTER_VERTICAL);
 	nameSizer->AddSpacer(FMC_GUI_SPACING_LOW);
-	
+
 	// The top part: it contains the two wxTextCtrl and their labels
 
 	clientInfoSizer->Add(nameLSizer, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);

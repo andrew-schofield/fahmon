@@ -18,7 +18,7 @@
  * \file main.cpp
  * Creates the main class.
  * This is the application insertion point and also handles the single instance system.
- * \author François Ingelrest
+ * \author FranÃ§ois Ingelrest
  * \author Andrew Schofield
  **/
 
@@ -114,11 +114,11 @@ bool FahMonApp::OnInit(void)
 	{
 		wxFileName appPath = wxFileName(wxTheApp->argv[0]).GetPath (wxPATH_GET_VOLUME);
 		appPath.RemoveLastDir();
-	
+
 		wxString resourcesPath = appPath.GetPath();
-	
+
 		resourcesPath += _T("/Contents/SharedSupport/lang/");
-		
+
 		wxLocale::AddCatalogLookupPathPrefix(resourcesPath);
 	}
 #endif
@@ -223,7 +223,7 @@ int FahMonApp::OnExit(void)
 	WebMonitor::DestroyInstance();
 	PreferencesManager::DestroyInstance();        // MUST be destroyed last, so that other managers can save their preferences when they are destroyed
 	MessagesManager::DestroyInstance();
-	
+
 #ifndef __WXMAC__
 	if (mInstanceChecker)
 		delete mInstanceChecker;

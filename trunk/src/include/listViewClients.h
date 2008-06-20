@@ -17,7 +17,7 @@
 /**
  * \file listViewClients.h
  * Creates a list view class for displaying clients.
- * \author François Ingelrest
+ * \author FranÃ§ois Ingelrest
  * \author Andrew Schofield
  **/
 

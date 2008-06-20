@@ -18,7 +18,7 @@
  * \file firstTimeDialog.cpp
  * The First time dialog.
  * Creates the dialog on first run to initially download projects etc.
- * \author François Ingelrest
+ * \author FranÃ§ois Ingelrest
  * \author Andrew Schofield
  **/
 
