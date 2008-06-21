@@ -245,14 +245,6 @@ void Client::Reload(void)
 				lastFrame->SetId(100);
 			}
 		}
-		mCore = Core::IdToLongName(project->GetCoreId());
-		mCredit = project->GetCredit();
-		if(mDownloadDate.IsValid() && project->GetPreferredDeadlineInDays() != 0)
-		{
-			mDeadlineDate = mDownloadDate;
-			mDeadlineDate.Add(wxTimeSpan::Seconds(project->GetPreferredDeadlineInDays() * 864));
-		}
-
 	}
 	else
 	{
@@ -394,6 +386,16 @@ void Client::Reload(void)
 	mProgressString  = wxString::Format(wxT("%u%%"), mProgress);
 	// Compute ETA
 	ComputeETA(lastFrame);
+	if (project != INVALID_PROJECT_ID)
+	{
+		mCore = Core::IdToLongName(project->GetCoreId());
+		mCredit = project->GetCredit();
+		if(mDownloadDate.IsValid() && project->GetPreferredDeadlineInDays() != 0)
+		{
+			mDeadlineDate = mDownloadDate;
+			mDeadlineDate.Add(wxTimeSpan::Seconds(project->GetPreferredDeadlineInDays() * 864));
+		}
+	}
 
 	// We don't need this anymore
 	if(lastFrame != NULL)
