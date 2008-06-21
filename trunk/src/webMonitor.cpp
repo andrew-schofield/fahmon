@@ -61,6 +61,7 @@ void WebMonitor::CreateInstance(void)
 	wxASSERT(mInstance == NULL);
 
 	mInstance = new WebMonitor();
+
 }
 
 
@@ -103,6 +104,7 @@ void WebMonitor::WriteApp(void)
 	wxDateTime     downloadTime;
 	wxDateTime     timeNow;
 	wxTimeSpan     timeDiff;
+	Load();
 
 	mDataArray = new wxString *[ClientsManager::GetInstance()->GetCount()];
 	for (i=0; i<ClientsManager::GetInstance()->GetCount(); i++)
@@ -594,6 +596,7 @@ wxString WebMonitor::DecodeTemplate(wxString templateCode, wxUint32 clientId)
 	else if (templateCode == wxT("@_Simple_Text_Output@")) tCode = _("Simple Text Output");
 	else if (templateCode == wxT("@_Last_updated:@")) tCode = _("Last updated:");
 	else if (templateCode == wxT("@_Downloaded:@")) tCode = _("Downloaded:");
+	else tCode = GetVariable(templateCode);
 
 	if(padding>0)
 	{
@@ -635,4 +638,92 @@ std::vector<wxString> WebMonitor::TemplateToVector(wxString inputTemplate)
 		}
 	}
 	return v;
+}
+
+
+wxString WebMonitor::GetVariable(wxString variable)
+{
+	CustomVariableHashMap::iterator iterator = mCustomVariableHashMap.find(variable);
+
+	if(iterator == mCustomVariableHashMap.end())
+	{
+		return variable;
+	}
+	else
+	{
+		return iterator->second;
+	}
+}
+
+
+void WebMonitor::Load(void)
+{
+	bool       isVariableOk;
+	bool       isValueOk;
+	wxInt32    startingPos;
+	wxInt32    endingPos;
+	wxUint32   i;
+	wxString   currentLine;
+	wxString   variable;
+	wxString   value;
+	wxString   inputFilename;
+	wxTextFile in;
+
+
+	// Try to open the file, check if it exists
+	inputFilename = PathManager::GetCfgPath() + wxT("custom.dat");
+	if(wxFileExists(inputFilename) == false || in.Open(inputFilename) == false)
+	{
+		return;
+	}
+
+	// Retrieve each client, one by line
+	for(i=0; i<in.GetLineCount(); ++i)
+	{
+		currentLine = in.GetLine(i);
+
+		// Do not take into account empty lines or comments
+		if(currentLine.Len() != 0 && currentLine.GetChar(0) != '#')
+		{
+			isVariableOk     = false;
+			isValueOk = false;
+
+			// First, extract the name
+			// We can't tell Find() where to start, so the " char is replaced with something else
+			// to not find the same position more than once
+			startingPos = currentLine.Find('"');
+			if(startingPos != -1)
+			{
+				currentLine.SetChar(startingPos, ' ');
+				endingPos = currentLine.Find('"');
+				if(endingPos != -1)
+				{
+					currentLine.SetChar(endingPos, ' ');
+					variable = currentLine.Mid(startingPos+1, endingPos-startingPos-1);
+					isVariableOk   = true;
+				}
+			}
+
+			// Then, the location
+			startingPos = currentLine.Find('"');
+			if(startingPos != -1)
+			{
+				currentLine.SetChar(startingPos, ' ');
+				endingPos = currentLine.Find('"');
+				if(endingPos != -1)
+				{
+					value = currentLine.Mid(startingPos+1, endingPos-startingPos-1);
+					isValueOk   = true;
+				}
+			}
+
+			// Add the client to the list, or warn the user if something went wrong
+			if(isVariableOk == true && isValueOk == true)
+				mCustomVariableHashMap[variable] = value;
+			else
+				_LogMsgError(wxString::Format(_("Error while parsing %s on line %u"), inputFilename.c_str(), i+1));
+		}
+	}
+
+	in.Close();
 }

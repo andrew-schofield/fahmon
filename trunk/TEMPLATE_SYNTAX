@@ -121,3 +121,14 @@ native language if possible.
 "@_Simple_Text_Output@"
 "@_Last_updated:@"
 "@_Downloaded:@"
+
+Custom Variables
+================
+
+Custom static variables can now be used in templates, such as for your username
+etc. To do this you need to create a new file in your config folder called
+custom.dat. Inside this file you can define all your custom variables in the
+following format (the quotes are necessary):
+"@VARIABLE_NAME@" "VARIABLE_VALUE"
+Then, in your template you can use your custom variables just as you would any
+other.

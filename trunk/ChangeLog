@@ -13,6 +13,7 @@ SVN
     * Updated queue structure to qd FR 069
     * Add ability to select custom web output templates.
     * Altered About Dialog text.
+    * Added custom variables to web output templates.
 
     Linux
 

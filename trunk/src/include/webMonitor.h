@@ -25,6 +25,7 @@
 #define _WEBMONITOR_H
 
 #include "wx/thread.h"
+#include "wx/hashmap.h"
 #include "listViewClients.h"
 #include "pathManager.h"
 #include <vector>
@@ -57,6 +58,8 @@
 #define PREF_WEBAPP_SIMPLETEXTTEMPLATELOCATION   wxT("WebMonitor.SimpleTextTemplateLocation") /**< Preference setting for location of simple text output page */
 #define PREF_WEBAPP_SIMPLETEXTTEMPLATELOCATION_DV wxString::Format(wxT("%ssimple_template.txt"),PathManager::GetGlobalTplPath().c_str()) /**< Default value for location of simple text output page */
 
+WX_DECLARE_HASH_MAP(wxString, wxString, wxStringHash, wxStringEqual, CustomVariableHashMap); /**< CustomVariableHashMap: variable->value */
+
 /**
  * WebMonitor class.
  * This class manages the web output options for FahMon.
@@ -64,8 +67,9 @@
 class WebMonitor
 {
 protected:
-	static wxMutex     mMutexWebMonitorAccess; /**< Lock access to this method. */
-	static WebMonitor* mInstance; /**< The single instance of the Web monitor */
+	static wxMutex        mMutexWebMonitorAccess; /**< Lock access to this method. */
+	static WebMonitor*    mInstance; /**< The single instance of the Web monitor */
+	CustomVariableHashMap mCustomVariableHashMap; /** Hashmap to store any custom variables */
 
 	/**
 	 * Constructor.
@@ -102,6 +106,8 @@ public:
 	 * This method is responsible for writing all 3 output format concurrently.
 	 **/
 	void WriteApp(void);
+
+	wxString GetVariable(wxString variable);
 
 private:
 	ListViewClients   *mClientsList; /**< The client list */
@@ -141,6 +147,8 @@ private:
 	 * @param outputFile The location of the output file
 	 **/
 	void ProcessTemplate(wxString templateFile, wxString outputFile);
+
+	void Load(void);
 };
 
 #endif /* _WEBMONITOR_H */
