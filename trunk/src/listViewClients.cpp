@@ -532,7 +532,6 @@ void ListViewClients::UpdateClient(wxUint32 clientId)
 	wxString	clientLocation;
 	wxString	clientName;
 	const Client *client;
-	const Project *project;
 	wxInt32       timeInMinutes;
 	wxInt32       nbDays;
 	wxInt32       nbHours;
@@ -567,13 +566,8 @@ void ListViewClients::UpdateClient(wxUint32 clientId)
 	// Blank the PPD column
 	PPD = wxT("--");
 
-	if (client->IsAccessible())
-	{
-		project = ProjectsManager::GetInstance()->GetProject(client->GetProjectId());
-	}
-
 	// If it's possible to get the PPD, do so now
-	if(client->IsAccessible() && !client->IsStopped() && !client->IsHung() && project != INVALID_PROJECT_ID)
+	if(client->IsAccessible() && !client->IsStopped() && !client->IsHung())
 	{
 		PPD = wxString::Format(wxT("%.2f"), client->GetPPD());
 		if(!client->GetIsFrameCountAccurate())
@@ -583,15 +577,17 @@ void ListViewClients::UpdateClient(wxUint32 clientId)
 	}
 
 	// we're less stringent about when we display other data
-	if(client->IsAccessible() && !client->IsHung() && project != INVALID_PROJECT_ID)
+	if(client->IsAccessible() && !client->IsHung())
 	{
 		//PRCG
 		SetItem(clientIndex, LVC_PRCG, wxString::Format(wxT("P%i (R%i, C%i, G%i)"), client->GetProjectId(), client->GetProjectRun(), client->GetProjectClone(), client->GetProjectGen()));
 
 		//core name
-		SetItem(clientIndex, LVC_CORE, client->GetCore());
+		wxString corename = (client->GetCore() == wxT("")) ? wxT("Unknown") : client->GetCore();
+		SetItem(clientIndex, LVC_CORE, corename);
 		//credit
-		SetItem(clientIndex, LVC_CREDIT, wxString::Format(_("%u points"), client->GetCredit()));
+		wxString creditvalue = (client->GetCredit() == 0) ? wxT("Unknown") : wxString::Format(_("%u points"), client->GetCredit());
+		SetItem(clientIndex, LVC_CREDIT, creditvalue);
 		//downloaded
 		if(client->GetDownloadDate().IsValid())
 		{
@@ -635,8 +631,8 @@ void ListViewClients::UpdateClient(wxUint32 clientId)
 		}
 		else
 		{
-			SetItem(clientIndex, LVC_DOWNLOADED, _(""));
-		}if(client->GetDownloadDate().IsValid() && project->GetPreferredDeadlineInDays() != 0)
+			SetItem(clientIndex, LVC_DOWNLOADED, _("Unknown"));
+		}if(client->GetDownloadDate().IsValid() && client->GetDeadlineDate().IsValid())
 		{
 			preferredDeadline = client->GetDeadlineDate();
 			if(deadlineDays == ETADS_LEFT_TIME)
@@ -688,7 +684,7 @@ void ListViewClients::UpdateClient(wxUint32 clientId)
 		}
 		else
 		{
-			SetItem(clientIndex, LVC_DEADLINE, _(""));
+			SetItem(clientIndex, LVC_DEADLINE, _("Unknown"));
 		}
 	} else {
 		SetItem(clientIndex, LVC_PRCG, wxT(""));

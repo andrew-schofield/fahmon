@@ -249,6 +249,7 @@ void FahLogAnalyzer::ParseLogLine(wxString& lineToParse, LogLine& logLine)
 	wxInt32       position, compPos, stepsPos, outOfPos;
 	wxString      timestamp;
 	unsigned long convertedNumber;
+	bool          gpustyleWU = false;
 
 	// If the line is empty, we don't do anything
 	if(lineToParse.IsEmpty() == true)
@@ -321,17 +322,19 @@ void FahLogAnalyzer::ParseLogLine(wxString& lineToParse, LogLine& logLine)
 			lineToParse.Right(lineToParse.Len()-position-1).ToULong(&convertedNumber);
 			logLine.frameId = (FrameId)convertedNumber;
 		}
-		// Extra bit for GPU WUs
+		// Extra bit for GPU1 cores
 		// core_10 writes "Completed 1"
 		else if(lineToParse.Mid(10, lineToParse.Len()-10).ToULong(&convertedNumber) == true)
 		{
 			logLine.frameId = (FrameId)convertedNumber;
+			gpustyleWU = true;
 		}
-		// Extra bit for early versions of 7b core
+		// Extra bit for early versions of 7b core and GPU2 cores
 		// These cores write "Completed 1%"
 		else if(lineToParse.Mid(10, lineToParse.Len()-11).ToULong(&convertedNumber) == true)
 		{
 			logLine.frameId = (FrameId)convertedNumber;
+			gpustyleWU = true;
 		}
 
 		compPos = lineToParse.Find(wxT("Completed "));
@@ -347,7 +350,10 @@ void FahLogAnalyzer::ParseLogLine(wxString& lineToParse, LogLine& logLine)
 			{
 				logLine.totalSteps = (wxUint32)convertedNumber;
 			}
-		} else {
+		} else if (gpustyleWU == true) { //this isn't really the best way to do things, but it'll have to do for now.
+			logLine.completedSteps = logLine.frameId;
+			logLine.totalSteps = 100;
+		}else {
 			logLine.completedSteps = 0;
 			logLine.totalSteps = 0;
 		}

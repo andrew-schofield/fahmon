@@ -122,8 +122,11 @@ BEGIN_DECLARE_EVENT_TYPES()
 	DECLARE_EVENT_TYPE (EVT_NEW_MESSAGE_LOGGED, -1) /**< Sent when a new message has been added to the MessagesManager */
 END_DECLARE_EVENT_TYPES()
 
-
 #ifdef __WXMAC__
+/**
+* Custom progress bar for OSX.
+* This class provides the simple non-animated progress bar.
+**/
 class OSXProgressBar: public wxWindow
 {
 protected:

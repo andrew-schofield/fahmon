@@ -14,6 +14,7 @@ SVN
     * Add ability to select custom web output templates.
     * Altered About Dialog text.
     * Added custom variables to web output templates.
+    * Fixed GPUv2 always reporting PPD as "inaccurate."
 
     Linux
 

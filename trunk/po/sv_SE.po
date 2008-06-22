@@ -4,12 +4,11 @@
 #
 # Olof Persson <floffe@gmail.com>, 2007, 2008.
 # Andrew Schofield <andrew_s@fahmon.net>, 2007, 2008.
-#: src/listViewClients.cpp:638 src/listViewClients.cpp:691
 msgid ""
 msgstr ""
 "Project-Id-Version: sv_SE\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-06-21 12:46+0100\n"
+"POT-Creation-Date: 2008-06-22 23:40+0100\n"
 "PO-Revision-Date: 2008-02-01 20:20+0100\n"
 "Last-Translator: Olof Persson <floffe@gmail.com>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -159,7 +158,7 @@ msgstr "Logg ej inläst!"
 msgid "anonymous"
 msgstr "anonym"
 
-#: src/client.cpp:98 src/listViewClients.cpp:709 src/listViewClients.cpp:713
+#: src/client.cpp:98 src/listViewClients.cpp:705 src/listViewClients.cpp:709
 #: src/mainDialog.cpp:453 src/mainDialog.cpp:458 src/mainDialog.cpp:459
 #: src/mainDialog.cpp:460 src/mainDialog.cpp:461 src/mainDialog.cpp:462
 #: src/mainDialog.cpp:547 src/mainDialog.cpp:603 src/webMonitor.cpp:132
@@ -416,42 +415,42 @@ msgstr "Kunde inte skapa katalogen <%s>"
 msgid "%.1f KB/s"
 msgstr "%.1f KB/s"
 
-#: src/listViewClients.cpp:156 src/listViewClients.cpp:901
+#: src/listViewClients.cpp:156 src/listViewClients.cpp:897
 #: src/webMonitor.cpp:582
 msgid "Progress"
 msgstr "Förlopp"
 
-#: src/listViewClients.cpp:157 src/listViewClients.cpp:902
+#: src/listViewClients.cpp:157 src/listViewClients.cpp:898
 #: src/webMonitor.cpp:583
 msgid "Name"
 msgstr "Namn"
 
-#: src/listViewClients.cpp:158 src/listViewClients.cpp:903
+#: src/listViewClients.cpp:158 src/listViewClients.cpp:899
 #: src/webMonitor.cpp:584
 msgid "ETA"
 msgstr "Beräknad sluttid"
 
-#: src/listViewClients.cpp:159 src/listViewClients.cpp:904
+#: src/listViewClients.cpp:159 src/listViewClients.cpp:900
 #: src/webMonitor.cpp:585
 msgid "PPD"
 msgstr "PPD"
 
-#: src/listViewClients.cpp:160 src/listViewClients.cpp:905
+#: src/listViewClients.cpp:160 src/listViewClients.cpp:901
 #, fuzzy
 msgid "Core"
 msgstr "Kärna: "
 
-#: src/listViewClients.cpp:162 src/listViewClients.cpp:907
+#: src/listViewClients.cpp:162 src/listViewClients.cpp:903
 #: src/webMonitor.cpp:580
 msgid "Credit"
 msgstr "Poäng"
 
-#: src/listViewClients.cpp:163 src/listViewClients.cpp:908
+#: src/listViewClients.cpp:163 src/listViewClients.cpp:904
 #: src/webMonitor.cpp:581
 msgid "Downloaded"
 msgstr "Hämtad"
 
-#: src/listViewClients.cpp:164 src/listViewClients.cpp:909
+#: src/listViewClients.cpp:164 src/listViewClients.cpp:905
 #, fuzzy
 msgid "Deadline"
 msgstr "Slutgiltig tidsgräns:"
@@ -460,62 +459,68 @@ msgstr "Slutgiltig tidsgräns:"
 msgid "Loading..."
 msgstr "Laddar..."
 
-#: src/listViewClients.cpp:594 src/mainDialog.cpp:491 src/webMonitor.cpp:206
+#: src/listViewClients.cpp:589 src/mainDialog.cpp:491 src/webMonitor.cpp:206
 #, c-format
 msgid "%u points"
 msgstr "%u poäng"
 
-#: src/listViewClients.cpp:625 src/listViewClients.cpp:672
+#: src/listViewClients.cpp:621 src/listViewClients.cpp:668
 #: src/mainDialog.cpp:440 src/mainDialog.cpp:528 src/mainDialog.cpp:585
 #: src/webMonitor.cpp:170 src/webMonitor.cpp:241 src/webMonitor.cpp:296
 #, c-format
 msgid "%s ago"
 msgstr "%s sedan"
 
-#: src/listViewClients.cpp:676 src/mainDialog.cpp:532 src/mainDialog.cpp:589
+#: src/listViewClients.cpp:634 src/listViewClients.cpp:687
+#: src/mainDialog.cpp:481 src/mainDialog.cpp:482 src/mainDialog.cpp:483
+#: src/mainDialog.cpp:484
+msgid "Unknown"
+msgstr "Okänd"
+
+#: src/listViewClients.cpp:672 src/mainDialog.cpp:532 src/mainDialog.cpp:589
 #: src/webMonitor.cpp:245 src/webMonitor.cpp:300
 #, c-format
 msgid "In %s"
 msgstr "Om %s"
 
-#: src/listViewClients.cpp:705 src/webMonitor.cpp:356
+#: src/listViewClients.cpp:701 src/webMonitor.cpp:356
 msgid "Finished"
 msgstr "Färdig"
 
-#: src/listViewClients.cpp:717 src/webMonitor.cpp:368
+#: src/listViewClients.cpp:713 src/webMonitor.cpp:368
 msgid "*Hung*"
 msgstr "*Hängd*"
 
-#: src/listViewClients.cpp:866 src/listViewClients.cpp:874
+#: src/listViewClients.cpp:862 src/listViewClients.cpp:870
 #: src/mainDialog.cpp:637
 msgid "Add a new client"
 msgstr "Lägg till ny klient"
 
-#: src/listViewClients.cpp:876
+#: src/listViewClients.cpp:872
 msgid "Reload this client"
 msgstr "Ladda om denna klient"
 
-#: src/listViewClients.cpp:877
+#: src/listViewClients.cpp:873
 msgid "Edit this client"
 msgstr "Redigera denna klient"
 
-#: src/listViewClients.cpp:878
+#: src/listViewClients.cpp:874
 msgid "Delete this client"
 msgstr "Ta bort denna klient"
 
-#: src/listViewClients.cpp:879
+#: src/listViewClients.cpp:875
 msgid "View Client Files"
 msgstr "Visa klientens filer"
 
-#: src/listViewClients.cpp:906 src/webMonitor.cpp:579
+#: src/listViewClients.cpp:902 src/webMonitor.cpp:579
 msgid "PRCG"
 msgstr "PKKG"
 
-#: src/listViewClients.cpp:1007 src/mainDialog.cpp:1509
+#: src/listViewClients.cpp:1003 src/mainDialog.cpp:1509
 msgid "Do you really want to delete this client?"
 msgstr "Vill du verkligen ta bort denna klient?"
 
-#: src/listViewClients.cpp:1067
+#: src/listViewClients.cpp:1063
 msgid ""
 "Unable to launch the default filemanager.\n"
 "\n"
@@ -562,11 +567,6 @@ msgid ""
 msgstr ""
 "Något är fel med denna klient.\n"
 "Se meddelanden för mer information (FahMon->Visa/Dölj Meddelandefönstret)."
-
-#: src/mainDialog.cpp:481 src/mainDialog.cpp:482 src/mainDialog.cpp:483
-#: src/mainDialog.cpp:484
-msgid "Unknown"
-msgstr "Okänd"
 
 #: src/mainDialog.cpp:485
 #, c-format
