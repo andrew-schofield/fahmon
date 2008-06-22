@@ -123,7 +123,7 @@ BEGIN_EVENT_TABLE(MainDialog, wxFrame)
 	EVT_MENU    (MID_WWWFCORG,              MainDialog::OnMenuWeb)
 	EVT_MENU    (MID_WWWPROJECTS,           MainDialog::OnMenuWeb)
 	EVT_MENU    (MID_WWWSERVERS,            MainDialog::OnMenuWeb)
-	EVT_MENU    (wxID_HELP_CONTENTS,        MainDialog::OnMenuWeb)
+	EVT_MENU    (wxID_HELP,                 MainDialog::OnMenuWeb)
 	EVT_MENU    (wxID_ABOUT,                MainDialog::OnMenuAbout)
 	EVT_MENU    (MID_UPDATECHECK,           MainDialog::OnUpdateCheck)
 	EVT_MENU    (MID_ADDCLIENT,             ListViewClients::OnMenuAddClient)
@@ -691,9 +691,9 @@ inline void MainDialog::CreateMenuBar(void)
 	// The 'Help' menu
 	menu = new wxMenu();
 	#ifndef __WXMAC__
-	menu->Append(wxID_HELP_CONTENTS, _("&Help Contents\tF1"), _("See help contents"));
+	menu->Append(wxID_HELP, _("&Help Contents\tF1"), _("See help contents"));
 	#else
-	menu->Append(wxID_HELP_CONTENTS, _("&Help Contents\tCtrl+?"), _("See help contents"));
+	menu->Append(wxID_HELP, _("&Help Contents\tCtrl+?"), _("See help contents"));
 	#endif
 	menu->Append(wxID_ABOUT, _("&About"), wxString::Format(_("About %s"), _T(FMC_APPNAME)));
 #ifdef __WXMAC__
@@ -733,7 +733,7 @@ inline void MainDialog::CreateLayout(void)
 
 	// --- The top right part
 	// It contains labels to display information on the currently selected client
-	mTopRightPanel      = new wxPanel(mSplitterWindow, wxID_ANY);
+	mTopRightPanel     = new wxPanel(mSplitterWindow, wxID_ANY);
 	topRightSizer      = new wxStaticBoxSizer(wxVERTICAL, mTopRightPanel, _("Work Unit Information"));
 	infoSizer          = new wxGridSizer(2, FMC_GUI_SPACING_HIGH, FMC_GUI_SPACING_LOW);
 	userinfoSizer      = new wxBoxSizer(wxHORIZONTAL);
@@ -1071,7 +1071,7 @@ void MainDialog::OnMenuWeb(wxCommandEvent& event)
 			break;
 
 		//--
-		case wxID_HELP_CONTENTS:
+		case wxID_HELP:
 			Tools::OpenURLInBrowser(wxT(FMC_URL_HELP));
 			break;
 
