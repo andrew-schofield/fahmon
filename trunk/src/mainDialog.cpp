@@ -675,15 +675,15 @@ inline void MainDialog::CreateMenuBar(void)
 	#ifndef __WXMAC__
 	menu->Append(MID_WWWMYSTATS, _("&My Stats\tF2"), _("View the personal statistics for the selected client"));
 	menu->Append(MID_WWWJMOL, _("&Jmol\tF3"), _("View the current project on the Jmol website"));
-	menu->Append(MID_WWWFAHINFO, _("&fahinfo\tF4"), _("View the current project on fahinfo.org"));
+	menu->Append(MID_WWWFAHINFO, _("fah&info\tF4"), _("View the current project on fahinfo.org"));
 	#else
 	menu->Append(MID_WWWMYSTATS, _("&My Stats\tCtrl+Shift+M"), _("View the personal statistics for the selected client"));
 	menu->Append(MID_WWWJMOL, _("&Jmol\tCtrl+J"), _("View the current project on the Jmol website"));
-	menu->Append(MID_WWWFAHINFO, _("&fahinfo\tCtrl+F"), _("View the current project on fahinfo.org"));
+	menu->Append(MID_WWWFAHINFO, _("fah&info\tCtrl+F"), _("View the current project on fahinfo.org"));
 	#endif
 	menu->AppendSeparator();
 	menu->Append(MID_WWWFOLDING, _("F@H &Website"), _("Open to the official Stanford website"));
-	menu->Append(MID_WWWFCORG, _("Folding-&Community"), _("Open the Folding@Home support forum"));
+	menu->Append(MID_WWWFCORG, _("Folding &Forum"), _("Open the Folding@Home support forum"));
 	menu->Append(MID_WWWPROJECTS, _("&Projects Summary"), _("Open the list of the current projects"));
 	menu->Append(MID_WWWSERVERS, _("&Servers Status"), _("Open the list of the servers with their status"));
 	menuBar->Append(menu, _("&Web"));

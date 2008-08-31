@@ -15,6 +15,7 @@ SVN
     * Altered About Dialog text.
     * Added custom variables to web output templates.
     * Fixed GPUv2 always reporting PPD as "inaccurate."
+    * Updated folding support forum link in "Web" menu (thanks to Mark Gerber).
 
     Linux
 

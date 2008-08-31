@@ -39,7 +39,7 @@
 #define FMC_URL_JMOL              "http://www.jmol.org/fah/?project="
 #define FMC_URL_FAHINFO           "http://fahinfo.org/?WULookup=true&project="
 #define FMC_URL_FOLDING           "http://folding.stanford.edu"
-#define FMC_URL_FCORG             "http://forum.folding-community.org/portal.php"
+#define FMC_URL_FCORG             "http://foldingforum.org"
 #define FMC_URL_SERVERS           "http://fah-web.stanford.edu/serverstat.html"
 #define FMC_URL_PROJECTS          "http://fah-web.stanford.edu/psummary.html"      // Complete URL
 #define FMC_URL_HELP              "http://trac.fahmon.net"
