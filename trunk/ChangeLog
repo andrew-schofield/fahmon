@@ -20,6 +20,7 @@ SVN
 
     * Fixed an issue with latest GCC and inline functions (thanks to KB3LWJ).
     * Fixed compiler warnings about deprecated conversions (thanks to John Daiker).
+    * Added configure test to check for ANSI wxWidgets and warn if found.
 
 v2.3.2b (11/04/08)
 

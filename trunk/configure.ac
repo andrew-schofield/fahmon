@@ -20,16 +20,32 @@ AC_PROG_CXX
 
 AM_OPTIONS_WXCONFIG
 reqwx=2.8.0
-AM_PATH_WXCONFIG($reqwx, wxWin=1, wxWin=0, --unicode)
+AC_MSG_NOTICE([ANSI wxWidgets])
+AM_PATH_WXCONFIG($reqwx, wxWin=1, wxWin=0)
+AC_MSG_NOTICE([Unicode wxWidgets])
+AM_PATH_WXCONFIG($reqwx, wxWinU=1, wxWinU=0, --unicode)
 if test "$wxWin" != 1; then
-	AC_MSG_ERROR([
-		wxWidgets must be installed on your system.
+	if test "$wxWinU" != 1; then
+		AC_MSG_ERROR([
+			wxWidgets must be installed on your system.
 
-		Please check that wx-config is in path, the directory
-		where wxWidgets libraries are installed (returned by
-		'wx-config --libs' or 'wx-config --static --libs' command)
-		is in LD_LIBRARY_PATH or equivalent variable and
-		wxWidgets version is $reqwx or above.
+			Please check that wx-config is in path, the directory
+			where wxWidgets libraries are installed (returned by
+			'wx-config --libs' or 'wx-config --static --libs' command)
+			is in LD_LIBRARY_PATH or equivalent variable and
+			wxWidgets version is $reqwx or above.
+			])
+	fi
+fi
+if test "$wxWinU" != 1; then
+	AC_MSG_WARN([
+		Unicode build of wxWidgets not found.
+
+		While FahMon will still compile with the ansi version
+		of wxWidgets, you will lose the ability to use any unicode
+		character sets for translations. If this is not what you
+		want, install the unicode build of wxWidgets and run
+		configure again.
 		])
 fi
 
