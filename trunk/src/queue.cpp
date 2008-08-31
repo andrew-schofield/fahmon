@@ -93,6 +93,7 @@ bool Queue::LoadQueueFile(const wxString& filename, wxString clientName)
 		// we should ALWAYS know the system type here, so no need to check it
 		genome = (queuebuffer.version > 0xFFFF) && ((queuebuffer.current > 0xFFFF) || (queuebuffer.current == 0));
 		queueversion = 0;
+		wxString tmpWxStr(_T(""));
 		switch(i)
 		{
 			case 6884:
@@ -104,7 +105,7 @@ bool Queue::LoadQueueFile(const wxString& filename, wxString clientName)
 			case 7048:
 			case 7056:
 				queueversion = 324;
-				tw:				q = "1Windows";
+				tw:				tmpWxStr = _T("1Windows");
 				break;
 			case 6848:
 				queueversion = 314;
@@ -115,11 +116,11 @@ bool Queue::LoadQueueFile(const wxString& filename, wxString clientName)
 				queueversion = 324;
 tl:				if (genome)
 #if defined(__ppc__) && defined(__WXMAC__)
-					q = "0Linux";
+					tmpWxStr = _T("0Linux");
 #else
-				q = "2Mac/PPC";
+					tmpWxStr = _T("2Mac/PPC");
 				else
-					q = "0Linux";
+					tmpWxStr = _T("0Linux");
 #endif
 				break;
 			case 7072:
@@ -129,14 +130,16 @@ tl:				if (genome)
 				queueversion = 500;
 tt:				if (genome)
 #if defined(__ppc__) && defined(__WXMAC__)
-					q = "1Linux, Windows or Mac/x86";
+					tmpWxStr = _T("1Linux, Windows or Mac/x86");
 #else
-					q = "2Mac/PPC";
+					tmpWxStr = _T("2Mac/PPC");
 				else if (queuebuffer.version == 400)
-					q = "1Windows";
+					tmpWxStr = _T("1Windows");
 #endif
 				break;
 		}
+		q = (char *)tmpWxStr.c_str();
+
 		if (q != NULL)
 			systype = *q++ - '0';
 		//endian swap for PPC machines and queues
@@ -159,7 +162,8 @@ tt:				if (genome)
 			bp = &queuebuffer;
 			if ((queueversion == 314) && ((i >= 324) && (i < 400)))
 			{
-				q = "Google";
+				tmpWxStr = _T("Google");
+				q = (char *)tmpWxStr.c_str();
 				i = queueversion;
 			}
 			if (i > MAXQVER)
