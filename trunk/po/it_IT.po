@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it-IT\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-08-31 16:27+0100\n"
+"POT-Creation-Date: 2008-08-31 16:57+0100\n"
 "PO-Revision-Date: 2008-02-25 12:46+0100\n"
 "Last-Translator: Zurgo <zurgo@virgilio.it>\n"
 "Language-Team:  <zurgo@virgilio.it>\n"
@@ -935,6 +935,10 @@ msgstr "Scaricamento interrotto!"
 #: src/mainDialog.cpp:1474 src/projectsManager.cpp:330
 msgid "An unknown error happened!"
 msgstr "È accaduto un errore sconosciuto!"
+
+#: src/mainDialog.cpp:1606
+msgid "ctrl"
+msgstr ""
 
 #: src/messagesFrame.cpp:43
 #, c-format

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru_RU\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-08-31 16:27+0100\n"
+"POT-Creation-Date: 2008-08-31 16:57+0100\n"
 "PO-Revision-Date: 2007-11-15 23:47+0000\n"
 "Last-Translator: Andrew Schofield <andrew_s@fahmon.net>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -929,6 +929,10 @@ msgstr "Скачивание прервано!"
 #: src/mainDialog.cpp:1474 src/projectsManager.cpp:330
 msgid "An unknown error happened!"
 msgstr "Вы словили неизвестную ошибку!"
+
+#: src/mainDialog.cpp:1606
+msgid "ctrl"
+msgstr ""
 
 #: src/messagesFrame.cpp:43
 #, c-format
