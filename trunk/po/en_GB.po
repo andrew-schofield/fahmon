@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
 "POT-Creation-Date: 2008-08-31 16:27+0100\n"
-"PO-Revision-Date: 2008-02-15 18:09+0000\n"
+"PO-Revision-Date: 2008-08-31 16:37+0100\n"
 "Last-Translator: Andrew Schofield <andrew_s@fahmon.net>\n"
 "Language-Team: British English <en@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -22,11 +22,11 @@ msgstr "About"
 
 #: src/aboutDialog.cpp:53
 msgid "Lead Developer:"
-msgstr ""
+msgstr "Lead Developer"
 
 #: src/aboutDialog.cpp:55
 msgid "Retired Developer:"
-msgstr ""
+msgstr "Retired Developer"
 
 #: src/aboutDialog.cpp:57
 msgid "Homepage:"
@@ -433,9 +433,8 @@ msgid "PPD"
 msgstr "PPD"
 
 #: src/listViewClients.cpp:160 src/listViewClients.cpp:901
-#, fuzzy
 msgid "Core"
-msgstr "Core:"
+msgstr "Core"
 
 #: src/listViewClients.cpp:162 src/listViewClients.cpp:903
 #: src/webMonitor.cpp:580
@@ -448,9 +447,8 @@ msgid "Downloaded"
 msgstr "Downloaded"
 
 #: src/listViewClients.cpp:164 src/listViewClients.cpp:905
-#, fuzzy
 msgid "Deadline"
-msgstr "Final Deadline:"
+msgstr "Deadline"
 
 #: src/listViewClients.cpp:484
 msgid "Loading..."
@@ -601,38 +599,32 @@ msgid "Quit %s"
 msgstr "Quit %s"
 
 #: src/mainDialog.cpp:637
-#, fuzzy
 msgid "Add a new client to be monitored"
-msgstr "Add a new client"
+msgstr "Add a new client to be monitored"
 
 #: src/mainDialog.cpp:639
-#, fuzzy
 msgid "Edit client"
-msgstr "Edit this client"
+msgstr "Edit client"
 
 #: src/mainDialog.cpp:639
-#, fuzzy
 msgid "Edit the selected client settings"
-msgstr "Reload the selected client"
+msgstr "Edit the selected client settings"
 
 #: src/mainDialog.cpp:640
-#, fuzzy
 msgid "Delete client"
-msgstr "Delete this client"
+msgstr "Delete client"
 
 #: src/mainDialog.cpp:640
-#, fuzzy
 msgid "Delete the selected client"
-msgstr "Reload the selected client"
+msgstr "Delete the selected client"
 
 #: src/mainDialog.cpp:641
-#, fuzzy
 msgid "View client files"
-msgstr "View Client Files"
+msgstr "View client Files"
 
 #: src/mainDialog.cpp:641
 msgid "Open file browser in client folder"
-msgstr ""
+msgstr "Open file browser in client folder"
 
 #: src/mainDialog.cpp:644
 msgid "Reload &Selection\tF5"
@@ -659,9 +651,8 @@ msgid "Reload &All\tCtrl+Shift+R"
 msgstr "Reload &All\tCtrl+Shift+R"
 
 #: src/mainDialog.cpp:650
-#, fuzzy
 msgid "&Clients"
-msgstr "Clients: %i"
+msgstr "&Clients"
 
 #: src/mainDialog.cpp:655
 msgid "&Show/Hide FAHLog\tF8"
@@ -689,16 +680,15 @@ msgstr "&Cycle ETA Style\tCtrl+E"
 
 #: src/mainDialog.cpp:664
 msgid "Show/Hide &WU Info panel"
-msgstr ""
+msgstr "Show/Hide &WU Info panel"
 
 #: src/mainDialog.cpp:664
 msgid "Toggle the display of the Work Unit Information panel"
-msgstr ""
+msgstr "Toggle the display of the Work Unit Information panel"
 
 #: src/mainDialog.cpp:665
-#, fuzzy
 msgid "&View"
-msgstr "Web View"
+msgstr "&View"
 
 #: src/mainDialog.cpp:668
 msgid "&Show/Hide Messages Window"
@@ -745,9 +735,8 @@ msgid "View the current project on the Jmol website"
 msgstr "View the current project on the Jmol website"
 
 #: src/mainDialog.cpp:678
-#, fuzzy
 msgid "fah&info\tF4"
-msgstr "&fahinfo\tF4"
+msgstr "fah&info\tF4"
 
 #: src/mainDialog.cpp:678 src/mainDialog.cpp:682
 msgid "View the current project on fahinfo.org"
@@ -762,9 +751,8 @@ msgid "&Jmol\tCtrl+J"
 msgstr "&Jmol\tCtrl+J"
 
 #: src/mainDialog.cpp:682
-#, fuzzy
 msgid "fah&info\tCtrl+F"
-msgstr "&fahinfo\tCtrl+F"
+msgstr "fah&info\tCtrl+F"
 
 #: src/mainDialog.cpp:685
 msgid "F@H &Website"
@@ -775,9 +763,8 @@ msgid "Open to the official Stanford website"
 msgstr "Open to the official Stanford website"
 
 #: src/mainDialog.cpp:686
-#, fuzzy
 msgid "Folding &Forum"
-msgstr "Folding-&Community"
+msgstr "Folding &Forum"
 
 #: src/mainDialog.cpp:686
 msgid "Open the Folding@Home support forum"
@@ -965,14 +952,12 @@ msgid "System"
 msgstr "System"
 
 #: src/preferencesDialog.cpp:126
-#, fuzzy
 msgid "WebApp 1"
-msgstr "WebApp"
+msgstr "WebApp 1"
 
 #: src/preferencesDialog.cpp:127
-#, fuzzy
 msgid "WebApp 2"
-msgstr "WebApp"
+msgstr "WebApp 2"
 
 #: src/preferencesDialog.cpp:192
 msgid "Enable system tray icon"
@@ -1139,19 +1124,16 @@ msgid "Export Simple Text file"
 msgstr "Export Simple Text file"
 
 #: src/preferencesDialog.cpp:583
-#, fuzzy
 msgid "Custom Web Application Template"
-msgstr "Export Web Application"
+msgstr "Custom Web Application Template"
 
 #: src/preferencesDialog.cpp:592
-#, fuzzy
 msgid "Custom Simple Web Template"
-msgstr "Export Simple Web page"
+msgstr "Custom Simple Web Template"
 
 #: src/preferencesDialog.cpp:601
-#, fuzzy
 msgid "Custom Simple Text Template"
-msgstr "Export Simple Text file"
+msgstr "Custom Simple Text Template"
 
 #: src/preferencesDialog.cpp:1028
 msgid "Choose a local project data file"
@@ -1170,19 +1152,16 @@ msgid "Choose where to save the simple text file"
 msgstr "Choose where to save the simple text file"
 
 #: src/preferencesDialog.cpp:1084
-#, fuzzy
 msgid "Choose the Web Application Template"
-msgstr "Choose where to save the Web Application"
+msgstr "Choose the Web Application Template"
 
 #: src/preferencesDialog.cpp:1098
-#, fuzzy
 msgid "Choose the Simple Web Page Template"
-msgstr "Choose where to save the simple web page"
+msgstr "Choose the Simple Web Page Template"
 
 #: src/preferencesDialog.cpp:1112
-#, fuzzy
 msgid "Choose the Simple Text File Template"
-msgstr "Choose where to save the simple text file"
+msgstr "Choose the Simple Text File Template"
 
 #: src/preferencesManager.cpp:212
 msgid "There is no Preferences file, or it is not readable"
@@ -1328,19 +1307,3 @@ msgstr "Simple Text Output"
 #: src/webMonitor.cpp:597
 msgid "Last updated:"
 msgstr "Last updated:"
-
-#~ msgid "Author:"
-#~ msgstr "Author:"
-
-#~ msgid "Maintainer:"
-#~ msgstr "Maintainer:"
-
-#, fuzzy
-#~ msgid "View selected client files"
-#~ msgstr "View Client Files"
-
-#~ msgid "&Monitoring"
-#~ msgstr "&Monitoring"
-
-#~ msgid "Total PPD: %.2f"
-#~ msgstr "Total PPD: %.2f"
