@@ -3,7 +3,7 @@ Running FahMon
 
 Software for running FahMon on Linux
 REQUIRED
-* wxGTK >=2.8.0
+* wxGTK >=2.8.0 (Unicode build)
 
 Software for running FahMon on Windows
 REQUIRED
@@ -19,8 +19,8 @@ Building FahMon from source
 Software for building FahMon on Linux
 REQUIRED
 * gcc-c++
-* wxGTK >=2.8.0
-* wxGTK-Devel >=2.8.0
+* wxGTK >=2.8.0 (unicode build)
+* wxGTK-Devel >=2.8.0 (unicode build)
 * m4
 
 OPTIONAL
@@ -29,6 +29,12 @@ OPTIONAL
 * autoconf 2.5 (required to make new translations)
 * a gettext catalog editor like poEdit or KBabel (required to edit or create new
   translations)
+
+NOTE
+It is possible to compile FahMon with the non-unicode versions of wxGTK, however
+for full compatibility with language files unicode is required. If you ony
+require languages that can use ansi codepages, and want to use the non-unicode
+version of wxGTK you will need to commend out the "--unicode" inside configure.
 
 Software for building FahMon on MS Windows
 REQUIRED
