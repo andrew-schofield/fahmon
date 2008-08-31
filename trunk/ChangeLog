@@ -17,6 +17,10 @@ SVN
     * Fixed GPUv2 always reporting PPD as "inaccurate."
     * Updated folding support forum link in "Web" menu (thanks to Mark Gerber).
 
+    Windows
+
+    * Fixed cosmetic issue with work/current.xyz using / instead of \.
+
     Linux
 
     * Fixed an issue with latest GCC and inline functions (thanks to KB3LWJ).

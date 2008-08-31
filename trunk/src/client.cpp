@@ -502,8 +502,13 @@ inline void Client::SaveXYZFile(void) const
 	wxString xyzInFile;
 	wxString xyzOutFile;
 
-	// Create the complete path of the files
+	// Cosmetic issue so Windows users see the \ they expect
+#ifdef _FAHMON_WIN32_
+	xyzInFile  = mLocation + wxT("work\\current.xyz");
+#else
 	xyzInFile  = mLocation + wxT("work/current.xyz");
+#endif
+	// Create the complete path of the files
 	xyzOutFile = PathManager::GetXYZPath() + wxString::Format(wxT("%i"), mProjectId) + wxT(".xyz");
 
 	// Check that the file to save exists
