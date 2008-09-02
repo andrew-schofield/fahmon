@@ -679,7 +679,7 @@ inline void MainDialog::CreateMenuBar(void)
 	#else
 	menu->Append(MID_WWWMYSTATS, _("&My Stats\tCtrl+Shift+M"), _("View the personal statistics for the selected client"));
 	menu->Append(MID_WWWJMOL, _("&Jmol\tCtrl+J"), _("View the current project on the Jmol website"));
-	menu->Append(MID_WWWFAHINFO, _("fah&info\tCtrl+F"), _("View the current project on fahinfo.org"));
+	menu->Append(MID_WWWFAHINFO, _("fah&info\tCtrl+I"), _("View the current project on fahinfo.org"));
 	#endif
 	menu->AppendSeparator();
 	menu->Append(MID_WWWFOLDING, _("F@H &Website"), _("Open to the official Stanford website"));

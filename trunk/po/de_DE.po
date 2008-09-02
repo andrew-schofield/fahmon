@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FahMon Translation - de_DE 1.1.b1\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-09-02 13:28+0100\n"
+"POT-Creation-Date: 2008-09-02 13:34+0100\n"
 "PO-Revision-Date: 2008-04-10 22:30+0100\n"
 "Last-Translator: Mark Gerber <mark.gerber@web.de>\n"
 "Language-Team: Mark Gerber <mark.gerber@web.de>\n"
@@ -767,7 +767,7 @@ msgstr "&Jmol\tCtrl+J"
 
 #: src/mainDialog.cpp:682
 #, fuzzy
-msgid "fah&info\tCtrl+F"
+msgid "fah&info\tCtrl+I"
 msgstr "&fahinfo\tCtrl+F"
 
 #: src/mainDialog.cpp:685
