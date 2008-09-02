@@ -42,7 +42,9 @@ wxString Core::mCoreLongName[CORE_ID_COUNT] = {
 	wxT("SMP Gromacs CVS"),
 	wxT("PS3 Gromacs (SCEARD2)"),
 	wxT("GPUv2 Gromacs"),
-	wxT("Double Gromacs C")
+	wxT("Double Gromacs C"),
+	wxT("GPU2 ATI Dev"),
+	wxT("GPU2 NV Dev"),
 };
 wxString Core::mCoreShortName[CORE_ID_COUNT] = {
 	wxT("tinker"),
@@ -61,7 +63,9 @@ wxString Core::mCoreShortName[CORE_ID_COUNT] = {
 	wxT("grocvs"),
 	wxT("gro-ps3"),
 	wxT("grogpu2"),
-	wxT("dgromacsc")
+	wxT("dgromacsc"),
+	wxT("ati-dev"),
+	wxT("nv-dev")
 };
 
 
