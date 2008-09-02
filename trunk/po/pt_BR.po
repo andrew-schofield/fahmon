@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pt_BR\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-08-31 17:39+0100\n"
+"POT-Creation-Date: 2008-09-02 13:28+0100\n"
 "PO-Revision-Date: 2008-02-03 11:48-0300\n"
 "Last-Translator: Custódio Marcelino de Jesus <custodiomdj@gmail.com>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -940,6 +940,14 @@ msgstr "Aconteceu um erro desconhecido!"
 
 #: src/mainDialog.cpp:1606
 msgid "ctrl"
+msgstr ""
+
+#: src/mainDialog.cpp:1607
+msgid "shift"
+msgstr ""
+
+#: src/mainDialog.cpp:1608
+msgid "alt"
 msgstr ""
 
 #: src/messagesFrame.cpp:43

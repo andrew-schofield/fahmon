@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nl_NL\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-08-31 17:39+0100\n"
+"POT-Creation-Date: 2008-09-02 13:28+0100\n"
 "PO-Revision-Date: 2008-01-24 16:42+0100\n"
 "Last-Translator: Bastien <bastien@knife-edge.nl>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -930,6 +930,14 @@ msgstr "Een onbekende fout is opgetreden!"
 
 #: src/mainDialog.cpp:1606
 msgid "ctrl"
+msgstr ""
+
+#: src/mainDialog.cpp:1607
+msgid "shift"
+msgstr ""
+
+#: src/mainDialog.cpp:1608
+msgid "alt"
 msgstr ""
 
 #: src/messagesFrame.cpp:43

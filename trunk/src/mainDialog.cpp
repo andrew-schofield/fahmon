@@ -1604,5 +1604,7 @@ void OSXProgressBar::FillProgress(wxDC& dc)
  * Used to inject various required strings into the translation files.
 **/
 _("ctrl");
+_("shift");
+_("alt");
 
 #endif
