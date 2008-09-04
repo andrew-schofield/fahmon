@@ -24,22 +24,6 @@ Installation of the required software will require >1GB of disk space.
 The rest of the documentation assumes that you installed everything into the
 default locations. So you may need to alter paths etc.
 
-Configuring MSVC
-================
-
-* Open MSVC and click Tools->Options.
-* Goto "Projects and Solutions->VCC++ Directories"
-* Change "Show directories for:" to "Include files"
-* Add the following directories to the list:
-  "c:\program files\microsoft platform sdk\include"
-  "c:\wxwidgets-2.8.7\include"
-* Change "Show directories for:" to "Library files"
-* Add the following directories to the list:
-  "c:\program files\microsoft platform sdk\lib"
-  "c:\wxwidgets-2.8.7\lib\vc_lib"
-* Close the options dialog (with OK).
-
-
 Compiling wxWidgets
 ===================
 
@@ -63,6 +47,24 @@ Compiling wxWidgets
  * You have now sucessfully set up your FahMon build environment! Note: if you
    need to make any changes to wxWidgets, just open wx.sln (not wx.dsw) and
    recompile.
+
+Configuring MSVC
+================
+
+* Open MSVC and click Tools->Options.
+* Goto "Projects and Solutions->VCC++ Directories"
+* Change "Show directories for:" to "Include files"
+* Add the following directories to the list:
+  "c:\program files\microsoft platform sdk\include"
+  "c:\wxwidgets-2.8.7\include"
+* Change "Show directories for:" to "Library files"
+* Add the following directories to the list:
+  "c:\program files\microsoft platform sdk\lib"
+  "c:\wxwidgets-2.8.7\lib\vc_lib"
+* Close the options dialog (with OK).
+
+Compiling FahMon
+================
 
 * Open fahmon.sln
 * Change the build type to "Release"
