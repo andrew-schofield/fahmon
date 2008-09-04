@@ -381,7 +381,7 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 		mFinalDeadline->SetLabel(wxT(""));
 		mWUProgressGauge->SetValue(0);
 		mWUProgressText->SetLabel(wxT(""));
-		mLogFile->SetValue(_("Something is wrong with this client.\nPlease check the messages (FahMon->Show/Hide Messages Window)."));
+		mLogFile->SetValue(_("Something is wrong with this client.\nPlease check the messages (Tools->Show/Hide Messages Window)."));
 
 		return;
 	}
