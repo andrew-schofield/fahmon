@@ -17,7 +17,6 @@ Download the following software (free)
 The total size of the required installations sources is >500MB
 
 * Install MSVC.
-* Install the Windows SDK.
 * Install wxWidgets.
 
 Installation of the required software will require >1GB of disk space.
