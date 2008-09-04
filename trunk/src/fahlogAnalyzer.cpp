@@ -36,7 +36,7 @@ WorkUnitFrame* FahLogAnalyzer::AnalyzeLastFrame(const wxString& fahlogComplete)
 	bool      overrideTimezone, ignoreAsynchrony, isAsync;
 	wxInt32   endOfLine;
 	wxInt32   elapsedSeconds, runDuration;
-	wxInt32   timezoneoffset, frameCount;
+	wxInt32   timezoneoffset, frameCount, frameCountTemp1, frameCountTemp2;
 	LogLine   endFrame1, endFrame2, endFrame3;
 	LogLine   *currentLogLine;
 	wxString  lineToParse;
@@ -231,7 +231,9 @@ WorkUnitFrame* FahLogAnalyzer::AnalyzeLastFrame(const wxString& fahlogComplete)
 		{
 			if(endFrame1.completedSteps - endFrame2.completedSteps == endFrame2.completedSteps - endFrame3.completedSteps)
 			{
-				frameCount = 200 / (((endFrame1.completedSteps - endFrame3.completedSteps) * 100) / endFrame1.totalSteps);
+				frameCountTemp1 = (endFrame1.completedSteps - endFrame3.completedSteps);
+				frameCountTemp2 = (( frameCountTemp1 ) * 100) / endFrame1.totalSteps;
+				frameCount = 200 / frameCountTemp2;
 			} else {
 				frameCount = 0;
 			}
