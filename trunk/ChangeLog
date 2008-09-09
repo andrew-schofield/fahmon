@@ -16,6 +16,7 @@ SVN
     * Added custom variables to web output templates.
     * Fixed GPUv2 always reporting PPD as "inaccurate."
     * Updated folding support forum link in "Web" menu (thanks to Mark Gerber).
+    * Fixed div by zero error that affected GPU2 clients (thanks to John Daiker).
 
     Windows
 

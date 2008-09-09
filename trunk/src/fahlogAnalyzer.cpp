@@ -229,11 +229,16 @@ WorkUnitFrame* FahLogAnalyzer::AnalyzeLastFrame(const wxString& fahlogComplete)
 
 		if(endFrame1.totalSteps > 0 && endFrame2.totalSteps > 0 && endFrame3.totalSteps > 0)
 		{
-			if(endFrame1.completedSteps - endFrame2.completedSteps == endFrame2.completedSteps - endFrame3.completedSteps)
+			if( (endFrame1.completedSteps - endFrame2.completedSteps) == (endFrame2.completedSteps - endFrame3.completedSteps) )
 			{
 				frameCountTemp1 = (endFrame1.completedSteps - endFrame3.completedSteps);
-				frameCountTemp2 = (( frameCountTemp1 ) * 100) / endFrame1.totalSteps;
-				frameCount = 200 / frameCountTemp2;
+				if(frameCountTemp1 == 0) {
+					frameCount = 0;
+					wxPuts(_T("frameCountTemp1 is ZERO"));
+				} else {
+					frameCountTemp2 = (( frameCountTemp1 ) * 100) / endFrame1.totalSteps;
+					frameCount = 200 / frameCountTemp2;
+				}
 			} else {
 				frameCount = 0;
 			}
