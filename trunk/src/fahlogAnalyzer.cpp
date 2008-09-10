@@ -234,7 +234,7 @@ WorkUnitFrame* FahLogAnalyzer::AnalyzeLastFrame(const wxString& fahlogComplete)
 				frameCountTemp1 = (endFrame1.completedSteps - endFrame3.completedSteps);
 				if(frameCountTemp1 == 0) {
 					frameCount = 0;
-					wxPuts(_T("frameCountTemp1 is ZERO"));
+					// wxPuts(_T("frameCountTemp1 is ZERO"));
 				} else {
 					frameCountTemp2 = (( frameCountTemp1 ) * 100) / endFrame1.totalSteps;
 					frameCount = 200 / frameCountTemp2;

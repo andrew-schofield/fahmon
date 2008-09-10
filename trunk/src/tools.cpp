@@ -103,6 +103,7 @@ bool Tools::LoadFile(const wxString& filename, wxString& fileContent)
 			return false;
 		}
 	}
+	return false;
 }
 
 

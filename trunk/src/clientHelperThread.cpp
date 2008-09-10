@@ -39,11 +39,8 @@ ClientHelperThread::ClientHelperThread(wxUint32 clientId) : wxThread(wxTHREAD_DE
 
 void* ClientHelperThread::Entry(void)
 {
-	bool can_reload;
 
-	can_reload = MainDialog::GetInstance()->ClientReloadAllowed(mClientId);
-
-	if(can_reload) {
+	if(MainDialog::GetInstance()->ClientReloadAllowed(mClientId)) {
 //		wxPuts(_T("Entry: CanReload"));
 		wxCommandEvent event(EVT_CLIENTRELOADED);
 
