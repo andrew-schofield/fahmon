@@ -16,8 +16,11 @@ SVN
     * Added custom variables to web output templates.
     * Fixed GPUv2 always reporting PPD as "inaccurate."
     * Updated folding support forum link in "Web" menu (thanks to Mark Gerber).
-    * Fixed div by zero error that affected GPU2 clients (thanks to John Daiker).
+    * Fixed div by zero error that affected GPU2 clients (thanks to John
+      Daiker).
     * Fixed quick refresh crash bug (thanks to John Daiker).
+    * Fixed file manager bug with paths containing spaces (thanks to John
+      Daiker).
 
     Windows
 
@@ -26,7 +29,8 @@ SVN
     Linux
 
     * Fixed an issue with latest GCC and inline functions (thanks to KB3LWJ).
-    * Fixed compiler warnings about deprecated conversions (thanks to John Daiker).
+    * Fixed compiler warnings about deprecated conversions (thanks to John
+      Daiker).
     * Added configure test to check for ANSI wxWidgets and warn if found.
 
 v2.3.2b (11/04/08)

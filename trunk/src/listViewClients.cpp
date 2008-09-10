@@ -1058,7 +1058,7 @@ void ListViewClients::ShowClientFiles()
 	#endif
 
 	// Not sure why, but this *never* fails
-	if(wxExecute(FileManager + wxT(" ") + ClientLocation) == false)
+	if(wxExecute(FileManager + wxT(" \"") + ClientLocation + wxT("\"")) == false)
 	{
 		Tools::ErrorMsgBox(_("Unable to launch the default filemanager.\n\nPlease check that the correct filemanager is set in Preferences"));
 	}
