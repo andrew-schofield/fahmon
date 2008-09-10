@@ -27,6 +27,8 @@
 #include "wx/textfile.h"
 #include "preferencesManager.h"
 
+// This mutex is there to ensure that two threads won't try to open the same file at one time
+wxMutex Tools::mMutexLoadFile;
 
 void Tools::OpenURLInBrowser(const wxString& url)
 {
@@ -76,20 +78,30 @@ void Tools::OpenURLInBrowser(const wxString& url)
 
 bool Tools::LoadFile(const wxString& filename, wxString& fileContent)
 {
-	wxTextFile  in;
+	wxMutexLocker mutexLocker(mMutexLoadFile);
+	wxTextFile  in(filename);
+	wxString fC;
 
 	// Could the file be opened?
-	if(in.Open(filename, wxConvFile))
-	{
-		fileContent = wxT("");
-		wxString str;
-		for ( str = in.GetFirstLine(); !in.Eof(); str = in.GetNextLine() )
-		{
-			fileContent += str + wxT("\n");
-		}
-		return true;
+	if(in.IsOpened()) {
+		wxPuts(_T("File is already opened"));
 	} else {
-		return false;
+		if(in.Open(wxConvFile))
+		{
+			fileContent = wxT("");
+			fC = wxT("");
+			wxString str;
+			for ( str = in.GetFirstLine(); !in.Eof(); str = in.GetNextLine() )
+			{
+				fC = fileContent + str + wxT("\n");
+				fileContent = fC;
+			}
+			in.Close();
+			return true;
+		} else {
+			in.Close();
+			return false;
+		}
 	}
 }
 

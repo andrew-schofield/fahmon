@@ -158,6 +158,7 @@ class MainDialog : public wxFrame
 protected:
 	static MainDialog *mInstance; /**< The single instance of the Main Dialog */
 	static wxMutex     mMutexUpdateCheck; /**< Locks access to the update method */
+	static wxMutex     mMutexArrayBlocker; /**< Locks access to the s_clientThreadsArray */
 
 	// Widgets used in the frame
 #ifndef __WXMAC__
@@ -180,6 +181,7 @@ protected:
 	ListViewClients  *mClientsList; /**< Client list view control */
 	wxSplitterWindow *mSplitterWindow; /**< Pane splitting control */
 	wxPanel          *mTopRightPanel;
+	wxArrayInt       s_clientThreadsArray; /**< Array holding client whose processes are still active */
 
 	// Misc
 	wxTimer       mAutoReloadTimer; /**< Timer object for reloading clients */
@@ -488,6 +490,11 @@ public:
 	 **/
 	void TrayReloadSelectedClient(void);
 
+	/**
+	 * Return 'true' if the client does NOT already have a client reloading, false otherwise.
+	 * @param clientId The id of the client to determine reloadability.
+	 **/
+	bool ClientReloadAllowed(ClientId clientId);
 
 private:
 	DECLARE_EVENT_TABLE()

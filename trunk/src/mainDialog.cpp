@@ -155,6 +155,7 @@ END_EVENT_TABLE()
 MainDialog* MainDialog::mInstance = NULL;
 
 wxMutex MainDialog::mMutexUpdateCheck;
+wxMutex MainDialog::mMutexArrayBlocker;
 
 
 MainDialog::MainDialog(void) : wxFrame(NULL, wxID_ANY, wxT(FMC_PRODUCT))
@@ -1148,12 +1149,27 @@ void MainDialog::OnIconize(wxIconizeEvent& event)
 	}
 }
 
+bool MainDialog::ClientReloadAllowed(ClientId clientId)
+{
+	int asdf = s_clientThreadsArray.Index(clientId);
+	/* We didn't find our clientID, so no thread is currently running for that client */
+	if(asdf == wxNOT_FOUND) {
+		mMutexArrayBlocker.Lock();
+			s_clientThreadsArray.Add(clientId);
+			s_clientThreadsArray.Item(clientId) = clientId;
+		mMutexArrayBlocker.Unlock();
+//		wxPuts(_T("CanClientIsReloading: True"));
+		return true;
+	} else {
+//		wxPuts(_T("CanClientIsReloading: False"));
+		return false;
+	}
+}
 
 void MainDialog::OnListSelectionChanged(wxListEvent& event)
 {
 	ShowClientInformation(mClientsList->GetSelectedClientId());
 }
-
 
 void MainDialog::OnClientReloaded(wxCommandEvent& event)
 {
@@ -1161,6 +1177,10 @@ void MainDialog::OnClientReloaded(wxCommandEvent& event)
 
 	// The ListView must be updated, regardless of the current selection
 	mClientsList->UpdateClient(clientId);
+
+	mMutexArrayBlocker.Lock();
+		s_clientThreadsArray.Remove(clientId);
+	mMutexArrayBlocker.Unlock();
 
 	// However, other information must be updated only if the client is the currently selected one
 	if(clientId == mClientsList->GetSelectedClientId())

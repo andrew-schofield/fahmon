@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru_RU\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-09-04 22:17+0100\n"
+"POT-Creation-Date: 2008-09-10 00:55+0100\n"
 "PO-Revision-Date: 2007-11-15 23:47+0000\n"
 "Last-Translator: Andrew Schofield <andrew_s@fahmon.net>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -159,9 +159,9 @@ msgid "anonymous"
 msgstr "аноним"
 
 #: src/client.cpp:98 src/listViewClients.cpp:705 src/listViewClients.cpp:709
-#: src/mainDialog.cpp:453 src/mainDialog.cpp:458 src/mainDialog.cpp:459
-#: src/mainDialog.cpp:460 src/mainDialog.cpp:461 src/mainDialog.cpp:462
-#: src/mainDialog.cpp:547 src/mainDialog.cpp:603 src/webMonitor.cpp:132
+#: src/mainDialog.cpp:454 src/mainDialog.cpp:459 src/mainDialog.cpp:460
+#: src/mainDialog.cpp:461 src/mainDialog.cpp:462 src/mainDialog.cpp:463
+#: src/mainDialog.cpp:548 src/mainDialog.cpp:604 src/webMonitor.cpp:132
 #: src/webMonitor.cpp:133 src/webMonitor.cpp:134 src/webMonitor.cpp:135
 #: src/webMonitor.cpp:136 src/webMonitor.cpp:137 src/webMonitor.cpp:138
 #: src/webMonitor.cpp:186 src/webMonitor.cpp:187 src/webMonitor.cpp:188
@@ -197,48 +197,48 @@ msgstr "Ошибка чтения %squeue.dat!"
 msgid "Error while reading %sunitinfo.txt!"
 msgstr "Ошибка чтения %sunitinfo.txt!"
 
-#: src/client.cpp:470
+#: src/client.cpp:473
 #, c-format
 msgid "The progress value in file %s could not be found/parsed"
 msgstr "Значение прогресса в файле %s не найдено/обработано"
 
-#: src/client.cpp:517
+#: src/client.cpp:520
 #, c-format
 msgid "Unable to save %s because it does not exist"
 msgstr "Невозможно сохранить %s потому что он не создан."
 
-#: src/client.cpp:524
+#: src/client.cpp:527
 #, c-format
 msgid "Unable to create directory %s"
 msgstr "Невозможно создать папку %s"
 
-#: src/client.cpp:537
+#: src/client.cpp:540
 #, c-format
 msgid "Unable to copy %s to %s"
 msgstr "Невозможно скопировать %s в %s"
 
-#: src/client.cpp:561
+#: src/client.cpp:564
 #, c-format
 msgid "%s is on frame %u"
 msgstr "%s находится на шаге %u"
 
-#: src/client.cpp:565
+#: src/client.cpp:568
 #, c-format
 msgid "Cannot determine frame number for %s (this isn't a problem)"
 msgstr ""
 "Невозможно определить количество шагов для %s (это не является проблемой)"
 
-#: src/client.cpp:748
+#: src/client.cpp:751
 #, c-format
 msgid "%s has an unknown state (Unable to find a complete frame)"
 msgstr "%s неизвестный статус (Невозможно найти законченный шаг)"
 
-#: src/client.cpp:757
+#: src/client.cpp:760
 #, c-format
 msgid "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
 msgstr "%s остановлен (Найдена строка \"Folding@Home Client Shutdown.\" )"
 
-#: src/client.cpp:766
+#: src/client.cpp:769
 #, c-format
 msgid ""
 "%s has an unknown state (Unable to extract a valid elapsed time since the "
@@ -247,17 +247,17 @@ msgstr ""
 "%s имеет неизвестный статус (Невозможно определить время окончания расчетов "
 "по последнему выполненному шагу)"
 
-#: src/client.cpp:774
+#: src/client.cpp:777
 #, c-format
 msgid "%s has been marked as having a asynchronous clock."
 msgstr "%s отмечен как работающих с асинхронной настройкой часов."
 
-#: src/client.cpp:809
+#: src/client.cpp:812
 #, c-format
 msgid "%s seems to have hung : Elapsed time is %um and limit is %um"
 msgstr "%s возможно завис: Время окончания расчета %um и лимит времени %um"
 
-#: src/client.cpp:814
+#: src/client.cpp:817
 #, c-format
 msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
 msgstr ""
@@ -460,26 +460,26 @@ msgstr "Дедлайн:"
 msgid "Loading..."
 msgstr "Загрузка..."
 
-#: src/listViewClients.cpp:589 src/mainDialog.cpp:491 src/webMonitor.cpp:206
+#: src/listViewClients.cpp:589 src/mainDialog.cpp:492 src/webMonitor.cpp:206
 #, c-format
 msgid "%u points"
 msgstr "%u очков"
 
 #: src/listViewClients.cpp:621 src/listViewClients.cpp:668
-#: src/mainDialog.cpp:440 src/mainDialog.cpp:528 src/mainDialog.cpp:585
+#: src/mainDialog.cpp:441 src/mainDialog.cpp:529 src/mainDialog.cpp:586
 #: src/webMonitor.cpp:170 src/webMonitor.cpp:241 src/webMonitor.cpp:296
 #, c-format
 msgid "%s ago"
 msgstr "%s назад"
 
 #: src/listViewClients.cpp:634 src/listViewClients.cpp:687
-#: src/mainDialog.cpp:481 src/mainDialog.cpp:482 src/mainDialog.cpp:483
-#: src/mainDialog.cpp:484
+#: src/mainDialog.cpp:482 src/mainDialog.cpp:483 src/mainDialog.cpp:484
+#: src/mainDialog.cpp:485
 #, fuzzy
 msgid "Unknown"
 msgstr "Неизвестный клиент"
 
-#: src/listViewClients.cpp:672 src/mainDialog.cpp:532 src/mainDialog.cpp:589
+#: src/listViewClients.cpp:672 src/mainDialog.cpp:533 src/mainDialog.cpp:590
 #: src/webMonitor.cpp:245 src/webMonitor.cpp:300
 #, c-format
 msgid "In %s"
@@ -494,7 +494,7 @@ msgid "*Hung*"
 msgstr "*Завис*"
 
 #: src/listViewClients.cpp:862 src/listViewClients.cpp:870
-#: src/mainDialog.cpp:637
+#: src/mainDialog.cpp:638
 msgid "Add a new client"
 msgstr "Добавить нового клиента"
 
@@ -518,7 +518,7 @@ msgstr "Просмотреть файлы клиента"
 msgid "PRCG"
 msgstr "PRCG"
 
-#: src/listViewClients.cpp:1003 src/mainDialog.cpp:1509
+#: src/listViewClients.cpp:1003 src/mainDialog.cpp:1529
 msgid "Do you really want to delete this client?"
 msgstr "Вы действительно хотите удалить этого клиента?"
 
@@ -537,32 +537,32 @@ msgstr ""
 msgid "Another instance of %s is already running!"
 msgstr "Другая копия %s уже запущена!"
 
-#: src/mainDialog.cpp:178
+#: src/mainDialog.cpp:179
 #, c-format
 msgid "%s is licenced under the GNU GPL v2"
 msgstr ""
 
-#: src/mainDialog.cpp:179
+#: src/mainDialog.cpp:180
 msgid "Copyright (C) 2003-2007 Fran\\u00E7ois Ingelrest"
 msgstr ""
 
-#: src/mainDialog.cpp:180
+#: src/mainDialog.cpp:181
 msgid "Copyright (C) 2007-2008 Andrew Schofield"
 msgstr ""
 
-#: src/mainDialog.cpp:182
+#: src/mainDialog.cpp:183
 msgid "FahMon contains code from qd, also licenced under the GNU GPL v2"
 msgstr ""
 
-#: src/mainDialog.cpp:183
+#: src/mainDialog.cpp:184
 msgid "Copyright (C) 2002-2005 Richard P. Howell IV."
 msgstr ""
 
-#: src/mainDialog.cpp:184
+#: src/mainDialog.cpp:185
 msgid "Copyright (C) 2005-2008 Sebastiaan Couwenberg"
 msgstr ""
 
-#: src/mainDialog.cpp:384
+#: src/mainDialog.cpp:385
 #, fuzzy
 msgid ""
 "Something is wrong with this client.\n"
@@ -571,330 +571,330 @@ msgstr ""
 "Что-то не в порядке с этим клиентом.\n"
 "Пожалуйста проверьте лог (FahMon->Показать/Скрыть Окно Сообщений"
 
-#: src/mainDialog.cpp:485
+#: src/mainDialog.cpp:486
 #, c-format
 msgid "Project %u is unknown, you should try to update the projects database"
 msgstr "Задание %u неизвестно, Вам необходимо обновить базу заданий"
 
-#: src/mainDialog.cpp:607
+#: src/mainDialog.cpp:608
 #, c-format
 msgid " :: Total PPD: %.2f"
 msgstr " :: Всего PPD: %.2f"
 
-#: src/mainDialog.cpp:628
+#: src/mainDialog.cpp:629
 msgid "&Check for update"
 msgstr "Проверить &обновление"
 
-#: src/mainDialog.cpp:628
+#: src/mainDialog.cpp:629
 msgid "Check online for the latest version of FahMon"
 msgstr "Проверить в интернете наличие новой версии FahMon"
 
-#: src/mainDialog.cpp:630
+#: src/mainDialog.cpp:631
 msgid "&Preferences...\tCTRL+P"
 msgstr "&Настройки...\tCTRL+P"
 
-#: src/mainDialog.cpp:630
+#: src/mainDialog.cpp:631
 msgid "Open the preferences dialog"
 msgstr "Открыть диалог настроек"
 
-#: src/mainDialog.cpp:632
+#: src/mainDialog.cpp:633
 msgid "&Quit\tCtrl+Q"
 msgstr "&Выход\tCtrl+Q"
 
-#: src/mainDialog.cpp:632
+#: src/mainDialog.cpp:633
 #, c-format
 msgid "Quit %s"
 msgstr "Выход %s"
 
-#: src/mainDialog.cpp:637
+#: src/mainDialog.cpp:638
 #, fuzzy
 msgid "Add a new client to be monitored"
 msgstr "Добавить нового клиента"
 
-#: src/mainDialog.cpp:639
+#: src/mainDialog.cpp:640
 #, fuzzy
 msgid "Edit client"
 msgstr "Редактировать этого клиента"
 
-#: src/mainDialog.cpp:639
+#: src/mainDialog.cpp:640
 #, fuzzy
 msgid "Edit the selected client settings"
 msgstr "Обновить выбранного клиента"
 
-#: src/mainDialog.cpp:640
+#: src/mainDialog.cpp:641
 #, fuzzy
 msgid "Delete client"
 msgstr "Удалить этого клиента"
 
-#: src/mainDialog.cpp:640
+#: src/mainDialog.cpp:641
 #, fuzzy
 msgid "Delete the selected client"
 msgstr "Обновить выбранного клиента"
 
-#: src/mainDialog.cpp:641
+#: src/mainDialog.cpp:642
 #, fuzzy
 msgid "View client files"
 msgstr "Просмотреть файлы клиента"
 
-#: src/mainDialog.cpp:641
+#: src/mainDialog.cpp:642
 msgid "Open file browser in client folder"
 msgstr ""
 
-#: src/mainDialog.cpp:644
+#: src/mainDialog.cpp:645
 msgid "Reload &Selection\tF5"
 msgstr "Обновить В&ыбранные\tF5"
 
-#: src/mainDialog.cpp:644 src/mainDialog.cpp:647
+#: src/mainDialog.cpp:645 src/mainDialog.cpp:648
 msgid "Reload the selected client"
 msgstr "Обновить выбранного клиента"
 
-#: src/mainDialog.cpp:645
+#: src/mainDialog.cpp:646
 msgid "Reload &All\tF6"
 msgstr "Обновить &Все\tF6"
 
-#: src/mainDialog.cpp:645 src/mainDialog.cpp:648
+#: src/mainDialog.cpp:646 src/mainDialog.cpp:649
 msgid "Reload all the clients"
 msgstr "Обновить все клиенты"
 
-#: src/mainDialog.cpp:647
+#: src/mainDialog.cpp:648
 msgid "Reload &Selection\tCtrl+R"
 msgstr "Обновить В&ыбранные\tCtrl+R"
 
-#: src/mainDialog.cpp:648
+#: src/mainDialog.cpp:649
 msgid "Reload &All\tCtrl+Shift+R"
 msgstr "Обновить &Все\tCtrl+Shift+R"
 
-#: src/mainDialog.cpp:650
+#: src/mainDialog.cpp:651
 #, fuzzy
 msgid "&Clients"
 msgstr "Клиенты: %i"
 
-#: src/mainDialog.cpp:655
+#: src/mainDialog.cpp:656
 msgid "&Show/Hide FAHLog\tF8"
 msgstr "&Показать/Скрыть FAHLog\tF8"
 
-#: src/mainDialog.cpp:655 src/mainDialog.cpp:659
+#: src/mainDialog.cpp:656 src/mainDialog.cpp:660
 msgid "Toggle the log file"
 msgstr "Приклеить окно лога клиента внизу"
 
-#: src/mainDialog.cpp:657
+#: src/mainDialog.cpp:658
 msgid "&Cycle ETA Style\tF9"
 msgstr "Переключить стиль &РВО\tF9"
 
-#: src/mainDialog.cpp:657 src/mainDialog.cpp:661
+#: src/mainDialog.cpp:658 src/mainDialog.cpp:662
 msgid "Cycle through the different ETA display styles"
 msgstr "Переключение между различными стилями показа РВО"
 
-#: src/mainDialog.cpp:659
+#: src/mainDialog.cpp:660
 msgid "&Show/Hide FAHLog\tCtrl+L"
 msgstr "&Показать/Скрыть FAHLog\tCtrl+L"
 
-#: src/mainDialog.cpp:661
+#: src/mainDialog.cpp:662
 msgid "&Cycle ETA Style\tCtrl+E"
 msgstr "Переключить стиль &РВО\tCtrl+E"
 
-#: src/mainDialog.cpp:664
+#: src/mainDialog.cpp:665
 msgid "Show/Hide &WU Info panel"
 msgstr ""
 
-#: src/mainDialog.cpp:664
+#: src/mainDialog.cpp:665
 msgid "Toggle the display of the Work Unit Information panel"
 msgstr ""
 
-#: src/mainDialog.cpp:665
+#: src/mainDialog.cpp:666
 msgid "&View"
 msgstr ""
 
-#: src/mainDialog.cpp:668
+#: src/mainDialog.cpp:669
 msgid "&Show/Hide Messages Window"
 msgstr "&Показать/Скрыть Окно Сообщений"
 
-#: src/mainDialog.cpp:668
+#: src/mainDialog.cpp:669
 msgid "Toggle the messages window"
 msgstr "Окно сообщений мониторинга FahMon"
 
-#: src/mainDialog.cpp:669
+#: src/mainDialog.cpp:670
 msgid "&Benchmarks...\tCTRL+B"
 msgstr "П&роизводительность...\tCTRL+B"
 
-#: src/mainDialog.cpp:669
+#: src/mainDialog.cpp:670
 msgid "Open the benchmarks dialog"
 msgstr "Открыть диалог производительности"
 
-#: src/mainDialog.cpp:670
+#: src/mainDialog.cpp:671
 msgid "&Download New Projects"
 msgstr "Обновить &Базу Заданий"
 
-#: src/mainDialog.cpp:670
+#: src/mainDialog.cpp:671
 msgid "Update the local project database"
 msgstr "Обновить локальную базу заданий"
 
-#: src/mainDialog.cpp:671
+#: src/mainDialog.cpp:672
 msgid "&Tools"
 msgstr ""
 
-#: src/mainDialog.cpp:676
+#: src/mainDialog.cpp:677
 msgid "&My Stats\tF2"
 msgstr "&Моя статистика\tF2"
 
-#: src/mainDialog.cpp:676 src/mainDialog.cpp:680
+#: src/mainDialog.cpp:677 src/mainDialog.cpp:681
 msgid "View the personal statistics for the selected client"
 msgstr "Посмотреть персональную статистику для выбранных клиентов"
 
-#: src/mainDialog.cpp:677
+#: src/mainDialog.cpp:678
 msgid "&Jmol\tF3"
 msgstr "&Jmol\tF3"
 
-#: src/mainDialog.cpp:677 src/mainDialog.cpp:681
+#: src/mainDialog.cpp:678 src/mainDialog.cpp:682
 msgid "View the current project on the Jmol website"
 msgstr "Посмотреть текущее задание в 3D на сайте Jmol"
 
-#: src/mainDialog.cpp:678
+#: src/mainDialog.cpp:679
 #, fuzzy
 msgid "fah&info\tF4"
 msgstr "&База статистики fahinfo\tF4"
 
-#: src/mainDialog.cpp:678 src/mainDialog.cpp:682
+#: src/mainDialog.cpp:679 src/mainDialog.cpp:683
 msgid "View the current project on fahinfo.org"
 msgstr "Посмотреть статистику текущего задания в базе fahinfo.org"
 
-#: src/mainDialog.cpp:680
+#: src/mainDialog.cpp:681
 msgid "&My Stats\tCtrl+Shift+M"
 msgstr "&Моя статистика\tCtrl+Shift+M"
 
-#: src/mainDialog.cpp:681
+#: src/mainDialog.cpp:682
 msgid "&Jmol\tCtrl+J"
 msgstr "&Jmol\tCtrl+J"
 
-#: src/mainDialog.cpp:682
+#: src/mainDialog.cpp:683
 #, fuzzy
 msgid "fah&info\tCtrl+I"
 msgstr "&База статистики fahinfo\tCtrl+F"
 
-#: src/mainDialog.cpp:685
+#: src/mainDialog.cpp:686
 msgid "F@H &Website"
 msgstr "&F@H сайт"
 
-#: src/mainDialog.cpp:685
+#: src/mainDialog.cpp:686
 msgid "Open to the official Stanford website"
 msgstr "Открыть официальный сайт Стенфорда о фолдинге"
 
-#: src/mainDialog.cpp:686
+#: src/mainDialog.cpp:687
 #, fuzzy
 msgid "Folding &Forum"
 msgstr "Сообщество &Фолдинга"
 
-#: src/mainDialog.cpp:686
+#: src/mainDialog.cpp:687
 msgid "Open the Folding@Home support forum"
 msgstr "Открыть форум поддержки Folding@Home"
 
-#: src/mainDialog.cpp:687
+#: src/mainDialog.cpp:688
 msgid "&Projects Summary"
 msgstr "&Информация о Проектах"
 
-#: src/mainDialog.cpp:687
+#: src/mainDialog.cpp:688
 msgid "Open the list of the current projects"
 msgstr "Открыть перечень текущих заданий"
 
-#: src/mainDialog.cpp:688
+#: src/mainDialog.cpp:689
 msgid "&Servers Status"
 msgstr "&Статус серверов F@H"
 
-#: src/mainDialog.cpp:688
+#: src/mainDialog.cpp:689
 msgid "Open the list of the servers with their status"
 msgstr "Открыть список серверов F@H со статусами их работы"
 
-#: src/mainDialog.cpp:689
+#: src/mainDialog.cpp:690
 msgid "&Web"
 msgstr "&Интернет"
 
-#: src/mainDialog.cpp:694
+#: src/mainDialog.cpp:695
 msgid "&Help Contents\tF1"
 msgstr "&Содержание помощи\tF1"
 
-#: src/mainDialog.cpp:694 src/mainDialog.cpp:696
+#: src/mainDialog.cpp:695 src/mainDialog.cpp:697
 msgid "See help contents"
 msgstr "Онлайн помощь по программе FahMon"
 
-#: src/mainDialog.cpp:696
+#: src/mainDialog.cpp:697
 msgid "&Help Contents\tCtrl+?"
 msgstr "&Содержание помощи\tCtrl+?"
 
-#: src/mainDialog.cpp:698
+#: src/mainDialog.cpp:699
 msgid "&About"
 msgstr "&О программе"
 
-#: src/mainDialog.cpp:698
+#: src/mainDialog.cpp:699
 #, fuzzy, c-format
 msgid "About %s"
 msgstr "О программе"
 
-#: src/mainDialog.cpp:705
+#: src/mainDialog.cpp:706
 msgid "&Help"
 msgstr "&Помощь"
 
-#: src/mainDialog.cpp:737 src/webMonitor.cpp:586
+#: src/mainDialog.cpp:738 src/webMonitor.cpp:586
 msgid "Work Unit Information"
 msgstr "Информация по текущему заданию"
 
-#: src/mainDialog.cpp:765 src/webMonitor.cpp:587
+#: src/mainDialog.cpp:766 src/webMonitor.cpp:587
 msgid "Core:"
 msgstr "Ядро:"
 
-#: src/mainDialog.cpp:767 src/webMonitor.cpp:588
+#: src/mainDialog.cpp:768 src/webMonitor.cpp:588
 msgid "Project:"
 msgstr "Задание:"
 
-#: src/mainDialog.cpp:769 src/webMonitor.cpp:589
+#: src/mainDialog.cpp:770 src/webMonitor.cpp:589
 msgid "Credit:"
 msgstr "Очков:"
 
-#: src/mainDialog.cpp:771 src/webMonitor.cpp:590
+#: src/mainDialog.cpp:772 src/webMonitor.cpp:590
 msgid "Username:"
 msgstr "Участник:"
 
-#: src/mainDialog.cpp:773 src/webMonitor.cpp:598
+#: src/mainDialog.cpp:774 src/webMonitor.cpp:598
 msgid "Downloaded:"
 msgstr "Скачано:"
 
-#: src/mainDialog.cpp:775 src/webMonitor.cpp:591
+#: src/mainDialog.cpp:776 src/webMonitor.cpp:591
 msgid "Preferred Deadline:"
 msgstr "Предпочтительный дедлайн:"
 
-#: src/mainDialog.cpp:777 src/webMonitor.cpp:592
+#: src/mainDialog.cpp:778 src/webMonitor.cpp:592
 msgid "Final Deadline:"
 msgstr "Дедлайн:"
 
-#: src/mainDialog.cpp:807
+#: src/mainDialog.cpp:808
 msgid " :: Total PPD:"
 msgstr " :: Всего PPD:"
 
-#: src/mainDialog.cpp:814
+#: src/mainDialog.cpp:815
 msgid "Log file."
 msgstr "Лог файл."
 
-#: src/mainDialog.cpp:1049
+#: src/mainDialog.cpp:1050
 msgid "You must first select a client!"
 msgstr "Вы должны сначала выбрать клиента!"
 
-#: src/mainDialog.cpp:1377
+#: src/mainDialog.cpp:1397
 msgid "Checking for FahMon updates"
 msgstr "Проверить наличие новой версии FahMon"
 
-#: src/mainDialog.cpp:1380
+#: src/mainDialog.cpp:1400
 msgid "Checking for update"
 msgstr "Проверка обновления"
 
-#: src/mainDialog.cpp:1403
+#: src/mainDialog.cpp:1423
 #, c-format
 msgid "Your version: %s; New version: %s"
 msgstr "Ваша версия: %s; Новая версия: %s"
 
-#: src/mainDialog.cpp:1417
+#: src/mainDialog.cpp:1437
 msgid "Update available"
 msgstr "Доступно обновление"
 
-#: src/mainDialog.cpp:1418
+#: src/mainDialog.cpp:1438
 msgid ""
 "A newer version of FahMon is available\n"
 "Do you want to go to the FahMon website?"
@@ -902,44 +902,44 @@ msgstr ""
 "Вышла новая версия FahMon\n"
 "Хотите перейти на страницу загрузки FahMon?"
 
-#: src/mainDialog.cpp:1425 src/mainDialog.cpp:1427
+#: src/mainDialog.cpp:1445 src/mainDialog.cpp:1447
 msgid "No update found"
 msgstr "Новых версий нет"
 
-#: src/mainDialog.cpp:1452 src/projectsManager.cpp:308
+#: src/mainDialog.cpp:1472 src/projectsManager.cpp:308
 msgid "Unable to create a temporary file!"
 msgstr "Невозможно создать временный файл!"
 
-#: src/mainDialog.cpp:1456 src/projectsManager.cpp:312
+#: src/mainDialog.cpp:1476 src/projectsManager.cpp:312
 #, c-format
 msgid "Unable to open the temporary file <%s>"
 msgstr "Невозможно открыть временный файл <%s>"
 
-#: src/mainDialog.cpp:1460 src/projectsManager.cpp:316
+#: src/mainDialog.cpp:1480 src/projectsManager.cpp:316
 msgid "Unable to connect to the server!"
 msgstr "Невозможно соединиться с сервером!"
 
-#: src/mainDialog.cpp:1464 src/projectsManager.cpp:320
+#: src/mainDialog.cpp:1484 src/projectsManager.cpp:320
 msgid "Unable to send the request to the server!"
 msgstr "Невозможно послать запрос на сервер!"
 
-#: src/mainDialog.cpp:1468 src/projectsManager.cpp:324
+#: src/mainDialog.cpp:1488 src/projectsManager.cpp:324
 msgid "Download aborted!"
 msgstr "Скачивание прервано!"
 
-#: src/mainDialog.cpp:1474 src/projectsManager.cpp:330
+#: src/mainDialog.cpp:1494 src/projectsManager.cpp:330
 msgid "An unknown error happened!"
 msgstr "Вы словили неизвестную ошибку!"
 
-#: src/mainDialog.cpp:1606
+#: src/mainDialog.cpp:1626
 msgid "ctrl"
 msgstr ""
 
-#: src/mainDialog.cpp:1607
+#: src/mainDialog.cpp:1627
 msgid "shift"
 msgstr ""
 
-#: src/mainDialog.cpp:1608
+#: src/mainDialog.cpp:1628
 msgid "alt"
 msgstr ""
 
@@ -1235,7 +1235,7 @@ msgstr "Линия %u имеет неправильный формат! %s"
 msgid "Update aborted!"
 msgstr "Обновление прервано!"
 
-#: src/tools.cpp:62
+#: src/tools.cpp:64
 msgid ""
 "Unable to launch the default browser.\n"
 "\n"

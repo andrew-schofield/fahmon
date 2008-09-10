@@ -407,11 +407,14 @@ void Client::Reload(void)
 
 inline bool Client::LoadLogFile(const wxString& filename)
 {
-	if(wxFileExists(filename) == false || Tools::LoadFile(filename, mLog) == false)
+	wxString myLog;
+	if(wxFileExists(filename) == false || Tools::LoadFile(filename, myLog) == false)
 	{
+		mLog = myLog;
 		return false;
 	}
 
+	mLog = myLog;
 	return true;
 }
 

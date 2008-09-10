@@ -42,6 +42,8 @@ class Tools
 protected:
 	//static const wxChar* mBase64Table;
 
+	static wxMutex mMutexLoadFile; /**< Access lock for opening a file FIXME: What file? */
+
 	/**
 	 * Wrapper around wxMessageBox.
 	 * This function eliminates the need to specify the dialog title.

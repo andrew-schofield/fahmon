@@ -415,11 +415,13 @@ bool ProjectsManager::Update_ParseProjectsFile(const wxString& fileName, Progres
 		if(progressManager.SetProgress((i * 100) / in.GetLineCount()) == false)
 		{
 			errorMsg = _("Update aborted!");
+			in.Close();
 			return false;
 		}
 	}
 	setlocale(LC_NUMERIC, locOld);
 
+	in.Close();
 	return !errorOccured;
 }
 
