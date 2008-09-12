@@ -405,10 +405,12 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 	mUsername->Enable();
 	mUsername->SetLabel(client->GetDonatorName());
 	mUsername->SetURL(client->GetDonatorStatsURL());
+	mUsername->Refresh();
 
 	mTeamNumber->Enable();
 	mTeamNumber->SetLabel(wxString::Format(wxT("(%u)"), client->GetTeamNumber()));
 	mTeamNumber->SetURL(client->GetTeamStatsURL());
+	mTeamNumber->Refresh();
 
 	if(client->GetDownloadDate().IsValid())
 	{
