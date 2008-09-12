@@ -21,6 +21,7 @@ SVN
     * Fixed quick refresh crash bug (thanks to John Daiker).
     * Fixed file manager bug with paths containing spaces (thanks to John
       Daiker).
+    * Fixed team number and username refresh issue (thanks to John Daiker).
 
     Windows
 
