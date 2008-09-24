@@ -1,4 +1,6 @@
   !include "MUI.nsh"
+  
+  SetCompressor /SOLID lzma
 
   Name "FahMon-2.3.3svn"
   OutFile "FahMon-2.3.3svn-Installer.exe"
@@ -33,6 +35,8 @@
 
 Section "!FahMon 2.3.3svn" SecFahMon
 
+  SectionIn 1 RO
+
   SetOutPath "$INSTDIR"
 
   File "fahmon.exe"
@@ -55,10 +59,6 @@ Section "!FahMon 2.3.3svn" SecFahMon
   File "docs\help.pdf"
   File "docs\NEWS.txt"
   File "docs\README.txt"
-  SetOutPath "$INSTDIR\templates"
-  File "templates\fancy_template.htm"
-  File "templates\simple_template.htm"
-  File "templates\simple_template.txt"
 
   SetOutPath "$INSTDIR"
 
@@ -81,6 +81,15 @@ Section "!FahMon 2.3.3svn" SecFahMon
 
   !insertmacro MUI_STARTMENU_WRITE_END
 
+SectionEnd
+
+Section "Web Templates" secWebTemplates
+
+  SetOutPath "$INSTDIR\templates"
+  File "templates\fancy_template.htm"
+  File "templates\simple_template.htm"
+  File "templates\simple_template.txt"
+  
 SectionEnd
 
 SectionGroup "Languages" secLang
@@ -117,6 +126,13 @@ Section /o "German" secLangdeDE
   SetOutPath "$INSTDIR\lang\de_DE"
   File "lang\de_DE\de_DE.po"
   File "lang\de_DE\fahmon.mo"
+
+SectionEnd
+Section /o "Italian" secLangitIT
+
+  SetOutPath "$INSTDIR\lang\it_IT"
+  File "lang\it_IT\it_IT.po"
+  File "lang\it_IT\fahmon.mo"
 
 SectionEnd
 Section /o "Polish" secLangplPL
@@ -161,16 +177,10 @@ Section /o "Swedish" secLangsvSE
   File "lang\sv_SE\fahmon.mo"
 
 SectionEnd
-Section /o "Italian" secLangitIT
-
-  SetOutPath "$INSTDIR\lang\it_IT"
-  File "lang\it_IT\it_IT.po"
-  File "lang\it_IT\fahmon.mo"
-
-SectionEnd
 SectionGroupEnd
 
   LangString DESC_SecFahMon ${LANG_ENGLISH} "Install FahMon"
+  LangString DESC_SecWebTemplates ${LANG_ENGLISH} "Install web output templates"
   LangString DESC_SecLang ${LANG_ENGLISH} "Install optional language components"
   LangString DESC_SecLangenGB ${LANG_ENGLISH} "Install British English translation"
   LangString DESC_SecLangcsCZ ${LANG_ENGLISH} "Install Czech translation"
@@ -187,6 +197,7 @@ SectionGroupEnd
 
   !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
     !insertmacro MUI_DESCRIPTION_TEXT ${SecFahMon} $(DESC_SecFahMon)
+    !insertmacro MUI_DESCRIPTION_TEXT ${SecWebTemplates} $(DESC_SecWebTemplates)
     !insertmacro MUI_DESCRIPTION_TEXT ${SecLang} $(DESC_SecLang)
     !insertmacro MUI_DESCRIPTION_TEXT ${SecLangenGB} $(DESC_SecLangenGB)
     !insertmacro MUI_DESCRIPTION_TEXT ${SecLangcsCZ} $(DESC_SecLangcsCZ)
