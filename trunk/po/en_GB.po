@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-09-12 01:00+0100\n"
+"POT-Creation-Date: 2008-09-25 00:00+0100\n"
 "PO-Revision-Date: 2008-08-31 16:37+0100\n"
 "Last-Translator: Andrew Schofield <andrew_s@fahmon.net>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -529,6 +529,10 @@ msgstr ""
 #, c-format
 msgid "Another instance of %s is already running!"
 msgstr "Another instance of %s is already running!"
+
+#: src/main.cpp:173
+msgid "Automatically imported old config"
+msgstr ""
 
 #: src/mainDialog.cpp:179
 #, c-format

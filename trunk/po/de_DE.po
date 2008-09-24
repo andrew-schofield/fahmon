@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FahMon Translation - de_DE 1.1.b1\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-09-12 01:00+0100\n"
+"POT-Creation-Date: 2008-09-25 00:00+0100\n"
 "PO-Revision-Date: 2008-04-10 22:30+0100\n"
 "Last-Translator: Mark Gerber <mark.gerber@web.de>\n"
 "Language-Team: Mark Gerber <mark.gerber@web.de>\n"
@@ -531,6 +531,10 @@ msgstr ""
 #, c-format
 msgid "Another instance of %s is already running!"
 msgstr "Es läuft bereits eine Instanz von %s."
+
+#: src/main.cpp:173
+msgid "Automatically imported old config"
+msgstr ""
 
 #: src/mainDialog.cpp:179
 #, c-format
