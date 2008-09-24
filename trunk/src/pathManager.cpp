@@ -28,7 +28,6 @@
 #include "wx/filename.h"
 #include "wx/app.h"
 
-
 // The single instance accross the application
 PathManager* PathManager::mInstance = NULL;
 
@@ -37,10 +36,10 @@ PathManager::PathManager(void)
 {
 #ifdef __WXGTK__
 
-	// On Linux systems, we use the standard way to store data : in a hidden directory
-	// in the user's home directory
-	// the image path is now obtained from the DATADIR which is usually /usr/local/share
-	// introduced along with the proper GNU installation system
+	/* On Linux systems, we use the standard way to store data : in a hidden directory
+	   in the user's home directory
+	   the image path is now obtained from the DATADIR which is usually /usr/local/share
+	   introduced along with the proper GNU installation system */
 	wxString homeDir;
 
 	homeDir = wxGetHomeDir();
@@ -58,13 +57,20 @@ PathManager::PathManager(void)
 
 #elif _FAHMON_WIN32_
 
-	// On Win32 systems, we simply use the current directory
-	mXYZPath = wxT("./xyz/");
-	mImgPath = wxT("./images/");
-	mCfgPath = wxT("./config/");
-	mGlobalTplPath = wxT("./templates/");
-	mUserTplPath = wxT("./templates/");
-	mMsgPath = wxT("./");
+	// On Win32 systems, we use the user's application data folder
+
+	wxString homeDir;
+
+	wxGetEnv(_T("APPDATA"), &homeDir);
+
+	homeDir += wxT("\\FahMon");
+
+	mXYZPath = homeDir + (wxT("\\xyz\\"));
+	mImgPath = wxString::Format(wxT("%s\\images\\"), wxFileName(wxTheApp->argv[0]).GetPath(wxPATH_GET_VOLUME));
+	mCfgPath = homeDir + (wxT("\\config\\"));
+	mGlobalTplPath = wxString::Format(wxT("%s\\templates\\"), wxFileName(wxTheApp->argv[0]).GetPath(wxPATH_GET_VOLUME));
+	mUserTplPath = homeDir + (wxT("\\templates\\"));
+	mMsgPath = homeDir + wxT("\\");
 
 #elif __WXMAC__
 

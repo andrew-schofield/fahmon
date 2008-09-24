@@ -208,7 +208,9 @@ Section "Uninstall"
     Goto next
   false:
     DetailPrint "Removing config folder"
-    RMDir /r "$INSTDIR\config"
+    RMDir /r "$APPDATA\FahMon\config"
+    RMDir /r "$APPDATA\FahMon\templates"
+    RMDir /r "$APPDATA\FahMon"
   next:
 
    RMDir /r "$INSTDIR\images"
