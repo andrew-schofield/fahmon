@@ -2,7 +2,7 @@
   
   SetCompressor /SOLID lzma
 
-  Name "@PACKAGE_NAME@-@PACKAGE_VERSION@"
+  Name "@PACKAGE_NAME@"
   OutFile "@PACKAGE_NAME@-@PACKAGE_VERSION@-Installer.exe"
 
   InstallDir "$PROGRAMFILES\FahMon"
@@ -33,7 +33,7 @@
 
   !insertmacro MUI_LANGUAGE "English"
 
-Section "!@PACKAGE_NAME@ @PACKAGE_VERSION@" SecFahMon
+Section "!@PACKAGE_NAME@" SecFahMon
 
   SectionIn 1 RO
 

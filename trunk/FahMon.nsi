@@ -2,7 +2,7 @@
   
   SetCompressor /SOLID lzma
 
-  Name "FahMon-2.3.3svn"
+  Name "FahMon"
   OutFile "FahMon-2.3.3svn-Installer.exe"
 
   InstallDir "$PROGRAMFILES\FahMon"
@@ -33,7 +33,7 @@
 
   !insertmacro MUI_LANGUAGE "English"
 
-Section "!FahMon 2.3.3svn" SecFahMon
+Section "!FahMon" SecFahMon
 
   SectionIn 1 RO
 
