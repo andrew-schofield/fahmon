@@ -27,6 +27,7 @@ SVN
 
     * Fixed cosmetic issue with work/current.xyz using / instead of \.
     * Migrated configuration folder to %APPDATA% to improve behaviour in Vista.
+    * Updated installer to add entry to add/remove programs.
 
     Linux
 

@@ -65,6 +65,11 @@ Section "!FahMon 2.3.3svn" SecFahMon
   WriteRegStr HKCU "Software\FahMon" "" $INSTDIR
 
   WriteUninstaller "$INSTDIR\Uninstall.exe"
+  
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\FahMon" \
+                 "DisplayName" "FahMon - Folding@home client monitoring software"
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\FahMon" \
+                 "UninstallString" "$INSTDIR\uninstall.exe"
 
   !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
 
@@ -239,5 +244,7 @@ Section "Uninstall"
   startMenuDeleteLoopDone:
 
   DeleteRegKey /ifempty HKCU "Software\FahMon"
+  
+  DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\FahMon"
 
 SectionEnd
