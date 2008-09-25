@@ -24,8 +24,9 @@
 #include "fahmon.h"
 #include "tools.h"
 
-#include "wx/textfile.h"
 #include "preferencesManager.h"
+
+#include "wx/textfile.h"
 
 // This mutex is there to ensure that two threads won't try to open the same file at one time
 wxMutex Tools::mMutexLoadFile;

@@ -24,7 +24,6 @@
 #include "fahmon.h"
 #include "client.h"
 
-#include "wx/textfile.h"
 #include "tools.h"
 #include "pathManager.h"
 #include "fahlogAnalyzer.h"
@@ -38,6 +37,7 @@
 #include "eta.h"
 #include "queue.h"
 
+#include "wx/textfile.h"
 
 // This mutex is used to ensure that two threads won't try to overwite the same file at the same time
 wxMutex Client::mMutexXYZFiles;

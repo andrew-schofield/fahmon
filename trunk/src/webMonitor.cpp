@@ -24,9 +24,6 @@
 #include "fahmon.h"
 #include "webMonitor.h"
 
-#include "wx/textfile.h"
-#include "wx/txtstrm.h"
-#include "wx/wfstream.h"
 #include "tools.h"
 #include "pathManager.h"
 #include "clientsManager.h"
@@ -36,6 +33,11 @@
 #include "mainDialog.h"
 #include "fahmonConsts.h"
 #include "messagesManager.h"
+
+#include "wx/textfile.h"
+#include "wx/txtstrm.h"
+#include "wx/wfstream.h"
+
 #include <vector>
 
 // The single instance of WebMonitor across the application

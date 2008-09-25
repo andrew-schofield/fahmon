@@ -26,9 +26,6 @@
 #include "main.h"
 
 #include "tools.h"
-#include "wx/image.h"
-#include "wx/intl.h"
-#include "wx/filename.h"
 #include "mainDialog.h"
 #include "pathManager.h"
 #include "clientsManager.h"
@@ -40,6 +37,9 @@
 #include "webMonitor.h"
 #include "trayManager.h"
 
+#include "wx/image.h"
+#include "wx/intl.h"
+#include "wx/filename.h"
 
 #include "locale.h"
 

@@ -25,6 +25,9 @@
 #include "fahmon.h"
 #include "aboutDialog.h"
 
+#include "pathManager.h"
+#include "staticBoldedText.h"
+
 #include "wx/image.h"
 #include "wx/sizer.h"
 //#include "wx/intl.h"
@@ -32,9 +35,6 @@
 #include "wx/statbmp.h"
 #include "wx/statline.h"
 #include "wx/hyperlink.h"
-#include "pathManager.h"
-#include "staticBoldedText.h"
-
 
 AboutDialog* AboutDialog::mInstance = NULL;
 

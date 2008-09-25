@@ -26,17 +26,17 @@
 
 #include "tools.h"
 #include "client.h"
-#include "wx/txtstrm.h"
-#include "wx/intl.h"
 #include "mainDialog.h"
-#include "wx/textfile.h"
-#include "wx/wfstream.h"
 #include "pathManager.h"
 #include "messagesManager.h"
 #include "clientHelperThread.h"
 #include "webMonitor.h"
 #include "trayManager.h"
 
+#include "wx/txtstrm.h"
+#include "wx/intl.h"
+#include "wx/textfile.h"
+#include "wx/wfstream.h"
 
 // The single instance of ClientsManager accross the application
 ClientsManager* ClientsManager::mInstance = NULL;

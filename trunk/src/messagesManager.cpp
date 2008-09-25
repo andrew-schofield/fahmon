@@ -26,13 +26,13 @@
 
 #include "pathManager.h"
 #include "mainDialog.h"
+#include "tools.h"
+
 #include "wx/datetime.h"
 #include "wx/txtstrm.h"
 #include "wx/textfile.h"
 #include "wx/wfstream.h"
 #include "wx/intl.h"
-#include "tools.h"
-
 
 // This mutex is there to ensure that two threads won't try to log something at the same time
 wxMutex MessagesManager::mMutexLog;

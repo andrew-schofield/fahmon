@@ -27,10 +27,6 @@
 
 #include "tools.h"
 #include "client.h"
-#include "wx/colour.h"
-#include "wx/filefn.h"
-#include "wx/textfile.h"
-#include "wx/hyperlink.h"
 #include "trayManager.h"
 #include "aboutDialog.h"
 #include "pathManager.h"
@@ -45,6 +41,11 @@
 #include "preferencesDialog.h"
 #include "preferencesManager.h"
 #include "listViewClients.h"
+
+#include "wx/colour.h"
+#include "wx/filefn.h"
+#include "wx/textfile.h"
+#include "wx/hyperlink.h"
 #ifdef __WXMAC__
 #include "wx/sysopt.h"
 #endif

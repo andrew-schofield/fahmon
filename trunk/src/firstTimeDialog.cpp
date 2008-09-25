@@ -25,14 +25,14 @@
 #include "fahmon.h"
 #include "firstTimeDialog.h"
 
-#include "wx/statline.h"
-#include "wx/hyperlink.h"
 #include "tools.h"
 #include "pathManager.h"
 #include "fahmonConsts.h"
 #include "projectsManager.h"
 #include "staticBoldedText.h"
 
+#include "wx/statline.h"
+#include "wx/hyperlink.h"
 
 // Identifiers for the controls
 enum _CONTROL_ID

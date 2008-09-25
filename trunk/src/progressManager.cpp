@@ -24,9 +24,9 @@
 #include "fahmon.h"
 #include "progressManager.h"
 
-#include "wx/icon.h"
 #include "pathManager.h"
 
+#include "wx/icon.h"
 
 ProgressManager::ProgressManager(bool isInSilentMode)
 {

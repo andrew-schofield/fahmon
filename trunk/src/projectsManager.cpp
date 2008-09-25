@@ -28,17 +28,18 @@
 #include "htmlParser.h"
 #include "mainDialog.h"
 #include "pathManager.h"
-#include "wx/textfile.h"
-#include "wx/filename.h"
 #include "httpDownloader.h"
 #include "messagesManager.h"
 #include "dataInputStream.h"
 #include "dataOutputStream.h"
 #include "preferencesManager.h"
 #include "projectHelperThread.h"
-#include "locale.h"
 #include "progressManager.h"
 
+#include "wx/textfile.h"
+#include "wx/filename.h"
+
+#include "locale.h"
 
 // The single instance of ProjectsManager accross the application
 ProjectsManager* ProjectsManager::mInstance = NULL;

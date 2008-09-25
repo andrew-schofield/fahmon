@@ -26,13 +26,13 @@
 #include "clientDialog.h"
 
 #include "tools.h"
-#include "wx/dirdlg.h"
-#include "wx/button.h"
-//#include "wx/intl.h"
 #include "mainDialog.h"
 #include "clientsManager.h"
 #include "staticBoldedText.h"
 
+#include "wx/dirdlg.h"
+#include "wx/button.h"
+//#include "wx/intl.h"
 
 // Identifiers for the controls
 enum _CONTROL_ID

@@ -25,13 +25,13 @@
 #include "httpDownloader.h"
 
 #include "tools.h"
-#include "wx/timer.h"
-#include "wx/socket.h"
-#include "wx/filename.h"
 #include "base64Codec.h"
 #include "preferencesManager.h"
 #include "messagesManager.h"
 
+#include "wx/timer.h"
+#include "wx/socket.h"
+#include "wx/filename.h"
 
 // This size should be high enough to store the whole head of the answer
 #define BUFFER_SIZE 1024

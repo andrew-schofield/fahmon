@@ -30,6 +30,7 @@
 #include "messagesManager.h"
 #include "preferencesManager.h"
 #include "mainDialog.h"
+
 #include "wx/file.h"
 
 typedef unsigned int   u32;

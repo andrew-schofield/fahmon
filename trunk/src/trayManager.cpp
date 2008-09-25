@@ -24,15 +24,15 @@
 #include "fahmon.h"
 #include "trayManager.h"
 
-#include "wx/icon.h"
-#include "wx/intl.h"
 #include "mainDialog.h"
 #include "pathManager.h"
-#include "wx/menu.h"
 #include "listViewClients.h"
 #include "benchmarksDialog.h"
 #include "preferencesDialog.h"
 
+#include "wx/icon.h"
+#include "wx/intl.h"
+#include "wx/menu.h"
 
 // The single instance accross the application
 TrayManager* TrayManager::mInstance = NULL;

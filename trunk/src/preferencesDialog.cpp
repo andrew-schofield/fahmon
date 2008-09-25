@@ -26,15 +26,15 @@
 #include "preferencesDialog.h"
 
 #include "client.h"
-#include "wx/valtext.h"
-#include "wx/filedlg.h"
-#include "wx/string.h"
 #include "mainDialog.h"
 #include "httpDownloader.h"
 #include "preferencesManager.h"
 #include "tools.h"
 #include "webMonitor.h"
 
+#include "wx/valtext.h"
+#include "wx/filedlg.h"
+#include "wx/string.h"
 
 // Identifiers for the controls
 enum _CONTROL_ID

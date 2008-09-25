@@ -26,12 +26,12 @@
 #include "benchmarksDialog.h"
 
 #include "tools.h"
-#include "wx/sizer.h"
 #include "clientsManager.h"
 #include "projectsManager.h"
 #include "benchmarksManager.h"
 #include "preferencesManager.h"
 
+#include "wx/sizer.h"
 
 // Identifiers for the controls
 enum _CONTROL_ID

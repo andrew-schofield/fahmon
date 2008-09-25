@@ -26,8 +26,6 @@
 
 #include "tools.h"
 #include "client.h"
-#include "wx/settings.h"
-#include "wx/image.h"
 #include "mainDialog.h"
 #include "pathManager.h"
 #include "clientDialog.h"
@@ -35,8 +33,11 @@
 #include "preferencesManager.h"
 #include "projectsManager.h"
 #include "benchmarksManager.h"
+
 #include "wx/dir.h"
 #include "wx/filename.h"
+#include "wx/settings.h"
+#include "wx/image.h"
 
 // TODO
 // FMC_COLOR_LIST_ODD_LINES creates a new wxColour object each time it is used
