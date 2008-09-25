@@ -22,6 +22,7 @@ SVN
     * Fixed file manager bug with paths containing spaces (thanks to John
       Daiker).
     * Fixed team number and username refresh issue (thanks to John Daiker).
+    * Changed client list style and removed "zebra" background colour scheme.
 
     Windows
 

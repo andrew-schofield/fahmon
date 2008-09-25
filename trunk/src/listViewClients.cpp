@@ -483,26 +483,6 @@ void ListViewClients::Reset(wxUint32 nbClients)
 		InsertItem(i, wxT(""), LVI_CLIENT_STOPPED);
 		SetItem(i, LVC_NAME, _("Loading..."));
 
-		// Give a slightly darker color to odd lines
-		if((i&1) != 0)
-		{
-			//for some reason the WINDOWFRAME colour doesn't work in windows, so use the light 3D
-			//element instead. Hopefully this will be the same colour most of the time anyway
-			//It appears to throw a fit at the fonts too, so we reset them here
-			#ifdef _FAHMON_WIN32_
-			SetItemBackgroundColour(i, wxSystemSettings::GetColour(wxSYS_COLOUR_3DLIGHT));
-			#elif __WXGTK__
-			SetItemBackgroundColour(i, wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOWFRAME));
-			#elif __WXMAC__
-			SetItemBackgroundColour(i, wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOWFRAME));
-			#endif
-
-		}
-		else
-		{
-			SetItemBackgroundColour(i, wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOW));
-		}
-
 		// Due to the possibility of sorting, items won't keep their order, so we associate the id of clients with their
 		// index in the list, so that we can address directly the correct item to update a client
 		// We also associate clientId with each item using the possibility to store data
@@ -771,24 +751,6 @@ void ListViewClients::Sort(void)
 	for(i=0; i<(wxUint32)GetItemCount(); ++i)
 	{
 		mClientIdToIndex[GetItemData(i)] = i;
-
-		if((i&1) != 0)
-		{
-			//for some reason the WINDOWFRAME colour doesn't work in windows, so use the light 3D
-			//element instead. Hopefully this will be the same colour most of the time anyway
-			//It appears to throw a fit at the fonts too, so we reset them here
-			#ifdef _FAHMON_WIN32_
-			SetItemBackgroundColour(i, wxSystemSettings::GetColour(wxSYS_COLOUR_3DLIGHT));
-			#elif __WXGTK__
-			SetItemBackgroundColour(i, wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOWFRAME));
-			#elif __WXMAC__
-			SetItemBackgroundColour(i, wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOWFRAME));
-			#endif
-		}
-		else
-		{
-			SetItemBackgroundColour(i, wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOW));
-		}
 	}
 
 	// Select() does not seem to generate a LIST_ITEM_SELECTED event

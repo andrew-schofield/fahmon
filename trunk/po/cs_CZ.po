@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cs_CZ\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-09-25 00:00+0100\n"
+"POT-Creation-Date: 2008-09-25 14:11+0100\n"
 "PO-Revision-Date: 2008-02-08 14:50+0100\n"
 "Last-Translator: Martin Bednar <serafean@gmail.com>\n"
 "Language-Team: Czech <en@li.org>\n"
@@ -156,7 +156,7 @@ msgstr "Log nenahrán"
 msgid "anonymous"
 msgstr "Anonymní"
 
-#: src/client.cpp:98 src/listViewClients.cpp:705 src/listViewClients.cpp:709
+#: src/client.cpp:98 src/listViewClients.cpp:685 src/listViewClients.cpp:689
 #: src/mainDialog.cpp:456 src/mainDialog.cpp:461 src/mainDialog.cpp:462
 #: src/mainDialog.cpp:463 src/mainDialog.cpp:464 src/mainDialog.cpp:465
 #: src/mainDialog.cpp:550 src/mainDialog.cpp:606 src/webMonitor.cpp:132
@@ -407,42 +407,42 @@ msgstr "Složku <%s> nelze vztvořit."
 msgid "%.1f KB/s"
 msgstr "%.1f KB/s"
 
-#: src/listViewClients.cpp:156 src/listViewClients.cpp:897
+#: src/listViewClients.cpp:156 src/listViewClients.cpp:859
 #: src/webMonitor.cpp:582
 msgid "Progress"
 msgstr "Postup"
 
-#: src/listViewClients.cpp:157 src/listViewClients.cpp:898
+#: src/listViewClients.cpp:157 src/listViewClients.cpp:860
 #: src/webMonitor.cpp:583
 msgid "Name"
 msgstr "Název"
 
-#: src/listViewClients.cpp:158 src/listViewClients.cpp:899
+#: src/listViewClients.cpp:158 src/listViewClients.cpp:861
 #: src/webMonitor.cpp:584
 msgid "ETA"
 msgstr "ETA"
 
-#: src/listViewClients.cpp:159 src/listViewClients.cpp:900
+#: src/listViewClients.cpp:159 src/listViewClients.cpp:862
 #: src/webMonitor.cpp:585
 msgid "PPD"
 msgstr "PPD"
 
-#: src/listViewClients.cpp:160 src/listViewClients.cpp:901
+#: src/listViewClients.cpp:160 src/listViewClients.cpp:863
 #, fuzzy
 msgid "Core"
 msgstr "Jádro : "
 
-#: src/listViewClients.cpp:162 src/listViewClients.cpp:903
+#: src/listViewClients.cpp:162 src/listViewClients.cpp:865
 #: src/webMonitor.cpp:580
 msgid "Credit"
 msgstr "Kredit"
 
-#: src/listViewClients.cpp:163 src/listViewClients.cpp:904
+#: src/listViewClients.cpp:163 src/listViewClients.cpp:866
 #: src/webMonitor.cpp:581
 msgid "Downloaded"
 msgstr "Staženo"
 
-#: src/listViewClients.cpp:164 src/listViewClients.cpp:905
+#: src/listViewClients.cpp:164 src/listViewClients.cpp:867
 #, fuzzy
 msgid "Deadline"
 msgstr "Konečný termín:"
@@ -451,68 +451,68 @@ msgstr "Konečný termín:"
 msgid "Loading..."
 msgstr "Načítání"
 
-#: src/listViewClients.cpp:589 src/mainDialog.cpp:494 src/webMonitor.cpp:206
+#: src/listViewClients.cpp:569 src/mainDialog.cpp:494 src/webMonitor.cpp:206
 #, c-format
 msgid "%u points"
 msgstr "%u bodů"
 
-#: src/listViewClients.cpp:621 src/listViewClients.cpp:668
+#: src/listViewClients.cpp:601 src/listViewClients.cpp:648
 #: src/mainDialog.cpp:443 src/mainDialog.cpp:531 src/mainDialog.cpp:588
 #: src/webMonitor.cpp:170 src/webMonitor.cpp:241 src/webMonitor.cpp:296
 #, c-format
 msgid "%s ago"
 msgstr "pěed %s"
 
-#: src/listViewClients.cpp:634 src/listViewClients.cpp:687
+#: src/listViewClients.cpp:614 src/listViewClients.cpp:667
 #: src/mainDialog.cpp:484 src/mainDialog.cpp:485 src/mainDialog.cpp:486
 #: src/mainDialog.cpp:487
 msgid "Unknown"
 msgstr "Neznámý"
 
-#: src/listViewClients.cpp:672 src/mainDialog.cpp:535 src/mainDialog.cpp:592
+#: src/listViewClients.cpp:652 src/mainDialog.cpp:535 src/mainDialog.cpp:592
 #: src/webMonitor.cpp:245 src/webMonitor.cpp:300
 #, c-format
 msgid "In %s"
 msgstr "Za %s"
 
-#: src/listViewClients.cpp:701 src/webMonitor.cpp:356
+#: src/listViewClients.cpp:681 src/webMonitor.cpp:356
 msgid "Finished"
 msgstr "Dokončen"
 
-#: src/listViewClients.cpp:713 src/webMonitor.cpp:368
+#: src/listViewClients.cpp:693 src/webMonitor.cpp:368
 msgid "*Hung*"
 msgstr "*Zablokovaný*"
 
-#: src/listViewClients.cpp:862 src/listViewClients.cpp:870
+#: src/listViewClients.cpp:824 src/listViewClients.cpp:832
 #: src/mainDialog.cpp:640
 msgid "Add a new client"
 msgstr "Přidat klienta"
 
-#: src/listViewClients.cpp:872
+#: src/listViewClients.cpp:834
 msgid "Reload this client"
 msgstr "Znovu načíst klienta "
 
-#: src/listViewClients.cpp:873
+#: src/listViewClients.cpp:835
 msgid "Edit this client"
 msgstr "Editovat klienta"
 
-#: src/listViewClients.cpp:874
+#: src/listViewClients.cpp:836
 msgid "Delete this client"
 msgstr "Vymazat klienta"
 
-#: src/listViewClients.cpp:875
+#: src/listViewClients.cpp:837
 msgid "View Client Files"
 msgstr "Zobrazit soubory klienta"
 
-#: src/listViewClients.cpp:902 src/webMonitor.cpp:579
+#: src/listViewClients.cpp:864 src/webMonitor.cpp:579
 msgid "PRCG"
 msgstr "PRCG"
 
-#: src/listViewClients.cpp:1003 src/mainDialog.cpp:1531
+#: src/listViewClients.cpp:965 src/mainDialog.cpp:1531
 msgid "Do you really want to delete this client?"
 msgstr "Opravdu chcete smazat klienta?"
 
-#: src/listViewClients.cpp:1063
+#: src/listViewClients.cpp:1025
 msgid ""
 "Unable to launch the default filemanager.\n"
 "\n"
