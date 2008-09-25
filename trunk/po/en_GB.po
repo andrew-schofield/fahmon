@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
 "POT-Creation-Date: 2008-09-25 15:34+0100\n"
-"PO-Revision-Date: 2008-08-31 16:37+0100\n"
+"PO-Revision-Date: 2008-09-25 17:48+0100\n"
 "Last-Translator: Andrew Schofield <andrew_s@fahmon.net>\n"
-"Language-Team: British English <en@li.org>\n"
+"Language-Team: British English\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -22,11 +22,11 @@ msgstr "About"
 
 #: src/aboutDialog.cpp:53
 msgid "Lead Developer:"
-msgstr "Lead Developer"
+msgstr "Lead Developer:"
 
 #: src/aboutDialog.cpp:55
 msgid "Retired Developer:"
-msgstr "Retired Developer"
+msgstr "Retired Developer:"
 
 #: src/aboutDialog.cpp:57
 msgid "Homepage:"
@@ -556,13 +556,12 @@ msgid "Copyright (C) 2005-2008 Sebastiaan Couwenberg"
 msgstr "Copyright (C) 2005-2008 Sebastiaan Couwenberg"
 
 #: src/mainDialog.cpp:386
-#, fuzzy
 msgid ""
 "Something is wrong with this client.\n"
 "Please check the messages (Tools->Show/Hide Messages Window)."
 msgstr ""
 "Something is wrong with this client.\n"
-"Please check the messages (FahMon->Show/Hide Messages Window)."
+"Please check the messages (Tools->Show/Hide Messages Window)."
 
 #: src/mainDialog.cpp:489
 #, c-format
@@ -752,9 +751,8 @@ msgid "&Jmol\tCtrl+J"
 msgstr "&Jmol\tCtrl+J"
 
 #: src/mainDialog.cpp:686
-#, fuzzy
 msgid "fah&info\tCtrl+I"
-msgstr "fah&info\tCtrl+F"
+msgstr "fah&info\tCtrl+I"
 
 #: src/mainDialog.cpp:689
 msgid "F@H &Website"
@@ -917,15 +915,15 @@ msgstr "An unknown error happened!"
 
 #: src/mainDialog.cpp:1629
 msgid "ctrl"
-msgstr ""
+msgstr "ctrl"
 
 #: src/mainDialog.cpp:1630
 msgid "shift"
-msgstr ""
+msgstr "shift"
 
 #: src/mainDialog.cpp:1631
 msgid "alt"
-msgstr ""
+msgstr "alt"
 
 #: src/messagesFrame.cpp:43
 #, c-format
