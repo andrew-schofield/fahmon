@@ -87,13 +87,13 @@ bool FahMonApp::OnInit(void)
 	{
 		delete mServerIPC;
 		mServerIPC = NULL;
-		Tools::ErrorMsgBox(wxString::Format(_T("Could create socket, auto-raising will not function!")));
+		Tools::ErrorMsgBox(_T("Could create socket, auto-raising will not function!"));
 	}
 	#endif
 
 	if ( !m_locale.Init(wxLANGUAGE_DEFAULT, wxLOCALE_CONV_ENCODING) )
 	{
-		Tools::ErrorMsgBox(wxString::Format(_T("This language is not supported by the system.")));
+		Tools::ErrorMsgBox(_T("This language is not supported by the system."));
 		return false;
 	}
 
@@ -246,19 +246,19 @@ int FahMonApp::OnExit(void)
 
 void FahMonApp::OnEndSession(wxCloseEvent& event)
 {
-	_LogMsgInfo(wxString::Format(wxT("Running OnEndSession")));
+	_LogMsgInfo(wxT("Running OnEndSession"));
 	MainDialog::GetInstance()->Close();
 }
 
 
 void FahMonApp::OnQueryEndSession(wxCloseEvent& event)
 {
-	_LogMsgInfo(wxString::Format(wxT("Running OnQueryEndSession")));
+	_LogMsgInfo(wxT("Running OnQueryEndSession"));
 	MainDialog::GetInstance()->Close();
 }
 
 void FahMonApp::OnClose(wxCloseEvent& event)
 {
-	_LogMsgInfo(wxString::Format(wxT("Running OnClose")));
+	_LogMsgInfo(wxT("Running OnClose"));
 	MainDialog::GetInstance()->Close();
 }
