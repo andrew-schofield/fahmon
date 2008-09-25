@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv_SE\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-09-25 14:11+0100\n"
+"POT-Creation-Date: 2008-09-25 14:33+0100\n"
 "PO-Revision-Date: 2008-02-01 20:20+0100\n"
 "Last-Translator: Olof Persson <floffe@gmail.com>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -405,7 +405,7 @@ msgstr ""
 "Den senaste versionen av %s finns alltid tillgänglig på den officiella "
 "webbplatsen:"
 
-#: src/firstTimeDialog.cpp:139 src/main.cpp:161 src/main.cpp:167
+#: src/firstTimeDialog.cpp:139 src/main.cpp:164 src/main.cpp:170
 #, c-format
 msgid "Could not create directory <%s>"
 msgstr "Kunde inte skapa katalogen <%s>"
@@ -534,10 +534,6 @@ msgstr ""
 #, c-format
 msgid "Another instance of %s is already running!"
 msgstr "En annan upplaga av %s körs redan!"
-
-#: src/main.cpp:173
-msgid "Automatically imported old config"
-msgstr ""
 
 #: src/mainDialog.cpp:179
 #, c-format

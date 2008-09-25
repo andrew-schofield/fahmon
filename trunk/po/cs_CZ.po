@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cs_CZ\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-09-25 14:11+0100\n"
+"POT-Creation-Date: 2008-09-25 14:33+0100\n"
 "PO-Revision-Date: 2008-02-08 14:50+0100\n"
 "Last-Translator: Martin Bednar <serafean@gmail.com>\n"
 "Language-Team: Czech <en@li.org>\n"
@@ -397,7 +397,7 @@ msgid ""
 msgstr ""
 "Nejaktuálnější verze %s bude vždy k dispozici na oficiálních stránkách : "
 
-#: src/firstTimeDialog.cpp:139 src/main.cpp:161 src/main.cpp:167
+#: src/firstTimeDialog.cpp:139 src/main.cpp:164 src/main.cpp:170
 #, c-format
 msgid "Could not create directory <%s>"
 msgstr "Složku <%s> nelze vztvořit."
@@ -526,10 +526,6 @@ msgstr ""
 #, c-format
 msgid "Another instance of %s is already running!"
 msgstr "Jiná instance %s již běží!"
-
-#: src/main.cpp:173
-msgid "Automatically imported old config"
-msgstr ""
 
 #: src/mainDialog.cpp:179
 #, c-format

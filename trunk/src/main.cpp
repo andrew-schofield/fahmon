@@ -149,11 +149,14 @@ bool FahMonApp::OnInit(void)
 	// Create the config directory right at the beginning so we can save messages.log there without it complaining about
 	// not being able to create the file. Note: This means no messages can/should be logged prior to this point
 	requiresFirstRunDialog = false;
+#ifdef _FAHMON_WIN32_
+	wxUint8 copied = 0;
+#endif
 	if(!wxDirExists(PathManager::GetCfgPath())) {
 		requiresFirstRunDialog = true;
 		// The following is necessary on OSX and Win32 as the wxMkDir function doesn't seem to be able to create folders with more
 		// than one level at once. Therefore we need to create the "~/Library/Application Support/FahMon" folder first.
-		#if defined(__WXMAC__) || defined (_FAHMON_WIN32_)
+#if defined(__WXMAC__) || defined (_FAHMON_WIN32_)
 		wxFileName topPath = PathManager::GetCfgPath();
 		topPath.RemoveLastDir();
 		if(!wxMkdir(topPath.GetPath()))
@@ -161,27 +164,35 @@ bool FahMonApp::OnInit(void)
 			Tools::ErrorMsgBox(wxString::Format(_("Could not create directory <%s>"), topPath.GetPath().c_str()));
 			return false;
 		}
-		#endif
+#endif
 		if(!wxMkdir(PathManager::GetCfgPath()))
 		{
 			Tools::ErrorMsgBox(wxString::Format(_("Could not create directory <%s>"), PathManager::GetCfgPath().c_str()));
 			return false;
 		}
-		#ifdef _FAHMON_WIN32_
+#ifdef _FAHMON_WIN32_
 		if(wxDirExists(wxString::Format(wxT("%s\\config\\"), wxFileName(wxTheApp->argv[0]).GetPath (wxPATH_GET_VOLUME))))
 		{
-			Tools::InfoMsgBox(_("Automatically imported old config"));
-			requiresFirstRunDialog = false;
-			wxCopyFile(wxString::Format(wxT("%s\\config\\benchmarks.dat"), wxFileName(wxTheApp->argv[0]).GetPath (wxPATH_GET_VOLUME)), wxString::Format(wxT("%sbenchmarks.dat"), PathManager::GetCfgPath()));
-			wxCopyFile(wxString::Format(wxT("%s\\config\\clientstab.txt"), wxFileName(wxTheApp->argv[0]).GetPath (wxPATH_GET_VOLUME)), wxString::Format(wxT("%sclientstab.txt"), PathManager::GetCfgPath()));
-			wxCopyFile(wxString::Format(wxT("%s\\config\\prefs.dat"), wxFileName(wxTheApp->argv[0]).GetPath (wxPATH_GET_VOLUME)), wxString::Format(wxT("%sprefs.dat"), PathManager::GetCfgPath()));
-			wxCopyFile(wxString::Format(wxT("%s\\config\\projects.dat"), wxFileName(wxTheApp->argv[0]).GetPath (wxPATH_GET_VOLUME)), wxString::Format(wxT("%sprojects.dat"), PathManager::GetCfgPath()));
+			if(wxCopyFile(wxString::Format(wxT("%s\\config\\benchmarks.dat"), wxFileName(wxTheApp->argv[0]).GetPath (wxPATH_GET_VOLUME)), wxString::Format(wxT("%sbenchmarks.dat"), PathManager::GetCfgPath())))
+				copied++;
+			if(wxCopyFile(wxString::Format(wxT("%s\\config\\clientstab.txt"), wxFileName(wxTheApp->argv[0]).GetPath (wxPATH_GET_VOLUME)), wxString::Format(wxT("%sclientstab.txt"), PathManager::GetCfgPath())))
+				copied++;
+			if(wxCopyFile(wxString::Format(wxT("%s\\config\\prefs.dat"), wxFileName(wxTheApp->argv[0]).GetPath (wxPATH_GET_VOLUME)), wxString::Format(wxT("%sprefs.dat"), PathManager::GetCfgPath())))
+				copied++;
+			if(wxCopyFile(wxString::Format(wxT("%s\\config\\projects.dat"), wxFileName(wxTheApp->argv[0]).GetPath (wxPATH_GET_VOLUME)), wxString::Format(wxT("%sprojects.dat"), PathManager::GetCfgPath()))
+				copied++;
+			if(copied > 0)
+				requiresFirstRunDialog = false;
 		}
-		#endif
+#endif
 	}
 
 	// Create mandatory singletons
 	MessagesManager::CreateInstance();          // MUST be created first, so that other manager can log messages immediately
+#ifdef _FAHMON_WIN32_
+	if(copied > 0)
+		_LogMsgInfo(wxString::Format(wxT("Old settings imported into %s"), PathManager::GetCfgPath()));
+#endif
 	PreferencesManager::CreateInstance();       // MUST be created second, so that other managers can retrieve some preferences when created
 	ProjectsManager::CreateInstance();
 	ClientsManager::CreateInstance();
