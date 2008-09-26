@@ -30,6 +30,7 @@ SVN
     * Migrated configuration folder to %APPDATA% to improve behaviour in Vista.
     * Updated installer to add entry to add/remove programs.
     * Fixed some minor installer issues.
+    * Now built against wxWidgets 2.8.9.
 
     Linux
 
