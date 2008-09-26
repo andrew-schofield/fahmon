@@ -113,14 +113,6 @@
 #define PREF_MAINDIALOG_UPDATE_CHECK wxT("MainDialog.UpdateCheck") /**< Preference setting for checking for new FahMon updates */
 #define PREF_MAINDIALOG_UPDATE_CHECK_DV false /**< Default value for checking for new FahMon updates */
 
-// Custom events
-BEGIN_DECLARE_EVENT_TYPES()
-	DECLARE_EVENT_TYPE (EVT_CLIENTRELOADED, -1) /**< Sent when a client has been reloaded */
-	DECLARE_EVENT_TYPE (EVT_NEWCLIENTADDED, -1) /**< Sent when a new client has been added to the ClientsManager */
-	DECLARE_EVENT_TYPE (EVT_CLIENTDELETED, -1) /**< Sent when a client has been deleted */
-	DECLARE_EVENT_TYPE (EVT_PROJECTS_DATABASE_UPDATED, -1) /**< Sent when the projects database has been updated */
-	DECLARE_EVENT_TYPE (EVT_NEW_MESSAGE_LOGGED, -1) /**< Sent when a new message has been added to the MessagesManager */
-END_DECLARE_EVENT_TYPES()
 
 #ifdef __WXMAC__
 /**
@@ -438,7 +430,7 @@ public:
 
 	/**
 	 * Redefine the wxFrame::Show() method in order to perform some initializations before displaying the frame.
-	 * @param Show Should the frame actually be shown.
+	 * @param show Should the frame actually be shown.
 	 **/
 	bool Show(bool show = true);
 
@@ -499,5 +491,15 @@ public:
 private:
 	DECLARE_EVENT_TABLE()
 };
+
+
+// Custom events
+BEGIN_DECLARE_EVENT_TYPES()
+		DECLARE_EVENT_TYPE (EVT_CLIENTRELOADED, -1) /**< Sent when a client has been reloaded */
+		DECLARE_EVENT_TYPE (EVT_NEWCLIENTADDED, -1) /**< Sent when a new client has been added to the ClientsManager */
+		DECLARE_EVENT_TYPE (EVT_CLIENTDELETED, -1) /**< Sent when a client has been deleted */
+		DECLARE_EVENT_TYPE (EVT_PROJECTS_DATABASE_UPDATED, -1) /**< Sent when the projects database has been updated */
+		DECLARE_EVENT_TYPE (EVT_NEW_MESSAGE_LOGGED, -1) /**< Sent when a new message has been added to the MessagesManager */
+END_DECLARE_EVENT_TYPES()
 
 #endif /* _MAINDIALOG_H */

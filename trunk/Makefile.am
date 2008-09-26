@@ -60,4 +60,8 @@ force-update-gmo-%: check-gettext
 	touch po/$$language.po ; \
 	cd po && $(MAKE) $(AM_MAKEFLAGS) update-gmo
 
-.PHONY: check-gettext update-po update-gmo force-update-gmo
+doc:
+	doxygen doxconf
+	cd $(srcdir)/doc/latex/ && $(MAKE) $(AM_MAKEFLAGS)
+
+.PHONY: check-gettext update-po update-gmo force-update-gmo doc
