@@ -23,6 +23,7 @@ SVN
       Daiker).
     * Fixed team number and username refresh issue (thanks to John Daiker).
     * Changed client list style and removed "zebra" background colour scheme.
+    * Issue time no longer used as download time.
 
     Windows
 

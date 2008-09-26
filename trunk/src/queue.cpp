@@ -19,7 +19,7 @@
  * Structural definition of queue.dat.
  * This file contains the structures and conversion routines to allow access to
  * all elements of a Folding@home or Genome@home queue.dat
- * In FahMon, only the PRCG, issue date, username and teamname are used for anything
+ * In FahMon, only the PRCG, download date, username and teamname are used for anything
  * useful.
  * \author Andrew Schofield
  **/
@@ -34,7 +34,6 @@
 #include "wx/file.h"
 
 typedef unsigned int   u32;
-
 
 Queue::Queue()
 {
@@ -52,6 +51,7 @@ bool Queue::LoadQueueFile(const wxString& filename, wxString clientName)
 	queueformat::qs  *p;
 	FILE             *fp;
 	wxInt32           i, queueversion, systype, n, estat, na, nc, it;
+	wxUint32          *tp;
 	char             *q;
 	bool              genome, endianswap;
 	unsigned long     tmpLong;
@@ -155,7 +155,6 @@ tt:				if (genome)
 		i = queuebuffer.version;
 		if (endianswap)
 		{
-			//wxINT32_SWAP_ALWAYS(i);
 			i = es32(i);
 		}
 		if (i > 9)
@@ -212,6 +211,11 @@ tt:				if (genome)
 		{
 			estat = p->stat;
 		}
+		tp = p->tdata;
+		if ((queueversion <= 9) || (systype == 2))
+		{
+			++tp;
+		}
 		// we don't really need estat, as WU state is irrelevant at present
 		genome = ((p->core == 0xC9) || (p->core == 0xCA));
 		if ((systype == 2) && (!genome))
@@ -231,32 +235,12 @@ tt:				if (genome)
 		mClone = le2(p->wuid.f.clone);
 		wxString username(p->uname, wxConvUTF8);
 		wxString teamnumber(p->teamn, wxConvUTF8);
-		it = (genome ? le4(p->wuid.g.issue[0]) : le4(p->wuid.f.issue[0]));
-		mDownloadDate = it;/* what is going on here I wonder? Does wxwidgets also use 01/01/2000 as it's epoch? */
-		/*if(overrideTZ){
-			mDownloadDate.Add(wxTimeSpan::Hours(TZ));
-		}
-		else
-		{
-			mDownloadDate = mDownloadDate.FromTimezone(wxDateTime::UTC);
-		}*/
+		it = tp[0] + COSM_EPOCH_OFFSET;
+		mDownloadDate = it;
 		mUserName = username;
 		if(teamnumber.ToULong(&tmpLong) == true)
 		{
 			mTeamNumber  = (wxUint32)tmpLong;
-		}
-		if (queueversion >= 501) {
-			if(be4(p->flops) > 0) {
-
-				double mflops;
-
-				mflops = be4(p->flops) / 1000000.000000;
-				mFlops = (wxInt32)mflops;
-			}
-		}
-		else
-		{
-			mFlops = 0;
 		}
 		return true;
 	}

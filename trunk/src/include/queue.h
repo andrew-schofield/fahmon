@@ -78,9 +78,8 @@ protected:
  * Timezone offset for Linux vs Cosm epoch.
  * Linux epoch is 1970, FAH (Cosm) is 2000, therefore this offset must be applied to
  * keep times correct.
- * \note Appears to be redundant as wxWidgets seems to use a 2000 epoch
  **/
-	#define TIME_OFS 946684800U	/* Linux epoch is 1970, FAH (Cosm) is 2000 */
+	#define COSM_EPOCH_OFFSET 946684800U
 
 /**
  * Maximum supported queue version.
@@ -109,7 +108,6 @@ protected:
 	wxDateTime mDownloadDate; /**< Object variable storing the WU download date */
 	wxString   mUserName; /**< Object variable storing the username associated with the WU assignment */
 	wxUint32   mTeamNumber; /**< Object variable storing the team number associated with the WU assignment */
-	wxInt32    mFlops; /**< Object variable storing the flop count associated with the current WU */
 
 /**
  * Format of queue.dat.
@@ -245,7 +243,6 @@ public:
 	wxString          GetUserName(void)     const {return mUserName;} /**< Returns the user name associated with the assignment */
 	wxUint32          GetTeamNumber(void)   const {return mTeamNumber;} /**< Returns the team number associated with the assignment */
 	const wxDateTime& GetDownloadDate(void) const {return mDownloadDate;} /**< Returns the WU download date */
-	wxInt32           GetFlopCount(void)    const {return mFlops;} /**< Returns the WU flop count */
 
 /**
  * End qd
