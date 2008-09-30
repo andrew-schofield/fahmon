@@ -233,7 +233,7 @@ void ClientDialog::OnOkButton(wxCommandEvent& event)
 	else
 	{
 		// Add the new client to the list
-		newClientId = ClientsManager::GetInstance()->Add(clientName, clientLocation);
+		newClientId = ClientsManager::GetInstance()->Add(clientName, clientLocation, true);
 
 		// And warn the main dialog
 		newClientEvent.SetInt(newClientId);

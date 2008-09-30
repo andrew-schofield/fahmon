@@ -121,9 +121,10 @@ public:
 	 * Add a new client to the list, return the identifier of this new client.
 	 * @param name The client name.
 	 * @param location The client location.
+	 * @param enabled Is client enabled
 	 * @return The clientId of the added client.
 	 **/
-	wxUint32 Add(const wxString& name, const wxString& location);
+	wxUint32 Add(const wxString& name, const wxString& location, bool enabled);
 
 	// --- Getters
 	/**
@@ -146,6 +147,13 @@ public:
 	 * @return The client object for clientId
 	 **/
 	const Client* Get(wxUint32 clientId)                        const {return mClients.Item(clientId);}
+
+	/**
+	 * Enable or disable a given client
+	 * @param clientId The id of the client to enable or disable
+	 * @param value true=enable, false=disable
+	 **/
+	void Enable(wxUint32 clientId, bool value);
 };
 
 

@@ -129,7 +129,7 @@ void WebMonitor::WriteApp(void)
 		for(currentClient=0; currentClient<ClientsManager::GetInstance()->GetCount(); ++currentClient)
 		{
 			client      = ClientsManager::GetInstance()->Get(currentClient);
-			if(!client->IsAccessible())
+			if(!client->IsAccessible() || !client->IsEnabled())
 			{
 				mDataArray[currentClient][4] = _("N/A");
 				mDataArray[currentClient][7] = _("N/A");
@@ -319,7 +319,12 @@ void WebMonitor::WriteApp(void)
 				}
 			}
 
-			if(!client->IsAccessible())
+			if(!client->IsEnabled())
+			{
+				mDataArray[currentClient][12] = _("Disabled");
+				mDataArray[currentClient][11] = _T("#FFAAAA");
+			}
+			else if(!client->IsAccessible())
 			{
 				mDataArray[currentClient][12] = _("Inaccessible");
 				mDataArray[currentClient][11] = _T("#666666");
@@ -353,7 +358,11 @@ void WebMonitor::WriteApp(void)
 			mDataArray[currentClient][0] = client->GetProgressString();
 			mDataArray[currentClient][1] = client->GetName();
 
-			if(client->GetProgress() == 100)
+			if(!client->IsEnabled())
+			{
+				mDataArray[currentClient][2] = _("Disabled");
+			}
+			else if(client->GetProgress() == 100)
 			{
 				mDataArray[currentClient][2] = _("Finished");
 			}
@@ -379,7 +388,7 @@ void WebMonitor::WriteApp(void)
 			project = ProjectsManager::GetInstance()->GetProject(client->GetProjectId());
 
 		// If it's possible to get the PPD, do so now
-			if(client->IsAccessible() && !client->IsStopped() && !client->IsHung() && project != INVALID_PROJECT_ID)
+			if(client->IsAccessible() && !client->IsStopped() && !client->IsHung() && project != INVALID_PROJECT_ID && client->IsEnabled())
 			{
 				mDataArray[currentClient][3] = wxString::Format(_T("%.2f"), client->GetPPD());
 			}

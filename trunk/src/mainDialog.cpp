@@ -383,7 +383,10 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 		mFinalDeadline->SetLabel(wxT(""));
 		mWUProgressGauge->SetValue(0);
 		mWUProgressText->SetLabel(wxT(""));
-		mLogFile->SetValue(_("Something is wrong with this client.\nPlease check the messages (Tools->Show/Hide Messages Window)."));
+		if(client->IsEnabled())
+			mLogFile->SetValue(_("Something is wrong with this client.\nPlease check the messages (Tools->Show/Hide Messages Window)."));
+		else
+			mLogFile->SetValue(_("This client is currently disabled."));
 
 		return;
 	}

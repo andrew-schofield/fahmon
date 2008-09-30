@@ -83,6 +83,7 @@ TrayManager* TrayManager::GetInstance(void)
 
 void TrayManager::DestroyInstance(void)
 {
+	TrayManager::GetInstance()->UninstallIcon();
 	if(mInstance != NULL)
 	{
 		delete mInstance;

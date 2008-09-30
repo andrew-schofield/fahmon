@@ -43,7 +43,7 @@
 wxMutex Client::mMutexXYZFiles;
 
 
-Client::Client(const wxString& name, const wxString& location)
+Client::Client(const wxString& name, const wxString& location, bool enabled)
 {
 	mLastModification          = 0;
 	mPreviouslyAnalyzedFrameId = MAX_FRAME_ID;
@@ -51,6 +51,7 @@ Client::Client(const wxString& name, const wxString& location)
 	SetName(name);
 	SetLocation(location);
 	SetIsFrameCountAccurate(false);
+	mEnabled = enabled;
 
 	Reset();
 }

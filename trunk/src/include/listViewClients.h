@@ -164,6 +164,7 @@ protected:
 	void OnMenuCredit(wxCommandEvent& event);
 	void OnMenuDownloaded(wxCommandEvent& event);
 	void OnMenuDeadline(wxCommandEvent& event);
+	void OnMenuEnDisable(wxCommandEvent& event);
 
 	void OnColBeginDrag(wxListEvent& event);
 

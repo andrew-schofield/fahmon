@@ -91,7 +91,8 @@ enum _CONTROL_ID
 	MID_PRCG,
 	MID_CREDIT,
 	MID_DOWNLOADED,
-	MID_DEADLINE
+	MID_DEADLINE,
+	MID_ENDISABLE
 };
 
 
@@ -103,6 +104,7 @@ BEGIN_EVENT_TABLE(ListViewClients, wxListView)
 	EVT_MENU    (MID_EDITCLIENT,     ListViewClients::OnMenuEditClient)
 	EVT_MENU    (MID_DELETECLIENT,   ListViewClients::OnMenuDeleteClient)
 	EVT_MENU    (MID_VIEWFILES,      ListViewClients::OnMenuViewFiles)
+	EVT_MENU    (MID_ENDISABLE,      ListViewClients::OnMenuEnDisable)
 
 	EVT_MENU    (MID_STATE,          ListViewClients::OnMenuState)
 	EVT_MENU    (MID_PROGRESS,       ListViewClients::OnMenuProgress)
@@ -548,7 +550,7 @@ void ListViewClients::UpdateClient(wxUint32 clientId)
 	PPD = wxT("--");
 
 	// If it's possible to get the PPD, do so now
-	if(client->IsAccessible() && !client->IsStopped() && !client->IsHung())
+	if(client->IsAccessible() && !client->IsStopped() && !client->IsHung() && client->IsEnabled())
 	{
 		PPD = wxString::Format(wxT("%.2f"), client->GetPPD());
 		if(!client->GetIsFrameCountAccurate())
@@ -558,7 +560,7 @@ void ListViewClients::UpdateClient(wxUint32 clientId)
 	}
 
 	// we're less stringent about when we display other data
-	if(client->IsAccessible() && !client->IsHung())
+	if(client->IsAccessible() && !client->IsHung() && client->IsEnabled())
 	{
 		//PRCG
 		SetItem(clientIndex, LVC_PRCG, wxString::Format(wxT("P%i (R%i, C%i, G%i)"), client->GetProjectId(), client->GetProjectRun(), client->GetProjectClone(), client->GetProjectGen()));
@@ -677,7 +679,11 @@ void ListViewClients::UpdateClient(wxUint32 clientId)
 	SetItem(clientIndex, LVC_PPD, PPD);
 
 	// ETA
-	if(client->GetProgress() == 100)
+	if(!client->IsEnabled())
+	{
+		SetItem(clientIndex, LVC_ETA, _("Disabled"));
+	}
+	else if(client->GetProgress() == 100)
 	{
 		SetItem(clientIndex, LVC_ETA, _("Finished"));
 	}
@@ -699,7 +705,7 @@ void ListViewClients::UpdateClient(wxUint32 clientId)
 	}
 
 	// We use leading icons to indicate the status of the client
-	if(!client->IsAccessible())
+	if(!client->IsAccessible() || !client->IsEnabled())
 	{
 		SetItemImage(clientIndex, LVI_CLIENT_INACCESSIBLE);
 	}
@@ -836,6 +842,10 @@ void ListViewClients::OnRightClick(wxMouseEvent& event)
 		clientContextMenu.Append(MID_EDITCLIENT, _("Edit this client"));
 		clientContextMenu.Append(MID_DELETECLIENT, _("Delete this client"));
 		clientContextMenu.Append(MID_VIEWFILES, _("View Client Files"));
+		if (ClientsManager::GetInstance()->Get(GetSelectedClientId())->IsEnabled())
+			clientContextMenu.Append(MID_ENDISABLE, _("Disable this client"));
+		else
+			clientContextMenu.Append(MID_ENDISABLE, _("Enable this client"));
 	}
 
 	PopupMenu(&clientContextMenu);
@@ -1153,4 +1163,11 @@ void ListViewClients::OnMenuDeadline(wxCommandEvent& event)
 
 	width = mDeadlineEnabled ? (wxUint32)PREF_LISTVIEWCLIENTS_DEADLINECOLUMNWIDTH_DV : 0;
 	SetColumnWidth(LVC_DEADLINE, width);
+}
+
+
+void ListViewClients::OnMenuEnDisable(wxCommandEvent& event)
+{
+	ClientsManager::GetInstance()->Enable(GetSelectedClientId(), !ClientsManager::GetInstance()->Get(GetSelectedClientId())->IsEnabled());
+	UpdateClient(GetSelectedClientId());
 }

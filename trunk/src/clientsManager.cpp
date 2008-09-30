@@ -80,9 +80,9 @@ ClientsManager* ClientsManager::GetInstance(void)
 }
 
 
-wxUint32 ClientsManager::Add(const wxString& name, const wxString& location)
+wxUint32 ClientsManager::Add(const wxString& name, const wxString& location, bool enabled)
 {
-	mClients.Add(new Client(name, location));
+	mClients.Add(new Client(name, location, enabled));
 
 	Save();
 
@@ -103,6 +103,7 @@ inline void ClientsManager::Load(void)
 {
 	bool       isNameOk;
 	bool       isLocationOk;
+	bool       enabled;
 	wxInt32    startingPos;
 	wxInt32    endingPos;
 	wxUint32   i;
@@ -130,6 +131,7 @@ inline void ClientsManager::Load(void)
 		{
 			isNameOk     = false;
 			isLocationOk = false;
+			enabled      = true;
 
 			// First, extract the name
 			// We can't tell Find() where to start, so the " char is replaced with something else
@@ -160,9 +162,12 @@ inline void ClientsManager::Load(void)
 				}
 			}
 
+			if (currentLine.Find('*') != wxNOT_FOUND)
+				enabled = false;
+
 			// Add the client to the list, or warn the user if something went wrong
 			if(isNameOk == true && isLocationOk == true)
-				Add(clientName, clientLocation);
+				Add(clientName, clientLocation, enabled);
 			else
 				_LogMsgError(wxString::Format(_("Error while parsing %s on line %u"), inputFilename.c_str(), i+1));
 		}
@@ -176,6 +181,7 @@ inline void ClientsManager::Save(void)
 {
 	wxUint32             i;
 	wxString             outString;
+	wxString             enabled;
 	const Client        *client;
 	wxFileOutputStream   fileOS(PathManager::GetCfgPath() + wxT(FMC_FILE_CLIENTS));
 	wxTextOutputStream   textOS(fileOS);
@@ -188,13 +194,17 @@ inline void ClientsManager::Save(void)
 	}
 
 	// Write a small header
-	textOS.WriteString(wxString::Format(_("# %s : contains the list of clients\n#\n# \"Name\"          \"Location\"\n\n"), (PathManager::GetCfgPath() + wxT(FMC_FILE_CLIENTS)).c_str()));
+	textOS.WriteString(wxString::Format(_("# %s : contains the list of clients\n#\n# \"Name\"          \"Location\"          \"Disabled\"\n\n"), (PathManager::GetCfgPath() + wxT(FMC_FILE_CLIENTS)).c_str()));
 
 	// And then each client
 	for(i=0; i<GetCount(); ++i)
 	{
 		client    = Get(i);
-		textOS.WriteString(wxString::Format(wxT("\"%s\"    \"%s\"\n"), client->GetName().c_str(), client->GetLocation().c_str()));
+		if (!client->IsEnabled())
+			enabled = wxT("*");
+		else
+			enabled = wxT("");
+		textOS.WriteString(wxString::Format(wxT("\"%s\"    \"%s\"    %s\n"), client->GetName().c_str(), client->GetLocation().c_str(), enabled.c_str()));
 	}
 
 	fileOS.Close();
@@ -231,7 +241,8 @@ void ClientsManager::ReloadThreaded(wxUint32 clientId)
 
 void ClientsManager::Reload(wxUint32 clientId)
 {
-	mClients.Item(clientId)->Reload();
+	if (mClients.Item(clientId)->IsEnabled())
+		mClients.Item(clientId)->Reload();
 }
 
 
@@ -248,4 +259,10 @@ wxString ClientsManager::GetNameFromLocation(const wxString& location) const
 	}
 
 	return wxT("");
+}
+
+
+void ClientsManager::Enable(wxUint32 clientId, bool value)
+{
+	mClients.Item(clientId)->Enable(value);
 }
