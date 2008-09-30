@@ -25,6 +25,7 @@ SVN
     * Changed client list style and removed "zebra" background colour scheme.
     * Issue time no longer used as download time.
     * Added ability to disable clients.
+    * Improved sorting algorithm.
 
     Windows
 

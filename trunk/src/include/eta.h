@@ -132,6 +132,13 @@ public:
 	bool     IsBefore(const ETA* eta) const {return mLeftTimeInMinutes < eta->mLeftTimeInMinutes;}
 
 	/**
+	 * Check if ETA is equal to given ETA.
+	 * @param eta ETA to test against.
+	 * @return Is eta object equal to eta parameter.
+	 **/
+	bool     IsEqualTo(const ETA* eta) const {return mLeftTimeInMinutes == eta->mLeftTimeInMinutes;}
+
+	/**
 	 * Format the ETA as a string.
 	 * @return the ETA using the format defined in preferences
 	 **/

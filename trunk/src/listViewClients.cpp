@@ -293,11 +293,11 @@ int ListViewClients::CompareClients(wxUint32 clientId1, wxUint32 clientId2) cons
 	// Invalid clients must always be at the end of the list
 	if(keepDeadLast == true)
 	{
-		if(!client1->IsAccessible())
+		if(!client1->IsAccessible() || !client1->IsEnabled())
 		{
 			return 1;
 		}
-		else if(!client2->IsAccessible())
+		else if(!client2->IsAccessible() || !client1->IsEnabled())
 		{
 			return -1;
 		}
@@ -322,6 +322,10 @@ int ListViewClients::CompareClients(wxUint32 clientId1, wxUint32 clientId2) cons
 			{
 				comparisonResult = -1;
 			}
+			else if(client1->GetETA()->IsEqualTo(client2->GetETA()))
+			{
+				comparisonResult = 0;
+			}
 			else
 			{
 				comparisonResult = 1;
@@ -333,6 +337,10 @@ int ListViewClients::CompareClients(wxUint32 clientId1, wxUint32 clientId2) cons
 			if(client1->GetPPD() > client2->GetPPD())
 			{
 				comparisonResult = -1;
+			}
+			else if(client1->GetPPD() == client2->GetPPD())
+			{
+				comparisonResult = 0;
 			}
 			else
 			{
@@ -387,6 +395,10 @@ int ListViewClients::CompareClients(wxUint32 clientId1, wxUint32 clientId2) cons
 			{
 				comparisonResult = -1;
 			}
+			else if(Client1State == Client2State)
+			{
+				comparisonResult = 0;
+			}
 			else
 			{
 				comparisonResult = 1;
@@ -397,6 +409,10 @@ int ListViewClients::CompareClients(wxUint32 clientId1, wxUint32 clientId2) cons
 			if(client1->GetDownloadDate().IsEarlierThan(client2->GetDownloadDate()) == true)
 			{
 				comparisonResult = 1;
+			}
+			else if(client1->GetDownloadDate().IsEqualTo(client2->GetDownloadDate()))
+			{
+				comparisonResult = 0;
 			}
 			else
 			{
@@ -420,6 +436,10 @@ int ListViewClients::CompareClients(wxUint32 clientId1, wxUint32 clientId2) cons
 			{
 				comparisonResult = -1;
 			}
+			else if(client1->GetCredit() == client2->GetCredit())
+			{
+				comparisonResult = 0;
+			}
 			else
 			{
 				comparisonResult = 1;
@@ -431,6 +451,10 @@ int ListViewClients::CompareClients(wxUint32 clientId1, wxUint32 clientId2) cons
 			if(client1->GetDeadlineDate().IsEarlierThan(client2->GetDeadlineDate()) == true)
 			{
 				comparisonResult = 1;
+			}
+			else if(client1->GetDeadlineDate().IsEqualTo(client2->GetDeadlineDate()))
+			{
+				comparisonResult = 0;
 			}
 			else
 			{

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru_RU\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-09-30 02:24+0100\n"
+"POT-Creation-Date: 2008-09-30 15:03+0100\n"
 "PO-Revision-Date: 2007-11-15 23:47+0000\n"
 "Last-Translator: Evgeniy Chorpita <tsc.behc@gmail.com>\n"
 "Language-Team: Russian\n"
@@ -158,7 +158,7 @@ msgstr "Лог не загружен!"
 msgid "anonymous"
 msgstr "аноним"
 
-#: src/client.cpp:99 src/listViewClients.cpp:692 src/listViewClients.cpp:696
+#: src/client.cpp:99 src/listViewClients.cpp:716 src/listViewClients.cpp:720
 #: src/mainDialog.cpp:460 src/mainDialog.cpp:465 src/mainDialog.cpp:466
 #: src/mainDialog.cpp:467 src/mainDialog.cpp:468 src/mainDialog.cpp:469
 #: src/mainDialog.cpp:554 src/mainDialog.cpp:610 src/webMonitor.cpp:134
@@ -416,127 +416,127 @@ msgstr "Невозможно создать папку <%s>"
 msgid "%.1f KB/s"
 msgstr "%.1f кБ/с"
 
-#: src/listViewClients.cpp:159 src/listViewClients.cpp:870
+#: src/listViewClients.cpp:159 src/listViewClients.cpp:894
 #: src/webMonitor.cpp:593
 msgid "Progress"
 msgstr "Прогресс"
 
-#: src/listViewClients.cpp:160 src/listViewClients.cpp:871
+#: src/listViewClients.cpp:160 src/listViewClients.cpp:895
 #: src/webMonitor.cpp:594
 msgid "Name"
 msgstr "Имя"
 
-#: src/listViewClients.cpp:161 src/listViewClients.cpp:872
+#: src/listViewClients.cpp:161 src/listViewClients.cpp:896
 #: src/webMonitor.cpp:595
 msgid "ETA"
 msgstr "РВО"
 
-#: src/listViewClients.cpp:162 src/listViewClients.cpp:873
+#: src/listViewClients.cpp:162 src/listViewClients.cpp:897
 #: src/webMonitor.cpp:596
 msgid "PPD"
 msgstr "PPD"
 
-#: src/listViewClients.cpp:163 src/listViewClients.cpp:874
+#: src/listViewClients.cpp:163 src/listViewClients.cpp:898
 #, fuzzy
 msgid "Core"
 msgstr "Ядро:"
 
-#: src/listViewClients.cpp:165 src/listViewClients.cpp:876
+#: src/listViewClients.cpp:165 src/listViewClients.cpp:900
 #: src/webMonitor.cpp:591
 msgid "Credit"
 msgstr "Очков"
 
-#: src/listViewClients.cpp:166 src/listViewClients.cpp:877
+#: src/listViewClients.cpp:166 src/listViewClients.cpp:901
 #: src/webMonitor.cpp:592
 msgid "Downloaded"
 msgstr "Скачано"
 
-#: src/listViewClients.cpp:167 src/listViewClients.cpp:878
+#: src/listViewClients.cpp:167 src/listViewClients.cpp:902
 #, fuzzy
 msgid "Deadline"
 msgstr "Дедлайн:"
 
-#: src/listViewClients.cpp:487
+#: src/listViewClients.cpp:511
 msgid "Loading..."
 msgstr "Загрузка..."
 
-#: src/listViewClients.cpp:572 src/mainDialog.cpp:498 src/webMonitor.cpp:208
+#: src/listViewClients.cpp:596 src/mainDialog.cpp:498 src/webMonitor.cpp:208
 #, c-format
 msgid "%u points"
 msgstr "%u очков"
 
-#: src/listViewClients.cpp:604 src/listViewClients.cpp:651
+#: src/listViewClients.cpp:628 src/listViewClients.cpp:675
 #: src/mainDialog.cpp:447 src/mainDialog.cpp:535 src/mainDialog.cpp:592
 #: src/webMonitor.cpp:172 src/webMonitor.cpp:243 src/webMonitor.cpp:298
 #, c-format
 msgid "%s ago"
 msgstr "%s назад"
 
-#: src/listViewClients.cpp:617 src/listViewClients.cpp:670
+#: src/listViewClients.cpp:641 src/listViewClients.cpp:694
 #: src/mainDialog.cpp:488 src/mainDialog.cpp:489 src/mainDialog.cpp:490
 #: src/mainDialog.cpp:491
 #, fuzzy
 msgid "Unknown"
 msgstr "Неизвестный клиент"
 
-#: src/listViewClients.cpp:655 src/mainDialog.cpp:539 src/mainDialog.cpp:596
+#: src/listViewClients.cpp:679 src/mainDialog.cpp:539 src/mainDialog.cpp:596
 #: src/webMonitor.cpp:247 src/webMonitor.cpp:302
 #, c-format
 msgid "In %s"
 msgstr "В %s"
 
-#: src/listViewClients.cpp:684 src/webMonitor.cpp:324 src/webMonitor.cpp:363
+#: src/listViewClients.cpp:708 src/webMonitor.cpp:324 src/webMonitor.cpp:363
 msgid "Disabled"
 msgstr ""
 
-#: src/listViewClients.cpp:688 src/webMonitor.cpp:367
+#: src/listViewClients.cpp:712 src/webMonitor.cpp:367
 msgid "Finished"
 msgstr "Закончено"
 
-#: src/listViewClients.cpp:700 src/webMonitor.cpp:379
+#: src/listViewClients.cpp:724 src/webMonitor.cpp:379
 msgid "*Hung*"
 msgstr "*Завис*"
 
-#: src/listViewClients.cpp:831 src/listViewClients.cpp:839
+#: src/listViewClients.cpp:855 src/listViewClients.cpp:863
 #: src/mainDialog.cpp:644
 msgid "Add a new client"
 msgstr "Добавить нового клиента"
 
-#: src/listViewClients.cpp:841
+#: src/listViewClients.cpp:865
 msgid "Reload this client"
 msgstr "Обновить информацию о клиенте"
 
-#: src/listViewClients.cpp:842
+#: src/listViewClients.cpp:866
 msgid "Edit this client"
 msgstr "Редактировать этого клиента"
 
-#: src/listViewClients.cpp:843
+#: src/listViewClients.cpp:867
 msgid "Delete this client"
 msgstr "Удалить этого клиента"
 
-#: src/listViewClients.cpp:844
+#: src/listViewClients.cpp:868
 msgid "View Client Files"
 msgstr "Просмотреть файлы клиента"
 
-#: src/listViewClients.cpp:846
+#: src/listViewClients.cpp:870
 #, fuzzy
 msgid "Disable this client"
 msgstr "Удалить этого клиента"
 
-#: src/listViewClients.cpp:848
+#: src/listViewClients.cpp:872
 #, fuzzy
 msgid "Enable this client"
 msgstr "Удалить этого клиента"
 
-#: src/listViewClients.cpp:875 src/webMonitor.cpp:590
+#: src/listViewClients.cpp:899 src/webMonitor.cpp:590
 msgid "PRCG"
 msgstr "PRCG"
 
-#: src/listViewClients.cpp:976 src/mainDialog.cpp:1535
+#: src/listViewClients.cpp:1000 src/mainDialog.cpp:1535
 msgid "Do you really want to delete this client?"
 msgstr "Вы действительно хотите удалить этого клиента?"
 
-#: src/listViewClients.cpp:1036
+#: src/listViewClients.cpp:1060
 msgid ""
 "Unable to launch the default filemanager.\n"
 "\n"
