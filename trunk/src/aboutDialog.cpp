@@ -51,9 +51,13 @@ AboutDialog::AboutDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, wxString
 	authorHomepageSizer = new wxFlexGridSizer(2, FMC_GUI_SPACING_LOW, FMC_GUI_SPACING_LOW);
 
 	authorHomepageSizer->Add(new StaticBoldedText(this, wxID_ANY, _("Lead Developer:")), 0, wxALIGN_RIGHT);
-	authorHomepageSizer->Add(new wxStaticText(this, wxID_ANY, wxT(" Andrew Schofield")), 0, wxALIGN_LEFT);
+	/* TRANSLATORS: This is a proper name. See the gettext manual, section Names.
+	   Pronunciation is like "An-droo Skow(e)-fee-uld"*/
+	authorHomepageSizer->Add(new wxStaticText(this, wxID_ANY, _("Andrew Schofield")), 0, wxALIGN_LEFT);
 	authorHomepageSizer->Add(new StaticBoldedText(this, wxID_ANY, _("Retired Developer:")), 0, wxALIGN_RIGHT);
-	authorHomepageSizer->Add(new wxStaticText(this, wxID_ANY, wxT(" Fran\u00E7ois Ingelrest")), 0, wxALIGN_LEFT);
+	/* TRANSLATORS: This is a proper name. See the gettext manual, section Names. This is a non-ASCII name,
+	   hence the use of unicode escape codes. Pronunciation is like "Fran-swa Angle-ray" */
+	authorHomepageSizer->Add(new wxStaticText(this, wxID_ANY, _("Fran\u00E7ois Ingelrest")), 0, wxALIGN_LEFT);
 	authorHomepageSizer->Add(new StaticBoldedText(this, wxID_ANY, _("Homepage:")), 0, wxALIGN_RIGHT);
 	authorHomepageSizer->Add(new wxHyperlinkCtrl(this, wxID_ANY, wxT(FMC_URL_FAHMON), wxT(FMC_URL_FAHMON)));
 	authorHomepageSizer->Add(new StaticBoldedText(this, wxID_ANY, _("Qd homepage:")), 0, wxALIGN_RIGHT);
@@ -62,6 +66,7 @@ AboutDialog::AboutDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, wxString
 	authorHomepageSizer->Add(new wxHyperlinkCtrl(this, wxID_ANY, wxT("GNU GPL v2"), wxT(FMC_URL_LICENCE)));
 	authorHomepageSizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	authorHomepageSizer->AddSpacer(FMC_GUI_SPACING_LOW);
+	/* TRANSLATORS: This refers to the wxWidgets software library */
 	authorHomepageSizer->Add(new StaticBoldedText(this, wxID_ANY, _("Library:")), 0, wxALIGN_RIGHT);
 	authorHomepageSizer->Add(new wxHyperlinkCtrl(this, wxID_ANY, wxVERSION_STRING, wxT(FMC_URL_WXWIDGETS)));
 	authorHomepageSizer->AddSpacer(FMC_GUI_SPACING_LOW);

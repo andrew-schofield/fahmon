@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-09-30 15:03+0100\n"
+"POT-Creation-Date: 2008-09-30 15:26+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,23 +24,36 @@ msgstr ""
 msgid "Lead Developer:"
 msgstr ""
 
-#: src/aboutDialog.cpp:55
-msgid "Retired Developer:"
+#. TRANSLATORS: This is a proper name. See the gettext manual, section Names.
+#. Pronunciation is like "An-droo Skow(e)-fee-uld"
+#: src/aboutDialog.cpp:56
+msgid "Andrew Schofield"
 msgstr ""
 
 #: src/aboutDialog.cpp:57
-msgid "Homepage:"
+msgid "Retired Developer:"
 msgstr ""
 
-#: src/aboutDialog.cpp:59
-msgid "Qd homepage:"
+#. TRANSLATORS: This is a proper name. See the gettext manual, section Names. This is a non-ASCII name,
+#. hence the use of unicode escape codes. Pronunciation is like "Fran-swa Angle-ray"
+#: src/aboutDialog.cpp:60
+msgid "Fran\\u00E7ois Ingelrest"
 msgstr ""
 
 #: src/aboutDialog.cpp:61
-msgid "Licence:"
+msgid "Homepage:"
+msgstr ""
+
+#: src/aboutDialog.cpp:63
+msgid "Qd homepage:"
 msgstr ""
 
 #: src/aboutDialog.cpp:65
+msgid "Licence:"
+msgstr ""
+
+#. TRANSLATORS: This refers to the wxWidgets software library
+#: src/aboutDialog.cpp:70
 msgid "Library:"
 msgstr ""
 
