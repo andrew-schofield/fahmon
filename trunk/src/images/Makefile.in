@@ -207,12 +207,13 @@ EXTRA_DIST = \
 	list_client_inactive.png \
 	list_client_ok.png \
 	list_client_stopped.png \
+	list_client_paused.png \
 	list_down_arrow.png \
 	list_up_arrow.png \
 	main_icon.png
 
 fahmondistpixdir = $(datadir)/pixmaps/fahmon
-fahmondistpix_DATA = dialog_icon.png list_client_asynch.png list_client_inaccessible.png list_client_inactive.png list_client_ok.png list_client_stopped.png list_down_arrow.png list_up_arrow.png main_icon.png
+fahmondistpix_DATA = dialog_icon.png list_client_asynch.png list_client_inaccessible.png list_client_inactive.png list_client_ok.png list_client_stopped.png list_client_paused.png list_down_arrow.png list_up_arrow.png main_icon.png
 all: all-recursive
 
 .SUFFIXES:

@@ -78,6 +78,7 @@
 #define FMC_FILE_IMG_LIST_INACTIVE     "list_client_inactive.png"
 #define FMC_FILE_IMG_LIST_INACCESSIBLE "list_client_inaccessible.png"
 #define FMC_FILE_IMG_LIST_ASYNCH       "list_client_asynch.png"
+#define FMC_FILE_IMG_LIST_PAUSED       "list_client_paused.png"
 
 #define FMC_FILE_IMG_LIST_ARROW_UP   "list_up_arrow.png"
 #define FMC_FILE_IMG_LIST_ARROW_DOWN "list_down_arrow.png"

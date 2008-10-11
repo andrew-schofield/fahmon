@@ -26,6 +26,7 @@ SVN
     * Issue time no longer used as download time.
     * Added ability to disable clients.
     * Improved sorting algorithm.
+    * Added client pause detection.
 
     Windows
 

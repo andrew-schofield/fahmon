@@ -349,6 +349,11 @@ void WebMonitor::WriteApp(void)
 				mDataArray[currentClient][12] = _("Async");
 				mDataArray[currentClient][11] = _T("#AAAAFF");
 			}
+			else if(client->IsPaused())
+			{
+				mDataArray[currentClient][12] = _("Paused");
+				mDataArray[currentClient][11] = _T("#FBA16C");
+			}
 			else
 			{
 				mDataArray[currentClient][12] = _("Ok");
@@ -378,6 +383,10 @@ void WebMonitor::WriteApp(void)
 			{
 				mDataArray[currentClient][2] = _("*Hung*");
 			}
+			else if(client->IsPaused())
+			{
+				mDataArray[currentClient][2] = _("Paused");
+			}
 			else
 			{
 				mDataArray[currentClient][2] = client->GetETA()->GetString().c_str();
@@ -388,7 +397,7 @@ void WebMonitor::WriteApp(void)
 			project = ProjectsManager::GetInstance()->GetProject(client->GetProjectId());
 
 		// If it's possible to get the PPD, do so now
-			if(client->IsAccessible() && !client->IsStopped() && !client->IsHung() && project != INVALID_PROJECT_ID && client->IsEnabled())
+			if(client->IsAccessible() && !client->IsStopped() && !client->IsHung() && project != INVALID_PROJECT_ID && client->IsEnabled() && !client->IsPaused())
 			{
 				mDataArray[currentClient][3] = wxString::Format(_T("%.2f"), client->GetPPD());
 			}
@@ -446,6 +455,7 @@ void WebMonitor::ProcessTemplate(wxString templateFile, wxString outputFile)
 		wxCopyFile(PathManager::GetImgPath() + wxT("/list_client_inactive.png"), wxPathOnly(outputFile) + wxT("/list_client_inactive.png"));
 		wxCopyFile(PathManager::GetImgPath() + wxT("/list_client_ok.png"), wxPathOnly(outputFile) + wxT("/list_client_ok.png"));
 		wxCopyFile(PathManager::GetImgPath() + wxT("/list_client_stopped.png"), wxPathOnly(outputFile) + wxT("/list_client_stopped.png"));
+		wxCopyFile(PathManager::GetImgPath() + wxT("/list_client_paused.png"), wxPathOnly(outputFile) + wxT("/list_client_paused.png"));
 	}
 	continueReading = false;
 	processLine = wxT("");
@@ -576,6 +586,10 @@ wxString WebMonitor::DecodeTemplate(wxString templateCode, wxUint32 clientId)
 		else if(mDataArray[clientId][12] == _("Async"))
 		{
 			tCode = _T("list_client_asynch.png");
+		}
+		else if(mDataArray[clientId][12] == _("Paused"))
+		{
+			tCode = _T("list_client_paused.png");
 		}
 		else
 		{

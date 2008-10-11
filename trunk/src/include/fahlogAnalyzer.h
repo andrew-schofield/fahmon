@@ -48,6 +48,7 @@ protected:
 		LLT_SHUTDOWN, /**< Folding@Home Client Shutdown. */
 		LLT_WU_COMPLETE, /**< A WU has been completed */
 		LLT_WU_STARTED, /**< A WU has been started */
+		LLT_PAUSED, /**< +Paused */
 		LLT_UNKNOWN /**< Any other type of line */
 	} LogLineType;
 

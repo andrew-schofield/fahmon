@@ -33,7 +33,7 @@ WorkUnitFrame* FahLogAnalyzer::AnalyzeLastFrame(const wxString& fahlogComplete)
 {
 	bool      completeRunFound, emptyLineFound, endOfLogReached, clientIsStopped, newWUStarted;
 	bool      endFrame1Found, endFrame2Found;
-	bool      overrideTimezone, ignoreAsynchrony, isAsync;
+	bool      overrideTimezone, ignoreAsynchrony, isAsync, clientIsPaused;
 	wxInt32   endOfLine;
 	wxInt32   elapsedSeconds, runDuration;
 	wxInt32   timezoneoffset, frameCount, frameCountTemp1, frameCountTemp2;
@@ -52,6 +52,7 @@ WorkUnitFrame* FahLogAnalyzer::AnalyzeLastFrame(const wxString& fahlogComplete)
 	completeRunFound = false;
 	newWUStarted     = false;
 	isAsync          = false;
+	clientIsPaused   = false;
 
 	// Remove empty lines (if any) located at the end of the log
 	while(fahlog.Last() == '\n' || fahlog.Last() == '\r')
@@ -97,6 +98,10 @@ WorkUnitFrame* FahLogAnalyzer::AnalyzeLastFrame(const wxString& fahlogComplete)
 		{
 			case LLT_SHUTDOWN:
 				clientIsStopped = true;
+				break;
+
+			case LLT_PAUSED:
+				clientIsPaused = true;
 				break;
 
 			case LLT_EMPTY:
@@ -146,6 +151,11 @@ WorkUnitFrame* FahLogAnalyzer::AnalyzeLastFrame(const wxString& fahlogComplete)
 	if(clientIsStopped)
 	{
 		return new WorkUnitFrame();
+	}
+
+	if(clientIsPaused)
+	{
+		return new WorkUnitFrame(0, false, 0, 0, 0, 0, true);
 	}
 
 	// If we found a complete run, then we can extract information about it
@@ -309,6 +319,10 @@ void FahLogAnalyzer::ParseLogLine(wxString& lineToParse, LogLine& logLine)
 	else if(lineToParse.StartsWith(wxT("Project")))
 	{
 		logLine.type = LLT_WU_STARTED;
+	}
+	else if(lineToParse.StartsWith(wxT("+ Paused")) || lineToParse.StartsWith(wxT("+ Running on battery power")))
+	{
+		logLine.type = LLT_PAUSED;
 	}
 	else
 	{

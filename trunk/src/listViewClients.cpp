@@ -68,6 +68,7 @@ enum _LISTVIEW_ICON
 	LVI_CLIENT_INACCESSIBLE,
 	LVI_CLIENT_OK,
 	LVI_CLIENT_ASYNCH,
+	LVI_CLIENT_PAUSED,
 	LVI_UP_ARROW,
 	LVI_DOWN_ARROW
 };
@@ -218,6 +219,7 @@ ListViewClients::ListViewClients(wxWindow* parent, wxWindowID id, wxUint32 nbCli
 	imageList->Add(wxImage(PathManager::GetImgPath() + wxT(FMC_FILE_IMG_LIST_INACCESSIBLE), wxBITMAP_TYPE_PNG));
 	imageList->Add(wxImage(PathManager::GetImgPath() + wxT(FMC_FILE_IMG_LIST_OK), wxBITMAP_TYPE_PNG));
 	imageList->Add(wxImage(PathManager::GetImgPath() + wxT(FMC_FILE_IMG_LIST_ASYNCH), wxBITMAP_TYPE_PNG));
+	imageList->Add(wxImage(PathManager::GetImgPath() + wxT(FMC_FILE_IMG_LIST_PAUSED), wxBITMAP_TYPE_PNG));
 	imageList->Add(wxImage(PathManager::GetImgPath() + wxT(FMC_FILE_IMG_LIST_ARROW_UP), wxBITMAP_TYPE_PNG));
 	imageList->Add(wxImage(PathManager::GetImgPath() + wxT(FMC_FILE_IMG_LIST_ARROW_DOWN), wxBITMAP_TYPE_PNG));
 	AssignImageList(imageList, wxIMAGE_LIST_SMALL);
@@ -574,7 +576,7 @@ void ListViewClients::UpdateClient(wxUint32 clientId)
 	PPD = wxT("--");
 
 	// If it's possible to get the PPD, do so now
-	if(client->IsAccessible() && !client->IsStopped() && !client->IsHung() && client->IsEnabled())
+	if(client->IsAccessible() && !client->IsStopped() && !client->IsHung() && client->IsEnabled() && !client->IsPaused())
 	{
 		PPD = wxString::Format(wxT("%.2f"), client->GetPPD());
 		if(!client->GetIsFrameCountAccurate())
@@ -723,6 +725,10 @@ void ListViewClients::UpdateClient(wxUint32 clientId)
 	{
 		SetItem(clientIndex, LVC_ETA, _("*Hung*"));
 	}
+	else if(client->IsPaused())
+	{
+		SetItem(clientIndex, LVC_ETA, _("Paused"));
+	}
 	else
 	{
 		SetItem(clientIndex, LVC_ETA, client->GetETA()->GetString());
@@ -748,6 +754,10 @@ void ListViewClients::UpdateClient(wxUint32 clientId)
 	else if(client->IsAsynch())
 	{
 		SetItemImage(clientIndex, LVI_CLIENT_ASYNCH);
+	}
+	else if(client->IsPaused())
+	{
+		SetItemImage(clientIndex, LVI_CLIENT_PAUSED);
 	}
 	else
 	{

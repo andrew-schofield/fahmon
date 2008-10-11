@@ -25,7 +25,7 @@
 #include "workUnitFrame.h"
 
 
-WorkUnitFrame::WorkUnitFrame(FrameId id, bool clientIsStopped, wxUint32 duration, wxUint32 elapsedSeconds, wxUint32 effectiveDuration, wxUint32 frames)
+WorkUnitFrame::WorkUnitFrame(FrameId id, bool clientIsStopped, wxUint32 duration, wxUint32 elapsedSeconds, wxUint32 effectiveDuration, wxUint32 frames, bool clientIsPaused)
 {
 	mId                = id;
 	mDuration          = duration;
@@ -33,6 +33,7 @@ WorkUnitFrame::WorkUnitFrame(FrameId id, bool clientIsStopped, wxUint32 duration
 	mClientIsStopped   = clientIsStopped;
 	mEffectiveDuration = effectiveDuration;
 	mFrameCount        = frames;
+	mClientIsPaused    = clientIsPaused;
 }
 
 

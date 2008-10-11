@@ -261,7 +261,7 @@ void Client::Reload(void)
 	}
 
 	// Add this duration to the benchmarks for valid projects, but don't store the same frame twice
-	if(mProjectId != INVALID_PROJECT_ID && lastFrame != NULL && !lastFrame->ClientIsStopped())
+	if(mProjectId != INVALID_PROJECT_ID && lastFrame != NULL && !lastFrame->ClientIsStopped() && !lastFrame->ClientIsPaused())
 	{
 		// Calculate effective frame time
 		timeNow = wxDateTime::Now();
@@ -303,7 +303,7 @@ void Client::Reload(void)
 
 	// If current project is valid and is found in the benchmarks database, then grab the PPD
 	// Needs to check state too, no point getting PPD for stopped or dead clients.
-	if (mProjectId != INVALID_PROJECT_ID && mState != ST_STOPPED && mState != ST_INACCESSIBLE && mState != ST_HUNG)
+	if (mProjectId != INVALID_PROJECT_ID && mState != ST_STOPPED && mState != ST_INACCESSIBLE && mState != ST_HUNG && mState != ST_PAUSED)
 	{
 		if (project != INVALID_PROJECT_ID)
 		{
@@ -372,7 +372,7 @@ void Client::Reload(void)
 			}
 		}
 	}
-	if (mProjectId != INVALID_PROJECT_ID && mState != ST_INACCESSIBLE && lastFrame != NULL && mState != ST_STOPPED)
+	if (mProjectId != INVALID_PROJECT_ID && mState != ST_INACCESSIBLE && lastFrame != NULL && mState != ST_STOPPED && mState != ST_PAUSED)
 	{
 		if (project != INVALID_PROJECT_ID)
 		{
@@ -759,6 +759,14 @@ void Client::FindCurrentState(WorkUnitFrame* lastFrame)
 	{
 		mState = ST_STOPPED;
 		_LogMsgInfo(wxString::Format(_("%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"), mName.c_str()));
+		return;
+	}
+
+
+	if(lastFrame->ClientIsPaused())
+	{
+		mState = ST_PAUSED;
+		_LogMsgInfo(wxString::Format(_("%s has been paused"), mName.c_str()));
 		return;
 	}
 

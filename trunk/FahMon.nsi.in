@@ -1,5 +1,5 @@
   !include "MUI.nsh"
-  
+
   SetCompressor /SOLID lzma
 
   Name "@PACKAGE_NAME@"
@@ -46,6 +46,7 @@ Section "!@PACKAGE_NAME@" SecFahMon
   File "images\list_client_inactive.png"
   File "images\list_client_ok.png"
   File "images\list_client_stopped.png"
+  File "images\list_client_paused.png"
   File "images\list_down_arrow.png"
   File "images\list_up_arrow.png"
   File "images\main_icon.png"
@@ -65,7 +66,7 @@ Section "!@PACKAGE_NAME@" SecFahMon
   WriteRegStr HKCU "Software\FahMon" "" $INSTDIR
 
   WriteUninstaller "$INSTDIR\Uninstall.exe"
-  
+
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\FahMon" \
                  "DisplayName" "FahMon - Folding@home client monitoring software"
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\FahMon" \
@@ -89,7 +90,7 @@ Section "Web Templates" secWebTemplates
   File "templates\fancy_template.htm"
   File "templates\simple_template.htm"
   File "templates\simple_template.txt"
-  
+
 SectionEnd
 
 SectionGroup "Languages" secLang
@@ -255,7 +256,7 @@ Section "Uninstall"
   startMenuDeleteLoopDone:
 
   DeleteRegKey /ifempty HKCU "Software\FahMon"
-  
+
   DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\FahMon"
 
 SectionEnd

@@ -42,6 +42,7 @@ class WorkUnitFrame
 {
 protected:
 	bool     mClientIsStopped;        /**< true if the message 'Folding@Home Client Shutdown.' was found. In this case, other information is not valid! */
+	bool     mClientIsPaused;         /**< true if the message '+paused' was found. */
 	FrameId  mId;                     /**< The ID of the current frame */
 	wxUint32 mDuration;               /**< Duration of current frame in seconds */
 	wxUint32 mElapsedSeconds;         /**< Elapsed time since this frame has been completed in seconds */
@@ -60,7 +61,7 @@ public:
 	 * @param effectiveDuration The effective frame time in seconds.
 	 * @param frames The number of "frames" in the current WU.
 	 **/
-	WorkUnitFrame(FrameId id = 0, bool clientIsStopped = true, wxUint32 duration = 0, wxUint32 elapsedSeconds = 0, wxUint32 effectiveDuration = 0, wxUint32 frames = 0);
+	WorkUnitFrame(FrameId id = 0, bool clientIsStopped = true, wxUint32 duration = 0, wxUint32 elapsedSeconds = 0, wxUint32 effectiveDuration = 0, wxUint32 frames = 0, bool clientIsPaused = false);
 
 	/**
 	 * Destructor.
@@ -72,6 +73,10 @@ public:
 	 * @return Whether the client is stopped or not.
 	 **/
 	bool     ClientIsStopped(void)        const {return mClientIsStopped;}
+	/**
+	 * @return Whether the client is paused or not.
+	 **/
+	bool     ClientIsPaused(void)        const {return mClientIsPaused;}
 	/**
 	 * @return The current frame ID.
 	 **/
@@ -105,6 +110,12 @@ public:
 	 * @param isStopped Is client stopped?.
 	 **/
 	void SetClientIsStopped(bool isStopped)               {mClientIsStopped = isStopped;}
+
+	/**
+	 * Set the current client state.
+	 * @param isPaused Is client paused?.
+	 **/
+	void SetClientIsPaused(bool isPaused)               {mClientIsPaused = isPaused;}
 
 	/**
 	 * Set the duration of the current frame.

@@ -56,6 +56,7 @@ protected:
 		ST_INACTIVE, /**< Client is inactive */
 		ST_RUNNING, /**< Client is running */
 		ST_ASYNCH, /** Client is in async state */
+		ST_PAUSED, /** Client is paused */
 		ST_HUNG,
 	} State;
 
@@ -200,6 +201,7 @@ public:
 	bool              IsRunning(void)               const {return mState == ST_RUNNING;} /**< Returns whether client is running or not */
 	bool              IsAsynch(void)                const {return mState == ST_ASYNCH;} /**< Returns whether client is asynchronous or not */
 	bool              IsHung(void)                  const {return mState == ST_HUNG;} /**< Returns whether client is hung or not */
+	bool              IsPaused(void)                const {return mState == ST_PAUSED;} /**< Returns whether client is paused or not */
 	wxString          GetName(void)                 const {return mName;} /**< Returns client name */
 	wxString          GetLocation(void)             const {return mLocation;} /**< Returns client location */
 	wxString          GetLog(void)                  const {return mLog;} /**< Returns client log */
