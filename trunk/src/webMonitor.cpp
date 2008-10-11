@@ -111,7 +111,7 @@ void WebMonitor::WriteApp(void)
 	mDataArray = new wxString *[ClientsManager::GetInstance()->GetCount()];
 	for (i=0; i<ClientsManager::GetInstance()->GetCount(); i++)
 	{
-		mDataArray[i] = new wxString[13];
+		mDataArray[i] = new wxString[15];
 	}
 
 	_PrefsGetUint(PREF_ETA_DISPLAYSTYLE,            deadlineDays);
@@ -138,10 +138,14 @@ void WebMonitor::WriteApp(void)
 				mDataArray[currentClient][8] = _("N/A");
 				mDataArray[currentClient][9] = _("N/A");
 				mDataArray[currentClient][10] = _("N/A");
+				mDataArray[currentClient][13] = _("N/A");
+				mDataArray[currentClient][14] = _("N/A");
 			}
 			else
 			{
 				mDataArray[currentClient][7] = wxString::Format(_T("%s (%u)"), client->GetDonatorName().c_str(), client->GetTeamNumber());
+				mDataArray[currentClient][13] = client->GetDonatorName();
+				mDataArray[currentClient][14] = wxString::Format(_T("%u"), client->GetTeamNumber());
 				if(client->GetDownloadDate().IsValid())
 				{
 					timeNow = wxDateTime::Now();
@@ -190,6 +194,8 @@ void WebMonitor::WriteApp(void)
 					mDataArray[currentClient][6] = _("N/A");
 					mDataArray[currentClient][9] = _("N/A");
 					mDataArray[currentClient][10] = _("N/A");
+					mDataArray[currentClient][13] = _("N/A");
+					mDataArray[currentClient][14] = _("N/A");
 				}
 				else
 				{
@@ -531,7 +537,7 @@ wxString WebMonitor::PadToLength(wxString text, wxUint32 length)
 
 wxString WebMonitor::DecodeTemplate(wxString templateCode, wxUint32 clientId)
 {
-	//for reference: 0progress, 1client name, 2ETA, 3PPD, 4corename, 5projectID, 6credit, 7username/team, 8downloaded, 9preferred, 10final, 11bgcolor, 12state
+	//for reference: 0progress, 1client name, 2ETA, 3PPD, 4corename, 5projectID, 6credit, 7username/team, 8downloaded, 9preferred, 10final, 11bgcolor, 12state, 13username, 14team
 	//sigh, why can't we switch on wxStrings
 	wxUint32    startCount, endCount;
 	wxString    count, tCode;
@@ -562,6 +568,8 @@ wxString WebMonitor::DecodeTemplate(wxString templateCode, wxUint32 clientId)
 	else if (templateCode == wxT("@FINAL_DATE@")) tCode = mDataArray[clientId][10];
 	else if (templateCode == wxT("@STATE_COLOR@")) tCode = mDataArray[clientId][11];
 	else if (templateCode == wxT("@STATE@")) tCode = mDataArray[clientId][12];
+	else if (templateCode == wxT("@USERNAME@")) tCode = mDataArray[clientId][13];
+	else if (templateCode == wxT("@TEAMNUMBER@")) tCode = mDataArray[clientId][14];
 	else if (templateCode == wxT("@FAHMON_VERSION@")) tCode = wxT(FMC_PRODUCT);
 	else if (templateCode == wxT("@UPDATE_TIME@")) tCode = mUpdateDate;
 	else if (templateCode == wxT("@TOTAL_PPD@")) tCode = wxString::Format(wxT("%.2f"), MainDialog::GetInstance()->GetTotalPPD());

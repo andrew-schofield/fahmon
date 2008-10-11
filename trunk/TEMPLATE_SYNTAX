@@ -76,6 +76,8 @@ A number of template variables are defined to access data provided by FahMon:
 "@PRCG@"			Returns the PRCG of the project the client is working on
 "@POINTS@"			Returns the points of the project the client is working on
 "@USER_TEAM@"		Returns the username and team of the client
+"@USERNAME@"		Returns just the username of the client
+"@TEAMNUMBER@"		Returns just the team number of the client
 "@DOWNLOAD_DATE@"	Returns the download date for the client
 "@PREFERRED_DATE@"	Returns the preferred deadline for the client
 "@FINAL_DATE@"		Returns the final deadline for the client

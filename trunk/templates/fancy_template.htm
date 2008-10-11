@@ -8,7 +8,7 @@
 	<title><!--tpl_static @FAHMON_VERSION@ tpl//--></title>
 	<script type="text/javascript">
 <!--
-pdata = new Array(<!--tpl_loop ['@CORE@','@PRCG@','@POINTS@','@USER_TEAM@','@DOWNLOAD_DATE@','@PREFERRED_DATE@','@FINAL_DATE@'], tpl//-->[]);
+pdata = new Array(<!--tpl_loop ['@CORE@','@PRCG@','@POINTS@','@USERNAME{12}@','@TEAMNUMBER@','@DOWNLOAD_DATE@','@PREFERRED_DATE@','@FINAL_DATE@'], tpl//-->[]);
 function removeClassName (elem, className) {
 	elem.className = elem.className.replace(className, "").trim();
 }
@@ -36,13 +36,13 @@ function ChangeColor(tableRow, highLight){
 		objbranch = document.getElementById('credit');
 		objbranch.innerHTML = pdata[tableRow.id - 1][2];
 		objbranch = document.getElementById('username');
-		objbranch.innerHTML = pdata[tableRow.id - 1][3];
+		objbranch.innerHTML = pdata[tableRow.id - 1][3] + " (" + pdata[tableRow.id - 1][4] + ")";
 		objbranch = document.getElementById('downloaded');
-		objbranch.innerHTML = pdata[tableRow.id - 1][4];
-		objbranch = document.getElementById('preferred');
 		objbranch.innerHTML = pdata[tableRow.id - 1][5];
-		objbranch = document.getElementById('final');
+		objbranch = document.getElementById('preferred');
 		objbranch.innerHTML = pdata[tableRow.id - 1][6];
+		objbranch = document.getElementById('final');
+		objbranch.innerHTML = pdata[tableRow.id - 1][7];
 	}
 }
 

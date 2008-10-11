@@ -27,6 +27,7 @@ SVN
     * Added ability to disable clients.
     * Improved sorting algorithm.
     * Added client pause detection.
+    * Added support for truncating usernames in the web output.
 
     Windows
 
