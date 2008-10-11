@@ -385,13 +385,21 @@ int ListViewClients::CompareClients(wxUint32 clientId1, wxUint32 clientId2) cons
 			{
 				Client2State = 3;
 			}
-			if(client1->IsAccessible() && !client1->IsInactive() && !client1->IsStopped())
+			if(client1->IsPaused())
 			{
-				Client1State = 4; //active client
+				Client1State = 4;
 			}
-			if(client2->IsAccessible() && !client2->IsInactive() && !client2->IsStopped())
+			if(client2->IsPaused())
 			{
 				Client2State = 4;
+			}
+			if(client1->IsAccessible() && !client1->IsInactive() && !client1->IsStopped() && !client1->IsPaused())
+			{
+				Client1State = 5; //active client
+			}
+			if(client2->IsAccessible() && !client2->IsInactive() && !client2->IsStopped() && !client2->IsPaused())
+			{
+				Client2State = 5;
 			}
 			if(Client1State > Client2State)
 			{
