@@ -6,6 +6,7 @@ copy /y .\src\images\list_client_inaccessible.png .\Release\images
 copy /y .\src\images\list_client_inactive.png .\Release\images
 copy /y .\src\images\list_client_ok.png .\Release\images
 copy /y .\src\images\list_client_stopped.png .\Release\images
+copy /y .\src\images\list_client_paused.png .\Release\images
 copy /y .\src\images\list_down_arrow.png .\Release\images
 copy /y .\src\images\list_up_arrow.png .\Release\images
 copy /y .\src\images\main_icon.png .\Release\images
