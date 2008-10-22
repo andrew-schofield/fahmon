@@ -162,7 +162,7 @@ ListViewClients::ListViewClients(wxWindow* parent, wxWindowID id, wxUint32 nbCli
 	InsertColumn(LVC_ETA,        _("ETA"));
 	InsertColumn(LVC_PPD,        _("PPD"));
 	InsertColumn(LVC_CORE,       _("Core"));
-	InsertColumn(LVC_PRCG,       _T("PRCG"));
+	InsertColumn(LVC_PRCG,       _("PRCG"));
 	InsertColumn(LVC_CREDIT,     _("Credit"));
 	InsertColumn(LVC_DOWNLOADED, _("Downloaded"));
 	InsertColumn(LVC_DEADLINE,   _("Deadline"));
