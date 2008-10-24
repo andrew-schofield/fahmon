@@ -257,14 +257,12 @@ int FahMonApp::OnExit(void)
 
 void FahMonApp::OnEndSession(wxCloseEvent& event)
 {
-	_LogMsgInfo(wxT("Running OnEndSession"));
 	MainDialog::GetInstance()->Close();
 }
 
 
 void FahMonApp::OnQueryEndSession(wxCloseEvent& event)
 {
-	_LogMsgInfo(wxT("Running OnQueryEndSession"));
 	PreferencesManager::GetInstance()->Save();
 	ClientsManager::GetInstance()->Save();
 	ProjectsManager::GetInstance()->Save();
@@ -273,6 +271,5 @@ void FahMonApp::OnQueryEndSession(wxCloseEvent& event)
 
 void FahMonApp::OnClose(wxCloseEvent& event)
 {
-	_LogMsgInfo(wxT("Running OnClose"));
 	MainDialog::GetInstance()->Close();
 }
