@@ -63,11 +63,6 @@ protected:
 	 **/
 	void Load(void);
 
-	/**
-	 * Save the list of clients to the disk.
-	 **/
-	void Save(void);
-
 
 public:
 	// Singleton pattern
@@ -154,6 +149,11 @@ public:
 	 * @param value true=enable, false=disable
 	 **/
 	void Enable(wxUint32 clientId, bool value);
+
+	/**
+	 * Save the list of clients to the disk.
+	 **/
+	void Save(void);
 };
 
 

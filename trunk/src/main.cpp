@@ -265,6 +265,9 @@ void FahMonApp::OnEndSession(wxCloseEvent& event)
 void FahMonApp::OnQueryEndSession(wxCloseEvent& event)
 {
 	_LogMsgInfo(wxT("Running OnQueryEndSession"));
+	PreferencesManager::GetInstance()->Save();
+	ClientsManager::GetInstance()->Save();
+	ProjectsManager::GetInstance()->Save();
 	MainDialog::GetInstance()->Close();
 }
 
