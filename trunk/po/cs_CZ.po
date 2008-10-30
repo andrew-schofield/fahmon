@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cs_CZ\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-10-11 19:59+0100\n"
+"POT-Creation-Date: 2008-10-24 23:19+0100\n"
 "PO-Revision-Date: 2008-02-08 14:50+0100\n"
 "Last-Translator: Martin Bednar <serafean@gmail.com>\n"
 "Language-Team: Czech <en@li.org>\n"
@@ -452,6 +452,11 @@ msgstr "PPD"
 msgid "Core"
 msgstr "Jádro : "
 
+#: src/listViewClients.cpp:165 src/listViewClients.cpp:917
+#: src/webMonitor.cpp:612
+msgid "PRCG"
+msgstr "PRCG"
+
 #: src/listViewClients.cpp:166 src/listViewClients.cpp:918
 #: src/webMonitor.cpp:613
 msgid "Credit"
@@ -542,10 +547,6 @@ msgstr "Vymazat klienta"
 #, fuzzy
 msgid "Enable this client"
 msgstr "Vymazat klienta"
-
-#: src/listViewClients.cpp:917 src/webMonitor.cpp:612
-msgid "PRCG"
-msgstr "PRCG"
 
 #: src/listViewClients.cpp:1018 src/mainDialog.cpp:1535
 msgid "Do you really want to delete this client?"

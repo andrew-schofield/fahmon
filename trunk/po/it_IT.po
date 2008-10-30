@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it-IT\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-10-11 19:59+0100\n"
+"POT-Creation-Date: 2008-10-24 23:19+0100\n"
 "PO-Revision-Date: 2008-02-25 12:46+0100\n"
 "Last-Translator: Zurgo <zurgo@virgilio.it>\n"
 "Language-Team:  <zurgo@virgilio.it>\n"
@@ -462,6 +462,11 @@ msgstr "PPD"
 msgid "Core"
 msgstr "Nucleo:"
 
+#: src/listViewClients.cpp:165 src/listViewClients.cpp:917
+#: src/webMonitor.cpp:612
+msgid "PRCG"
+msgstr "PRCG"
+
 #: src/listViewClients.cpp:166 src/listViewClients.cpp:918
 #: src/webMonitor.cpp:613
 msgid "Credit"
@@ -553,10 +558,6 @@ msgstr "Cancella questo client"
 #, fuzzy
 msgid "Enable this client"
 msgstr "Cancella questo client"
-
-#: src/listViewClients.cpp:917 src/webMonitor.cpp:612
-msgid "PRCG"
-msgstr "PRCG"
 
 #: src/listViewClients.cpp:1018 src/mainDialog.cpp:1535
 msgid "Do you really want to delete this client?"

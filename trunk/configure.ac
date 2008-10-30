@@ -21,9 +21,9 @@ AC_PROG_CXX
 AM_OPTIONS_WXCONFIG
 reqwx=2.8.0
 AC_MSG_NOTICE([ANSI wxWidgets])
-AM_PATH_WXCONFIG($reqwx, wxWin=1, wxWin=0)
+AM_PATH_WXCONFIG($reqwx, wxWin=1, wxWin=0, core net adv)
 AC_MSG_NOTICE([Unicode wxWidgets])
-AM_PATH_WXCONFIG($reqwx, wxWinU=1, wxWinU=0, --unicode)
+AM_PATH_WXCONFIG($reqwx, wxWinU=1, wxWinU=0, --unicode core net adv)
 if test "$wxWin" != 1; then
 	if test "$wxWinU" != 1; then
 		AC_MSG_ERROR([

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FahMon Translation - de_DE 1.1.b1\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-10-11 19:59+0100\n"
+"POT-Creation-Date: 2008-10-24 23:19+0100\n"
 "PO-Revision-Date: 2008-04-10 22:30+0100\n"
 "Last-Translator: Mark Gerber <mark.gerber@web.de>\n"
 "Language-Team: Mark Gerber <mark.gerber@web.de>\n"
@@ -457,6 +457,11 @@ msgstr "PPD"
 msgid "Core"
 msgstr "Core:"
 
+#: src/listViewClients.cpp:165 src/listViewClients.cpp:917
+#: src/webMonitor.cpp:612
+msgid "PRCG"
+msgstr "PRCG"
+
 #: src/listViewClients.cpp:166 src/listViewClients.cpp:918
 #: src/webMonitor.cpp:613
 msgid "Credit"
@@ -547,10 +552,6 @@ msgstr "Client-Eintrag löschen"
 #, fuzzy
 msgid "Enable this client"
 msgstr "Client-Eintrag löschen"
-
-#: src/listViewClients.cpp:917 src/webMonitor.cpp:612
-msgid "PRCG"
-msgstr "PRCG"
 
 #: src/listViewClients.cpp:1018 src/mainDialog.cpp:1535
 msgid "Do you really want to delete this client?"
