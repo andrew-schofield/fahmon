@@ -266,6 +266,7 @@ void FahMonApp::OnQueryEndSession(wxCloseEvent& event)
 	PreferencesManager::GetInstance()->Save();
 	ClientsManager::GetInstance()->Save();
 	ProjectsManager::GetInstance()->Save();
+	BenchmarksManager::GetInstance()->Save();
 	MainDialog::GetInstance()->Close();
 }
 

@@ -74,11 +74,6 @@ protected:
 	~BenchmarksManager(void);
 
 	/**
-	 * Save the benchmarks to the disk.
-	 **/
-	void Save(void);
-
-	/**
 	 * Load the benchmarks from the disk
 	 **/
 	void Load(void);
@@ -153,6 +148,11 @@ public:
 	 * @return Benchmark data.
 	 **/
 	const Benchmark*  GetBenchmark(ProjectId projectId, const Client* client);
+
+	/**
+	 * Save the benchmarks to the disk.
+	 **/
+	void Save(void);
 };
 
 
