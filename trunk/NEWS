@@ -6,6 +6,20 @@ See the end for copying conditions.
 
 Please send FahMon bug reports to andrew_s@fahmon.net.
 
+Version 2.3.3
+
+* The client list view has been made much more configurable and additional
+  columns can be added with a right click on the column title.
+* You can now completely hide the WU Info panel on the right hand side of the
+  main FahMon window.
+* Clients can now be managed from the main menu instead of a right click menu
+  in the clients list.
+* Clients can now be manually disabled if you don't want FahMon to monitor them.
+* Paused clients can now be detected and shouldn't register as *hung*.
+* A number of debilitating bugs that affected GPU monitoring have been fixed.
+* FahMon on Windows now follows MS guidelines for storage of settings. This
+  means no more problems with UAC on Vista when downloading project updates.
+
 Version 2.3.2b
 
 * Several behavioural fixes to dialogs and a number of visual fixes including
