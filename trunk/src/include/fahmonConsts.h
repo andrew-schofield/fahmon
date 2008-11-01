@@ -28,8 +28,8 @@
 
 // --- Strings
 #define FMC_APPNAME 	"FahMon"
-#define FMC_VERSION 	"2.3.3svn"
-#define FMC_PRODUCT 	"FahMon 2.3.3svn"
+#define FMC_VERSION 	"2.3.3"
+#define FMC_PRODUCT 	"FahMon 2.3.3"
 #define FMC_UID         ".FahMon__LOCK__"
 
 

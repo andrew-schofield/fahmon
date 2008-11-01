@@ -3,7 +3,7 @@
   SetCompressor /SOLID lzma
 
   Name "FahMon"
-  OutFile "FahMon-2.3.3svn-Installer.exe"
+  OutFile "FahMon-2.3.3-Installer.exe"
 
   InstallDir "$PROGRAMFILES\FahMon"
 
