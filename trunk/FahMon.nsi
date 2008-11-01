@@ -78,7 +78,7 @@ Section "!FahMon" SecFahMon
     CreateShortcut "$SMPROGRAMS\$STARTMENU_FOLDER\FahMon.lnk" "$INSTDIR\fahmon.exe"
     CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Uninstall.lnk" "$INSTDIR\Uninstall.exe"
     CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Help.lnk" "$INSTDIR\docs\help.pdf"
-    CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\README.lnk" "$INSTDIR\README.txt"
+    CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\README.lnk" "$INSTDIR\docs\README.txt"
 
   !insertmacro MUI_STARTMENU_WRITE_END
 
