@@ -1,0 +1,8 @@
+#include "windows.h"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+dialog_icon				ICON	DISCARDABLE		"dialog_icon.ico"
+a						ICON	DISCARDABLE		"main_icon.ico"

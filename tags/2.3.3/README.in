@@ -1,0 +1,106 @@
+FahMon README
+
+Version @PACKAGE_VERSION@
+
+Authors:
+========
+François Ingelrest
+Andrew Schofield
+
+Copyright:
+==========
+© François Ingelrest 2003-7
+© Andrew Schofield 2007-8
+
+For further details see AUTHORS and THANKS
+
+Licence:
+========
+FahMon is free software. Please see the file COPYING for details.
+
+About:
+======
+FahMon is an open-source tool (GPL license) that allows you to quickly check the
+progress of your Folding@Home client (or clients if you have multiple ones),
+avoiding you having to open different files and/or to go to the Internet (for
+example to know how much your current work unit is worth). Other monitoring
+tools exist (such as Electron Microscope or FahLogStats), so if you don't like
+FahMon, have a look at them!
+
+FahMon is entirely coded in C++ and uses the wxWidgets library, which allows
+FahMon to exist both for Linux and Windows. It is designed to be really easy to
+use, and you should thus not encounter any major problem.
+
+For a complete version history, please see the ChangeLog file.
+
+New in this release:
+====================
+To see what's new in this release, please read the NEWS and ChangeLog files.
+
+System requirements:
+====================
+Windows - Any machine capable of running Windows 2000 or later.
+Linux - Any machine capable of running a modern X server.
+Broadly speaking any machine you are likely to want to run FahMon on will be
+sufficient.
+
+Software requirements:
+======================
+For additional software requirements see the REQUIRES file.
+
+Installations instructions:
+===========================
+Please see the INSTALL file.
+
+Contact details:
+================
+Website: http://fahmon.net/
+Support site: http://trac.fahmon.net/
+email: andrew_s@fahmon.net
+
+Translations
+============
+The translations provided with FahMon should work with no user intervention on
+both Linux and MS Windows provided they were installed correctly.
+
+Editing existing translations
+=============================
+To edit existing translations, you can open the relevant .po file in your
+gettext catalog editor (see REQUIRES) and start modifying the strings. On Linux,
+these can be found in the po directory of the installation source, on MS
+Windows, these can be found in the lang folder. Once you are happy with the
+translations you have edited, you need to install them.
+
+To install an edited translation on Linux, simply run "make update-gmo" then
+"make install" (as root or sudo). This will compile the translation to a binary
+file and install it into the relevant location.
+
+To install the edited transltaion on MS Windows, you need to get you gettext
+catalog editor to save a .mo file (poEdit wil do this). Save the file as
+fahmon.mo into the relevant folder under the "lang" folder.
+
+Restart FahMon and your new translations should appear.
+
+Creating new translations
+=========================
+Make sure you have read the REQUIRES file.
+
+Make sure you know the language code for your new translation (combine the two
+letter language code from ISO 639-1 with the two letter country code from ISO
+3166. See the existing translations for examples).
+
+On Linux, copy fahmon.pot in the po folder, to 'your_translation_name'.po and
+start editing. After saving your translation, open up configure.ac in the source
+root directory, and navigate down to "ALL_LINGUAS" and add your new translation
+to the list.
+Run ./reconf; ./configure; make update-gmo; make install to add your new
+translation. (This should not force a recompile of fahmon itself, unless you
+passed different options to configure).
+
+On Windows, make a folder under 'lang' with the name of your translation and
+copy fahmon.pot into it. Rename this to a .po file and start editing it. Once
+finished, save the .mo file as fahmon.mo and restart FahMon.
+
+Once you've created translations, please create a support ticket using trac:
+http://trac.fahmon.net/ and attach your new .po file.
+Alternatively, email the .po file to andrew_s@fahmon.net
