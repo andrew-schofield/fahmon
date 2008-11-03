@@ -65,7 +65,7 @@ wxString Core::mCoreShortName[CORE_ID_COUNT] = {
 	wxT("grogpu2"),
 	wxT("dgromacsc"),
 	wxT("ati-dev"),
-	wxT("nv-dev")
+	wxT("nvidia-dev")
 };
 
 
