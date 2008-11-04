@@ -1,4 +1,5 @@
 @echo off
+mkdir .\Release
 call po_to_lang.bat
 mkdir .\Release\images
 copy /y .\src\images\list_client_asynch.png .\Release\images
@@ -34,4 +35,3 @@ del /F /Q .\Release\*.res
 del /F /Q .\Release\*.dep
 del /F /Q .\Release\*.log
 del /F /Q .\Release\*.idb
-rmdir /S /Q .\Release\config

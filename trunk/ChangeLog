@@ -12,6 +12,7 @@ SVN
     Windows
 
     * Installer now cleans up old config folder which is no longer used.
+    * Release generator language support fixed.
 
 v2.3.3 (01/11/08)
 
