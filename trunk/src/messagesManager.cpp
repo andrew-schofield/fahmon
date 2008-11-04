@@ -44,6 +44,7 @@ MessagesManager* MessagesManager::mInstance = NULL;
 MessagesManager::MessagesManager(void)
 {
 	mMessages = wxT("");
+	mNewMessages = wxT("");
 }
 
 
@@ -90,6 +91,7 @@ void MessagesManager::Log(const wxString& msg)
 
 	// Add the new message
 	mMessages += wxT("[") + currentDate + wxT("] ") + msg + wxT("\n");
+	mNewMessages += wxT("[") + currentDate + wxT("] ") + msg + wxT("\n");
 
 	// Write a small header
 
@@ -111,4 +113,11 @@ void MessagesManager::Log(const wxString& msg)
 	{
 		MainDialog::GetInstance()->AddPendingEvent(event);
 	}
+}
+
+wxString MessagesManager::GetNewMessages(void)
+{
+	wxString tmpString = mNewMessages;
+	mNewMessages = wxT("");
+	return tmpString;
 }

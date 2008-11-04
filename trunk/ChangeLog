@@ -6,6 +6,7 @@ SVN
 
     * Fixed missing core support.
     * Fixed clients never reloading.
+    * Improved CPU usage by altering message log routines.
 
 v2.3.3 (01/11/08)
 

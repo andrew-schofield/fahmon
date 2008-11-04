@@ -112,6 +112,8 @@ void MessagesFrame::Toggle(void)
 {
 	if(IsShown() == false)
 	{
+		// wipe previous pending messages
+		MessagesManager::GetInstance()->GetNewMessages();
 		// Change the content of the wxTextCtrl with the current messages before displaying the window
 		mTextCtrl->SetValue(MessagesManager::GetInstance()->GetMessages());
 		mTextCtrl->ShowPosition(mTextCtrl->GetLastPosition());
@@ -138,7 +140,7 @@ void MessagesFrame::OnNewMessage(void)
 {
 	if(mInstance != NULL && mInstance->IsShown() == true)
 	{
-		mInstance->mTextCtrl->SetValue(MessagesManager::GetInstance()->GetMessages());
+		mInstance->mTextCtrl->AppendText(MessagesManager::GetInstance()->GetNewMessages());
 		mInstance->mTextCtrl->ShowPosition(mInstance->mTextCtrl->GetLastPosition());
 	}
 }

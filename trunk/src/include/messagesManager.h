@@ -72,6 +72,7 @@ protected:
 	static MessagesManager *mInstance; /**< The single instance of the MessagesManager object */
 
 	wxString mMessages; /**< Object storing all the logged messages */
+	wxString mNewMessages; /**< Object storing all new logged messages */
 
 	/**
 	 * Contructor.
@@ -116,6 +117,12 @@ public:
 	 * @return The contents of the log.
 	 **/
 	wxString GetMessages(void) const {return mMessages;}
+
+	/**
+	 * Retrieve new messages from the log.
+	 * @return The new messages from the log.
+	 **/
+	wxString GetNewMessages(void);
 
 	/**
 	 * Log an information message.
