@@ -1171,10 +1171,6 @@ bool MainDialog::ClientReloadAllowed(ClientId clientId)
 	}
 }
 
-void MainDialog::RemoveIdFromQueue(ClientId clientId)
-{
-}
-
 void MainDialog::OnListSelectionChanged(wxListEvent& event)
 {
 	ShowClientInformation(mClientsList->GetSelectedClientId());
