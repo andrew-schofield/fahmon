@@ -194,7 +194,7 @@ inline void ClientsManager::Save(void)
 	}
 
 	// Write a small header
-	textOS.WriteString(wxString::Format(_("# %s : contains the list of clients\n#\n# \"Name\"          \"Location\"          \"Disabled\"\n\n"), (PathManager::GetCfgPath() + wxT(FMC_FILE_CLIENTS)).c_str()));
+	textOS.WriteString(wxString::Format(_("# %s : contains the list of clients\n#\n# \"Name\"\t\"Location\"\tDisabled(*)\n\n"), (PathManager::GetCfgPath() + wxT(FMC_FILE_CLIENTS)).c_str()));
 
 	// And then each client
 	for(i=0; i<GetCount(); ++i)
@@ -204,7 +204,7 @@ inline void ClientsManager::Save(void)
 			enabled = wxT("*");
 		else
 			enabled = wxT("");
-		textOS.WriteString(wxString::Format(wxT("\"%s\"    \"%s\"    %s\n"), client->GetName().c_str(), client->GetLocation().c_str(), enabled.c_str()));
+		textOS.WriteString(wxString::Format(wxT("\"%s\"\t\"%s\"\t%s\n"), client->GetName().c_str(), client->GetLocation().c_str(), enabled.c_str()));
 	}
 
 	fileOS.Close();

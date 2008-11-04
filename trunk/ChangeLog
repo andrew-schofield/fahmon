@@ -7,6 +7,7 @@ SVN
     * Fixed missing core support.
     * Fixed clients never reloading.
     * Improved CPU usage by altering message log routines.
+    * Altered clientstab.txt to be tab delimited.
 
 v2.3.3 (01/11/08)
 
