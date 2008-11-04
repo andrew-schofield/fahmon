@@ -6,6 +6,16 @@ See the end for copying conditions.
 
 Please send FahMon bug reports to andrew_s@fahmon.net.
 
+Version 2.3.4
+
+* This version fixes the nasty bug in 2.3.3 which cause clients to fail to
+  update after non-specific periods of time. This was caused by a typo in them
+  update queue handler which now works properly.
+* CPU usage has been reduced slightly when refreshing clients thanks to a
+  re-worked message logger.
+* clientstab.txt is now tab-delimited. This has no effect on FahMon, but may
+  break compatibility with other tools that read this file.
+
 Version 2.3.3
 
 * The client list view has been made much more configurable and additional
