@@ -488,6 +488,8 @@ public:
 	 **/
 	bool ClientReloadAllowed(ClientId clientId);
 
+	void RemoveIdFromQueue(ClientId clientId);
+
 private:
 	DECLARE_EVENT_TABLE()
 };

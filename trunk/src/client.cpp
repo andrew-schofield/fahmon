@@ -403,6 +403,7 @@ void Client::Reload(void)
 	{
 		delete lastFrame;
 	}
+	_LogMsgInfo(wxString::Format(_("Finished Reloading %s"), mName.c_str()));
 }
 
 
@@ -500,7 +501,7 @@ inline bool Client::LoadQueueFile(const wxString& filename)
 inline void Client::SaveXYZFile(void) const
 {
 	// ----- Access Lock -----
-	wxMutexLocker mutexLocker(mMutexXYZFiles);
+	wxMutexLocker lock(mMutexXYZFiles);
 	// ----- Access Lock -----
 
 	wxString xyzInFile;

@@ -79,7 +79,7 @@ void Tools::OpenURLInBrowser(const wxString& url)
 
 bool Tools::LoadFile(const wxString& filename, wxString& fileContent)
 {
-	wxMutexLocker mutexLocker(mMutexLoadFile);
+	wxMutexLocker lock(mMutexLoadFile);
 	wxTextFile  in(filename);
 	wxString fC;
 

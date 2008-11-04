@@ -79,7 +79,7 @@ MessagesManager* MessagesManager::GetInstance(void)
 
 void MessagesManager::Log(const wxString& msg)
 {
-	wxMutexLocker  mutexLocker(mMutexLog);        // --- Lock the access to this method
+	wxMutexLocker  lock(mMutexLog);        // --- Lock the access to this method
 	wxString       currentDate;
 	wxCommandEvent event(EVT_NEW_MESSAGE_LOGGED);
 	wxFileOutputStream   fileOS(PathManager::GetMsgPath() + wxT("messages.log"));

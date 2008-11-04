@@ -199,7 +199,7 @@ void ProjectsManager::UpdateDatabaseThreaded(bool forced, bool silentMode)
 
 bool ProjectsManager::UpdateDatabase(bool forced, bool silentMode)
 {
-	wxMutexLocker   mutexLocker(mMutexUpdateDatabase);        // --- Lock the access to this method
+	wxMutexLocker   lock(mMutexUpdateDatabase);        // --- Lock the access to this method
 	wxString        projectFile;
 	wxString        errorMsg;
 	ProgressManager progressManager(silentMode);
