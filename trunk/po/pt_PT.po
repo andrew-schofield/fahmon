@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pt_PT\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-10-24 23:19+0100\n"
+"POT-Creation-Date: 2008-11-04 22:58+0000\n"
 "PO-Revision-Date: 2008-10-29 19:28+0000\n"
 "Last-Translator: Filipe Rodrigues <shello.stb@gmail.com>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -210,57 +210,62 @@ msgstr "Erro na leitura do %squeue.dat!"
 msgid "Error while reading %sunitinfo.txt!"
 msgstr "Erro na leitura do %sunitinfo.txt!"
 
-#: src/client.cpp:474
+#: src/client.cpp:406
+#, fuzzy, c-format
+msgid "Finished Reloading %s"
+msgstr "Recarregando %s"
+
+#: src/client.cpp:475
 #, c-format
 msgid "The progress value in file %s could not be found/parsed"
 msgstr ""
 "O valor da progressão do ficheiro %s não pôde ser encontrado/processado"
 
-#: src/client.cpp:521
+#: src/client.cpp:522
 #, c-format
 msgid "Unable to save %s because it does not exist"
 msgstr "Impossível gravar %s porque este não existe"
 
-#: src/client.cpp:528
+#: src/client.cpp:529
 #, c-format
 msgid "Unable to create directory %s"
 msgstr "Impossível criar directoria %s"
 
-#: src/client.cpp:541
+#: src/client.cpp:542
 #, c-format
 msgid "Unable to copy %s to %s"
 msgstr "Impossível copiar %s para %s"
 
-#: src/client.cpp:565
+#: src/client.cpp:566
 #, c-format
 msgid "%s is on frame %u"
 msgstr "%s está no frame %u"
 
-#: src/client.cpp:569
+#: src/client.cpp:570
 #, c-format
 msgid "Cannot determine frame number for %s (this isn't a problem)"
 msgstr ""
 "Impossível determinar o número do frame para %s (isto não é um problema)"
 
-#: src/client.cpp:752
+#: src/client.cpp:753
 #, c-format
 msgid "%s has an unknown state (Unable to find a complete frame)"
 msgstr ""
 "%s tem uma data de inicio desconhecida (impossível encontrar um frame "
 "completo)"
 
-#: src/client.cpp:761
+#: src/client.cpp:762
 #, c-format
 msgid "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
 msgstr ""
 "%s foi parado (A linha \"Folding@Home Client Shutdown.\" foi encontrada)"
 
-#: src/client.cpp:769
+#: src/client.cpp:770
 #, c-format
 msgid "%s has been paused"
 msgstr ""
 
-#: src/client.cpp:778
+#: src/client.cpp:779
 #, c-format
 msgid ""
 "%s has an unknown state (Unable to extract a valid elapsed time since the "
@@ -269,18 +274,18 @@ msgstr ""
 "%s tem um estado desconhecido (impossível extrair um tempo decorrido válido "
 "desde a última frame completa)"
 
-#: src/client.cpp:786
+#: src/client.cpp:787
 #, c-format
 msgid "%s has been marked as having a asynchronous clock."
 msgstr "%s foi marcado como tendo um relógio assíncrono."
 
-#: src/client.cpp:821
+#: src/client.cpp:822
 #, c-format
 msgid "%s seems to have hung : Elapsed time is %um and limit is %um"
 msgstr ""
 "%s parece não estar a avançar : o tempo decorrido é %um e o limite é %um"
 
-#: src/client.cpp:826
+#: src/client.cpp:827
 #, c-format
 msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
 msgstr "%s parece estar inactivo : o tempo decorrido é %um e o limite é %um"
@@ -332,16 +337,16 @@ msgstr ""
 "A lista de clientes não vai ser salva!"
 
 #: src/clientsManager.cpp:197
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "# %s : contains the list of clients\n"
 "#\n"
-"# \"Name\"          \"Location\"          \"Disabled\"\n"
+"# \"Name\"\t\"Location\"\tDisabled(*)\n"
 "\n"
 msgstr ""
 "# %s : contém lista dos clientes\n"
 "#\n"
-"# \"Nome\"          \"Localização\"          \"Inactivo\"\n"
+"# \"Nome\"\t\"Localização\"\tInactivo(*)\n"
 "\n"
 
 #: src/fahlogAnalyzer.cpp:229
@@ -985,7 +990,7 @@ msgstr "alt"
 msgid "Messages / %s"
 msgstr "Mensagens / %s"
 
-#: src/messagesManager.cpp:99
+#: src/messagesManager.cpp:101
 msgid ""
 "Could not open file for writing!\n"
 "The log will not be saved!"
