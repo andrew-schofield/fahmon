@@ -234,6 +234,7 @@ Section "Uninstall"
    RMDir /r "$INSTDIR\lang"
    RMDir /r "$INSTDIR\docs"
    RMDir /r "$INSTDIR\templates"
+   RMDir /r "$INSTDIR\config"
    RMDir "$INSTDIR"
 
   !insertmacro MUI_STARTMENU_GETFOLDER Application $MUI_TEMP

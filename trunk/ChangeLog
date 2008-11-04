@@ -9,6 +9,10 @@ SVN
     * Improved CPU usage by altering message log routines.
     * Altered clientstab.txt to be tab delimited.
 
+    Windows
+
+    * Installer now cleans up old config folder which is no longer used.
+
 v2.3.3 (01/11/08)
 
     General
