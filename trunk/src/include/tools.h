@@ -29,6 +29,8 @@
 #include "wx/msgdlg.h"
 #include "fahmonConsts.h"
 
+#include <vector>
+
 #define PREF_TOOLS_BROWSER    wxT("Tools.Browser") /**< Preference setting for web browser */
 #define PREF_TOOLS_BROWSER_DV wxT("") /**< Default value for web browser */
 
@@ -105,6 +107,8 @@ public:
 	 * @param information The information to display.
 	 **/
 	static void InfoMsgBox(const wxString& information) {MsgBox(information, wxICON_INFORMATION | wxOK);}
+
+	static std::vector<wxString> SplitLineByDelim(const wxString &line, const wxString &delim);
 };
 
 

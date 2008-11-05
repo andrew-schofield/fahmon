@@ -85,6 +85,7 @@ protected:
 	wxUint32   mCredit; /**< Credit for current client */
 	wxDateTime mDeadlineDate; /**< Preferred deadline for current client */
 	bool       mEnabled; /**< Whether client should ever reload */
+	bool       mVM; /**< Whether client is from a virtual machine */
 
 	/**
 	 * Calculate the client's ETA.
@@ -141,7 +142,7 @@ public:
 	 * @param location Client location
 	 * @param enabled Is client enabled
 	 **/
-	Client(const wxString& name, const wxString& location, bool enabled);
+	Client(const wxString& name, const wxString& location, bool enabled, bool VM);
 
 	/**
 	 * Destructor.
@@ -194,6 +195,8 @@ public:
 
 	void Enable(bool value) {mEnabled = value;}
 
+	void SetVM(bool value) {mVM = value;}
+
 	// -- 'Getters' --
 	bool              IsAccessible(void)            const {return mState != ST_INACCESSIBLE;} /**< Returns whether client is inaccessible or not */
 	bool              IsStopped(void)               const {return mState == ST_STOPPED;} /**< Returns whether client is stopped or not */
@@ -222,6 +225,7 @@ public:
 	wxUint32          GetCredit(void)               const {return mCredit;} /**< Returns client credit */
 	const wxDateTime& GetDeadlineDate(void)         const {return mDeadlineDate;} /**< Returns client preferred deadline date */
 	bool              IsEnabled(void)               const {return mEnabled;} /**< Returns whether client is enabled */
+	bool              IsVM(void)                    const {return mVM;} /**< Returns whether client is from a virtual machine or not */
 
 	/**
 	 * Return true if some modification occurred since the last reload

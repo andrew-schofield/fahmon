@@ -104,7 +104,7 @@ public:
 	 * @param name The edited name for the client.
 	 * @param location The edited location for the client.
 	 **/
-	void     Edit(wxUint32 clientId, const wxString& name, const wxString& location);
+	void     Edit(wxUint32 clientId, const wxString& name, const wxString& location, bool VM);
 
 	/**
 	 * Deletes the given client.
@@ -119,7 +119,7 @@ public:
 	 * @param enabled Is client enabled
 	 * @return The clientId of the added client.
 	 **/
-	wxUint32 Add(const wxString& name, const wxString& location, bool enabled);
+	wxUint32 Add(const wxString& name, const wxString& location, bool enabled, bool VM);
 
 	// --- Getters
 	/**

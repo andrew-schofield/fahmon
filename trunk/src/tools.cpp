@@ -131,3 +131,23 @@ wxString Tools::FormatSeconds(wxUint32 nbSeconds)
 		return wxString::Format(wxT("%us"), nbSeconds);
 	}
 }
+
+std::vector<wxString> Tools::SplitLineByDelim(const wxString &line, const wxString &delim)
+{
+	std::vector<wxString>  v;
+	wxInt32                endingPos;
+	wxString               choppedString;
+	wxString               tmpString;
+
+	choppedString = line;
+	choppedString += delim;
+	endingPos = choppedString.Find(delim);
+	while(endingPos != wxNOT_FOUND)
+	{
+		tmpString = choppedString.Mid(0, endingPos);
+		choppedString = choppedString.Mid(endingPos + 1, choppedString.length()- 1);
+		endingPos = choppedString.Find(delim);
+		v.push_back(tmpString);
+	}
+	return v;
+}

@@ -29,7 +29,7 @@
 #include "mainDialog.h"
 
 
-WorkUnitFrame* FahLogAnalyzer::AnalyzeLastFrame(const wxString& fahlogComplete)
+WorkUnitFrame* FahLogAnalyzer::AnalyzeLastFrame(const wxString& fahlogComplete, bool VM)
 {
 	bool      completeRunFound, emptyLineFound, endOfLogReached, clientIsStopped, newWUStarted;
 	bool      endFrame1Found, endFrame2Found;
@@ -181,7 +181,7 @@ WorkUnitFrame* FahLogAnalyzer::AnalyzeLastFrame(const wxString& fahlogComplete)
 		// Unfortunately, when passing over 0000UTC in local time, these dates no longer match, so the time difference becomes negative
 		// and breaks the state detection. Therefore, the date component is set manually from the converted timezone, such that they
 		// *always* match
-		if(overrideTimezone != true)
+		if(overrideTimezone != true && VM == false)
 		{
 			tempDateTime = endFrame1.timestamp;
 			tempDateTime.SetDay(wxDateTime::Now().ToUTC().GetDay());
@@ -203,7 +203,7 @@ WorkUnitFrame* FahLogAnalyzer::AnalyzeLastFrame(const wxString& fahlogComplete)
 			}
 			elapsedSeconds = wxDateTime::Now().ToUTC().Subtract(tempDateTime).GetSeconds().ToLong();
 		}
-		else
+		else if(overrideTimezone == true && VM == false)
 		{
 			_PrefsGetInt(PREF_TZ, timezoneoffset);
 			tempDateTime = endFrame1.timestamp;
@@ -223,6 +223,26 @@ WorkUnitFrame* FahLogAnalyzer::AnalyzeLastFrame(const wxString& fahlogComplete)
 				tempDateTime = tempDateTime.Subtract(wxTimeSpan::Days(1));
 			}
 			elapsedSeconds = wxDateTime::Now().Subtract(wxTimeSpan::Hours(timezoneoffset)).Subtract(tempDateTime).GetSeconds().ToLong();
+		}
+		else // VM == true regardless of timezone override (effectively UTC+0)
+		{
+			tempDateTime = endFrame1.timestamp;
+			tempDateTime.SetDay(wxDateTime::Now().GetDay());
+			tempDateTime.SetMonth(wxDateTime::Now().GetMonth());
+			tempDateTime.SetYear(wxDateTime::Now().GetYear());
+			if (tempDateTime.IsLaterThan(wxDateTime::Now()))
+			{
+				isAsync = true;
+			}
+			else
+			{
+				isAsync = false;
+			}
+			if (tempDateTime.IsLaterThan(wxDateTime::Now()))
+			{
+				tempDateTime = tempDateTime.Subtract(wxTimeSpan::Days(1));
+			}
+			elapsedSeconds = wxDateTime::Now().Subtract(tempDateTime).GetSeconds().ToLong();
 		}
 		if(isAsync == true)
 		{

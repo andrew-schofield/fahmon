@@ -43,7 +43,7 @@
 wxMutex Client::mMutexXYZFiles;
 
 
-Client::Client(const wxString& name, const wxString& location, bool enabled)
+Client::Client(const wxString& name, const wxString& location, bool enabled, bool VM)
 {
 	mLastModification          = 0;
 	mPreviouslyAnalyzedFrameId = MAX_FRAME_ID;
@@ -52,6 +52,7 @@ Client::Client(const wxString& name, const wxString& location, bool enabled)
 	SetLocation(location);
 	SetIsFrameCountAccurate(false);
 	mEnabled = enabled;
+	SetVM(VM);
 
 	Reset();
 }
@@ -212,7 +213,7 @@ void Client::Reload(void)
 	}
 
 	// Extract the duration of the last frame
-	lastFrame = FahLogAnalyzer::AnalyzeLastFrame(mLog);
+	lastFrame = FahLogAnalyzer::AnalyzeLastFrame(mLog, mVM);
 
 	project = ProjectsManager::GetInstance()->GetProject(mProjectId);
 

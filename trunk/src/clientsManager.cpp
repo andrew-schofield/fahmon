@@ -80,9 +80,9 @@ ClientsManager* ClientsManager::GetInstance(void)
 }
 
 
-wxUint32 ClientsManager::Add(const wxString& name, const wxString& location, bool enabled)
+wxUint32 ClientsManager::Add(const wxString& name, const wxString& location, bool enabled, bool VM)
 {
-	mClients.Add(new Client(name, location, enabled));
+	mClients.Add(new Client(name, location, enabled, VM));
 
 	Save();
 
@@ -90,10 +90,11 @@ wxUint32 ClientsManager::Add(const wxString& name, const wxString& location, boo
 }
 
 
-void ClientsManager::Edit(wxUint32 clientId, const wxString& name, const wxString& location)
+void ClientsManager::Edit(wxUint32 clientId, const wxString& name, const wxString& location, bool VM)
 {
 	mClients.Item(clientId)->SetName(name);
 	mClients.Item(clientId)->SetLocation(location);
+	mClients.Item(clientId)->SetVM(VM);
 
 	Save();
 }
@@ -104,14 +105,16 @@ inline void ClientsManager::Load(void)
 	bool       isNameOk;
 	bool       isLocationOk;
 	bool       enabled;
-	wxInt32    startingPos;
-	wxInt32    endingPos;
-	wxUint32   i;
+	bool       VM;
+	wxUint32   i, j;
 	wxString   currentLine;
 	wxString   clientName;
 	wxString   clientLocation;
+	wxString   clientEnabled;
+	wxString   clientVM;
 	wxString   inputFilename;
 	wxTextFile in;
+	std::vector<wxString> clientstabFields;
 
 
 	// Try to open the file, check if it exists
@@ -129,45 +132,38 @@ inline void ClientsManager::Load(void)
 		// Do not take into account empty lines or comments
 		if(currentLine.Len() != 0 && currentLine.GetChar(0) != '#')
 		{
+			clientstabFields.empty();
 			isNameOk     = false;
 			isLocationOk = false;
 			enabled      = true;
+			VM           = false;
 
-			// First, extract the name
-			// We can't tell Find() where to start, so the " char is replaced with something else
-			// to not find the same position more than once
-			startingPos = currentLine.Find('"');
-			if(startingPos != -1)
+			clientstabFields = Tools::SplitLineByDelim(currentLine, wxT("\t"));
+			for(j=clientstabFields.size(); j<=FMC_CLIENTSTAB_FIELDS; ++j)
 			{
-				currentLine.SetChar(startingPos, ' ');
-				endingPos = currentLine.Find('"');
-				if(endingPos != -1)
-				{
-					currentLine.SetChar(endingPos, ' ');
-					clientName = currentLine.Mid(startingPos+1, endingPos-startingPos-1);
-					isNameOk   = true;
-				}
+				clientstabFields.push_back(wxT(""));
 			}
+			clientName = clientstabFields.at(0);
+			clientLocation = clientstabFields.at(1);
+			clientEnabled = clientstabFields.at(2);
+			clientVM = clientstabFields.at(3);
 
-			// Then, the location
-			startingPos = currentLine.Find('"');
-			if(startingPos != -1)
-			{
-				currentLine.SetChar(startingPos, ' ');
-				endingPos = currentLine.Find('"');
-				if(endingPos != -1)
-				{
-					clientLocation = currentLine.Mid(startingPos+1, endingPos-startingPos-1);
-					isLocationOk   = true;
-				}
-			}
-
-			if (currentLine.Find('*') != wxNOT_FOUND)
+			clientName.Replace(wxT("\""), wxT(""));
+			clientLocation.Replace(wxT("\""), wxT(""));
+			clientEnabled.Trim();
+			clientVM.Trim();
+			if(!clientName.IsEmpty())
+				isNameOk = true;
+			if(!clientLocation.IsEmpty())
+				isLocationOk = true;
+			if(clientEnabled.IsSameAs(wxT("*")))
 				enabled = false;
+			if(clientVM.IsSameAs(wxT("*")))
+				VM = true;
 
 			// Add the client to the list, or warn the user if something went wrong
 			if(isNameOk == true && isLocationOk == true)
-				Add(clientName, clientLocation, enabled);
+				Add(clientName, clientLocation, enabled, VM); // alter last argument when parse is fixed
 			else
 				_LogMsgError(wxString::Format(_("Error while parsing %s on line %u"), inputFilename.c_str(), i+1));
 		}
@@ -181,7 +177,7 @@ inline void ClientsManager::Save(void)
 {
 	wxUint32             i;
 	wxString             outString;
-	wxString             enabled;
+	wxString             enabled, VM;
 	const Client        *client;
 	wxFileOutputStream   fileOS(PathManager::GetCfgPath() + wxT(FMC_FILE_CLIENTS));
 	wxTextOutputStream   textOS(fileOS);
@@ -204,7 +200,11 @@ inline void ClientsManager::Save(void)
 			enabled = wxT("*");
 		else
 			enabled = wxT("");
-		textOS.WriteString(wxString::Format(wxT("\"%s\"\t\"%s\"\t%s\n"), client->GetName().c_str(), client->GetLocation().c_str(), enabled.c_str()));
+		if (client->IsVM())
+			VM = wxT("*");
+		else
+			VM = wxT("");
+		textOS.WriteString(wxString::Format(wxT("\"%s\"\t\"%s\"\t%s\t%s\n"), client->GetName().c_str(), client->GetLocation().c_str(), enabled.c_str(), VM.c_str()));
 	}
 
 	fileOS.Close();

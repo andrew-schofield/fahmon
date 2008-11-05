@@ -32,6 +32,7 @@
 
 #include "wx/dirdlg.h"
 #include "wx/button.h"
+#include "wx/checkbox.h"
 //#include "wx/intl.h"
 
 // Identifiers for the controls
@@ -64,6 +65,7 @@ ClientDialog::ClientDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, wxStri
 	wxBoxSizer             *nameSizer;
 	wxBoxSizer             *nameLSizer;
 	wxBoxSizer             *locationLSizer;
+	wxBoxSizer             *vmwareSizer;
 	wxFlexGridSizer        *clientInfoSizer;
 	wxBoxSizer             *groupSizer;
 	wxButton                chooseButton;
@@ -77,11 +79,13 @@ ClientDialog::ClientDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, wxStri
 	nameSizer           = new wxBoxSizer(wxHORIZONTAL);
 	locationLSizer      = new wxBoxSizer(wxHORIZONTAL);
 	nameLSizer          = new wxBoxSizer(wxHORIZONTAL);
+	vmwareSizer         = new wxBoxSizer(wxHORIZONTAL);
 	groupSizer          = new wxStaticBoxSizer(wxVERTICAL, this, _("Client information"));
 	clientInfoSizer     = new wxFlexGridSizer(2, FMC_GUI_SPACING_LOW, FMC_GUI_SPACING_LOW);
 
 	mClientNameCtrl     = new wxTextCtrl(this, wxID_ANY, wxT(""), wxDefaultPosition, wxSize(FMC_GUI_TEXTCTRL_MIN_LENGTH, -1));
 	mClientLocationCtrl = new wxTextCtrl(this, wxID_ANY, wxT(""), wxDefaultPosition, wxSize(FMC_GUI_TEXTCTRL_MIN_LENGTH, -1));
+	mClientVMCtrl       = new wxCheckBox(this, wxID_ANY, _("Client is on a Virtual Machine"));
 
 	locationLSizer->Add(new StaticBoldedText(this, wxID_ANY, _("Location:")),0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
 	locationLSizer->AddSpacer(FMC_GUI_SPACING_LOW);
@@ -99,6 +103,9 @@ ClientDialog::ClientDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, wxStri
 	nameSizer->Add(mClientNameCtrl, 1, wxALIGN_CENTER_VERTICAL);
 	nameSizer->AddSpacer(FMC_GUI_SPACING_LOW);
 
+	vmwareSizer->Add(mClientVMCtrl, 1, wxALIGN_CENTER_VERTICAL);
+	vmwareSizer->AddSpacer(FMC_GUI_SPACING_LOW);
+
 	// The top part: it contains the two wxTextCtrl and their labels
 
 	clientInfoSizer->Add(nameLSizer, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
@@ -107,6 +114,10 @@ ClientDialog::ClientDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, wxStri
 	clientInfoSizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	clientInfoSizer->Add(locationLSizer, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
 	clientInfoSizer->Add(locationSizer, 0, wxALIGN_CENTER_VERTICAL | wxEXPAND);
+	clientInfoSizer->AddSpacer(FMC_GUI_SPACING_LOW);
+	clientInfoSizer->AddSpacer(FMC_GUI_SPACING_LOW);
+	clientInfoSizer->AddSpacer(FMC_GUI_SPACING_LOW);
+	clientInfoSizer->Add(vmwareSizer, 0, wxALIGN_CENTER_VERTICAL | wxEXPAND);
 	groupSizer->Add(clientInfoSizer);
 
 	// The bottom part contains the Ok and Cancel buttons
@@ -171,6 +182,7 @@ int ClientDialog::ShowModal(wxUint32 clientId, wxString filename)
 		clientToEdit = ClientsManager::GetInstance()->Get(mClientId);
 		mClientNameCtrl->SetValue(clientToEdit->GetName());
 		mClientLocationCtrl->SetValue(clientToEdit->GetLocation());
+		mClientVMCtrl->SetValue(clientToEdit->IsVM());
 	}
 	else
 	{
@@ -208,11 +220,13 @@ void ClientDialog::OnOkButton(wxCommandEvent& event)
 	wxUint32       newClientId;
 	wxString       clientName;
 	wxString       clientLocation;
+	bool           clientVM;
 	wxCommandEvent newClientEvent(EVT_NEWCLIENTADDED);
 
 	// Retrieve the fields value
 	clientName     = mClientNameCtrl->GetValue();
 	clientLocation = mClientLocationCtrl->GetValue();
+	clientVM       = mClientVMCtrl->GetValue();
 
 	// The two fields must have been filled
 	if(clientName.empty() == true || clientLocation.empty() == true)
@@ -227,13 +241,13 @@ void ClientDialog::OnOkButton(wxCommandEvent& event)
 	// If the client already exists, simply reload it, this will automatically update any changed information
 	if(mClientId != INVALID_CLIENT_ID)
 	{
-		ClientsManager::GetInstance()->Edit(mClientId, clientName, clientLocation);
+		ClientsManager::GetInstance()->Edit(mClientId, clientName, clientLocation, clientVM);
 		ClientsManager::GetInstance()->ReloadThreaded(mClientId);
 	}
 	else
 	{
 		// Add the new client to the list
-		newClientId = ClientsManager::GetInstance()->Add(clientName, clientLocation, true);
+		newClientId = ClientsManager::GetInstance()->Add(clientName, clientLocation, true, clientVM); // alter last argument when dialog is modified
 
 		// And warn the main dialog
 		newClientEvent.SetInt(newClientId);

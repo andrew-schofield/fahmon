@@ -100,7 +100,7 @@ public:
 	 * @param fahlogComplete The FAHlog to analyze
 	 * @return A WorkUnitFrame object representing the last frame.
 	 **/
-	static WorkUnitFrame* AnalyzeLastFrame(const wxString& fahlogComplete);
+	static WorkUnitFrame* AnalyzeLastFrame(const wxString& fahlogComplete, bool VM);
 };
 
 

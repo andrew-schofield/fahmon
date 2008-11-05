@@ -28,7 +28,7 @@
 
 #include "wx/dialog.h"
 #include "wx/textctrl.h"
-
+#include "wx/checkbox.h"
 
 /**
  * Client edition class.
@@ -40,6 +40,7 @@ protected:
 	wxUint32             mClientId; /**< The new/current client ID */
 	wxTextCtrl          *mClientNameCtrl;  /**< Name of client */
 	wxTextCtrl          *mClientLocationCtrl; /**< Location of client */
+	wxCheckBox          *mClientVMCtrl; /**< Is client in a VM */
 	static ClientDialog *mInstance; /**< The single instance of the Client Dialog */
 
 	/**
