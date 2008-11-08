@@ -333,21 +333,25 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 	// Clear information for invalid clients
 	if(clientId == INVALID_CLIENT_ID)
 	{
-		mUsername->Disable();
-		mUsername->SetURL(wxT(""));
-		mUsername->SetLabel(wxT(""));
-		mTeamNumber->Disable();
-		mTeamNumber->SetURL(wxT(""));
-		mTeamNumber->SetLabel(wxT(""));
+		if(mSplitterWindow->IsSplit())
+		{
+			mUsername->Disable();
+			mUsername->SetURL(wxT(""));
+			mUsername->SetLabel(wxT(""));
+			mTeamNumber->Disable();
+			mTeamNumber->SetURL(wxT(""));
+			mTeamNumber->SetLabel(wxT(""));
 
-		mCoreName->SetLabel(wxT(""));
-		mProjectId->SetLabel(wxT(""));
-		mCredit->SetLabel(wxT(""));
-		mDownloaded->SetLabel(wxT(""));
-		mPreferredDeadline->SetLabel(wxT(""));
-		mFinalDeadline->SetLabel(wxT(""));
+			mCoreName->SetLabel(wxT(""));
+			mProjectId->SetLabel(wxT(""));
+			mCredit->SetLabel(wxT(""));
+			mDownloaded->SetLabel(wxT(""));
+			mPreferredDeadline->SetLabel(wxT(""));
+			mFinalDeadline->SetLabel(wxT(""));
+			mWUProgressText->SetLabel(wxT(""));
+		}
+
 		mWUProgressGauge->SetValue(0);
-		mWUProgressText->SetLabel(wxT(""));
 		SetStatusText(wxT(""), STATUS_CLIENTNAME);
 
 		if(mLogFile->IsShown() == true)
@@ -368,21 +372,24 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 	// Clear information if this client is not a valid one
 	if(!client->IsAccessible())
 	{
-		mUsername->Disable();
-		mUsername->SetURL(wxT(""));
-		mUsername->SetLabel(wxT(""));
-		mTeamNumber->Disable();
-		mTeamNumber->SetURL(wxT(""));
-		mTeamNumber->SetLabel(wxT(""));
+		if(mSplitterWindow->IsSplit())
+		{
+			mUsername->Disable();
+			mUsername->SetURL(wxT(""));
+			mUsername->SetLabel(wxT(""));
+			mTeamNumber->Disable();
+			mTeamNumber->SetURL(wxT(""));
+			mTeamNumber->SetLabel(wxT(""));
 
-		mCoreName->SetLabel(wxT(""));
-		mProjectId->SetLabel(wxT(""));
-		mCredit->SetLabel(wxT(""));
-		mDownloaded->SetLabel(wxT(""));
-		mPreferredDeadline->SetLabel(wxT(""));
-		mFinalDeadline->SetLabel(wxT(""));
+			mCoreName->SetLabel(wxT(""));
+			mProjectId->SetLabel(wxT(""));
+			mCredit->SetLabel(wxT(""));
+			mDownloaded->SetLabel(wxT(""));
+			mPreferredDeadline->SetLabel(wxT(""));
+			mFinalDeadline->SetLabel(wxT(""));
+			mWUProgressText->SetLabel(wxT(""));
+		}
 		mWUProgressGauge->SetValue(0);
-		mWUProgressText->SetLabel(wxT(""));
 		if(client->IsEnabled())
 			mLogFile->SetValue(_("Something is wrong with this client.\nPlease check the messages (Tools->Show/Hide Messages Window)."));
 		else
@@ -406,72 +413,76 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 	mWUProgressText->SetLabel(wxT("  ") + client->GetProgressString());
 	mWUProgressGauge->SetValue(client->GetProgress());
 
-	mUsername->Enable();
-	mUsername->SetLabel(client->GetDonatorName());
-	mUsername->SetURL(client->GetDonatorStatsURL());
-	mUsername->Refresh();
-
-	mTeamNumber->Enable();
-	mTeamNumber->SetLabel(wxString::Format(wxT("(%u)"), client->GetTeamNumber()));
-	mTeamNumber->SetURL(client->GetTeamStatsURL());
-	mTeamNumber->Refresh();
-
-	if(client->GetDownloadDate().IsValid())
+	if(mSplitterWindow->IsSplit())
 	{
-		timeNow = wxDateTime::Now();
-		downloadTime = client->GetDownloadDate();
-		if(deadlineDays == ETADS_LEFT_TIME)
-		{
-			//timeDiff = timeNow.Subtract(downloadTime);
-			timeInMinutes = timeNow.Subtract(downloadTime).GetMinutes();
+		mUsername->Enable();
+		mUsername->SetLabel(client->GetDonatorName());
+		mUsername->SetURL(client->GetDonatorStatsURL());
+		mUsername->Refresh();
 
-			// Split the left time into days, hours and minutes
-			nbDays    = timeInMinutes / (24 * 60);
-			nbMinutes = timeInMinutes % (24 * 60);
-			nbHours   = nbMinutes / 60;
-			nbMinutes = nbMinutes % 60;
-			// Use a friendly format
-			if(nbDays != 0)
+		mTeamNumber->Enable();
+		mTeamNumber->SetLabel(wxString::Format(wxT("(%u)"), client->GetTeamNumber()));
+		mTeamNumber->SetURL(client->GetTeamStatsURL());
+		mTeamNumber->Refresh();
+
+		if(client->GetDownloadDate().IsValid())
+		{
+			timeNow = wxDateTime::Now();
+			downloadTime = client->GetDownloadDate();
+			if(deadlineDays == ETADS_LEFT_TIME)
 			{
-				tempString = wxString::Format(wxT("%id %02ih %02imn"), nbDays, nbHours, nbMinutes);
+				//timeDiff = timeNow.Subtract(downloadTime);
+				timeInMinutes = timeNow.Subtract(downloadTime).GetMinutes();
+
+				// Split the left time into days, hours and minutes
+				nbDays    = timeInMinutes / (24 * 60);
+				nbMinutes = timeInMinutes % (24 * 60);
+				nbHours   = nbMinutes / 60;
+				nbMinutes = nbMinutes % 60;
+				// Use a friendly format
+				if(nbDays != 0)
+				{
+					tempString = wxString::Format(wxT("%id %02ih %02imn"), nbDays, nbHours, nbMinutes);
+				}
+				else if(nbHours != 0)
+				{
+					tempString = wxString::Format(wxT("%ih %02imn"), nbHours, nbMinutes);
+				}
+				else
+				{
+					tempString = wxString::Format(wxT("%imn"), nbMinutes);
+				}
+
+				mDownloaded->SetLabel(wxString::Format(_("%s ago"), tempString.c_str()));
 			}
-			else if(nbHours != 0)
+			else if (deadlineDays == ETADS_DATE_DAY_MONTH)
 			{
-				tempString = wxString::Format(wxT("%ih %02imn"), nbHours, nbMinutes);
+				mDownloaded->SetLabel(wxString::Format(wxT("%s"), downloadTime.Format(wxT("%d %B, %H:%M")).c_str()));
 			}
 			else
 			{
-				tempString = wxString::Format(wxT("%imn"), nbMinutes);
+				mDownloaded->SetLabel(wxString::Format(wxT("%s"), downloadTime.Format(wxT("%B %d, %H:%M")).c_str()));
 			}
-
-			mDownloaded->SetLabel(wxString::Format(_("%s ago"), tempString.c_str()));
-		}
-		else if (deadlineDays == ETADS_DATE_DAY_MONTH)
-		{
-			mDownloaded->SetLabel(wxString::Format(wxT("%s"), downloadTime.Format(wxT("%d %B, %H:%M")).c_str()));
 		}
 		else
 		{
-			mDownloaded->SetLabel(wxString::Format(wxT("%s"), downloadTime.Format(wxT("%B %d, %H:%M")).c_str()));
+			mDownloaded->SetLabel(_("N/A"));
 		}
-	}
-	else
-	{
-		mDownloaded->SetLabel(_("N/A"));
-	}
 
-	if(client->GetProjectId() == INVALID_PROJECT_ID)
-	{
-		mProjectId->SetLabel(_("N/A"));
-		mCoreName->SetLabel(_("N/A"));
-		mCredit->SetLabel(_("N/A"));
-		mPreferredDeadline->SetLabel(_("N/A"));
-		mFinalDeadline->SetLabel(_("N/A"));
+		if(client->GetProjectId() == INVALID_PROJECT_ID)
+		{
+			mProjectId->SetLabel(_("N/A"));
+			mCoreName->SetLabel(_("N/A"));
+			mCredit->SetLabel(_("N/A"));
+			mPreferredDeadline->SetLabel(_("N/A"));
+			mFinalDeadline->SetLabel(_("N/A"));
 
-		return;
+			return;
+		}
+
+		mProjectId->SetLabel(wxString::Format(wxT("%u (R%i, C%i, G%i)"), client->GetProjectId(), client->GetProjectRun(), client->GetProjectClone(), client->GetProjectGen()));
 	}
 
-	mProjectId->SetLabel(wxString::Format(wxT("%u (R%i, C%i, G%i)"), client->GetProjectId(), client->GetProjectRun(), client->GetProjectClone(), client->GetProjectGen()));
 	project = ProjectsManager::GetInstance()->GetProject(client->GetProjectId());
 
 	_PrefsGetBool(PREF_MAINDIALOG_AUTOUPDATEPROJECTS, autoUpdateProjects);
@@ -485,13 +496,16 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 	}
 	if(project == NULL)
 	{
-		mCoreName->SetLabel(_("Unknown"));
-		mCredit->SetLabel(_("Unknown"));
-		mPreferredDeadline->SetLabel(_("Unknown"));
-		mFinalDeadline->SetLabel(_("Unknown"));
+		if(mSplitterWindow->IsSplit())
+		{
+			mCoreName->SetLabel(_("Unknown"));
+			mCredit->SetLabel(_("Unknown"));
+			mPreferredDeadline->SetLabel(_("Unknown"));
+			mFinalDeadline->SetLabel(_("Unknown"));
+		}
 		_LogMsgWarning(wxString::Format(_("Project %u is unknown, you should try to update the projects database"), client->GetProjectId()));
 	}
-	else
+	else if(mSplitterWindow->IsSplit())
 	{
 		// We do have project information
 		mCoreName->SetLabel(Core::IdToLongName(project->GetCoreId()));
