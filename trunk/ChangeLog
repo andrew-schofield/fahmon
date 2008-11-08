@@ -1,5 +1,11 @@
 FahMon: The Folding@home client monitoring program
 
+SVN
+
+    General
+
+    * Fixed total PPD value not updating unless a client is clicked.
+
 v2.3.4 (04/11/08)
 
     General

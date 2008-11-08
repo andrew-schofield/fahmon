@@ -1193,6 +1193,8 @@ void MainDialog::OnClientReloaded(wxCommandEvent& event)
 	{
 		ShowClientInformation(clientId);
 	}
+	mWUTotalPPD->SetLabel(wxString::Format(_(" :: Total PPD: %.2f"), MainDialog::GetTotalPPD()));
+	mWUTotalPPD->Refresh();
 }
 
 
