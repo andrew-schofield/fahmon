@@ -26,7 +26,7 @@
  * \mainpage FahMon
  * \section Overview
  * FahMon is an open-source tool (GPL license) that allows you to quickly check the
- * progress of your Folding@Home client (or clients if you have multiple ones), avoiding
+ * progress of your Folding@Home client (or clients if you have multiple), avoiding
  * you having to open different files and/or to go to the Internet (for example to know
  * how much your current work unit is worth). Other monitoring tools exist (such as
  * Electron Microscope or FahLogStats), so if you don't like FahMon, have a look at them!
@@ -55,12 +55,11 @@
  * a common programming API to the native APIs on multiple operating systems. In this way,
  * applications written using wxWidgets look like they were built natively for that
  * operating system.
- * At present FahMon is available as a Windows executable and also as a source package for
- * compiling on Linux. OS X is not currently supported, however the nature of wxWidgets
- * means it should theoretically be able to run on a Mac with the appropriate modifications.
+ * At present FahMon is available as a Windows executable, a Mac OSX Universal binary (as
+ * of version 2.3.2a) and also as a source package for compiling on Linux.
  * \section Legal
- * FahMon is Copryright François Ingelrest (Original Author) 2003-2007
- * and Andrew Schofield (Current Maintainer) 2007-2008
+ * FahMon is Copyright François Ingelrest (Original Author/Retired Developer) 2003-2007
+ * and Andrew Schofield (Lead Developer) 2007-2008
  *
  * FahMon is free software and released under the GNU Public Licence (GPL). As such you are
  * free to modify and distribute FahMon with the only condition being that you reference
