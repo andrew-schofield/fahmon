@@ -139,6 +139,9 @@ inline void ClientsManager::Load(void)
 			VM           = false;
 
 			clientstabFields = Tools::SplitLineByDelim(currentLine, wxT("\t"));
+			// if size is 1 assume space delimited
+			if(clientstabFields.size() == 1)
+				clientstabFields = Tools::SplitLineByDelim(currentLine, wxT("    "));
 			for(j=clientstabFields.size(); j<=FMC_CLIENTSTAB_FIELDS; ++j)
 			{
 				clientstabFields.push_back(wxT(""));
@@ -150,6 +153,10 @@ inline void ClientsManager::Load(void)
 
 			clientName.Replace(wxT("\""), wxT(""));
 			clientLocation.Replace(wxT("\""), wxT(""));
+			clientName.Trim();
+			clientName.Trim(false);
+			clientLocation.Trim();
+			clientLocation.Trim(false);
 			clientEnabled.Trim();
 			clientVM.Trim();
 			if(!clientName.IsEmpty())
