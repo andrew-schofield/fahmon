@@ -1025,7 +1025,7 @@ void PreferencesDialog::OnBrowseButton(wxCommandEvent& event)
 {
 	wxString selectedFile;
 
-	wxFileDialog *OpenDialog = new wxFileDialog(this, _("Choose a local project data file"), wxT(""), mAdvancedLocalFileLocation->GetValue(),wxT("HTML Files (*.html)|*.html"), wxOPEN, wxDefaultPosition);
+	wxFileDialog *OpenDialog = new wxFileDialog(this, _("Choose a local project data file"), wxT(""), mAdvancedLocalFileLocation->GetValue(),wxT("HTML Files (*.html)|*.html"), wxFD_OPEN, wxDefaultPosition);
 	if (OpenDialog->ShowModal() == wxID_OK) // if the user click "Open" instead of "cancel"
 	{
 		selectedFile = OpenDialog->GetPath();
@@ -1039,7 +1039,7 @@ void PreferencesDialog::OnWebAppBrowseButton(wxCommandEvent& event)
 {
 	wxString selectedFile;
 
-	wxFileDialog *OpenDialog = new wxFileDialog(this, _("Choose where to save the Web Application"), wxT(""), mWebAppWebAppLocation->GetValue(),wxT("HTML Files (*.html)|*.html"), wxSAVE, wxDefaultPosition);
+	wxFileDialog *OpenDialog = new wxFileDialog(this, _("Choose where to save the Web Application"), wxT(""), mWebAppWebAppLocation->GetValue(),wxT("HTML Files (*.html)|*.html"), wxFD_SAVE, wxDefaultPosition);
 	if (OpenDialog->ShowModal() == wxID_OK) // if the user click "Open" instead of "cancel"
 	{
 		selectedFile = OpenDialog->GetPath();
@@ -1053,7 +1053,7 @@ void PreferencesDialog::OnSimpleWebBrowseButton(wxCommandEvent& event)
 {
 	wxString selectedFile;
 
-	wxFileDialog *OpenDialog = new wxFileDialog(this, _("Choose where to save the simple web page"), wxT(""), mWebAppSimpleWebLocation->GetValue(),wxT("HTML Files (*.html)|*.html"), wxSAVE, wxDefaultPosition);
+	wxFileDialog *OpenDialog = new wxFileDialog(this, _("Choose where to save the simple web page"), wxT(""), mWebAppSimpleWebLocation->GetValue(),wxT("HTML Files (*.html)|*.html"), wxFD_SAVE, wxDefaultPosition);
 	if (OpenDialog->ShowModal() == wxID_OK) // if the user click "Open" instead of "cancel"
 	{
 		selectedFile = OpenDialog->GetPath();
@@ -1067,7 +1067,7 @@ void PreferencesDialog::OnSimpleTextBrowseButton(wxCommandEvent& event)
 {
 	wxString selectedFile;
 
-	wxFileDialog *OpenDialog = new wxFileDialog(this, _("Choose where to save the simple text file"), wxT(""), mWebAppSimpleTextLocation->GetValue(),wxT("Any File (*.*)|*.*"), wxSAVE, wxDefaultPosition);
+	wxFileDialog *OpenDialog = new wxFileDialog(this, _("Choose where to save the simple text file"), wxT(""), mWebAppSimpleTextLocation->GetValue(),wxT("Any File (*.*)|*.*"), wxFD_SAVE, wxDefaultPosition);
 	if (OpenDialog->ShowModal() == wxID_OK) // if the user click "Open" instead of "cancel"
 	{
 		selectedFile = OpenDialog->GetPath();
@@ -1081,7 +1081,7 @@ void PreferencesDialog::OnWebAppTemplateBrowseButton(wxCommandEvent& event)
 {
 	wxString selectedFile;
 
-	wxFileDialog *OpenDialog = new wxFileDialog(this, _("Choose the Web Application Template"), wxT(""), mWebAppWebAppTemplateLocation->GetValue(),wxT("HTML Files (*.html;*.htm)|*.html;*.htm"), wxOPEN, wxDefaultPosition);
+	wxFileDialog *OpenDialog = new wxFileDialog(this, _("Choose the Web Application Template"), wxT(""), mWebAppWebAppTemplateLocation->GetValue(),wxT("HTML Files (*.html;*.htm)|*.html;*.htm"), wxFD_OPEN, wxDefaultPosition);
 	if (OpenDialog->ShowModal() == wxID_OK) // if the user click "Open" instead of "cancel"
 	{
 		selectedFile = OpenDialog->GetPath();
@@ -1095,7 +1095,7 @@ void PreferencesDialog::OnSimpleWebTemplateBrowseButton(wxCommandEvent& event)
 {
 	wxString selectedFile;
 
-	wxFileDialog *OpenDialog = new wxFileDialog(this, _("Choose the Simple Web Page Template"), wxT(""), mWebAppSimpleWebTemplateLocation->GetValue(),wxT("HTML Files (*.html;*.htm)|*.html;*.htm"), wxOPEN, wxDefaultPosition);
+	wxFileDialog *OpenDialog = new wxFileDialog(this, _("Choose the Simple Web Page Template"), wxT(""), mWebAppSimpleWebTemplateLocation->GetValue(),wxT("HTML Files (*.html;*.htm)|*.html;*.htm"), wxFD_OPEN, wxDefaultPosition);
 	if (OpenDialog->ShowModal() == wxID_OK) // if the user click "Open" instead of "cancel"
 	{
 		selectedFile = OpenDialog->GetPath();
@@ -1109,7 +1109,7 @@ void PreferencesDialog::OnSimpleTextTemplateBrowseButton(wxCommandEvent& event)
 {
 	wxString selectedFile;
 
-	wxFileDialog *OpenDialog = new wxFileDialog(this, _("Choose the Simple Text File Template"), wxT(""), mWebAppSimpleTextTemplateLocation->GetValue(),wxT("Any File (*.*)|*.*"), wxOPEN, wxDefaultPosition);
+	wxFileDialog *OpenDialog = new wxFileDialog(this, _("Choose the Simple Text File Template"), wxT(""), mWebAppSimpleTextTemplateLocation->GetValue(),wxT("Any File (*.*)|*.*"), wxFD_OPEN, wxDefaultPosition);
 	if (OpenDialog->ShowModal() == wxID_OK) // if the user click "Open" instead of "cancel"
 	{
 		selectedFile = OpenDialog->GetPath();
