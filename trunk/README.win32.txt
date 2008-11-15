@@ -24,10 +24,18 @@ Installation of the required software will require >1GB of disk space.
 The rest of the documentation assumes that you installed everything into the
 default locations. So you may need to alter paths etc.
 
+Aggressive wxWidgets stripping
+==============================
+
+If you wish to build an aggressively stripped minimal version of the wxWidgets
+library capable of linking against FahMon and reducing the final executable size
+by several hundred kb, then copy the "setup_aggressive.h" file to
+C:\wxMSW-2.8.x\include\wx\msw\setup.h before continuing.
+
 Compiling wxWidgets
 ===================
 
-* Navigate to c:\wxWidgets-2.8.7\build\msw and open wx.dsw.
+* Navigate to c:\wxMSW-2.8.x\build\msw and open wx.dsw.
 * When prompted to open and convert the files, click "yes to all".
 * Change the build type to "Unicode Release" by default this is set to "Debug".
   This can be altered by selecting the option from the drop-down list between
@@ -56,11 +64,11 @@ Configuring MSVC
 * Change "Show directories for:" to "Include files"
 * Add the following directories to the list:
   "c:\program files\microsoft platform sdk\include"
-  "c:\wxwidgets-2.8.7\include"
+  "c:\wxMSW-2.8.x\include"
 * Change "Show directories for:" to "Library files"
 * Add the following directories to the list:
   "c:\program files\microsoft platform sdk\lib"
-  "c:\wxwidgets-2.8.7\lib\vc_lib"
+  "c:\wxSW-2.8.x\lib\vc_lib"
 * Close the options dialog (with OK).
 
 Compiling FahMon

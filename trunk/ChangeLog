@@ -10,6 +10,8 @@ SVN
 
     * Reduced executable size by aggressively optimising MSVC linking
       and padding boundaries.
+    * Reduced executable size by aggressively stripping unneeded options
+      from wxWidgets.
 
 v2.3.4 (04/11/08)
 
