@@ -11,4 +11,5 @@
 EXTRA_DIST = \
 	dialog_icon.ico \
 	main_icon.ico \
-	fahmon.rc
+	fahmon.rc \
+	setup_aggressive.h

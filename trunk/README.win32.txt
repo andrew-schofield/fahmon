@@ -29,7 +29,7 @@ Aggressive wxWidgets stripping
 
 If you wish to build an aggressively stripped minimal version of the wxWidgets
 library capable of linking against FahMon and reducing the final executable size
-by several hundred kb, then copy the "setup_aggressive.h" file to
+by several hundred kb, then copy the "resources\setup_aggressive.h" file to
 C:\wxMSW-2.8.x\include\wx\msw\setup.h before continuing.
 
 Compiling wxWidgets
