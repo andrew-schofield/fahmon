@@ -5,6 +5,7 @@ SVN
     General
 
     * Fixed total PPD value not updating unless a client is clicked.
+    * Improved handling of clients within Virtual Machines.
 
     Windows
 

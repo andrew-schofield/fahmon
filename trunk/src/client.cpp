@@ -782,7 +782,7 @@ void Client::FindCurrentState(WorkUnitFrame* lastFrame)
 	}
 
 	// Asynchronous client
-	if(lastFrame->GetElapsedSeconds() == 65535)
+	if(lastFrame->GetElapsedSeconds() == 65535 && !mVM)
 	{
 		mState = ST_ASYNCH;
 		_LogMsgInfo(wxString::Format(_("%s has been marked as having a asynchronous clock."), mName.c_str()));
@@ -811,7 +811,7 @@ void Client::FindCurrentState(WorkUnitFrame* lastFrame)
 	}
 
 	// Last step
-	if(lastFrame->GetElapsedSeconds() < trigger)
+	if(lastFrame->GetElapsedSeconds() < trigger || mVM)
 	{
 		mState = ST_RUNNING;
 	}
