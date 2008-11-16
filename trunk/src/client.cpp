@@ -425,7 +425,7 @@ inline bool Client::LoadLogFile(const wxString& filename)
 inline bool Client::LoadUnitInfoFile(const wxString& filename)
 {
 	bool              progressOk;
-	uint              lSize;
+	unsigned int      lSize;
 	wxInt32           endingPos;
 	FILE             *in;
 	unsigned long     tmpLong;
