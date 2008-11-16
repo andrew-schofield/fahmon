@@ -425,44 +425,65 @@ inline bool Client::LoadLogFile(const wxString& filename)
 inline bool Client::LoadUnitInfoFile(const wxString& filename)
 {
 	bool              progressOk;
+	uint              lSize;
 	wxInt32           endingPos;
-	wxUint32          i;
-	wxString          currentLine;
-	wxString          progressString;
-	wxTextFile        in;
+	FILE             *in;
 	unsigned long     tmpLong;
+	char             *buffer;
+	size_t            result;
+	wxString          currentLine;
+
 
 	// Try to open the file, check if it exists
-	if(!wxFileExists(filename) || !in.Open(filename))
+	if(!wxFileExists(filename))
 	{
 		return false;
+	}
+	if((in = fopen(filename.mb_str(), "rt")) == NULL)
+	{
+		return false;
+	}
+	else
+	{
+		fseek(in, 0, SEEK_END);
+		lSize = ftell(in);
+		rewind(in);
+		if(lSize > 512)
+			lSize = 512;
+		buffer = (char*) malloc(sizeof(char)*lSize);
+		if (buffer == NULL)
+		{
+			_LogMsgError(wxString::Format(wxT("Memory error while opening %s"), filename.c_str()));
+			return false;
+		}
+		result = fread(buffer, 1, lSize, in);
+		if (result != lSize)
+		{
+			_LogMsgError(wxString::Format(wxT("Reading error while opening %s"), filename.c_str()));
+			return false;
+		}
+		fclose(in);
+		free(buffer);
+		currentLine = wxString(buffer, wxConvUTF8);
 	}
 
 	progressOk     = false;
 
-	// Retrieve each line and try to extract the needed elements
-	for(i=0; i<in.GetLineCount(); ++i)
+	if(currentLine.StartsWith(wxT("Progress: "), &mProgressString))
 	{
-		currentLine = in.GetLine(i);
+		endingPos = mProgressString.Find('%');
 
-		if(currentLine.StartsWith(wxT("Progress: "), &mProgressString))
+		if(endingPos != -1 && mProjectId != INVALID_PROJECT_ID)
 		{
-			endingPos = mProgressString.Find('%');
-
-			if(endingPos != -1 && mProjectId != INVALID_PROJECT_ID)
+			mProgressString = mProgressString.Mid(0, endingPos);
+			if(mProgressString.ToULong(&tmpLong) == true)
 			{
-				mProgressString = mProgressString.Mid(0, endingPos);
-				if(mProgressString.ToULong(&tmpLong) == true)
-				{
-					mProgress        = (wxUint32)tmpLong;
-					mProgressString  = wxString::Format(wxT("%u%%"), mProgress);
-					progressOk       = true;
-				}
+				mProgress        = (wxUint32)tmpLong;
+				mProgressString  = wxString::Format(wxT("%u%%"), mProgress);
+				progressOk       = true;
 			}
 		}
 	}
-
-	in.Close();
 
 	// We only succeed if we have found the progress value
 	if(progressOk)

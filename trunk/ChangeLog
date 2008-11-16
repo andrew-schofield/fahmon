@@ -6,6 +6,8 @@ SVN
 
     * Fixed total PPD value not updating unless a client is clicked.
     * Improved handling of clients within Virtual Machines.
+    * Prevented FahMon from crashing when the FAH client produces excessively
+      large unitinfo.txt files.
 
     Windows
 
