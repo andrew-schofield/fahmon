@@ -319,6 +319,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\src\include\queue.h"
+				>
+			</File>
+			<File
 				RelativePath=".\src\include\resource.h"
 				>
 			</File>
