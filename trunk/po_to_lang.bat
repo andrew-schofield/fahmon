@@ -37,4 +37,8 @@ echo ============
 )
 echo Copying translation template
 copy /y .\po\fahmon.pot .\lang\fahmon.pot
-move .\lang .\Release\
+if exist .\Release\lang (
+rd /s /q .\Release\lang
+)
+echo Moving translations into Release
+move /y .\lang .\Release\
