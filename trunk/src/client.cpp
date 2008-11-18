@@ -426,7 +426,7 @@ inline bool Client::LoadUnitInfoFile(const wxString& filename)
 {
 	bool              progressOk;
 	unsigned int      lSize;
-	wxInt32           endingPos;
+	wxInt32           endingPos, startingPos;
 	FILE             *in;
 	unsigned long     tmpLong;
 	char             *buffer;
@@ -463,25 +463,22 @@ inline bool Client::LoadUnitInfoFile(const wxString& filename)
 			return false;
 		}
 		fclose(in);
-		free(buffer);
 		currentLine = wxString(buffer, wxConvUTF8);
+		free(buffer);
 	}
 
 	progressOk     = false;
+	startingPos = currentLine.Find(wxT("Progress:")) + 9;
+	endingPos = currentLine.Find('%');
 
-	if(currentLine.StartsWith(wxT("Progress: "), &mProgressString))
+	if(endingPos != -1 && mProjectId != INVALID_PROJECT_ID)
 	{
-		endingPos = mProgressString.Find('%');
-
-		if(endingPos != -1 && mProjectId != INVALID_PROJECT_ID)
+		mProgressString = currentLine.Mid(startingPos, endingPos - startingPos);
+		if(mProgressString.ToULong(&tmpLong) == true)
 		{
-			mProgressString = mProgressString.Mid(0, endingPos);
-			if(mProgressString.ToULong(&tmpLong) == true)
-			{
-				mProgress        = (wxUint32)tmpLong;
-				mProgressString  = wxString::Format(wxT("%u%%"), mProgress);
-				progressOk       = true;
-			}
+			mProgress        = (wxUint32)tmpLong;
+			mProgressString  = wxString::Format(wxT("%u%%"), mProgress);
+			progressOk       = true;
 		}
 	}
 
