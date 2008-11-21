@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
 "POT-Creation-Date: 2008-11-21 22:28+0000\n"
-"PO-Revision-Date: 2008-11-04 23:00+0000\n"
+"PO-Revision-Date: 2008-11-21 22:34+0000\n"
 "Last-Translator: Andrew Schofield <andrew_s@fahmon.net>\n"
 "Language-Team: British English\n"
 "MIME-Version: 1.0\n"
@@ -293,7 +293,7 @@ msgstr "Client information"
 
 #: src/clientDialog.cpp:88
 msgid "Client is on a Virtual Machine"
-msgstr ""
+msgstr "Client is on a Virtual Machine"
 
 #: src/clientDialog.cpp:90
 msgid "Location:"
