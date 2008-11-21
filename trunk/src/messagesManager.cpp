@@ -93,8 +93,6 @@ void MessagesManager::Log(const wxString& msg)
 	mMessages += wxT("[") + currentDate + wxT("] ") + msg + wxT("\n");
 	mNewMessages += wxT("[") + currentDate + wxT("] ") + msg + wxT("\n");
 
-	// Write a small header
-
 	// Could the file be opened?
 	if(fileOS.Ok() == false)
 	{

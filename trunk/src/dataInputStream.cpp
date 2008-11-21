@@ -33,7 +33,7 @@ DataInputStream::DataInputStream(const wxString& filename)
 	mDataIS     = NULL;
 	mBufferedIS = NULL;
 
-	// wxWidgets will pop up error messages when the file does not exists
+	// wxWidgets will pop up error messages when the file does not exist
 	// so we avoid this by testing first the existence of the file
 	if(wxFileExists(filename) == false)
 	{

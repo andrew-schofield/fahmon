@@ -282,7 +282,7 @@ void MainDialog::SetAutoReloadTimer(void)
 
 	// Then, retrieve the (perhaps new) preferences
 	_PrefsGetBool(PREF_MAINDIALOG_AUTORELOAD,          isAutoReloadOn);
-	_PrefsGetBool(PREF_MAINDIALOG_ADVANCEDRELOAD,      isAdvancedReloadOn); //this is actually the experimental system
+	_PrefsGetBool(PREF_MAINDIALOG_ADVANCEDRELOAD,      isAdvancedReloadOn); // this is actually the experimental system
 	_PrefsGetUint(PREF_MAINDIALOG_AUTORELOADFREQUENCY, autoReloadFrequency);
 
 	// Ok, now we can start the timer if needed but we need to convert minutes to milliseconds
@@ -290,11 +290,11 @@ void MainDialog::SetAutoReloadTimer(void)
 	{
 		if(isAdvancedReloadOn)
 		{
-			mAutoReloadTimer.Start(10 * 1000/*autoReloadFrequency * 60 * 1000*/); //experimental updates
+			mAutoReloadTimer.Start(10 * 1000); // experimental updates
 		}
 		else
 		{
-			mAutoReloadTimer.Start(autoReloadFrequency * 60 * 1000); //regular update system
+			mAutoReloadTimer.Start(autoReloadFrequency * 60 * 1000); // regular update system
 		}
 	}
 }
@@ -633,7 +633,7 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 /************************************  FRAME CREATION  ************************************/
 
 
-inline void MainDialog::CreateMenuBar(void)
+void MainDialog::CreateMenuBar(void)
 {
 	wxMenu    *menu;
 	wxMenuBar *menuBar;
@@ -729,7 +729,7 @@ inline void MainDialog::CreateMenuBar(void)
 }
 
 
-inline void MainDialog::CreateLayout(void)
+void MainDialog::CreateLayout(void)
 {
 	wxPanel          *topLevelPanel;
 	wxBoxSizer       *mainSizer;
@@ -852,7 +852,7 @@ inline void MainDialog::CreateLayout(void)
 }
 
 
-inline void MainDialog::RestoreFrameState(void)
+void MainDialog::RestoreFrameState(void)
 {
 	bool     isLogShown;
 	wxInt32  displayWidth;
@@ -1642,11 +1642,13 @@ void OSXProgressBar::FillProgress(wxDC& dc)
 
 }
 
+#endif
+
+#if 0
 /**
  * Used to inject various required strings into the translation files.
 **/
 _("ctrl");
 _("shift");
 _("alt");
-
 #endif

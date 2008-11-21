@@ -772,7 +772,6 @@ void ListViewClients::UpdateClient(wxUint32 clientId)
 		SetItemImage(clientIndex, LVI_CLIENT_OK);
 	}
 
-
 	// Re-enable refresh
 	Thaw();
 

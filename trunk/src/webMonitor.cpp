@@ -298,7 +298,6 @@ void WebMonitor::WriteApp(void)
 								{
 									tempString = wxString::Format(_T("%imn"), nbMinutes);
 								}
-
 								if(timeDiff.GetMinutes() < 0)
 								{
 									mDataArray[currentClient][10] = wxString::Format(_("%s ago"), tempString.c_str());
@@ -441,7 +440,7 @@ void WebMonitor::ProcessTemplate(wxString templateFile, wxString outputFile)
 	wxString              processLine, outputLine, searchString;
 	wxUint32              startPos, endPos, currentClient = 0, i;
 
-		// Could the file be opened?
+	// Could the file be opened?
 	if(fileIS.Ok() == false)
 	{
 		_LogMsgError(wxString::Format(_("Could not open template file <%s> for reading!\nThe web application will not be created!"), outputFile.c_str()));
@@ -452,7 +451,7 @@ void WebMonitor::ProcessTemplate(wxString templateFile, wxString outputFile)
 		_LogMsgError(wxString::Format(_("Could not open file <%s> for writing!\nThe web application will not be created!"), outputFile.c_str()));
 		return;
 	}
-		// check that images exist in output folder (only check first one, if !exist, recopy all)
+	// check that images exist in output folder (only check first one, if !exist, recopy all)
 	if (!wxFileExists(wxPathOnly(outputFile) + wxT("/dialog_icon.png")))
 	{
 		wxCopyFile(PathManager::GetImgPath() + wxT("/dialog_icon.png"), wxPathOnly(outputFile) + wxT("/dialog_icon.png"));
@@ -504,7 +503,7 @@ void WebMonitor::ProcessTemplate(wxString templateFile, wxString outputFile)
 				else if (processLine.Find(wxT("tpl_static")) != wxNOT_FOUND)
 				{
 					outputLine = processLine;
-						//create a vector of wxStrings
+					//create a vector of wxStrings
 					std::vector<wxString> v = TemplateToVector(outputLine);
 					for(i=0;i<v.size();i++)
 					{
@@ -514,7 +513,7 @@ void WebMonitor::ProcessTemplate(wxString templateFile, wxString outputFile)
 					outputLine.Replace(wxT(" tpl//-->"), wxT(""));
 					textOS.WriteString(outputLine + wxT("\n"));
 				}
-					//must be last
+				//must be last
 				processLine.clear();
 			}
 		}
@@ -750,7 +749,6 @@ void WebMonitor::Load(void)
 				}
 			}
 
-			// Add the client to the list, or warn the user if something went wrong
 			if(isVariableOk == true && isValueOk == true)
 				mCustomVariableHashMap[variable] = value;
 			else

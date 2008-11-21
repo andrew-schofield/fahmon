@@ -91,7 +91,7 @@ void PreferencesManager::SetPref(Preference* preference)
 }
 
 
-inline Preference* PreferencesManager::GetPref(const wxString& name)
+Preference* PreferencesManager::GetPref(const wxString& name)
 {
 	PreferencesHashMap::iterator iterator = mPrefsHashMap.find(name);
 
@@ -200,7 +200,7 @@ bool PreferencesManager::GetHiddenString(const wxString& name, wxString& value)
 }
 
 
-inline void PreferencesManager::Load(void)
+void PreferencesManager::Load(void)
 {
 	wxUint32         nbPrefs, i;
 	Preference      *currentPrefValue;

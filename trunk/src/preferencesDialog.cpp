@@ -179,7 +179,7 @@ void PreferencesDialog::DestroyInstance(void)
 }
 
 
-inline wxPanel* PreferencesDialog::CreateGeneralTab(wxBookCtrlBase* parent)
+wxPanel* PreferencesDialog::CreateGeneralTab(wxBookCtrlBase* parent)
 {
 	wxPanel    *panel;
 	wxBoxSizer *sizer;
@@ -220,7 +220,7 @@ inline wxPanel* PreferencesDialog::CreateGeneralTab(wxBookCtrlBase* parent)
 }
 
 
-inline wxPanel* PreferencesDialog::CreateMonitoringTab(wxBookCtrlBase* parent)
+wxPanel* PreferencesDialog::CreateMonitoringTab(wxBookCtrlBase* parent)
 {
 	wxPanel    *panel;
 	wxBoxSizer *sizer;
@@ -280,7 +280,7 @@ inline wxPanel* PreferencesDialog::CreateMonitoringTab(wxBookCtrlBase* parent)
 }
 
 
-inline wxPanel* PreferencesDialog::CreateNetworkingTab(wxBookCtrlBase* parent)
+wxPanel* PreferencesDialog::CreateNetworkingTab(wxBookCtrlBase* parent)
 {
 	wxPanel    *panel;
 	wxBoxSizer *sizer;
@@ -334,7 +334,7 @@ inline wxPanel* PreferencesDialog::CreateNetworkingTab(wxBookCtrlBase* parent)
 }
 
 
-inline wxPanel* PreferencesDialog::CreateAdvancedTab(wxBookCtrlBase* parent)
+wxPanel* PreferencesDialog::CreateAdvancedTab(wxBookCtrlBase* parent)
 {
 	wxPanel    *panel;
 	wxBoxSizer *sizer;
@@ -386,7 +386,7 @@ inline wxPanel* PreferencesDialog::CreateAdvancedTab(wxBookCtrlBase* parent)
 }
 
 
-inline wxPanel* PreferencesDialog::CreateSystemTab(wxBookCtrlBase* parent)
+wxPanel* PreferencesDialog::CreateSystemTab(wxBookCtrlBase* parent)
 {
 	wxPanel    *panel;
 	wxBoxSizer *sizer;
@@ -473,7 +473,7 @@ inline wxPanel* PreferencesDialog::CreateSystemTab(wxBookCtrlBase* parent)
 }*/
 
 
-inline wxPanel* PreferencesDialog::CreateWebApp1Tab(wxBookCtrlBase* parent)
+wxPanel* PreferencesDialog::CreateWebApp1Tab(wxBookCtrlBase* parent)
 {
 	wxPanel    *panel;
 	wxBoxSizer *sizer;
@@ -485,41 +485,41 @@ inline wxPanel* PreferencesDialog::CreateWebApp1Tab(wxBookCtrlBase* parent)
 	wxBoxSizer *simpleTextSizer;
 	wxBoxSizer *simpleTextLocationSizer;
 
-	panel                           = new wxPanel(parent);
-	sizer                           = new wxBoxSizer(wxVERTICAL);
-	topLevelSizer                   = new wxBoxSizer(wxVERTICAL);
-	webAppSizer                     = new wxBoxSizer(wxHORIZONTAL);
-	webAppLocationSizer             = new wxBoxSizer(wxHORIZONTAL);
-	simpleWebSizer                  = new wxBoxSizer(wxHORIZONTAL);
-	simpleWebLocationSizer          = new wxBoxSizer(wxHORIZONTAL);
-	simpleTextSizer                 = new wxBoxSizer(wxHORIZONTAL);
-	simpleTextLocationSizer         = new wxBoxSizer(wxHORIZONTAL);
+	panel                            = new wxPanel(parent);
+	sizer                            = new wxBoxSizer(wxVERTICAL);
+	topLevelSizer                    = new wxBoxSizer(wxVERTICAL);
+	webAppSizer                      = new wxBoxSizer(wxHORIZONTAL);
+	webAppLocationSizer              = new wxBoxSizer(wxHORIZONTAL);
+	simpleWebSizer                   = new wxBoxSizer(wxHORIZONTAL);
+	simpleWebLocationSizer           = new wxBoxSizer(wxHORIZONTAL);
+	simpleTextSizer                  = new wxBoxSizer(wxHORIZONTAL);
+	simpleTextLocationSizer          = new wxBoxSizer(wxHORIZONTAL);
 
 	mWebAppUseWebApp                 = new wxCheckBox(panel, CHK_USEWEBAPP, _("Export Web Application"));
 	mWebAppWebAppLocation            = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
 	mWebAppWebAppLabel               = new wxStaticText(panel, wxID_ANY, _("Filename:"));
 #ifndef __WXMAC__
-	mWebAppWebAppLocationChooser             = new wxButton(panel, BTN_BROWSE_WEBAPP, wxT("..."), wxDefaultPosition, wxSize(26, 26));
+	mWebAppWebAppLocationChooser     = new wxButton(panel, BTN_BROWSE_WEBAPP, wxT("..."), wxDefaultPosition, wxSize(26, 26));
 #else
-	mWebAppWebAppLocationChooser             = new wxButton(panel, BTN_BROWSE_WEBAPP, _("Choose"), wxDefaultPosition);
+	mWebAppWebAppLocationChooser     = new wxButton(panel, BTN_BROWSE_WEBAPP, _("Choose"), wxDefaultPosition);
 #endif
 
-	mWebAppUseSimpleWeb               = new wxCheckBox(panel, CHK_USESIMPLEWEB, _("Export Simple Web page"));
-	mWebAppSimpleWebLocation          = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
-	mWebAppSimpleWebLabel             = new wxStaticText(panel, wxID_ANY, _("Filename:"));
+	mWebAppUseSimpleWeb              = new wxCheckBox(panel, CHK_USESIMPLEWEB, _("Export Simple Web page"));
+	mWebAppSimpleWebLocation         = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
+	mWebAppSimpleWebLabel            = new wxStaticText(panel, wxID_ANY, _("Filename:"));
 #ifndef __WXMAC__
-	mWebAppSimpleWebLocationChooser          = new wxButton(panel, BTN_BROWSE_SIMPLEWEB, wxT("..."), wxDefaultPosition, wxSize(26, 26));
+	mWebAppSimpleWebLocationChooser  = new wxButton(panel, BTN_BROWSE_SIMPLEWEB, wxT("..."), wxDefaultPosition, wxSize(26, 26));
 #else
-	mWebAppSimpleWebLocationChooser          = new wxButton(panel, BTN_BROWSE_SIMPLEWEB, _("Choose"), wxDefaultPosition);
+	mWebAppSimpleWebLocationChooser  = new wxButton(panel, BTN_BROWSE_SIMPLEWEB, _("Choose"), wxDefaultPosition);
 #endif
 
-	mWebAppUseSimpleText               = new wxCheckBox(panel, CHK_USESIMPLETEXT, _("Export Simple Text file"));
-	mWebAppSimpleTextLocation          = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
-	mWebAppSimpleTextLabel             = new wxStaticText(panel, wxID_ANY, _("Filename:"));
+	mWebAppUseSimpleText             = new wxCheckBox(panel, CHK_USESIMPLETEXT, _("Export Simple Text file"));
+	mWebAppSimpleTextLocation        = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
+	mWebAppSimpleTextLabel           = new wxStaticText(panel, wxID_ANY, _("Filename:"));
 #ifndef __WXMAC__
-	mWebAppSimpleTextLocationChooser         = new wxButton(panel, BTN_BROWSE_SIMPLETEXT, wxT("..."), wxDefaultPosition, wxSize(26, 26));
+	mWebAppSimpleTextLocationChooser = new wxButton(panel, BTN_BROWSE_SIMPLETEXT, wxT("..."), wxDefaultPosition, wxSize(26, 26));
 #else
-	mWebAppSimpleTextLocationChooser         = new wxButton(panel, BTN_BROWSE_SIMPLETEXT, _("Choose"), wxDefaultPosition);
+	mWebAppSimpleTextLocationChooser = new wxButton(panel, BTN_BROWSE_SIMPLETEXT, _("Choose"), wxDefaultPosition);
 #endif
 
 	webAppSizer->Add(mWebAppUseWebApp, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
@@ -558,7 +558,7 @@ inline wxPanel* PreferencesDialog::CreateWebApp1Tab(wxBookCtrlBase* parent)
 }
 
 
-inline wxPanel* PreferencesDialog::CreateWebApp2Tab(wxBookCtrlBase* parent)
+wxPanel* PreferencesDialog::CreateWebApp2Tab(wxBookCtrlBase* parent)
 {
 	wxPanel    *panel;
 	wxBoxSizer *sizer;
@@ -652,7 +652,7 @@ int PreferencesDialog::ShowModal(void)
 }
 
 
-inline void PreferencesDialog::LoadPreferences(void)
+void PreferencesDialog::LoadPreferences(void)
 {
 	bool     useProxy;
 	bool     isCollectingXYZFiles;
@@ -910,7 +910,7 @@ inline void PreferencesDialog::LoadPreferences(void)
 }
 
 
-inline void PreferencesDialog::SavePreferences(void)
+void PreferencesDialog::SavePreferences(void)
 {
 	wxUint32 proxyPort;
 

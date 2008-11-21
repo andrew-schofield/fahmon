@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl_PL\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-11-18 14:44+0000\n"
+"POT-Creation-Date: 2008-11-21 22:28+0000\n"
 "PO-Revision-Date: 2008-11-01 00:02+0100\n"
 "Last-Translator: Mariusz Pociask <mariusz-pociask@o2.pl>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -61,7 +61,7 @@ msgstr "Licencja:"
 msgid "Library:"
 msgstr "Wykorzystywana biblioteka:"
 
-#: src/benchmarksDialog.cpp:63 src/trayManager.cpp:203
+#: src/benchmarksDialog.cpp:63 src/trayManager.cpp:173
 msgid "Benchmarks"
 msgstr "Wyniki"
 
@@ -183,87 +183,87 @@ msgstr "anonimowy"
 #: src/webMonitor.cpp:196 src/webMonitor.cpp:197 src/webMonitor.cpp:198
 #: src/webMonitor.cpp:206 src/webMonitor.cpp:207 src/webMonitor.cpp:208
 #: src/webMonitor.cpp:209 src/webMonitor.cpp:210 src/webMonitor.cpp:267
-#: src/webMonitor.cpp:322 src/webMonitor.cpp:382 src/webMonitor.cpp:386
+#: src/webMonitor.cpp:321 src/webMonitor.cpp:381 src/webMonitor.cpp:385
 msgid "N/A"
 msgstr "niedostępny"
 
-#: src/client.cpp:178
+#: src/client.cpp:183
 #, c-format
 msgid "Reloading %s"
 msgstr "Odczyt statusu %s"
 
-#: src/client.cpp:186
+#: src/client.cpp:191
 #, c-format
 msgid "Directory %s does not exist or cannot be read!"
 msgstr "Katalog %s nie istnieje lub nie można go odczytać!"
 
-#: src/client.cpp:198
+#: src/client.cpp:203
 #, c-format
 msgid "Error while reading %sFAHlog.txt!"
 msgstr "Błąd podczas odczytu %sFAHlog.txt!"
 
-#: src/client.cpp:206
+#: src/client.cpp:211
 #, c-format
 msgid "Error while reading %squeue.dat"
 msgstr "Błąd podczas odczytu %squeue.dat!"
 
-#: src/client.cpp:212
+#: src/client.cpp:217
 #, c-format
 msgid "Error while reading %sunitinfo.txt!"
 msgstr "Błąd podczas odczytu %sunitinfo.txt!"
 
-#: src/client.cpp:407
+#: src/client.cpp:412
 #, fuzzy, c-format
 msgid "Finished Reloading %s"
 msgstr "Odczyt statusu %s"
 
-#: src/client.cpp:494
+#: src/client.cpp:499
 #, c-format
 msgid "The progress value in file %s could not be found/parsed"
 msgstr "Wskaźnik postępu w pliku %s nie został odnaleziony/odczytany"
 
-#: src/client.cpp:541
+#: src/client.cpp:546
 #, c-format
 msgid "Unable to save %s because it does not exist"
 msgstr "Nie można zapisać %s ponieważ nie został utworzony"
 
-#: src/client.cpp:548
+#: src/client.cpp:553
 #, c-format
 msgid "Unable to create directory %s"
 msgstr "Nie można utworzyć katalogu %s"
 
-#: src/client.cpp:561
+#: src/client.cpp:566
 #, c-format
 msgid "Unable to copy %s to %s"
 msgstr "Nie można skopiować %s do %s"
 
-#: src/client.cpp:585
+#: src/client.cpp:590
 #, c-format
 msgid "%s is on frame %u"
 msgstr "%s pracuje nad ramką %u"
 
-#: src/client.cpp:589
+#: src/client.cpp:594
 #, c-format
 msgid "Cannot determine frame number for %s (this isn't a problem)"
 msgstr "Nie można określić numeru ramki dla %s (to nie oznacza problemu)"
 
-#: src/client.cpp:772
+#: src/client.cpp:777
 #, c-format
 msgid "%s has an unknown state (Unable to find a complete frame)"
 msgstr ""
 "%s znajduje się w niewiadomym stanie (Nie odnaleziono ukończonej ramki)"
 
-#: src/client.cpp:781
+#: src/client.cpp:786
 #, c-format
 msgid "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
 msgstr "%s jest wyłączone (Znaleziono wpis \"Folding@Home Client Shutdown.\")"
 
-#: src/client.cpp:789
+#: src/client.cpp:794
 #, c-format
 msgid "%s has been paused"
 msgstr "%s został wstrzymany"
 
-#: src/client.cpp:798
+#: src/client.cpp:803
 #, c-format
 msgid ""
 "%s has an unknown state (Unable to extract a valid elapsed time since the "
@@ -272,18 +272,18 @@ msgstr ""
 "%s znajduje się w niewiadomym stanie (Nie można określić czasu ukończenia po "
 "przetworzeniu poprzedniej ramki)"
 
-#: src/client.cpp:806
+#: src/client.cpp:811
 #, c-format
 msgid "%s has been marked as having a asynchronous clock."
 msgstr "%s został oznaczony jako posiadający rozsynchronizowany zegar."
 
-#: src/client.cpp:841
+#: src/client.cpp:846
 #, c-format
 msgid "%s seems to have hung : Elapsed time is %um and limit is %um"
 msgstr ""
 "%s wydaje się być zawieszony : Czas przetwarzania to %um, a graniczny to %um"
 
-#: src/client.cpp:846
+#: src/client.cpp:851
 #, c-format
 msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
 msgstr ""
@@ -325,7 +325,7 @@ msgstr "Wybierz katalog"
 msgid "You must fill the name AND the locations fields."
 msgstr "Należy wypełnić pola nazwy ORAZ lokalizacji."
 
-#: src/clientsManager.cpp:175 src/webMonitor.cpp:757
+#: src/clientsManager.cpp:175 src/webMonitor.cpp:755
 #, c-format
 msgid "Error while parsing %s on line %u"
 msgstr "Wystąpił błąd przy przetwarzaniu %s w linii %u"
@@ -437,7 +437,7 @@ msgid ""
 msgstr ""
 "Najnowsza wersja programu %s będzie zawsze dostępna na oficjalnej stronie:"
 
-#: src/firstTimeDialog.cpp:139 src/main.cpp:164 src/main.cpp:170
+#: src/firstTimeDialog.cpp:139 src/main.cpp:163 src/main.cpp:169
 #, c-format
 msgid "Could not create directory <%s>"
 msgstr "Nie można utworzyć katalogu <%s>"
@@ -447,46 +447,46 @@ msgstr "Nie można utworzyć katalogu <%s>"
 msgid "%.1f KB/s"
 msgstr "%.1f KB/s"
 
-#: src/listViewClients.cpp:160 src/listViewClients.cpp:912
-#: src/webMonitor.cpp:615
+#: src/listViewClients.cpp:160 src/listViewClients.cpp:911
+#: src/webMonitor.cpp:614
 msgid "Progress"
 msgstr "Postęp"
 
-#: src/listViewClients.cpp:161 src/listViewClients.cpp:913
-#: src/webMonitor.cpp:616
+#: src/listViewClients.cpp:161 src/listViewClients.cpp:912
+#: src/webMonitor.cpp:615
 msgid "Name"
 msgstr "Nazwa"
 
-#: src/listViewClients.cpp:162 src/listViewClients.cpp:914
-#: src/webMonitor.cpp:617
+#: src/listViewClients.cpp:162 src/listViewClients.cpp:913
+#: src/webMonitor.cpp:616
 msgid "ETA"
 msgstr "Czas ukończenia"
 
-#: src/listViewClients.cpp:163 src/listViewClients.cpp:915
-#: src/webMonitor.cpp:618
+#: src/listViewClients.cpp:163 src/listViewClients.cpp:914
+#: src/webMonitor.cpp:617
 msgid "PPD"
 msgstr "PPD"
 
-#: src/listViewClients.cpp:164 src/listViewClients.cpp:916
+#: src/listViewClients.cpp:164 src/listViewClients.cpp:915
 msgid "Core"
 msgstr "Rdzeń"
 
-#: src/listViewClients.cpp:165 src/listViewClients.cpp:917
-#: src/webMonitor.cpp:612
+#: src/listViewClients.cpp:165 src/listViewClients.cpp:916
+#: src/webMonitor.cpp:611
 msgid "PRCG"
 msgstr "PRCG"
 
-#: src/listViewClients.cpp:166 src/listViewClients.cpp:918
-#: src/webMonitor.cpp:613
+#: src/listViewClients.cpp:166 src/listViewClients.cpp:917
+#: src/webMonitor.cpp:612
 msgid "Credit"
 msgstr "Kredyt"
 
-#: src/listViewClients.cpp:167 src/listViewClients.cpp:919
-#: src/webMonitor.cpp:614
+#: src/listViewClients.cpp:167 src/listViewClients.cpp:918
+#: src/webMonitor.cpp:613
 msgid "Downloaded"
 msgstr "Pobrano"
 
-#: src/listViewClients.cpp:168 src/listViewClients.cpp:920
+#: src/listViewClients.cpp:168 src/listViewClients.cpp:919
 msgid "Deadline"
 msgstr "Ostateczny czas ukończenia:"
 
@@ -501,7 +501,7 @@ msgstr "%u punktów"
 
 #: src/listViewClients.cpp:638 src/listViewClients.cpp:685
 #: src/mainDialog.cpp:456 src/mainDialog.cpp:549 src/mainDialog.cpp:606
-#: src/webMonitor.cpp:176 src/webMonitor.cpp:249 src/webMonitor.cpp:304
+#: src/webMonitor.cpp:176 src/webMonitor.cpp:249 src/webMonitor.cpp:303
 #, c-format
 msgid "%s ago"
 msgstr "%s temu"
@@ -513,62 +513,62 @@ msgid "Unknown"
 msgstr "Nieznany"
 
 #: src/listViewClients.cpp:689 src/mainDialog.cpp:553 src/mainDialog.cpp:610
-#: src/webMonitor.cpp:253 src/webMonitor.cpp:308
+#: src/webMonitor.cpp:253 src/webMonitor.cpp:307
 #, c-format
 msgid "In %s"
 msgstr "%s"
 
-#: src/listViewClients.cpp:718 src/webMonitor.cpp:330 src/webMonitor.cpp:374
+#: src/listViewClients.cpp:718 src/webMonitor.cpp:329 src/webMonitor.cpp:373
 msgid "Disabled"
 msgstr "Wyłączony"
 
-#: src/listViewClients.cpp:722 src/webMonitor.cpp:378
+#: src/listViewClients.cpp:722 src/webMonitor.cpp:377
 msgid "Finished"
 msgstr "Ukończony"
 
-#: src/listViewClients.cpp:734 src/webMonitor.cpp:390
+#: src/listViewClients.cpp:734 src/webMonitor.cpp:389
 msgid "*Hung*"
 msgstr "*Zawieszony*"
 
-#: src/listViewClients.cpp:738 src/webMonitor.cpp:360 src/webMonitor.cpp:394
-#: src/webMonitor.cpp:598
+#: src/listViewClients.cpp:738 src/webMonitor.cpp:359 src/webMonitor.cpp:393
+#: src/webMonitor.cpp:597
 msgid "Paused"
 msgstr "Wstrzymany"
 
-#: src/listViewClients.cpp:873 src/listViewClients.cpp:881
+#: src/listViewClients.cpp:872 src/listViewClients.cpp:880
 #: src/mainDialog.cpp:658
 msgid "Add a new client"
 msgstr "Dodaj nowego klienta"
 
-#: src/listViewClients.cpp:883
+#: src/listViewClients.cpp:882
 msgid "Reload this client"
 msgstr "Odśwież status klienta"
 
-#: src/listViewClients.cpp:884
+#: src/listViewClients.cpp:883
 msgid "Edit this client"
 msgstr "Edytuj dane klienta"
 
-#: src/listViewClients.cpp:885
+#: src/listViewClients.cpp:884
 msgid "Delete this client"
 msgstr "Usuń tego klienta"
 
-#: src/listViewClients.cpp:886
+#: src/listViewClients.cpp:885
 msgid "View Client Files"
 msgstr "Przejrzyj pliki klienta"
 
-#: src/listViewClients.cpp:888
+#: src/listViewClients.cpp:887
 msgid "Disable this client"
 msgstr "Wyłącz tego klienta"
 
-#: src/listViewClients.cpp:890
+#: src/listViewClients.cpp:889
 msgid "Enable this client"
 msgstr "Włącz tego klienta"
 
-#: src/listViewClients.cpp:1018 src/mainDialog.cpp:1551
+#: src/listViewClients.cpp:1017 src/mainDialog.cpp:1551
 msgid "Do you really want to delete this client?"
 msgstr "Czy na pewno chcesz usunąć tego klienta?"
 
-#: src/listViewClients.cpp:1078
+#: src/listViewClients.cpp:1077
 msgid ""
 "Unable to launch the default filemanager.\n"
 "\n"
@@ -874,35 +874,35 @@ msgstr "O %sie"
 msgid "&Help"
 msgstr "&Pomoc"
 
-#: src/mainDialog.cpp:758 src/webMonitor.cpp:619
+#: src/mainDialog.cpp:758 src/webMonitor.cpp:618
 msgid "Work Unit Information"
 msgstr "Informacje o przetwarzanej jednostce [WU]"
 
-#: src/mainDialog.cpp:786 src/webMonitor.cpp:620
+#: src/mainDialog.cpp:786 src/webMonitor.cpp:619
 msgid "Core:"
 msgstr "Rdzeń:"
 
-#: src/mainDialog.cpp:788 src/webMonitor.cpp:621
+#: src/mainDialog.cpp:788 src/webMonitor.cpp:620
 msgid "Project:"
 msgstr "Projekt:"
 
-#: src/mainDialog.cpp:790 src/webMonitor.cpp:622
+#: src/mainDialog.cpp:790 src/webMonitor.cpp:621
 msgid "Credit:"
 msgstr "Kredyt:"
 
-#: src/mainDialog.cpp:792 src/webMonitor.cpp:623
+#: src/mainDialog.cpp:792 src/webMonitor.cpp:622
 msgid "Username:"
 msgstr "Użytkownik:"
 
-#: src/mainDialog.cpp:794 src/webMonitor.cpp:631
+#: src/mainDialog.cpp:794 src/webMonitor.cpp:630
 msgid "Downloaded:"
 msgstr "Pobrano:"
 
-#: src/mainDialog.cpp:796 src/webMonitor.cpp:624
+#: src/mainDialog.cpp:796 src/webMonitor.cpp:623
 msgid "Preferred Deadline:"
 msgstr "Preferowany czas ukończenia:"
 
-#: src/mainDialog.cpp:798 src/webMonitor.cpp:625
+#: src/mainDialog.cpp:798 src/webMonitor.cpp:624
 msgid "Final Deadline:"
 msgstr "Ostateczny czas ukończenia:"
 
@@ -947,40 +947,40 @@ msgstr ""
 msgid "No update found"
 msgstr "Nie znaleziono aktualizacji"
 
-#: src/mainDialog.cpp:1494 src/projectsManager.cpp:309
+#: src/mainDialog.cpp:1494 src/projectsManager.cpp:306
 msgid "Unable to create a temporary file!"
 msgstr "Nie można utworzyć pliku tymczasowego!"
 
-#: src/mainDialog.cpp:1498 src/projectsManager.cpp:313
+#: src/mainDialog.cpp:1498 src/projectsManager.cpp:310
 #, c-format
 msgid "Unable to open the temporary file <%s>"
 msgstr "Nie można otworzyć tymczasowego pliku <%s>"
 
-#: src/mainDialog.cpp:1502 src/projectsManager.cpp:317
+#: src/mainDialog.cpp:1502 src/projectsManager.cpp:314
 msgid "Unable to connect to the server!"
 msgstr "Nie można połączyć się z serwerem!"
 
-#: src/mainDialog.cpp:1506 src/projectsManager.cpp:321
+#: src/mainDialog.cpp:1506 src/projectsManager.cpp:318
 msgid "Unable to send the request to the server!"
 msgstr "Nie można wysłać polecenia do serwera!"
 
-#: src/mainDialog.cpp:1510 src/projectsManager.cpp:325
+#: src/mainDialog.cpp:1510 src/projectsManager.cpp:322
 msgid "Download aborted!"
 msgstr "Pobieranie przerwane!"
 
-#: src/mainDialog.cpp:1516 src/projectsManager.cpp:331
+#: src/mainDialog.cpp:1516 src/projectsManager.cpp:328
 msgid "An unknown error happened!"
 msgstr "Wystąpił nieznany błąd!"
 
-#: src/mainDialog.cpp:1648
+#: src/mainDialog.cpp:1651
 msgid "ctrl"
 msgstr "ctrl"
 
-#: src/mainDialog.cpp:1649
+#: src/mainDialog.cpp:1652
 msgid "shift"
 msgstr "shift"
 
-#: src/mainDialog.cpp:1650
+#: src/mainDialog.cpp:1653
 msgid "alt"
 msgstr "alt"
 
@@ -989,7 +989,7 @@ msgstr "alt"
 msgid "Messages / %s"
 msgstr "Komunikaty / %s"
 
-#: src/messagesManager.cpp:101
+#: src/messagesManager.cpp:99
 msgid ""
 "Could not open file for writing!\n"
 "The log will not be saved!"
@@ -1254,22 +1254,22 @@ msgstr "Pobieranie nowych projektów"
 msgid "Adding the new projects to the database"
 msgstr "Dodawanie nowych projektów do bazy"
 
-#: src/projectsManager.cpp:340
+#: src/projectsManager.cpp:337
 msgid "Local project update file doesn't exist!"
 msgstr "Brak lokalnego pliku aktualnych projektów!"
 
-#: src/projectsManager.cpp:349
+#: src/projectsManager.cpp:346
 msgid "Unable to copy local project update file to temporary location"
 msgstr ""
 "Nie można skopiować lokalnego pliku aktualnych projektów do katalogu "
 "tymczasowego"
 
-#: src/projectsManager.cpp:407
+#: src/projectsManager.cpp:404
 #, c-format
 msgid "Line %u is not correctly formatted! %s"
 msgstr "Linia %u ma nieprawidłowy format! %s"
 
-#: src/projectsManager.cpp:418
+#: src/projectsManager.cpp:415
 msgid "Update aborted!"
 msgstr "Aktualizacja przerwana!"
 
@@ -1296,47 +1296,47 @@ msgstr ""
 "Klienty: %i\n"
 "Łączne PPD: %.2f"
 
-#: src/trayManager.cpp:205
+#: src/trayManager.cpp:175
 msgid "Preferences"
 msgstr "Ustawienia"
 
-#: src/trayManager.cpp:212
+#: src/trayManager.cpp:183
 msgid "Hide FahMon"
 msgstr "Ukryj FahMona"
 
-#: src/trayManager.cpp:218
+#: src/trayManager.cpp:189
 msgid "Show FahMon"
 msgstr "Wyświetl FahMona"
 
-#: src/trayManager.cpp:226
+#: src/trayManager.cpp:197
 msgid "Quit"
 msgstr "Zamknij program"
 
-#: src/webMonitor.cpp:335 src/webMonitor.cpp:578
+#: src/webMonitor.cpp:334 src/webMonitor.cpp:577
 msgid "Inaccessible"
 msgstr "Niedostępny"
 
-#: src/webMonitor.cpp:340 src/webMonitor.cpp:582
+#: src/webMonitor.cpp:339 src/webMonitor.cpp:581
 msgid "Stopped"
 msgstr "Wyłączony"
 
-#: src/webMonitor.cpp:345 src/webMonitor.cpp:586
+#: src/webMonitor.cpp:344 src/webMonitor.cpp:585
 msgid "Inactive"
 msgstr "Nieaktywny"
 
-#: src/webMonitor.cpp:350 src/webMonitor.cpp:590
+#: src/webMonitor.cpp:349 src/webMonitor.cpp:589
 msgid "Hung"
 msgstr "Zawieszony"
 
-#: src/webMonitor.cpp:355 src/webMonitor.cpp:594
+#: src/webMonitor.cpp:354 src/webMonitor.cpp:593
 msgid "Async"
 msgstr "Niezsynchronizowany"
 
-#: src/webMonitor.cpp:365
+#: src/webMonitor.cpp:364
 msgid "Ok"
 msgstr "OK"
 
-#: src/webMonitor.cpp:447
+#: src/webMonitor.cpp:446
 #, c-format
 msgid ""
 "Could not open template file <%s> for reading!\n"
@@ -1345,7 +1345,7 @@ msgstr ""
 "Brak mozliwości odczytu szablonu <%s>!\n"
 "Plik z interfejsem graficznym nie zostanie utworzony!"
 
-#: src/webMonitor.cpp:452
+#: src/webMonitor.cpp:451
 #, c-format
 msgid ""
 "Could not open file <%s> for writing!\n"
@@ -1354,27 +1354,27 @@ msgstr ""
 "Brak możliwości zapisu do pliku <%s>!\n"
 "Plik z interfejsem graficznym nie zostanie utworzony!"
 
-#: src/webMonitor.cpp:611
+#: src/webMonitor.cpp:610
 msgid "State"
 msgstr "Stan"
 
-#: src/webMonitor.cpp:626
+#: src/webMonitor.cpp:625
 msgid "Total PPD:"
 msgstr "Łączne PPD:"
 
-#: src/webMonitor.cpp:627
+#: src/webMonitor.cpp:626
 msgid "Web View"
 msgstr "Widok sieciowy"
 
-#: src/webMonitor.cpp:628
+#: src/webMonitor.cpp:627
 msgid "FahMon Client Monitoring"
 msgstr "Monitor klientów FahMona:"
 
-#: src/webMonitor.cpp:629
+#: src/webMonitor.cpp:628
 msgid "Simple Text Output"
 msgstr "Widok tekstowy"
 
-#: src/webMonitor.cpp:630
+#: src/webMonitor.cpp:629
 msgid "Last updated:"
 msgstr "Ostatnio aktualizowany:"
 

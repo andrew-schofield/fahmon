@@ -37,9 +37,9 @@ PathManager::PathManager(void)
 #ifdef __WXGTK__
 
 	/* On Linux systems, we use the standard way to store data : in a hidden directory
-	   in the user's home directory
-	   the image path is now obtained from the DATADIR which is usually /usr/local/share
-	   introduced along with the proper GNU installation system */
+	   in the user's home directory the image path is now obtained from the DATADIR
+	   which is usually /usr/local/share introduced along with the proper GNU
+	   installation system */
 	wxString homeDir;
 
 	homeDir = wxGetHomeDir();

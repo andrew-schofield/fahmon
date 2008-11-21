@@ -49,19 +49,19 @@ void ETA::SetLeftTimeInMinutes(wxUint32 leftTime)
 }
 
 
-inline wxString ETA::GetString_Standard(void) const
+wxString ETA::GetString_Standard(void) const
 {
 	return mETA.Format(wxT("%d/%m/%y  %H:%M"));
 }
 
 
-inline wxString ETA::GetString_American(void) const
+wxString ETA::GetString_American(void) const
 {
 	return mETA.Format(wxT("%m/%d/%y  %H:%M"));
 }
 
 
-inline wxString ETA::GetString_LeftTime(void) const
+wxString ETA::GetString_LeftTime(void) const
 {
 	wxUint32 nbDays;
 	wxUint32 nbHours;

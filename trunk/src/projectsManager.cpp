@@ -44,7 +44,7 @@
 // The single instance of ProjectsManager accross the application
 ProjectsManager* ProjectsManager::mInstance = NULL;
 
-// This mutex is there to ensure that two threads won't update the database simultaneously
+// This mutex is there to ensure that two threads don't update the database simultaneously
 wxMutex ProjectsManager::mMutexUpdateDatabase;
 
 
@@ -287,9 +287,6 @@ bool ProjectsManager::Update_DownloadProjectsFile(wxString& fileName, ProgressMa
 
 		else if(useAlternate == true && useLocalFile == false)
 		{
-			//serverused = projectLocationServer;
-			//portused = projectLocationPort;
-			//resourceused = projectLocationResource;
 			resource = alternateAddress;
 		}
 

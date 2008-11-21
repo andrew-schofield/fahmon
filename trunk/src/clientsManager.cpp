@@ -100,7 +100,7 @@ void ClientsManager::Edit(wxUint32 clientId, const wxString& name, const wxStrin
 }
 
 
-inline void ClientsManager::Load(void)
+void ClientsManager::Load(void)
 {
 	bool       isNameOk;
 	bool       isLocationOk;
@@ -170,7 +170,7 @@ inline void ClientsManager::Load(void)
 
 			// Add the client to the list, or warn the user if something went wrong
 			if(isNameOk == true && isLocationOk == true)
-				Add(clientName, clientLocation, enabled, VM); // alter last argument when parse is fixed
+				Add(clientName, clientLocation, enabled, VM);
 			else
 				_LogMsgError(wxString::Format(_("Error while parsing %s on line %u"), inputFilename.c_str(), i+1));
 		}
@@ -180,7 +180,7 @@ inline void ClientsManager::Load(void)
 }
 
 
-inline void ClientsManager::Save(void)
+void ClientsManager::Save(void)
 {
 	wxUint32             i;
 	wxString             outString;

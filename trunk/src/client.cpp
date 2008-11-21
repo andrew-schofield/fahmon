@@ -175,6 +175,11 @@ void Client::Reload(void)
 	{
 		mLastModification = wxFileModificationTime(templocation + wxT("FAHlog.txt"));
 	}
+	else
+	{
+		mState = ST_INACCESSIBLE;
+		return;
+	}
 	_LogMsgInfo(wxString::Format(_("Reloading %s"), mName.c_str()));
 
 	Reset();
@@ -408,12 +413,12 @@ void Client::Reload(void)
 }
 
 
-inline bool Client::LoadLogFile(const wxString& filename)
+bool Client::LoadLogFile(const wxString& filename)
 {
 	wxString myLog;
 	if(wxFileExists(filename) == false || Tools::LoadFile(filename, myLog) == false)
 	{
-		mLog = myLog;
+		mLog = wxT("");
 		return false;
 	}
 
@@ -422,7 +427,7 @@ inline bool Client::LoadLogFile(const wxString& filename)
 }
 
 
-inline bool Client::LoadUnitInfoFile(const wxString& filename)
+bool Client::LoadUnitInfoFile(const wxString& filename)
 {
 	bool              progressOk;
 	unsigned int      lSize;
@@ -498,7 +503,7 @@ inline bool Client::LoadUnitInfoFile(const wxString& filename)
 }
 
 
-inline bool Client::LoadQueueFile(const wxString& filename)
+bool Client::LoadQueueFile(const wxString& filename)
 {
 	Queue    *qf;
 	qf = new Queue();
@@ -517,7 +522,7 @@ inline bool Client::LoadQueueFile(const wxString& filename)
 }
 
 
-inline void Client::SaveXYZFile(void) const
+void Client::SaveXYZFile(void) const
 {
 	// ----- Access Lock -----
 	wxMutexLocker lock(mMutexXYZFiles);

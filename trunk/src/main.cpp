@@ -99,7 +99,6 @@ bool FahMonApp::OnInit(void)
 
 	wxString locale = m_locale.GetLocale();
 
-	//Tools::ErrorMsgBox(wxString::Format(_T("Locale: %s"), locale.c_str()));
 #ifdef _FAHMON_WIN32_
 	{
 		wxLocale::AddCatalogLookupPathPrefix(wxT("./lang"));
@@ -144,7 +143,7 @@ bool FahMonApp::OnInit(void)
 #endif
 
 	// Miscellaneous initializations
-	wxImage::AddHandler(new wxPNGHandler);      // We use only PNG images
+	wxImage::AddHandler(new wxPNGHandler);
 
 	// Create the config directory right at the beginning so we can save messages.log there without it complaining about
 	// not being able to create the file. Note: This means no messages can/should be logged prior to this point
@@ -173,13 +172,13 @@ bool FahMonApp::OnInit(void)
 #ifdef _FAHMON_WIN32_
 		if(wxDirExists(wxString::Format(wxT("%s\\config\\"), wxFileName(wxTheApp->argv[0]).GetPath (wxPATH_GET_VOLUME))))
 		{
-			if(wxCopyFile(wxString::Format(wxT("%s\\config\\benchmarks.dat"), wxFileName(wxTheApp->argv[0]).GetPath (wxPATH_GET_VOLUME)), wxString::Format(wxT("%sbenchmarks.dat"), PathManager::GetCfgPath())))
+			if(wxCopyFile(wxString::Format(wxT("%s\\config\\benchmarks.dat"), wxFileName(wxTheApp->argv[0]).GetPath(wxPATH_GET_VOLUME)), wxString::Format(wxT("%sbenchmarks.dat"), PathManager::GetCfgPath())))
 				copied++;
-			if(wxCopyFile(wxString::Format(wxT("%s\\config\\clientstab.txt"), wxFileName(wxTheApp->argv[0]).GetPath (wxPATH_GET_VOLUME)), wxString::Format(wxT("%sclientstab.txt"), PathManager::GetCfgPath())))
+			if(wxCopyFile(wxString::Format(wxT("%s\\config\\clientstab.txt"), wxFileName(wxTheApp->argv[0]).GetPath(wxPATH_GET_VOLUME)), wxString::Format(wxT("%sclientstab.txt"), PathManager::GetCfgPath())))
 				copied++;
-			if(wxCopyFile(wxString::Format(wxT("%s\\config\\prefs.dat"), wxFileName(wxTheApp->argv[0]).GetPath (wxPATH_GET_VOLUME)), wxString::Format(wxT("%sprefs.dat"), PathManager::GetCfgPath())))
+			if(wxCopyFile(wxString::Format(wxT("%s\\config\\prefs.dat"), wxFileName(wxTheApp->argv[0]).GetPath(wxPATH_GET_VOLUME)), wxString::Format(wxT("%sprefs.dat"), PathManager::GetCfgPath())))
 				copied++;
-			if(wxCopyFile(wxString::Format(wxT("%s\\config\\projects.dat"), wxFileName(wxTheApp->argv[0]).GetPath (wxPATH_GET_VOLUME)), wxString::Format(wxT("%sprojects.dat"), PathManager::GetCfgPath())))
+			if(wxCopyFile(wxString::Format(wxT("%s\\config\\projects.dat"), wxFileName(wxTheApp->argv[0]).GetPath(wxPATH_GET_VOLUME)), wxString::Format(wxT("%sprojects.dat"), PathManager::GetCfgPath())))
 				copied++;
 			if(copied > 0)
 				requiresFirstRunDialog = false;
@@ -236,8 +235,6 @@ bool FahMonApp::OnInit(void)
 
 int FahMonApp::OnExit(void)
 {
-	// This frame is automatically destroyed by wxWidget, so we don't have to do it
-	// MainDialog::DestroyInstance();
 	TrayManager::DestroyInstance();
 	BenchmarksManager::DestroyInstance();
 	ClientsManager::DestroyInstance();

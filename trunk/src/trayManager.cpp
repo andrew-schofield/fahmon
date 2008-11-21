@@ -168,37 +168,7 @@ void TrayManager::OnClick(wxTaskBarIconEvent& event)
 
 wxMenu* TrayManager::CreatePopupMenu()
 {
-	//double  TotalPPD;
-	//wxInt32  ClientCount;
-
 	wxMenu *traymenu = new wxMenu();
-	//wxMenuItem *menuTitle;
-	//wxMenuItem *menuClients;
-	//wxMenuItem *menuPPD;
-
-
-	//menuTitle = new wxMenuItem(traymenu, TRAY_MENU_NULL, wxString::Format(wxT("%s"), wxT(FMC_PRODUCT)));
-	// fahmon Version
-	//traymenu->Append(menuTitle);
-	//menuTitle->Enable(false);
-
-	// Separator
-	//traymenu->AppendSeparator();
-
-	//ClientCount = MainDialog::GetInstance()->GetClientCount();
-
-	//menuClients = new wxMenuItem(traymenu,TRAY_MENU_NULL, wxString::Format(_("Clients: %i"), ClientCount));
-	//traymenu->Append(menuClients);
-	//menuClients->Enable(false);
-
-	//TotalPPD = MainDialog::GetInstance()->GetTotalPPD();
-
-	//menuPPD = new wxMenuItem(traymenu, TRAY_MENU_NULL, wxString::Format(_("Total PPD: %.2f"), TotalPPD));
-	//traymenu->Append(menuPPD);
-	//menuPPD->Enable(false);
-
-	// Separator
-	//traymenu->AppendSeparator();
 
 	traymenu->Append(TRAY_MENU_BENCHMARKS, _("Benchmarks"));
 
@@ -207,7 +177,8 @@ wxMenu* TrayManager::CreatePopupMenu()
 	// Separator
 	traymenu->AppendSeparator();
 
-	if (MainDialog::GetInstance()->IsShown()) {
+	if (MainDialog::GetInstance()->IsShown())
+	{
 		//hide item
 		wxMenuItem *hideMenu = new wxMenuItem(traymenu,TRAY_MENU_HIDE, _("Hide FahMon"));
 		traymenu->Append(hideMenu);
@@ -246,10 +217,10 @@ void TrayManager::Show(wxCommandEvent&)
 	// Fortunately, this function seems to keep track of the previous maximize state of the window;
 	// otherwise, we would have to do that
 	#ifdef _FAHMON_WIN32_
-		if (GetMaximised())
-			MainDialog::GetInstance()->Maximize(true);
-		else
-			MainDialog::GetInstance()->Maximize(false);
+	if (GetMaximised())
+		MainDialog::GetInstance()->Maximize(true);
+	else
+		MainDialog::GetInstance()->Maximize(false);
 	#endif
 }
 
