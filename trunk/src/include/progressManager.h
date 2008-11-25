@@ -69,7 +69,7 @@ public:
 	 * Return false if the user wants to cancel the process
 	 * @param text The text to set.
 	 **/
-	bool SetText(const wxString& text);
+	bool SetText(wxString const &text);
 
 	/**
 	 * Change the displayed progress.
@@ -87,7 +87,7 @@ public:
 	 * @param text The text to set.
 	 * @param progress The progress to set.
 	 **/
-	bool SetTextAndProgress(const wxString& text, wxUint32 progress);
+	bool SetTextAndProgress(wxString const &text, wxUint32 progress);
 
 	/**
 	 * A task is represented by the percentage of the total work it represents.

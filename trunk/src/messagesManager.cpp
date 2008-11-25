@@ -78,7 +78,7 @@ MessagesManager* MessagesManager::GetInstance(void)
 }
 
 
-void MessagesManager::Log(const wxString& msg)
+void MessagesManager::Log(wxString const &msg)
 {
 	wxMutexLocker  lock(mMutexLog);        // --- Lock the access to this method
 	wxString       currentDate;

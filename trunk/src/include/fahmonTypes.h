@@ -38,20 +38,20 @@ typedef wxUint16 ClientId;
 
 
 // --- Identifier of a Folding@Home core
-// One byte should be enough, there are currently less than 6 known cores
+// One byte should be enough, there are currently 18 known cores
 typedef wxByte CoreId;
 #define MAX_CORE_ID 255
 
 
 // --- Identifier of a Folding@Home project
-// There are currently around 4000 projects, so 65535 should be enough for some times
+// There are currently around 6000 projects, so 65535 should be enough for some times
 typedef wxUint16 ProjectId;
 #define MAX_PROJECT_ID     65535
 #define INVALID_PROJECT_ID 0
 
 
 // --- Credit (stats) given for a work unit
-// Big WUs are currently worth 600 points, so 65535 is a good limit :)
+// The biggest WU is currently worth 3840 points, so 65535 is a good limit :)
 typedef wxUint16 WuCredit;
 #define MAX_WU_CREDIT 65535
 

@@ -89,7 +89,7 @@ protected:
 	 * Log a new message.
 	 * @param msg The message to log
 	 **/
-	void Log(const wxString& msg);
+	void Log(wxString const &msg);
 
 
 public:

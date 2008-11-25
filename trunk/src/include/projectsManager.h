@@ -97,13 +97,13 @@ protected:
 	 * @param progressManager The object managing the parser
 	 * @param errorMsg The return error msg if any
 	 **/
-	bool     Update_ParseProjectsFile(const wxString& fileName, ProgressManager& progressManager, wxString& errorMsg);
+	bool     Update_ParseProjectsFile(wxString const &fileName, ProgressManager& progressManager, wxString& errorMsg);
 
 	/**
 	 * Parse a line with project information from the PSummary file.
 	 * @param projectInfo The project information string.
 	 **/
-	Project* Update_ParseProjectInfo(const wxString& projectInfo) const;
+	Project* Update_ParseProjectInfo(wxString const &projectInfo) const;
 
 
 public:

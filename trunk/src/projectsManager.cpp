@@ -356,7 +356,7 @@ bool ProjectsManager::Update_DownloadProjectsFile(wxString& fileName, ProgressMa
 }
 
 
-bool ProjectsManager::Update_ParseProjectsFile(const wxString& fileName, ProgressManager& progressManager, wxString& errorMsg)
+bool ProjectsManager::Update_ParseProjectsFile(wxString const &fileName, ProgressManager& progressManager, wxString& errorMsg)
 {
 	bool        tableHeaderFound;
 	bool        errorOccured;
@@ -424,7 +424,7 @@ bool ProjectsManager::Update_ParseProjectsFile(const wxString& fileName, Progres
 }
 
 
-Project* ProjectsManager::Update_ParseProjectInfo(const wxString& projectInfo) const
+Project* ProjectsManager::Update_ParseProjectInfo(wxString const &projectInfo) const
 {
 	long       tmpLong;
 	double     tmpDouble;

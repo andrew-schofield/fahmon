@@ -56,7 +56,7 @@ ProgressManager::~ProgressManager(void)
 }
 
 
-bool ProgressManager::SetText(const wxString& text)
+bool ProgressManager::SetText(wxString const &text)
 {
 	wxUint32 progressToDisplay;
 	wxString textToDisplay;
@@ -122,7 +122,7 @@ bool ProgressManager::SetProgress(wxUint32 progress)
 }
 
 
-bool ProgressManager::SetTextAndProgress(const wxString& text, wxUint32 progress)
+bool ProgressManager::SetTextAndProgress(wxString const &text, wxUint32 progress)
 {
 	bool textResult;
 	bool progressResult;

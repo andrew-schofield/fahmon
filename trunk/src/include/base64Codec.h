@@ -61,14 +61,14 @@ public:
 	 * @param string The string to be encoded.
 	 * @return The base64 encoded string.
 	 **/
-	static wxString Encode(const wxString& string);
+	static wxString Encode(wxString const &string);
 
 	/**
 	 * Decode a base64 encoded string.
 	 * @param string The base64 string to be decoded.
 	 * @return The decoded string.
 	 **/
-	static wxString Decode(const wxString& string);
+	static wxString Decode(wxString const &string);
 };
 
 

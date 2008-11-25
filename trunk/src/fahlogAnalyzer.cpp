@@ -29,7 +29,7 @@
 #include "mainDialog.h"
 
 
-WorkUnitFrame* FahLogAnalyzer::AnalyzeLastFrame(const wxString& fahlogComplete, bool VM)
+WorkUnitFrame* FahLogAnalyzer::AnalyzeLastFrame(wxString const &fahlogComplete, bool VM)
 {
 	bool      completeRunFound, emptyLineFound, endOfLogReached, clientIsStopped, newWUStarted;
 	bool      endFrame1Found, endFrame2Found;

@@ -72,7 +72,7 @@ public:
 	 * @param name Short name for core.
 	 * @return Indentifier for core
 	 **/
-	static CoreId   ShortNameToId(const wxString& name);
+	static CoreId   ShortNameToId(wxString const &name);
 
 	/**
 	 * Translate a core identifier into a (short) core name.

@@ -244,7 +244,7 @@ public:
 	 * @param column The column of the cell
 	 * @return A string containing the contents of the cell.
 	 **/
-	wxString GetCellContentsString( long row_number, int column );
+	wxString GetCellContentsString( long row_number, int column ) const;
 
 	/**
 	 * Convert clientId to array index.
@@ -290,7 +290,7 @@ public:
 	 * @param y Y coordinate of dropped file. Ignored.
 	 * @param filenames An array of filenames to add to the client list.
 	 **/
-	virtual bool OnDropFiles (wxCoord x, wxCoord y, const wxArrayString& filenames);
+	virtual bool OnDropFiles (wxCoord x, wxCoord y, wxArrayString const &filenames);
 
 private:
 	ListViewClients *m_listview; /**< The ListViewClients object used as a drop target. */

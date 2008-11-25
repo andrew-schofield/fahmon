@@ -1025,7 +1025,7 @@ void ListViewClients::OnMenuDeleteClient(wxCommandEvent& event)
 }
 
 
-wxString ListViewClients::GetCellContentsString( long row_number, int column )
+wxString ListViewClients::GetCellContentsString( long row_number, int column ) const
 {
 	wxListItem     row_info;
 	wxString       cell_contents_string;
@@ -1079,7 +1079,7 @@ void ListViewClients::ShowClientFiles()
 }
 
 
-bool DropFiles::OnDropFiles (wxCoord x, wxCoord y, const wxArrayString& filenames)
+bool DropFiles::OnDropFiles (wxCoord x, wxCoord y, wxArrayString const &filenames)
 {
 	for (size_t n = 0; n < filenames.Count(); n++) {
 		ClientDialog::GetInstance(MainDialog::GetInstance())->ShowModal(INVALID_CLIENT_ID, filenames[n]);

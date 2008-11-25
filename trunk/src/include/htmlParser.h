@@ -54,7 +54,7 @@ protected:
 	wxString  mCurrentText; /**< Current text being parsed */
 	HTMLToken mCurrentToken; /**< Current token that has been parsed */
 
-	HTMLToken TextToToken(const wxString& text); /**< Convert text to HTMLToken  */
+	HTMLToken TextToToken(wxString const &text); /**< Convert text to HTMLToken  */
 
 
 public:
@@ -69,13 +69,13 @@ public:
 	 * (re)initialize the parser to parse the given string.
 	 * @param string The string to parse.
 	 **/
-	void ParseString(const wxString& string);
+	void ParseString(wxString const &string);
 
 	/**
 	 * Load a file and (re)initialize the parser.
 	 * @param fileName The file to parse.
 	 **/
-	bool ParseFile(const wxString& fileName);
+	bool ParseFile(wxString const &fileName);
 
 	/**
 	 * @return true if a new token could be found, or false if the end of the file has been reached

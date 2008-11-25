@@ -43,7 +43,7 @@
 wxMutex Client::mMutexXYZFiles;
 
 
-Client::Client(const wxString& name, const wxString& location, bool enabled, bool VM)
+Client::Client(wxString const &name, wxString const &location, bool enabled, bool VM)
 {
 	mLastModification          = 0;
 	mPreviouslyAnalyzedFrameId = MAX_FRAME_ID;
@@ -413,7 +413,7 @@ void Client::Reload(void)
 }
 
 
-bool Client::LoadLogFile(const wxString& filename)
+bool Client::LoadLogFile(wxString const &filename)
 {
 	wxString myLog;
 	if(wxFileExists(filename) == false || Tools::LoadFile(filename, myLog) == false)
@@ -427,7 +427,7 @@ bool Client::LoadLogFile(const wxString& filename)
 }
 
 
-bool Client::LoadUnitInfoFile(const wxString& filename)
+bool Client::LoadUnitInfoFile(wxString const &filename)
 {
 	bool              progressOk;
 	unsigned int      lSize;
@@ -503,7 +503,7 @@ bool Client::LoadUnitInfoFile(const wxString& filename)
 }
 
 
-bool Client::LoadQueueFile(const wxString& filename)
+bool Client::LoadQueueFile(wxString const &filename)
 {
 	Queue    *qf;
 	qf = new Queue();

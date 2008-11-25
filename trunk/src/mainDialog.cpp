@@ -1339,7 +1339,7 @@ void MainDialog::OnDeadlinePrefChanged(void)
 }
 
 
-double MainDialog::GetTotalPPD(void)
+double MainDialog::GetTotalPPD(void) const
 {
 	wxString  test;
 	double  tmpdouble;
@@ -1359,7 +1359,7 @@ double MainDialog::GetTotalPPD(void)
 }
 
 
-wxInt32 MainDialog::GetClientCount(void)
+wxInt32 MainDialog::GetClientCount(void) const
 {
 	return mClientsList->GetItemCount();
 }

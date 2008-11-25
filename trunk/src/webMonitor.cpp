@@ -429,7 +429,7 @@ void WebMonitor::WriteApp(void)
 	}
 }
 
-void WebMonitor::ProcessTemplate(wxString templateFile, wxString outputFile)
+void WebMonitor::ProcessTemplate(wxString const &templateFile, wxString const &outputFile)
 {
 	wxFileOutputStream    fileOS(outputFile);
 	wxTextOutputStream    textOS(fileOS);
@@ -522,7 +522,7 @@ void WebMonitor::ProcessTemplate(wxString templateFile, wxString outputFile)
 	fileOS.Close();
 }
 
-wxString WebMonitor::PadToLength(wxString text, wxUint32 length)
+const wxString WebMonitor::PadToLength(wxString text, wxUint32 length)
 {
 	if (text.length() >= length)
 	{
@@ -534,7 +534,7 @@ wxString WebMonitor::PadToLength(wxString text, wxUint32 length)
 	}
 }
 
-wxString WebMonitor::DecodeTemplate(wxString templateCode, wxUint32 clientId)
+const wxString WebMonitor::DecodeTemplate(wxString templateCode, wxUint32 clientId)
 {
 	//for reference: 0progress, 1client name, 2ETA, 3PPD, 4corename, 5projectID, 6credit, 7username/team, 8downloaded, 9preferred, 10final, 11bgcolor, 12state, 13username, 14team
 	//sigh, why can't we switch on wxStrings
@@ -641,7 +641,7 @@ wxString WebMonitor::DecodeTemplate(wxString templateCode, wxUint32 clientId)
 
 }
 
-std::vector<wxString> WebMonitor::TemplateToVector(wxString inputTemplate)
+std::vector<wxString> WebMonitor::TemplateToVector(wxString const &inputTemplate) const
 {
 	//create a vector of wxStrings
 	std::vector<wxString> v;
@@ -673,7 +673,7 @@ std::vector<wxString> WebMonitor::TemplateToVector(wxString inputTemplate)
 }
 
 
-wxString WebMonitor::GetVariable(wxString variable)
+const wxString WebMonitor::GetVariable(wxString const &variable)
 {
 	CustomVariableHashMap::iterator iterator = mCustomVariableHashMap.find(variable);
 

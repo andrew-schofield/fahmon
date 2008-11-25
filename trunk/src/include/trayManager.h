@@ -107,7 +107,7 @@ public:
 	 * Change the text of the tooltip associated with the icon.
 	 * If the icon is installed in the systray, the tooltip is immediately updated.
 	 **/
-	void SetTooltip(const wxString& tooltip);
+	void SetTooltip(wxString const &tooltip);
 
 	/**
 	 * Install the icon in the systray if it is not already there
@@ -121,7 +121,7 @@ public:
 
 	void SetMaximised(bool maximised) {mMaximised = maximised;}
 
-	bool GetMaximised(void) {return mMaximised;}
+	bool GetMaximised(void) const {return mMaximised;}
 
 
 private:

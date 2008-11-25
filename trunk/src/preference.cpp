@@ -65,7 +65,7 @@ Preference::Preference(wxString name, double value)
 }
 
 
-Preference::Preference(wxString name, const wxString& value, bool isHidden)
+Preference::Preference(wxString name, wxString const &value, bool isHidden)
 {
 	// Hidden strings are stored in the same way as 'normal' strings
 	// Only the method used to read/write them is different

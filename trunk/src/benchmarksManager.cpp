@@ -416,7 +416,7 @@ const Benchmark** BenchmarksManager::GetBenchmarksList(ProjectId projectId, wxUi
 }
 
 
-wxString BenchmarksManager::GetClientLocationFromClientId(ClientId clientId)
+const wxString BenchmarksManager::GetClientLocationFromClientId(ClientId clientId)
 {
 	wxMutexLocker mutexLocker(mMutexBenchmarksAccess);  // Lock access to this method
 

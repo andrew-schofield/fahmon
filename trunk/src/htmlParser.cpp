@@ -37,7 +37,7 @@ HTMLParser::HTMLParser(void)
 }
 
 
-bool HTMLParser::ParseFile(const wxString& fileName)
+bool HTMLParser::ParseFile(wxString const &fileName)
 {
 	mIsStartingTag = false;
 	mParsedContent = wxT("");
@@ -54,7 +54,7 @@ bool HTMLParser::ParseFile(const wxString& fileName)
 }
 
 
-void HTMLParser::ParseString(const wxString& string)
+void HTMLParser::ParseString(wxString const &string)
 {
 	mIsStartingTag = false;
 	mParsedContent = string;
@@ -126,7 +126,7 @@ bool HTMLParser::NextToken(void)
 }
 
 
-HTMLParser::HTMLToken HTMLParser::TextToToken(const wxString& text)
+HTMLParser::HTMLToken HTMLParser::TextToToken(wxString const &text)
 {
 	wxInt32  argumentPos;
 	wxString toConvert;

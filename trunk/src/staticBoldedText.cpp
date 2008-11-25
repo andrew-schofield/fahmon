@@ -27,7 +27,7 @@
 #include "wx/font.h"
 
 
-StaticBoldedText::StaticBoldedText(wxWindow* parent, wxWindowID id, const wxString& label, const wxPoint& pos, const wxSize& size, long style, const wxString& name) : wxStaticText(parent, id, label, pos, size, style, name)
+StaticBoldedText::StaticBoldedText(wxWindow* parent, wxWindowID id, wxString const &label, wxPoint const &pos, wxSize const &size, long style, wxString const &name) : wxStaticText(parent, id, label, pos, size, style, name)
 {
 	wxFont font;
 

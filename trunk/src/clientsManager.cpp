@@ -80,7 +80,7 @@ ClientsManager* ClientsManager::GetInstance(void)
 }
 
 
-wxUint32 ClientsManager::Add(const wxString& name, const wxString& location, bool enabled, bool VM)
+wxUint32 ClientsManager::Add(wxString const &name, wxString const &location, bool enabled, bool VM)
 {
 	mClients.Add(new Client(name, location, enabled, VM));
 
@@ -90,7 +90,7 @@ wxUint32 ClientsManager::Add(const wxString& name, const wxString& location, boo
 }
 
 
-void ClientsManager::Edit(wxUint32 clientId, const wxString& name, const wxString& location, bool VM)
+void ClientsManager::Edit(wxUint32 clientId, wxString const &name, wxString const &location, bool VM)
 {
 	mClients.Item(clientId)->SetName(name);
 	mClients.Item(clientId)->SetLocation(location);
@@ -253,7 +253,7 @@ void ClientsManager::Reload(wxUint32 clientId)
 }
 
 
-wxString ClientsManager::GetNameFromLocation(const wxString& location) const
+const wxString ClientsManager::GetNameFromLocation(wxString const &location) const
 {
 	wxUint32 i;
 

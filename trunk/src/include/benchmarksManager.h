@@ -113,7 +113,7 @@ public:
 	 * @param clientId The input client identifier.
 	 * @return The client location as a wxString.
 	 **/
-	wxString          GetClientLocationFromClientId(ClientId clientId);
+	const wxString          GetClientLocationFromClientId(ClientId clientId);
 
 	/**
 	 * Get the projects which have benchmarks associated with them.

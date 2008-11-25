@@ -45,7 +45,7 @@ public:
 	 * Contructor.
 	 * Contructs the dataOutputStream class.
 	 **/
-	DataOutputStream(const wxString& filename);
+	DataOutputStream(wxString const &filename);
 
 	/**
 	 * Destructor.
@@ -57,7 +57,7 @@ public:
 	 * @param *buffer Pointer to the input buffer.
 	 * @param size Length of the data to write.
 	 **/
-	void Write(const void *buffer, wxUint32 size) {mDataOS->Write8((const wxUint8*)buffer, size);}
+	void Write(void const *buffer, wxUint32 size) {mDataOS->Write8((const wxUint8*)buffer, size);}
 
 	/**
 	 * Write a boolean value to output stream
@@ -87,13 +87,13 @@ public:
 	 * Write a string value to output stream
 	 * @param value Object containing string value to write.
 	 **/
-	void WriteString(const wxString& value)         {mDataOS->WriteString(value);}
+	void WriteString(wxString const &value)         {mDataOS->WriteString(value);}
 
 	/**
 	 * Write an "encrypted" string value to output stream
 	 * @param value Object containing "encrypted" string value to write.
 	 **/
-	void WriteHiddenString(const wxString& value);
+	void WriteHiddenString(wxString const &value);
 
 	/**
 	 * Checks if string can be used.

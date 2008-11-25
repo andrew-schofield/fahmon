@@ -111,7 +111,7 @@ class HTTPDownloader
 		 * @param progressManager The progressManager object
 		 * @return A download status object.
 		 **/
-		static DownloadStatus DownloadFile(const wxString& host, wxUint32 port, const wxString& resource, wxString& localFileName, ProgressManager& progressManager);
+		static DownloadStatus DownloadFile(wxString const &host, wxUint32 port, wxString const &resource, wxString& localFileName, ProgressManager& progressManager);
 
 		/**
 		 * Decontructs a "real" url into its Server, Port and Resource fields.
@@ -121,7 +121,7 @@ class HTTPDownloader
 		 * @param progressManager The progressManager object
 		 * @return A download status object.
 		 **/
-		static DownloadStatus Url(const wxString& url, wxString& localFileName, ProgressManager& progressManager);
+		static DownloadStatus Url(wxString const &url, wxString& localFileName, ProgressManager& progressManager);
 };
 
 

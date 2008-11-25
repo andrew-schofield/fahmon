@@ -45,7 +45,7 @@ class StaticBoldedText : public wxStaticText
 	 * @param style Display style
 	 * @param name Objectname
 	 **/
-	StaticBoldedText(wxWindow* parent, wxWindowID id, const wxString& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& name = wxT("staticText"));
+		StaticBoldedText(wxWindow* parent, wxWindowID id, wxString const &label, wxPoint const &pos = wxDefaultPosition, wxSize const &size = wxDefaultSize, long style = 0, wxString const &name = wxT("staticText"));
 };
 
 

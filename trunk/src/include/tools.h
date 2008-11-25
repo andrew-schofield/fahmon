@@ -53,7 +53,7 @@ protected:
 	 * @param style Dialog style.
 	 * @return A wxMessageDialog.
 	 **/
-	static int MsgBox(const wxString& msg, long style) {return wxMessageBox(msg, wxT(FMC_PRODUCT), style);}
+	static int MsgBox(wxString const &msg, long style) {return wxMessageBox(msg, wxT(FMC_PRODUCT), style);}
 
 
 public:
@@ -68,7 +68,7 @@ public:
 	 * As it is very easy on Linux, it is not used for this platform.
 	 * @param url The url to open
 	 **/
-	static void     OpenURLInBrowser(const wxString& url);
+	static void     OpenURLInBrowser(wxString const &url);
 
 	/**
 	 * Load the entire contents of a file into a wxString.
@@ -77,7 +77,7 @@ public:
 	 * @param filename The file to open.
 	 * @param fileContent Reference to an objec to store the file contents.
 	 **/
-	static bool     LoadFile(const wxString& filename, wxString& fileContent);
+	static bool     LoadFile(wxString const &filename, wxString& fileContent);
 
 	/**
 	 * Format a given time.
@@ -92,23 +92,23 @@ public:
 	 * This is a wrapper around MsgBox.
 	 * @param error The error message to display.
 	 **/
-	static void ErrorMsgBox(const wxString& error) {MsgBox(error, wxICON_ERROR | wxOK);}
+	static void ErrorMsgBox(wxString const &error) {MsgBox(error, wxICON_ERROR | wxOK);}
 
 	/**
 	 * Create an question dialog box.
 	 * This is a wrapper around MsgBox.
 	 * @param question The question to ask.
 	 **/
-	static bool QuestionMsgBox(const wxString& question) {return MsgBox(question, wxICON_QUESTION | wxYES_NO) == wxYES;}
+	static bool QuestionMsgBox(wxString const &question) {return MsgBox(question, wxICON_QUESTION | wxYES_NO) == wxYES;}
 
 	/**
 	 * Create an information dialog box.
 	 * This is a wrapper around MsgBox.
 	 * @param information The information to display.
 	 **/
-	static void InfoMsgBox(const wxString& information) {MsgBox(information, wxICON_INFORMATION | wxOK);}
+	static void InfoMsgBox(wxString const &information) {MsgBox(information, wxICON_INFORMATION | wxOK);}
 
-	static std::vector<wxString> SplitLineByDelim(const wxString &line, const wxString &delim);
+	static std::vector<wxString> SplitLineByDelim(wxString const &line, wxString const &delim);
 };
 
 

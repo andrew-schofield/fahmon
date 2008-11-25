@@ -76,7 +76,7 @@ wxUint32 Base64Codec::CharToBase64Index(wxChar c)
 }
 
 
-wxString Base64Codec::Encode(const wxString& string)
+wxString Base64Codec::Encode(wxString const &string)
 {
 	wxChar   c1;
 	wxChar   c2;
@@ -129,7 +129,7 @@ wxString Base64Codec::Encode(const wxString& string)
 }
 
 
-wxString Base64Codec::Decode(const wxString& string)
+wxString Base64Codec::Decode(wxString const &string)
 {
 	wxUint32 i;
 	wxUint32 base64Index1;

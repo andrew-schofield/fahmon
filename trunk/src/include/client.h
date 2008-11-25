@@ -105,20 +105,20 @@ protected:
 	 * Line returns are not converted, as it seems they are correctly taken into account by the text component used
 	 * @param filename Log file to load
 	 **/
-	bool LoadLogFile(const wxString& filename);
+	bool LoadLogFile(wxString const &filename);
 
 	/**
 	 * Load information from the unitinfo\.txt file.
 	 * Loads current progress if not determined from FAHlog.txt
 	 * @param filename unitinfo to load
 	 **/
-	bool LoadUnitInfoFile(const wxString& filename);
+	bool LoadUnitInfoFile(wxString const &filename);
 
 	/**
 	 * Load lots of useful info from the queue\.dat file.
 	 * @param filename queue file to load
 	 */
-	bool LoadQueueFile(const wxString& filename);
+	bool LoadQueueFile(wxString const &filename);
 
 	/**
 	 * Restore the initial state of the client.
@@ -142,7 +142,7 @@ public:
 	 * @param location Client location
 	 * @param enabled Is client enabled
 	 **/
-	Client(const wxString& name, const wxString& location, bool enabled, bool VM);
+	Client(wxString const &name, wxString const &location, bool enabled, bool VM);
 
 	/**
 	 * Destructor.
@@ -179,13 +179,13 @@ public:
 	 * Set client name.
 	 * @param name Name to set.
 	 **/
-	void SetName(const wxString& name)            {mName = name;}
+	void SetName(wxString const &name)            {mName = name;}
 
 	/**
 	 * Set client location.
 	 * @param location Location to set.
 	 **/
-	void SetLocation(const wxString& location);
+	void SetLocation(wxString const &location);
 
 	/**
 	 * Set state of frame accuracy

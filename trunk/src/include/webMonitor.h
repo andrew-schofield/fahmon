@@ -107,7 +107,7 @@ public:
 	 **/
 	void WriteApp(void);
 
-	wxString GetVariable(wxString variable);
+	const wxString GetVariable(wxString const &variable);
 
 private:
 	ListViewClients   *mClientsList; /**< The client list */
@@ -120,7 +120,7 @@ private:
 	 * @param inputTemplate The string to parse
 	 * @return A vector of template IDs
 	 **/
-	std::vector<wxString> TemplateToVector(wxString inputTemplate);
+	std::vector<wxString> TemplateToVector(wxString const &inputTemplate) const;
 
 	/**
 	 * Pad/truncate a string.
@@ -129,7 +129,7 @@ private:
 	 * @param length The length desired for the output string
 	 * @return The padded/truncated string
 	 **/
-	static wxString PadToLength(wxString text, wxUint32 length);
+	const wxString PadToLength(wxString text, wxUint32 length);
 
 	/**
 	 * Template decoder.
@@ -138,7 +138,7 @@ private:
 	 * @param clientId The client Id to which the decoded text applies
 	 * @return The decoded template
 	 **/
-	wxString DecodeTemplate(wxString templateCode, wxUint32 clientId);
+	const wxString DecodeTemplate(wxString templateCode, wxUint32 clientId);
 
 	/**
 	 * Template processor.
@@ -146,7 +146,7 @@ private:
 	 * @param templateFile The location of the input template
 	 * @param outputFile The location of the output file
 	 **/
-	void ProcessTemplate(wxString templateFile, wxString outputFile);
+	void ProcessTemplate(wxString const &templateFile, wxString const &outputFile);
 
 	void Load(void);
 };

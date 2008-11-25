@@ -114,7 +114,7 @@ void TrayManager::UninstallIcon(void)
 }
 
 
-void TrayManager::SetTooltip(const wxString& tooltip)
+void TrayManager::SetTooltip(wxString const &tooltip)
 {
 	double  TotalPPD;
 	wxInt32  ClientCount;

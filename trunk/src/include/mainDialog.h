@@ -438,13 +438,13 @@ public:
 	 * Calculate total PPD from all active/inactive clients.
 	 * @return Total PPD
 	 **/
-	double GetTotalPPD(void);
+	double GetTotalPPD(void) const;
 
 	/**
 	 * Get the number of clients monitored.
 	 * @return The number of clients.
 	 **/
-	wxInt32 GetClientCount(void);
+	wxInt32 GetClientCount(void) const;
 
 	// Methods used when some prefs have changed
 

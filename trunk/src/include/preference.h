@@ -101,7 +101,7 @@ public:
 	 * @param value string value
 	 * @param isHidden Hidden state
 	 **/
-	Preference(wxString name, const wxString& value, bool isHidden = false);
+	Preference(wxString name, wxString const &value, bool isHidden = false);
 
 	/**
 	 * Read the preference from the given input stream.

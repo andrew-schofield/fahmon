@@ -27,7 +27,7 @@
 #include "base64Codec.h"
 
 
-DataOutputStream::DataOutputStream(const wxString& filename)
+DataOutputStream::DataOutputStream(wxString const &filename)
 {
 	mDataOS = NULL;
 
@@ -63,7 +63,7 @@ DataOutputStream::~DataOutputStream(void)
 }
 
 
-void DataOutputStream::WriteHiddenString(const wxString& value)
+void DataOutputStream::WriteHiddenString(wxString const &value)
 {
 	// The string is written in base64
 	WriteString(Base64Codec::Encode(value));

@@ -163,7 +163,7 @@ protected:
 	/**
 	 * Retrieve the value of a preference.
 	 **/
-	Preference* GetPref(const wxString& name);
+	Preference* GetPref(const wxString &name);
 
 	/**
 	 * Load the preferences from the disk.
@@ -200,84 +200,84 @@ public:
 	 * @param name Preference name
 	 * @param value Value to retrieve
 	 **/
-	void SetBool(const wxString& name, bool value) {SetPref(new Preference(name, value));}
+	void SetBool(wxString const &name, bool value) {SetPref(new Preference(name, value));}
 
 	/**
 	 * Retrieve the value of a boolean preference.
 	 * @param name Preference name
 	 * @param value Value to retrieve
 	 **/
-	bool GetBool(const wxString& name, bool& value);
+	bool GetBool(wxString const &name, bool& value);
 
 	/**
 	 * Set the value of a unsigned int preference.
 	 * @param name Preference name
 	 * @param value Value to retrieve
 	 **/
-	void SetUint(const wxString& name, wxUint32 value) {SetPref(new Preference(name, value));}
+	void SetUint(wxString const &name, wxUint32 value) {SetPref(new Preference(name, value));}
 
 	/**
 	 * Retrieve the value of an unsigned int preference.
 	 * @param name Preference name
 	 * @param value Value to retrieve
 	 **/
-	bool GetUint(const wxString& name, wxUint32& value);
+	bool GetUint(wxString const &name, wxUint32& value);
 
 	/**
 	 * Set the value of a signed int preference.
 	 * @param name Preference name
 	 * @param value Value to retrieve
 	 **/
-	void SetInt(const wxString& name, wxInt32 value) {SetPref(new Preference(name, value));}
+	void SetInt(wxString const &name, wxInt32 value) {SetPref(new Preference(name, value));}
 
 	/**
 	 * Retrieve the value of an signed int preference.
 	 * @param name Preference name
 	 * @param value Value to retrieve
 	 **/
-	bool GetInt(const wxString& name, wxInt32& value);
+	bool GetInt(wxString const &name, wxInt32& value);
 
 	/**
 	 * Set the value of a double preference.
 	 * @param name Preference name
 	 * @param value Value to retrieve
 	 **/
-	void SetDouble(const wxString& name, double value) {SetPref(new Preference(name, value));}
+	void SetDouble(wxString const &name, double value) {SetPref(new Preference(name, value));}
 
 	/**
 	 * Retrieve the value of a double preference.
 	 * @param name Preference name
 	 * @param value Value to retrieve
 	 **/
-	bool GetDouble(const wxString& name, double& value);
+	bool GetDouble(wxString const &name, double& value);
 
 	/**
 	 * Set the value of a string preference.
 	 * @param name Preference name
 	 * @param value Value to retrieve
 	 **/
-	void SetString(const wxString& name, const wxString& value) {SetPref(new Preference(name, value));}
+	void SetString(wxString const &name, wxString const &value) {SetPref(new Preference(name, value));}
 
 	/**
 	 * Retrieve the value of a string preference.
 	 * @param name Preference name
 	 * @param value Value to retrieve
 	 **/
-	bool GetString(const wxString& name, wxString& value);
+	bool GetString(wxString const &name, wxString& value);
 
 	/**
 	 * Set the value of a hidden string preference.
 	 * @param name Preference name
 	 * @param value Value to retrieve
 	 **/
-	void SetHiddenString(const wxString& name, const wxString& value) {SetPref(new Preference(name, value, true));}
+	void SetHiddenString(wxString const &name, const wxString& value) {SetPref(new Preference(name, value, true));}
 
 	/**
 	 * Retrieve the value of an hidden string preference.
 	 * @param name Preference name
 	 * @param value Value to retrieve
 	 **/
-	bool GetHiddenString(const wxString& name, wxString& value);
+	bool GetHiddenString(wxString const &name, wxString& value);
 };
 
 

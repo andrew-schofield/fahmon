@@ -31,7 +31,7 @@
 // This mutex is there to ensure that two threads won't try to open the same file at one time
 wxMutex Tools::mMutexLoadFile;
 
-void Tools::OpenURLInBrowser(const wxString& url)
+void Tools::OpenURLInBrowser(wxString const &url)
 {
 #ifdef _FAHMON_WIN32_
 
@@ -77,7 +77,7 @@ void Tools::OpenURLInBrowser(const wxString& url)
 }
 
 
-bool Tools::LoadFile(const wxString& filename, wxString& fileContent)
+bool Tools::LoadFile(wxString const &filename, wxString& fileContent)
 {
 	wxMutexLocker lock(mMutexLoadFile);
 	wxTextFile  in(filename);
@@ -132,7 +132,7 @@ wxString Tools::FormatSeconds(wxUint32 nbSeconds)
 	}
 }
 
-std::vector<wxString> Tools::SplitLineByDelim(const wxString &line, const wxString &delim)
+std::vector<wxString> Tools::SplitLineByDelim(wxString const &line, wxString const &delim)
 {
 	std::vector<wxString>  v;
 	wxInt32                endingPos;

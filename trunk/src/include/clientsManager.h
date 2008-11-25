@@ -104,13 +104,13 @@ public:
 	 * @param name The edited name for the client.
 	 * @param location The edited location for the client.
 	 **/
-	void     Edit(wxUint32 clientId, const wxString& name, const wxString& location, bool VM);
+	void Edit(wxUint32 clientId, wxString const &name, wxString const &location, bool VM);
 
 	/**
 	 * Deletes the given client.
 	 * @param clientId The Id of the client to delete.
 	 **/
-	void     Delete(wxUint32 clientId) {mClients.RemoveAt(clientId);}
+	void Delete(wxUint32 clientId) {mClients.RemoveAt(clientId);}
 
 	/**
 	 * Add a new client to the list, return the identifier of this new client.
@@ -119,14 +119,14 @@ public:
 	 * @param enabled Is client enabled
 	 * @return The clientId of the added client.
 	 **/
-	wxUint32 Add(const wxString& name, const wxString& location, bool enabled, bool VM);
+	wxUint32 Add(wxString const &name, wxString const &location, bool enabled, bool VM);
 
 	// --- Getters
 	/**
 	 * Gets number of clients in the array.
 	 * @return Number of clients.
 	 **/
-	wxUint32      GetCount(void)                                const {return mClients.GetCount();}
+	wxUint32 GetCount(void)                                const {return mClients.GetCount();}
 
 	/**
 	 * Find the name of the client located at the given location.
@@ -134,14 +134,14 @@ public:
 	 * @param location Location to check
 	 * @return Client name at location
 	 **/
-	wxString      GetNameFromLocation(const wxString& location) const;
+	const wxString GetNameFromLocation(wxString const &location) const;
 
 	/**
 	 * Get client info from clientId.
 	 * @param clientId The id of the client to return.
 	 * @return The client object for clientId
 	 **/
-	const Client* Get(wxUint32 clientId)                        const {return mClients.Item(clientId);}
+	const Client* Get(wxUint32 clientId)                   const {return mClients.Item(clientId);}
 
 	/**
 	 * Enable or disable a given client

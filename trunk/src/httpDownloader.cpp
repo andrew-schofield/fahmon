@@ -37,7 +37,7 @@
 #define BUFFER_SIZE 1024
 
 
-HTTPDownloader::DownloadStatus HTTPDownloader::DownloadFile(const wxString& host, wxUint32 port, const wxString& resource, wxString& localFileName, ProgressManager& progressManager)
+HTTPDownloader::DownloadStatus HTTPDownloader::DownloadFile(wxString const &host, wxUint32 port, wxString const &resource, wxString& localFileName, ProgressManager& progressManager)
 {
 	bool                isUsingProxy;
 	bool                proxyNeedsAuthentication;
@@ -229,7 +229,7 @@ wxUint32 HTTPDownloader::ExtractContentSize(wxByte* buffer, wxUint32 bufferSize)
 }
 
 
-HTTPDownloader::DownloadStatus HTTPDownloader::Url(const wxString& url, wxString& localFileName, ProgressManager& progressManager)
+HTTPDownloader::DownloadStatus HTTPDownloader::Url(wxString const &url, wxString& localFileName, ProgressManager& progressManager)
 {
 	wxString      tempString;
 	wxInt32       portPosition;

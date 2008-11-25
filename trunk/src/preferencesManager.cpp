@@ -91,7 +91,7 @@ void PreferencesManager::SetPref(Preference* preference)
 }
 
 
-Preference* PreferencesManager::GetPref(const wxString& name)
+Preference* PreferencesManager::GetPref(wxString const &name)
 {
 	PreferencesHashMap::iterator iterator = mPrefsHashMap.find(name);
 
@@ -104,7 +104,7 @@ Preference* PreferencesManager::GetPref(const wxString& name)
 }
 
 
-bool PreferencesManager::GetBool(const wxString& name, bool& value)
+bool PreferencesManager::GetBool(wxString  const &name, bool& value)
 {
 	Preference *prefValue = GetPref(name);
 
@@ -120,7 +120,7 @@ bool PreferencesManager::GetBool(const wxString& name, bool& value)
 }
 
 
-bool PreferencesManager::GetUint(const wxString& name, wxUint32& value)
+bool PreferencesManager::GetUint(wxString const &name, wxUint32& value)
 {
 	Preference *prefValue = GetPref(name);
 
@@ -136,7 +136,7 @@ bool PreferencesManager::GetUint(const wxString& name, wxUint32& value)
 }
 
 
-bool PreferencesManager::GetInt(const wxString& name, wxInt32& value)
+bool PreferencesManager::GetInt(wxString const &name, wxInt32& value)
 {
 	Preference *prefValue = GetPref(name);
 
@@ -152,7 +152,7 @@ bool PreferencesManager::GetInt(const wxString& name, wxInt32& value)
 }
 
 
-bool PreferencesManager::GetDouble(const wxString& name, double& value)
+bool PreferencesManager::GetDouble(wxString const &name, double& value)
 {
 	Preference *prefValue = GetPref(name);
 
@@ -168,7 +168,7 @@ bool PreferencesManager::GetDouble(const wxString& name, double& value)
 }
 
 
-bool PreferencesManager::GetString(const wxString& name, wxString& value)
+bool PreferencesManager::GetString(wxString const &name, wxString& value)
 {
 	Preference *prefValue = GetPref(name);
 
@@ -184,7 +184,7 @@ bool PreferencesManager::GetString(const wxString& name, wxString& value)
 }
 
 
-bool PreferencesManager::GetHiddenString(const wxString& name, wxString& value)
+bool PreferencesManager::GetHiddenString(wxString const &name, wxString& value)
 {
 	Preference *prefValue = GetPref(name);
 
