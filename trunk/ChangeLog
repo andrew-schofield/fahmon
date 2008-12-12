@@ -8,6 +8,8 @@ SVN
     * Improved handling of clients within Virtual Machines.
     * Prevented FahMon from crashing when the FAH client produces excessively
       large unitinfo.txt files.
+    * Fixed miscalculation of frame count when step count is a non-standard
+      number.
 
     Windows
 

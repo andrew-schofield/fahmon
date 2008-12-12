@@ -36,7 +36,8 @@ WorkUnitFrame* FahLogAnalyzer::AnalyzeLastFrame(wxString const &fahlogComplete, 
 	bool      overrideTimezone, ignoreAsynchrony, isAsync, clientIsPaused;
 	wxInt32   endOfLine;
 	wxInt32   elapsedSeconds, runDuration;
-	wxInt32   timezoneoffset, frameCount, frameCountTemp1, frameCountTemp2;
+	wxInt32   timezoneoffset, frameCount, frameCountTemp1;
+	float     frameCountTemp2;
 	LogLine   endFrame1, endFrame2, endFrame3;
 	LogLine   *currentLogLine;
 	wxString  lineToParse;
@@ -267,7 +268,7 @@ WorkUnitFrame* FahLogAnalyzer::AnalyzeLastFrame(wxString const &fahlogComplete, 
 					// wxPuts(_T("frameCountTemp1 is ZERO"));
 				} else {
 					frameCountTemp2 = (( frameCountTemp1 ) * 100) / endFrame1.totalSteps;
-					frameCount = 200 / frameCountTemp2;
+					frameCount = 200 / (int)ceil(frameCountTemp2);
 				}
 			} else {
 				frameCount = 0;

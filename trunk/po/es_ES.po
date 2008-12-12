@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es_ES\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-11-21 22:28+0000\n"
+"POT-Creation-Date: 2008-12-12 23:37+0000\n"
 "PO-Revision-Date: 2008-10-30 00:13+0000\n"
 "Last-Translator: Antonio Lucendo <alt_alm@hotmail.com>\n"
 "Language-Team: Spanish\n"
@@ -354,7 +354,7 @@ msgstr ""
 "# \"Nombre\"\t\"Emplazamiento\"\tInhabilitado(*)\n"
 "\n"
 
-#: src/fahlogAnalyzer.cpp:249
+#: src/fahlogAnalyzer.cpp:250
 msgid "Possible clock asynchrony detected!"
 msgstr "¡Se detectó una posible asincronía del reloj!"
 

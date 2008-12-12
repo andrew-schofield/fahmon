@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nl_NL\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-11-21 22:28+0000\n"
+"POT-Creation-Date: 2008-12-12 23:37+0000\n"
 "PO-Revision-Date: 2008-11-03 19:19+0000\n"
 "Last-Translator: Bastien <bastien@knife-edge.nl>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -348,7 +348,7 @@ msgstr ""
 "#\"Naam\"\t\"Lokatie\"\tUitgeschakeld(*)\n"
 "\n"
 
-#: src/fahlogAnalyzer.cpp:249
+#: src/fahlogAnalyzer.cpp:250
 msgid "Possible clock asynchrony detected!"
 msgstr "Mogelijke asynchrone klok gevonden!"
 
