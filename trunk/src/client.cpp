@@ -224,7 +224,7 @@ void Client::Reload(void)
 
 	mCore = wxT("");
 
-	if(lastFrame != NULL && project != INVALID_PROJECT_ID)
+	if(lastFrame != NULL && project != INVALID_PROJECT_ID && project != 0)
 	{
 		frameCount = lastFrame->GetFrameCount();
 		mIsFrameCountAccurate = true;
@@ -261,13 +261,13 @@ void Client::Reload(void)
 	// Should we collect .xyz files?
 	_PrefsGetBool(PREF_FAHCLIENT_COLLECTXYZFILES, collectXYZFiles);
 	// lastFrame->GetId() is needed to make sure we dont save current.xyz file from previous WU
-	if(collectXYZFiles == true && mProjectId != INVALID_PROJECT_ID && lastFrame != NULL && lastFrame->GetId() > 0)
+	if(collectXYZFiles == true && mProjectId != INVALID_PROJECT_ID && project != 0 && lastFrame != NULL && lastFrame->GetId() > 0)
 	{
 		SaveXYZFile();
 	}
 
 	// Add this duration to the benchmarks for valid projects, but don't store the same frame twice
-	if(mProjectId != INVALID_PROJECT_ID && lastFrame != NULL && !lastFrame->ClientIsStopped() && !lastFrame->ClientIsPaused())
+	if(mProjectId != INVALID_PROJECT_ID && project != 0 && lastFrame != NULL && !lastFrame->ClientIsStopped() && !lastFrame->ClientIsPaused())
 	{
 		// Calculate effective frame time
 		timeNow = wxDateTime::Now();
@@ -309,7 +309,7 @@ void Client::Reload(void)
 
 	// If current project is valid and is found in the benchmarks database, then grab the PPD
 	// Needs to check state too, no point getting PPD for stopped or dead clients.
-	if (mProjectId != INVALID_PROJECT_ID && mState != ST_STOPPED && mState != ST_INACCESSIBLE && mState != ST_HUNG && mState != ST_PAUSED)
+	if (mProjectId != INVALID_PROJECT_ID && project != 0 && mState != ST_STOPPED && mState != ST_INACCESSIBLE && mState != ST_HUNG && mState != ST_PAUSED)
 	{
 		if (project != INVALID_PROJECT_ID)
 		{
@@ -378,7 +378,7 @@ void Client::Reload(void)
 			}
 		}
 	}
-	if (mProjectId != INVALID_PROJECT_ID && mState != ST_INACCESSIBLE && lastFrame != NULL && mState != ST_STOPPED && mState != ST_PAUSED)
+	if (mProjectId != INVALID_PROJECT_ID && project != 0 && mState != ST_INACCESSIBLE && lastFrame != NULL && mState != ST_STOPPED && mState != ST_PAUSED)
 	{
 		if (project != INVALID_PROJECT_ID)
 		{
@@ -393,7 +393,7 @@ void Client::Reload(void)
 	mProgressString  = wxString::Format(wxT("%u%%"), mProgress);
 	// Compute ETA
 	ComputeETA(lastFrame);
-	if (project != INVALID_PROJECT_ID)
+	if (project != INVALID_PROJECT_ID && project != 0)
 	{
 		mCore = Core::IdToLongName(project->GetCoreId());
 		mCredit = project->GetCredit();
@@ -476,7 +476,7 @@ bool Client::LoadUnitInfoFile(wxString const &filename)
 	startingPos = currentLine.Find(wxT("Progress:")) + 9;
 	endingPos = currentLine.Find('%');
 
-	if(endingPos != -1 && mProjectId != INVALID_PROJECT_ID)
+	if(endingPos != -1 && mProjectId != INVALID_PROJECT_ID && mProjectId != 0)
 	{
 		mProgressString = currentLine.Mid(startingPos, endingPos - startingPos);
 		if(mProgressString.ToULong(&tmpLong) == true)
@@ -579,7 +579,7 @@ void Client::ComputeETA(WorkUnitFrame* lastFrame)
 	const Benchmark *benchmark;
 
 	// If we don't have a valid project id or the client is stopped, there is no ETA
-	if(mProjectId == INVALID_PROJECT_ID || (lastFrame && lastFrame->ClientIsStopped()))
+	if(mProjectId == INVALID_PROJECT_ID || mProjectId == 0 || (lastFrame && lastFrame->ClientIsStopped()))
 	{
 		return;
 	}
