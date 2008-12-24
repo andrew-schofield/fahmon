@@ -271,7 +271,8 @@ WorkUnitFrame* FahLogAnalyzer::AnalyzeLastFrame(wxString const &fahlogComplete, 
 				else
 				{
 					frameCountTemp2 = ((frameCountTemp1 * 100) / (float)endFrame1.totalSteps);
-					frameCount = (int)(200 / ceil(frameCountTemp2));
+					frameCountTemp2 = (frameCountTemp2 - floor(frameCountTemp2) > 0.5) ? ceil(frameCountTemp2) : floor(frameCountTemp2); // adjusts to account for minor changes in total step count (249999 & 250001 instead of 250000 etc.)
+					frameCount = (int)(200 / frameCountTemp2);
 					// wxPuts(wxString::Format(wxT("Total steps: %i, Steps per %%: %i, Frame count: %i, fcT: %f"), endFrame1.totalSteps, frameCountTemp1, frameCount, frameCountTemp2));
 				}
 			}
