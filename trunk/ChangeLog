@@ -10,6 +10,8 @@ SVN
       large unitinfo.txt files.
     * Fixed miscalculation of frame count when step count is a non-standard
       number.
+    * Allow about and benchmark dialogs to be closed with escape key (thanks to
+      smartcat99s)
 
     Windows
 

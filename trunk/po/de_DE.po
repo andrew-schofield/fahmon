@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FahMon Translation - de_DE 1.1.b1\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-12-12 23:37+0000\n"
+"POT-Creation-Date: 2008-12-24 23:46+0000\n"
 "PO-Revision-Date: 2008-10-31 09:07+0100\n"
 "Last-Translator: Mark Gerber <mark.gerber@web.de>\n"
 "Language-Team: Mark Gerber <mark.gerber@web.de>\n"
@@ -13,44 +13,44 @@ msgstr ""
 "X-Poedit-Country: GERMANY\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#: src/aboutDialog.cpp:42
+#: src/aboutDialog.cpp:49
 msgid "About"
 msgstr "Info über FahMon"
 
-#: src/aboutDialog.cpp:53
+#: src/aboutDialog.cpp:61
 msgid "Lead Developer:"
 msgstr "Hauptentwickler:"
 
 #. TRANSLATORS: This is a proper name. See the gettext manual, section Names.
 #. Pronunciation is like "An-droo Skow(e)-fee-uld"
-#: src/aboutDialog.cpp:56
+#: src/aboutDialog.cpp:64
 msgid "Andrew Schofield"
 msgstr "Andrew Schofield"
 
-#: src/aboutDialog.cpp:57
+#: src/aboutDialog.cpp:65
 msgid "Retired Developer:"
 msgstr "Ursprünglicher Entwickler:"
 
 #. TRANSLATORS: This is a proper name. See the gettext manual, section Names. This is a non-ASCII name,
 #. hence the use of unicode escape codes. Pronunciation is like "Fran-swa Angle-ray"
-#: src/aboutDialog.cpp:60
+#: src/aboutDialog.cpp:68
 msgid "Fran\\u00E7ois Ingelrest"
 msgstr "Fran\\u00E7ois Ingelrest"
 
-#: src/aboutDialog.cpp:61
+#: src/aboutDialog.cpp:69
 msgid "Homepage:"
 msgstr "Homepage:"
 
-#: src/aboutDialog.cpp:63
+#: src/aboutDialog.cpp:71
 msgid "Qd homepage:"
 msgstr "qd-Homepage:"
 
-#: src/aboutDialog.cpp:65
+#: src/aboutDialog.cpp:73
 msgid "Licence:"
 msgstr "Lizenz:"
 
 #. TRANSLATORS: This refers to the wxWidgets software library
-#: src/aboutDialog.cpp:70
+#: src/aboutDialog.cpp:78
 msgid "Library:"
 msgstr "Bibliothek:"
 
@@ -62,84 +62,84 @@ msgstr "Benchmarks"
 msgid "Projects"
 msgstr "Projekte"
 
-#: src/benchmarksDialog.cpp:246
+#: src/benchmarksDialog.cpp:247
 msgid "No benchmarks for this project!"
 msgstr "Keine Benchmarks für dieses Projekt vorhanden."
 
-#: src/benchmarksDialog.cpp:256
+#: src/benchmarksDialog.cpp:257
 #, c-format
 msgid "Project : %u\n"
 msgstr "Projekt    : %u\n"
 
-#: src/benchmarksDialog.cpp:257
+#: src/benchmarksDialog.cpp:258
 #, c-format
 msgid "Core    : %s\n"
 msgstr "Core       : %s\n"
 
-#: src/benchmarksDialog.cpp:258
+#: src/benchmarksDialog.cpp:259
 #, c-format
 msgid "Frames  : %u\n"
 msgstr "Frames     : %u\n"
 
-#: src/benchmarksDialog.cpp:259
+#: src/benchmarksDialog.cpp:260
 #, c-format
 msgid "Credit  : %u\n"
 msgstr "Gutschrift : %u Punkte\n"
 
-#: src/benchmarksDialog.cpp:263
+#: src/benchmarksDialog.cpp:264
 #, c-format
 msgid "Project : %u (Unknown)\n"
 msgstr "Projekt    : %u (unbekannt)\n"
 
-#: src/benchmarksDialog.cpp:289
+#: src/benchmarksDialog.cpp:290
 #, c-format
 msgid "Min. Time / Frame : %s"
 msgstr "Minimale Frame-Dauer   : %s"
 
-#: src/benchmarksDialog.cpp:295 src/benchmarksDialog.cpp:316
-#: src/benchmarksDialog.cpp:341 src/benchmarksDialog.cpp:343
-#: src/benchmarksDialog.cpp:345
+#: src/benchmarksDialog.cpp:296 src/benchmarksDialog.cpp:317
+#: src/benchmarksDialog.cpp:342 src/benchmarksDialog.cpp:344
+#: src/benchmarksDialog.cpp:346
 #, c-format
 msgid " - %.2f ppd"
 msgstr "- %.2f ppd"
 
-#: src/benchmarksDialog.cpp:300
+#: src/benchmarksDialog.cpp:301
 msgid "No Min. Time / Frame"
 msgstr "Keine minimale Frame-Dauer"
 
-#: src/benchmarksDialog.cpp:310
+#: src/benchmarksDialog.cpp:311
 #, c-format
 msgid "Avg. Time / Frame : %s"
 msgstr "Gemittelte Frame-Dauer : %s"
 
-#: src/benchmarksDialog.cpp:321
+#: src/benchmarksDialog.cpp:322
 msgid "No Avg. Time / Frame"
 msgstr "Keine gemittelte Frame-Dauer"
 
-#: src/benchmarksDialog.cpp:333
+#: src/benchmarksDialog.cpp:334
 #, c-format
 msgid "Cur. Time / Frame : %s"
 msgstr "Aktuelle Frame-Dauer   : %s"
 
-#: src/benchmarksDialog.cpp:334
+#: src/benchmarksDialog.cpp:335
 #, c-format
 msgid "R3F. Time / Frame : %s"
 msgstr "L3F-Frame-Dauer        : %s"
 
-#: src/benchmarksDialog.cpp:335
+#: src/benchmarksDialog.cpp:336
 #, c-format
 msgid "Eff. Time / Frame : %s"
 msgstr "Effektive Frame-Dauer  : %s"
 
-#: src/benchmarksDialog.cpp:350
+#: src/benchmarksDialog.cpp:351
 msgid "No Cur. Time / Frame"
 msgstr "Keine aktuelle Frame-Dauer"
 
-#: src/benchmarksDialog.cpp:351
+#: src/benchmarksDialog.cpp:352
 msgid "No R3F. Time / Frame"
 msgstr "Keine L3F-Frame-Dauer"
 
-#: src/benchmarksDialog.cpp:352
+#: src/benchmarksDialog.cpp:353
 msgid "No Eff. Time / Frame"
 msgstr "Keine effektive Frame-Dauer"
 
@@ -169,15 +169,15 @@ msgstr "anonym"
 #: src/client.cpp:100 src/listViewClients.cpp:726 src/listViewClients.cpp:730
 #: src/mainDialog.cpp:469 src/mainDialog.cpp:474 src/mainDialog.cpp:475
 #: src/mainDialog.cpp:476 src/mainDialog.cpp:477 src/mainDialog.cpp:478
-#: src/mainDialog.cpp:568 src/mainDialog.cpp:624 src/webMonitor.cpp:134
-#: src/webMonitor.cpp:135 src/webMonitor.cpp:136 src/webMonitor.cpp:137
-#: src/webMonitor.cpp:138 src/webMonitor.cpp:139 src/webMonitor.cpp:140
-#: src/webMonitor.cpp:141 src/webMonitor.cpp:142 src/webMonitor.cpp:192
-#: src/webMonitor.cpp:193 src/webMonitor.cpp:194 src/webMonitor.cpp:195
-#: src/webMonitor.cpp:196 src/webMonitor.cpp:197 src/webMonitor.cpp:198
-#: src/webMonitor.cpp:206 src/webMonitor.cpp:207 src/webMonitor.cpp:208
-#: src/webMonitor.cpp:209 src/webMonitor.cpp:210 src/webMonitor.cpp:267
-#: src/webMonitor.cpp:321 src/webMonitor.cpp:381 src/webMonitor.cpp:385
+#: src/mainDialog.cpp:568 src/mainDialog.cpp:624 src/webMonitor.cpp:135
+#: src/webMonitor.cpp:136 src/webMonitor.cpp:137 src/webMonitor.cpp:138
+#: src/webMonitor.cpp:139 src/webMonitor.cpp:140 src/webMonitor.cpp:141
+#: src/webMonitor.cpp:142 src/webMonitor.cpp:143 src/webMonitor.cpp:193
+#: src/webMonitor.cpp:194 src/webMonitor.cpp:195 src/webMonitor.cpp:196
+#: src/webMonitor.cpp:197 src/webMonitor.cpp:198 src/webMonitor.cpp:199
+#: src/webMonitor.cpp:207 src/webMonitor.cpp:208 src/webMonitor.cpp:209
+#: src/webMonitor.cpp:210 src/webMonitor.cpp:211 src/webMonitor.cpp:268
+#: src/webMonitor.cpp:322 src/webMonitor.cpp:382 src/webMonitor.cpp:386
 msgid "N/A"
 msgstr "k. A."
 
@@ -321,7 +321,7 @@ msgstr "Bitte den Ordner wählen, in dem sich der F@H-Client befindet:"
 msgid "You must fill the name AND the locations fields."
 msgstr "Gib bitte sowohl einen Namen als auch einen Ort an."
 
-#: src/clientsManager.cpp:175 src/webMonitor.cpp:755
+#: src/clientsManager.cpp:175 src/webMonitor.cpp:756
 #, c-format
 msgid "Error while parsing %s on line %u"
 msgstr "Fehler beim Analysieren von %s in Zeile %u."
@@ -441,22 +441,22 @@ msgid "%.1f KB/s"
 msgstr "%.1f kB/s"
 
 #: src/listViewClients.cpp:160 src/listViewClients.cpp:911
-#: src/webMonitor.cpp:614
+#: src/webMonitor.cpp:615
 msgid "Progress"
 msgstr "Fortschritt"
 
 #: src/listViewClients.cpp:161 src/listViewClients.cpp:912
-#: src/webMonitor.cpp:615
+#: src/webMonitor.cpp:616
 msgid "Name"
 msgstr "Name"
 
 #: src/listViewClients.cpp:162 src/listViewClients.cpp:913
-#: src/webMonitor.cpp:616
+#: src/webMonitor.cpp:617
 msgid "ETA"
 msgstr "ETA"
 
 #: src/listViewClients.cpp:163 src/listViewClients.cpp:914
-#: src/webMonitor.cpp:617
+#: src/webMonitor.cpp:618
 msgid "PPD"
 msgstr "PPD"
 
@@ -465,17 +465,17 @@ msgid "Core"
 msgstr "Core"
 
 #: src/listViewClients.cpp:165 src/listViewClients.cpp:916
-#: src/webMonitor.cpp:611
+#: src/webMonitor.cpp:612
 msgid "PRCG"
 msgstr "Projekt"
 
 #: src/listViewClients.cpp:166 src/listViewClients.cpp:917
-#: src/webMonitor.cpp:612
+#: src/webMonitor.cpp:613
 msgid "Credit"
 msgstr "Gutschrift"
 
 #: src/listViewClients.cpp:167 src/listViewClients.cpp:918
-#: src/webMonitor.cpp:613
+#: src/webMonitor.cpp:614
 msgid "Downloaded"
 msgstr "Heruntergeladen"
 
@@ -487,14 +487,14 @@ msgstr "Fälligkeit"
 msgid "Loading..."
 msgstr "Abfrage läuft..."
 
-#: src/listViewClients.cpp:606 src/mainDialog.cpp:512 src/webMonitor.cpp:214
+#: src/listViewClients.cpp:606 src/mainDialog.cpp:512 src/webMonitor.cpp:215
 #, c-format
 msgid "%u points"
 msgstr "%u Punkte"
 
 #: src/listViewClients.cpp:638 src/listViewClients.cpp:685
 #: src/mainDialog.cpp:456 src/mainDialog.cpp:549 src/mainDialog.cpp:606
-#: src/webMonitor.cpp:176 src/webMonitor.cpp:249 src/webMonitor.cpp:303
+#: src/webMonitor.cpp:177 src/webMonitor.cpp:250 src/webMonitor.cpp:304
 #, c-format
 msgid "%s ago"
 msgstr "vor %s"
@@ -506,25 +506,25 @@ msgid "Unknown"
 msgstr "Unbekannt"
 
 #: src/listViewClients.cpp:689 src/mainDialog.cpp:553 src/mainDialog.cpp:610
-#: src/webMonitor.cpp:253 src/webMonitor.cpp:307
+#: src/webMonitor.cpp:254 src/webMonitor.cpp:308
 #, c-format
 msgid "In %s"
 msgstr "in %s"
 
-#: src/listViewClients.cpp:718 src/webMonitor.cpp:329 src/webMonitor.cpp:373
+#: src/listViewClients.cpp:718 src/webMonitor.cpp:330 src/webMonitor.cpp:374
 msgid "Disabled"
 msgstr "Deaktiviert"
 
-#: src/listViewClients.cpp:722 src/webMonitor.cpp:377
+#: src/listViewClients.cpp:722 src/webMonitor.cpp:378
 msgid "Finished"
 msgstr "Fertig"
 
-#: src/listViewClients.cpp:734 src/webMonitor.cpp:389
+#: src/listViewClients.cpp:734 src/webMonitor.cpp:390
 msgid "*Hung*"
 msgstr "*Hänger*"
 
-#: src/listViewClients.cpp:738 src/webMonitor.cpp:359 src/webMonitor.cpp:393
-#: src/webMonitor.cpp:597
+#: src/listViewClients.cpp:738 src/webMonitor.cpp:360 src/webMonitor.cpp:394
+#: src/webMonitor.cpp:598
 msgid "Paused"
 msgstr "Pausiert"
 
@@ -868,35 +868,35 @@ msgstr "Zeigt allgemeine Programminformation über %s an."
 msgid "&Help"
 msgstr "&Hilfe"
 
-#: src/mainDialog.cpp:758 src/webMonitor.cpp:618
+#: src/mainDialog.cpp:758 src/webMonitor.cpp:619
 msgid "Work Unit Information"
 msgstr "Work Unit"
 
-#: src/mainDialog.cpp:786 src/webMonitor.cpp:619
+#: src/mainDialog.cpp:786 src/webMonitor.cpp:620
 msgid "Core:"
 msgstr "Core:"
 
-#: src/mainDialog.cpp:788 src/webMonitor.cpp:620
+#: src/mainDialog.cpp:788 src/webMonitor.cpp:621
 msgid "Project:"
 msgstr "Projekt:"
 
-#: src/mainDialog.cpp:790 src/webMonitor.cpp:621
+#: src/mainDialog.cpp:790 src/webMonitor.cpp:622
 msgid "Credit:"
 msgstr "Gutschrift:"
 
-#: src/mainDialog.cpp:792 src/webMonitor.cpp:622
+#: src/mainDialog.cpp:792 src/webMonitor.cpp:623
 msgid "Username:"
 msgstr "Benutzername:"
 
-#: src/mainDialog.cpp:794 src/webMonitor.cpp:630
+#: src/mainDialog.cpp:794 src/webMonitor.cpp:631
 msgid "Downloaded:"
 msgstr "Heruntergeladen:"
 
-#: src/mainDialog.cpp:796 src/webMonitor.cpp:623
+#: src/mainDialog.cpp:796 src/webMonitor.cpp:624
 msgid "Preferred Deadline:"
 msgstr "Bevorzugte Fälligkeit:"
 
-#: src/mainDialog.cpp:798 src/webMonitor.cpp:624
+#: src/mainDialog.cpp:798 src/webMonitor.cpp:625
 msgid "Final Deadline:"
 msgstr "Endgültige Fälligkeit:"
 
@@ -1306,31 +1306,31 @@ msgstr "Wiederherstellen"
 msgid "Quit"
 msgstr "Beenden"
 
-#: src/webMonitor.cpp:334 src/webMonitor.cpp:577
+#: src/webMonitor.cpp:335 src/webMonitor.cpp:578
 msgid "Inaccessible"
 msgstr "Zugriff nicht möglich"
 
-#: src/webMonitor.cpp:339 src/webMonitor.cpp:581
+#: src/webMonitor.cpp:340 src/webMonitor.cpp:582
 msgid "Stopped"
 msgstr "Gestoppt"
 
-#: src/webMonitor.cpp:344 src/webMonitor.cpp:585
+#: src/webMonitor.cpp:345 src/webMonitor.cpp:586
 msgid "Inactive"
 msgstr "Inaktiv"
 
-#: src/webMonitor.cpp:349 src/webMonitor.cpp:589
+#: src/webMonitor.cpp:350 src/webMonitor.cpp:590
 msgid "Hung"
 msgstr "Hänger"
 
-#: src/webMonitor.cpp:354 src/webMonitor.cpp:593
+#: src/webMonitor.cpp:355 src/webMonitor.cpp:594
 msgid "Async"
 msgstr "Async"
 
-#: src/webMonitor.cpp:364
+#: src/webMonitor.cpp:365
 msgid "Ok"
 msgstr "Ok"
 
-#: src/webMonitor.cpp:446
+#: src/webMonitor.cpp:447
 #, c-format
 msgid ""
 "Could not open template file <%s> for reading!\n"
@@ -1339,7 +1339,7 @@ msgstr ""
 "Die Vorlagendatei <%s> kann nicht zum Lesen geöffnet werden.\n"
 "Die Webanwendung wird nicht erzeugt."
 
-#: src/webMonitor.cpp:451
+#: src/webMonitor.cpp:452
 #, c-format
 msgid ""
 "Could not open file <%s> for writing!\n"
@@ -1348,27 +1348,27 @@ msgstr ""
 "Die Datei <%s> kann nicht zum Schreiben geöffnet werden.\n"
 "Das WebApp wird nicht erzeugt."
 
-#: src/webMonitor.cpp:610
+#: src/webMonitor.cpp:611
 msgid "State"
 msgstr "Status"
 
-#: src/webMonitor.cpp:625
+#: src/webMonitor.cpp:626
 msgid "Total PPD:"
 msgstr "PPD total:"
 
-#: src/webMonitor.cpp:626
+#: src/webMonitor.cpp:627
 msgid "Web View"
 msgstr "Webansicht"
 
-#: src/webMonitor.cpp:627
+#: src/webMonitor.cpp:628
 msgid "FahMon Client Monitoring"
 msgstr "FahMon Client-Überwachung"
 
-#: src/webMonitor.cpp:628
+#: src/webMonitor.cpp:629
 msgid "Simple Text Output"
 msgstr "Einfache Textausgabe"
 
-#: src/webMonitor.cpp:629
+#: src/webMonitor.cpp:630
 msgid "Last updated:"
 msgstr "Zuletzt aktualisiert:"
 

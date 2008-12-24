@@ -104,6 +104,7 @@ BenchmarksDialog::BenchmarksDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY
 	topLevelSizer->Add(mainSizer, 1, wxEXPAND | wxALL, FMC_GUI_BORDER);
 	SetSizer(topLevelSizer);
 	topLevelSizer->Fit(this);
+	SetAffirmativeId(wxID_CLOSE);
 
 	// --- Restore the size of the frame
 	_PrefsGetUint(PREF_BENCHMARKSDIALOG_FRAMEWIDTH,  frameWidth);

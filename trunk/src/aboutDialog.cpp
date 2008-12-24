@@ -35,6 +35,13 @@
 #include "wx/statbmp.h"
 #include "wx/statline.h"
 #include "wx/hyperlink.h"
+#include "wx/button.h"
+
+// Events processed by this class
+BEGIN_EVENT_TABLE(AboutDialog, wxDialog)
+	// Buttons
+	EVT_BUTTON(wxID_CLOSE,    AboutDialog::OnCloseButton)
+END_EVENT_TABLE()
 
 AboutDialog* AboutDialog::mInstance = NULL;
 
@@ -43,7 +50,8 @@ AboutDialog::AboutDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, wxString
 {
 	wxBoxSizer      *topLevelSizer;
 	wxBoxSizer      *infoSizer;
-	wxFlexGridSizer *mainSizer;
+	wxBoxSizer      *buttonSizer;
+	wxFlexGridSizer *flexSizer;
 	wxFlexGridSizer *authorHomepageSizer;
 
 
@@ -83,17 +91,25 @@ AboutDialog::AboutDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, wxString
 
 
 	// ---
-	mainSizer = new wxFlexGridSizer(2, FMC_GUI_SPACING_LOW, FMC_GUI_SPACING_LOW);
+	flexSizer = new wxFlexGridSizer(2, FMC_GUI_SPACING_LOW, FMC_GUI_SPACING_LOW);
 
-	mainSizer->Add(new wxStaticBitmap(this, wxID_ANY, wxBitmap(wxImage(PathManager::GetImgPath() + wxT(FMC_FILE_IMG_ABOUT), wxBITMAP_TYPE_PNG))), 0, wxALIGN_CENTER_VERTICAL | wxRIGHT, FMC_GUI_SPACING_HIGH);
-	mainSizer->Add(infoSizer);
+	flexSizer->Add(new wxStaticBitmap(this, wxID_ANY, wxBitmap(wxImage(PathManager::GetImgPath() + wxT(FMC_FILE_IMG_ABOUT), wxBITMAP_TYPE_PNG))), 0, wxALIGN_CENTER_VERTICAL | wxRIGHT, FMC_GUI_SPACING_HIGH);
+	flexSizer->Add(infoSizer);
+
+	buttonSizer = new wxBoxSizer(wxVERTICAL);
+#ifndef __WXMAC__
+	buttonSizer->Add(new wxButton(this, wxID_CLOSE), 0, wxALIGN_CENTER_HORIZONTAL);
+#endif
 
 	// ---
 	topLevelSizer = new wxBoxSizer(wxVERTICAL);
 
-	topLevelSizer->Add(mainSizer, 1, wxEXPAND | wxALL, FMC_GUI_BORDER);
+	topLevelSizer->Add(flexSizer, 1, wxEXPAND | wxALL, FMC_GUI_BORDER);
+	topLevelSizer->Add(buttonSizer, 0, wxEXPAND | wxALL, FMC_GUI_BORDER);
+
 	SetSizer(topLevelSizer);
 	topLevelSizer->Fit(this);
+	SetAffirmativeId(wxID_CLOSE);
 }
 
 
@@ -128,4 +144,9 @@ int AboutDialog::ShowModal(void)
 	Center();
 
 	return wxDialog::ShowModal();
+}
+
+void AboutDialog::OnCloseButton(wxCommandEvent& event)
+{
+	Close();
 }

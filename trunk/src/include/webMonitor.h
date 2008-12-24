@@ -148,7 +148,11 @@ private:
 	 **/
 	void ProcessTemplate(wxString const &templateFile, wxString const &outputFile);
 
-	void Load(void);
+	/**
+	 * Custom Variable processor.
+	 * This method loads the custom variables from custom.dat
+	 **/
+	void LoadCustomVariables(void);
 };
 
 #endif /* _WEBMONITOR_H */

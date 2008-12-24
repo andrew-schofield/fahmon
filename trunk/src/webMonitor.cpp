@@ -106,7 +106,8 @@ void WebMonitor::WriteApp(void)
 	wxDateTime     downloadTime;
 	wxDateTime     timeNow;
 	wxTimeSpan     timeDiff;
-	Load();
+
+	LoadCustomVariables();
 
 	mDataArray = new wxString *[ClientsManager::GetInstance()->GetCount()];
 	for (i=0; i<ClientsManager::GetInstance()->GetCount(); i++)
@@ -688,7 +689,7 @@ const wxString WebMonitor::GetVariable(wxString const &variable)
 }
 
 
-void WebMonitor::Load(void)
+void WebMonitor::LoadCustomVariables(void)
 {
 	bool       isVariableOk;
 	bool       isValueOk;

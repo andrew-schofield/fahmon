@@ -72,31 +72,31 @@ public:
 	/**
 	 * @return Whether the client is stopped or not.
 	 **/
-	bool     ClientIsStopped(void)        const {return mClientIsStopped;}
+	bool     ClientIsStopped(void)      const {return mClientIsStopped;}
 	/**
 	 * @return Whether the client is paused or not.
 	 **/
-	bool     ClientIsPaused(void)        const {return mClientIsPaused;}
+	bool     ClientIsPaused(void)       const {return mClientIsPaused;}
 	/**
 	 * @return The current frame ID.
 	 **/
-	FrameId  GetId(void)                  const {return mId;}
+	FrameId  GetId(void)                const {return mId;}
 	/**
 	 * @return The duration of the current frame in seconds.
 	 **/
-	wxUint32 GetDuration(void)            const {return mDuration;}
+	wxUint32 GetDuration(void)          const {return mDuration;}
 	/**
 	 * @return The time since the current frame was completed in seconds.
 	 **/
-	wxUint32 GetElapsedSeconds(void)      const {return mElapsedSeconds;}
+	wxUint32 GetElapsedSeconds(void)    const {return mElapsedSeconds;}
 	/**
 	 * @return The effective duration of the current frame.
 	 **/
-	wxUint32 GetEffectiveDuration(void)   const {return mEffectiveDuration;}
+	wxUint32 GetEffectiveDuration(void) const {return mEffectiveDuration;}
 	/**
 	 * @return The number of "frames"in the current WU.
 	 **/
-	wxUint32 GetFrameCount(void)          const {return mFrameCount;}
+	wxUint32 GetFrameCount(void)        const {return mFrameCount;}
 
 	// --- Setters
 	/**
@@ -115,7 +115,7 @@ public:
 	 * Set the current client state.
 	 * @param isPaused Is client paused?.
 	 **/
-	void SetClientIsPaused(bool isPaused)               {mClientIsPaused = isPaused;}
+	void SetClientIsPaused(bool isPaused)                {mClientIsPaused = isPaused;}
 
 	/**
 	 * Set the duration of the current frame.

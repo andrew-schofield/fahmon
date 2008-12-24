@@ -49,6 +49,12 @@ protected:
 	 **/
 	~AboutDialog(void);
 
+	/**
+	 * Event: The 'close' button has been pushed.
+	 * Closes the benchmarks dialog.
+	 * @param event The event itself. This is sent automatically.
+	 **/
+	void OnCloseButton(wxCommandEvent& event);
 
 public:
 	// Singleton pattern
@@ -71,6 +77,10 @@ public:
 	 * Opens a modal window, and centres it.
 	 **/
 	int ShowModal(void);
+
+
+private:
+	DECLARE_EVENT_TABLE()
 };
 
 
