@@ -263,17 +263,25 @@ WorkUnitFrame* FahLogAnalyzer::AnalyzeLastFrame(wxString const &fahlogComplete, 
 			if( (endFrame1.completedSteps - endFrame2.completedSteps) == (endFrame2.completedSteps - endFrame3.completedSteps) )
 			{
 				frameCountTemp1 = (endFrame1.completedSteps - endFrame3.completedSteps);
-				if(frameCountTemp1 == 0) {
+				if(frameCountTemp1 == 0)
+				{
 					frameCount = 0;
 					// wxPuts(_T("frameCountTemp1 is ZERO"));
-				} else {
-					frameCountTemp2 = (( frameCountTemp1 ) * 100) / endFrame1.totalSteps;
-					frameCount = 200 / (int)ceil(frameCountTemp2);
 				}
-			} else {
+				else
+				{
+					frameCountTemp2 = ((frameCountTemp1 * 100) / (float)endFrame1.totalSteps);
+					frameCount = (int)(200 / ceil(frameCountTemp2));
+					// wxPuts(wxString::Format(wxT("Total steps: %i, Steps per %%: %i, Frame count: %i, fcT: %f"), endFrame1.totalSteps, frameCountTemp1, frameCount, frameCountTemp2));
+				}
+			}
+			else
+			{
 				frameCount = 0;
 			}
-		} else {
+		}
+		else
+		{
 			frameCount = 100;
 		}
 		return new WorkUnitFrame(endFrame1.frameId, false, runDuration, elapsedSeconds, 0, frameCount);
@@ -392,10 +400,14 @@ void FahLogAnalyzer::ParseLogLine(wxString& lineToParse, LogLine& logLine)
 			{
 				logLine.totalSteps = (wxUint32)convertedNumber;
 			}
-		} else if (gpustyleWU == true) { //this isn't really the best way to do things, but it'll have to do for now.
+		}
+		else if (gpustyleWU == true)
+		{ //this isn't really the best way to do things, but it'll have to do for now.
 			logLine.completedSteps = logLine.frameId;
 			logLine.totalSteps = 100;
-		}else {
+		}
+		else
+		{
 			logLine.completedSteps = 0;
 			logLine.totalSteps = 0;
 		}
