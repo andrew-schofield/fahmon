@@ -455,7 +455,7 @@ bool Client::LoadUnitInfoFile(wxString const &filename)
 		rewind(in);
 		if(lSize > 512)
 			lSize = 512;
-		buffer = (char*) malloc(sizeof(char)*lSize);
+		buffer = (char*) malloc(sizeof(char) * lSize);
 		if (buffer == NULL)
 		{
 			_LogMsgError(wxString::Format(wxT("Memory error while opening %s"), filename.c_str()));

@@ -40,8 +40,17 @@
 #include "wx/image.h"
 #include "wx/intl.h"
 #include "wx/filename.h"
+#include "wx/debugrpt.h"
 
 #include "locale.h"
+
+#if !wxUSE_DEBUGREPORT
+#error "FahMon cannot be built without wxUSE_DEBUGREPORT"
+#endif
+
+#if !wxUSE_ON_FATAL_EXCEPTION
+#error "FahMon cannot be built without wxUSE_ON_FATAL_EXCEPTION"
+#endif
 
 // wxWidgets' way of creating a new application
 IMPLEMENT_APP(FahMonApp)
@@ -59,6 +68,13 @@ bool FahMonApp::OnInit(void)
 	bool               isTrayIconEnabled;
 	bool               requiresFirstRunDialog;
 	bool               startMaximised;
+
+
+    // at the moment fahmon.net isn't equipped to auto-process the uploads
+	m_uploadReport = false;
+
+    // call this to tell the library to call our OnFatalException()
+	wxHandleFatalExceptions();
 
 	// Check for another instance
 	#ifndef __WXMAC__
@@ -270,4 +286,55 @@ void FahMonApp::OnQueryEndSession(wxCloseEvent& event)
 void FahMonApp::OnClose(wxCloseEvent& event)
 {
 	MainDialog::GetInstance()->Close();
+}
+
+
+
+void FahMonApp::OnFatalException()
+{
+	GenerateReport(wxDebugReport::Context_Exception);
+}
+
+void FahMonApp::GenerateReport(wxDebugReport::Context ctx)
+{
+	wxDebugReportCompress *report = m_uploadReport ? new MyDebugReport
+	: new wxDebugReportCompress;
+
+    // add all standard files: currently this means just a minidump and an
+    // XML file with system info and stack trace
+	report->AddAll(ctx);
+
+	wxFileName fn(report->GetDirectory(), _T("timestamp.my"));
+	wxFFile file(fn.GetFullPath(), _T("w"));
+	if ( file.IsOpened() )
+	{
+		wxDateTime dt = wxDateTime::Now();
+		file.Write(dt.FormatISODate() + _T(' ') + dt.FormatISOTime());
+		file.Close();
+	}
+
+	report->AddFile(fn.GetFullName(), _T("timestamp of this report"));
+
+	report->AddFile(wxString::Format(_T("%s/clientstab.txt"),PathManager::GetCfgPath().c_str()), _T("Clients list"));
+	report->AddFile(wxString::Format(_T("%s/prefs.dat"),PathManager::GetCfgPath().c_str()), _T("Preferences file"));
+
+	if ( wxDebugReportPreviewStd().Show(*report) )
+	{
+		if ( report->Process() )
+		{
+			if ( m_uploadReport )
+			{
+				wxLogMessage(_T("Report successfully uploaded."));
+			}
+			else
+			{
+				Tools::InfoMsgBox(wxString::Format(_T("Report generated in \"%s\". A browser window will now open allowing you to submit this debug report."),
+								  report->GetCompressedFileName().c_str()));
+				Tools::OpenURLInBrowser(_T("http://fahmon.net/debug_report.php"));
+				report->Reset();
+			}
+		}
+	}
+
+	delete report;
 }

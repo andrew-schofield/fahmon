@@ -400,6 +400,8 @@ protected:
 
 	void OnMenuToggleInfoPanel(wxCommandEvent& event);
 
+	void OnMenuCreateDebugReport(wxCommandEvent& event);
+
 
 public:
 	// Singleton pattern

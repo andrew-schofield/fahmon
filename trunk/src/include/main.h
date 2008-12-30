@@ -98,6 +98,17 @@ public:
 	 **/
 	virtual bool OnInit(void);
 
+    // called when a crash occurs in this application
+	virtual void OnFatalException();
+
+    // this is where we really generate the debug report
+	void GenerateReport(wxDebugReport::Context ctx);
+
+    // if this function is called, we'll use MyDebugReport which would try to
+    // upload the (next) generated debug report to its URL, otherwise we just
+    // generate the debug report and leave it in a local file
+	void UploadReport(bool doIt) { m_uploadReport = doIt; }
+
 	/**
 	 * This is called just before the application exits.
 	 **/
@@ -105,6 +116,9 @@ public:
 
 private:
 DECLARE_EVENT_TABLE()
+
+	bool m_uploadReport;
+
 	/**
 	 * Event: Catches shutdown/logoff events.
 	 * This event allows FahMon to save settings and exit correctly when the system is logged off or shutdown.
@@ -175,6 +189,9 @@ public:
 		return new FahMonAppIPCConnection;
 	}
 };
+
+
+DECLARE_APP(FahMonApp);
 
 
 #endif /* _MAIN_H */

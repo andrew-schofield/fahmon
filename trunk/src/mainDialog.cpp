@@ -25,6 +25,7 @@
 #include "fahmon.h"
 #include "mainDialog.h"
 
+#include "main.h"
 #include "tools.h"
 #include "client.h"
 #include "trayManager.h"
@@ -75,6 +76,7 @@ enum _CONTROL_ID
 	MID_DELETECLIENT,
 	MID_VIEWCLIENT,
 	MID_TOGGLE_INFOPANEL,
+	MID_CREATE_DEBUG_REPORT,
 
 	// --- ListView
 	LST_CLIENTS
@@ -132,6 +134,7 @@ BEGIN_EVENT_TABLE(MainDialog, wxFrame)
 	EVT_MENU    (MID_DELETECLIENT,          MainDialog::OnMenuDeleteClient)
 	EVT_MENU    (MID_VIEWCLIENT,            MainDialog::OnMenuViewFiles)
 	EVT_MENU    (MID_TOGGLE_INFOPANEL,      MainDialog::OnMenuToggleInfoPanel)
+	EVT_MENU    (MID_CREATE_DEBUG_REPORT,   MainDialog::OnMenuCreateDebugReport)
 
 	// --- Frame
 	EVT_CLOSE   (MainDialog::OnClose)
@@ -150,7 +153,6 @@ BEGIN_EVENT_TABLE(MainDialog, wxFrame)
 	EVT_COMMAND    (wxID_ANY, EVT_PROJECTS_DATABASE_UPDATED, MainDialog::OnProjectsDatabaseUpdated)
 	EVT_COMMAND    (wxID_ANY, EVT_NEW_MESSAGE_LOGGED,        MainDialog::OnNewMessageLogged)
 END_EVENT_TABLE()
-
 
 // The single instance of MainDialog accross the application
 MainDialog* MainDialog::mInstance = NULL;
@@ -685,10 +687,12 @@ void MainDialog::CreateMenuBar(void)
 	menu->Append(MID_TOGGLE_INFOPANEL, _("Show/Hide &WU Info panel"), _("Toggle the display of the Work Unit Information panel"));
 	menuBar->Append(menu, _("&View"));
 
+	// The 'Tools' menu
 	menu = new wxMenu();
 	menu->Append(MID_TOGGLE_MESSAGES_FRAME, _("&Show/Hide Messages Window"), _("Toggle the messages window"));
 	menu->Append(MID_BENCHMARKS, _("&Benchmarks...\tCTRL+B"), _("Open the benchmarks dialog"));
 	menu->Append(MID_UPDATEPROJECTS, _("&Download New Projects"), _("Update the local project database"));
+	//menu->Append(MID_CREATE_DEBUG_REPORT, _("Create debug report"), _("Create a debug state report to send to the developers"));
 	menuBar->Append(menu, _("&Tools"));
 
 	// The 'Web' menu
@@ -1581,6 +1585,12 @@ void MainDialog::OnMenuToggleInfoPanel(wxCommandEvent& event)
 	{
 		mSplitterWindow->SplitVertically(mClientsList, mTopRightPanel);
 	}
+}
+
+
+void MainDialog::OnMenuCreateDebugReport(wxCommandEvent& event)
+{
+	wxGetApp().GenerateReport(wxDebugReport::Context_Current);
 }
 
 

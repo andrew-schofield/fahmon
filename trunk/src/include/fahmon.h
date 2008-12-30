@@ -22,9 +22,41 @@
 #include "fahmonTypes.h"
 #include "fahmonConsts.h"
 
+#include "wx/debugrpt.h"
+
 #ifdef _FAHMON_WIN32_
 #include "resource.h"
 #endif
+
+class MyDebugReport : public wxDebugReportUpload
+{
+	public:
+		MyDebugReport() : wxDebugReportUpload(_T("http://fahmon.net"),_T("report:file"),_T("action"))
+		{
+		}
+
+	protected:
+		virtual bool OnServerReply(const wxArrayString& reply)
+		{
+			if ( reply.IsEmpty() )
+			{
+				//wxPuts(_T("Didn't receive the expected server reply."));
+				return false;
+			}
+
+			wxString s(_T("Server replied:\n"));
+
+			const size_t count = reply.GetCount();
+			for ( size_t n = 0; n < count; n++ )
+			{
+				s << _T('\t') << reply[n] << _T('\n');
+			}
+
+			//wxPuts(wxString::Format(_T("%s"), s.c_str()));
+
+			return true;
+		}
+};
 
 
 #endif /* _FAHMON_H */
