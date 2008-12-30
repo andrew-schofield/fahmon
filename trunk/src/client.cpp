@@ -430,47 +430,19 @@ bool Client::LoadLogFile(wxString const &filename)
 bool Client::LoadUnitInfoFile(wxString const &filename)
 {
 	bool              progressOk;
-	unsigned int      lSize;
 	wxInt32           endingPos, startingPos;
-	FILE             *in;
 	unsigned long     tmpLong;
-	char             *buffer;
-	size_t            result;
 	wxString          currentLine;
+	wxFile            in(filename, wxFile::read);
+	char              buffer[512] = {0};
+	int               read = in.Read(buffer, std::min<off_t>(512, in.Length()));
 
-
-	// Try to open the file, check if it exists
-	if(!wxFileExists(filename))
-	{
+	if(read == wxInvalidOffset) {
+		in.Close();
 		return false;
 	}
-	if((in = fopen(filename.mb_str(), "rt")) == NULL)
-	{
-		return false;
-	}
-	else
-	{
-		fseek(in, 0, SEEK_END);
-		lSize = ftell(in);
-		rewind(in);
-		if(lSize > 512)
-			lSize = 512;
-		buffer = (char*) malloc(sizeof(char) * lSize);
-		if (buffer == NULL)
-		{
-			_LogMsgError(wxString::Format(wxT("Memory error while opening %s"), filename.c_str()));
-			return false;
-		}
-		result = fread(buffer, 1, lSize, in);
-		if (result != lSize)
-		{
-			_LogMsgError(wxString::Format(wxT("Reading error while opening %s"), filename.c_str()));
-			return false;
-		}
-		fclose(in);
-		currentLine = wxString(buffer, wxConvUTF8);
-		free(buffer);
-	}
+
+	currentLine = wxString(buffer, wxConvUTF8);
 
 	progressOk     = false;
 	startingPos = currentLine.Find(wxT("Progress:")) + 9;
