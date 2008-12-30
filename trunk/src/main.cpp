@@ -263,6 +263,8 @@ int FahMonApp::OnExit(void)
 	if (mInstanceChecker)
 		delete mInstanceChecker;
 #endif
+	if (mServerIPC)
+		delete mServerIPC;
 
 	return 0;
 }

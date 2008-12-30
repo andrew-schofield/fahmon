@@ -14,6 +14,7 @@ SVN
       smartcat99s).
     * Added crash reporter to help debugging.
     * Limited FAHlog parsing to last 4KiB.
+    * Fixed non-fatal bug in single-instance handler.
 
     Windows
 
