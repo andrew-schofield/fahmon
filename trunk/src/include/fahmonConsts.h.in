@@ -25,6 +25,7 @@
 #define FMC_INTMAX  2147483647l
 #define FMC_INTMAX2 2147483646l
 #define FMC_CLIENTSTAB_FIELDS 4
+#define FMC_MAX_LOG_LENGTH 4096
 
 
 // --- Strings

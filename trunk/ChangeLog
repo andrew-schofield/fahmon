@@ -13,6 +13,7 @@ SVN
     * Allow about and benchmark dialogs to be closed with escape key (thanks to
       smartcat99s).
     * Added crash reporter to help debugging.
+    * Limited FAHlog parsing to last 4KiB.
 
     Windows
 
