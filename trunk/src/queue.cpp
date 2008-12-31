@@ -233,8 +233,8 @@ tt:				if (genome)
 		mRun = le2(p->wuid.f.run);
 		mGen = le2(p->wuid.f.gen);
 		mClone = le2(p->wuid.f.clone);
-		wxString username(p->uname, wxConvUTF8);
-		wxString teamnumber(p->teamn, wxConvUTF8);
+		wxString username = wxString::FromAscii(p->uname);
+		wxString teamnumber = wxString::FromAscii(p->teamn);
 		it = tp[0] + COSM_EPOCH_OFFSET;
 		mDownloadDate = it;
 		mUserName = username;
