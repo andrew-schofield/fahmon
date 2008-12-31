@@ -82,7 +82,7 @@ bool Tools::LoadFile(wxString const &filename, wxString& fileContent)
 	wxMutexLocker lock(mMutexLoadFile);
 	wxFile            in(filename, wxFile::read);
 	char              buffer[FMC_MAX_LOG_LENGTH] = {0};
-	int               seeked = in.SeekEnd(-(std::min<off_t>(FMC_MAX_LOG_LENGTH, in.Length())));
+	int               seeked = in.SeekEnd(-(std::min<off_t>(FMC_MAX_LOG_LENGTH, in.Length())-1));
 	int               read = in.Read(buffer, std::min<off_t>(FMC_MAX_LOG_LENGTH, in.Length()));
 
 	if(read == wxInvalidOffset || seeked == wxInvalidOffset) {
@@ -90,7 +90,7 @@ bool Tools::LoadFile(wxString const &filename, wxString& fileContent)
 		return false;
 	}
 
-	fileContent = wxString(buffer, wxConvUTF8);
+	fileContent = wxString::FromAscii(buffer);
 
 	return true;
 }
