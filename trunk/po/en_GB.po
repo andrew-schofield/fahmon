@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-12-31 19:02+0000\n"
+"POT-Creation-Date: 2008-12-31 21:45+0000\n"
 "PO-Revision-Date: 2008-11-21 22:34+0000\n"
 "Last-Translator: Andrew Schofield <andrew_s@fahmon.net>\n"
 "Language-Team: British English\n"
@@ -586,7 +586,8 @@ msgid "Copyright (C) 2003-2007 Fran\\u00E7ois Ingelrest"
 msgstr "Copyright (C) 2003-2007 François Ingelrest"
 
 #: src/mainDialog.cpp:184
-msgid "Copyright (C) 2007-2008 Andrew Schofield"
+#, fuzzy
+msgid "Copyright (C) 2007-2009 Andrew Schofield"
 msgstr "Copyright (C) 2007-2008 Andrew Schofield"
 
 #: src/mainDialog.cpp:186
@@ -598,7 +599,8 @@ msgid "Copyright (C) 2002-2005 Richard P. Howell IV."
 msgstr "Copyright (C) 2002-2005 Richard P. Howell IV."
 
 #: src/mainDialog.cpp:188
-msgid "Copyright (C) 2005-2008 Sebastiaan Couwenberg"
+#, fuzzy
+msgid "Copyright (C) 2005-2009 Sebastiaan Couwenberg"
 msgstr "Copyright (C) 2005-2008 Sebastiaan Couwenberg"
 
 #: src/mainDialog.cpp:396
