@@ -80,6 +80,10 @@ void Tools::OpenURLInBrowser(wxString const &url)
 bool Tools::LoadFile(wxString const &filename, wxString& fileContent)
 {
 	wxMutexLocker lock(mMutexLoadFile);
+
+	if(!wxFile::Exists(filename))
+		return false;
+
 	wxFile            in(filename, wxFile::read);
 	char              buffer[FMC_MAX_LOG_LENGTH] = {0};
 	int               seeked = in.SeekEnd(-(std::min<off_t>(FMC_MAX_LOG_LENGTH, in.Length())-1));

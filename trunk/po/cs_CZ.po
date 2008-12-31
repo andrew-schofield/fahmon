@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cs_CZ\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2008-12-30 19:07+0000\n"
+"POT-Creation-Date: 2008-12-31 19:02+0000\n"
 "PO-Revision-Date: 2008-11-02 14:31+0100\n"
 "Last-Translator: Martin Bednar <serafean@gmail.com>\n"
 "Language-Team: Czech <en@li.org>\n"
@@ -214,52 +214,52 @@ msgstr "Nastala chyba při načítání %sunitinfo.txt!"
 msgid "Finished Reloading %s"
 msgstr "Znovu načítám %s"
 
-#: src/client.cpp:471
+#: src/client.cpp:475
 #, c-format
 msgid "The progress value in file %s could not be found/parsed"
 msgstr "Hodnotu postupu v souboru %s nelze najít/analyzovat"
 
-#: src/client.cpp:518
+#: src/client.cpp:522
 #, c-format
 msgid "Unable to save %s because it does not exist"
 msgstr "Nelze uložit %s jelikož neexistuje"
 
-#: src/client.cpp:525
+#: src/client.cpp:529
 #, c-format
 msgid "Unable to create directory %s"
 msgstr "Nelze vytvořit složku %s"
 
-#: src/client.cpp:538
+#: src/client.cpp:542
 #, c-format
 msgid "Unable to copy %s to %s"
 msgstr "Nelze kopírovat %s do %s"
 
-#: src/client.cpp:562
+#: src/client.cpp:566
 #, c-format
 msgid "%s is on frame %u"
 msgstr "%s dělá obrázek %u"
 
-#: src/client.cpp:566
+#: src/client.cpp:570
 #, c-format
 msgid "Cannot determine frame number for %s (this isn't a problem)"
 msgstr "Nelze určit číslo obrázku pro %s (toto není problém)"
 
-#: src/client.cpp:749
+#: src/client.cpp:753
 #, c-format
 msgid "%s has an unknown state (Unable to find a complete frame)"
 msgstr "%s je v neznámém stavu (Nelze najít hotový obrázek)"
 
-#: src/client.cpp:758
+#: src/client.cpp:762
 #, c-format
 msgid "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
 msgstr "%s je zastaven (\"Folding@Home Client Shutdown.\"nalezeno v logu)"
 
-#: src/client.cpp:766
+#: src/client.cpp:770
 #, c-format
 msgid "%s has been paused"
 msgstr "%s byl pozastaven"
 
-#: src/client.cpp:775
+#: src/client.cpp:779
 #, c-format
 msgid ""
 "%s has an unknown state (Unable to extract a valid elapsed time since the "
@@ -268,17 +268,17 @@ msgstr ""
 "%s je v neznámém stavu (Nedaří se načíst platný uplynutý čas od posledního "
 "hotového obrázku)"
 
-#: src/client.cpp:783
+#: src/client.cpp:787
 #, c-format
 msgid "%s has been marked as having a asynchronous clock."
 msgstr "%s byl označen jako majíc nesynchronizované hodiny"
 
-#: src/client.cpp:818
+#: src/client.cpp:822
 #, c-format
 msgid "%s seems to have hung : Elapsed time is %um and limit is %um"
 msgstr "y%s se zdá zablokovaný : Uplynulý čas je %um a limit je %um"
 
-#: src/client.cpp:823
+#: src/client.cpp:827
 #, c-format
 msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
 msgstr "%s se zdá být neaktivní : Uplynulý čas je %um a limit je %um"

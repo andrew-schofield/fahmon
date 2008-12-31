@@ -433,6 +433,10 @@ bool Client::LoadUnitInfoFile(wxString const &filename)
 	wxInt32           endingPos, startingPos;
 	unsigned long     tmpLong;
 	wxString          currentLine;
+
+	if(!wxFile::Exists(filename))
+		return false;
+
 	wxFile            in(filename, wxFile::read);
 	char              buffer[512] = {0};
 	int               read = in.Read(buffer, std::min<off_t>(512, in.Length()));
@@ -442,7 +446,7 @@ bool Client::LoadUnitInfoFile(wxString const &filename)
 		return false;
 	}
 
-	currentLine = wxString(buffer, wxConvUTF8);
+	currentLine = wxString::FromAscii(buffer);
 
 	progressOk     = false;
 	startingPos = currentLine.Find(wxT("Progress:")) + 9;
