@@ -1178,13 +1178,14 @@ bool MainDialog::ClientReloadAllowed(ClientId clientId)
 	wxMutexLocker lock(mMutexArrayBlocker);
 	int currentThread = s_clientThreadsArray.Index(clientId);
 	/* We didn't find our clientID, so no thread is currently running for that client */
-	if(currentThread == wxNOT_FOUND) {
+	if(currentThread == wxNOT_FOUND)
+	{
 		s_clientThreadsArray.Add(clientId);
 		s_clientThreadsArray.Item(s_clientThreadsArray.GetCount() - 1) = clientId;
-		//wxPuts(wxString::Format(_T("ClientReloadAllowed: True [%i]"), clientId));
 		return true;
-	} else {
-		//wxPuts(wxString::Format(_T("ClientReloadAllowed: False [%i]"), clientId));
+	}
+	else
+	{
 		return false;
 	}
 }
@@ -1201,10 +1202,8 @@ void MainDialog::OnClientReloaded(wxCommandEvent& event)
 	// The ListView must be updated, regardless of the current selection
 	mClientsList->UpdateClient(clientId);
 
-//	wxPuts(wxString::Format(_T("Trying to remove [%i] from thread list (completed)"), clientId));
 	wxMutexLocker lock(mMutexArrayBlocker);
 	s_clientThreadsArray.Remove(clientId);
-//	wxPuts(wxString::Format(_T("Removed [%i]"), clientId));
 
 	// However, other information must be updated only if the client is the currently selected one
 	if(clientId == mClientsList->GetSelectedClientId())

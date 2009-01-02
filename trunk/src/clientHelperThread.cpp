@@ -40,9 +40,8 @@ ClientHelperThread::ClientHelperThread(wxUint32 clientId) : wxThread(wxTHREAD_DE
 void* ClientHelperThread::Entry(void)
 {
 
-	if(MainDialog::GetInstance()->ClientReloadAllowed(mClientId)) {
-//		wxPuts(_T("Entry: CanReload"));
-
+	if(MainDialog::GetInstance()->ClientReloadAllowed(mClientId))
+	{
 		wxCommandEvent event(EVT_CLIENTRELOADED);
 		// We use the 'inlined' method to reload the client
 		// (The job is done in the current execution flow)
@@ -50,8 +49,6 @@ void* ClientHelperThread::Entry(void)
 		// Post an event to the queue of the MainDialog to warn it that the job is done
 		event.SetInt(mClientId);
 		MainDialog::GetInstance()->AddPendingEvent(event);
-	} else {
-//		wxPuts(wxString::Format(_T("Unable to reload [%i] ... thread still running")));
 	}
 
 	// Dummy return code

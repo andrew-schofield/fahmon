@@ -77,19 +77,25 @@ void Tools::OpenURLInBrowser(wxString const &url)
 }
 
 
-bool Tools::LoadFile(wxString const &filename, wxString& fileContent)
+bool Tools::LoadFile(wxString const &filename, wxString& fileContent, wxUint32 length, bool fromStart)
 {
 	wxMutexLocker lock(mMutexLoadFile);
 
 	if(!wxFile::Exists(filename))
 		return false;
 
-	wxFile            in(filename, wxFile::read);
-	char              buffer[FMC_MAX_LOG_LENGTH] = {0};
-	int               seeked = in.SeekEnd(-(std::min<off_t>(FMC_MAX_LOG_LENGTH, in.Length())-1));
-	int               read = in.Read(buffer, std::min<off_t>(FMC_MAX_LOG_LENGTH, in.Length()));
+	wxFile in(filename, wxFile::read);
+	length = (length == 0) ? in.Length() : length;
+	char buffer[length];
+	buffer[length] = 0;
+	int seeked = 0;
 
-	if(read == wxInvalidOffset || seeked == wxInvalidOffset) {
+	if(fromStart == false)
+		seeked = in.SeekEnd(-(std::min<off_t>(length, in.Length()-1)));
+
+	int read = in.Read(buffer, std::min<off_t>(length, in.Length()));
+
+	if(read == wxInvalidOffset || (fromStart == false && seeked == wxInvalidOffset)) {
 		in.Close();
 		return false;
 	}

@@ -256,7 +256,7 @@ int FahMonApp::OnExit(void)
 	ClientsManager::DestroyInstance();
 	ProjectsManager::DestroyInstance();
 	WebMonitor::DestroyInstance();
-	PreferencesManager::DestroyInstance();        // MUST be destroyed last, so that other managers can save their preferences when they are destroyed
+	PreferencesManager::DestroyInstance();
 	MessagesManager::DestroyInstance();
 
 #ifndef __WXMAC__

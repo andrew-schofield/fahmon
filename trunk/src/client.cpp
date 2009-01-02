@@ -67,22 +67,14 @@ void Client::SetLocation(const wxString& location)
 {
 	mLocation = location;
 
-	// In order to work with wx2.8.6msw, we can't do this anymore
-	// Avoid the use of backslashes
-	//mLocation.Replace(wxT("\\"), wxT("/"));
-
 	// Ensure that the location ends with a slash
 #ifdef _FAHMON_WIN32_
-	{
-		mLocation.Replace(wxT("/"), wxT("\\"));
-		if(mLocation.Last() != '\\')
-			mLocation += '\\';
-	}
+	mLocation.Replace(wxT("/"), wxT("\\"));
+	if(mLocation.Last() != '\\')
+		mLocation += '\\';
 #else
-	{
-		if(mLocation.Last() != '/')
-			mLocation += '/';
-	}
+	if(mLocation.Last() != '/')
+		mLocation += '/';
 #endif
 }
 
@@ -110,13 +102,9 @@ void Client::Reset(void)
 bool Client::ReloadNeeded(void) const
 {
 	if (wxFile::Exists(mLocation + wxT("FAHlog.txt")))
-	{
 		return wxFileModificationTime(mLocation + wxT("FAHlog.txt")) != mLastModification;
-	}
 	else
-	{
 		return false;
-	}
 }
 
 
@@ -416,7 +404,7 @@ void Client::Reload(void)
 bool Client::LoadLogFile(wxString const &filename)
 {
 	wxString myLog;
-	if(wxFileExists(filename) == false || Tools::LoadFile(filename, myLog) == false)
+	if(wxFileExists(filename) == false || Tools::LoadFile(filename, myLog, FMC_MAX_LOG_LENGTH, false) == false)
 	{
 		mLog = wxT("");
 		return false;
@@ -434,19 +422,10 @@ bool Client::LoadUnitInfoFile(wxString const &filename)
 	unsigned long     tmpLong;
 	wxString          currentLine;
 
-	if(!wxFile::Exists(filename))
-		return false;
-
-	wxFile            in(filename, wxFile::read);
-	char              buffer[512] = {0};
-	int               read = in.Read(buffer, std::min<off_t>(512, in.Length()));
-
-	if(read == wxInvalidOffset) {
-		in.Close();
+	if(wxFileExists(filename) == false || Tools::LoadFile(filename, currentLine, 512) == false)
+	{
 		return false;
 	}
-
-	currentLine = wxString::FromAscii(buffer);
 
 	progressOk     = false;
 	startingPos = currentLine.Find(wxT("Progress:")) + 9;

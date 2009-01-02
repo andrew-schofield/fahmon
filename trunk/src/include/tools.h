@@ -76,8 +76,10 @@ public:
 	 * A NULL character is appended to terminate the wxString
 	 * @param filename The file to open.
 	 * @param fileContent Reference to an objec to store the file contents.
+	 * @param length Length of data to read from file. Use 0 for entire file.
+	 * @param fromStart Should file be read from start or from end.
 	 **/
-	static bool     LoadFile(wxString const &filename, wxString& fileContent);
+	static bool     LoadFile(wxString const &filename, wxString& fileContent, wxUint32 length = 0, bool fromStart = true);
 
 	/**
 	 * Format a given time.

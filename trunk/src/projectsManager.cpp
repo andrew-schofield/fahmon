@@ -202,13 +202,14 @@ bool ProjectsManager::UpdateDatabase(bool forced, bool silentMode)
 	wxMutexLocker   lock(mMutexUpdateDatabase);        // --- Lock the access to this method
 	wxString        projectFile;
 	wxString        errorMsg;
-	ProgressManager progressManager(silentMode);
 
 	// Don't perform this update if we shouldn't
 	if(forced == false && ShouldPerformUpdate() == false)
 	{
 		return false;
 	}
+
+	ProgressManager progressManager(silentMode);
 
 	// This update will be the new reference
 	mLastUpdateTimestamp = wxGetLocalTime();
