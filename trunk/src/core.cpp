@@ -105,3 +105,43 @@ wxString Core::IdToLongName(CoreId identifier)
 
 	return mCoreLongName[identifier];
 }
+
+
+wxString Core::IdToClientType(CoreId identifier)
+{
+	wxString clientType;
+
+	switch(identifier)
+	{
+		case TINKER:
+		case GROMACS:
+		case DGROMACS:
+		case GBGROMACS:
+		case AMBER:
+		case QMD:
+		case GROMACS33:
+		case GROST:
+		case GROSIMT:
+		case DGROMACSB:
+		case DGROMACSC:
+			clientType = _("CPU");
+			break;
+		case GROSMP:
+		case GROCVS:
+			clientType = _("SMP");
+			break;
+		case GROGPU:
+		case GROGPU2:
+		case ATIDEV:
+		case NVDEV:
+			clientType = _("GPU");
+			break;
+		case UNKNOWN:
+		case GROPS3:
+		default:
+			clientType = _("Unknown");
+			break;
+	}
+
+	return clientType;
+}

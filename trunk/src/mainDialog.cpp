@@ -1353,7 +1353,7 @@ double MainDialog::GetTotalPPD(void) const
 
 	for(i=0; i<mClientsList->GetItemCount(); ++i)
 	{
-		test = mClientsList->GetCellContentsString(i,4);
+		test = mClientsList->GetCellContentsString(i,5);
 		test.ToDouble(&tmpdouble);
 		TotalPPD = TotalPPD + tmpdouble;
 	}

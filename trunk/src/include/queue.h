@@ -108,6 +108,7 @@ protected:
 	wxDateTime mDownloadDate; /**< Object variable storing the WU download date */
 	wxString   mUserName; /**< Object variable storing the username associated with the WU assignment */
 	wxUint32   mTeamNumber; /**< Object variable storing the team number associated with the WU assignment */
+	wxUint32   mUnitIndex; /**< Object variable storing the current work unit index in the queue */
 
 /**
  * Format of queue.dat.
@@ -243,6 +244,7 @@ public:
 	wxString          GetUserName(void)     const {return mUserName;} /**< Returns the user name associated with the assignment */
 	wxUint32          GetTeamNumber(void)   const {return mTeamNumber;} /**< Returns the team number associated with the assignment */
 	const wxDateTime& GetDownloadDate(void) const {return mDownloadDate;} /**< Returns the WU download date */
+	wxUint32          GetUnitIndex(void)    const {return mUnitIndex;} /**< Returns the Work Unit index */
 
 /**
  * End qd

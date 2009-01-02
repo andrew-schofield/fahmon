@@ -242,6 +242,7 @@ tt:				if (genome)
 		{
 			mTeamNumber  = (wxUint32)tmpLong;
 		}
+		mUnitIndex = bp->current;
 		return true;
 	}
 	return true;

@@ -88,6 +88,8 @@ A number of template variables are defined to access data provided by FahMon:
 "@TOTAL_PPD@"		Returns the total PPD of all clients being monitored
 "@STATE_IMAGE@"		Returns the location of the client state image
 "@CLIENT_ID@"		Returns the ID of the current client
+"@CLIENT_TYPE@"		Returns the type of client (CPU/SMP/GPU)
+"@CORE_VERSION"		Returns the core version number
 
 Each template variable can also contain an optional string that will allow the
 output to be padded or truncated to a specific length. This is implemented so
@@ -123,6 +125,8 @@ native language if possible.
 "@_Simple_Text_Output@"
 "@_Last_updated:@"
 "@_Downloaded:@"
+"@_Client_Type@"
+"@_Core_Version@"
 
 Custom Variables
 ================

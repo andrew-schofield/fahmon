@@ -87,6 +87,18 @@
 #define PREF_LISTVIEWCLIENTS_DEADLINECOLUMNENABLED    wxT("ListViewClients.DeadlineColumnEnabled")
 #define PREF_LISTVIEWCLIENTS_DEADLINECOLUMNENABLED_DV false
 
+#define PREF_LISTVIEWCLIENTS_CLIENTCOLUMNWIDTH         wxT("ListViewClients.CLIENTColumnWidth")
+#define PREF_LISTVIEWCLIENTS_CLIENTCOLUMNWIDTH_DV      80
+
+#define PREF_LISTVIEWCLIENTS_CLIENTCOLUMNENABLED    wxT("ListViewClients.ClientColumnEnabled")
+#define PREF_LISTVIEWCLIENTS_CLIENTCOLUMNENABLED_DV false
+
+#define PREF_LISTVIEWCLIENTS_COREVCOLUMNWIDTH         wxT("ListViewClients.COREVColumnWidth")
+#define PREF_LISTVIEWCLIENTS_COREVCOLUMNWIDTH_DV      80
+
+#define PREF_LISTVIEWCLIENTS_COREVCOLUMNENABLED    wxT("ListViewClients.CoreVColumnEnabled")
+#define PREF_LISTVIEWCLIENTS_COREVCOLUMNENABLED_DV false
+
 
 #define PREF_LISTVIEWCLIENTS_SORTCOLUMN             wxT("ListViewClients.SortColumn") /**< Preference setting for column to sort by */
 #define PREF_LISTVIEWCLIENTS_SORTCOLUMN_DV          LVC_PROGRESS /**< Default value for sorting column */
@@ -118,6 +130,8 @@ protected:
 	bool           mCreditEnabled;
 	bool           mDownloadedEnabled;
 	bool           mDeadlineEnabled;
+	bool           mClientTypeEnabled;
+	bool           mCoreVersionEnabled;
 
 	/**
 	 * Sort the list, according to the current sorting criterion.
@@ -165,6 +179,8 @@ protected:
 	void OnMenuDownloaded(wxCommandEvent& event);
 	void OnMenuDeadline(wxCommandEvent& event);
 	void OnMenuEnDisable(wxCommandEvent& event);
+	void OnMenuClientType(wxCommandEvent& event);
+	void OnMenuCoreVersion(wxCommandEvent& event);
 
 	void OnColBeginDrag(wxListEvent& event);
 

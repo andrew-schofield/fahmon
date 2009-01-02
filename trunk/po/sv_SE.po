@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv_SE\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2009-01-02 17:25+0000\n"
+"POT-Creation-Date: 2009-01-02 20:41+0000\n"
 "PO-Revision-Date: 2008-02-01 20:20+0100\n"
 "Last-Translator: Olof Persson <floffe@gmail.com>\n"
 "Language-Team: Swedish\n"
@@ -165,7 +165,7 @@ msgid "Unknown client"
 msgstr "Okänd klient"
 
 #: src/client.cpp:56 src/client.cpp:98 src/core.cpp:142
-#: src/listViewClients.cpp:652 src/listViewClients.cpp:705
+#: src/listViewClients.cpp:696 src/listViewClients.cpp:749
 #: src/mainDialog.cpp:503 src/mainDialog.cpp:504 src/mainDialog.cpp:505
 #: src/mainDialog.cpp:506
 msgid "Unknown"
@@ -179,18 +179,20 @@ msgstr "Logg ej inläst!"
 msgid "anonymous"
 msgstr "anonym"
 
-#: src/client.cpp:93 src/listViewClients.cpp:727 src/listViewClients.cpp:731
+#: src/client.cpp:93 src/listViewClients.cpp:773 src/listViewClients.cpp:777
 #: src/mainDialog.cpp:471 src/mainDialog.cpp:476 src/mainDialog.cpp:477
 #: src/mainDialog.cpp:478 src/mainDialog.cpp:479 src/mainDialog.cpp:480
 #: src/mainDialog.cpp:570 src/mainDialog.cpp:626 src/webMonitor.cpp:135
 #: src/webMonitor.cpp:136 src/webMonitor.cpp:137 src/webMonitor.cpp:138
 #: src/webMonitor.cpp:139 src/webMonitor.cpp:140 src/webMonitor.cpp:141
-#: src/webMonitor.cpp:142 src/webMonitor.cpp:143 src/webMonitor.cpp:193
-#: src/webMonitor.cpp:194 src/webMonitor.cpp:195 src/webMonitor.cpp:196
-#: src/webMonitor.cpp:197 src/webMonitor.cpp:198 src/webMonitor.cpp:199
-#: src/webMonitor.cpp:207 src/webMonitor.cpp:208 src/webMonitor.cpp:209
-#: src/webMonitor.cpp:210 src/webMonitor.cpp:211 src/webMonitor.cpp:268
-#: src/webMonitor.cpp:322 src/webMonitor.cpp:382 src/webMonitor.cpp:386
+#: src/webMonitor.cpp:142 src/webMonitor.cpp:143 src/webMonitor.cpp:144
+#: src/webMonitor.cpp:145 src/webMonitor.cpp:197 src/webMonitor.cpp:198
+#: src/webMonitor.cpp:199 src/webMonitor.cpp:200 src/webMonitor.cpp:201
+#: src/webMonitor.cpp:202 src/webMonitor.cpp:203 src/webMonitor.cpp:204
+#: src/webMonitor.cpp:205 src/webMonitor.cpp:213 src/webMonitor.cpp:214
+#: src/webMonitor.cpp:215 src/webMonitor.cpp:216 src/webMonitor.cpp:217
+#: src/webMonitor.cpp:218 src/webMonitor.cpp:219 src/webMonitor.cpp:276
+#: src/webMonitor.cpp:330 src/webMonitor.cpp:390 src/webMonitor.cpp:394
 msgid "N/A"
 msgstr "Ej tillgänglig"
 
@@ -214,62 +216,72 @@ msgstr "Fel vid inläsning av %sFAHlog.txt!"
 msgid "Error while reading %squeue.dat"
 msgstr "Fel vid inläsning av %squeue.dat!"
 
-#: src/client.cpp:207
+#: src/client.cpp:206
+#, fuzzy, c-format
+msgid "Error while reading %swork/logfile_%02i.txt"
+msgstr "Fel vid inläsning av %sFAHlog.txt!"
+
+#: src/client.cpp:212
 #, c-format
 msgid "Error while reading %sunitinfo.txt!"
 msgstr "Fel vid inläsning av %sunitinfo.txt!"
 
-#: src/client.cpp:403
+#: src/client.cpp:408
 #, fuzzy, c-format
 msgid "Finished Reloading %s"
 msgstr "Läser in %s igen"
 
-#: src/client.cpp:457
+#: src/client.cpp:462
 #, c-format
 msgid "The progress value in file %s could not be found/parsed"
 msgstr "Förloppet kunde inte utläsas ur %s"
 
-#: src/client.cpp:504
+#: src/client.cpp:505
+#, fuzzy, c-format
+msgid "The core version in file %s could not be found/parsed"
+msgstr "Förloppet kunde inte utläsas ur %s"
+
+#: src/client.cpp:553
 #, c-format
 msgid "Unable to save %s because it does not exist"
 msgstr "Kunde inte spara %s för att den inte finns"
 
-#: src/client.cpp:511
+#: src/client.cpp:560
 #, c-format
 msgid "Unable to create directory %s"
 msgstr "Kunde inte skapa katalogen %s"
 
-#: src/client.cpp:524
+#: src/client.cpp:573
 #, c-format
 msgid "Unable to copy %s to %s"
 msgstr "Kunde inte kopiera %s till %s"
 
-#: src/client.cpp:548
+#: src/client.cpp:597
 #, c-format
 msgid "%s is on frame %u"
 msgstr "%s är på bildruta %u"
 
-#: src/client.cpp:552
+#: src/client.cpp:601
 #, c-format
 msgid "Cannot determine frame number for %s (this isn't a problem)"
 msgstr "Kan inte bestämma bildruta för %s (det här är inget problem)"
 
-#: src/client.cpp:735
+#: src/client.cpp:784
 #, c-format
 msgid "%s has an unknown state (Unable to find a complete frame)"
 msgstr "%s är i okänt tillstånd (kunde inte hitta en hel bildruta)"
 
-#: src/client.cpp:744
+#: src/client.cpp:793
 #, c-format
 msgid "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
 msgstr "%s är stoppad (hittade raden \"Folding@Home Client Shutdown.\")"
 
-#: src/client.cpp:752
+#: src/client.cpp:801
 #, c-format
 msgid "%s has been paused"
 msgstr ""
 
-#: src/client.cpp:761
+#: src/client.cpp:810
 #, c-format
 msgid ""
 "%s has an unknown state (Unable to extract a valid elapsed time since the "
@@ -278,17 +290,17 @@ msgstr ""
 "%s är i okänt tillstånd (kunde inte beräkna en giltig tid sedan senast "
 "avklarade bildruta)"
 
-#: src/client.cpp:769
+#: src/client.cpp:818
 #, c-format
 msgid "%s has been marked as having a asynchronous clock."
 msgstr "%s har flaggats för en asynkron klocka"
 
-#: src/client.cpp:804
+#: src/client.cpp:853
 #, c-format
 msgid "%s seems to have hung : Elapsed time is %um and limit is %um"
 msgstr "%s verkar ha hängt sig : %um har förflutit och gränsen är %um"
 
-#: src/client.cpp:809
+#: src/client.cpp:858
 #, c-format
 msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
 msgstr "%s verkar vara inaktiv : %um har förflutit och gränsen är %um"
@@ -329,7 +341,7 @@ msgstr "Välj en katalog"
 msgid "You must fill the name AND the locations fields."
 msgstr "Du måste fylla i namnet OCH platsen."
 
-#: src/clientsManager.cpp:175 src/webMonitor.cpp:756
+#: src/clientsManager.cpp:175 src/webMonitor.cpp:768
 #, c-format
 msgid "Error while parsing %s on line %u"
 msgstr "Fel vid tolkning av %s på rad %u"
@@ -463,126 +475,137 @@ msgstr "Kunde inte skapa katalogen <%s>"
 msgid "%.1f KB/s"
 msgstr "%.1f KB/s"
 
-#: src/listViewClients.cpp:161 src/listViewClients.cpp:912
-#: src/webMonitor.cpp:615
+#: src/listViewClients.cpp:168 src/listViewClients.cpp:960
+#: src/webMonitor.cpp:625
 msgid "Progress"
 msgstr "Förlopp"
 
-#: src/listViewClients.cpp:162 src/listViewClients.cpp:913
-#: src/webMonitor.cpp:616
+#: src/listViewClients.cpp:169 src/listViewClients.cpp:961
+#: src/webMonitor.cpp:626
 msgid "Name"
 msgstr "Namn"
 
-#: src/listViewClients.cpp:163 src/listViewClients.cpp:914
-#: src/webMonitor.cpp:617
+#: src/listViewClients.cpp:170 src/listViewClients.cpp:962
+#: src/webMonitor.cpp:642
+#, fuzzy
+msgid "Client Type"
+msgstr "Klienter: %i"
+
+#: src/listViewClients.cpp:171 src/listViewClients.cpp:963
+#: src/webMonitor.cpp:627
 msgid "ETA"
 msgstr "Beräknad sluttid"
 
-#: src/listViewClients.cpp:164 src/listViewClients.cpp:915
-#: src/webMonitor.cpp:618
+#: src/listViewClients.cpp:172 src/listViewClients.cpp:964
+#: src/webMonitor.cpp:628
 msgid "PPD"
 msgstr "PPD"
 
-#: src/listViewClients.cpp:165 src/listViewClients.cpp:916
+#: src/listViewClients.cpp:173 src/listViewClients.cpp:965
 #, fuzzy
 msgid "Core"
 msgstr "Kärna: "
 
-#: src/listViewClients.cpp:166 src/listViewClients.cpp:917
-#: src/webMonitor.cpp:612
+#: src/listViewClients.cpp:174 src/listViewClients.cpp:966
+#: src/webMonitor.cpp:643
+msgid "Core Version"
+msgstr ""
+
+#: src/listViewClients.cpp:175 src/listViewClients.cpp:967
+#: src/webMonitor.cpp:622
 msgid "PRCG"
 msgstr "PKKG"
 
-#: src/listViewClients.cpp:167 src/listViewClients.cpp:918
-#: src/webMonitor.cpp:613
+#: src/listViewClients.cpp:176 src/listViewClients.cpp:968
+#: src/webMonitor.cpp:623
 msgid "Credit"
 msgstr "Poäng"
 
-#: src/listViewClients.cpp:168 src/listViewClients.cpp:919
-#: src/webMonitor.cpp:614
+#: src/listViewClients.cpp:177 src/listViewClients.cpp:969
+#: src/webMonitor.cpp:624
 msgid "Downloaded"
 msgstr "Hämtad"
 
-#: src/listViewClients.cpp:169 src/listViewClients.cpp:920
+#: src/listViewClients.cpp:178 src/listViewClients.cpp:970
 #, fuzzy
 msgid "Deadline"
 msgstr "Slutgiltig tidsgräns:"
 
-#: src/listViewClients.cpp:522
+#: src/listViewClients.cpp:564
 msgid "Loading..."
 msgstr "Laddar..."
 
-#: src/listViewClients.cpp:607 src/mainDialog.cpp:514 src/webMonitor.cpp:215
+#: src/listViewClients.cpp:651 src/mainDialog.cpp:514 src/webMonitor.cpp:223
 #, c-format
 msgid "%u points"
 msgstr "%u poäng"
 
-#: src/listViewClients.cpp:639 src/listViewClients.cpp:686
+#: src/listViewClients.cpp:683 src/listViewClients.cpp:730
 #: src/mainDialog.cpp:458 src/mainDialog.cpp:551 src/mainDialog.cpp:608
-#: src/webMonitor.cpp:177 src/webMonitor.cpp:250 src/webMonitor.cpp:304
+#: src/webMonitor.cpp:181 src/webMonitor.cpp:258 src/webMonitor.cpp:312
 #, c-format
 msgid "%s ago"
 msgstr "%s sedan"
 
-#: src/listViewClients.cpp:690 src/mainDialog.cpp:555 src/mainDialog.cpp:612
-#: src/webMonitor.cpp:254 src/webMonitor.cpp:308
+#: src/listViewClients.cpp:734 src/mainDialog.cpp:555 src/mainDialog.cpp:612
+#: src/webMonitor.cpp:262 src/webMonitor.cpp:316
 #, c-format
 msgid "In %s"
 msgstr "Om %s"
 
-#: src/listViewClients.cpp:719 src/webMonitor.cpp:330 src/webMonitor.cpp:374
+#: src/listViewClients.cpp:765 src/webMonitor.cpp:338 src/webMonitor.cpp:382
 msgid "Disabled"
 msgstr ""
 
-#: src/listViewClients.cpp:723 src/webMonitor.cpp:378
+#: src/listViewClients.cpp:769 src/webMonitor.cpp:386
 msgid "Finished"
 msgstr "Färdig"
 
-#: src/listViewClients.cpp:735 src/webMonitor.cpp:390
+#: src/listViewClients.cpp:781 src/webMonitor.cpp:398
 msgid "*Hung*"
 msgstr "*Hängd*"
 
-#: src/listViewClients.cpp:739 src/webMonitor.cpp:360 src/webMonitor.cpp:394
-#: src/webMonitor.cpp:598
+#: src/listViewClients.cpp:785 src/webMonitor.cpp:368 src/webMonitor.cpp:402
+#: src/webMonitor.cpp:608
 msgid "Paused"
 msgstr ""
 
-#: src/listViewClients.cpp:873 src/listViewClients.cpp:881
+#: src/listViewClients.cpp:919 src/listViewClients.cpp:927
 #: src/mainDialog.cpp:660
 msgid "Add a new client"
 msgstr "Lägg till ny klient"
 
-#: src/listViewClients.cpp:883
+#: src/listViewClients.cpp:929
 msgid "Reload this client"
 msgstr "Ladda om denna klient"
 
-#: src/listViewClients.cpp:884
+#: src/listViewClients.cpp:930
 msgid "Edit this client"
 msgstr "Redigera denna klient"
 
-#: src/listViewClients.cpp:885
+#: src/listViewClients.cpp:931
 msgid "Delete this client"
 msgstr "Ta bort denna klient"
 
-#: src/listViewClients.cpp:886
+#: src/listViewClients.cpp:932
 msgid "View Client Files"
 msgstr "Visa klientens filer"
 
-#: src/listViewClients.cpp:888
+#: src/listViewClients.cpp:934
 #, fuzzy
 msgid "Disable this client"
 msgstr "Ta bort denna klient"
 
-#: src/listViewClients.cpp:890
+#: src/listViewClients.cpp:936
 #, fuzzy
 msgid "Enable this client"
 msgstr "Ta bort denna klient"
 
-#: src/listViewClients.cpp:1018 src/mainDialog.cpp:1554
+#: src/listViewClients.cpp:1072 src/mainDialog.cpp:1554
 msgid "Do you really want to delete this client?"
 msgstr "Vill du verkligen ta bort denna klient?"
 
-#: src/listViewClients.cpp:1078
+#: src/listViewClients.cpp:1132
 msgid ""
 "Unable to launch the default filemanager.\n"
 "\n"
@@ -900,35 +923,35 @@ msgstr "Om "
 msgid "&Help"
 msgstr "&Hjälp"
 
-#: src/mainDialog.cpp:762 src/webMonitor.cpp:619
+#: src/mainDialog.cpp:762 src/webMonitor.cpp:629
 msgid "Work Unit Information"
 msgstr "Information om arbetsenhet"
 
-#: src/mainDialog.cpp:790 src/webMonitor.cpp:620
+#: src/mainDialog.cpp:790 src/webMonitor.cpp:630
 msgid "Core:"
 msgstr "Kärna: "
 
-#: src/mainDialog.cpp:792 src/webMonitor.cpp:621
+#: src/mainDialog.cpp:792 src/webMonitor.cpp:631
 msgid "Project:"
 msgstr "Projekt:"
 
-#: src/mainDialog.cpp:794 src/webMonitor.cpp:622
+#: src/mainDialog.cpp:794 src/webMonitor.cpp:632
 msgid "Credit:"
 msgstr "Poäng:"
 
-#: src/mainDialog.cpp:796 src/webMonitor.cpp:623
+#: src/mainDialog.cpp:796 src/webMonitor.cpp:633
 msgid "Username:"
 msgstr "Användarnamn:"
 
-#: src/mainDialog.cpp:798 src/webMonitor.cpp:631
+#: src/mainDialog.cpp:798 src/webMonitor.cpp:641
 msgid "Downloaded:"
 msgstr "Hämtad:"
 
-#: src/mainDialog.cpp:800 src/webMonitor.cpp:624
+#: src/mainDialog.cpp:800 src/webMonitor.cpp:634
 msgid "Preferred Deadline:"
 msgstr "Föredragen tidsgräns:"
 
-#: src/mainDialog.cpp:802 src/webMonitor.cpp:625
+#: src/mainDialog.cpp:802 src/webMonitor.cpp:635
 msgid "Final Deadline:"
 msgstr "Slutgiltig tidsgräns:"
 
@@ -1339,31 +1362,31 @@ msgstr "Visa FahMon"
 msgid "Quit"
 msgstr "Avslutar"
 
-#: src/webMonitor.cpp:335 src/webMonitor.cpp:578
+#: src/webMonitor.cpp:343 src/webMonitor.cpp:588
 msgid "Inaccessible"
 msgstr "Otillgänglig"
 
-#: src/webMonitor.cpp:340 src/webMonitor.cpp:582
+#: src/webMonitor.cpp:348 src/webMonitor.cpp:592
 msgid "Stopped"
 msgstr "Stoppad"
 
-#: src/webMonitor.cpp:345 src/webMonitor.cpp:586
+#: src/webMonitor.cpp:353 src/webMonitor.cpp:596
 msgid "Inactive"
 msgstr "Inaktiv"
 
-#: src/webMonitor.cpp:350 src/webMonitor.cpp:590
+#: src/webMonitor.cpp:358 src/webMonitor.cpp:600
 msgid "Hung"
 msgstr "Hängd"
 
-#: src/webMonitor.cpp:355 src/webMonitor.cpp:594
+#: src/webMonitor.cpp:363 src/webMonitor.cpp:604
 msgid "Async"
 msgstr "Ur synk"
 
-#: src/webMonitor.cpp:365
+#: src/webMonitor.cpp:373
 msgid "Ok"
 msgstr "OK"
 
-#: src/webMonitor.cpp:447
+#: src/webMonitor.cpp:455
 #, c-format
 msgid ""
 "Could not open template file <%s> for reading!\n"
@@ -1372,7 +1395,7 @@ msgstr ""
 "Kunde inte läsa in mallen <%s>!\n"
 "Webb-programmet kan inte skapas!"
 
-#: src/webMonitor.cpp:452
+#: src/webMonitor.cpp:460
 #, c-format
 msgid ""
 "Could not open file <%s> for writing!\n"
@@ -1381,27 +1404,27 @@ msgstr ""
 "Kunde inte skriva till filen <%s>!\n"
 "Webb-programmet kan inte skapas!"
 
-#: src/webMonitor.cpp:611
+#: src/webMonitor.cpp:621
 msgid "State"
 msgstr "Läge"
 
-#: src/webMonitor.cpp:626
+#: src/webMonitor.cpp:636
 msgid "Total PPD:"
 msgstr " :: Sammanlagd PPD:"
 
-#: src/webMonitor.cpp:627
+#: src/webMonitor.cpp:637
 msgid "Web View"
 msgstr "Webb-vy"
 
-#: src/webMonitor.cpp:628
+#: src/webMonitor.cpp:638
 msgid "FahMon Client Monitoring"
 msgstr "FahMon klientövervakning"
 
-#: src/webMonitor.cpp:629
+#: src/webMonitor.cpp:639
 msgid "Simple Text Output"
 msgstr "Enkel textrapport"
 
-#: src/webMonitor.cpp:630
+#: src/webMonitor.cpp:640
 msgid "Last updated:"
 msgstr "Senast uppdaterad:"
 

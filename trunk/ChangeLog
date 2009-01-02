@@ -17,6 +17,8 @@ SVN
     * Fixed non-fatal bug in single-instance handler.
     * Fixed internal queue.dat/wx character conversion.
     * FahMon messages are now logged with millisecond timestamps.
+    * Added columns for client type (determined from the core type) and core
+      version number.
 
     Windows
 

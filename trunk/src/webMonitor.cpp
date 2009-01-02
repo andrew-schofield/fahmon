@@ -112,7 +112,7 @@ void WebMonitor::WriteApp(void)
 	mDataArray = new wxString *[ClientsManager::GetInstance()->GetCount()];
 	for (i=0; i<ClientsManager::GetInstance()->GetCount(); i++)
 	{
-		mDataArray[i] = new wxString[15];
+		mDataArray[i] = new wxString[17];
 	}
 
 	_PrefsGetUint(PREF_ETA_DISPLAYSTYLE,            deadlineDays);
@@ -141,12 +141,16 @@ void WebMonitor::WriteApp(void)
 				mDataArray[currentClient][10] = _("N/A");
 				mDataArray[currentClient][13] = _("N/A");
 				mDataArray[currentClient][14] = _("N/A");
+				mDataArray[currentClient][15] = _("N/A");
+				mDataArray[currentClient][16] = _("N/A");
 			}
 			else
 			{
 				mDataArray[currentClient][7] = wxString::Format(_T("%s (%u)"), client->GetDonatorName().c_str(), client->GetTeamNumber());
 				mDataArray[currentClient][13] = client->GetDonatorName();
 				mDataArray[currentClient][14] = wxString::Format(_T("%u"), client->GetTeamNumber());
+				mDataArray[currentClient][15] = client->GetClientType();
+				mDataArray[currentClient][16] = wxString::Format(_T("%.2f"), client->GetCoreVersion());
 				if(client->GetDownloadDate().IsValid())
 				{
 					timeNow = wxDateTime::Now();
@@ -197,6 +201,8 @@ void WebMonitor::WriteApp(void)
 					mDataArray[currentClient][10] = _("N/A");
 					mDataArray[currentClient][13] = _("N/A");
 					mDataArray[currentClient][14] = _("N/A");
+					mDataArray[currentClient][15] = _("N/A");
+					mDataArray[currentClient][16] = _("N/A");
 				}
 				else
 				{
@@ -209,6 +215,8 @@ void WebMonitor::WriteApp(void)
 						mDataArray[currentClient][6] = _("N/A");
 						mDataArray[currentClient][9] = _("N/A");
 						mDataArray[currentClient][10] = _("N/A");
+						mDataArray[currentClient][15] = _("N/A");
+						mDataArray[currentClient][16] = _("N/A");
 					}
 					else
 					{
@@ -570,6 +578,8 @@ const wxString WebMonitor::DecodeTemplate(wxString templateCode, wxUint32 client
 	else if (templateCode == wxT("@STATE@")) tCode = mDataArray[clientId][12];
 	else if (templateCode == wxT("@USERNAME@")) tCode = mDataArray[clientId][13];
 	else if (templateCode == wxT("@TEAMNUMBER@")) tCode = mDataArray[clientId][14];
+	else if (templateCode == wxT("@CLIENT_TYPE@")) tCode = mDataArray[clientId][15];
+	else if (templateCode == wxT("@CORE_VERSION@")) tCode = mDataArray[clientId][16];
 	else if (templateCode == wxT("@FAHMON_VERSION@")) tCode = wxT(FMC_PRODUCT);
 	else if (templateCode == wxT("@UPDATE_TIME@")) tCode = mUpdateDate;
 	else if (templateCode == wxT("@TOTAL_PPD@")) tCode = wxString::Format(wxT("%.2f"), MainDialog::GetInstance()->GetTotalPPD());
@@ -617,7 +627,7 @@ const wxString WebMonitor::DecodeTemplate(wxString templateCode, wxUint32 client
 	else if (templateCode == wxT("@_ETA@")) tCode = _("ETA");
 	else if (templateCode == wxT("@_PPD@")) tCode = _("PPD");
 	else if (templateCode == wxT("@_Work_Unit_Information@")) tCode = _("Work Unit Information");
-	else if (templateCode == wxT("@_Core:@")) tCode = _("Core:");
+	else if (templateCode == wxT("@_Core@")) tCode = _("Core:");
 	else if (templateCode == wxT("@_Project:@")) tCode = _("Project:");
 	else if (templateCode == wxT("@_Credit:@")) tCode = _("Credit:");
 	else if (templateCode == wxT("@_Username:@")) tCode = _("Username:");
@@ -629,6 +639,8 @@ const wxString WebMonitor::DecodeTemplate(wxString templateCode, wxUint32 client
 	else if (templateCode == wxT("@_Simple_Text_Output@")) tCode = _("Simple Text Output");
 	else if (templateCode == wxT("@_Last_updated:@")) tCode = _("Last updated:");
 	else if (templateCode == wxT("@_Downloaded:@")) tCode = _("Downloaded:");
+	else if (templateCode == wxT("@_Client_Type@")) tCode = _("Client Type");
+	else if (templateCode == wxT("@_Core_Version@")) tCode = _("Core Version");
 	else tCode = GetVariable(templateCode);
 
 	if(padding>0)

@@ -41,6 +41,7 @@ public:
 	/**
 	 * All the known cores, up to now.
 	 * Ideally these should be the names as given on psummary.html
+	 * Any changes in this list !MUST! be reflected in IdToClientType.
 	 * Their order !MUST! not be changed, for compatibility reasons.
 	 **/
 	enum _CORE_ID
@@ -87,6 +88,13 @@ public:
 	 * @return String containing the full core name.
 	 **/
 	static wxString IdToLongName(CoreId identifier);
+
+	/**
+	 * Translate a core identifier into a client type (CPU/GPU/SMP).
+	 * @param identifier The core Id.
+	 * @return String containing the client type.
+	 **/
+	static wxString IdToClientType(CoreId identifier);
 
 
 protected:

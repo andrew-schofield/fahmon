@@ -86,6 +86,9 @@ protected:
 	wxDateTime mDeadlineDate; /**< Preferred deadline for current client */
 	bool       mEnabled; /**< Whether client should ever reload */
 	bool       mVM; /**< Whether client is from a virtual machine */
+	wxString   mClientType; /**< CPU/GPU/SMP */
+	wxUint32   mUnitIndex; /**< Current work unit index */
+	double     mCoreVersion; /**< Core version number */
 
 	/**
 	 * Calculate the client's ETA.
@@ -113,6 +116,12 @@ protected:
 	 * @param filename unitinfo to load
 	 **/
 	bool LoadUnitInfoFile(wxString const &filename);
+
+	/**
+	 * Load information from the logfile_xx.txt file.
+	 * @param filename logfile to load
+	 **/
+	bool LoadWULogFile(wxString const &filename);
 
 	/**
 	 * Load lots of useful info from the queue\.dat file.
@@ -226,6 +235,8 @@ public:
 	const wxDateTime& GetDeadlineDate(void)         const {return mDeadlineDate;} /**< Returns client preferred deadline date */
 	bool              IsEnabled(void)               const {return mEnabled;} /**< Returns whether client is enabled */
 	bool              IsVM(void)                    const {return mVM;} /**< Returns whether client is from a virtual machine or not */
+	wxString          GetClientType(void)           const {return mClientType;} /**< Returns the type of client */
+	double            GetCoreVersion(void)          const {return mCoreVersion;} /**< Returns the core version */
 
 	/**
 	 * Return true if some modification occurred since the last reload
