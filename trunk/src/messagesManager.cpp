@@ -87,7 +87,7 @@ void MessagesManager::Log(wxString const &msg)
 	wxTextOutputStream   textOS(fileOS);
 
 	// Format the current time correctly
-	currentDate = wxDateTime::Now().Format(wxT("%d/%m/%y - %H:%M:%S"));
+	currentDate = wxDateTime::UNow().Format(wxT("%d/%m/%y - %H:%M:%S.%l"));
 
 	// Add the new message
 	mMessages += wxT("[") + currentDate + wxT("] ") + msg + wxT("\n");
