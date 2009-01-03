@@ -95,7 +95,8 @@ enum _LISTVIEW_COLUMN
 enum _STATUSBAR_PART
 {
 	STATUS_UNUSED,
-	STATUS_CLIENTNAME
+	STATUS_CLIENTNAME,
+	STATUS_TOTALPPD
 };
 
 
@@ -165,6 +166,7 @@ MainDialog::MainDialog(void) : wxFrame(NULL, wxID_ANY, _T(FMC_PRODUCT))
 {
 	bool trayIconEnabled;
 	bool updateCheck;
+	int widths[3] = {-1,-1,100};
 
 	// Setting the icon for the main dialog will allows child frames and dialog to inherit from it
 
@@ -175,7 +177,8 @@ MainDialog::MainDialog(void) : wxFrame(NULL, wxID_ANY, _T(FMC_PRODUCT))
 #endif
 
 	CreateMenuBar();
-	CreateStatusBar(2);
+	CreateStatusBar(3);
+	SetStatusWidths(3, widths);
 	CreateLayout();
 	RestoreFrameState();     // MUST be called when all controls have been created !
 
@@ -627,7 +630,7 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 		}
 	}
 	// Get the total PPD to display next to progress bar
-	mWUTotalPPD->SetLabel(wxString::Format(_(" :: Total PPD: %.2f"), MainDialog::GetTotalPPD()));
+	SetStatusText(wxString::Format(_("%.2f PPD"), MainDialog::GetTotalPPD()), STATUS_TOTALPPD);
 
 }
 
@@ -829,11 +832,9 @@ void MainDialog::CreateLayout(void)
 	mWUProgressGauge = new OSXProgressBar(topLevelPanel, wxID_ANY, 100, wxDefaultPosition, wxSize(0, 18));
 	#endif
 	mWUProgressText  = new wxStaticText(topLevelPanel, wxID_ANY, _T(""));
-	mWUTotalPPD = new wxStaticText(topLevelPanel, wxID_ANY, _(" :: Total PPD:"));
 
 	midSizer->Add(mWUProgressGauge, 1);
 	midSizer->Add(mWUProgressText, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
-	midSizer->Add(mWUTotalPPD, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
 
 	// --- The bottom part : Log file
 	mLogFile = new wxTextCtrl(topLevelPanel, wxID_ANY, _("Log file."), wxDefaultPosition, wxSize(100, FMC_GUI_LOG_HEIGHT), wxTE_MULTILINE | wxTE_READONLY | wxHSCROLL);
@@ -889,7 +890,11 @@ void MainDialog::RestoreFrameState(void)
 
 	_PrefsGetBool(PREF_MAINDIALOG_SHOWINFOPANEL, isInfoPanelShown);
 	if(!isInfoPanelShown)
+	{
 		mSplitterWindow->Unsplit();
+		mWUProgressGauge->Show(false);
+		mWUProgressText->Show(false);
+	}
 
 	// --- Size and position of the frame
 	// Retrieve saved values
@@ -1210,8 +1215,7 @@ void MainDialog::OnClientReloaded(wxCommandEvent& event)
 	{
 		ShowClientInformation(clientId);
 	}
-	mWUTotalPPD->SetLabel(wxString::Format(_(" :: Total PPD: %.2f"), MainDialog::GetTotalPPD()));
-	mWUTotalPPD->Refresh();
+	SetStatusText(wxString::Format(_("%.2f PPD"), MainDialog::GetTotalPPD()), STATUS_TOTALPPD);
 }
 
 
@@ -1579,11 +1583,16 @@ void MainDialog::OnMenuToggleInfoPanel(wxCommandEvent& event)
 	if(mSplitterWindow->IsSplit())
 	{
 		mSplitterWindow->Unsplit();
+		mWUProgressGauge->Show(false);
+		mWUProgressText->Show(false);
 	}
 	else
 	{
 		mSplitterWindow->SplitVertically(mClientsList, mTopRightPanel);
+		mWUProgressGauge->Show(true);
+		mWUProgressText->Show(true);
 	}
+	mTopLevelSizer->Layout();
 }
 
 

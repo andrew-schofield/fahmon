@@ -163,7 +163,6 @@ protected:
 	wxBoxSizer       *mTopLevelSizer; /**< Sizer control for the whole window */
 	wxTextCtrl       *mLogFile; /**< Text control for the log file */
 	wxStaticText     *mWUProgressText; /**< Text control for the WU progress */
-	wxStaticText     *mWUTotalPPD; /**< Text control for the total PPD */
 	wxStaticText     *mCoreName; /**< Text control for the core name */
 	wxStaticText     *mProjectId; /**< Text control for the PRCG */
 	wxStaticText     *mCredit; /**< Text control for the credit value */

@@ -19,6 +19,8 @@ SVN
     * FahMon messages are now logged with millisecond timestamps.
     * Added columns for client type (determined from the core type) and core
       version number.
+    * Main progress bar now hides along with the WU Info panel.
+    * Total PPD display moved into the status bar.
 
     Windows
 
