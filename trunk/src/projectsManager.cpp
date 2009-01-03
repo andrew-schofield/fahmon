@@ -92,7 +92,7 @@ void ProjectsManager::Load(void)
 {
 	Project         *currentProject;
 	wxUint32         nbProjects, i, version;
-	DataInputStream  in(PathManager::GetCfgPath() + wxT(FMC_FILE_PROJECTS));
+	DataInputStream  in(PathManager::GetCfgPath() + _T(FMC_FILE_PROJECTS));
 
 	// Could the file be opened ?
 	if(in.Ok() == false)
@@ -124,12 +124,12 @@ void ProjectsManager::Load(void)
 
 void ProjectsManager::Save(void)
 {
-	DataOutputStream               out(PathManager::GetCfgPath() + wxT(FMC_FILE_PROJECTS));
+	DataOutputStream               out(PathManager::GetCfgPath() + _T(FMC_FILE_PROJECTS));
 	ProjectsListHashMap::iterator  iterator;
 
 	if(out.Ok() == false)
 	{
-		Tools::ErrorMsgBox(wxString::Format(_("Could not open file <%s> for writing!"), (PathManager::GetCfgPath() + wxT(FMC_FILE_PROJECTS)).c_str()));
+		Tools::ErrorMsgBox(wxString::Format(_("Could not open file <%s> for writing!"), (PathManager::GetCfgPath() + _T(FMC_FILE_PROJECTS)).c_str()));
 		return;
 	}
 
@@ -283,7 +283,7 @@ bool ProjectsManager::Update_DownloadProjectsFile(wxString& fileName, ProgressMa
 	{
 		if(useAlternate == false)
 		{
-			resource = wxT(FMC_URL_PROJECTS);
+			resource = _T(FMC_URL_PROJECTS);
 		}
 
 		else if(useAlternate == true && useLocalFile == false)
@@ -340,7 +340,7 @@ bool ProjectsManager::Update_DownloadProjectsFile(wxString& fileName, ProgressMa
 		}
 		else
 		{
-			fileName = wxFileName::CreateTempFileName(wxT(FMC_APPNAME));
+			fileName = wxFileName::CreateTempFileName(_T(FMC_APPNAME));
 			copied = wxCopyFile(projectLocalFile, fileName);
 			if(copied == false)
 			{
@@ -380,7 +380,7 @@ bool ProjectsManager::Update_ParseProjectsFile(wxString const &fileName, Progres
 		// The lines with the projects contains the string <tr bgcolor="#xxxxxx">, so this is what we will be
 		// looking for
 		// The color is not always the same, so we don't include it in the searched string
-		pos = currentLine.Find(wxT("<tr bgcolor="));
+		pos = currentLine.Find(_T("<tr bgcolor="));
 		if(pos != -1)
 		{
 			// The first line containing the searched string is the header of the table, so we simply ignore it
@@ -452,7 +452,7 @@ Project* ProjectsManager::Update_ParseProjectInfo(wxString const &projectInfo) c
 	// It is possible that there is no preferred deadline, in this case there is a '--' string instead
 	// of the value
 	parser.NextToken(12);
-	if(parser.GetCurrentText().Find(wxT("--")) != -1)
+	if(parser.GetCurrentText().Find(_T("--")) != -1)
 	{
 		preferredDeadlineInDays = 0;
 	}
@@ -468,7 +468,7 @@ Project* ProjectsManager::Update_ParseProjectInfo(wxString const &projectInfo) c
 	// Final deadline in days
 	// This can also be the case for the final deadline
 	parser.NextToken(3);
-	if(parser.GetCurrentText().Find(wxT("--")) != -1)
+	if(parser.GetCurrentText().Find(_T("--")) != -1)
 	{
 		finalDeadlineInDays = 0;
 	}

@@ -132,7 +132,7 @@ BenchmarksManager* BenchmarksManager::GetInstance(void)
 
 void BenchmarksManager::Save(void)
 {
-	DataOutputStream                 out(PathManager::GetCfgPath() + wxT(FMC_FILE_BENCHMARKS));
+	DataOutputStream                 out(PathManager::GetCfgPath() + _T(FMC_FILE_BENCHMARKS));
 	BenchmarkHashMap                *listOfBenchmarks;
 	ClientIdHashMap::iterator        iteratorClientId;
 	BenchmarkHashMap::iterator       iteratorBenchmark;
@@ -141,7 +141,7 @@ void BenchmarksManager::Save(void)
 
 	if(out.Ok() == false)
 	{
-		Tools::ErrorMsgBox(wxString::Format(_("Could not open file <%s> for writing!"), (PathManager::GetCfgPath() + wxT(FMC_FILE_BENCHMARKS)).c_str()));
+		Tools::ErrorMsgBox(wxString::Format(_("Could not open file <%s> for writing!"), (PathManager::GetCfgPath() + _T(FMC_FILE_BENCHMARKS)).c_str()));
 		return;
 	}
 
@@ -181,7 +181,7 @@ void BenchmarksManager::Load(void)
 	ClientId          clientId;
 	ProjectId         projectId;
 	Benchmark        *benchmark;
-	DataInputStream   in(PathManager::GetCfgPath() + wxT(FMC_FILE_BENCHMARKS));
+	DataInputStream   in(PathManager::GetCfgPath() + _T(FMC_FILE_BENCHMARKS));
 	BenchmarkHashMap *listOfBenchmarks;
 
 	// Could the file be opened ?

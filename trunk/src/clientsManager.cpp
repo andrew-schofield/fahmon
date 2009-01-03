@@ -118,7 +118,7 @@ void ClientsManager::Load(void)
 
 
 	// Try to open the file, check if it exists
-	inputFilename = PathManager::GetCfgPath() + wxT(FMC_FILE_CLIENTS);
+	inputFilename = PathManager::GetCfgPath() + _T(FMC_FILE_CLIENTS);
 	if(wxFileExists(inputFilename) == false || in.Open(inputFilename) == false)
 	{
 		return;
@@ -138,21 +138,21 @@ void ClientsManager::Load(void)
 			enabled      = true;
 			VM           = false;
 
-			clientstabFields = Tools::SplitLineByDelim(currentLine, wxT("\t"));
+			clientstabFields = Tools::SplitLineByDelim(currentLine, _T("\t"));
 			// if size is 1 assume space delimited
 			if(clientstabFields.size() == 1)
-				clientstabFields = Tools::SplitLineByDelim(currentLine, wxT("    "));
+				clientstabFields = Tools::SplitLineByDelim(currentLine, _T("    "));
 			for(j=clientstabFields.size(); j<=FMC_CLIENTSTAB_FIELDS; ++j)
 			{
-				clientstabFields.push_back(wxT(""));
+				clientstabFields.push_back(_T(""));
 			}
 			clientName = clientstabFields.at(0);
 			clientLocation = clientstabFields.at(1);
 			clientEnabled = clientstabFields.at(2);
 			clientVM = clientstabFields.at(3);
 
-			clientName.Replace(wxT("\""), wxT(""));
-			clientLocation.Replace(wxT("\""), wxT(""));
+			clientName.Replace(_T("\""), _T(""));
+			clientLocation.Replace(_T("\""), _T(""));
 			clientName.Trim();
 			clientName.Trim(false);
 			clientLocation.Trim();
@@ -163,9 +163,9 @@ void ClientsManager::Load(void)
 				isNameOk = true;
 			if(!clientLocation.IsEmpty())
 				isLocationOk = true;
-			if(clientEnabled.IsSameAs(wxT("*")))
+			if(clientEnabled.IsSameAs(_T("*")))
 				enabled = false;
-			if(clientVM.IsSameAs(wxT("*")))
+			if(clientVM.IsSameAs(_T("*")))
 				VM = true;
 
 			// Add the client to the list, or warn the user if something went wrong
@@ -186,32 +186,32 @@ void ClientsManager::Save(void)
 	wxString             outString;
 	wxString             enabled, VM;
 	const Client        *client;
-	wxFileOutputStream   fileOS(PathManager::GetCfgPath() + wxT(FMC_FILE_CLIENTS));
+	wxFileOutputStream   fileOS(PathManager::GetCfgPath() + _T(FMC_FILE_CLIENTS));
 	wxTextOutputStream   textOS(fileOS);
 
 	// Could the file be opened?
 	if(fileOS.Ok() == false)
 	{
-		Tools::ErrorMsgBox(wxString::Format(_("Could not open file <%s> for writing!\nThe list of clients will not be saved!"), (PathManager::GetCfgPath() + wxT(FMC_FILE_CLIENTS)).c_str()));
+		Tools::ErrorMsgBox(wxString::Format(_("Could not open file <%s> for writing!\nThe list of clients will not be saved!"), (PathManager::GetCfgPath() + _T(FMC_FILE_CLIENTS)).c_str()));
 		return;
 	}
 
 	// Write a small header
-	textOS.WriteString(wxString::Format(_("# %s : contains the list of clients\n#\n# \"Name\"\t\"Location\"\tDisabled(*)\n\n"), (PathManager::GetCfgPath() + wxT(FMC_FILE_CLIENTS)).c_str()));
+	textOS.WriteString(wxString::Format(_("# %s : contains the list of clients\n#\n# \"Name\"\t\"Location\"\tDisabled(*)\n\n"), (PathManager::GetCfgPath() + _T(FMC_FILE_CLIENTS)).c_str()));
 
 	// And then each client
 	for(i=0; i<GetCount(); ++i)
 	{
 		client    = Get(i);
 		if (!client->IsEnabled())
-			enabled = wxT("*");
+			enabled = _T("*");
 		else
-			enabled = wxT("");
+			enabled = _T("");
 		if (client->IsVM())
-			VM = wxT("*");
+			VM = _T("*");
 		else
-			VM = wxT("");
-		textOS.WriteString(wxString::Format(wxT("\"%s\"\t\"%s\"\t%s\t%s\n"), client->GetName().c_str(), client->GetLocation().c_str(), enabled.c_str(), VM.c_str()));
+			VM = _T("");
+		textOS.WriteString(wxString::Format(_T("\"%s\"\t\"%s\"\t%s\t%s\n"), client->GetName().c_str(), client->GetLocation().c_str(), enabled.c_str(), VM.c_str()));
 	}
 
 	fileOS.Close();
@@ -242,7 +242,7 @@ void ClientsManager::ReloadThreaded(wxUint32 clientId)
 		}
 	}
 	WebMonitor::GetInstance()->WriteApp();
-	TrayManager::GetInstance()->SetTooltip(wxT(""));
+	TrayManager::GetInstance()->SetTooltip(_T(""));
 }
 
 
@@ -265,7 +265,7 @@ const wxString ClientsManager::GetNameFromLocation(wxString const &location) con
 		}
 	}
 
-	return wxT("");
+	return _T("");
 }
 
 

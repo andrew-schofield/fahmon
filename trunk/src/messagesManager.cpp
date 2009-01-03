@@ -43,8 +43,8 @@ MessagesManager* MessagesManager::mInstance = NULL;
 
 MessagesManager::MessagesManager(void)
 {
-	mMessages = wxT("");
-	mNewMessages = wxT("");
+	mMessages = _T("");
+	mNewMessages = _T("");
 }
 
 
@@ -83,15 +83,15 @@ void MessagesManager::Log(wxString const &msg)
 	wxMutexLocker  lock(mMutexLog);        // --- Lock the access to this method
 	wxString       currentDate;
 	wxCommandEvent event(EVT_NEW_MESSAGE_LOGGED);
-	wxFileOutputStream   fileOS(PathManager::GetMsgPath() + wxT("messages.log"));
+	wxFileOutputStream   fileOS(PathManager::GetMsgPath() + _T("messages.log"));
 	wxTextOutputStream   textOS(fileOS);
 
 	// Format the current time correctly
-	currentDate = wxDateTime::UNow().Format(wxT("%d/%m/%y - %H:%M:%S.%l"));
+	currentDate = wxDateTime::UNow().Format(_T("%d/%m/%y - %H:%M:%S.%l"));
 
 	// Add the new message
-	mMessages += wxT("[") + currentDate + wxT("] ") + msg + wxT("\n");
-	mNewMessages += wxT("[") + currentDate + wxT("] ") + msg + wxT("\n");
+	mMessages += _T("[") + currentDate + _T("] ") + msg + _T("\n");
+	mNewMessages += _T("[") + currentDate + _T("] ") + msg + _T("\n");
 
 	// Could the file be opened?
 	if(fileOS.Ok() == false)
@@ -116,6 +116,6 @@ void MessagesManager::Log(wxString const &msg)
 wxString MessagesManager::GetNewMessages(void)
 {
 	wxString tmpString = mNewMessages;
-	mNewMessages = wxT("");
+	mNewMessages = _T("");
 	return tmpString;
 }

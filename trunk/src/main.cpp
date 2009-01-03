@@ -78,7 +78,7 @@ bool FahMonApp::OnInit(void)
 
 	// Check for another instance
 	#ifndef __WXMAC__
-	mInstanceChecker = new wxSingleInstanceChecker(wxT(FMC_UID));
+	mInstanceChecker = new wxSingleInstanceChecker(_T(FMC_UID));
 	if(mInstanceChecker->IsAnotherRunning() == true)
 	{
 		wxClient client;
@@ -95,7 +95,7 @@ bool FahMonApp::OnInit(void)
 		}
 		delete conn;
 		// Fallback error message for when auto-raising doesn't work.
-		Tools::ErrorMsgBox(wxString::Format(_("Another instance of %s is already running!"), wxT(FMC_APPNAME)));
+		Tools::ErrorMsgBox(wxString::Format(_("Another instance of %s is already running!"), _T(FMC_APPNAME)));
 		return false;
 	}
 	mServerIPC = new FahMonAppIPCServer();
@@ -117,12 +117,12 @@ bool FahMonApp::OnInit(void)
 
 #ifdef _FAHMON_WIN32_
 	{
-		wxLocale::AddCatalogLookupPathPrefix(wxT("./lang"));
+		wxLocale::AddCatalogLookupPathPrefix(_T("./lang"));
 	}
 #endif
 #ifdef __WXGTK__
 	{
-		wxLocale::AddCatalogLookupPathPrefix(wxT(DATADIR));
+		wxLocale::AddCatalogLookupPathPrefix(_T(DATADIR));
 	}
 #endif
 #ifdef __WXMAC__
@@ -138,7 +138,7 @@ bool FahMonApp::OnInit(void)
 	}
 #endif
 	// Initialize the catalogs we'll be using
-	m_locale.AddCatalog(wxT("fahmon"));
+	m_locale.AddCatalog(_T("fahmon"));
 
 	// this catalog is installed in standard location on Linux systems and
 	// shows that you may make use of the standard message catalogs as well
@@ -186,15 +186,15 @@ bool FahMonApp::OnInit(void)
 			return false;
 		}
 #ifdef _FAHMON_WIN32_
-		if(wxDirExists(wxString::Format(wxT("%s\\config\\"), wxFileName(wxTheApp->argv[0]).GetPath (wxPATH_GET_VOLUME))))
+		if(wxDirExists(wxString::Format(_T("%s\\config\\"), wxFileName(wxTheApp->argv[0]).GetPath (wxPATH_GET_VOLUME))))
 		{
-			if(wxCopyFile(wxString::Format(wxT("%s\\config\\benchmarks.dat"), wxFileName(wxTheApp->argv[0]).GetPath(wxPATH_GET_VOLUME)), wxString::Format(wxT("%sbenchmarks.dat"), PathManager::GetCfgPath())))
+			if(wxCopyFile(wxString::Format(_T("%s\\config\\benchmarks.dat"), wxFileName(wxTheApp->argv[0]).GetPath(wxPATH_GET_VOLUME)), wxString::Format(_T("%sbenchmarks.dat"), PathManager::GetCfgPath())))
 				copied++;
-			if(wxCopyFile(wxString::Format(wxT("%s\\config\\clientstab.txt"), wxFileName(wxTheApp->argv[0]).GetPath(wxPATH_GET_VOLUME)), wxString::Format(wxT("%sclientstab.txt"), PathManager::GetCfgPath())))
+			if(wxCopyFile(wxString::Format(_T("%s\\config\\clientstab.txt"), wxFileName(wxTheApp->argv[0]).GetPath(wxPATH_GET_VOLUME)), wxString::Format(_T("%sclientstab.txt"), PathManager::GetCfgPath())))
 				copied++;
-			if(wxCopyFile(wxString::Format(wxT("%s\\config\\prefs.dat"), wxFileName(wxTheApp->argv[0]).GetPath(wxPATH_GET_VOLUME)), wxString::Format(wxT("%sprefs.dat"), PathManager::GetCfgPath())))
+			if(wxCopyFile(wxString::Format(_T("%s\\config\\prefs.dat"), wxFileName(wxTheApp->argv[0]).GetPath(wxPATH_GET_VOLUME)), wxString::Format(_T("%sprefs.dat"), PathManager::GetCfgPath())))
 				copied++;
-			if(wxCopyFile(wxString::Format(wxT("%s\\config\\projects.dat"), wxFileName(wxTheApp->argv[0]).GetPath(wxPATH_GET_VOLUME)), wxString::Format(wxT("%sprojects.dat"), PathManager::GetCfgPath())))
+			if(wxCopyFile(wxString::Format(_T("%s\\config\\projects.dat"), wxFileName(wxTheApp->argv[0]).GetPath(wxPATH_GET_VOLUME)), wxString::Format(_T("%sprojects.dat"), PathManager::GetCfgPath())))
 				copied++;
 			if(copied > 0)
 				requiresFirstRunDialog = false;
@@ -206,7 +206,7 @@ bool FahMonApp::OnInit(void)
 	MessagesManager::CreateInstance();          // MUST be created first, so that other manager can log messages immediately
 #ifdef _FAHMON_WIN32_
 	if(copied > 0)
-		_LogMsgInfo(wxString::Format(wxT("Old settings imported into %s"), PathManager::GetCfgPath()));
+		_LogMsgInfo(wxString::Format(_("Old settings imported into %s"), PathManager::GetCfgPath()));
 #endif
 	PreferencesManager::CreateInstance();       // MUST be created second, so that other managers can retrieve some preferences when created
 	ProjectsManager::CreateInstance();

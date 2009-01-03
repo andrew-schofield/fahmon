@@ -60,7 +60,7 @@ END_EVENT_TABLE()
 
 TrayManager::TrayManager(void)
 {
-	mTooltip = wxT(FMC_PRODUCT);
+	mTooltip = _T(FMC_PRODUCT);
 }
 
 
@@ -97,7 +97,7 @@ void TrayManager::InstallIcon(void)
 	if(IsIconInstalled() == false)
 	{
 	#ifdef __WXGTK__
-		SetIcon(wxIcon(PathManager::GetImgPath() + wxT(FMC_FILE_IMG_DIALOG)), mTooltip);
+		SetIcon(wxIcon(PathManager::GetImgPath() + _T(FMC_FILE_IMG_DIALOG)), mTooltip);
 	#elif _FAHMON_WIN32_
 		SetIcon(wxICON(dialog_icon), mTooltip);
 	#endif
@@ -123,12 +123,12 @@ void TrayManager::SetTooltip(wxString const &tooltip)
 
 	TotalPPD = MainDialog::GetInstance()->GetTotalPPD();
 
-	mTooltip = wxString::Format(_("%s\nClients: %i\nTotal PPD: %.2f"), wxT(FMC_PRODUCT), ClientCount, TotalPPD);
+	mTooltip = wxString::Format(_("%s\nClients: %i\nTotal PPD: %.2f"), _T(FMC_PRODUCT), ClientCount, TotalPPD);
 
 	if(IsIconInstalled() == true)
 	{
 	#ifdef __WXGTK__
-		SetIcon(wxIcon(PathManager::GetImgPath() + wxT(FMC_FILE_IMG_DIALOG)), mTooltip);
+		SetIcon(wxIcon(PathManager::GetImgPath() + _T(FMC_FILE_IMG_DIALOG)), mTooltip);
 	#elif _FAHMON_WIN32_
 		SetIcon(wxICON(dialog_icon), mTooltip);
 	#endif

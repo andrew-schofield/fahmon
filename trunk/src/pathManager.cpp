@@ -45,15 +45,15 @@ PathManager::PathManager(void)
 	homeDir = wxGetHomeDir();
 	if(homeDir.Last() != '/')
 	{
-		homeDir += wxT("/");
+		homeDir += _T("/");
 	}
 
-	mImgPath = wxString::Format(wxT("%s/pixmaps/fahmon/"), wxT(DATADIR));
-	mGlobalTplPath = wxString::Format(wxT("%s/fahmon/templates/"), wxT(DATADIR));
-	mUserTplPath = homeDir + wxT(".fahmon/templates/");
-	mCfgPath = homeDir + wxT(".fahmon/");
-	mXYZPath = homeDir + wxT(".fahmon/xyz/");
-	mMsgPath = homeDir + wxT(".fahmon/");
+	mImgPath = wxString::Format(_T("%s/pixmaps/fahmon/"), _T(DATADIR));
+	mGlobalTplPath = wxString::Format(_T("%s/fahmon/templates/"), _T(DATADIR));
+	mUserTplPath = homeDir + _T(".fahmon/templates/");
+	mCfgPath = homeDir + _T(".fahmon/");
+	mXYZPath = homeDir + _T(".fahmon/xyz/");
+	mMsgPath = homeDir + _T(".fahmon/");
 
 #elif _FAHMON_WIN32_
 
@@ -63,14 +63,14 @@ PathManager::PathManager(void)
 
 	wxGetEnv(_T("APPDATA"), &homeDir);
 
-	homeDir += wxT("\\FahMon");
+	homeDir += _T("\\FahMon");
 
-	mXYZPath = homeDir + (wxT("\\xyz\\"));
-	mImgPath = wxString::Format(wxT("%s\\images\\"), wxFileName(wxTheApp->argv[0]).GetPath(wxPATH_GET_VOLUME));
-	mCfgPath = homeDir + (wxT("\\config\\"));
-	mGlobalTplPath = wxString::Format(wxT("%s\\templates\\"), wxFileName(wxTheApp->argv[0]).GetPath(wxPATH_GET_VOLUME));
-	mUserTplPath = homeDir + (wxT("\\templates\\"));
-	mMsgPath = homeDir + wxT("\\");
+	mXYZPath = homeDir + (_T("\\xyz\\"));
+	mImgPath = wxString::Format(_T("%s\\images\\"), wxFileName(wxTheApp->argv[0]).GetPath(wxPATH_GET_VOLUME));
+	mCfgPath = homeDir + (_T("\\config\\"));
+	mGlobalTplPath = wxString::Format(_T("%s\\templates\\"), wxFileName(wxTheApp->argv[0]).GetPath(wxPATH_GET_VOLUME));
+	mUserTplPath = homeDir + (_T("\\templates\\"));
+	mMsgPath = homeDir + _T("\\");
 
 #elif __WXMAC__
 
@@ -88,14 +88,14 @@ PathManager::PathManager(void)
 
 	homeDir = wxGetHomeDir();
 	if(homeDir.Last() != '/')
-		homeDir += wxT("/");
+		homeDir += _T("/");
 
 	mImgPath = resourcesPath;
-	mCfgPath = homeDir + wxT("Library/Application Support/FahMon/config/");
-	mXYZPath = homeDir + wxT("Library/Application Support/FahMon/xyz/");
-	mMsgPath = homeDir + wxT("Library/Application Support/FahMon/");
+	mCfgPath = homeDir + _T("Library/Application Support/FahMon/config/");
+	mXYZPath = homeDir + _T("Library/Application Support/FahMon/xyz/");
+	mMsgPath = homeDir + _T("Library/Application Support/FahMon/");
 	mGlobalTplPath = resourcesPath;
-	mUserTplPath = homeDir + wxT("Library/Application Support/FahMon/templates/");
+	mUserTplPath = homeDir + _T("Library/Application Support/FahMon/templates/");
 
 #endif
 }

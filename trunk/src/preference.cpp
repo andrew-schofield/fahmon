@@ -28,7 +28,7 @@
 
 Preference::Preference(void)
 {
-	mPrefName = wxT("");
+	mPrefName = _T("");
 	mPrefType = PT_UNKNOWN;
 }
 

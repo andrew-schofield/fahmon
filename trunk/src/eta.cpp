@@ -51,13 +51,13 @@ void ETA::SetLeftTimeInMinutes(wxUint32 leftTime)
 
 wxString ETA::GetString_Standard(void) const
 {
-	return mETA.Format(wxT("%d/%m/%y  %H:%M"));
+	return mETA.Format(_T("%d/%m/%y  %H:%M"));
 }
 
 
 wxString ETA::GetString_American(void) const
 {
-	return mETA.Format(wxT("%m/%d/%y  %H:%M"));
+	return mETA.Format(_T("%m/%d/%y  %H:%M"));
 }
 
 
@@ -76,15 +76,15 @@ wxString ETA::GetString_LeftTime(void) const
 	// Use a friendly format
 	if(nbDays != 0)
 	{
-		return wxString::Format(wxT("%ud %02uh %02umn"), nbDays, nbHours, nbMinutes);
+		return wxString::Format(_T("%ud %02uh %02umn"), nbDays, nbHours, nbMinutes);
 	}
 	else if(nbHours != 0)
 	{
-		return wxString::Format(wxT("%uh %02umn"), nbHours, nbMinutes);
+		return wxString::Format(_T("%uh %02umn"), nbHours, nbMinutes);
 	}
 	else
 	{
-		return wxString::Format(wxT("%umn"), nbMinutes);
+		return wxString::Format(_T("%umn"), nbMinutes);
 	}
 }
 

@@ -56,7 +56,7 @@ END_EVENT_TABLE()
 FirstTimeDialog* FirstTimeDialog::mInstance = NULL;
 
 
-FirstTimeDialog::FirstTimeDialog(void) : wxDialog(NULL, wxID_ANY, wxString::Format(_("Welcome to %s!"), wxT(FMC_PRODUCT)))
+FirstTimeDialog::FirstTimeDialog(void) : wxDialog(NULL, wxID_ANY, wxString::Format(_("Welcome to %s!"), _T(FMC_PRODUCT)))
 {
 	wxBoxSizer *topLevelSizer;
 	wxBoxSizer *mainSizer;
@@ -65,7 +65,7 @@ FirstTimeDialog::FirstTimeDialog(void) : wxDialog(NULL, wxID_ANY, wxString::Form
 	mainSizer = new wxBoxSizer(wxVERTICAL);
 
 	mainSizer->AddSpacer(FMC_GUI_SPACING_HIGH);
-	mainSizer->Add(new StaticBoldedText(this, wxID_ANY, wxString::Format(_("Welcome to %s, a Folding@Home monitoring tool"), wxT(FMC_APPNAME))), 0, wxALIGN_CENTER);
+	mainSizer->Add(new StaticBoldedText(this, wxID_ANY, wxString::Format(_("Welcome to %s, a Folding@Home monitoring tool"), _T(FMC_APPNAME))), 0, wxALIGN_CENTER);
 	mainSizer->AddSpacer(FMC_GUI_SPACING_HIGH);
 	mainSizer->Add(new wxStaticLine(this, wxID_ANY, wxDefaultPosition, wxSize(150, -1)), 0, wxALIGN_CENTER);
 	mainSizer->AddSpacer(FMC_GUI_SPACING_HIGH);
@@ -86,8 +86,8 @@ FirstTimeDialog::FirstTimeDialog(void) : wxDialog(NULL, wxID_ANY, wxString::Form
 	mainSizer->AddSpacer(FMC_GUI_SPACING_HIGH);
 	mainSizer->Add(new wxStaticLine(this, wxID_ANY, wxDefaultPosition, wxSize(150, -1)), 0, wxALIGN_CENTER);
 	mainSizer->AddSpacer(FMC_GUI_SPACING_HIGH);
-	mainSizer->Add(new wxStaticText(this, wxID_ANY, wxString::Format(_("The latest version of %s will always be available on the official website:"), wxT(FMC_APPNAME))), 0, wxALIGN_CENTER);
-	mainSizer->Add(new wxHyperlinkCtrl(this, wxID_ANY, wxT(FMC_URL_FAHMON), wxT(FMC_URL_FAHMON)), 0, wxALIGN_CENTER);
+	mainSizer->Add(new wxStaticText(this, wxID_ANY, wxString::Format(_("The latest version of %s will always be available on the official website:"), _T(FMC_APPNAME))), 0, wxALIGN_CENTER);
+	mainSizer->Add(new wxHyperlinkCtrl(this, wxID_ANY, _T(FMC_URL_FAHMON), _T(FMC_URL_FAHMON)), 0, wxALIGN_CENTER);
 	mainSizer->AddSpacer(FMC_GUI_SPACING_HIGH);
 	mainSizer->Add(new wxStaticLine(this, wxID_ANY, wxDefaultPosition, wxSize(150, -1)), 0, wxALIGN_CENTER);
 	mainSizer->AddSpacer(FMC_GUI_SPACING_HIGH);

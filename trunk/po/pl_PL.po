@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl_PL\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2009-01-02 20:41+0000\n"
+"POT-Creation-Date: 2009-01-03 00:49+0000\n"
 "PO-Revision-Date: 2008-11-01 00:02+0100\n"
 "Last-Translator: Mariusz Pociask <mariusz-pociask@o2.pl>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -217,9 +217,9 @@ msgid "Error while reading %squeue.dat"
 msgstr "Błąd podczas odczytu %squeue.dat!"
 
 #: src/client.cpp:206
-#, fuzzy, c-format
+#, c-format
 msgid "Error while reading %swork/logfile_%02i.txt"
-msgstr "Błąd podczas odczytu %sFAHlog.txt!"
+msgstr "Błąd podczas odczytu %swork/logfile_%02i.txt"
 
 #: src/client.cpp:212
 #, c-format
@@ -373,15 +373,15 @@ msgstr ""
 
 #: src/core.cpp:127
 msgid "CPU"
-msgstr ""
+msgstr "CPU"
 
 #: src/core.cpp:131
 msgid "SMP"
-msgstr ""
+msgstr "SMP"
 
 #: src/core.cpp:137
 msgid "GPU"
-msgstr ""
+msgstr "GPU"
 
 #: src/fahlogAnalyzer.cpp:250
 msgid "Possible clock asynchrony detected!"
@@ -619,6 +619,11 @@ msgstr ""
 msgid "Another instance of %s is already running!"
 msgstr "Działa już inna instancja %s !"
 
+#: src/main.cpp:209
+#, c-format
+msgid "Old settings imported into %s"
+msgstr ""
+
 #: src/mainDialog.cpp:182
 #, c-format
 msgid "%s is licenced under the GNU GPL v2"
@@ -629,9 +634,8 @@ msgid "Copyright (C) 2003-2007 Fran\\u00E7ois Ingelrest"
 msgstr "Prawa autorskie © 2003-2007 François Ingelrest"
 
 #: src/mainDialog.cpp:184
-#, fuzzy
 msgid "Copyright (C) 2007-2009 Andrew Schofield"
-msgstr "Prawa autorskie © 2007-2008 Andrew Schofield"
+msgstr "Prawa autorskie © 2007-2009 Andrew Schofield"
 
 #: src/mainDialog.cpp:186
 msgid "FahMon contains code from qd, also licenced under the GNU GPL v2"
@@ -643,9 +647,8 @@ msgid "Copyright (C) 2002-2005 Richard P. Howell IV."
 msgstr "Prawa autorskie © 2002-2005 Richard P. Howell IV."
 
 #: src/mainDialog.cpp:188
-#, fuzzy
 msgid "Copyright (C) 2005-2009 Sebastiaan Couwenberg"
-msgstr "Prawa autorskie © 2005-2008 Sebastiaan Couwenberg"
+msgstr "Prawa autorskie © 2005-2009 Sebastiaan Couwenberg"
 
 #: src/mainDialog.cpp:396
 msgid ""

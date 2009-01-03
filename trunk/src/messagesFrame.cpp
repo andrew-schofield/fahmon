@@ -40,7 +40,7 @@ END_EVENT_TABLE()
 MessagesFrame* MessagesFrame::mInstance = NULL;
 
 
-MessagesFrame::MessagesFrame(wxWindow *parent) : wxFrame(parent, wxID_ANY, wxString::Format(_("Messages / %s"), wxT(FMC_PRODUCT)))
+MessagesFrame::MessagesFrame(wxWindow *parent) : wxFrame(parent, wxID_ANY, wxString::Format(_("Messages / %s"), _T(FMC_PRODUCT)))
 {
 	wxUint32    frameWidth;
 	wxUint32    frameHeight;
@@ -50,7 +50,7 @@ MessagesFrame::MessagesFrame(wxWindow *parent) : wxFrame(parent, wxID_ANY, wxStr
 
 	// This frame does not inherit the icon of the main dialog
 #ifdef __WXGTK__
-	SetIcon(wxIcon(PathManager::GetImgPath() + wxT(FMC_FILE_IMG_DIALOG)));
+	SetIcon(wxIcon(PathManager::GetImgPath() + _T(FMC_FILE_IMG_DIALOG)));
 #elif _FAHMON_WIN32_
 	SetIcon(wxICON(dialog_icon));
 #endif
@@ -64,7 +64,7 @@ MessagesFrame::MessagesFrame(wxWindow *parent) : wxFrame(parent, wxID_ANY, wxStr
 	panel         = new wxPanel(this);
 	mainSizer     = new wxBoxSizer(wxVERTICAL);
 	topLevelSizer = new wxBoxSizer(wxVERTICAL);
-	mTextCtrl     = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE | wxTE_READONLY | wxTE_DONTWRAP);
+	mTextCtrl     = new wxTextCtrl(panel, wxID_ANY, _T(""), wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE | wxTE_READONLY | wxTE_DONTWRAP);
 
 	mainSizer->Add(mTextCtrl, 1, wxEXPAND);
 	mTextCtrl->SetFont(wxFont(9, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL));

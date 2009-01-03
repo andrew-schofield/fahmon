@@ -99,7 +99,7 @@ END_EVENT_TABLE()
 PreferencesDialog* PreferencesDialog::mInstance = NULL;
 
 
-PreferencesDialog::PreferencesDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, wxString::Format(_("Preferences / %s"), wxT(FMC_PRODUCT)))
+PreferencesDialog::PreferencesDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, wxString::Format(_("Preferences / %s"), _T(FMC_PRODUCT)))
 {
 	wxBoxSizer *topLevelSizer;
 	wxBoxSizer *mainSizer;
@@ -244,7 +244,7 @@ wxPanel* PreferencesDialog::CreateMonitoringTab(wxBookCtrlBase* parent)
 	mMonitoringAutoReloadInt       = new wxStaticText(panel, wxID_ANY, wxString::Format(_T("%s "),  _("Reload interval (mn)")));
 	mMonitoringAdvancedReload      = new wxCheckBox(panel, CHK_ADVANCEDRELOAD, _("Use experimental reload system"));
 	mMonitoringETADisplayStyle     = new wxChoice(panel, wxID_ANY, wxDefaultPosition, wxDefaultSize, 3, etaFormats);
-	mMonitoringAutoReloadFrequency = new wxSpinCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 1, 1000, 5);
+	mMonitoringAutoReloadFrequency = new wxSpinCtrl(panel, wxID_ANY, _T(""), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 1, 1000, 5);
 	mMonitoringPPDType             = new wxChoice(panel, wxID_ANY, wxDefaultPosition, wxDefaultSize, 4, ppdFormats);
 	mMonitoringIgnoreAsynchrony    = new wxCheckBox(panel, wxID_ANY, _("Ignore asynchronous clocks"));
 
@@ -295,11 +295,11 @@ wxPanel* PreferencesDialog::CreateNetworkingTab(wxBookCtrlBase* parent)
 	proxyAuthenticationSizer          = new wxBoxSizer(wxHORIZONTAL);
 
 	mNetworkingUseProxy               = new wxCheckBox(panel, CHK_USEPROXY, _("Use a proxy for HTTP connections"));
-	mNetworkingProxyAddress           = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
-	mNetworkingProxyPort              = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition, wxDefaultSize, 0, wxTextValidator(wxFILTER_NUMERIC));
+	mNetworkingProxyAddress           = new wxTextCtrl(panel, wxID_ANY, _T(""), wxDefaultPosition);
+	mNetworkingProxyPort              = new wxTextCtrl(panel, wxID_ANY, _T(""), wxDefaultPosition, wxDefaultSize, 0, wxTextValidator(wxFILTER_NUMERIC));
 	mNetworkingUseProxyAuthentication = new wxCheckBox(panel, CHK_PROXYAUTHENTICATION, _("Proxy requires authentication"));
-	mNetworkingProxyUsername          = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
-	mNetworkingProxyPassword          = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition, wxDefaultSize, wxTE_PASSWORD);
+	mNetworkingProxyUsername          = new wxTextCtrl(panel, wxID_ANY, _T(""), wxDefaultPosition);
+	mNetworkingProxyPassword          = new wxTextCtrl(panel, wxID_ANY, _T(""), wxDefaultPosition, wxDefaultSize, wxTE_PASSWORD);
 	mNetworkingLabelAddress           = new wxStaticText(panel, wxID_ANY, _("Address:"));
 	mNetworkingLabelPort              = new wxStaticText(panel, wxID_ANY, _("Port:"));
 	mNetworkingLabelUsername          = new wxStaticText(panel, wxID_ANY, _("Proxy\nUsername:"));
@@ -351,13 +351,13 @@ wxPanel* PreferencesDialog::CreateAdvancedTab(wxBookCtrlBase* parent)
 	LocationSizer                                   = new wxBoxSizer(wxHORIZONTAL);
 
 	mAdvancedUseAlternateProjectSource              = new wxCheckBox(panel, CHK_USEALTERNATEPROJECTSOURCE, _("Use the following settings for new project downloads"));
-	mAdvancedAlternateProjectSourceLocationAddress  = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
+	mAdvancedAlternateProjectSourceLocationAddress  = new wxTextCtrl(panel, wxID_ANY, _T(""), wxDefaultPosition);
 	mAdvancedLabelLocationAddress                   = new wxStaticText(panel, wxID_ANY, _("Address:"));
 	mAdvancedUseLocalFile                           = new wxCheckBox(panel, CHK_USELOCALFILE, _("Use a local file for project data"));
-	mAdvancedLocalFileLocation                      = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
+	mAdvancedLocalFileLocation                      = new wxTextCtrl(panel, wxID_ANY, _T(""), wxDefaultPosition);
 	mAdvancedLabelLocalFile                         = new wxStaticText(panel, wxID_ANY, _("Filename:"));
 #ifndef __WXMAC__
-	mAdvancedLocationChooser                        = new wxButton(panel, BTN_BROWSE, wxT("..."), wxDefaultPosition, wxSize(26, 26));
+	mAdvancedLocationChooser                        = new wxButton(panel, BTN_BROWSE, _T("..."), wxDefaultPosition, wxSize(26, 26));
 #else
 	mAdvancedLocationChooser                        = new wxButton(panel, BTN_BROWSE, _("Choose"), wxDefaultPosition);
 #endif
@@ -403,19 +403,19 @@ wxPanel* PreferencesDialog::CreateSystemTab(wxBookCtrlBase* parent)
 	otherSizer              = new wxBoxSizer(wxHORIZONTAL);
 	sizerTZOverride         = new wxBoxSizer(wxHORIZONTAL);
 	topLevelSizer           = new wxBoxSizer(wxVERTICAL);
-	mSystemBrowser          = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
+	mSystemBrowser          = new wxTextCtrl(panel, wxID_ANY, _T(""), wxDefaultPosition);
 	mSystemBrowserLabel     = new wxStaticText(panel, wxID_ANY, _("Web Browser:"));
 	mSystemFileManagerLabel = new wxStaticText(panel, wxID_ANY, _("File Manager:"));
-	mSystemOtherFM          = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
+	mSystemOtherFM          = new wxTextCtrl(panel, wxID_ANY, _T(""), wxDefaultPosition);
 	mSystemOtherFMLabel     = new wxStaticText(panel, wxID_ANY, _("File Manager Command:"));
 	mSystemOverrideTimezone = new wxCheckBox(panel, CHK_TZOVERRIDE, wxString::Format(_T("%s  "),  _("Manually set timezone to UTC +")));
-	mSystemTZ               = new wxSpinCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, -24, 24, 0);
+	mSystemTZ               = new wxSpinCtrl(panel, wxID_ANY, _T(""), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, -24, 24, 0);
 
 	#ifdef _FAHMON_WIN32_
 	const wxString    fileManagers[2] = {_("Windows Explorer"), _("Other")};
 	mSystemFileManager     = new wxChoice(panel, CHC_FILEMANAGER, wxDefaultPosition, wxDefaultSize, 2, fileManagers);
 	#elif __WXGTK__
-	const wxString    fileManagers[5] = {wxT("Konqueror (KDE 3)"), wxT("Dolphin (KDE 4)"), wxT("Nautilus (Gnome)"), wxT("Thunar (Xfce 4.4)"), _("Other")};
+	const wxString    fileManagers[5] = {_T("Konqueror (KDE 3)"), _T("Dolphin (KDE 4)"), _T("Nautilus (Gnome)"), _T("Thunar (Xfce 4.4)"), _("Other")};
 	mSystemFileManager     = new wxChoice(panel, CHC_FILEMANAGER, wxDefaultPosition, wxDefaultSize, 5, fileManagers);
 	#elif __WXMAC__
 	const wxString fileManagers[2] = {_("Finder"), _("Other")};
@@ -496,28 +496,28 @@ wxPanel* PreferencesDialog::CreateWebApp1Tab(wxBookCtrlBase* parent)
 	simpleTextLocationSizer          = new wxBoxSizer(wxHORIZONTAL);
 
 	mWebAppUseWebApp                 = new wxCheckBox(panel, CHK_USEWEBAPP, _("Export Web Application"));
-	mWebAppWebAppLocation            = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
+	mWebAppWebAppLocation            = new wxTextCtrl(panel, wxID_ANY, _T(""), wxDefaultPosition);
 	mWebAppWebAppLabel               = new wxStaticText(panel, wxID_ANY, _("Filename:"));
 #ifndef __WXMAC__
-	mWebAppWebAppLocationChooser     = new wxButton(panel, BTN_BROWSE_WEBAPP, wxT("..."), wxDefaultPosition, wxSize(26, 26));
+	mWebAppWebAppLocationChooser     = new wxButton(panel, BTN_BROWSE_WEBAPP, _T("..."), wxDefaultPosition, wxSize(26, 26));
 #else
 	mWebAppWebAppLocationChooser     = new wxButton(panel, BTN_BROWSE_WEBAPP, _("Choose"), wxDefaultPosition);
 #endif
 
 	mWebAppUseSimpleWeb              = new wxCheckBox(panel, CHK_USESIMPLEWEB, _("Export Simple Web page"));
-	mWebAppSimpleWebLocation         = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
+	mWebAppSimpleWebLocation         = new wxTextCtrl(panel, wxID_ANY, _T(""), wxDefaultPosition);
 	mWebAppSimpleWebLabel            = new wxStaticText(panel, wxID_ANY, _("Filename:"));
 #ifndef __WXMAC__
-	mWebAppSimpleWebLocationChooser  = new wxButton(panel, BTN_BROWSE_SIMPLEWEB, wxT("..."), wxDefaultPosition, wxSize(26, 26));
+	mWebAppSimpleWebLocationChooser  = new wxButton(panel, BTN_BROWSE_SIMPLEWEB, _T("..."), wxDefaultPosition, wxSize(26, 26));
 #else
 	mWebAppSimpleWebLocationChooser  = new wxButton(panel, BTN_BROWSE_SIMPLEWEB, _("Choose"), wxDefaultPosition);
 #endif
 
 	mWebAppUseSimpleText             = new wxCheckBox(panel, CHK_USESIMPLETEXT, _("Export Simple Text file"));
-	mWebAppSimpleTextLocation        = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
+	mWebAppSimpleTextLocation        = new wxTextCtrl(panel, wxID_ANY, _T(""), wxDefaultPosition);
 	mWebAppSimpleTextLabel           = new wxStaticText(panel, wxID_ANY, _("Filename:"));
 #ifndef __WXMAC__
-	mWebAppSimpleTextLocationChooser = new wxButton(panel, BTN_BROWSE_SIMPLETEXT, wxT("..."), wxDefaultPosition, wxSize(26, 26));
+	mWebAppSimpleTextLocationChooser = new wxButton(panel, BTN_BROWSE_SIMPLETEXT, _T("..."), wxDefaultPosition, wxSize(26, 26));
 #else
 	mWebAppSimpleTextLocationChooser = new wxButton(panel, BTN_BROWSE_SIMPLETEXT, _("Choose"), wxDefaultPosition);
 #endif
@@ -581,28 +581,28 @@ wxPanel* PreferencesDialog::CreateWebApp2Tab(wxBookCtrlBase* parent)
 	simpleTextLocationTemplateSizer = new wxBoxSizer(wxHORIZONTAL);
 
 	mWebAppWebAppTemplateLabel       = new wxStaticText(panel, wxID_ANY, _("Custom Web Application Template"));
-	mWebAppWebAppTemplateLocation    = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
+	mWebAppWebAppTemplateLocation    = new wxTextCtrl(panel, wxID_ANY, _T(""), wxDefaultPosition);
 	mWebAppWebAppFilenameLabel       = new wxStaticText(panel, wxID_ANY, _("Filename:"));
 #ifndef __WXMAC__
-	mWebAppWebAppTemplateLocationChooser     = new wxButton(panel, BTN_BROWSE_WEBAPP_TEMPLATE, wxT("..."), wxDefaultPosition, wxSize(26, 26));
+	mWebAppWebAppTemplateLocationChooser     = new wxButton(panel, BTN_BROWSE_WEBAPP_TEMPLATE, _T("..."), wxDefaultPosition, wxSize(26, 26));
 #else
 	mWebAppWebAppTemplateLocationChooser     = new wxButton(panel, BTN_BROWSE_WEBAPP_TEMPLATE, _("Choose"), wxDefaultPosition);
 #endif
 
 	mWebAppSimpleWebTemplateLabel     = new wxStaticText(panel, wxID_ANY, _("Custom Simple Web Template"));
-	mWebAppSimpleWebTemplateLocation  = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
+	mWebAppSimpleWebTemplateLocation  = new wxTextCtrl(panel, wxID_ANY, _T(""), wxDefaultPosition);
 	mWebAppSimpleWebFilenameLabel     = new wxStaticText(panel, wxID_ANY, _("Filename:"));
 #ifndef __WXMAC__
-	mWebAppSimpleWebTemplateLocationChooser  = new wxButton(panel, BTN_BROWSE_SIMPLEWEB_TEMPLATE, wxT("..."), wxDefaultPosition, wxSize(26, 26));
+	mWebAppSimpleWebTemplateLocationChooser  = new wxButton(panel, BTN_BROWSE_SIMPLEWEB_TEMPLATE, _T("..."), wxDefaultPosition, wxSize(26, 26));
 #else
 	mWebAppSimpleWebLocationTemplateChooser  = new wxButton(panel, BTN_BROWSE_SIMPLEWEB_TEMPLATE, _("Choose"), wxDefaultPosition);
 #endif
 
 	mWebAppSimpleTextTemplateLabel     = new wxStaticText(panel, wxID_ANY, _("Custom Simple Text Template"));
-	mWebAppSimpleTextTemplateLocation  = new wxTextCtrl(panel, wxID_ANY, wxT(""), wxDefaultPosition);
+	mWebAppSimpleTextTemplateLocation  = new wxTextCtrl(panel, wxID_ANY, _T(""), wxDefaultPosition);
 	mWebAppSimpleTextFilenameLabel     = new wxStaticText(panel, wxID_ANY, _("Filename:"));
 #ifndef __WXMAC__
-	mWebAppSimpleTextTemplateLocationChooser = new wxButton(panel, BTN_BROWSE_SIMPLETEXT_TEMPLATE, wxT("..."), wxDefaultPosition, wxSize(26, 26));
+	mWebAppSimpleTextTemplateLocationChooser = new wxButton(panel, BTN_BROWSE_SIMPLETEXT_TEMPLATE, _T("..."), wxDefaultPosition, wxSize(26, 26));
 #else
 	mWebAppSimpleTextTemplateLocationChooser = new wxButton(panel, BTN_BROWSE_SIMPLETEXT_TEMPLATE, _("Choose"), wxDefaultPosition);
 #endif
@@ -711,7 +711,7 @@ void PreferencesDialog::LoadPreferences(void)
 
 	mMonitoringAdvancedReload->SetValue(mInitAdvancedReload);
 	mMonitoringAutoReload->SetValue(mInitAutoReload);
-	mMonitoringAutoReloadFrequency->SetValue(wxString::Format(wxT("%u"), mInitAutoReloadFrequency));
+	mMonitoringAutoReloadFrequency->SetValue(wxString::Format(_T("%u"), mInitAutoReloadFrequency));
 	mMonitoringAutoReloadFrequency->Enable(!mInitAdvancedReload);
 	mMonitoringETADisplayStyle->Select(mInitETADisplayStyle);
 	mMonitoringPPDType->Select(mInitPPDDisplayStyle);
@@ -751,13 +751,13 @@ void PreferencesDialog::LoadPreferences(void)
 	if(useProxy == true)
 	{
 		mNetworkingProxyAddress->SetValue(proxyAddress);
-		mNetworkingProxyPort->SetValue(wxString::Format(wxT("%u"), proxyPort));
+		mNetworkingProxyPort->SetValue(wxString::Format(_T("%u"), proxyPort));
 		mNetworkingUseProxyAuthentication->SetValue(useProxyAuthentication);
 	}
 	else
 	{
-		mNetworkingProxyAddress->SetValue(wxT(""));
-		mNetworkingProxyPort->SetValue(wxT(""));
+		mNetworkingProxyAddress->SetValue(_T(""));
+		mNetworkingProxyPort->SetValue(_T(""));
 		mNetworkingUseProxyAuthentication->SetValue(false);
 	}
 
@@ -768,8 +768,8 @@ void PreferencesDialog::LoadPreferences(void)
 	}
 	else
 	{
-		mNetworkingProxyUsername->SetValue(wxT(""));
-		mNetworkingProxyPassword->SetValue(wxT(""));
+		mNetworkingProxyUsername->SetValue(_T(""));
+		mNetworkingProxyPassword->SetValue(_T(""));
 	}
 
 	// -----===== Advanced preferences =====-----
@@ -783,8 +783,8 @@ void PreferencesDialog::LoadPreferences(void)
 
 	if(useAlternate == false)
 	{
-		mAdvancedAlternateProjectSourceLocationAddress->SetValue(wxT("http://fah-web.stanford.edu/psummary.html"));
-		mAdvancedLocalFileLocation->SetValue(wxT(""));
+		mAdvancedAlternateProjectSourceLocationAddress->SetValue(_T("http://fah-web.stanford.edu/psummary.html"));
+		mAdvancedLocalFileLocation->SetValue(_T(""));
 
 		mAdvancedAlternateProjectSourceLocationAddress->Enable(false);
 		mAdvancedLabelLocationAddress->Enable(false);
@@ -858,7 +858,7 @@ void PreferencesDialog::LoadPreferences(void)
 	mWebAppSimpleTextTemplateLocation->SetValue(simpleTextTemplateLocation);
 
 	#ifdef _FAHMON_WIN32_
-	if(filemanager == wxT("explorer.exe"))
+	if(filemanager == _T("explorer.exe"))
 	{
 		mSystemFileManager->Select(0);
 	}
@@ -867,19 +867,19 @@ void PreferencesDialog::LoadPreferences(void)
 		mSystemFileManager->Select(1);
 	}
 	#elif __WXGTK__
-	if(filemanager == wxT("konqueror --profile filemanagement"))
+	if(filemanager == _T("konqueror --profile filemanagement"))
 	{
 		mSystemFileManager->Select(0);
 	}
-	else if(filemanager == wxT("dolphin"))
+	else if(filemanager == _T("dolphin"))
 	{
 		mSystemFileManager->Select(1);
 	}
-	else if(filemanager == wxT("nautilus"))
+	else if(filemanager == _T("nautilus"))
 	{
 		mSystemFileManager->Select(2);
 	}
-	else if(filemanager == wxT("thunar"))
+	else if(filemanager == _T("thunar"))
 	{
 		mSystemFileManager->Select(3);
 	}
@@ -888,7 +888,7 @@ void PreferencesDialog::LoadPreferences(void)
 		mSystemFileManager->Select(4);
 	}
 	#elif __WXMAC__
- 	if(filemanager == wxT("open"))
+ 	if(filemanager == _T("open"))
  	{
 		mSystemFileManager->Select(0);
 	}
@@ -1025,7 +1025,7 @@ void PreferencesDialog::OnBrowseButton(wxCommandEvent& event)
 {
 	wxString selectedFile;
 
-	wxFileDialog *OpenDialog = new wxFileDialog(this, _("Choose a local project data file"), wxT(""), mAdvancedLocalFileLocation->GetValue(),wxT("HTML Files (*.html)|*.html"), wxFD_OPEN, wxDefaultPosition);
+	wxFileDialog *OpenDialog = new wxFileDialog(this, _("Choose a local project data file"), _T(""), mAdvancedLocalFileLocation->GetValue(),_T("HTML Files (*.html)|*.html"), wxFD_OPEN, wxDefaultPosition);
 	if (OpenDialog->ShowModal() == wxID_OK) // if the user click "Open" instead of "cancel"
 	{
 		selectedFile = OpenDialog->GetPath();
@@ -1039,7 +1039,7 @@ void PreferencesDialog::OnWebAppBrowseButton(wxCommandEvent& event)
 {
 	wxString selectedFile;
 
-	wxFileDialog *OpenDialog = new wxFileDialog(this, _("Choose where to save the Web Application"), wxT(""), mWebAppWebAppLocation->GetValue(),wxT("HTML Files (*.html)|*.html"), wxFD_SAVE, wxDefaultPosition);
+	wxFileDialog *OpenDialog = new wxFileDialog(this, _("Choose where to save the Web Application"), _T(""), mWebAppWebAppLocation->GetValue(),_T("HTML Files (*.html)|*.html"), wxFD_SAVE, wxDefaultPosition);
 	if (OpenDialog->ShowModal() == wxID_OK) // if the user click "Open" instead of "cancel"
 	{
 		selectedFile = OpenDialog->GetPath();
@@ -1053,7 +1053,7 @@ void PreferencesDialog::OnSimpleWebBrowseButton(wxCommandEvent& event)
 {
 	wxString selectedFile;
 
-	wxFileDialog *OpenDialog = new wxFileDialog(this, _("Choose where to save the simple web page"), wxT(""), mWebAppSimpleWebLocation->GetValue(),wxT("HTML Files (*.html)|*.html"), wxFD_SAVE, wxDefaultPosition);
+	wxFileDialog *OpenDialog = new wxFileDialog(this, _("Choose where to save the simple web page"), _T(""), mWebAppSimpleWebLocation->GetValue(),_T("HTML Files (*.html)|*.html"), wxFD_SAVE, wxDefaultPosition);
 	if (OpenDialog->ShowModal() == wxID_OK) // if the user click "Open" instead of "cancel"
 	{
 		selectedFile = OpenDialog->GetPath();
@@ -1067,7 +1067,7 @@ void PreferencesDialog::OnSimpleTextBrowseButton(wxCommandEvent& event)
 {
 	wxString selectedFile;
 
-	wxFileDialog *OpenDialog = new wxFileDialog(this, _("Choose where to save the simple text file"), wxT(""), mWebAppSimpleTextLocation->GetValue(),wxT("Any File (*.*)|*.*"), wxFD_SAVE, wxDefaultPosition);
+	wxFileDialog *OpenDialog = new wxFileDialog(this, _("Choose where to save the simple text file"), _T(""), mWebAppSimpleTextLocation->GetValue(),_T("Any File (*.*)|*.*"), wxFD_SAVE, wxDefaultPosition);
 	if (OpenDialog->ShowModal() == wxID_OK) // if the user click "Open" instead of "cancel"
 	{
 		selectedFile = OpenDialog->GetPath();
@@ -1081,7 +1081,7 @@ void PreferencesDialog::OnWebAppTemplateBrowseButton(wxCommandEvent& event)
 {
 	wxString selectedFile;
 
-	wxFileDialog *OpenDialog = new wxFileDialog(this, _("Choose the Web Application Template"), wxT(""), mWebAppWebAppTemplateLocation->GetValue(),wxT("HTML Files (*.html;*.htm)|*.html;*.htm"), wxFD_OPEN, wxDefaultPosition);
+	wxFileDialog *OpenDialog = new wxFileDialog(this, _("Choose the Web Application Template"), _T(""), mWebAppWebAppTemplateLocation->GetValue(),_T("HTML Files (*.html;*.htm)|*.html;*.htm"), wxFD_OPEN, wxDefaultPosition);
 	if (OpenDialog->ShowModal() == wxID_OK) // if the user click "Open" instead of "cancel"
 	{
 		selectedFile = OpenDialog->GetPath();
@@ -1095,7 +1095,7 @@ void PreferencesDialog::OnSimpleWebTemplateBrowseButton(wxCommandEvent& event)
 {
 	wxString selectedFile;
 
-	wxFileDialog *OpenDialog = new wxFileDialog(this, _("Choose the Simple Web Page Template"), wxT(""), mWebAppSimpleWebTemplateLocation->GetValue(),wxT("HTML Files (*.html;*.htm)|*.html;*.htm"), wxFD_OPEN, wxDefaultPosition);
+	wxFileDialog *OpenDialog = new wxFileDialog(this, _("Choose the Simple Web Page Template"), _T(""), mWebAppSimpleWebTemplateLocation->GetValue(),_T("HTML Files (*.html;*.htm)|*.html;*.htm"), wxFD_OPEN, wxDefaultPosition);
 	if (OpenDialog->ShowModal() == wxID_OK) // if the user click "Open" instead of "cancel"
 	{
 		selectedFile = OpenDialog->GetPath();
@@ -1109,7 +1109,7 @@ void PreferencesDialog::OnSimpleTextTemplateBrowseButton(wxCommandEvent& event)
 {
 	wxString selectedFile;
 
-	wxFileDialog *OpenDialog = new wxFileDialog(this, _("Choose the Simple Text File Template"), wxT(""), mWebAppSimpleTextTemplateLocation->GetValue(),wxT("Any File (*.*)|*.*"), wxFD_OPEN, wxDefaultPosition);
+	wxFileDialog *OpenDialog = new wxFileDialog(this, _("Choose the Simple Text File Template"), _T(""), mWebAppSimpleTextTemplateLocation->GetValue(),_T("Any File (*.*)|*.*"), wxFD_OPEN, wxDefaultPosition);
 	if (OpenDialog->ShowModal() == wxID_OK) // if the user click "Open" instead of "cancel"
 	{
 		selectedFile = OpenDialog->GetPath();
@@ -1242,11 +1242,11 @@ void PreferencesDialog::OnChoices(wxCommandEvent& event)
 			{
 			// ---
 				case 0: //Windows Explorer
-					mSystemOtherFM->SetValue(wxT("explorer.exe"));
+					mSystemOtherFM->SetValue(_T("explorer.exe"));
 					break;
 
 				case 1: //Other
-					mSystemOtherFM->SetValue(wxT(""));
+					mSystemOtherFM->SetValue(_T(""));
 					break;
 
 				default:
@@ -1257,23 +1257,23 @@ void PreferencesDialog::OnChoices(wxCommandEvent& event)
 			{
 			// ---
 				case 0: //Konqueror
-					mSystemOtherFM->SetValue(wxT("konqueror --profile filemanagement"));
+					mSystemOtherFM->SetValue(_T("konqueror --profile filemanagement"));
 					break;
 
 				case 1: //Dolphin
-					mSystemOtherFM->SetValue(wxT("dolphin"));
+					mSystemOtherFM->SetValue(_T("dolphin"));
 					break;
 
 				case 2: //Nautilus
-					mSystemOtherFM->SetValue(wxT("nautilus"));
+					mSystemOtherFM->SetValue(_T("nautilus"));
 					break;
 
 				case 3: //Thunar
-					mSystemOtherFM->SetValue(wxT("thunar"));
+					mSystemOtherFM->SetValue(_T("thunar"));
 					break;
 
 				case 4: //Other
-					mSystemOtherFM->SetValue(wxT(""));
+					mSystemOtherFM->SetValue(_T(""));
 					break;
 
 				default:
@@ -1284,11 +1284,11 @@ void PreferencesDialog::OnChoices(wxCommandEvent& event)
 			{
 				// ---
 				case 0: //Finder
-					mSystemOtherFM->SetValue(wxT("open"));
+					mSystemOtherFM->SetValue(_T("open"));
 					break;
 
 				case 1: //Other
-					mSystemOtherFM->SetValue(wxT(""));
+					mSystemOtherFM->SetValue(_T(""));
 					break;
 
 				default:

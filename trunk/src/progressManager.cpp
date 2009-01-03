@@ -31,7 +31,7 @@
 ProgressManager::ProgressManager(bool isInSilentMode)
 {
 	mIsInSilentMode        = isInSilentMode;
-	mCurrentText           = wxT("");
+	mCurrentText           = _T("");
 	mCurrentProgress       = 0;
 	mIsATaskActive         = false;
 	mTaskCurrentProgress   = 0;
@@ -42,7 +42,7 @@ ProgressManager::ProgressManager(bool isInSilentMode)
 	// We pass a long 'empty' string so that the dialog won't be too small
 	if(mIsInSilentMode == false)
 	{
-		mProgressDlg = new wxProgressDialog(wxT(FMC_PRODUCT), wxT("                                                                    "), 100, NULL, wxPD_AUTO_HIDE | wxPD_APP_MODAL | wxPD_CAN_ABORT | wxPD_ELAPSED_TIME);
+		mProgressDlg = new wxProgressDialog(_T(FMC_PRODUCT), _T("                                                                    "), 100, NULL, wxPD_AUTO_HIDE | wxPD_APP_MODAL | wxPD_CAN_ABORT | wxPD_ELAPSED_TIME);
 	}
 }
 
@@ -69,7 +69,7 @@ bool ProgressManager::SetText(wxString const &text)
 	if(mIsATaskActive == true)
 	{
 		progressToDisplay = mCurrentProgress + ((mTaskCurrentProgress * mTaskPercentageOfTotal) / 100);
-		textToDisplay     = mCurrentText + wxT(" (") + text + wxT(")");
+		textToDisplay     = mCurrentText + _T(" (") + text + _T(")");
 	}
 	else
 	{

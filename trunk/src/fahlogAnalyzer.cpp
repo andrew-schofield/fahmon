@@ -321,36 +321,36 @@ void FahLogAnalyzer::ParseLogLine(wxString& lineToParse, LogLine& logLine)
 	{
 		logLine.type = LLT_EMPTY;
 	}
-	else if(lineToParse.StartsWith(wxT("Completed ")))
+	else if(lineToParse.StartsWith(_T("Completed ")))
 	{
 		logLine.type = LLT_COMPLETED;
 	}
-	else if(lineToParse.Find(wxT(" steps ")) != wxNOT_FOUND)
+	else if(lineToParse.Find(_T(" steps ")) != wxNOT_FOUND)
 	{
 		logLine.type = LLT_COMPLETED;
 	}
-	else if(lineToParse.StartsWith(wxT("Finished a frame")))
+	else if(lineToParse.StartsWith(_T("Finished a frame")))
 	{
 		logLine.type = LLT_FINISHED;
 	}
-	else if(lineToParse.StartsWith(wxT("Folding@Home Client Shutdown.")))
+	else if(lineToParse.StartsWith(_T("Folding@Home Client Shutdown.")))
 	{
 		logLine.type = LLT_SHUTDOWN;
 	}
 	// this one is not used yet:
-	else if(lineToParse.StartsWith(wxT("Folding@home Core Shutdown: FINISHED_UNIT")))
+	else if(lineToParse.StartsWith(_T("Folding@home Core Shutdown: FINISHED_UNIT")))
 	{
 		logLine.type = LLT_WU_COMPLETE;
 	}
-	else if(lineToParse.StartsWith(wxT("Protein")))
+	else if(lineToParse.StartsWith(_T("Protein")))
 	{
 		logLine.type = LLT_WU_STARTED;
 	}
-	else if(lineToParse.StartsWith(wxT("Project")))
+	else if(lineToParse.StartsWith(_T("Project")))
 	{
 		logLine.type = LLT_WU_STARTED;
 	}
-	else if(lineToParse.StartsWith(wxT("+ Paused")) || lineToParse.StartsWith(wxT("+ Running on battery power")))
+	else if(lineToParse.StartsWith(_T("+ Paused")) || lineToParse.StartsWith(_T("+ Running on battery power")))
 	{
 		logLine.type = LLT_PAUSED;
 	}
@@ -367,7 +367,7 @@ void FahLogAnalyzer::ParseLogLine(wxString& lineToParse, LogLine& logLine)
 
 		// For regular log messages of the type "Completed xxx of yyy steps (1)"
 		// or "Finished frame (1)"
-		position = lineToParse.Find(wxT("("));
+		position = lineToParse.Find(_T("("));
 		if(position != -1)
 		{
 			lineToParse.Right(lineToParse.Len()-position-1).ToULong(&convertedNumber);
@@ -388,9 +388,9 @@ void FahLogAnalyzer::ParseLogLine(wxString& lineToParse, LogLine& logLine)
 			gpustyleWU = true;
 		}
 
-		compPos = lineToParse.Find(wxT("Completed "));
-		outOfPos = lineToParse.Find(wxT(" out of "));
-		stepsPos = lineToParse.Find(wxT(" steps"));
+		compPos = lineToParse.Find(_T("Completed "));
+		outOfPos = lineToParse.Find(_T(" out of "));
+		stepsPos = lineToParse.Find(_T(" steps"));
 		if (!(compPos == wxNOT_FOUND && outOfPos == wxNOT_FOUND && stepsPos == wxNOT_FOUND))
 		{
 			if(lineToParse.Mid(compPos+10, outOfPos-(compPos+10)).ToULong(&convertedNumber) == true)
@@ -414,6 +414,6 @@ void FahLogAnalyzer::ParseLogLine(wxString& lineToParse, LogLine& logLine)
 		}
 		// Extract the timestamp (it is in UTC format)
 		logLine.timestamp.SetToCurrent();
-		logLine.timestamp.ParseFormat(timestamp.c_str(), wxT("%H:%M:%S]"));
+		logLine.timestamp.ParseFormat(timestamp.c_str(), _T("%H:%M:%S]"));
 	}
 }

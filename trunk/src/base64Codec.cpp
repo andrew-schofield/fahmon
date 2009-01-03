@@ -84,7 +84,7 @@ wxString Base64Codec::Encode(wxString const &string)
 	wxInt32  i;      // Must NOT be Uint, because 'string.Len()-2' can be smaller than 0
 	wxString result;
 
-	result = wxT("");
+	result = _T("");
 
 	// Consider each block of 3 8-bits blocks and transform them in 4 6-bits blocks
 	for(i=0; i<(wxInt32)string.Len()-2; i+=3)
@@ -138,7 +138,7 @@ wxString Base64Codec::Decode(wxString const &string)
 	wxUint32 base64Index4;
 	wxString result;
 
-	result = wxT("");
+	result = _T("");
 
 	// Base64 encoded strings must have a length multiple of 4
 	if(string.Len()%4 != 0)

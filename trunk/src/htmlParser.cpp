@@ -31,8 +31,8 @@
 HTMLParser::HTMLParser(void)
 {
 	mIsStartingTag = false;
-	mParsedContent = wxT("");
-	mCurrentText   = wxT("");
+	mParsedContent = _T("");
+	mCurrentText   = _T("");
 	mCurrentToken  = TOKEN_UNKNOWN;
 }
 
@@ -40,13 +40,13 @@ HTMLParser::HTMLParser(void)
 bool HTMLParser::ParseFile(wxString const &fileName)
 {
 	mIsStartingTag = false;
-	mParsedContent = wxT("");
-	mCurrentText   = wxT("");
+	mParsedContent = _T("");
+	mCurrentText   = _T("");
 	mCurrentToken  = TOKEN_UNKNOWN;
 
 	if(fileName.IsEmpty() == false && Tools::LoadFile(fileName, mParsedContent) == false)
 	{
-		mParsedContent = wxT("");
+		mParsedContent = _T("");
 		return false;
 	}
 
@@ -58,7 +58,7 @@ void HTMLParser::ParseString(wxString const &string)
 {
 	mIsStartingTag = false;
 	mParsedContent = string;
-	mCurrentText   = wxT("");
+	mCurrentText   = _T("");
 	mCurrentToken  = TOKEN_UNKNOWN;
 }
 
@@ -91,10 +91,10 @@ bool HTMLParser::NextToken(void)
 			}
 			else
 			{
-				currentTag = wxT("");
+				currentTag = _T("");
 			}
 
-			mParsedContent = wxT("");
+			mParsedContent = _T("");
 		}
 		else
 		{
@@ -113,7 +113,7 @@ bool HTMLParser::NextToken(void)
 		if(nextTagPos == -1)
 		{
 			mCurrentText   = mParsedContent;
-			mParsedContent = wxT("");
+			mParsedContent = _T("");
 		}
 		else
 		{
@@ -148,11 +148,11 @@ HTMLParser::HTMLToken HTMLParser::TextToToken(wxString const &text)
 	}
 
 	// Simple comparisons...
-	if(toConvert.CmpNoCase(wxT("td")) == 0)
+	if(toConvert.CmpNoCase(_T("td")) == 0)
 	{
 		return TOKEN_TD;
 	}
-	else if(toConvert.CmpNoCase(wxT("tr")) == 0)
+	else if(toConvert.CmpNoCase(_T("tr")) == 0)
 	{
 		return TOKEN_TR;
 	}

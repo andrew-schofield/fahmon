@@ -69,7 +69,7 @@ HTTPDownloader::DownloadStatus HTTPDownloader::DownloadFile(wxString const &host
 	_PrefsGetHiddenString(PREF_HTTPDOWNLOADER_PROXY_PASSWORD,             proxyPassword);
 
 	// --- Create a temporary local file and try to open it
-	localFileName = wxFileName::CreateTempFileName(wxT(FMC_APPNAME));
+	localFileName = wxFileName::CreateTempFileName(_T(FMC_APPNAME));
 	if(localFileName.empty() == true)
 	{
 		return STATUS_TEMP_FILE_CREATION_ERROR;
@@ -88,12 +88,12 @@ HTTPDownloader::DownloadStatus HTTPDownloader::DownloadFile(wxString const &host
 		// Do we need to use authentication?
 		if(proxyNeedsAuthentication == true)
 		{
-			base64ProxyAuthentication = Base64Codec::Encode(wxString::Format(wxT("%s:%s"), proxyUsername.c_str(), proxyPassword.c_str()));
-			request                   = wxString::Format(wxT("GET http://%s:%u/%s HTTP/1.0\nHost: %s\nProxy-Authorization: Basic %s\nUser-Agent: %s/%s\n\n"), host.c_str(), port, resource.c_str(), host.c_str(), base64ProxyAuthentication.c_str(), wxT(FMC_APPNAME), wxT(FMC_VERSION));
+			base64ProxyAuthentication = Base64Codec::Encode(wxString::Format(_T("%s:%s"), proxyUsername.c_str(), proxyPassword.c_str()));
+			request                   = wxString::Format(_T("GET http://%s:%u/%s HTTP/1.0\nHost: %s\nProxy-Authorization: Basic %s\nUser-Agent: %s/%s\n\n"), host.c_str(), port, resource.c_str(), host.c_str(), base64ProxyAuthentication.c_str(), _T(FMC_APPNAME), _T(FMC_VERSION));
 		}
 		else
 		{
-			request = wxString::Format(wxT("GET http://%s:%u/%s HTTP/1.0\nHost: %s\nUser-Agent: %s/%s\n\n"), host.c_str(), port, resource.c_str(), host.c_str(), wxT(FMC_APPNAME), wxT(FMC_VERSION));
+			request = wxString::Format(_T("GET http://%s:%u/%s HTTP/1.0\nHost: %s\nUser-Agent: %s/%s\n\n"), host.c_str(), port, resource.c_str(), host.c_str(), _T(FMC_APPNAME), _T(FMC_VERSION));
 		}
 
 		serverAddress.Hostname(proxyAddress);
@@ -101,7 +101,7 @@ HTTPDownloader::DownloadStatus HTTPDownloader::DownloadFile(wxString const &host
 	}
 	else
 	{
-		request = wxString::Format(wxT("GET /%s HTTP/1.0\nHost: %s\nUser-Agent: %s/%s\n\n"), resource.c_str(), host.c_str(), wxT(FMC_APPNAME), wxT(FMC_VERSION));
+		request = wxString::Format(_T("GET /%s HTTP/1.0\nHost: %s\nUser-Agent: %s/%s\n\n"), resource.c_str(), host.c_str(), _T(FMC_APPNAME), _T(FMC_VERSION));
 		serverAddress.Hostname(host);
 		serverAddress.Service(port);
 	}
@@ -204,7 +204,7 @@ wxUint32 HTTPDownloader::ExtractContentSize(wxByte* buffer, wxUint32 bufferSize)
 	header = wxString::FromAscii((const char*)buffer);
 
 	// Find where the field starts
-	fieldPos = header.Find(wxT("Content-Length: "));
+	fieldPos = header.Find(_T("Content-Length: "));
 	if(fieldPos == -1)
 	{
 		return 0;
@@ -215,7 +215,7 @@ wxUint32 HTTPDownloader::ExtractContentSize(wxByte* buffer, wxUint32 bufferSize)
 	header = header.Mid(fieldPos + 16);
 
 	// Find where the value ends
-	valueEndPos = header.Find(wxT("\n"));
+	valueEndPos = header.Find(_T("\n"));
 	if(valueEndPos == -1)
 	{
 		return 0;
@@ -239,14 +239,14 @@ HTTPDownloader::DownloadStatus HTTPDownloader::Url(wxString const &url, wxString
 	wxString      clientServer;
 	wxString      clientResource;
 
-	if(url.Mid(0, 4) == wxT("http"))
+	if(url.Mid(0, 4) == _T("http"))
 	{
 		tempString = url.Mid(7, url.Length() - 7);
 		portPosition = tempString.Find(':');
 		fslashPosition = tempString.Find('/');
 		if(portPosition == -1)
 		{
-			clientPortStr = wxT("80");
+			clientPortStr = _T("80");
 			clientServer = tempString.Mid(0, fslashPosition);
 		}
 		else

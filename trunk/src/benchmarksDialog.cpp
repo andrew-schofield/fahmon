@@ -60,7 +60,7 @@ END_EVENT_TABLE()
 BenchmarksDialog* BenchmarksDialog::mInstance = NULL;
 
 
-BenchmarksDialog::BenchmarksDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, wxString::Format(wxT("%s / %s"), _("Benchmarks"), wxT(FMC_PRODUCT)), wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER)
+BenchmarksDialog::BenchmarksDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, wxString::Format(_T("%s / %s"), _("Benchmarks"), _T(FMC_PRODUCT)), wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER)
 {
 	wxUint32    frameWidth;
 	wxUint32    frameHeight;
@@ -72,7 +72,7 @@ BenchmarksDialog::BenchmarksDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY
 	// ---
 	mSplitter              = new wxSplitterWindow(this, wxID_ANY);
 	mListOfProjects        = new wxListView(mSplitter, LST_PROJECTS, wxDefaultPosition, wxDefaultSize, wxLC_REPORT | wxLC_SINGLE_SEL);
-	mBenchmarksInformation = new wxTextCtrl(mSplitter, wxID_ANY, wxT(""), wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE | wxTE_READONLY | wxTE_DONTWRAP);
+	mBenchmarksInformation = new wxTextCtrl(mSplitter, wxID_ANY, _T(""), wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE | wxTE_READONLY | wxTE_DONTWRAP);
 
 	_PrefsGetUint(PREF_BENCHMARKSDIALOG_SASHPOSITION, sashPosition);
 	mSplitter->SplitVertically(mListOfProjects, mBenchmarksInformation);
@@ -181,7 +181,7 @@ void BenchmarksDialog::PopulateProjectsList(ProjectId projectIdToSelect)
 	{
 		// Insert a new entry for each project identifier
 		// Each entry is associated with the project identifier, so that we can easily retrieve it for a given selection
-		mListOfProjects->InsertItem(i, wxString::Format(wxT("%u"), projectsList[i]));
+		mListOfProjects->InsertItem(i, wxString::Format(_T("%u"), projectsList[i]));
 		mListOfProjects->SetItemData(i, projectsList[i]);
 
 		// Is this the project we should select?
@@ -236,7 +236,7 @@ void BenchmarksDialog::ShowBenchmarks(ProjectId projectIdToShow)
 	// Clear the text area if needed
 	if(projectIdToShow == INVALID_PROJECT_ID)
 	{
-		mBenchmarksInformation->SetValue(wxT(""));
+		mBenchmarksInformation->SetValue(_T(""));
 		return;
 	}
 
@@ -254,14 +254,14 @@ void BenchmarksDialog::ShowBenchmarks(ProjectId projectIdToShow)
 	{
 		frameCount = project->GetNbFrames();
 		credit = project->GetCredit();
-		infoString += wxT(" ") + wxString::Format(_("Project : %u\n"), projectIdToShow);
-		infoString += wxT(" ") + wxString::Format(_("Core    : %s\n"), Core::IdToLongName(project->GetCoreId()).c_str());
-		infoString += wxT(" ") + wxString::Format(_("Frames  : %u\n"), frameCount);
-		infoString += wxT(" ") + wxString::Format(_("Credit  : %u\n"), credit);
+		infoString += _T(" ") + wxString::Format(_("Project : %u\n"), projectIdToShow);
+		infoString += _T(" ") + wxString::Format(_("Core    : %s\n"), Core::IdToLongName(project->GetCoreId()).c_str());
+		infoString += _T(" ") + wxString::Format(_("Frames  : %u\n"), frameCount);
+		infoString += _T(" ") + wxString::Format(_("Credit  : %u\n"), credit);
 	}
 	else
 	{
-		infoString += wxT(" ") + wxString::Format(_("Project : %u (Unknown)\n"), projectIdToShow);
+		infoString += _T(" ") + wxString::Format(_("Project : %u (Unknown)\n"), projectIdToShow);
 	}
 
 	for(i=0; i<nbBenchmarks; ++i)
@@ -270,59 +270,59 @@ void BenchmarksDialog::ShowBenchmarks(ProjectId projectIdToShow)
 		clientLocation = BenchmarksManager::GetInstance()->GetClientLocationFromClientId(benchmarks[i]->GetClientId());
 #ifdef _FAHMON_WIN32_
 		// fixes old benchmarks from version 2.3.1 and earlier which used forward slash instead of back slash
-		clientLocation.Replace(wxT("/"), wxT("\\"));
+		clientLocation.Replace(_T("/"), _T("\\"));
 #endif
 		clientName     = ClientsManager::GetInstance()->GetNameFromLocation(clientLocation);
 
 		if(clientName.IsEmpty() == false)
 		{
-			infoString += wxString::Format(wxT("\n\n -- %s --\n\n"), clientName.c_str());
+			infoString += wxString::Format(_T("\n\n -- %s --\n\n"), clientName.c_str());
 		}
 		else
 		{
-			infoString += wxString::Format(wxT("\n\n -- %s --\n\n"), clientLocation.c_str());
+			infoString += wxString::Format(_T("\n\n -- %s --\n\n"), clientLocation.c_str());
 		}
 
 		// Best time
 		if(benchmarks[i]->GetMinDuration() != 0)
 		{
 			iFrameTime = benchmarks[i]->GetMinDuration();
-			infoString += wxT(" ") + wxString::Format(_("Min. Time / Frame : %s"), Tools::FormatSeconds(iFrameTime).c_str());
+			infoString += _T(" ") + wxString::Format(_("Min. Time / Frame : %s"), Tools::FormatSeconds(iFrameTime).c_str());
 
 			// Compute points per day if possible
 			if(project != NULL)
 			{
 				minPPD = (credit * 86400.0) / ((double)iFrameTime * (double)frameCount);    // There are 86400 seconds in a day
-				infoString += wxT(" ") + wxString::Format(_(" - %.2f ppd"), minPPD);
+				infoString += _T(" ") + wxString::Format(_(" - %.2f ppd"), minPPD);
 			}
 		}
 		else
 		{
-			infoString += wxString::Format(wxT(" %s"), _("No Min. Time / Frame"));
+			infoString += wxString::Format(_T(" %s"), _("No Min. Time / Frame"));
 		}
 
-		infoString += wxT("\n");
+		infoString += _T("\n");
 
 
 		// Average time
 		if(benchmarks[i]->GetAvgDuration() != 0)
 		{
 			iFrameTime = benchmarks[i]->GetAvgDuration();
-			infoString += wxT(" ") + wxString::Format(_("Avg. Time / Frame : %s"), Tools::FormatSeconds(iFrameTime).c_str());
+			infoString += _T(" ") + wxString::Format(_("Avg. Time / Frame : %s"), Tools::FormatSeconds(iFrameTime).c_str());
 
 			// Compute points per day if possible
 			if(project != NULL)
 			{
 				avgPPD = (credit * 86400.0) / ((double)iFrameTime * (double)frameCount);    // There are 86400 seconds in a day
-				infoString += wxT(" ") + wxString::Format(_(" - %.2f ppd"), avgPPD);
+				infoString += _T(" ") + wxString::Format(_(" - %.2f ppd"), avgPPD);
 			}
 		}
 		else
 		{
-			infoString += wxString::Format(wxT(" %s"), _("No Avg. Time / Frame"));
+			infoString += wxString::Format(_T(" %s"), _("No Avg. Time / Frame"));
 		}
 
-		infoString += wxT("\n");
+		infoString += _T("\n");
 
 
 		// Instantaneous time
@@ -331,31 +331,31 @@ void BenchmarksDialog::ShowBenchmarks(ProjectId projectIdToShow)
 			iFrameTime = benchmarks[i]->GetInstantDuration();
 			tFrameTime = benchmarks[i]->Get3FrameDuration();
 			eFrameTime = benchmarks[i]->GetEffectiveDuration();
-			currentString = wxT(" ") + wxString::Format(_("Cur. Time / Frame : %s"), Tools::FormatSeconds(iFrameTime).c_str());
-			r3fString = wxT(" ") + wxString::Format(_("R3F. Time / Frame : %s"), Tools::FormatSeconds(tFrameTime).c_str());
-			effectiveString = wxT(" ") + wxString::Format(_("Eff. Time / Frame : %s"), Tools::FormatSeconds(eFrameTime).c_str());
+			currentString = _T(" ") + wxString::Format(_("Cur. Time / Frame : %s"), Tools::FormatSeconds(iFrameTime).c_str());
+			r3fString = _T(" ") + wxString::Format(_("R3F. Time / Frame : %s"), Tools::FormatSeconds(tFrameTime).c_str());
+			effectiveString = _T(" ") + wxString::Format(_("Eff. Time / Frame : %s"), Tools::FormatSeconds(eFrameTime).c_str());
 
 			// Compute points per day if possible
 			if(project != NULL)
 			{
 				instantPPD = (credit * 86400.0) / ((double)iFrameTime * (double)frameCount);    // There are 86400 seconds in a day
-				currentString += wxT(" ") + wxString::Format(_(" - %.2f ppd"), instantPPD);
+				currentString += _T(" ") + wxString::Format(_(" - %.2f ppd"), instantPPD);
 				tFramePPD = (credit * 86400.0) / ((double)tFrameTime * (double)frameCount);    // There are 86400 seconds in a day
-				r3fString += wxT(" ") + wxString::Format(_(" - %.2f ppd"), tFramePPD);
+				r3fString += _T(" ") + wxString::Format(_(" - %.2f ppd"), tFramePPD);
 				tFramePPD = (credit * 86400.0) / ((double)eFrameTime * (double)frameCount);    // There are 86400 seconds in a day
-				effectiveString += wxT(" ") + wxString::Format(_(" - %.2f ppd"), tFramePPD);
+				effectiveString += _T(" ") + wxString::Format(_(" - %.2f ppd"), tFramePPD);
 			}
 		}
 		else
 		{
-			currentString = wxString::Format(wxT(" %s"), _("No Cur. Time / Frame"));
-			r3fString = wxString::Format(wxT(" %s"), _("No R3F. Time / Frame"));
-			effectiveString = wxString::Format(wxT(" %s"), _("No Eff. Time / Frame"));
+			currentString = wxString::Format(_T(" %s"), _("No Cur. Time / Frame"));
+			r3fString = wxString::Format(_T(" %s"), _("No R3F. Time / Frame"));
+			effectiveString = wxString::Format(_T(" %s"), _("No Eff. Time / Frame"));
 		}
 
-		currentString += wxT("\n");
-		r3fString += wxT("\n");
-		effectiveString += wxT("\n");
+		currentString += _T("\n");
+		r3fString += _T("\n");
+		effectiveString += _T("\n");
 		infoString += currentString + r3fString + effectiveString;
 	}
 

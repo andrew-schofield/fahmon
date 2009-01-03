@@ -204,7 +204,7 @@ void PreferencesManager::Load(void)
 {
 	wxUint32         nbPrefs, i;
 	Preference      *currentPrefValue;
-	DataInputStream  in(PathManager::GetCfgPath() + wxT(FMC_FILE_PREFS));
+	DataInputStream  in(PathManager::GetCfgPath() + _T(FMC_FILE_PREFS));
 
 	// Could the file be opened ?
 	if(in.Ok() == false)
@@ -226,12 +226,12 @@ void PreferencesManager::Load(void)
 
 void PreferencesManager::Save(void)
 {
-	DataOutputStream             out(PathManager::GetCfgPath() + wxT(FMC_FILE_PREFS));
+	DataOutputStream             out(PathManager::GetCfgPath() + _T(FMC_FILE_PREFS));
 	PreferencesHashMap::iterator iterator;
 
 	if(out.Ok() == false)
 	{
-		Tools::ErrorMsgBox(wxString::Format(_("Could not open file <%s> for writing!"), (PathManager::GetCfgPath() + wxT(FMC_FILE_PREFS)).c_str()));
+		Tools::ErrorMsgBox(wxString::Format(_("Could not open file <%s> for writing!"), (PathManager::GetCfgPath() + _T(FMC_FILE_PREFS)).c_str()));
 		return;
 	}
 

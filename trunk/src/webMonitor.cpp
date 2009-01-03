@@ -179,17 +179,17 @@ void WebMonitor::WriteApp(void)
 						}
 
 						mDataArray[currentClient][8] = wxString::Format(_("%s ago"), tempString.c_str());
-						mUpdateDate = wxString::Format(wxT("%s"), timeNow.Format(wxT("%d %B, %H:%M")).c_str());
+						mUpdateDate = wxString::Format(_T("%s"), timeNow.Format(_T("%d %B, %H:%M")).c_str());
 					}
 					else if (deadlineDays == ETADS_DATE_DAY_MONTH)
 					{
-						mDataArray[currentClient][8] = wxString::Format(wxT("%s"), downloadTime.Format(wxT("%d %B, %H:%M")).c_str());
-						mUpdateDate = wxString::Format(wxT("%s"), timeNow.Format(wxT("%d %B, %H:%M")).c_str());
+						mDataArray[currentClient][8] = wxString::Format(_T("%s"), downloadTime.Format(_T("%d %B, %H:%M")).c_str());
+						mUpdateDate = wxString::Format(_T("%s"), timeNow.Format(_T("%d %B, %H:%M")).c_str());
 					}
 					else
 					{
-						mDataArray[currentClient][8] = wxString::Format(wxT("%s"), downloadTime.Format(wxT("%B %d, %H:%M")).c_str());
-						mUpdateDate = wxString::Format(wxT("%s"), timeNow.Format(wxT("%B %d, %H:%M")).c_str());
+						mDataArray[currentClient][8] = wxString::Format(_T("%s"), downloadTime.Format(_T("%B %d, %H:%M")).c_str());
+						mUpdateDate = wxString::Format(_T("%s"), timeNow.Format(_T("%B %d, %H:%M")).c_str());
 					}
 				}
 				if(client->GetProjectId() == INVALID_PROJECT_ID)
@@ -264,11 +264,11 @@ void WebMonitor::WriteApp(void)
 							}
 							else if (deadlineDays == ETADS_DATE_DAY_MONTH)
 							{
-								mDataArray[currentClient][9] = wxString::Format(wxT("%s"), preferredDeadline.Format(wxT("%d %B, %H:%M")).c_str());
+								mDataArray[currentClient][9] = wxString::Format(_T("%s"), preferredDeadline.Format(_T("%d %B, %H:%M")).c_str());
 							}
 							else
 							{
-								mDataArray[currentClient][9] = wxString::Format(wxT("%s"), preferredDeadline.Format(wxT("%B %d, %H:%M")).c_str());
+								mDataArray[currentClient][9] = wxString::Format(_T("%s"), preferredDeadline.Format(_T("%B %d, %H:%M")).c_str());
 							}
 						}
 						else
@@ -318,11 +318,11 @@ void WebMonitor::WriteApp(void)
 							}
 							else if (deadlineDays == ETADS_DATE_DAY_MONTH)
 							{
-								mDataArray[currentClient][10] = wxString::Format(wxT("%s"), finalDeadline.Format(wxT("%d %B, %H:%M")).c_str());
+								mDataArray[currentClient][10] = wxString::Format(_T("%s"), finalDeadline.Format(_T("%d %B, %H:%M")).c_str());
 							}
 							else
 							{
-								mDataArray[currentClient][10] = wxString::Format(wxT("%s"), finalDeadline.Format(wxT("%B %d, %H:%M")).c_str());
+								mDataArray[currentClient][10] = wxString::Format(_T("%s"), finalDeadline.Format(_T("%B %d, %H:%M")).c_str());
 							}
 						}
 						else
@@ -461,39 +461,39 @@ void WebMonitor::ProcessTemplate(wxString const &templateFile, wxString const &o
 		return;
 	}
 	// check that images exist in output folder (only check first one, if !exist, recopy all)
-	if (!wxFileExists(wxPathOnly(outputFile) + wxT("/dialog_icon.png")))
+	if (!wxFileExists(wxPathOnly(outputFile) + _T("/dialog_icon.png")))
 	{
-		wxCopyFile(PathManager::GetImgPath() + wxT("/dialog_icon.png"), wxPathOnly(outputFile) + wxT("/dialog_icon.png"));
-		wxCopyFile(PathManager::GetImgPath() + wxT("/list_client_asynch.png"), wxPathOnly(outputFile) + wxT("/list_client_asynch.png"));
-		wxCopyFile(PathManager::GetImgPath() + wxT("/list_client_inaccessible.png"), wxPathOnly(outputFile) + wxT("/list_client_inaccessible.png"));
-		wxCopyFile(PathManager::GetImgPath() + wxT("/list_client_inactive.png"), wxPathOnly(outputFile) + wxT("/list_client_inactive.png"));
-		wxCopyFile(PathManager::GetImgPath() + wxT("/list_client_ok.png"), wxPathOnly(outputFile) + wxT("/list_client_ok.png"));
-		wxCopyFile(PathManager::GetImgPath() + wxT("/list_client_stopped.png"), wxPathOnly(outputFile) + wxT("/list_client_stopped.png"));
-		wxCopyFile(PathManager::GetImgPath() + wxT("/list_client_paused.png"), wxPathOnly(outputFile) + wxT("/list_client_paused.png"));
+		wxCopyFile(PathManager::GetImgPath() + _T("/dialog_icon.png"), wxPathOnly(outputFile) + _T("/dialog_icon.png"));
+		wxCopyFile(PathManager::GetImgPath() + _T("/list_client_asynch.png"), wxPathOnly(outputFile) + _T("/list_client_asynch.png"));
+		wxCopyFile(PathManager::GetImgPath() + _T("/list_client_inaccessible.png"), wxPathOnly(outputFile) + _T("/list_client_inaccessible.png"));
+		wxCopyFile(PathManager::GetImgPath() + _T("/list_client_inactive.png"), wxPathOnly(outputFile) + _T("/list_client_inactive.png"));
+		wxCopyFile(PathManager::GetImgPath() + _T("/list_client_ok.png"), wxPathOnly(outputFile) + _T("/list_client_ok.png"));
+		wxCopyFile(PathManager::GetImgPath() + _T("/list_client_stopped.png"), wxPathOnly(outputFile) + _T("/list_client_stopped.png"));
+		wxCopyFile(PathManager::GetImgPath() + _T("/list_client_paused.png"), wxPathOnly(outputFile) + _T("/list_client_paused.png"));
 	}
 	continueReading = false;
-	processLine = wxT("");
+	processLine = _T("");
 	while(!fileIS.Eof()){
 		currentLine = textIS.ReadLine();
 		outputLine.clear();
-		if (currentLine.Find(wxT("<!--tpl")) == wxNOT_FOUND && continueReading == false)
+		if (currentLine.Find(_T("<!--tpl")) == wxNOT_FOUND && continueReading == false)
 		{
-			textOS.WriteString(currentLine + wxT("\n"));
+			textOS.WriteString(currentLine + _T("\n"));
 		}
 		else //lets process our template
 		{
-			processLine = processLine + wxT("") + currentLine;
-			if (currentLine.Find(wxT("tpl//-->")) == wxNOT_FOUND)
+			processLine = processLine + _T("") + currentLine;
+			if (currentLine.Find(_T("tpl//-->")) == wxNOT_FOUND)
 			{
 				continueReading = true;
 			}
 			else
 			{
 				continueReading = false;
-				if (processLine.Find(wxT("tpl_loop")) != wxNOT_FOUND)
+				if (processLine.Find(_T("tpl_loop")) != wxNOT_FOUND)
 				{
-					startPos = processLine.Find(wxT("tpl_loop "))+8;
-					endPos = processLine.Find(wxT(" tpl//-->"));
+					startPos = processLine.Find(_T("tpl_loop "))+8;
+					endPos = processLine.Find(_T(" tpl//-->"));
 					textOS.WriteString(processLine.Mid(0,startPos-12));
 					searchString = processLine.Mid(startPos+1,endPos-startPos);
 					for(currentClient=0; currentClient<ClientsManager::GetInstance()->GetCount(); ++currentClient)
@@ -505,11 +505,11 @@ void WebMonitor::ProcessTemplate(wxString const &templateFile, wxString const &o
 						{
 							outputLine.Replace(v.at(i), DecodeTemplate(v.at(i), currentClient));
 						}
-						textOS.WriteString(outputLine + wxT("\n"));
+						textOS.WriteString(outputLine + _T("\n"));
 					}
-					textOS.WriteString(processLine.Mid(endPos+9, processLine.length()-endPos-9) + wxT("\n"));
+					textOS.WriteString(processLine.Mid(endPos+9, processLine.length()-endPos-9) + _T("\n"));
 				}
-				else if (processLine.Find(wxT("tpl_static")) != wxNOT_FOUND)
+				else if (processLine.Find(_T("tpl_static")) != wxNOT_FOUND)
 				{
 					outputLine = processLine;
 					//create a vector of wxStrings
@@ -518,9 +518,9 @@ void WebMonitor::ProcessTemplate(wxString const &templateFile, wxString const &o
 					{
 						outputLine.Replace(v.at(i), DecodeTemplate(v.at(i), currentClient));
 					}
-					outputLine.Replace(wxT("<!--tpl_static "), wxT(""));
-					outputLine.Replace(wxT(" tpl//-->"), wxT(""));
-					textOS.WriteString(outputLine + wxT("\n"));
+					outputLine.Replace(_T("<!--tpl_static "), _T(""));
+					outputLine.Replace(_T(" tpl//-->"), _T(""));
+					textOS.WriteString(outputLine + _T("\n"));
 				}
 				//must be last
 				processLine.clear();
@@ -552,38 +552,38 @@ const wxString WebMonitor::DecodeTemplate(wxString templateCode, wxUint32 client
 	double      tmpDouble;
 	wxUint32    padding;
 
-	startCount = templateCode.find(wxT("{"));
-	endCount = templateCode.find(wxT("}"));
+	startCount = templateCode.find(_T("{"));
+	endCount = templateCode.find(_T("}"));
 
 	count = templateCode.Mid(startCount, endCount-startCount+1);
-	templateCode.Replace(count, wxT(""));
+	templateCode.Replace(count, _T(""));
 	count = count.Mid(1, count.Length()-2);
 
 	if(count.ToDouble(&tmpDouble) == false)
 		padding = 0;
 	padding = (wxUint32)tmpDouble;
 
-	if (templateCode == wxT("@PERCENTAGE@")) tCode = mDataArray[clientId][0];
-	else if (templateCode == wxT("@NAME@")) tCode = mDataArray[clientId][1];
-	else if (templateCode == wxT("@ETA@")) tCode = mDataArray[clientId][2];
-	else if (templateCode == wxT("@PPD@")) tCode = mDataArray[clientId][3];
-	else if (templateCode == wxT("@CORE@")) tCode = mDataArray[clientId][4];
-	else if (templateCode == wxT("@PRCG@")) tCode = mDataArray[clientId][5];
-	else if (templateCode == wxT("@POINTS@")) tCode = mDataArray[clientId][6];
-	else if (templateCode == wxT("@USER_TEAM@")) tCode = mDataArray[clientId][7];
-	else if (templateCode == wxT("@DOWNLOAD_DATE@")) tCode = mDataArray[clientId][8];
-	else if (templateCode == wxT("@PREFERRED_DATE@")) tCode = mDataArray[clientId][9];
-	else if (templateCode == wxT("@FINAL_DATE@")) tCode = mDataArray[clientId][10];
-	else if (templateCode == wxT("@STATE_COLOR@")) tCode = mDataArray[clientId][11];
-	else if (templateCode == wxT("@STATE@")) tCode = mDataArray[clientId][12];
-	else if (templateCode == wxT("@USERNAME@")) tCode = mDataArray[clientId][13];
-	else if (templateCode == wxT("@TEAMNUMBER@")) tCode = mDataArray[clientId][14];
-	else if (templateCode == wxT("@CLIENT_TYPE@")) tCode = mDataArray[clientId][15];
-	else if (templateCode == wxT("@CORE_VERSION@")) tCode = mDataArray[clientId][16];
-	else if (templateCode == wxT("@FAHMON_VERSION@")) tCode = wxT(FMC_PRODUCT);
-	else if (templateCode == wxT("@UPDATE_TIME@")) tCode = mUpdateDate;
-	else if (templateCode == wxT("@TOTAL_PPD@")) tCode = wxString::Format(wxT("%.2f"), MainDialog::GetInstance()->GetTotalPPD());
-	else if (templateCode == wxT("@STATE_IMAGE@"))
+	if (templateCode == _T("@PERCENTAGE@")) tCode = mDataArray[clientId][0];
+	else if (templateCode == _T("@NAME@")) tCode = mDataArray[clientId][1];
+	else if (templateCode == _T("@ETA@")) tCode = mDataArray[clientId][2];
+	else if (templateCode == _T("@PPD@")) tCode = mDataArray[clientId][3];
+	else if (templateCode == _T("@CORE@")) tCode = mDataArray[clientId][4];
+	else if (templateCode == _T("@PRCG@")) tCode = mDataArray[clientId][5];
+	else if (templateCode == _T("@POINTS@")) tCode = mDataArray[clientId][6];
+	else if (templateCode == _T("@USER_TEAM@")) tCode = mDataArray[clientId][7];
+	else if (templateCode == _T("@DOWNLOAD_DATE@")) tCode = mDataArray[clientId][8];
+	else if (templateCode == _T("@PREFERRED_DATE@")) tCode = mDataArray[clientId][9];
+	else if (templateCode == _T("@FINAL_DATE@")) tCode = mDataArray[clientId][10];
+	else if (templateCode == _T("@STATE_COLOR@")) tCode = mDataArray[clientId][11];
+	else if (templateCode == _T("@STATE@")) tCode = mDataArray[clientId][12];
+	else if (templateCode == _T("@USERNAME@")) tCode = mDataArray[clientId][13];
+	else if (templateCode == _T("@TEAMNUMBER@")) tCode = mDataArray[clientId][14];
+	else if (templateCode == _T("@CLIENT_TYPE@")) tCode = mDataArray[clientId][15];
+	else if (templateCode == _T("@CORE_VERSION@")) tCode = mDataArray[clientId][16];
+	else if (templateCode == _T("@FAHMON_VERSION@")) tCode = _T(FMC_PRODUCT);
+	else if (templateCode == _T("@UPDATE_TIME@")) tCode = mUpdateDate;
+	else if (templateCode == _T("@TOTAL_PPD@")) tCode = wxString::Format(_T("%.2f"), MainDialog::GetInstance()->GetTotalPPD());
+	else if (templateCode == _T("@STATE_IMAGE@"))
 	{
 		if(mDataArray[clientId][12] == _("Inaccessible"))
 		{
@@ -614,33 +614,33 @@ const wxString WebMonitor::DecodeTemplate(wxString templateCode, wxUint32 client
 			tCode = _T("list_client_ok.png");
 		}
 	}
-	else if (templateCode == wxT("@CLIENT_ID@"))
+	else if (templateCode == _T("@CLIENT_ID@"))
 	{
-		tCode = wxString::Format(wxT("%i"), clientId+1);
+		tCode = wxString::Format(_T("%i"), clientId+1);
 	}
-	else if (templateCode == wxT("@_State@")) tCode = _("State");
-	else if (templateCode == wxT("@_PRCG@")) tCode = _("PRCG");
-	else if (templateCode == wxT("@_Credit@")) tCode = _("Credit");
-	else if (templateCode == wxT("@_Downloaded@")) tCode = _("Downloaded");
-	else if (templateCode == wxT("@_Progress@")) tCode = _("Progress");
-	else if (templateCode == wxT("@_Name@")) tCode = _("Name");
-	else if (templateCode == wxT("@_ETA@")) tCode = _("ETA");
-	else if (templateCode == wxT("@_PPD@")) tCode = _("PPD");
-	else if (templateCode == wxT("@_Work_Unit_Information@")) tCode = _("Work Unit Information");
-	else if (templateCode == wxT("@_Core@")) tCode = _("Core:");
-	else if (templateCode == wxT("@_Project:@")) tCode = _("Project:");
-	else if (templateCode == wxT("@_Credit:@")) tCode = _("Credit:");
-	else if (templateCode == wxT("@_Username:@")) tCode = _("Username:");
-	else if (templateCode == wxT("@_Preferred_Deadline:@")) tCode = _("Preferred Deadline:");
-	else if (templateCode == wxT("@_Final_Deadline:@")) tCode = _("Final Deadline:");
-	else if (templateCode == wxT("@_Total_PPD:@")) tCode = _("Total PPD:");
-	else if (templateCode == wxT("@_Web_View@")) tCode = _("Web View");
-	else if (templateCode == wxT("@_FahMon_Client_Monitoring@")) tCode = _("FahMon Client Monitoring");
-	else if (templateCode == wxT("@_Simple_Text_Output@")) tCode = _("Simple Text Output");
-	else if (templateCode == wxT("@_Last_updated:@")) tCode = _("Last updated:");
-	else if (templateCode == wxT("@_Downloaded:@")) tCode = _("Downloaded:");
-	else if (templateCode == wxT("@_Client_Type@")) tCode = _("Client Type");
-	else if (templateCode == wxT("@_Core_Version@")) tCode = _("Core Version");
+	else if (templateCode == _T("@_State@")) tCode = _("State");
+	else if (templateCode == _T("@_PRCG@")) tCode = _("PRCG");
+	else if (templateCode == _T("@_Credit@")) tCode = _("Credit");
+	else if (templateCode == _T("@_Downloaded@")) tCode = _("Downloaded");
+	else if (templateCode == _T("@_Progress@")) tCode = _("Progress");
+	else if (templateCode == _T("@_Name@")) tCode = _("Name");
+	else if (templateCode == _T("@_ETA@")) tCode = _("ETA");
+	else if (templateCode == _T("@_PPD@")) tCode = _("PPD");
+	else if (templateCode == _T("@_Work_Unit_Information@")) tCode = _("Work Unit Information");
+	else if (templateCode == _T("@_Core@")) tCode = _("Core:");
+	else if (templateCode == _T("@_Project:@")) tCode = _("Project:");
+	else if (templateCode == _T("@_Credit:@")) tCode = _("Credit:");
+	else if (templateCode == _T("@_Username:@")) tCode = _("Username:");
+	else if (templateCode == _T("@_Preferred_Deadline:@")) tCode = _("Preferred Deadline:");
+	else if (templateCode == _T("@_Final_Deadline:@")) tCode = _("Final Deadline:");
+	else if (templateCode == _T("@_Total_PPD:@")) tCode = _("Total PPD:");
+	else if (templateCode == _T("@_Web_View@")) tCode = _("Web View");
+	else if (templateCode == _T("@_FahMon_Client_Monitoring@")) tCode = _("FahMon Client Monitoring");
+	else if (templateCode == _T("@_Simple_Text_Output@")) tCode = _("Simple Text Output");
+	else if (templateCode == _T("@_Last_updated:@")) tCode = _("Last updated:");
+	else if (templateCode == _T("@_Downloaded:@")) tCode = _("Downloaded:");
+	else if (templateCode == _T("@_Client_Type@")) tCode = _("Client Type");
+	else if (templateCode == _T("@_Core_Version@")) tCode = _("Core Version");
 	else tCode = GetVariable(templateCode);
 
 	if(padding>0)
@@ -716,7 +716,7 @@ void WebMonitor::LoadCustomVariables(void)
 
 
 	// Try to open the file, check if it exists
-	inputFilename = PathManager::GetCfgPath() + wxT("custom.dat");
+	inputFilename = PathManager::GetCfgPath() + _T("custom.dat");
 	if(wxFileExists(inputFilename) == false || in.Open(inputFilename) == false)
 	{
 		return;

@@ -56,7 +56,7 @@ END_EVENT_TABLE()
 ClientDialog* ClientDialog::mInstance = NULL;
 
 
-ClientDialog::ClientDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, wxString::Format(_("Client Edition / %s"), wxT(FMC_PRODUCT)))
+ClientDialog::ClientDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, wxString::Format(_("Client Edition / %s"), _T(FMC_PRODUCT)))
 {
 	wxBoxSizer             *topLevelSizer;
 	wxBoxSizer             *mainSizer;
@@ -83,8 +83,8 @@ ClientDialog::ClientDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, wxStri
 	groupSizer          = new wxStaticBoxSizer(wxVERTICAL, this, _("Client information"));
 	clientInfoSizer     = new wxFlexGridSizer(2, FMC_GUI_SPACING_LOW, FMC_GUI_SPACING_LOW);
 
-	mClientNameCtrl     = new wxTextCtrl(this, wxID_ANY, wxT(""), wxDefaultPosition, wxSize(FMC_GUI_TEXTCTRL_MIN_LENGTH, -1));
-	mClientLocationCtrl = new wxTextCtrl(this, wxID_ANY, wxT(""), wxDefaultPosition, wxSize(FMC_GUI_TEXTCTRL_MIN_LENGTH, -1));
+	mClientNameCtrl     = new wxTextCtrl(this, wxID_ANY, _T(""), wxDefaultPosition, wxSize(FMC_GUI_TEXTCTRL_MIN_LENGTH, -1));
+	mClientLocationCtrl = new wxTextCtrl(this, wxID_ANY, _T(""), wxDefaultPosition, wxSize(FMC_GUI_TEXTCTRL_MIN_LENGTH, -1));
 	mClientVMCtrl       = new wxCheckBox(this, wxID_ANY, _("Client is on a Virtual Machine"));
 
 	locationLSizer->Add(new StaticBoldedText(this, wxID_ANY, _("Location:")),0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
@@ -92,7 +92,7 @@ ClientDialog::ClientDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, wxStri
 	locationSizer->Add(mClientLocationCtrl, 1, wxALIGN_CENTER_VERTICAL);
 	locationSizer->AddSpacer(FMC_GUI_SPACING_LOW);
 #ifndef __WXMAC__
-    locationSizer->Add(new wxButton(this, BTN_BROWSE, wxT("..."), wxDefaultPosition, wxSize(26, 26)));
+    locationSizer->Add(new wxButton(this, BTN_BROWSE, _T("..."), wxDefaultPosition, wxSize(26, 26)));
 #else
 	locationSizer->Add(new wxButton(this, BTN_BROWSE, _("Choose"), wxDefaultPosition));
 #endif
@@ -187,7 +187,7 @@ int ClientDialog::ShowModal(wxUint32 clientId, wxString filename)
 	else
 	{
 		// Otherwise, we simply clear the fields
-		mClientNameCtrl->SetValue(wxT(""));
+		mClientNameCtrl->SetValue(_T(""));
 		mClientLocationCtrl->SetValue(filename);
 	}
 

@@ -57,10 +57,10 @@ void Tools::OpenURLInBrowser(wxString const &url)
 	_PrefsGetString(PREF_TOOLS_BROWSER, browser);
 	if(browser.IsEmpty())
 	{
-		browser = wxGetenv(wxT("BROWSER"));
+		browser = wxGetenv(_T("BROWSER"));
 	}
 
-	if(browser.IsEmpty() || wxExecute(browser + wxT(" ") + url) == false)
+	if(browser.IsEmpty() || wxExecute(browser + _T(" ") + url) == false)
 	{
 		ErrorMsgBox(_("Unable to launch the default browser.\n\nPlease check that the environment variable BROWSER is defined or set it in Preferences."));
 	}
@@ -118,15 +118,15 @@ wxString Tools::FormatSeconds(wxUint32 nbSeconds)
 
 	if(nbHours != 0)
 	{
-		return wxString::Format(wxT("%uh %02umn %02us"), nbHours, nbMinutes, nbSeconds);
+		return wxString::Format(_T("%uh %02umn %02us"), nbHours, nbMinutes, nbSeconds);
 	}
 	else if(nbMinutes != 0)
 	{
-		return wxString::Format(wxT("%umn %02us"), nbMinutes, nbSeconds);
+		return wxString::Format(_T("%umn %02us"), nbMinutes, nbSeconds);
 	}
 	else
 	{
-		return wxString::Format(wxT("%us"), nbSeconds);
+		return wxString::Format(_T("%us"), nbSeconds);
 	}
 }
 

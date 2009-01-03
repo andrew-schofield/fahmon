@@ -164,7 +164,7 @@ ListViewClients::ListViewClients(wxWindow* parent, wxWindowID id, wxUint32 nbCli
 	wxImageList *imageList;
 
 	// --- Create the columns and restore their size
-	InsertColumn(LVC_STATUS,       wxT(""));
+	InsertColumn(LVC_STATUS,       _T(""));
 	InsertColumn(LVC_PROGRESS,     _("Progress"));
 	InsertColumn(LVC_NAME,         _("Name"));
 	InsertColumn(LVC_CLIENT_TYPE,  _("Client Type"));
@@ -232,14 +232,14 @@ ListViewClients::ListViewClients(wxWindow* parent, wxWindowID id, wxUint32 nbCli
 	// --- Create the ImageList associated with this ListView
 	//     Images must be loaded in the order defined by the enum _LISTVIEW_ICON
 	imageList = new wxImageList(16, 16);
-	imageList->Add(wxImage(PathManager::GetImgPath() + wxT(FMC_FILE_IMG_LIST_STOPPED), wxBITMAP_TYPE_PNG));
-	imageList->Add(wxImage(PathManager::GetImgPath() + wxT(FMC_FILE_IMG_LIST_INACTIVE), wxBITMAP_TYPE_PNG));
-	imageList->Add(wxImage(PathManager::GetImgPath() + wxT(FMC_FILE_IMG_LIST_INACCESSIBLE), wxBITMAP_TYPE_PNG));
-	imageList->Add(wxImage(PathManager::GetImgPath() + wxT(FMC_FILE_IMG_LIST_OK), wxBITMAP_TYPE_PNG));
-	imageList->Add(wxImage(PathManager::GetImgPath() + wxT(FMC_FILE_IMG_LIST_ASYNCH), wxBITMAP_TYPE_PNG));
-	imageList->Add(wxImage(PathManager::GetImgPath() + wxT(FMC_FILE_IMG_LIST_PAUSED), wxBITMAP_TYPE_PNG));
-	imageList->Add(wxImage(PathManager::GetImgPath() + wxT(FMC_FILE_IMG_LIST_ARROW_UP), wxBITMAP_TYPE_PNG));
-	imageList->Add(wxImage(PathManager::GetImgPath() + wxT(FMC_FILE_IMG_LIST_ARROW_DOWN), wxBITMAP_TYPE_PNG));
+	imageList->Add(wxImage(PathManager::GetImgPath() + _T(FMC_FILE_IMG_LIST_STOPPED), wxBITMAP_TYPE_PNG));
+	imageList->Add(wxImage(PathManager::GetImgPath() + _T(FMC_FILE_IMG_LIST_INACTIVE), wxBITMAP_TYPE_PNG));
+	imageList->Add(wxImage(PathManager::GetImgPath() + _T(FMC_FILE_IMG_LIST_INACCESSIBLE), wxBITMAP_TYPE_PNG));
+	imageList->Add(wxImage(PathManager::GetImgPath() + _T(FMC_FILE_IMG_LIST_OK), wxBITMAP_TYPE_PNG));
+	imageList->Add(wxImage(PathManager::GetImgPath() + _T(FMC_FILE_IMG_LIST_ASYNCH), wxBITMAP_TYPE_PNG));
+	imageList->Add(wxImage(PathManager::GetImgPath() + _T(FMC_FILE_IMG_LIST_PAUSED), wxBITMAP_TYPE_PNG));
+	imageList->Add(wxImage(PathManager::GetImgPath() + _T(FMC_FILE_IMG_LIST_ARROW_UP), wxBITMAP_TYPE_PNG));
+	imageList->Add(wxImage(PathManager::GetImgPath() + _T(FMC_FILE_IMG_LIST_ARROW_DOWN), wxBITMAP_TYPE_PNG));
 	AssignImageList(imageList, wxIMAGE_LIST_SMALL);
 
 	// --- Restore sorting order
@@ -480,7 +480,7 @@ int ListViewClients::CompareClients(wxUint32 clientId1, wxUint32 clientId2) cons
 
 		// ---
 		case LVC_PRCG:
-			comparisonResult = wxString::Format(wxT("P%i (R%i, C%i, G%i)"), client1->GetProjectId(), client1->GetProjectRun(), client1->GetProjectClone(), client1->GetProjectGen()).CmpNoCase(wxString::Format(wxT("P%i (R%i, C%i, G%i)"), client2->GetProjectId(), client2->GetProjectRun(), client2->GetProjectClone(), client2->GetProjectGen()));
+			comparisonResult = wxString::Format(_T("P%i (R%i, C%i, G%i)"), client1->GetProjectId(), client1->GetProjectRun(), client1->GetProjectClone(), client1->GetProjectGen()).CmpNoCase(wxString::Format(_T("P%i (R%i, C%i, G%i)"), client2->GetProjectId(), client2->GetProjectRun(), client2->GetProjectClone(), client2->GetProjectGen()));
 			break;
 
 		// ---
@@ -560,7 +560,7 @@ void ListViewClients::Reset(wxUint32 nbClients)
 	// Insert dummy entries in the list, one for each client
 	for(i=0; i<nbClients; ++i)
 	{
-		InsertItem(i, wxT(""), LVI_CLIENT_STOPPED);
+		InsertItem(i, _T(""), LVI_CLIENT_STOPPED);
 		SetItem(i, LVC_NAME, _("Loading..."));
 
 		// Due to the possibility of sorting, items won't keep their order, so we associate the id of clients with their
@@ -624,15 +624,15 @@ void ListViewClients::UpdateClient(wxUint32 clientId)
 	SetItem(clientIndex, LVC_NAME, client->GetName());
 
 	// Blank the PPD column
-	PPD = wxT("--");
+	PPD = _T("--");
 
 	// If it's possible to get the PPD, do so now
 	if(client->IsAccessible() && !client->IsStopped() && !client->IsHung() && client->IsEnabled() && !client->IsPaused())
 	{
-		PPD = wxString::Format(wxT("%.2f"), client->GetPPD());
+		PPD = wxString::Format(_T("%.2f"), client->GetPPD());
 		if(!client->GetIsFrameCountAccurate())
 		{
-			PPD = PPD + wxT("*");
+			PPD = PPD + _T("*");
 		}
 	}
 
@@ -640,15 +640,15 @@ void ListViewClients::UpdateClient(wxUint32 clientId)
 	if(client->IsAccessible() && !client->IsHung() && client->IsEnabled())
 	{
 		//PRCG
-		SetItem(clientIndex, LVC_PRCG, wxString::Format(wxT("P%i (R%i, C%i, G%i)"), client->GetProjectId(), client->GetProjectRun(), client->GetProjectClone(), client->GetProjectGen()));
+		SetItem(clientIndex, LVC_PRCG, wxString::Format(_T("P%i (R%i, C%i, G%i)"), client->GetProjectId(), client->GetProjectRun(), client->GetProjectClone(), client->GetProjectGen()));
 
 		//core name
-		wxString corename = (client->GetCore() == wxT("")) ? wxT("Unknown") : client->GetCore();
+		wxString corename = (client->GetCore() == _T("")) ? _T("Unknown") : client->GetCore();
 		SetItem(clientIndex, LVC_CORE, corename);
 		SetItem(clientIndex, LVC_CLIENT_TYPE, client->GetClientType());
-		SetItem(clientIndex, LVC_CORE_VERSION, wxString::Format(wxT("%.2f"), client->GetCoreVersion()));
+		SetItem(clientIndex, LVC_CORE_VERSION, wxString::Format(_T("%.2f"), client->GetCoreVersion()));
 		//credit
-		wxString creditvalue = (client->GetCredit() == 0) ? wxT("Unknown") : wxString::Format(_("%u points"), client->GetCredit());
+		wxString creditvalue = (client->GetCredit() == 0) ? _T("Unknown") : wxString::Format(_("%u points"), client->GetCredit());
 		SetItem(clientIndex, LVC_CREDIT, creditvalue);
 		//downloaded
 		if(client->GetDownloadDate().IsValid())
@@ -669,26 +669,26 @@ void ListViewClients::UpdateClient(wxUint32 clientId)
 			// Use a friendly format
 				if(nbDays != 0)
 				{
-					tempString = wxString::Format(wxT("%id %02ih %02imn"), nbDays, nbHours, nbMinutes);
+					tempString = wxString::Format(_T("%id %02ih %02imn"), nbDays, nbHours, nbMinutes);
 				}
 				else if(nbHours != 0)
 				{
-					tempString = wxString::Format(wxT("%ih %02imn"), nbHours, nbMinutes);
+					tempString = wxString::Format(_T("%ih %02imn"), nbHours, nbMinutes);
 				}
 				else
 				{
-					tempString = wxString::Format(wxT("%imn"), nbMinutes);
+					tempString = wxString::Format(_T("%imn"), nbMinutes);
 				}
 
 				SetItem(clientIndex, LVC_DOWNLOADED, wxString::Format(_("%s ago"), tempString.c_str()));
 			}
 			else if (deadlineDays == ETADS_DATE_DAY_MONTH)
 			{
-				SetItem(clientIndex, LVC_DOWNLOADED, wxString::Format(wxT("%s"), downloadTime.Format(wxT("%d %B, %H:%M")).c_str()));
+				SetItem(clientIndex, LVC_DOWNLOADED, wxString::Format(_T("%s"), downloadTime.Format(_T("%d %B, %H:%M")).c_str()));
 			}
 			else
 			{
-				SetItem(clientIndex, LVC_DOWNLOADED, wxString::Format(wxT("%s"), downloadTime.Format(wxT("%B %d, %H:%M")).c_str()));
+				SetItem(clientIndex, LVC_DOWNLOADED, wxString::Format(_T("%s"), downloadTime.Format(_T("%B %d, %H:%M")).c_str()));
 			}
 		}
 		else
@@ -714,15 +714,15 @@ void ListViewClients::UpdateClient(wxUint32 clientId)
 				// Use a friendly format
 				if(nbDays != 0)
 				{
-					tempString = wxString::Format(wxT("%id %02ih %02imn"), nbDays, nbHours, nbMinutes);
+					tempString = wxString::Format(_T("%id %02ih %02imn"), nbDays, nbHours, nbMinutes);
 				}
 				else if(nbHours != 0)
 				{
-					tempString = wxString::Format(wxT("%ih %02imn"), nbHours, nbMinutes);
+					tempString = wxString::Format(_T("%ih %02imn"), nbHours, nbMinutes);
 				}
 				else
 				{
-					tempString = wxString::Format(wxT("%imn"), nbMinutes);
+					tempString = wxString::Format(_T("%imn"), nbMinutes);
 				}
 
 				if(timeDiff.GetMinutes() < 0)
@@ -737,11 +737,11 @@ void ListViewClients::UpdateClient(wxUint32 clientId)
 			}
 			else if (deadlineDays == ETADS_DATE_DAY_MONTH)
 			{
-				SetItem(clientIndex, LVC_DEADLINE, wxString::Format(wxT("%s"), preferredDeadline.Format(wxT("%d %B, %H:%M")).c_str()));
+				SetItem(clientIndex, LVC_DEADLINE, wxString::Format(_T("%s"), preferredDeadline.Format(_T("%d %B, %H:%M")).c_str()));
 			}
 			else
 			{
-				SetItem(clientIndex, LVC_DEADLINE, wxString::Format(wxT("%s"), preferredDeadline.Format(wxT("%B %d, %H:%M")).c_str()));
+				SetItem(clientIndex, LVC_DEADLINE, wxString::Format(_T("%s"), preferredDeadline.Format(_T("%B %d, %H:%M")).c_str()));
 			}
 		}
 		else
@@ -749,13 +749,13 @@ void ListViewClients::UpdateClient(wxUint32 clientId)
 			SetItem(clientIndex, LVC_DEADLINE, _("Unknown"));
 		}
 	} else {
-		SetItem(clientIndex, LVC_PRCG, wxT(""));
-		SetItem(clientIndex, LVC_CORE, wxT(""));
-		SetItem(clientIndex, LVC_CREDIT, wxT(""));
-		SetItem(clientIndex, LVC_DOWNLOADED, wxT(""));
-		SetItem(clientIndex, LVC_DEADLINE, wxT(""));
-		SetItem(clientIndex, LVC_CORE_VERSION, wxT(""));
-		SetItem(clientIndex, LVC_CLIENT_TYPE, wxT(""));
+		SetItem(clientIndex, LVC_PRCG, _T(""));
+		SetItem(clientIndex, LVC_CORE, _T(""));
+		SetItem(clientIndex, LVC_CREDIT, _T(""));
+		SetItem(clientIndex, LVC_DOWNLOADED, _T(""));
+		SetItem(clientIndex, LVC_DEADLINE, _T(""));
+		SetItem(clientIndex, LVC_CORE_VERSION, _T(""));
+		SetItem(clientIndex, LVC_CLIENT_TYPE, _T(""));
 	}
 	SetItem(clientIndex, LVC_PPD, PPD);
 
@@ -1127,7 +1127,7 @@ void ListViewClients::ShowClientFiles()
 	#endif
 
 	// Not sure why, but this *never* fails
-	if(wxExecute(FileManager + wxT(" \"") + ClientLocation + wxT("\"")) == false)
+	if(wxExecute(FileManager + _T(" \"") + ClientLocation + _T("\"")) == false)
 	{
 		Tools::ErrorMsgBox(_("Unable to launch the default filemanager.\n\nPlease check that the correct filemanager is set in Preferences"));
 	}

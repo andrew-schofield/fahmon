@@ -161,7 +161,7 @@ wxMutex MainDialog::mMutexUpdateCheck;
 wxMutex MainDialog::mMutexArrayBlocker;
 
 
-MainDialog::MainDialog(void) : wxFrame(NULL, wxID_ANY, wxT(FMC_PRODUCT))
+MainDialog::MainDialog(void) : wxFrame(NULL, wxID_ANY, _T(FMC_PRODUCT))
 {
 	bool trayIconEnabled;
 	bool updateCheck;
@@ -169,7 +169,7 @@ MainDialog::MainDialog(void) : wxFrame(NULL, wxID_ANY, wxT(FMC_PRODUCT))
 	// Setting the icon for the main dialog will allows child frames and dialog to inherit from it
 
 #ifdef __WXGTK__
-	SetIcon(wxIcon(PathManager::GetImgPath() + wxT(FMC_FILE_IMG_DIALOG)));
+	SetIcon(wxIcon(PathManager::GetImgPath() + _T(FMC_FILE_IMG_DIALOG)));
 #elif _FAHMON_WIN32_
 	SetIcon(wxICON(dialog_icon));
 #endif
@@ -179,7 +179,7 @@ MainDialog::MainDialog(void) : wxFrame(NULL, wxID_ANY, wxT(FMC_PRODUCT))
 	CreateLayout();
 	RestoreFrameState();     // MUST be called when all controls have been created !
 
-	_LogMsgInfo(wxString::Format(_("%s is licenced under the GNU GPL v2"), wxT(FMC_PRODUCT)));
+	_LogMsgInfo(wxString::Format(_("%s is licenced under the GNU GPL v2"), _T(FMC_PRODUCT)));
 	_LogMsgInfo(_("Copyright (C) 2003-2007 Fran\u00E7ois Ingelrest"));
 	_LogMsgInfo(_("Copyright (C) 2007-2009 Andrew Schofield"));
 	_LogMsgInfo(_T(""));
@@ -338,27 +338,27 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 		if(mSplitterWindow->IsSplit())
 		{
 			mUsername->Disable();
-			mUsername->SetURL(wxT(""));
-			mUsername->SetLabel(wxT(""));
+			mUsername->SetURL(_T(""));
+			mUsername->SetLabel(_T(""));
 			mTeamNumber->Disable();
-			mTeamNumber->SetURL(wxT(""));
-			mTeamNumber->SetLabel(wxT(""));
+			mTeamNumber->SetURL(_T(""));
+			mTeamNumber->SetLabel(_T(""));
 
-			mCoreName->SetLabel(wxT(""));
-			mProjectId->SetLabel(wxT(""));
-			mCredit->SetLabel(wxT(""));
-			mDownloaded->SetLabel(wxT(""));
-			mPreferredDeadline->SetLabel(wxT(""));
-			mFinalDeadline->SetLabel(wxT(""));
-			mWUProgressText->SetLabel(wxT(""));
+			mCoreName->SetLabel(_T(""));
+			mProjectId->SetLabel(_T(""));
+			mCredit->SetLabel(_T(""));
+			mDownloaded->SetLabel(_T(""));
+			mPreferredDeadline->SetLabel(_T(""));
+			mFinalDeadline->SetLabel(_T(""));
+			mWUProgressText->SetLabel(_T(""));
 		}
 
 		mWUProgressGauge->SetValue(0);
-		SetStatusText(wxT(""), STATUS_CLIENTNAME);
+		SetStatusText(_T(""), STATUS_CLIENTNAME);
 
 		if(mLogFile->IsShown() == true)
 		{
-			mLogFile->SetValue(wxT(""));
+			mLogFile->SetValue(_T(""));
 		}
 
 		return;
@@ -377,19 +377,19 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 		if(mSplitterWindow->IsSplit())
 		{
 			mUsername->Disable();
-			mUsername->SetURL(wxT(""));
-			mUsername->SetLabel(wxT(""));
+			mUsername->SetURL(_T(""));
+			mUsername->SetLabel(_T(""));
 			mTeamNumber->Disable();
-			mTeamNumber->SetURL(wxT(""));
-			mTeamNumber->SetLabel(wxT(""));
+			mTeamNumber->SetURL(_T(""));
+			mTeamNumber->SetLabel(_T(""));
 
-			mCoreName->SetLabel(wxT(""));
-			mProjectId->SetLabel(wxT(""));
-			mCredit->SetLabel(wxT(""));
-			mDownloaded->SetLabel(wxT(""));
-			mPreferredDeadline->SetLabel(wxT(""));
-			mFinalDeadline->SetLabel(wxT(""));
-			mWUProgressText->SetLabel(wxT(""));
+			mCoreName->SetLabel(_T(""));
+			mProjectId->SetLabel(_T(""));
+			mCredit->SetLabel(_T(""));
+			mDownloaded->SetLabel(_T(""));
+			mPreferredDeadline->SetLabel(_T(""));
+			mFinalDeadline->SetLabel(_T(""));
+			mWUProgressText->SetLabel(_T(""));
 		}
 		mWUProgressGauge->SetValue(0);
 		if(client->IsEnabled())
@@ -407,12 +407,12 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 		mLogFile->ChangeValue(client->GetLog());
 #ifdef __WXMAC__
 		::wxYield();
-		mLogFile->AppendText(wxT("\n"));
+		mLogFile->AppendText(_T("\n"));
 #endif
 		mLogFile->ShowPosition(mLogFile->GetLastPosition());
 	}
 
-	mWUProgressText->SetLabel(wxT("  ") + client->GetProgressString());
+	mWUProgressText->SetLabel(_T("  ") + client->GetProgressString());
 	mWUProgressGauge->SetValue(client->GetProgress());
 
 	if(mSplitterWindow->IsSplit())
@@ -423,7 +423,7 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 		mUsername->Refresh();
 
 		mTeamNumber->Enable();
-		mTeamNumber->SetLabel(wxString::Format(wxT("(%u)"), client->GetTeamNumber()));
+		mTeamNumber->SetLabel(wxString::Format(_T("(%u)"), client->GetTeamNumber()));
 		mTeamNumber->SetURL(client->GetTeamStatsURL());
 		mTeamNumber->Refresh();
 
@@ -444,26 +444,26 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 				// Use a friendly format
 				if(nbDays != 0)
 				{
-					tempString = wxString::Format(wxT("%id %02ih %02imn"), nbDays, nbHours, nbMinutes);
+					tempString = wxString::Format(_T("%id %02ih %02imn"), nbDays, nbHours, nbMinutes);
 				}
 				else if(nbHours != 0)
 				{
-					tempString = wxString::Format(wxT("%ih %02imn"), nbHours, nbMinutes);
+					tempString = wxString::Format(_T("%ih %02imn"), nbHours, nbMinutes);
 				}
 				else
 				{
-					tempString = wxString::Format(wxT("%imn"), nbMinutes);
+					tempString = wxString::Format(_T("%imn"), nbMinutes);
 				}
 
 				mDownloaded->SetLabel(wxString::Format(_("%s ago"), tempString.c_str()));
 			}
 			else if (deadlineDays == ETADS_DATE_DAY_MONTH)
 			{
-				mDownloaded->SetLabel(wxString::Format(wxT("%s"), downloadTime.Format(wxT("%d %B, %H:%M")).c_str()));
+				mDownloaded->SetLabel(wxString::Format(_T("%s"), downloadTime.Format(_T("%d %B, %H:%M")).c_str()));
 			}
 			else
 			{
-				mDownloaded->SetLabel(wxString::Format(wxT("%s"), downloadTime.Format(wxT("%B %d, %H:%M")).c_str()));
+				mDownloaded->SetLabel(wxString::Format(_T("%s"), downloadTime.Format(_T("%B %d, %H:%M")).c_str()));
 			}
 		}
 		else
@@ -482,7 +482,7 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 			return;
 		}
 
-		mProjectId->SetLabel(wxString::Format(wxT("%u (R%i, C%i, G%i)"), client->GetProjectId(), client->GetProjectRun(), client->GetProjectClone(), client->GetProjectGen()));
+		mProjectId->SetLabel(wxString::Format(_T("%u (R%i, C%i, G%i)"), client->GetProjectId(), client->GetProjectRun(), client->GetProjectClone(), client->GetProjectGen()));
 	}
 
 	project = ProjectsManager::GetInstance()->GetProject(client->GetProjectId());
@@ -535,15 +535,15 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 				// Use a friendly format
 				if(nbDays != 0)
 				{
-					tempString = wxString::Format(wxT("%id %02ih %02imn"), nbDays, nbHours, nbMinutes);
+					tempString = wxString::Format(_T("%id %02ih %02imn"), nbDays, nbHours, nbMinutes);
 				}
 				else if(nbHours != 0)
 				{
-					tempString = wxString::Format(wxT("%ih %02imn"), nbHours, nbMinutes);
+					tempString = wxString::Format(_T("%ih %02imn"), nbHours, nbMinutes);
 				}
 				else
 				{
-					tempString = wxString::Format(wxT("%imn"), nbMinutes);
+					tempString = wxString::Format(_T("%imn"), nbMinutes);
 				}
 
 				if(timeDiff.GetMinutes() < 0)
@@ -558,11 +558,11 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 			}
 			else if (deadlineDays == ETADS_DATE_DAY_MONTH)
 			{
-				mPreferredDeadline->SetLabel(wxString::Format(wxT("%s"), preferredDeadline.Format(wxT("%d %B, %H:%M")).c_str()));
+				mPreferredDeadline->SetLabel(wxString::Format(_T("%s"), preferredDeadline.Format(_T("%d %B, %H:%M")).c_str()));
 			}
 			else
 			{
-				mPreferredDeadline->SetLabel(wxString::Format(wxT("%s"), preferredDeadline.Format(wxT("%B %d, %H:%M")).c_str()));
+				mPreferredDeadline->SetLabel(wxString::Format(_T("%s"), preferredDeadline.Format(_T("%B %d, %H:%M")).c_str()));
 			}
 		}
 		else
@@ -592,15 +592,15 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 				// Use a friendly format
 				if(nbDays != 0)
 				{
-					tempString = wxString::Format(wxT("%id %02ih %02imn"), nbDays, nbHours, nbMinutes);
+					tempString = wxString::Format(_T("%id %02ih %02imn"), nbDays, nbHours, nbMinutes);
 				}
 				else if(nbHours != 0)
 				{
-					tempString = wxString::Format(wxT("%ih %02imn"), nbHours, nbMinutes);
+					tempString = wxString::Format(_T("%ih %02imn"), nbHours, nbMinutes);
 				}
 				else
 				{
-					tempString = wxString::Format(wxT("%imn"), nbMinutes);
+					tempString = wxString::Format(_T("%imn"), nbMinutes);
 				}
 
 				if(timeDiff.GetMinutes() < 0)
@@ -614,11 +614,11 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 			}
 			else if (deadlineDays == ETADS_DATE_DAY_MONTH)
 			{
-				mFinalDeadline->SetLabel(wxString::Format(wxT("%s"), finalDeadline.Format(wxT("%d %B, %H:%M")).c_str()));
+				mFinalDeadline->SetLabel(wxString::Format(_T("%s"), finalDeadline.Format(_T("%d %B, %H:%M")).c_str()));
 			}
 			else
 			{
-				mFinalDeadline->SetLabel(wxString::Format(wxT("%s"), finalDeadline.Format(wxT("%B %d, %H:%M")).c_str()));
+				mFinalDeadline->SetLabel(wxString::Format(_T("%s"), finalDeadline.Format(_T("%B %d, %H:%M")).c_str()));
 			}
 		}
 		else
@@ -653,7 +653,7 @@ void MainDialog::CreateMenuBar(void)
 	menu->Append(wxID_PREFERENCES, _("&Preferences...\tCTRL+P"), _("Open the preferences dialog"));
 	menu->AppendSeparator();
 	menu->Append(wxID_EXIT, _("&Quit\tCtrl+Q"), wxString::Format(_("Quit %s"), _T(FMC_APPNAME)));
-	menuBar->Append(menu, wxString::Format(wxT("&%s"), wxT(FMC_APPNAME)));
+	menuBar->Append(menu, wxString::Format(_T("&%s"), _T(FMC_APPNAME)));
 
 	//The 'Clients' menu
 	menu = new wxMenu();
@@ -762,19 +762,19 @@ void MainDialog::CreateLayout(void)
 	topRightSizer      = new wxStaticBoxSizer(wxVERTICAL, mTopRightPanel, _("Work Unit Information"));
 	infoSizer          = new wxGridSizer(2, FMC_GUI_SPACING_HIGH, FMC_GUI_SPACING_LOW);
 	userinfoSizer      = new wxBoxSizer(wxHORIZONTAL);
-	mCoreName          = new StaticBoldedText(mTopRightPanel, wxID_ANY, wxT(""));
-	mProjectId         = new wxStaticText(mTopRightPanel, wxID_ANY, wxT(""));
-	mCredit            = new wxStaticText(mTopRightPanel, wxID_ANY, wxT(""));
-	mDownloaded        = new wxStaticText(mTopRightPanel, wxID_ANY, wxT(""));
-	mPreferredDeadline = new wxStaticText(mTopRightPanel, wxID_ANY, wxT(""));
-	mFinalDeadline     = new wxStaticText(mTopRightPanel, wxID_ANY, wxT(""));
+	mCoreName          = new StaticBoldedText(mTopRightPanel, wxID_ANY, _T(""));
+	mProjectId         = new wxStaticText(mTopRightPanel, wxID_ANY, _T(""));
+	mCredit            = new wxStaticText(mTopRightPanel, wxID_ANY, _T(""));
+	mDownloaded        = new wxStaticText(mTopRightPanel, wxID_ANY, _T(""));
+	mPreferredDeadline = new wxStaticText(mTopRightPanel, wxID_ANY, _T(""));
+	mFinalDeadline     = new wxStaticText(mTopRightPanel, wxID_ANY, _T(""));
 
 	// User's information: username and team number
-	mUsername    =  new wxHyperlinkCtrl(mTopRightPanel, wxID_ANY, wxT(""), wxT(""));
+	mUsername    =  new wxHyperlinkCtrl(mTopRightPanel, wxID_ANY, _T(""), _T(""));
 	mUsername->SetNormalColour(*wxBLUE);
 	mUsername->SetHoverColour(*wxRED);
 	mUsername->SetVisitedColour(*wxBLUE);
-	mTeamNumber   = new wxHyperlinkCtrl(mTopRightPanel, wxID_ANY, wxT(""), wxT(""));
+	mTeamNumber   = new wxHyperlinkCtrl(mTopRightPanel, wxID_ANY, _T(""), _T(""));
 	mTeamNumber->SetNormalColour(*wxBLUE);
 	mTeamNumber->SetHoverColour(*wxRED);
 	mTeamNumber->SetVisitedColour(*wxBLUE);
@@ -828,7 +828,7 @@ void MainDialog::CreateLayout(void)
 	#else
 	mWUProgressGauge = new OSXProgressBar(topLevelPanel, wxID_ANY, 100, wxDefaultPosition, wxSize(0, 18));
 	#endif
-	mWUProgressText  = new wxStaticText(topLevelPanel, wxID_ANY, wxT(""));
+	mWUProgressText  = new wxStaticText(topLevelPanel, wxID_ANY, _T(""));
 	mWUTotalPPD = new wxStaticText(topLevelPanel, wxID_ANY, _(" :: Total PPD:"));
 
 	midSizer->Add(mWUProgressGauge, 1);
@@ -1077,27 +1077,27 @@ void MainDialog::OnMenuWeb(wxCommandEvent& event)
 
 		//--
 		case MID_WWWFOLDING:
-			Tools::OpenURLInBrowser(wxT(FMC_URL_FOLDING));
+			Tools::OpenURLInBrowser(_T(FMC_URL_FOLDING));
 			break;
 
 		//--
 		case MID_WWWFCORG:
-			Tools::OpenURLInBrowser(wxT(FMC_URL_FCORG));
+			Tools::OpenURLInBrowser(_T(FMC_URL_FCORG));
 			break;
 
 		//--
 		case MID_WWWPROJECTS:
-			Tools::OpenURLInBrowser(wxT(FMC_URL_PROJECTS));
+			Tools::OpenURLInBrowser(_T(FMC_URL_PROJECTS));
 			break;
 
 		//--
 		case MID_WWWSERVERS:
-			Tools::OpenURLInBrowser(wxT(FMC_URL_SERVERS));
+			Tools::OpenURLInBrowser(_T(FMC_URL_SERVERS));
 			break;
 
 		//--
 		case wxID_HELP:
-			Tools::OpenURLInBrowser(wxT(FMC_URL_HELP));
+			Tools::OpenURLInBrowser(_T(FMC_URL_HELP));
 			break;
 
 		//--
@@ -1445,9 +1445,9 @@ void MainDialog::CheckForUpdates(bool silent)
 	}
 
 	versionInfo = in.GetLine(in.GetLineCount()-1);
-	_LogMsgInfo(wxString::Format(_("Your version: %s; New version: %s"), wxT(FMC_VERSION), versionInfo.c_str()));
+	_LogMsgInfo(wxString::Format(_("Your version: %s; New version: %s"), _T(FMC_VERSION), versionInfo.c_str()));
 
-	if(versionInfo.Cmp(wxT(FMC_VERSION)) > 0)
+	if(versionInfo.Cmp(_T(FMC_VERSION)) > 0)
 	{
 		updateAvailable = true;
 	}
@@ -1462,7 +1462,7 @@ void MainDialog::CheckForUpdates(bool silent)
 		_LogMsgInfo(_("Update available"));
 		if(Tools::QuestionMsgBox(_("A newer version of FahMon is available\nDo you want to go to the FahMon website?")) == true)
 		{
-			Tools::OpenURLInBrowser(wxT("http://fahmon.net/download.html"));
+			Tools::OpenURLInBrowser(_T("http://fahmon.net/download.html"));
 		}
 	}
 	else

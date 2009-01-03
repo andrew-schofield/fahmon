@@ -67,23 +67,23 @@ AboutDialog::AboutDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, wxString
 	   hence the use of unicode escape codes. Pronunciation is like "Fran-swa Angle-ray" */
 	authorHomepageSizer->Add(new wxStaticText(this, wxID_ANY, _("Fran\u00E7ois Ingelrest")), 0, wxALIGN_LEFT);
 	authorHomepageSizer->Add(new StaticBoldedText(this, wxID_ANY, _("Homepage:")), 0, wxALIGN_RIGHT);
-	authorHomepageSizer->Add(new wxHyperlinkCtrl(this, wxID_ANY, wxT(FMC_URL_FAHMON), wxT(FMC_URL_FAHMON)));
+	authorHomepageSizer->Add(new wxHyperlinkCtrl(this, wxID_ANY, _T(FMC_URL_FAHMON), _T(FMC_URL_FAHMON)));
 	authorHomepageSizer->Add(new StaticBoldedText(this, wxID_ANY, _("Qd homepage:")), 0, wxALIGN_RIGHT);
-	authorHomepageSizer->Add(new wxHyperlinkCtrl(this, wxID_ANY, wxT("http://linuxminded.nl"), wxT(FMC_URL_QD)));
+	authorHomepageSizer->Add(new wxHyperlinkCtrl(this, wxID_ANY, _T("http://linuxminded.nl"), _T(FMC_URL_QD)));
 	authorHomepageSizer->Add(new StaticBoldedText(this, wxID_ANY, _("Licence:")), 0, wxALIGN_RIGHT);
-	authorHomepageSizer->Add(new wxHyperlinkCtrl(this, wxID_ANY, wxT("GNU GPL v2"), wxT(FMC_URL_LICENCE)));
+	authorHomepageSizer->Add(new wxHyperlinkCtrl(this, wxID_ANY, _T("GNU GPL v2"), _T(FMC_URL_LICENCE)));
 	authorHomepageSizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	authorHomepageSizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	/* TRANSLATORS: This refers to the wxWidgets software library */
 	authorHomepageSizer->Add(new StaticBoldedText(this, wxID_ANY, _("Library:")), 0, wxALIGN_RIGHT);
-	authorHomepageSizer->Add(new wxHyperlinkCtrl(this, wxID_ANY, wxVERSION_STRING, wxT(FMC_URL_WXWIDGETS)));
+	authorHomepageSizer->Add(new wxHyperlinkCtrl(this, wxID_ANY, wxVERSION_STRING, _T(FMC_URL_WXWIDGETS)));
 	authorHomepageSizer->AddSpacer(FMC_GUI_SPACING_LOW);
 
 
 	// ---
 	infoSizer = new wxBoxSizer(wxVERTICAL);
 
-	infoSizer->Add(new StaticBoldedText(this, wxID_ANY, wxT(FMC_PRODUCT)), 0, wxALIGN_CENTER);
+	infoSizer->Add(new StaticBoldedText(this, wxID_ANY, _T(FMC_PRODUCT)), 0, wxALIGN_CENTER);
 	infoSizer->AddSpacer(FMC_GUI_SPACING_HIGH);
 	infoSizer->Add(new wxStaticLine(this, wxID_ANY, wxDefaultPosition, wxSize(65, -1)), 0, wxALIGN_CENTER);
 	infoSizer->AddSpacer(FMC_GUI_SPACING_HIGH);
@@ -93,7 +93,7 @@ AboutDialog::AboutDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, wxString
 	// ---
 	flexSizer = new wxFlexGridSizer(2, FMC_GUI_SPACING_LOW, FMC_GUI_SPACING_LOW);
 
-	flexSizer->Add(new wxStaticBitmap(this, wxID_ANY, wxBitmap(wxImage(PathManager::GetImgPath() + wxT(FMC_FILE_IMG_ABOUT), wxBITMAP_TYPE_PNG))), 0, wxALIGN_CENTER_VERTICAL | wxRIGHT, FMC_GUI_SPACING_HIGH);
+	flexSizer->Add(new wxStaticBitmap(this, wxID_ANY, wxBitmap(wxImage(PathManager::GetImgPath() + _T(FMC_FILE_IMG_ABOUT), wxBITMAP_TYPE_PNG))), 0, wxALIGN_CENTER_VERTICAL | wxRIGHT, FMC_GUI_SPACING_HIGH);
 	flexSizer->Add(infoSizer);
 
 	buttonSizer = new wxBoxSizer(wxVERTICAL);

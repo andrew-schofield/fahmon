@@ -2,13 +2,13 @@
 # Copyright (C) 2007-8 Andrew Schofield
 # This file is distributed under the same license as the FahMon package.
 #
-# Andrew Schofield <andrew_s@fahmon.net>, 2007, 2008.
+# Andrew Schofield <andrew_s@fahmon.net>, 2007, 2008, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2009-01-02 20:41+0000\n"
-"PO-Revision-Date: 2008-11-21 22:34+0000\n"
+"POT-Creation-Date: 2009-01-03 00:49+0000\n"
+"PO-Revision-Date: 2009-01-03 01:02+0000\n"
 "Last-Translator: Andrew Schofield <andrew_s@fahmon.net>\n"
 "Language-Team: British English\n"
 "MIME-Version: 1.0\n"
@@ -213,9 +213,9 @@ msgid "Error while reading %squeue.dat"
 msgstr "Error while reading %squeue.dat!"
 
 #: src/client.cpp:206
-#, fuzzy, c-format
+#, c-format
 msgid "Error while reading %swork/logfile_%02i.txt"
-msgstr "Error while reading %sFAHlog.txt!"
+msgstr "Error while reading %swork/logfile_%02i.txt"
 
 #: src/client.cpp:212
 #, c-format
@@ -233,9 +233,9 @@ msgid "The progress value in file %s could not be found/parsed"
 msgstr "The progress value in file %s could not be found/parsed"
 
 #: src/client.cpp:505
-#, fuzzy, c-format
+#, c-format
 msgid "The core version in file %s could not be found/parsed"
-msgstr "The progress value in file %s could not be found/parsed"
+msgstr "The core version in file %s could not be found/parsed"
 
 #: src/client.cpp:553
 #, c-format
@@ -366,15 +366,15 @@ msgstr ""
 
 #: src/core.cpp:127
 msgid "CPU"
-msgstr ""
+msgstr "CPU"
 
 #: src/core.cpp:131
 msgid "SMP"
-msgstr ""
+msgstr "SMP"
 
 #: src/core.cpp:137
 msgid "GPU"
-msgstr ""
+msgstr "GPU"
 
 #: src/fahlogAnalyzer.cpp:250
 msgid "Possible clock asynchrony detected!"
@@ -483,9 +483,8 @@ msgstr "Name"
 
 #: src/listViewClients.cpp:170 src/listViewClients.cpp:962
 #: src/webMonitor.cpp:642
-#, fuzzy
 msgid "Client Type"
-msgstr "&Clients"
+msgstr "Client Type"
 
 #: src/listViewClients.cpp:171 src/listViewClients.cpp:963
 #: src/webMonitor.cpp:627
@@ -504,7 +503,7 @@ msgstr "Core"
 #: src/listViewClients.cpp:174 src/listViewClients.cpp:966
 #: src/webMonitor.cpp:643
 msgid "Core Version"
-msgstr ""
+msgstr "Core Version"
 
 #: src/listViewClients.cpp:175 src/listViewClients.cpp:967
 #: src/webMonitor.cpp:622
@@ -612,6 +611,11 @@ msgstr ""
 msgid "Another instance of %s is already running!"
 msgstr "Another instance of %s is already running!"
 
+#: src/main.cpp:209
+#, c-format
+msgid "Old settings imported into %s"
+msgstr "Old settings imported into %s"
+
 #: src/mainDialog.cpp:182
 #, c-format
 msgid "%s is licenced under the GNU GPL v2"
@@ -622,9 +626,8 @@ msgid "Copyright (C) 2003-2007 Fran\\u00E7ois Ingelrest"
 msgstr "Copyright (C) 2003-2007 François Ingelrest"
 
 #: src/mainDialog.cpp:184
-#, fuzzy
 msgid "Copyright (C) 2007-2009 Andrew Schofield"
-msgstr "Copyright (C) 2007-2008 Andrew Schofield"
+msgstr "Copyright (C) 2007-2009 Andrew Schofield"
 
 #: src/mainDialog.cpp:186
 msgid "FahMon contains code from qd, also licenced under the GNU GPL v2"
@@ -635,9 +638,8 @@ msgid "Copyright (C) 2002-2005 Richard P. Howell IV."
 msgstr "Copyright (C) 2002-2005 Richard P. Howell IV."
 
 #: src/mainDialog.cpp:188
-#, fuzzy
 msgid "Copyright (C) 2005-2009 Sebastiaan Couwenberg"
-msgstr "Copyright (C) 2005-2008 Sebastiaan Couwenberg"
+msgstr "Copyright (C) 2005-2009 Sebastiaan Couwenberg"
 
 #: src/mainDialog.cpp:396
 msgid ""
