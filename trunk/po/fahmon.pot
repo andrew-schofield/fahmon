@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2009-01-03 03:11+0000\n"
+"POT-Creation-Date: 2009-01-04 00:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -262,39 +262,39 @@ msgstr ""
 msgid "Cannot determine frame number for %s (this isn't a problem)"
 msgstr ""
 
-#: src/client.cpp:784
+#: src/client.cpp:783
 #, c-format
 msgid "%s has an unknown state (Unable to find a complete frame)"
 msgstr ""
 
-#: src/client.cpp:793
+#: src/client.cpp:792
 #, c-format
 msgid "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
 msgstr ""
 
-#: src/client.cpp:801
+#: src/client.cpp:800
 #, c-format
 msgid "%s has been paused"
 msgstr ""
 
-#: src/client.cpp:810
+#: src/client.cpp:809
 #, c-format
 msgid ""
 "%s has an unknown state (Unable to extract a valid elapsed time since the "
 "last completed frame)"
 msgstr ""
 
-#: src/client.cpp:818
+#: src/client.cpp:817
 #, c-format
 msgid "%s has been marked as having a asynchronous clock."
 msgstr ""
 
-#: src/client.cpp:853
+#: src/client.cpp:852
 #, c-format
 msgid "%s seems to have hung : Elapsed time is %um and limit is %um"
 msgstr ""
 
-#: src/client.cpp:858
+#: src/client.cpp:857
 #, c-format
 msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
 msgstr ""

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FahMon Translation - de_DE 1.1.b1\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2009-01-03 03:11+0000\n"
+"POT-Creation-Date: 2009-01-04 00:42+0000\n"
 "PO-Revision-Date: 2008-10-31 09:07+0100\n"
 "Last-Translator: Mark Gerber <mark.gerber@web.de>\n"
 "Language-Team: Mark Gerber <mark.gerber@web.de>\n"
@@ -263,24 +263,24 @@ msgid "Cannot determine frame number for %s (this isn't a problem)"
 msgstr ""
 "Für %s kann keine Frame-Nummer festgestellt werden (dies ist kein Problem)."
 
-#: src/client.cpp:784
+#: src/client.cpp:783
 #, c-format
 msgid "%s has an unknown state (Unable to find a complete frame)"
 msgstr ""
 "Der Zustand von %s ist unbekannt (ein kompletter Frame kann nicht gefunden "
 "werden)."
 
-#: src/client.cpp:793
+#: src/client.cpp:792
 #, c-format
 msgid "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
 msgstr "%s ist gestoppt (Zeile \"Folding@Home Client Shutdown.\" gefunden)."
 
-#: src/client.cpp:801
+#: src/client.cpp:800
 #, c-format
 msgid "%s has been paused"
 msgstr "%s pausiert"
 
-#: src/client.cpp:810
+#: src/client.cpp:809
 #, c-format
 msgid ""
 "%s has an unknown state (Unable to extract a valid elapsed time since the "
@@ -289,17 +289,17 @@ msgstr ""
 "Der Zustand von %s ist unbekannt (eine gültige Zeitdauer seit dem zuletzt "
 "vervollständigtem Frame kann nicht festgestellt werden)."
 
-#: src/client.cpp:818
+#: src/client.cpp:817
 #, c-format
 msgid "%s has been marked as having a asynchronous clock."
 msgstr "%s hat die Kennzeichnung für eine asynchrone Uhrzeit erhalten."
 
-#: src/client.cpp:853
+#: src/client.cpp:852
 #, c-format
 msgid "%s seems to have hung : Elapsed time is %um and limit is %um"
 msgstr "%s scheint zu hängen: verstrichene Zeit ist %um und Limit ist %um."
 
-#: src/client.cpp:858
+#: src/client.cpp:857
 #, c-format
 msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
 msgstr ""

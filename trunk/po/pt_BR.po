@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pt_BR\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2009-01-03 03:11+0000\n"
+"POT-Creation-Date: 2009-01-04 00:42+0000\n"
 "PO-Revision-Date: 2008-02-03 11:48-0300\n"
 "Last-Translator: Custódio Marcelino de Jesus <custodiomdj@gmail.com>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -264,23 +264,23 @@ msgid "Cannot determine frame number for %s (this isn't a problem)"
 msgstr ""
 "Impossível determinar o número do frame para %s (isto não é um problema)"
 
-#: src/client.cpp:784
+#: src/client.cpp:783
 #, c-format
 msgid "%s has an unknown state (Unable to find a complete frame)"
 msgstr "%s tem um estado desconhecido (impossível encontrar um frame completo)"
 
-#: src/client.cpp:793
+#: src/client.cpp:792
 #, c-format
 msgid "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
 msgstr ""
 "%s foi parado (A linha \"Folding@Home Client Shutdown.\" foi encontrada)"
 
-#: src/client.cpp:801
+#: src/client.cpp:800
 #, c-format
 msgid "%s has been paused"
 msgstr ""
 
-#: src/client.cpp:810
+#: src/client.cpp:809
 #, c-format
 msgid ""
 "%s has an unknown state (Unable to extract a valid elapsed time since the "
@@ -289,18 +289,18 @@ msgstr ""
 "%s tem um estado desconhecido (impossível extrair um tempo decorrido válido "
 "desde a última frame completa)"
 
-#: src/client.cpp:818
+#: src/client.cpp:817
 #, c-format
 msgid "%s has been marked as having a asynchronous clock."
 msgstr "%s foi marcado como tendo um relógio assíncrono."
 
-#: src/client.cpp:853
+#: src/client.cpp:852
 #, c-format
 msgid "%s seems to have hung : Elapsed time is %um and limit is %um"
 msgstr ""
 "%s parece não estar avançando : o tempo decorrido é %um e o limite é %um"
 
-#: src/client.cpp:858
+#: src/client.cpp:857
 #, c-format
 msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
 msgstr "%s parece estar inativo : o tempo decorrido é %um e o limite é %um"

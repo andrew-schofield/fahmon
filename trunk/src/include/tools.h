@@ -42,6 +42,7 @@
 class Tools
 {
 protected:
+
 	//static const wxChar* mBase64Table;
 
 	static wxMutex mMutexLoadFile; /**< Access lock for opening a file FIXME: What file? */
