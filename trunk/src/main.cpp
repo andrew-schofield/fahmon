@@ -215,7 +215,7 @@ bool FahMonApp::OnInit(void)
 			return false;
 		}
 #ifdef _FAHMON_WIN32_
-		if((mLocal == false && wxDirExists(wxString::Format(_T("%s\\config\\"), wxFileName(wxTheApp->argv[0]).GetPath (wxPATH_GET_VOLUME))))
+		if(mLocal == false && wxDirExists(wxString::Format(_T("%s\\config\\"), wxFileName(wxTheApp->argv[0]).GetPath (wxPATH_GET_VOLUME))))
 		{
 			if(wxCopyFile(wxString::Format(_T("%s\\config\\benchmarks.dat"), wxFileName(wxTheApp->argv[0]).GetPath(wxPATH_GET_VOLUME)), wxString::Format(_T("%sbenchmarks.dat"), PathManager::GetCfgPath())))
 				copied++;
