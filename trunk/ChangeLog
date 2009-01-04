@@ -23,6 +23,7 @@ SVN
     * Total PPD display moved into the status bar.
     * Added ability to reload client in serial rather than launching a thread
       for each client. Will improve memory usage with large numbers of clients.
+    * Added partial Norwegian translation.
 
     Windows
 
