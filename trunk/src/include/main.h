@@ -91,6 +91,7 @@ protected:
 	wxSingleInstanceChecker *mInstanceChecker; /**< The single instance of the About Dialog */
 	wxLocale                 m_locale; /**< The locale of the system */
 	wxServerBase            *mServerIPC; /**< The IPC server (unix socket on Linux, DDE on Windows) */
+	bool                     mLocal; /**< Should FahMon use local settings */
 
 public:
 	/**
@@ -108,6 +109,8 @@ public:
     // upload the (next) generated debug report to its URL, otherwise we just
     // generate the debug report and leave it in a local file
 	void UploadReport(bool doIt) { m_uploadReport = doIt; }
+
+	bool GetLocal(void) {return mLocal;}
 
 	/**
 	 * This is called just before the application exits.

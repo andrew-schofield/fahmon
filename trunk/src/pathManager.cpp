@@ -61,9 +61,16 @@ PathManager::PathManager(void)
 
 	wxString homeDir;
 
-	wxGetEnv(_T("APPDATA"), &homeDir);
+	if(!wxTheApp.GetLocal())
+	{
+		wxGetEnv(_T("APPDATA"), &homeDir);
 
-	homeDir += _T("\\FahMon");
+		homeDir += _T("\\FahMon");
+	}
+	else
+	{
+		homeDir = wxFileName(wxTheApp->argv[0]).GetPath(wxPATH_GET_VOLUME);
+	}
 
 	mXYZPath = homeDir + (_T("\\xyz\\"));
 	mImgPath = wxString::Format(_T("%s\\images\\"), wxFileName(wxTheApp->argv[0]).GetPath(wxPATH_GET_VOLUME));

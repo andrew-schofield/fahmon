@@ -41,6 +41,7 @@
 #include "wx/intl.h"
 #include "wx/filename.h"
 #include "wx/debugrpt.h"
+#include "wx/cmdline.h"
 
 #include "locale.h"
 
@@ -73,8 +74,35 @@ bool FahMonApp::OnInit(void)
     // at the moment fahmon.net isn't equipped to auto-process the uploads
 	m_uploadReport = false;
 
+	mLocal = false;
+
     // call this to tell the library to call our OnFatalException()
 	wxHandleFatalExceptions();
+
+	wxCmdLineParser cmdline(FahMonApp::argc, FahMonApp::argv);
+
+	cmdline.AddSwitch(wxT("v"), wxT("version"), wxT("Displays the current version number."));
+#ifdef _FAHMON_WIN32_
+	cmdline.AddSwitch(wxT("l"), wxT("local"), wxT("Use local directory for all settings."));
+#endif
+	cmdline.AddSwitch(wxT("h"), wxT("help"), wxT("Displays this information."));
+
+	// Show help on --help or invalid commands
+	if ( cmdline.Parse() ) {
+		return false;
+	} else if ( cmdline.Found(wxT("help")) ) {
+		cmdline.Usage();
+		return false;
+	}
+
+#ifdef _FAHMON_WIN32_
+	mLocal = cmdline.Found(wxT("local"));
+#endif
+	if ( cmdline.Found(wxT("version")) )
+	{
+		printf("%s\n", FMC_PRODUCT);
+		return false;
+	}
 
 	// Check for another instance
 	#ifndef __WXMAC__
@@ -167,6 +195,7 @@ bool FahMonApp::OnInit(void)
 #ifdef _FAHMON_WIN32_
 	wxUint8 copied = 0;
 #endif
+
 	if(!wxDirExists(PathManager::GetCfgPath())) {
 		requiresFirstRunDialog = true;
 		// The following is necessary on OSX and Win32 as the wxMkDir function doesn't seem to be able to create folders with more

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it-IT\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2009-01-04 17:11+0000\n"
+"POT-Creation-Date: 2009-01-04 20:17+0000\n"
 "PO-Revision-Date: 2008-02-25 12:46+0100\n"
 "Last-Translator: Zurgo <zurgo@virgilio.it>\n"
 "Language-Team:  <zurgo@virgilio.it>\n"
@@ -466,7 +466,7 @@ msgid ""
 "The latest version of %s will always be available on the official website:"
 msgstr "L'ultima versione di %s sarà sempre disponibile sul sito ufficiale:"
 
-#: src/firstTimeDialog.cpp:139 src/main.cpp:179 src/main.cpp:185
+#: src/firstTimeDialog.cpp:139 src/main.cpp:208 src/main.cpp:214
 #, c-format
 msgid "Could not create directory <%s>"
 msgstr "Impossibile creare la directory <%s>"
@@ -617,12 +617,12 @@ msgstr ""
 "\n"
 "Verificare che il filemanager sia correttamente impostato in Preferenze"
 
-#: src/main.cpp:98
+#: src/main.cpp:126
 #, c-format
 msgid "Another instance of %s is already running!"
 msgstr "Un'altra istanza di %s è già in esecuzione!"
 
-#: src/main.cpp:209
+#: src/main.cpp:238
 #, c-format
 msgid "Old settings imported into %s"
 msgstr ""

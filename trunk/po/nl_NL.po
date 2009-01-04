@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nl_NL\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2009-01-04 17:11+0000\n"
+"POT-Creation-Date: 2009-01-04 20:17+0000\n"
 "PO-Revision-Date: 2008-11-03 19:19+0000\n"
 "Last-Translator: Bastien <bastien@knife-edge.nl>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -464,7 +464,7 @@ msgid ""
 msgstr ""
 "De nieuwste versie van %s is altijd beschikbaar op de officiële homepage:"
 
-#: src/firstTimeDialog.cpp:139 src/main.cpp:179 src/main.cpp:185
+#: src/firstTimeDialog.cpp:139 src/main.cpp:208 src/main.cpp:214
 #, c-format
 msgid "Could not create directory <%s>"
 msgstr "Kan directory <%s> niet aanmaken"
@@ -610,12 +610,12 @@ msgstr ""
 "\n"
 "Controleer of de juiste filemanager is aangegeven bij de instellingen"
 
-#: src/main.cpp:98
+#: src/main.cpp:126
 #, c-format
 msgid "Another instance of %s is already running!"
 msgstr "Een ander proces van %s is reeds aktief!"
 
-#: src/main.cpp:209
+#: src/main.cpp:238
 #, c-format
 msgid "Old settings imported into %s"
 msgstr ""
