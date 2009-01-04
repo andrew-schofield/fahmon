@@ -203,7 +203,7 @@ bool FahMonApp::OnInit(void)
 #if defined(__WXMAC__) || defined (_FAHMON_WIN32_)
 		wxFileName topPath = PathManager::GetCfgPath();
 		topPath.RemoveLastDir();
-		if(!wxMkdir(topPath.GetPath()))
+		if(!wxDirExists(topPath.GetPath()) && !wxMkdir(topPath.GetPath()))
 		{
 			Tools::ErrorMsgBox(wxString::Format(_("Could not create directory <%s>"), topPath.GetPath().c_str()));
 			return false;
@@ -215,7 +215,7 @@ bool FahMonApp::OnInit(void)
 			return false;
 		}
 #ifdef _FAHMON_WIN32_
-		if(wxDirExists(wxString::Format(_T("%s\\config\\"), wxFileName(wxTheApp->argv[0]).GetPath (wxPATH_GET_VOLUME))))
+		if((mLocal == false && wxDirExists(wxString::Format(_T("%s\\config\\"), wxFileName(wxTheApp->argv[0]).GetPath (wxPATH_GET_VOLUME))))
 		{
 			if(wxCopyFile(wxString::Format(_T("%s\\config\\benchmarks.dat"), wxFileName(wxTheApp->argv[0]).GetPath(wxPATH_GET_VOLUME)), wxString::Format(_T("%sbenchmarks.dat"), PathManager::GetCfgPath())))
 				copied++;

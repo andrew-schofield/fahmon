@@ -23,6 +23,7 @@
 
 #include "fahmon.h"
 #include "pathManager.h"
+#include "main.h"
 
 #include "wx/utils.h"
 #include "wx/filename.h"
@@ -61,7 +62,7 @@ PathManager::PathManager(void)
 
 	wxString homeDir;
 
-	if(!wxTheApp.GetLocal())
+	if(!wxGetApp().GetLocal())
 	{
 		wxGetEnv(_T("APPDATA"), &homeDir);
 
