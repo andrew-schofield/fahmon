@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv_SE\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2009-01-04 20:17+0000\n"
+"POT-Creation-Date: 2009-01-04 21:20+0000\n"
 "PO-Revision-Date: 2008-02-01 20:20+0100\n"
 "Last-Translator: Olof Persson <floffe@gmail.com>\n"
 "Language-Team: Swedish\n"
@@ -216,72 +216,72 @@ msgstr "Fel vid inläsning av %sFAHlog.txt!"
 msgid "Error while reading %squeue.dat"
 msgstr "Fel vid inläsning av %squeue.dat!"
 
-#: src/client.cpp:207
-#, c-format
-msgid "Error while reading %swork/logfile_%02i.txt"
-msgstr "Fel vid inläsning av %swork/logfile_%02i.txt"
+#: src/client.cpp:211
+#, fuzzy, c-format
+msgid "Error while reading %s"
+msgstr "Fel vid inläsning av %squeue.dat!"
 
-#: src/client.cpp:213
+#: src/client.cpp:217
 #, c-format
 msgid "Error while reading %sunitinfo.txt!"
 msgstr "Fel vid inläsning av %sunitinfo.txt!"
 
-#: src/client.cpp:409
+#: src/client.cpp:413
 #, fuzzy, c-format
 msgid "Finished Reloading %s"
 msgstr "Läser in %s igen"
 
-#: src/client.cpp:463
+#: src/client.cpp:467
 #, c-format
 msgid "The progress value in file %s could not be found/parsed"
 msgstr "Förloppet kunde inte utläsas ur %s"
 
-#: src/client.cpp:506
+#: src/client.cpp:510
 #, fuzzy, c-format
 msgid "The core version in file %s could not be found/parsed"
 msgstr "Förloppet kunde inte utläsas ur %s"
 
-#: src/client.cpp:554
+#: src/client.cpp:558
 #, c-format
 msgid "Unable to save %s because it does not exist"
 msgstr "Kunde inte spara %s för att den inte finns"
 
-#: src/client.cpp:561
+#: src/client.cpp:565
 #, c-format
 msgid "Unable to create directory %s"
 msgstr "Kunde inte skapa katalogen %s"
 
-#: src/client.cpp:574
+#: src/client.cpp:578
 #, c-format
 msgid "Unable to copy %s to %s"
 msgstr "Kunde inte kopiera %s till %s"
 
-#: src/client.cpp:598
+#: src/client.cpp:602
 #, c-format
 msgid "%s is on frame %u"
 msgstr "%s är på bildruta %u"
 
-#: src/client.cpp:602
+#: src/client.cpp:606
 #, c-format
 msgid "Cannot determine frame number for %s (this isn't a problem)"
 msgstr "Kan inte bestämma bildruta för %s (det här är inget problem)"
 
-#: src/client.cpp:784
+#: src/client.cpp:788
 #, c-format
 msgid "%s has an unknown state (Unable to find a complete frame)"
 msgstr "%s är i okänt tillstånd (kunde inte hitta en hel bildruta)"
 
-#: src/client.cpp:793
+#: src/client.cpp:797
 #, c-format
 msgid "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
 msgstr "%s är stoppad (hittade raden \"Folding@Home Client Shutdown.\")"
 
-#: src/client.cpp:801
+#: src/client.cpp:805
 #, c-format
 msgid "%s has been paused"
 msgstr ""
 
-#: src/client.cpp:810
+#: src/client.cpp:814
 #, c-format
 msgid ""
 "%s has an unknown state (Unable to extract a valid elapsed time since the "
@@ -290,17 +290,17 @@ msgstr ""
 "%s är i okänt tillstånd (kunde inte beräkna en giltig tid sedan senast "
 "avklarade bildruta)"
 
-#: src/client.cpp:818
+#: src/client.cpp:822
 #, c-format
 msgid "%s has been marked as having a asynchronous clock."
 msgstr "%s har flaggats för en asynkron klocka"
 
-#: src/client.cpp:853
+#: src/client.cpp:857
 #, c-format
 msgid "%s seems to have hung : Elapsed time is %um and limit is %um"
 msgstr "%s verkar ha hängt sig : %um har förflutit och gränsen är %um"
 
-#: src/client.cpp:858
+#: src/client.cpp:862
 #, c-format
 msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
 msgstr "%s verkar vara inaktiv : %um har förflutit och gränsen är %um"
@@ -1431,6 +1431,9 @@ msgstr "Enkel textrapport"
 #: src/webMonitor.cpp:640
 msgid "Last updated:"
 msgstr "Senast uppdaterad:"
+
+#~ msgid "Error while reading %swork/logfile_%02i.txt"
+#~ msgstr "Fel vid inläsning av %swork/logfile_%02i.txt"
 
 #~ msgid " :: Total PPD: %.2f"
 #~ msgstr " :: Total PPD: %.2f"

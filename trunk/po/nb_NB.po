@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fahmon\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2009-01-04 20:17+0000\n"
+"POT-Creation-Date: 2009-01-04 21:20+0000\n"
 "PO-Revision-Date: 2008-11-22 12:38+0000\n"
 "Last-Translator: Kenneth Langdalen <Unknown>\n"
 "Language-Team: Norwegian Bokmal <nb@li.org>\n"
@@ -213,89 +213,89 @@ msgstr "Feil ved lesing av %sFAHlog.txt!"
 msgid "Error while reading %squeue.dat"
 msgstr "Feil ved lesing av %squeue.dat!"
 
-#: src/client.cpp:207
-#, c-format
-msgid "Error while reading %swork/logfile_%02i.txt"
-msgstr "Feil ved lesing av %swork/logfile_%02i.txt"
+#: src/client.cpp:211
+#, fuzzy, c-format
+msgid "Error while reading %s"
+msgstr "Feil ved lesing av %squeue.dat!"
 
-#: src/client.cpp:213
+#: src/client.cpp:217
 #, c-format
 msgid "Error while reading %sunitinfo.txt!"
 msgstr "Feil ved lesing av %sunitinfo.txt!"
 
-#: src/client.cpp:409
+#: src/client.cpp:413
 #, c-format
 msgid "Finished Reloading %s"
 msgstr ""
 
-#: src/client.cpp:463
+#: src/client.cpp:467
 #, c-format
 msgid "The progress value in file %s could not be found/parsed"
 msgstr ""
 
-#: src/client.cpp:506
+#: src/client.cpp:510
 #, c-format
 msgid "The core version in file %s could not be found/parsed"
 msgstr ""
 
-#: src/client.cpp:554
+#: src/client.cpp:558
 #, c-format
 msgid "Unable to save %s because it does not exist"
 msgstr ""
 
-#: src/client.cpp:561
+#: src/client.cpp:565
 #, c-format
 msgid "Unable to create directory %s"
 msgstr "Kunne ikke opprette katalogen %s"
 
-#: src/client.cpp:574
+#: src/client.cpp:578
 #, c-format
 msgid "Unable to copy %s to %s"
 msgstr "Kunne ikke kopiere %s til %s"
 
-#: src/client.cpp:598
+#: src/client.cpp:602
 #, c-format
 msgid "%s is on frame %u"
 msgstr ""
 
-#: src/client.cpp:602
+#: src/client.cpp:606
 #, c-format
 msgid "Cannot determine frame number for %s (this isn't a problem)"
 msgstr ""
 
-#: src/client.cpp:784
+#: src/client.cpp:788
 #, c-format
 msgid "%s has an unknown state (Unable to find a complete frame)"
 msgstr ""
 
-#: src/client.cpp:793
+#: src/client.cpp:797
 #, c-format
 msgid "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
 msgstr "%s er stoppet (fant raden \"Folding@Home Client Shutdown.\")"
 
-#: src/client.cpp:801
+#: src/client.cpp:805
 #, c-format
 msgid "%s has been paused"
 msgstr "%s er midlertidig stanset"
 
-#: src/client.cpp:810
+#: src/client.cpp:814
 #, c-format
 msgid ""
 "%s has an unknown state (Unable to extract a valid elapsed time since the "
 "last completed frame)"
 msgstr ""
 
-#: src/client.cpp:818
+#: src/client.cpp:822
 #, c-format
 msgid "%s has been marked as having a asynchronous clock."
 msgstr "%s er markert med en usynkronisert klokke"
 
-#: src/client.cpp:853
+#: src/client.cpp:857
 #, c-format
 msgid "%s seems to have hung : Elapsed time is %um and limit is %um"
 msgstr ""
 
-#: src/client.cpp:858
+#: src/client.cpp:862
 #, c-format
 msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
 msgstr ""
@@ -1376,6 +1376,9 @@ msgstr ""
 #: src/webMonitor.cpp:640
 msgid "Last updated:"
 msgstr "Sist oppdatert:"
+
+#~ msgid "Error while reading %swork/logfile_%02i.txt"
+#~ msgstr "Feil ved lesing av %swork/logfile_%02i.txt"
 
 #~ msgid " :: Total PPD: %.2f"
 #~ msgstr " :: Total PPD: %.2f"
