@@ -92,7 +92,7 @@ bool Tools::LoadFile(wxString const &filename, wxString& fileContent, wxUint32 l
 	int seeked = 0;
 
 	if(fromStart == false)
-		seeked = in.SeekEnd(-(std::min<off_t>(length, in.Length()-1)));
+		seeked = in.SeekEnd(-(std::min<off_t>(length, in.Length())-1));
 
 	int read = in.Read(m_buffer, std::min<off_t>(length, in.Length()));
 
