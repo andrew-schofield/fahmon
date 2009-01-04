@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv_SE\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2009-01-04 00:42+0000\n"
+"POT-Creation-Date: 2009-01-04 15:53+0000\n"
 "PO-Revision-Date: 2008-02-01 20:20+0100\n"
 "Last-Translator: Olof Persson <floffe@gmail.com>\n"
 "Language-Team: Swedish\n"
@@ -164,22 +164,22 @@ msgstr "(Prestanda) Det maximala antalet kända klienter har uppnåtts!"
 msgid "Unknown client"
 msgstr "Okänd klient"
 
-#: src/client.cpp:56 src/client.cpp:98 src/core.cpp:142
+#: src/client.cpp:56 src/client.cpp:99 src/core.cpp:142
 #: src/listViewClients.cpp:696 src/listViewClients.cpp:749
 #: src/mainDialog.cpp:506 src/mainDialog.cpp:507 src/mainDialog.cpp:508
 #: src/mainDialog.cpp:509
 msgid "Unknown"
 msgstr "Okänd"
 
-#: src/client.cpp:85
+#: src/client.cpp:86
 msgid "Log not loaded!"
 msgstr "Logg ej inläst!"
 
-#: src/client.cpp:88
+#: src/client.cpp:89
 msgid "anonymous"
 msgstr "anonym"
 
-#: src/client.cpp:93 src/listViewClients.cpp:773 src/listViewClients.cpp:777
+#: src/client.cpp:94 src/listViewClients.cpp:773 src/listViewClients.cpp:777
 #: src/mainDialog.cpp:474 src/mainDialog.cpp:479 src/mainDialog.cpp:480
 #: src/mainDialog.cpp:481 src/mainDialog.cpp:482 src/mainDialog.cpp:483
 #: src/mainDialog.cpp:573 src/mainDialog.cpp:629 src/webMonitor.cpp:135
@@ -196,92 +196,92 @@ msgstr "anonym"
 msgid "N/A"
 msgstr "Ej tillgänglig"
 
-#: src/client.cpp:173
+#: src/client.cpp:174
 #, c-format
 msgid "Reloading %s"
 msgstr "Läser in %s igen"
 
-#: src/client.cpp:181
+#: src/client.cpp:182
 #, c-format
 msgid "Directory %s does not exist or cannot be read!"
 msgstr "Katalogen %s finns inte eller kan inte läsas!"
 
-#: src/client.cpp:193
+#: src/client.cpp:194
 #, c-format
 msgid "Error while reading %sFAHlog.txt!"
 msgstr "Fel vid inläsning av %sFAHlog.txt!"
 
-#: src/client.cpp:201
+#: src/client.cpp:202
 #, c-format
 msgid "Error while reading %squeue.dat"
 msgstr "Fel vid inläsning av %squeue.dat!"
 
-#: src/client.cpp:206
+#: src/client.cpp:207
 #, c-format
 msgid "Error while reading %swork/logfile_%02i.txt"
 msgstr "Fel vid inläsning av %swork/logfile_%02i.txt"
 
-#: src/client.cpp:212
+#: src/client.cpp:213
 #, c-format
 msgid "Error while reading %sunitinfo.txt!"
 msgstr "Fel vid inläsning av %sunitinfo.txt!"
 
-#: src/client.cpp:408
+#: src/client.cpp:409
 #, fuzzy, c-format
 msgid "Finished Reloading %s"
 msgstr "Läser in %s igen"
 
-#: src/client.cpp:462
+#: src/client.cpp:463
 #, c-format
 msgid "The progress value in file %s could not be found/parsed"
 msgstr "Förloppet kunde inte utläsas ur %s"
 
-#: src/client.cpp:505
+#: src/client.cpp:506
 #, fuzzy, c-format
 msgid "The core version in file %s could not be found/parsed"
 msgstr "Förloppet kunde inte utläsas ur %s"
 
-#: src/client.cpp:553
+#: src/client.cpp:554
 #, c-format
 msgid "Unable to save %s because it does not exist"
 msgstr "Kunde inte spara %s för att den inte finns"
 
-#: src/client.cpp:560
+#: src/client.cpp:561
 #, c-format
 msgid "Unable to create directory %s"
 msgstr "Kunde inte skapa katalogen %s"
 
-#: src/client.cpp:573
+#: src/client.cpp:574
 #, c-format
 msgid "Unable to copy %s to %s"
 msgstr "Kunde inte kopiera %s till %s"
 
-#: src/client.cpp:597
+#: src/client.cpp:598
 #, c-format
 msgid "%s is on frame %u"
 msgstr "%s är på bildruta %u"
 
-#: src/client.cpp:601
+#: src/client.cpp:602
 #, c-format
 msgid "Cannot determine frame number for %s (this isn't a problem)"
 msgstr "Kan inte bestämma bildruta för %s (det här är inget problem)"
 
-#: src/client.cpp:783
+#: src/client.cpp:784
 #, c-format
 msgid "%s has an unknown state (Unable to find a complete frame)"
 msgstr "%s är i okänt tillstånd (kunde inte hitta en hel bildruta)"
 
-#: src/client.cpp:792
+#: src/client.cpp:793
 #, c-format
 msgid "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
 msgstr "%s är stoppad (hittade raden \"Folding@Home Client Shutdown.\")"
 
-#: src/client.cpp:800
+#: src/client.cpp:801
 #, c-format
 msgid "%s has been paused"
 msgstr ""
 
-#: src/client.cpp:809
+#: src/client.cpp:810
 #, c-format
 msgid ""
 "%s has an unknown state (Unable to extract a valid elapsed time since the "
@@ -290,17 +290,17 @@ msgstr ""
 "%s är i okänt tillstånd (kunde inte beräkna en giltig tid sedan senast "
 "avklarade bildruta)"
 
-#: src/client.cpp:817
+#: src/client.cpp:818
 #, c-format
 msgid "%s has been marked as having a asynchronous clock."
 msgstr "%s har flaggats för en asynkron klocka"
 
-#: src/client.cpp:852
+#: src/client.cpp:853
 #, c-format
 msgid "%s seems to have hung : Elapsed time is %um and limit is %um"
 msgstr "%s verkar ha hängt sig : %um har förflutit och gränsen är %um"
 
-#: src/client.cpp:857
+#: src/client.cpp:858
 #, c-format
 msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
 msgstr "%s verkar vara inaktiv : %um har förflutit och gränsen är %um"

@@ -54,6 +54,7 @@ Client::Client(wxString const &name, wxString const &location, bool enabled, boo
 	mEnabled = enabled;
 	SetVM(VM);
 	mClientType = _("Unknown");
+	mCoreVersion = 0;
 
 	Reset();
 }

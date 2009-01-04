@@ -86,6 +86,8 @@ bool Tools::LoadFile(wxString const &filename, wxString& fileContent, wxUint32 l
 
 	wxFile in(filename, wxFile::read);
 	length = (length == 0) ? in.Length() : length;
+	if(length==0)
+		return false;
 	char *m_buffer;
 	m_buffer = new char[length];
 	m_buffer[length-1] = 0;
