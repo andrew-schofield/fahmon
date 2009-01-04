@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
 "POT-Creation-Date: 2009-01-04 17:11+0000\n"
-"PO-Revision-Date: 2009-01-03 01:02+0000\n"
+"PO-Revision-Date: 2009-01-04 18:02+0000\n"
 "Last-Translator: Andrew Schofield <andrew_s@fahmon.net>\n"
 "Language-Team: British English\n"
 "MIME-Version: 1.0\n"
@@ -661,7 +661,7 @@ msgstr "Project %u is unknown, you should try to update the projects database"
 #: src/mainDialog.cpp:633 src/mainDialog.cpp:1218
 #, c-format
 msgid "%.2f PPD"
-msgstr ""
+msgstr "%.2f PPD"
 
 #: src/mainDialog.cpp:654
 msgid "&Check for update"
@@ -1122,9 +1122,8 @@ msgid "Use experimental reload system"
 msgstr "Use experimental reload system"
 
 #: src/preferencesDialog.cpp:250
-#, fuzzy
 msgid "Reload clients in series"
-msgstr "Reload this client"
+msgstr "Reload clients in series"
 
 #: src/preferencesDialog.cpp:254
 msgid "Ignore asynchronous clocks"
@@ -1410,9 +1409,3 @@ msgstr "Simple Text Output"
 #: src/webMonitor.cpp:640
 msgid "Last updated:"
 msgstr "Last updated:"
-
-#~ msgid " :: Total PPD: %.2f"
-#~ msgstr " :: Total PPD: %.2f"
-
-#~ msgid " :: Total PPD:"
-#~ msgstr " :: Total PPD:"
