@@ -56,4 +56,32 @@ public:
 };
 
 
+/**
+ * The serial client launcher thread.
+ * When instanciated, this class:
+ *  - Asks the ClientsManager to reload information on a given client
+ *  - Sends an EVT_CLIENTRELOADED event to the main dialog when done
+ *
+ * This class should only be used by the ClientsManager
+ **/
+class SerialClientHelperThread : public wxThread
+{
+protected:
+	wxUint32 mClientCount;
+	bool mForce;
+
+	/**
+	 * This is the entry point of the thread, where the client is reloaded.
+	 **/
+	void* Entry(void);
+
+
+public:
+	/**
+	 * Constructor.
+	 **/
+	SerialClientHelperThread(wxUint32 clientCount, bool force);
+};
+
+
 #endif /* _CLIENTHELPERTHREAD_H */

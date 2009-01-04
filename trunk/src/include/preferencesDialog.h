@@ -65,6 +65,7 @@ protected:
 	wxSpinCtrl   *mMonitoringAutoReloadFrequency; /**< Spin control for reload interval */
 	wxChoice     *mMonitoringPPDType; /**< Select box for PPD calculation method */
 	wxCheckBox   *mMonitoringIgnoreAsynchrony; /**< Checkbox for ignoring asynchronous clocks */
+	wxCheckBox   *mMonitoringNonThreadedReload; /**< Checkbox for turning off threaded reloads */
 
 	// Widgets for the networking tab
 	wxCheckBox   *mNetworkingUseProxy; /**< Checkbox for use of proxy */

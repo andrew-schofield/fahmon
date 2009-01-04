@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cs_CZ\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2009-01-04 15:53+0000\n"
+"POT-Creation-Date: 2009-01-04 17:11+0000\n"
 "PO-Revision-Date: 2008-11-02 14:31+0100\n"
 "Last-Translator: Martin Bednar <serafean@gmail.com>\n"
 "Language-Team: Czech <en@li.org>\n"
@@ -319,10 +319,10 @@ msgstr ""
 msgid "Location:"
 msgstr "Umístění"
 
-#: src/clientDialog.cpp:97 src/preferencesDialog.cpp:362
-#: src/preferencesDialog.cpp:504 src/preferencesDialog.cpp:513
-#: src/preferencesDialog.cpp:522 src/preferencesDialog.cpp:589
-#: src/preferencesDialog.cpp:598 src/preferencesDialog.cpp:607
+#: src/clientDialog.cpp:97 src/preferencesDialog.cpp:371
+#: src/preferencesDialog.cpp:513 src/preferencesDialog.cpp:522
+#: src/preferencesDialog.cpp:531 src/preferencesDialog.cpp:598
+#: src/preferencesDialog.cpp:607 src/preferencesDialog.cpp:616
 msgid "Choose"
 msgstr "Vybrat"
 
@@ -338,12 +338,12 @@ msgstr "Vyberte si složku"
 msgid "You must fill the name AND the locations fields."
 msgstr "Musíte vyplnit pole 'Název' a 'Umístění'"
 
-#: src/clientsManager.cpp:175 src/webMonitor.cpp:768
+#: src/clientsManager.cpp:176 src/webMonitor.cpp:768
 #, c-format
 msgid "Error while parsing %s on line %u"
 msgstr "Chyba při čtení %s na řádce %u"
 
-#: src/clientsManager.cpp:195
+#: src/clientsManager.cpp:196
 #, c-format
 msgid ""
 "Could not open file <%s> for writing!\n"
@@ -352,7 +352,7 @@ msgstr ""
 "Soubor %s nelze otevřít pro zapisování!\n"
 "Seznam klientů nebude uložen."
 
-#: src/clientsManager.cpp:200
+#: src/clientsManager.cpp:201
 #, fuzzy, c-format
 msgid ""
 "# %s : contains the list of clients\n"
@@ -1025,132 +1025,137 @@ msgstr ""
 "Nelze otevřít soubor pro zapisování!\n"
 "Log nebude uložen!"
 
-#: src/preferencesDialog.cpp:102
+#: src/preferencesDialog.cpp:104
 #, c-format
 msgid "Preferences / %s"
 msgstr "Nastavení / %s"
 
-#: src/preferencesDialog.cpp:120
+#: src/preferencesDialog.cpp:122
 msgid "General"
 msgstr "Obecné"
 
-#: src/preferencesDialog.cpp:121
+#: src/preferencesDialog.cpp:123
 msgid "Monitoring"
 msgstr "Sledování"
 
-#: src/preferencesDialog.cpp:122
+#: src/preferencesDialog.cpp:124
 msgid "Networking"
 msgstr "Sít"
 
-#: src/preferencesDialog.cpp:123
+#: src/preferencesDialog.cpp:125
 msgid "Advanced"
 msgstr "Pokročilé"
 
-#: src/preferencesDialog.cpp:124
+#: src/preferencesDialog.cpp:126
 msgid "System"
 msgstr "Systém"
 
-#: src/preferencesDialog.cpp:126
+#: src/preferencesDialog.cpp:128
 msgid "WebApp 1"
 msgstr "WebApp 1"
 
-#: src/preferencesDialog.cpp:127
+#: src/preferencesDialog.cpp:129
 msgid "WebApp 2"
 msgstr "WebApp 2"
 
-#: src/preferencesDialog.cpp:192
+#: src/preferencesDialog.cpp:194
 msgid "Enable system tray icon"
 msgstr "Povolit ikonu v "
 
-#: src/preferencesDialog.cpp:194
+#: src/preferencesDialog.cpp:196
 msgid "Start minimized"
 msgstr "Spustit minimalizovaný"
 
-#: src/preferencesDialog.cpp:195
+#: src/preferencesDialog.cpp:197
 msgid "Collect .xyz files"
 msgstr "Sbírat soubory .xyz"
 
-#: src/preferencesDialog.cpp:196
+#: src/preferencesDialog.cpp:198
 msgid "Auto update projects database when needed"
 msgstr "Automaticky aktualizovat databázi projektů"
 
-#: src/preferencesDialog.cpp:197
+#: src/preferencesDialog.cpp:199
 msgid "Always list inaccessible clients last"
 msgstr "Vždy zobrazit nedostupné klienty poslední"
 
-#: src/preferencesDialog.cpp:198
+#: src/preferencesDialog.cpp:200
 msgid "Check for FahMon updates on startup"
 msgstr "Ověřit dostupnost aktualizací FahMon při spuštění"
 
-#: src/preferencesDialog.cpp:232
+#: src/preferencesDialog.cpp:235
 msgid "A date (dd/mm)"
 msgstr "Datum (dd/mm)"
 
-#: src/preferencesDialog.cpp:232
+#: src/preferencesDialog.cpp:235
 msgid "A date (mm/dd)"
 msgstr "Datum (mm/dd)"
 
-#: src/preferencesDialog.cpp:232
+#: src/preferencesDialog.cpp:235
 msgid "Time left"
 msgstr "Zbývající čas"
 
-#: src/preferencesDialog.cpp:233
+#: src/preferencesDialog.cpp:236
 msgid "All frames"
 msgstr "Všechny Snímky"
 
-#: src/preferencesDialog.cpp:233
+#: src/preferencesDialog.cpp:236
 msgid "Last frame only"
 msgstr "Pouze poslední snímek"
 
-#: src/preferencesDialog.cpp:233
+#: src/preferencesDialog.cpp:236
 msgid "Last 3 frames"
 msgstr "Poslední 3 Snímky"
 
-#: src/preferencesDialog.cpp:233
+#: src/preferencesDialog.cpp:236
 msgid "Effective rate"
 msgstr "Skutečná rychlost"
 
-#: src/preferencesDialog.cpp:243
+#: src/preferencesDialog.cpp:247
 msgid "Auto reload clients"
 msgstr "Automaticky znovu načíst klienty"
 
-#: src/preferencesDialog.cpp:244
+#: src/preferencesDialog.cpp:248
 msgid "Reload interval (mn)"
 msgstr "Interval znovunačítání (mn)"
 
-#: src/preferencesDialog.cpp:245
+#: src/preferencesDialog.cpp:249
 msgid "Use experimental reload system"
 msgstr "Použit experimentální systém znovunačítání"
 
-#: src/preferencesDialog.cpp:249
+#: src/preferencesDialog.cpp:250
+#, fuzzy
+msgid "Reload clients in series"
+msgstr "Znovu načíst klienta "
+
+#: src/preferencesDialog.cpp:254
 msgid "Ignore asynchronous clocks"
 msgstr "Ignorovat nesynchronizované hodiny"
 
-#: src/preferencesDialog.cpp:251
+#: src/preferencesDialog.cpp:256
 msgid "Display dates as"
 msgstr "Zobrazit data jako"
 
-#: src/preferencesDialog.cpp:257
+#: src/preferencesDialog.cpp:262
 msgid "Calculate PPD based on"
 msgstr "Vypočítat PPD na základě"
 
-#: src/preferencesDialog.cpp:297
+#: src/preferencesDialog.cpp:306
 msgid "Use a proxy for HTTP connections"
 msgstr "Použít proxy pro HTTP spojení"
 
-#: src/preferencesDialog.cpp:300
+#: src/preferencesDialog.cpp:309
 msgid "Proxy requires authentication"
 msgstr "Proxy vyžaduje přihlášení"
 
-#: src/preferencesDialog.cpp:303 src/preferencesDialog.cpp:355
+#: src/preferencesDialog.cpp:312 src/preferencesDialog.cpp:364
 msgid "Address:"
 msgstr "Adresa:"
 
-#: src/preferencesDialog.cpp:304
+#: src/preferencesDialog.cpp:313
 msgid "Port:"
 msgstr "Port:"
 
-#: src/preferencesDialog.cpp:305
+#: src/preferencesDialog.cpp:314
 msgid ""
 "Proxy\n"
 "Username:"
@@ -1158,7 +1163,7 @@ msgstr ""
 "Proxy\n"
 "Uživatelské jméno:"
 
-#: src/preferencesDialog.cpp:306
+#: src/preferencesDialog.cpp:315
 msgid ""
 "Proxy\n"
 "Password:"
@@ -1166,99 +1171,99 @@ msgstr ""
 "Proxy\n"
 "Heslo:"
 
-#: src/preferencesDialog.cpp:353
+#: src/preferencesDialog.cpp:362
 msgid "Use the following settings for new project downloads"
 msgstr "Použít následující nastavení pro nové stahování projektů"
 
-#: src/preferencesDialog.cpp:356
+#: src/preferencesDialog.cpp:365
 msgid "Use a local file for project data"
 msgstr "Použít místní soubor s daty o projektech"
 
-#: src/preferencesDialog.cpp:358 src/preferencesDialog.cpp:500
-#: src/preferencesDialog.cpp:509 src/preferencesDialog.cpp:518
-#: src/preferencesDialog.cpp:585 src/preferencesDialog.cpp:594
-#: src/preferencesDialog.cpp:603
+#: src/preferencesDialog.cpp:367 src/preferencesDialog.cpp:509
+#: src/preferencesDialog.cpp:518 src/preferencesDialog.cpp:527
+#: src/preferencesDialog.cpp:594 src/preferencesDialog.cpp:603
+#: src/preferencesDialog.cpp:612
 msgid "Filename:"
 msgstr "Název souboru:"
 
-#: src/preferencesDialog.cpp:407
+#: src/preferencesDialog.cpp:416
 msgid "Web Browser:"
 msgstr "Prohlížeč:"
 
-#: src/preferencesDialog.cpp:408
+#: src/preferencesDialog.cpp:417
 msgid "File Manager:"
 msgstr "Správce Složek:"
 
-#: src/preferencesDialog.cpp:410
+#: src/preferencesDialog.cpp:419
 msgid "File Manager Command:"
 msgstr "Příkaz pro správce souborů:"
 
-#: src/preferencesDialog.cpp:411
+#: src/preferencesDialog.cpp:420
 msgid "Manually set timezone to UTC +"
 msgstr "Manuálně nastavit časové pásmo na UTC +"
 
-#: src/preferencesDialog.cpp:415
+#: src/preferencesDialog.cpp:424
 msgid "Windows Explorer"
 msgstr "Windows Explorer"
 
-#: src/preferencesDialog.cpp:415 src/preferencesDialog.cpp:418
-#: src/preferencesDialog.cpp:421
+#: src/preferencesDialog.cpp:424 src/preferencesDialog.cpp:427
+#: src/preferencesDialog.cpp:430
 msgid "Other"
 msgstr "Ostatní"
 
-#: src/preferencesDialog.cpp:421
+#: src/preferencesDialog.cpp:430
 msgid "Finder"
 msgstr "Vyhledávač"
 
-#: src/preferencesDialog.cpp:498
+#: src/preferencesDialog.cpp:507
 msgid "Export Web Application"
 msgstr "Exportovat webovou aplikaci"
 
-#: src/preferencesDialog.cpp:507
+#: src/preferencesDialog.cpp:516
 msgid "Export Simple Web page"
 msgstr "Exportovat jednoduchou webovou stránku"
 
-#: src/preferencesDialog.cpp:516
+#: src/preferencesDialog.cpp:525
 msgid "Export Simple Text file"
 msgstr "Exportovat jednoduchý textový soubor"
 
-#: src/preferencesDialog.cpp:583
+#: src/preferencesDialog.cpp:592
 msgid "Custom Web Application Template"
 msgstr "Vlastní Šablona pro Webovou Aplikaci"
 
-#: src/preferencesDialog.cpp:592
+#: src/preferencesDialog.cpp:601
 msgid "Custom Simple Web Template"
 msgstr "Vlastní Šablona pro Jednoduchou Webovou Stránku"
 
-#: src/preferencesDialog.cpp:601
+#: src/preferencesDialog.cpp:610
 msgid "Custom Simple Text Template"
 msgstr "Vlastní Šablona pro Jednoduchý Text"
 
-#: src/preferencesDialog.cpp:1028
+#: src/preferencesDialog.cpp:1041
 msgid "Choose a local project data file"
 msgstr "Vyberte lokální složku s daty o projektech"
 
-#: src/preferencesDialog.cpp:1042
+#: src/preferencesDialog.cpp:1055
 msgid "Choose where to save the Web Application"
 msgstr "Vybrat kam uložit webovou aplikaci"
 
-#: src/preferencesDialog.cpp:1056
+#: src/preferencesDialog.cpp:1069
 msgid "Choose where to save the simple web page"
 msgstr "Vybrat kam uložit jednoduchou webovou stránku"
 
-#: src/preferencesDialog.cpp:1070
+#: src/preferencesDialog.cpp:1083
 msgid "Choose where to save the simple text file"
 msgstr "Vybrat kam uložit jednoduchý textový soubor."
 
-#: src/preferencesDialog.cpp:1084
+#: src/preferencesDialog.cpp:1097
 msgid "Choose the Web Application Template"
 msgstr "Vybrat Šablonu pro Webovou Aplikaci"
 
-#: src/preferencesDialog.cpp:1098
+#: src/preferencesDialog.cpp:1111
 msgid "Choose the Simple Web Page Template"
 msgstr "Vybrat Šablonu pro Jednoduchou Webovou Stranku"
 
-#: src/preferencesDialog.cpp:1112
+#: src/preferencesDialog.cpp:1125
 msgid "Choose the Simple Text File Template"
 msgstr "Vybrat Šablonu pro Jednoduchý Textový Soubor."
 

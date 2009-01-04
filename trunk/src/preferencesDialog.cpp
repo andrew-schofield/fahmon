@@ -52,6 +52,7 @@ enum _CONTROL_ID
 	CHK_USEWEBAPP,
 	CHK_USESIMPLEWEB,
 	CHK_USESIMPLETEXT,
+	CHK_USENONTHREADED,
 	BTN_BROWSE_WEBAPP,
 	BTN_BROWSE_SIMPLEWEB,
 	BTN_BROWSE_SIMPLETEXT,
@@ -86,6 +87,7 @@ BEGIN_EVENT_TABLE(PreferencesDialog, wxDialog)
 	EVT_CHECKBOX(CHK_USEWEBAPP,                 PreferencesDialog::OnCheckboxes)
 	EVT_CHECKBOX(CHK_USESIMPLEWEB,              PreferencesDialog::OnCheckboxes)
 	EVT_CHECKBOX(CHK_USESIMPLETEXT,             PreferencesDialog::OnCheckboxes)
+	EVT_CHECKBOX(CHK_USENONTHREADED,            PreferencesDialog::OnCheckboxes)
 	EVT_CHOICE(CHC_FILEMANAGER,                 PreferencesDialog::OnChoices)
 	// EVT_CHOICE(CHK_PPDTYPE, PreferencesDialog::OnChoices)
 	#ifdef __WXMAC__
@@ -227,6 +229,7 @@ wxPanel* PreferencesDialog::CreateMonitoringTab(wxBookCtrlBase* parent)
 	wxBoxSizer *topLevelSizer;
 	wxBoxSizer *sizerETA;
 	wxBoxSizer *sizerAutoReload;
+	wxBoxSizer *sizerNonThreadedReload;
 	wxBoxSizer *sizerPPDType;
 	wxBoxSizer *sizerAsynchrony;
 	const wxString    etaFormats[3] = {_("A date (dd/mm)"), _("A date (mm/dd)"), _("Time left")};    // The order *MUST* correspond to the one used for the definition of ETA_DisplayStyle
@@ -237,12 +240,14 @@ wxPanel* PreferencesDialog::CreateMonitoringTab(wxBookCtrlBase* parent)
 	sizerETA                       = new wxBoxSizer(wxHORIZONTAL);
 	topLevelSizer                  = new wxBoxSizer(wxVERTICAL);
 	sizerAutoReload                = new wxBoxSizer(wxHORIZONTAL);
+	sizerNonThreadedReload         = new wxBoxSizer(wxHORIZONTAL);
 	sizerPPDType                   = new wxBoxSizer(wxHORIZONTAL);
 	sizerAsynchrony                = new wxBoxSizer(wxHORIZONTAL);
 
 	mMonitoringAutoReload          = new wxCheckBox(panel, CHK_AUTORELOAD, _("Auto reload clients"));
 	mMonitoringAutoReloadInt       = new wxStaticText(panel, wxID_ANY, wxString::Format(_T("%s "),  _("Reload interval (mn)")));
 	mMonitoringAdvancedReload      = new wxCheckBox(panel, CHK_ADVANCEDRELOAD, _("Use experimental reload system"));
+	mMonitoringNonThreadedReload   = new wxCheckBox(panel, CHK_USENONTHREADED, _("Reload clients in series"));
 	mMonitoringETADisplayStyle     = new wxChoice(panel, wxID_ANY, wxDefaultPosition, wxDefaultSize, 3, etaFormats);
 	mMonitoringAutoReloadFrequency = new wxSpinCtrl(panel, wxID_ANY, _T(""), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 1, 1000, 5);
 	mMonitoringPPDType             = new wxChoice(panel, wxID_ANY, wxDefaultPosition, wxDefaultSize, 4, ppdFormats);
@@ -259,12 +264,16 @@ wxPanel* PreferencesDialog::CreateMonitoringTab(wxBookCtrlBase* parent)
 
 	sizerAsynchrony->Add(mMonitoringIgnoreAsynchrony, 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL);
 
+	sizerNonThreadedReload->Add(mMonitoringNonThreadedReload, 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL);
+
 	sizer->AddStretchSpacer();
 	sizer->Add(mMonitoringAutoReload, 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL);
 	sizer->AddStretchSpacer();
 	sizer->Add(sizerAutoReload, 0, wxALIGN_LEFT);
 	sizer->AddStretchSpacer();
 	sizer->Add(mMonitoringAdvancedReload, 0, wxALIGN_LEFT);
+	sizer->AddStretchSpacer();
+	sizer->Add(mMonitoringNonThreadedReload, 0, wxALIGN_LEFT);
 	sizer->AddStretchSpacer();
 	sizer->Add(sizerETA, 0, wxALIGN_LEFT);
 	sizer->AddStretchSpacer();
@@ -666,6 +675,7 @@ void PreferencesDialog::LoadPreferences(void)
 	bool     useSimpleWeb;
 	bool     useSimpleText;
 	bool     updateCheck;
+	bool     nonThreadedReload;
 	wxUint32 proxyPort;
 	wxString proxyAddress;
 	wxString proxyUsername;
@@ -708,6 +718,7 @@ void PreferencesDialog::LoadPreferences(void)
 	_PrefsGetUint(PREF_ETA_DISPLAYSTYLE,               mInitETADisplayStyle);
 	_PrefsGetUint(PREF_PPD_DISPLAYSTYLE,               mInitPPDDisplayStyle);
 	_PrefsGetBool(PREF_IGNORE_ASYNCHRONY,              mInitIgnoreAsynchronousClocks);
+	_PrefsGetBool(PREF_NON_THREADED_RELOAD,            nonThreadedReload);
 
 	mMonitoringAdvancedReload->SetValue(mInitAdvancedReload);
 	mMonitoringAutoReload->SetValue(mInitAutoReload);
@@ -716,6 +727,7 @@ void PreferencesDialog::LoadPreferences(void)
 	mMonitoringETADisplayStyle->Select(mInitETADisplayStyle);
 	mMonitoringPPDType->Select(mInitPPDDisplayStyle);
 	mMonitoringIgnoreAsynchrony->SetValue(mInitIgnoreAsynchronousClocks);
+	mMonitoringNonThreadedReload->SetValue(nonThreadedReload);
 
 	mMonitoringAdvancedReload->Enable(mMonitoringAutoReload->GetValue());
 	if(mMonitoringAutoReload->GetValue() == true)
@@ -931,6 +943,7 @@ void PreferencesDialog::SavePreferences(void)
 	_PrefsSetUint(PREF_ETA_DISPLAYSTYLE,               mMonitoringETADisplayStyle->GetSelection());
 	_PrefsSetUint(PREF_PPD_DISPLAYSTYLE,               mMonitoringPPDType->GetSelection());
 	_PrefsSetBool(PREF_IGNORE_ASYNCHRONY,              mMonitoringIgnoreAsynchrony->GetValue());
+	_PrefsSetBool(PREF_NON_THREADED_RELOAD,            mMonitoringNonThreadedReload->GetValue());
 
 	// -----===== Networking preferences =====-----
 	proxyPort = wxAtoi(mNetworkingProxyPort->GetValue());

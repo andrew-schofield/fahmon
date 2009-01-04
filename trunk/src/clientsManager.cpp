@@ -32,6 +32,7 @@
 #include "clientHelperThread.h"
 #include "webMonitor.h"
 #include "trayManager.h"
+#include "preferencesManager.h"
 
 #include "wx/txtstrm.h"
 #include "wx/intl.h"
@@ -221,6 +222,9 @@ void ClientsManager::Save(void)
 void ClientsManager::ReloadThreaded(wxUint32 clientId)
 {
 	wxUint32 i;
+	bool nonThreaded;
+
+	_PrefsGetBool(PREF_NON_THREADED_RELOAD, nonThreaded);
 
 	if(clientId != CM_LOADALL && clientId != CM_LOADALLF)
 	{
@@ -228,16 +232,26 @@ void ClientsManager::ReloadThreaded(wxUint32 clientId)
 	}
 	else
 	{
-		for(i=0; i<GetCount(); ++i)
+		if(nonThreaded)
 		{
 			if(clientId == CM_LOADALL)
-			{
-				if(mClients.Item(i)->ReloadNeeded() == true)
-					new ClientHelperThread(i);
-			}
+				new SerialClientHelperThread(GetCount(), false);
 			if(clientId == CM_LOADALLF)
+				new SerialClientHelperThread(GetCount(), true);
+		}
+		else
+		{
+			for(i=0; i<GetCount(); ++i)
 			{
-				new ClientHelperThread(i);
+				if(clientId == CM_LOADALL)
+				{
+					if(mClients.Item(i)->ReloadNeeded() == true)
+						new ClientHelperThread(i);
+				}
+				if(clientId == CM_LOADALLF)
+				{
+					new ClientHelperThread(i);
+				}
 			}
 		}
 	}

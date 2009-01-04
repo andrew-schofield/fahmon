@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv_SE\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2009-01-04 15:53+0000\n"
+"POT-Creation-Date: 2009-01-04 17:11+0000\n"
 "PO-Revision-Date: 2008-02-01 20:20+0100\n"
 "Last-Translator: Olof Persson <floffe@gmail.com>\n"
 "Language-Team: Swedish\n"
@@ -322,10 +322,10 @@ msgstr ""
 msgid "Location:"
 msgstr "Plats:"
 
-#: src/clientDialog.cpp:97 src/preferencesDialog.cpp:362
-#: src/preferencesDialog.cpp:504 src/preferencesDialog.cpp:513
-#: src/preferencesDialog.cpp:522 src/preferencesDialog.cpp:589
-#: src/preferencesDialog.cpp:598 src/preferencesDialog.cpp:607
+#: src/clientDialog.cpp:97 src/preferencesDialog.cpp:371
+#: src/preferencesDialog.cpp:513 src/preferencesDialog.cpp:522
+#: src/preferencesDialog.cpp:531 src/preferencesDialog.cpp:598
+#: src/preferencesDialog.cpp:607 src/preferencesDialog.cpp:616
 msgid "Choose"
 msgstr ""
 
@@ -341,12 +341,12 @@ msgstr "Välj en katalog"
 msgid "You must fill the name AND the locations fields."
 msgstr "Du måste fylla i namnet OCH platsen."
 
-#: src/clientsManager.cpp:175 src/webMonitor.cpp:768
+#: src/clientsManager.cpp:176 src/webMonitor.cpp:768
 #, c-format
 msgid "Error while parsing %s on line %u"
 msgstr "Fel vid tolkning av %s på rad %u"
 
-#: src/clientsManager.cpp:195
+#: src/clientsManager.cpp:196
 #, c-format
 msgid ""
 "Could not open file <%s> for writing!\n"
@@ -355,7 +355,7 @@ msgstr ""
 "Kunde inte öppna <%s> for skrivning!\n"
 "Listan med klienter kommer inte att sparas!"
 
-#: src/clientsManager.cpp:200
+#: src/clientsManager.cpp:201
 #, fuzzy, c-format
 msgid ""
 "# %s : contains the list of clients\n"
@@ -1045,243 +1045,248 @@ msgstr ""
 "Kunde inte öppna filen att skriva till!\n"
 "Loggen kommer inte sparas!"
 
-#: src/preferencesDialog.cpp:102
+#: src/preferencesDialog.cpp:104
 #, c-format
 msgid "Preferences / %s"
 msgstr "Inställningar / %s"
 
-#: src/preferencesDialog.cpp:120
+#: src/preferencesDialog.cpp:122
 msgid "General"
 msgstr "Allmänt"
 
-#: src/preferencesDialog.cpp:121
+#: src/preferencesDialog.cpp:123
 msgid "Monitoring"
 msgstr "Övervakning"
 
-#: src/preferencesDialog.cpp:122
+#: src/preferencesDialog.cpp:124
 msgid "Networking"
 msgstr "Nätverk"
 
-#: src/preferencesDialog.cpp:123
+#: src/preferencesDialog.cpp:125
 msgid "Advanced"
 msgstr "Avancerat"
 
-#: src/preferencesDialog.cpp:124
+#: src/preferencesDialog.cpp:126
 msgid "System"
 msgstr "System"
 
-#: src/preferencesDialog.cpp:126
+#: src/preferencesDialog.cpp:128
 #, fuzzy
 msgid "WebApp 1"
 msgstr "WebApp"
 
-#: src/preferencesDialog.cpp:127
+#: src/preferencesDialog.cpp:129
 #, fuzzy
 msgid "WebApp 2"
 msgstr "WebApp"
 
-#: src/preferencesDialog.cpp:192
+#: src/preferencesDialog.cpp:194
 msgid "Enable system tray icon"
 msgstr "Visa ikon i aktivitetsfältet"
 
-#: src/preferencesDialog.cpp:194
+#: src/preferencesDialog.cpp:196
 msgid "Start minimized"
 msgstr "Starta minimerad"
 
-#: src/preferencesDialog.cpp:195
+#: src/preferencesDialog.cpp:197
 msgid "Collect .xyz files"
 msgstr "Samla .xyz-filer"
 
-#: src/preferencesDialog.cpp:196
+#: src/preferencesDialog.cpp:198
 msgid "Auto update projects database when needed"
 msgstr "Uppdatera automatiskt projektdatabasen vid behov"
 
-#: src/preferencesDialog.cpp:197
+#: src/preferencesDialog.cpp:199
 msgid "Always list inaccessible clients last"
 msgstr "Visa alltid otillgängliga klienter sist"
 
-#: src/preferencesDialog.cpp:198
+#: src/preferencesDialog.cpp:200
 msgid "Check for FahMon updates on startup"
 msgstr "Leta efter uppdateringar vid start"
 
-#: src/preferencesDialog.cpp:232
+#: src/preferencesDialog.cpp:235
 msgid "A date (dd/mm)"
 msgstr "Ett datum (dd/mm)"
 
-#: src/preferencesDialog.cpp:232
+#: src/preferencesDialog.cpp:235
 msgid "A date (mm/dd)"
 msgstr "Ett datum (mm/dd)"
 
-#: src/preferencesDialog.cpp:232
+#: src/preferencesDialog.cpp:235
 msgid "Time left"
 msgstr "Tid kvar"
 
-#: src/preferencesDialog.cpp:233
+#: src/preferencesDialog.cpp:236
 msgid "All frames"
 msgstr "Alla bildrutor"
 
-#: src/preferencesDialog.cpp:233
+#: src/preferencesDialog.cpp:236
 msgid "Last frame only"
 msgstr "Endast senaste bildrutan"
 
-#: src/preferencesDialog.cpp:233
+#: src/preferencesDialog.cpp:236
 msgid "Last 3 frames"
 msgstr "Senaste 3 bildrutorna"
 
-#: src/preferencesDialog.cpp:233
+#: src/preferencesDialog.cpp:236
 msgid "Effective rate"
 msgstr "Effektiv hastighet"
 
-#: src/preferencesDialog.cpp:243
+#: src/preferencesDialog.cpp:247
 msgid "Auto reload clients"
 msgstr "Ladda automatiskt om klienter"
 
-#: src/preferencesDialog.cpp:244
+#: src/preferencesDialog.cpp:248
 msgid "Reload interval (mn)"
 msgstr "Tid mellan uppdateringar (min)"
 
-#: src/preferencesDialog.cpp:245
+#: src/preferencesDialog.cpp:249
 msgid "Use experimental reload system"
 msgstr "Använt experimentellt omladdningssystem"
 
-#: src/preferencesDialog.cpp:249
+#: src/preferencesDialog.cpp:250
+#, fuzzy
+msgid "Reload clients in series"
+msgstr "Ladda om denna klient"
+
+#: src/preferencesDialog.cpp:254
 msgid "Ignore asynchronous clocks"
 msgstr "Ignorera felaktiga klockor"
 
-#: src/preferencesDialog.cpp:251
+#: src/preferencesDialog.cpp:256
 msgid "Display dates as"
 msgstr "Visa datum som"
 
-#: src/preferencesDialog.cpp:257
+#: src/preferencesDialog.cpp:262
 msgid "Calculate PPD based on"
 msgstr "Beräkna PPD utifrån"
 
-#: src/preferencesDialog.cpp:297
+#: src/preferencesDialog.cpp:306
 msgid "Use a proxy for HTTP connections"
 msgstr "Använd en proxyserver för HTTP-anslutningar"
 
-#: src/preferencesDialog.cpp:300
+#: src/preferencesDialog.cpp:309
 msgid "Proxy requires authentication"
 msgstr "Proxy kräver inloggning"
 
-#: src/preferencesDialog.cpp:303 src/preferencesDialog.cpp:355
+#: src/preferencesDialog.cpp:312 src/preferencesDialog.cpp:364
 msgid "Address:"
 msgstr "Adress:"
 
-#: src/preferencesDialog.cpp:304
+#: src/preferencesDialog.cpp:313
 msgid "Port:"
 msgstr "Port: "
 
-#: src/preferencesDialog.cpp:305
+#: src/preferencesDialog.cpp:314
 msgid ""
 "Proxy\n"
 "Username:"
 msgstr "Användarnamn:"
 
-#: src/preferencesDialog.cpp:306
+#: src/preferencesDialog.cpp:315
 msgid ""
 "Proxy\n"
 "Password:"
 msgstr "Lösenord: "
 
-#: src/preferencesDialog.cpp:353
+#: src/preferencesDialog.cpp:362
 msgid "Use the following settings for new project downloads"
 msgstr "Använd följande inställningar vid hämtning av nya projekt"
 
-#: src/preferencesDialog.cpp:356
+#: src/preferencesDialog.cpp:365
 msgid "Use a local file for project data"
 msgstr "Använd lokal fil för projektinformation"
 
-#: src/preferencesDialog.cpp:358 src/preferencesDialog.cpp:500
-#: src/preferencesDialog.cpp:509 src/preferencesDialog.cpp:518
-#: src/preferencesDialog.cpp:585 src/preferencesDialog.cpp:594
-#: src/preferencesDialog.cpp:603
+#: src/preferencesDialog.cpp:367 src/preferencesDialog.cpp:509
+#: src/preferencesDialog.cpp:518 src/preferencesDialog.cpp:527
+#: src/preferencesDialog.cpp:594 src/preferencesDialog.cpp:603
+#: src/preferencesDialog.cpp:612
 msgid "Filename:"
 msgstr "Filnamn:"
 
-#: src/preferencesDialog.cpp:407
+#: src/preferencesDialog.cpp:416
 msgid "Web Browser:"
 msgstr "Webbläsare:"
 
-#: src/preferencesDialog.cpp:408
+#: src/preferencesDialog.cpp:417
 msgid "File Manager:"
 msgstr "Filhanterare:"
 
-#: src/preferencesDialog.cpp:410
+#: src/preferencesDialog.cpp:419
 msgid "File Manager Command:"
 msgstr "Filhanterarkommando:"
 
-#: src/preferencesDialog.cpp:411
+#: src/preferencesDialog.cpp:420
 msgid "Manually set timezone to UTC +"
 msgstr "Ställ manuellt in tiden till UTC +"
 
-#: src/preferencesDialog.cpp:415
+#: src/preferencesDialog.cpp:424
 msgid "Windows Explorer"
 msgstr "Utforskaren"
 
-#: src/preferencesDialog.cpp:415 src/preferencesDialog.cpp:418
-#: src/preferencesDialog.cpp:421
+#: src/preferencesDialog.cpp:424 src/preferencesDialog.cpp:427
+#: src/preferencesDialog.cpp:430
 msgid "Other"
 msgstr "Annan"
 
-#: src/preferencesDialog.cpp:421
+#: src/preferencesDialog.cpp:430
 msgid "Finder"
 msgstr ""
 
-#: src/preferencesDialog.cpp:498
+#: src/preferencesDialog.cpp:507
 msgid "Export Web Application"
 msgstr "Exportera WebApp"
 
-#: src/preferencesDialog.cpp:507
+#: src/preferencesDialog.cpp:516
 msgid "Export Simple Web page"
 msgstr "Exportera enkel webbsida"
 
-#: src/preferencesDialog.cpp:516
+#: src/preferencesDialog.cpp:525
 msgid "Export Simple Text file"
 msgstr "Exportera enkel textfil"
 
-#: src/preferencesDialog.cpp:583
+#: src/preferencesDialog.cpp:592
 #, fuzzy
 msgid "Custom Web Application Template"
 msgstr "Exportera WebApp"
 
-#: src/preferencesDialog.cpp:592
+#: src/preferencesDialog.cpp:601
 #, fuzzy
 msgid "Custom Simple Web Template"
 msgstr "Exportera enkel webbsida"
 
-#: src/preferencesDialog.cpp:601
+#: src/preferencesDialog.cpp:610
 #, fuzzy
 msgid "Custom Simple Text Template"
 msgstr "Exportera enkel textfil"
 
-#: src/preferencesDialog.cpp:1028
+#: src/preferencesDialog.cpp:1041
 msgid "Choose a local project data file"
 msgstr "Välj en lokal fil för projektinformation"
 
-#: src/preferencesDialog.cpp:1042
+#: src/preferencesDialog.cpp:1055
 msgid "Choose where to save the Web Application"
 msgstr "Välj var Webb-programmet ska sparas"
 
-#: src/preferencesDialog.cpp:1056
+#: src/preferencesDialog.cpp:1069
 msgid "Choose where to save the simple web page"
 msgstr "Välj var den enkla webbsidan ska sparas"
 
-#: src/preferencesDialog.cpp:1070
+#: src/preferencesDialog.cpp:1083
 msgid "Choose where to save the simple text file"
 msgstr "Välj var den enkla textfilen ska sparas"
 
-#: src/preferencesDialog.cpp:1084
+#: src/preferencesDialog.cpp:1097
 #, fuzzy
 msgid "Choose the Web Application Template"
 msgstr "Välj var Webb-programmet ska sparas"
 
-#: src/preferencesDialog.cpp:1098
+#: src/preferencesDialog.cpp:1111
 #, fuzzy
 msgid "Choose the Simple Web Page Template"
 msgstr "Välj var den enkla webbsidan ska sparas"
 
-#: src/preferencesDialog.cpp:1112
+#: src/preferencesDialog.cpp:1125
 #, fuzzy
 msgid "Choose the Simple Text File Template"
 msgstr "Välj var den enkla textfilen ska sparas"

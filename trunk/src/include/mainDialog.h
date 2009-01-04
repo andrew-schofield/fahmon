@@ -100,6 +100,9 @@
 #define PREF_MAINDIALOG_MAXIMISE    wxT("MainDialog.Maxmise") /**< Preference setting for maximised window */
 #define PREF_MAINDIALOG_MAXIMISE_DV false /**< Default value for maximised window state */
 
+#define PREF_NON_THREADED_RELOAD    wxT("Clients.NonThreadedReload") /**< Preference setting for serial reloads */
+#define PREF_NON_THREADED_RELOAD_DV false /**< Default value for serial reloads */
+
 #define PREF_TOOLS_FILEMANAGER   wxT("MainDialog.FileManager") /**< Preference setting for filemanager */
 
 #ifdef _FAHMON_WIN32_

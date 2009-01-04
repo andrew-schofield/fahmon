@@ -54,3 +54,42 @@ void* ClientHelperThread::Entry(void)
 	// Dummy return code
 	return NULL;
 }
+
+
+SerialClientHelperThread::SerialClientHelperThread(wxUint32 clientCount, bool force) : wxThread(wxTHREAD_DETACHED)
+{
+	mClientCount = clientCount;
+	mForce = force;
+
+	Create();
+	Run();
+}
+
+
+void* SerialClientHelperThread::Entry(void)
+{
+	const Client* client;
+
+	for(wxUint32 i = 0; i<mClientCount; ++i)
+	{
+		client = ClientsManager::GetInstance()->Get(i);
+
+		if(mForce == false && !client->ReloadNeeded())
+			continue;
+
+		if(MainDialog::GetInstance()->ClientReloadAllowed(i))
+		{
+			wxCommandEvent event(EVT_CLIENTRELOADED);
+			// We use the 'inlined' method to reload the client
+			// (The job is done in the current execution flow)
+			ClientsManager::GetInstance()->Reload(i);
+			// Post an event to the queue of the MainDialog to warn it that the job is done
+			event.SetInt(i);
+			MainDialog::GetInstance()->AddPendingEvent(event);
+		}
+
+	}
+
+	// Dummy return code
+	return NULL;
+}
