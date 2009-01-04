@@ -580,7 +580,7 @@ void Client::ComputeETA(WorkUnitFrame* lastFrame)
 	wxUint32         totalFrames;
 	wxUint32         referenceDuration;
 	wxUint32         nbLeftSeconds;
-	wxString         logLine;
+	//wxString         logLine;
 	wxUint32         ppdDisplay;
 	const Project   *projectInfo;
 	const Benchmark *benchmark;
@@ -591,7 +591,7 @@ void Client::ComputeETA(WorkUnitFrame* lastFrame)
 		return;
 	}
 
-	logLine = wxString::Format(_T("%s [ETA]"), mName.c_str());
+	//logLine = wxString::Format(_T("%s [ETA]"), mName.c_str());
 	if(lastFrame != NULL)
 	{
 		_LogMsgInfo(wxString::Format(_("%s is on frame %u"), mName.c_str(), lastFrame->GetId()));
@@ -630,42 +630,41 @@ void Client::ComputeETA(WorkUnitFrame* lastFrame)
 	benchmark = BenchmarksManager::GetInstance()->GetBenchmark(mProjectId, this);
 	if(benchmark != NULL && lastFrame != NULL)
 	{
-		/*
-		logLine = logLine + wxString::Format(wxT(" | avg=%us | last=%us"), benchmark->GetAvgDuration(), lastFrame->GetDuration());
+		//logLine = logLine + wxString::Format(wxT(" | avg=%us | last=%us"), benchmark->GetAvgDuration(), lastFrame->GetDuration());
+		/**
+		 * My theory about the computation of the ETA :-)
+		 * As the computation of the WU is reaching the end, the duration of the last run will become more important.
+		 * However, when the computation has just begun, the average duration of a run is much more important than the 'current'
+		 * duration of runs.
+		 * So the duration used as a 'metric' is composed by the two durations, in regards of the progress of the computation.
 
-		// My theory about the computation of the ETA :-)
-		//
-		// As the computation of the WU is reaching the end, the duration of the last run will become more important.
-		// However, when the computation has just begun, the average duration of a run is much more important than the 'current'
-		// duration of runs.
-		// So the duration used as a 'metric' is composed by the two durations, in regards of the progress of the computation.
-		//
-		//    Tm = Average run duration
-		//    Tl = Duration of the last run
-		//    Y  = Total number of runs for the WU
-		//    X  = Number of the last run
-		//
-		//    Duration = (Tl * X / Y) + (Tm * (1 - X / Y))
-		//             = Tl * X / Y + Tm - Tm * X / Y
-		//             = (Tl - Tm) * X / Y + Tm
+		 *   Tm = Average run duration
+		 *   Tl = Duration of the last run
+		 *   Y  = Total number of runs for the WU
+		 *   X  = Number of the last run
 
-		wxInt32 Tm = benchmark->GetAvgDuration();
-		wxInt32 Tl = lastFrame->GetDuration();
-		wxInt32 Y  = totalFrames;
-		wxInt32 X  = lastFrame->GetId();
+		 *   Duration = (Tl * X / Y) + (Tm * (1 - X / Y))
+		 *            = Tl * X / Y + Tm - Tm * X / Y
+		 *            = (Tl - Tm) * X / Y + Tm
 
-		referenceDuration = (wxUint32)((Tl - Tm) * X / Y + Tm);
+		 * wxInt32 Tm = benchmark->GetAvgDuration();
+		 * wxInt32 Tl = lastFrame->GetDuration();
+		 * wxInt32 Y  = totalFrames;
+		 * wxInt32 X  = lastFrame->GetId();
 
-		// This causes problems with some WUs, for which the duration of a frame can vary a lot
-		// In this case, the ETA varies a lot too, so for now we only use the average duration of a frame
-		*/
+		 * referenceDuration = (wxUint32)((Tl - Tm) * X / Y + Tm);
 
-		/*
-		Additional comment about above method: appears to be a "hybrid" system combining both "avg" and "cur" or "r3f" methods now
-		implemented as ETA systems. Might be worth considering in future if it is possible to overcome the varying frame time
-		problem
-		*/
-		logLine += wxString::Format(_T(" | avg=%s"), wxTimeSpan::Seconds(benchmark->GetAvgDuration()).Format(_T("%H:%M:%S")).c_str());
+		 * This causes problems with some WUs, for which the duration of a frame can vary a lot
+		 * In this case, the ETA varies a lot too, so for now we only use the average duration of a frame
+		 **/
+
+		/**
+		 * Additional comment about above method: appears to be a "hybrid" system combining both "avg" and "cur" or "r3f" methods now
+		 * implemented as ETA systems. Might be worth considering in future if it is possible to overcome the varying frame time
+		 * problem
+		 **/
+
+		//logLine += wxString::Format(_T(" | avg=%s"), wxTimeSpan::Seconds(benchmark->GetAvgDuration()).Format(_T("%H:%M:%S")).c_str());
 
 		switch(ppdDisplay)
 		{
@@ -698,28 +697,28 @@ void Client::ComputeETA(WorkUnitFrame* lastFrame)
 	}
 	else if(benchmark != NULL)
 	{
-		logLine += wxString::Format(_T(" | avg=%s | last=N/A"), wxTimeSpan::Seconds(benchmark->GetAvgDuration()).Format(_T("%H:%M:%S")).c_str());
+		//logLine += wxString::Format(_T(" | avg=%s | last=N/A"), wxTimeSpan::Seconds(benchmark->GetAvgDuration()).Format(_T("%H:%M:%S")).c_str());
 
 		// No duration for the last frame, use the average duration
 		referenceDuration = benchmark->GetAvgDuration();
 	}
 	else if(lastFrame != NULL)
 	{
-		logLine += wxString::Format(_T(" | avg=N/A | last=%s"), wxTimeSpan::Seconds(lastFrame->GetDuration()).Format(_T("%H:%M:%S")).c_str());
+		//logLine += wxString::Format(_T(" | avg=N/A | last=%s"), wxTimeSpan::Seconds(lastFrame->GetDuration()).Format(_T("%H:%M:%S")).c_str());
 
 		// No average duration of a frame, use the duration of the last frame
 		referenceDuration = lastFrame->GetDuration();
 	}
 	else
 	{
-		logLine += wxString::Format(_T(" | avg=N/A | last=N/A"));
-		_LogMsgInfo(logLine);
+		//logLine += wxString::Format(_T(" | avg=N/A | last=N/A"));
+		//_LogMsgInfo(logLine);
 
 		// No indication on the average duration of a frame, nor on the duration of the last frame, so we cannot do anything
 		return;
 	}
 
-	logLine += wxString::Format(_T(" | ref=%s"), wxTimeSpan::Seconds(referenceDuration).Format(_T("%H:%M:%S")).c_str());
+	//logLine += wxString::Format(_T(" | ref=%s"), wxTimeSpan::Seconds(referenceDuration).Format(_T("%H:%M:%S")).c_str());
 
 	// --- 3) Compute the the left time
 	if(lastFrame != NULL)
@@ -738,15 +737,15 @@ void Client::ComputeETA(WorkUnitFrame* lastFrame)
 		if(lastFrame->GetElapsedSeconds() > referenceDuration)
 		{
 			nbLeftSeconds = nbLeftSeconds - referenceDuration;
-			logLine += wxString::Format(_T(" | adj=%s"), wxTimeSpan::Seconds(referenceDuration).Format(_T("%H:%M:%S")).c_str());
+			//logLine += wxString::Format(_T(" | adj=%s"), wxTimeSpan::Seconds(referenceDuration).Format(_T("%H:%M:%S")).c_str());
 		}
 		else
 		{
 			nbLeftSeconds = nbLeftSeconds - lastFrame->GetElapsedSeconds();
-			logLine += wxString::Format(_T(" | adj=%s"), wxTimeSpan::Seconds(lastFrame->GetElapsedSeconds()).Format(_T("%H:%M:%S")).c_str());
+			//logLine += wxString::Format(_T(" | adj=%s"), wxTimeSpan::Seconds(lastFrame->GetElapsedSeconds()).Format(_T("%H:%M:%S")).c_str());
 		}
 
-		logLine += wxString::Format(_T(" | left=%s"), wxTimeSpan::Seconds(nbLeftSeconds).Format(_T("%H:%M:%S")).c_str());
+		//logLine += wxString::Format(_T(" | left=%s"), wxTimeSpan::Seconds(nbLeftSeconds).Format(_T("%H:%M:%S")).c_str());
 	}
 	else
 	{
@@ -763,12 +762,12 @@ void Client::ComputeETA(WorkUnitFrame* lastFrame)
 			nbLeftSeconds = referenceDuration * (totalFrames - (lastComputedFrame * (totalFrames/100))); //correction for odd gromacs WUs
 		}
 
-		logLine += wxString::Format(_T(" | left=%us (guess)"), nbLeftSeconds);
+		//logLine += wxString::Format(_T(" | left=%us (guess)"), nbLeftSeconds);
 	}
 
 	// --- 4) That's it
 	mETA.SetLeftTimeInMinutes(nbLeftSeconds/60);
-	_LogMsgInfo(logLine);
+	//_LogMsgInfo(logLine);
 }
 
 
