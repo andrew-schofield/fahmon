@@ -410,6 +410,7 @@ void Client::Reload(void)
 	{
 		delete lastFrame;
 	}
+
 	_LogMsgInfo(wxString::Format(_("Finished Reloading %s"), mName.c_str()));
 }
 

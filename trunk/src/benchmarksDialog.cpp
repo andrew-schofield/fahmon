@@ -360,6 +360,12 @@ void BenchmarksDialog::ShowBenchmarks(ProjectId projectIdToShow)
 	}
 
 	mBenchmarksInformation->SetValue(infoString);
+
+	//if(project != NULL)
+		//delete project;
+
+	if(benchmarks != NULL)
+		delete [ ] benchmarks;
 }
 
 
