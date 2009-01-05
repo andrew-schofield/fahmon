@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es_ES\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2009-01-04 21:20+0000\n"
+"POT-Creation-Date: 2009-01-05 17:28+0000\n"
 "PO-Revision-Date: 2008-10-30 00:13+0000\n"
 "Last-Translator: Antonio Lucendo <alt_alm@hotmail.com>\n"
 "Language-Team: Spanish\n"
@@ -240,51 +240,51 @@ msgstr "No se pudo encontrar el valor de progreso en el archivo %s"
 msgid "The core version in file %s could not be found/parsed"
 msgstr "No se pudo encontrar el valor de progreso en el archivo %s"
 
-#: src/client.cpp:558
+#: src/client.cpp:559
 #, c-format
 msgid "Unable to save %s because it does not exist"
 msgstr "No se puede guardar %s porque no existe"
 
-#: src/client.cpp:565
+#: src/client.cpp:566
 #, c-format
 msgid "Unable to create directory %s"
 msgstr "No se puede crear el directorio %s"
 
-#: src/client.cpp:578
+#: src/client.cpp:579
 #, c-format
 msgid "Unable to copy %s to %s"
 msgstr "No se puede copiar %s en %s"
 
-#: src/client.cpp:602
+#: src/client.cpp:603
 #, c-format
 msgid "%s is on frame %u"
 msgstr "%s va por el cuadro %u"
 
-#: src/client.cpp:606
+#: src/client.cpp:607
 #, c-format
 msgid "Cannot determine frame number for %s (this isn't a problem)"
 msgstr ""
 "No se puede determinar el número del cuadro para %s (no representa un "
 "problema)"
 
-#: src/client.cpp:788
+#: src/client.cpp:789
 #, c-format
 msgid "%s has an unknown state (Unable to find a complete frame)"
 msgstr ""
 "%s está en un estado desconocido (No se puede encontrar un cuadro completo)"
 
-#: src/client.cpp:797
+#: src/client.cpp:798
 #, c-format
 msgid "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
 msgstr ""
 "%s está detenido (Se encontró la línea \"Folding@Home Client Shutdown.\")"
 
-#: src/client.cpp:805
+#: src/client.cpp:806
 #, c-format
 msgid "%s has been paused"
 msgstr ""
 
-#: src/client.cpp:814
+#: src/client.cpp:815
 #, c-format
 msgid ""
 "%s has an unknown state (Unable to extract a valid elapsed time since the "
@@ -293,18 +293,18 @@ msgstr ""
 "%s está en un estado desconocido (No se puede calcular el tiempo "
 "transcurrido desde el último cuadro completado)"
 
-#: src/client.cpp:822
+#: src/client.cpp:823
 #, c-format
 msgid "%s has been marked as having a asynchronous clock."
 msgstr "%s se ha marcado como que tiene un reloj asíncrono."
 
-#: src/client.cpp:857
+#: src/client.cpp:858
 #, c-format
 msgid "%s seems to have hung : Elapsed time is %um and limit is %um"
 msgstr ""
 "%s parece haberse colgado : El tiempo transcurrido es %um y el límite es %um"
 
-#: src/client.cpp:862
+#: src/client.cpp:863
 #, c-format
 msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
 msgstr ""
@@ -346,7 +346,7 @@ msgstr "Elija una carpeta"
 msgid "You must fill the name AND the locations fields."
 msgstr "Debes completar los campos de nombre Y emplazamiento."
 
-#: src/clientsManager.cpp:176 src/webMonitor.cpp:768
+#: src/clientsManager.cpp:176 src/webMonitor.cpp:773
 #, c-format
 msgid "Error while parsing %s on line %u"
 msgstr "Error mientras se comprobaba %s en la línea %u"
@@ -470,7 +470,7 @@ msgid ""
 msgstr ""
 "La última versión de %s estará siempre disponible en el sitio web oficial:"
 
-#: src/firstTimeDialog.cpp:139 src/main.cpp:208 src/main.cpp:214
+#: src/firstTimeDialog.cpp:139 src/main.cpp:207 src/main.cpp:213
 #, c-format
 msgid "Could not create directory <%s>"
 msgstr "No se pudo crear el directorio <%s>"
@@ -481,28 +481,28 @@ msgid "%.1f KB/s"
 msgstr "%.1f KB/s"
 
 #: src/listViewClients.cpp:168 src/listViewClients.cpp:960
-#: src/webMonitor.cpp:625
+#: src/webMonitor.cpp:630
 msgid "Progress"
 msgstr "Avance"
 
 #: src/listViewClients.cpp:169 src/listViewClients.cpp:961
-#: src/webMonitor.cpp:626
+#: src/webMonitor.cpp:631
 msgid "Name"
 msgstr "Nombre"
 
 #: src/listViewClients.cpp:170 src/listViewClients.cpp:962
-#: src/webMonitor.cpp:642
+#: src/webMonitor.cpp:647
 #, fuzzy
 msgid "Client Type"
 msgstr "&Clientes"
 
 #: src/listViewClients.cpp:171 src/listViewClients.cpp:963
-#: src/webMonitor.cpp:627
+#: src/webMonitor.cpp:632
 msgid "ETA"
 msgstr "ETA"
 
 #: src/listViewClients.cpp:172 src/listViewClients.cpp:964
-#: src/webMonitor.cpp:628
+#: src/webMonitor.cpp:633
 msgid "PPD"
 msgstr "PPD"
 
@@ -511,22 +511,22 @@ msgid "Core"
 msgstr "Núcleo"
 
 #: src/listViewClients.cpp:174 src/listViewClients.cpp:966
-#: src/webMonitor.cpp:643
+#: src/webMonitor.cpp:648
 msgid "Core Version"
 msgstr ""
 
 #: src/listViewClients.cpp:175 src/listViewClients.cpp:967
-#: src/webMonitor.cpp:622
+#: src/webMonitor.cpp:627
 msgid "PRCG"
 msgstr "PRCG"
 
 #: src/listViewClients.cpp:176 src/listViewClients.cpp:968
-#: src/webMonitor.cpp:623
+#: src/webMonitor.cpp:628
 msgid "Credit"
 msgstr "Valor"
 
 #: src/listViewClients.cpp:177 src/listViewClients.cpp:969
-#: src/webMonitor.cpp:624
+#: src/webMonitor.cpp:629
 msgid "Downloaded"
 msgstr "Descargado"
 
@@ -569,7 +569,7 @@ msgid "*Hung*"
 msgstr "*Colgado*"
 
 #: src/listViewClients.cpp:785 src/webMonitor.cpp:368 src/webMonitor.cpp:402
-#: src/webMonitor.cpp:608
+#: src/webMonitor.cpp:613
 msgid "Paused"
 msgstr ""
 
@@ -616,12 +616,12 @@ msgstr ""
 "\n"
 "Por favor compruebe que está correctamente definido en Preferencias"
 
-#: src/main.cpp:126
+#: src/main.cpp:125
 #, c-format
 msgid "Another instance of %s is already running!"
 msgstr "¡Existe ya otra instancia de %s en ejecución!"
 
-#: src/main.cpp:238
+#: src/main.cpp:237
 #, c-format
 msgid "Old settings imported into %s"
 msgstr ""
@@ -918,35 +918,35 @@ msgstr "Acerca de %s"
 msgid "&Help"
 msgstr "&Ayuda"
 
-#: src/mainDialog.cpp:765 src/webMonitor.cpp:629
+#: src/mainDialog.cpp:765 src/webMonitor.cpp:634
 msgid "Work Unit Information"
 msgstr "Información de la unidad de trabajo"
 
-#: src/mainDialog.cpp:793 src/webMonitor.cpp:630
+#: src/mainDialog.cpp:793 src/webMonitor.cpp:635
 msgid "Core:"
 msgstr "Núcleo:"
 
-#: src/mainDialog.cpp:795 src/webMonitor.cpp:631
+#: src/mainDialog.cpp:795 src/webMonitor.cpp:636
 msgid "Project:"
 msgstr "Proyecto:"
 
-#: src/mainDialog.cpp:797 src/webMonitor.cpp:632
+#: src/mainDialog.cpp:797 src/webMonitor.cpp:637
 msgid "Credit:"
 msgstr "Valor:"
 
-#: src/mainDialog.cpp:799 src/webMonitor.cpp:633
+#: src/mainDialog.cpp:799 src/webMonitor.cpp:638
 msgid "Username:"
 msgstr "Nombre de Usuario:"
 
-#: src/mainDialog.cpp:801 src/webMonitor.cpp:641
+#: src/mainDialog.cpp:801 src/webMonitor.cpp:646
 msgid "Downloaded:"
 msgstr "Descargado:"
 
-#: src/mainDialog.cpp:803 src/webMonitor.cpp:634
+#: src/mainDialog.cpp:803 src/webMonitor.cpp:639
 msgid "Preferred Deadline:"
 msgstr "Fecha límite preferida:"
 
-#: src/mainDialog.cpp:805 src/webMonitor.cpp:635
+#: src/mainDialog.cpp:805 src/webMonitor.cpp:640
 msgid "Final Deadline:"
 msgstr "Fecha límite final:"
 
@@ -1358,23 +1358,23 @@ msgstr "Mostrar FahMon"
 msgid "Quit"
 msgstr "Salir"
 
-#: src/webMonitor.cpp:343 src/webMonitor.cpp:588
+#: src/webMonitor.cpp:343 src/webMonitor.cpp:593
 msgid "Inaccessible"
 msgstr "Innaccesible"
 
-#: src/webMonitor.cpp:348 src/webMonitor.cpp:592
+#: src/webMonitor.cpp:348 src/webMonitor.cpp:597
 msgid "Stopped"
 msgstr "Detenido"
 
-#: src/webMonitor.cpp:353 src/webMonitor.cpp:596
+#: src/webMonitor.cpp:353 src/webMonitor.cpp:601
 msgid "Inactive"
 msgstr "Inactivo"
 
-#: src/webMonitor.cpp:358 src/webMonitor.cpp:600
+#: src/webMonitor.cpp:358 src/webMonitor.cpp:605
 msgid "Hung"
 msgstr "Colgado"
 
-#: src/webMonitor.cpp:363 src/webMonitor.cpp:604
+#: src/webMonitor.cpp:363 src/webMonitor.cpp:609
 msgid "Async"
 msgstr "Asinc"
 
@@ -1382,14 +1382,14 @@ msgstr "Asinc"
 msgid "Ok"
 msgstr "Ok"
 
-#: src/webMonitor.cpp:455
+#: src/webMonitor.cpp:460
 #, c-format
 msgid ""
 "Could not open template file <%s> for reading!\n"
 "The web application will not be created!"
 msgstr "¡No se puede abrir para leer el fichero de plantilla <%s>!"
 
-#: src/webMonitor.cpp:460
+#: src/webMonitor.cpp:465
 #, c-format
 msgid ""
 "Could not open file <%s> for writing!\n"
@@ -1398,27 +1398,27 @@ msgstr ""
 "¡No se pudo abrir el archivo <%s> para escritura!\n"
 "No se creará la aplicación web!"
 
-#: src/webMonitor.cpp:621
+#: src/webMonitor.cpp:626
 msgid "State"
 msgstr "Estado"
 
-#: src/webMonitor.cpp:636
+#: src/webMonitor.cpp:641
 msgid "Total PPD:"
 msgstr "PPD totales:"
 
-#: src/webMonitor.cpp:637
+#: src/webMonitor.cpp:642
 msgid "Web View"
 msgstr "Vista Web"
 
-#: src/webMonitor.cpp:638
+#: src/webMonitor.cpp:643
 msgid "FahMon Client Monitoring"
 msgstr "Monitorizando los clientes FahMon"
 
-#: src/webMonitor.cpp:639
+#: src/webMonitor.cpp:644
 msgid "Simple Text Output"
 msgstr "Salida como texto sin formato"
 
-#: src/webMonitor.cpp:640
+#: src/webMonitor.cpp:645
 msgid "Last updated:"
 msgstr "Última actualización:"
 

@@ -17,7 +17,6 @@
 #ifndef _FAHMON_H
 #define _FAHMON_H
 
-
 #include <wx/defs.h>
 #include "fahmonTypes.h"
 #include "fahmonConsts.h"

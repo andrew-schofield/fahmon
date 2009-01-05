@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it-IT\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2009-01-04 21:20+0000\n"
+"POT-Creation-Date: 2009-01-05 17:28+0000\n"
 "PO-Revision-Date: 2008-02-25 12:46+0100\n"
 "Last-Translator: Zurgo <zurgo@virgilio.it>\n"
 "Language-Team:  <zurgo@virgilio.it>\n"
@@ -239,49 +239,49 @@ msgstr "Il valore del progresso nel file %s non può essere trovato/analizzato"
 msgid "The core version in file %s could not be found/parsed"
 msgstr "Il valore del progresso nel file %s non può essere trovato/analizzato"
 
-#: src/client.cpp:558
+#: src/client.cpp:559
 #, c-format
 msgid "Unable to save %s because it does not exist"
 msgstr "Impossibile salvare %s perchè il file non esiste"
 
-#: src/client.cpp:565
+#: src/client.cpp:566
 #, c-format
 msgid "Unable to create directory %s"
 msgstr "Impossibile creare la directory %s"
 
-#: src/client.cpp:578
+#: src/client.cpp:579
 #, c-format
 msgid "Unable to copy %s to %s"
 msgstr "Impossibile copiare %s to %s"
 
-#: src/client.cpp:602
+#: src/client.cpp:603
 #, c-format
 msgid "%s is on frame %u"
 msgstr "%s è nel frame %u"
 
-#: src/client.cpp:606
+#: src/client.cpp:607
 #, c-format
 msgid "Cannot determine frame number for %s (this isn't a problem)"
 msgstr "Impossibile determinare il numero di frames di %s (non è un problema)"
 
-#: src/client.cpp:788
+#: src/client.cpp:789
 #, c-format
 msgid "%s has an unknown state (Unable to find a complete frame)"
 msgstr ""
 "%s si trova in uno stato sconosciuto (Impossibile trovare un frame completo)"
 
-#: src/client.cpp:797
+#: src/client.cpp:798
 #, c-format
 msgid "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
 msgstr ""
 "%s è fermato (La linea  \"Folding@Home Client Shutdown.\" è stata travata)"
 
-#: src/client.cpp:805
+#: src/client.cpp:806
 #, c-format
 msgid "%s has been paused"
 msgstr ""
 
-#: src/client.cpp:814
+#: src/client.cpp:815
 #, c-format
 msgid ""
 "%s has an unknown state (Unable to extract a valid elapsed time since the "
@@ -290,18 +290,18 @@ msgstr ""
 "%s si trova in uno stato sconosciuto (Impossibile ottenere un tempo "
 "impiegato valido dall'ultimo frame completo)"
 
-#: src/client.cpp:822
+#: src/client.cpp:823
 #, c-format
 msgid "%s has been marked as having a asynchronous clock."
 msgstr "%s è stato contrassegnato come asincronizzazione dell'orologio"
 
-#: src/client.cpp:857
+#: src/client.cpp:858
 #, c-format
 msgid "%s seems to have hung : Elapsed time is %um and limit is %um"
 msgstr ""
 "%s sembra essere in pausa: il tempo di elaborazione è %um e il limite è %um"
 
-#: src/client.cpp:862
+#: src/client.cpp:863
 #, c-format
 msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
 msgstr ""
@@ -343,7 +343,7 @@ msgstr "Scegli una cartella"
 msgid "You must fill the name AND the locations fields."
 msgstr "Devi riempire i campi nome E posizione"
 
-#: src/clientsManager.cpp:176 src/webMonitor.cpp:768
+#: src/clientsManager.cpp:176 src/webMonitor.cpp:773
 #, c-format
 msgid "Error while parsing %s on line %u"
 msgstr "Errore durante l'analisi di %s sulla linea %u"
@@ -466,7 +466,7 @@ msgid ""
 "The latest version of %s will always be available on the official website:"
 msgstr "L'ultima versione di %s sarà sempre disponibile sul sito ufficiale:"
 
-#: src/firstTimeDialog.cpp:139 src/main.cpp:208 src/main.cpp:214
+#: src/firstTimeDialog.cpp:139 src/main.cpp:207 src/main.cpp:213
 #, c-format
 msgid "Could not create directory <%s>"
 msgstr "Impossibile creare la directory <%s>"
@@ -477,28 +477,28 @@ msgid "%.1f KB/s"
 msgstr "%.1f KB/s"
 
 #: src/listViewClients.cpp:168 src/listViewClients.cpp:960
-#: src/webMonitor.cpp:625
+#: src/webMonitor.cpp:630
 msgid "Progress"
 msgstr "Progresso"
 
 #: src/listViewClients.cpp:169 src/listViewClients.cpp:961
-#: src/webMonitor.cpp:626
+#: src/webMonitor.cpp:631
 msgid "Name"
 msgstr "Nome"
 
 #: src/listViewClients.cpp:170 src/listViewClients.cpp:962
-#: src/webMonitor.cpp:642
+#: src/webMonitor.cpp:647
 #, fuzzy
 msgid "Client Type"
 msgstr "Clients: %i"
 
 #: src/listViewClients.cpp:171 src/listViewClients.cpp:963
-#: src/webMonitor.cpp:627
+#: src/webMonitor.cpp:632
 msgid "ETA"
 msgstr "ETA"
 
 #: src/listViewClients.cpp:172 src/listViewClients.cpp:964
-#: src/webMonitor.cpp:628
+#: src/webMonitor.cpp:633
 msgid "PPD"
 msgstr "PPD"
 
@@ -508,22 +508,22 @@ msgid "Core"
 msgstr "Nucleo:"
 
 #: src/listViewClients.cpp:174 src/listViewClients.cpp:966
-#: src/webMonitor.cpp:643
+#: src/webMonitor.cpp:648
 msgid "Core Version"
 msgstr ""
 
 #: src/listViewClients.cpp:175 src/listViewClients.cpp:967
-#: src/webMonitor.cpp:622
+#: src/webMonitor.cpp:627
 msgid "PRCG"
 msgstr "PRCG"
 
 #: src/listViewClients.cpp:176 src/listViewClients.cpp:968
-#: src/webMonitor.cpp:623
+#: src/webMonitor.cpp:628
 msgid "Credit"
 msgstr "Crediti:"
 
 #: src/listViewClients.cpp:177 src/listViewClients.cpp:969
-#: src/webMonitor.cpp:624
+#: src/webMonitor.cpp:629
 msgid "Downloaded"
 msgstr "Scaricato:"
 
@@ -568,7 +568,7 @@ msgid "*Hung*"
 msgstr "*In pausa*"
 
 #: src/listViewClients.cpp:785 src/webMonitor.cpp:368 src/webMonitor.cpp:402
-#: src/webMonitor.cpp:608
+#: src/webMonitor.cpp:613
 msgid "Paused"
 msgstr ""
 
@@ -617,12 +617,12 @@ msgstr ""
 "\n"
 "Verificare che il filemanager sia correttamente impostato in Preferenze"
 
-#: src/main.cpp:126
+#: src/main.cpp:125
 #, c-format
 msgid "Another instance of %s is already running!"
 msgstr "Un'altra istanza di %s è già in esecuzione!"
 
-#: src/main.cpp:238
+#: src/main.cpp:237
 #, c-format
 msgid "Old settings imported into %s"
 msgstr ""
@@ -932,35 +932,35 @@ msgstr "Informazioni"
 msgid "&Help"
 msgstr "&Aiuto"
 
-#: src/mainDialog.cpp:765 src/webMonitor.cpp:629
+#: src/mainDialog.cpp:765 src/webMonitor.cpp:634
 msgid "Work Unit Information"
 msgstr "Informazioni sull'unità in lavorazione"
 
-#: src/mainDialog.cpp:793 src/webMonitor.cpp:630
+#: src/mainDialog.cpp:793 src/webMonitor.cpp:635
 msgid "Core:"
 msgstr "Nucleo:"
 
-#: src/mainDialog.cpp:795 src/webMonitor.cpp:631
+#: src/mainDialog.cpp:795 src/webMonitor.cpp:636
 msgid "Project:"
 msgstr "Progetto:"
 
-#: src/mainDialog.cpp:797 src/webMonitor.cpp:632
+#: src/mainDialog.cpp:797 src/webMonitor.cpp:637
 msgid "Credit:"
 msgstr "Crediti:"
 
-#: src/mainDialog.cpp:799 src/webMonitor.cpp:633
+#: src/mainDialog.cpp:799 src/webMonitor.cpp:638
 msgid "Username:"
 msgstr "Nome utente:"
 
-#: src/mainDialog.cpp:801 src/webMonitor.cpp:641
+#: src/mainDialog.cpp:801 src/webMonitor.cpp:646
 msgid "Downloaded:"
 msgstr "Scaricato il:"
 
-#: src/mainDialog.cpp:803 src/webMonitor.cpp:634
+#: src/mainDialog.cpp:803 src/webMonitor.cpp:639
 msgid "Preferred Deadline:"
 msgstr "Scadenda consigliata:"
 
-#: src/mainDialog.cpp:805 src/webMonitor.cpp:635
+#: src/mainDialog.cpp:805 src/webMonitor.cpp:640
 msgid "Final Deadline:"
 msgstr "Scadenza definitiva:"
 
@@ -1376,23 +1376,23 @@ msgstr "Mostra FahMon"
 msgid "Quit"
 msgstr "Esci"
 
-#: src/webMonitor.cpp:343 src/webMonitor.cpp:588
+#: src/webMonitor.cpp:343 src/webMonitor.cpp:593
 msgid "Inaccessible"
 msgstr "Inaccessibile"
 
-#: src/webMonitor.cpp:348 src/webMonitor.cpp:592
+#: src/webMonitor.cpp:348 src/webMonitor.cpp:597
 msgid "Stopped"
 msgstr "Fermato"
 
-#: src/webMonitor.cpp:353 src/webMonitor.cpp:596
+#: src/webMonitor.cpp:353 src/webMonitor.cpp:601
 msgid "Inactive"
 msgstr "Non attivo"
 
-#: src/webMonitor.cpp:358 src/webMonitor.cpp:600
+#: src/webMonitor.cpp:358 src/webMonitor.cpp:605
 msgid "Hung"
 msgstr "In pausa"
 
-#: src/webMonitor.cpp:363 src/webMonitor.cpp:604
+#: src/webMonitor.cpp:363 src/webMonitor.cpp:609
 msgid "Async"
 msgstr "Asincrono"
 
@@ -1400,7 +1400,7 @@ msgstr "Asincrono"
 msgid "Ok"
 msgstr "Ok"
 
-#: src/webMonitor.cpp:455
+#: src/webMonitor.cpp:460
 #, c-format
 msgid ""
 "Could not open template file <%s> for reading!\n"
@@ -1409,7 +1409,7 @@ msgstr ""
 "Non posso aprire il file template <%s> per la scrittura!\n"
 "L'applicazione web non sarà creata!"
 
-#: src/webMonitor.cpp:460
+#: src/webMonitor.cpp:465
 #, c-format
 msgid ""
 "Could not open file <%s> for writing!\n"
@@ -1418,28 +1418,28 @@ msgstr ""
 "Non posso aprire il file  <%s> per la scrittura!\n"
 "L'applicazione web non sarà creata!"
 
-#: src/webMonitor.cpp:621
+#: src/webMonitor.cpp:626
 msgid "State"
 msgstr "Stato"
 
-#: src/webMonitor.cpp:636
+#: src/webMonitor.cpp:641
 msgid "Total PPD:"
 msgstr "PPD Totali:"
 
-#: src/webMonitor.cpp:637
+#: src/webMonitor.cpp:642
 msgid "Web View"
 msgstr "Vista Web"
 
-#: src/webMonitor.cpp:638
+#: src/webMonitor.cpp:643
 msgid "FahMon Client Monitoring"
 msgstr "FahMon Monitoraggio dei Client"
 
-#: src/webMonitor.cpp:639
+#: src/webMonitor.cpp:644
 #, fuzzy
 msgid "Simple Text Output"
 msgstr "Risultato in testo semplice"
 
-#: src/webMonitor.cpp:640
+#: src/webMonitor.cpp:645
 msgid "Last updated:"
 msgstr "Ultimo aggiornamento:"
 

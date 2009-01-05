@@ -436,6 +436,11 @@ void WebMonitor::WriteApp(void)
 		_PrefsGetString(PREF_WEBAPP_SIMPLETEXTTEMPLATELOCATION, simpleTextTemplateLocation);
 		ProcessTemplate(simpleTextTemplateLocation, simpleTextLocation);
 	}
+	for (i=0; i<ClientsManager::GetInstance()->GetCount(); i++)
+	{
+		delete [ ] mDataArray[i];
+	}
+	delete [ ] mDataArray;
 }
 
 void WebMonitor::ProcessTemplate(wxString const &templateFile, wxString const &outputFile)

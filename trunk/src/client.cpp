@@ -530,6 +530,7 @@ bool Client::LoadQueueFile(wxString const &filename)
 		mUnitIndex = qf->GetUnitIndex();
 		return true;
 	}
+	delete qf;
 	return false;
 }
 

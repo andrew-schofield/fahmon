@@ -70,7 +70,6 @@ bool FahMonApp::OnInit(void)
 	bool               requiresFirstRunDialog;
 	bool               startMaximised;
 
-
     // at the moment fahmon.net isn't equipped to auto-process the uploads
 	m_uploadReport = false;
 
