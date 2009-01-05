@@ -485,6 +485,8 @@ bool Client::LoadWULogFile(wxString const &filename)
 		return false;
 	}
 
+	char *locOld = setlocale(LC_NUMERIC, "C");
+
 	versionOk     = false;
 	startingPos = currentLine.Find(_T("Version")) + 8;
 	endingPos = currentLine.Find('(');
@@ -498,6 +500,8 @@ bool Client::LoadWULogFile(wxString const &filename)
 			versionOk        = true;
 		}
 	}
+
+	setlocale(LC_NUMERIC, locOld);
 
 	// We only succeed if we have found the progress value
 	if(versionOk)
