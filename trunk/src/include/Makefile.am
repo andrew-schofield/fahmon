@@ -17,18 +17,24 @@ EXTRA_DIST = \
 	clientDialog.h \
 	client.h \
 	clientHelperThread.h \
+	clientsManager.h \
 	core.h \
 	dataInputStream.h \
 	dataOutputStream.h \
 	eta.h \
 	fahlogAnalyzer.h \
 	fahmon.h \
+	fahmonConsts.h \
+	fahmonTypes.h \
+	firstTimeDialog.h \
 	htmlParser.h \
 	httpDownloader.h \
 	listViewClients.h \
 	mainDialog.h \
 	main.h \
+	messagesFrame.h \
 	messagesManager.h \
+	queue.h \
 	pathManager.h \
 	preference.h \
 	preferencesDialog.h \
@@ -37,15 +43,9 @@ EXTRA_DIST = \
 	project.h \
 	projectHelperThread.h \
 	projectsManager.h \
+	resource.h \
 	staticBoldedText.h \
 	tools.h \
 	trayManager.h \
 	workUnitFrame.h \
-	fahmonConsts.h \
-	fahmonTypes.h \
-	firstTimeDialog.h \
-	messagesFrame.h \
-	clientsManager.h \
-	webMonitor.h \
-	resource.h \
-	queue.h
+	webMonitor.h

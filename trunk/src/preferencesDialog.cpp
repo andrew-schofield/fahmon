@@ -350,14 +350,12 @@ wxPanel* PreferencesDialog::CreateAdvancedTab(wxBookCtrlBase* parent)
 	wxBoxSizer *topLevelSizer;
 	wxBoxSizer *AddressSizer;
 	wxBoxSizer *LocalFileSizer;
-	wxBoxSizer *LocationSizer;
 
 	panel                                           = new wxPanel(parent);
 	sizer                                           = new wxBoxSizer(wxVERTICAL);
 	topLevelSizer                                   = new wxBoxSizer(wxVERTICAL);
 	AddressSizer                                    = new wxBoxSizer(wxHORIZONTAL);
 	LocalFileSizer                                  = new wxBoxSizer(wxHORIZONTAL);
-	LocationSizer                                   = new wxBoxSizer(wxHORIZONTAL);
 
 	mAdvancedUseAlternateProjectSource              = new wxCheckBox(panel, CHK_USEALTERNATEPROJECTSOURCE, _("Use the following settings for new project downloads"));
 	mAdvancedAlternateProjectSourceLocationAddress  = new wxTextCtrl(panel, wxID_ANY, _T(""), wxDefaultPosition);
@@ -1045,6 +1043,7 @@ void PreferencesDialog::OnBrowseButton(wxCommandEvent& event)
 		// Sets our current document to the file the user selected
 		mAdvancedLocalFileLocation->SetValue(selectedFile); //Opens that file
 	}
+	delete OpenDialog;
 }
 
 
@@ -1059,6 +1058,7 @@ void PreferencesDialog::OnWebAppBrowseButton(wxCommandEvent& event)
 		// Sets our current document to the file the user selected
 		mWebAppWebAppLocation->SetValue(selectedFile); //Opens that file
 	}
+	delete OpenDialog;
 }
 
 
@@ -1073,6 +1073,7 @@ void PreferencesDialog::OnSimpleWebBrowseButton(wxCommandEvent& event)
 		// Sets our current document to the file the user selected
 		mWebAppSimpleWebLocation->SetValue(selectedFile); //Opens that file
 	}
+	delete OpenDialog;
 }
 
 
@@ -1087,6 +1088,7 @@ void PreferencesDialog::OnSimpleTextBrowseButton(wxCommandEvent& event)
 		// Sets our current document to the file the user selected
 		mWebAppSimpleTextLocation->SetValue(selectedFile); //Opens that file
 	}
+	delete OpenDialog;
 }
 
 
@@ -1101,6 +1103,7 @@ void PreferencesDialog::OnWebAppTemplateBrowseButton(wxCommandEvent& event)
 		// Sets our current document to the file the user selected
 		mWebAppWebAppTemplateLocation->SetValue(selectedFile); //Opens that file
 	}
+	delete OpenDialog;
 }
 
 
@@ -1115,6 +1118,7 @@ void PreferencesDialog::OnSimpleWebTemplateBrowseButton(wxCommandEvent& event)
 		// Sets our current document to the file the user selected
 		mWebAppSimpleWebTemplateLocation->SetValue(selectedFile); //Opens that file
 	}
+	delete OpenDialog;
 }
 
 
@@ -1129,6 +1133,7 @@ void PreferencesDialog::OnSimpleTextTemplateBrowseButton(wxCommandEvent& event)
 		// Sets our current document to the file the user selected
 		mWebAppSimpleTextTemplateLocation->SetValue(selectedFile); //Opens that file
 	}
+	delete OpenDialog;
 }
 
 

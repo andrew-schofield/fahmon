@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FahMon Translation - de_DE 1.1.b1\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2009-01-05 17:28+0000\n"
+"POT-Creation-Date: 2009-01-06 16:08+0000\n"
 "PO-Revision-Date: 2008-10-31 09:07+0100\n"
 "Last-Translator: Mark Gerber <mark.gerber@web.de>\n"
 "Language-Team: Mark Gerber <mark.gerber@web.de>\n"
@@ -143,18 +143,18 @@ msgstr "Keine L3F-Frame-Dauer"
 msgid "No Eff. Time / Frame"
 msgstr "Keine effektive Frame-Dauer"
 
-#: src/benchmarksManager.cpp:144 src/preferencesManager.cpp:234
-#: src/projectsManager.cpp:132
+#: src/benchmarksManager.cpp:156 src/preferencesManager.cpp:240
+#: src/projectsManager.cpp:137
 #, c-format
 msgid "Could not open file <%s> for writing!"
 msgstr "Es ist kein Schreibzugriff auf die Datei <%s> möglich."
 
-#: src/benchmarksManager.cpp:299
+#: src/benchmarksManager.cpp:311
 msgid "(Benchmarks) The maximum number of known clients has been reached!"
 msgstr ""
 "(Benchmarks) Die maximale Anzahl bekannter Clients ist erreicht worden."
 
-#: src/benchmarksManager.cpp:429
+#: src/benchmarksManager.cpp:441
 msgid "Unknown client"
 msgstr "Unbekannter Client"
 
@@ -220,67 +220,67 @@ msgstr "Fehler beim Lesen von %squeue.dat."
 msgid "Error while reading %sunitinfo.txt!"
 msgstr "Fehler beim Lesen von %sunitinfo.txt."
 
-#: src/client.cpp:413
+#: src/client.cpp:414
 #, fuzzy, c-format
 msgid "Finished Reloading %s"
 msgstr "%s wird abgefragt."
 
-#: src/client.cpp:467
+#: src/client.cpp:468
 #, c-format
 msgid "The progress value in file %s could not be found/parsed"
 msgstr ""
 "Der Fortschrittswert in der Datei %s kann nicht gefunden/analysiert werden."
 
-#: src/client.cpp:510
+#: src/client.cpp:515
 #, fuzzy, c-format
 msgid "The core version in file %s could not be found/parsed"
 msgstr ""
 "Der Fortschrittswert in der Datei %s kann nicht gefunden/analysiert werden."
 
-#: src/client.cpp:559
+#: src/client.cpp:565
 #, c-format
 msgid "Unable to save %s because it does not exist"
 msgstr "%s kann nicht gespeichert werden, da es nicht existiert."
 
-#: src/client.cpp:566
+#: src/client.cpp:572
 #, c-format
 msgid "Unable to create directory %s"
 msgstr "Das Verzeichnis %s kann nicht erstellt werden."
 
-#: src/client.cpp:579
+#: src/client.cpp:585
 #, c-format
 msgid "Unable to copy %s to %s"
 msgstr "%s kann nicht nach %s kopiert werden."
 
-#: src/client.cpp:603
+#: src/client.cpp:609
 #, c-format
 msgid "%s is on frame %u"
 msgstr "%s arbeitet am Frame %u."
 
-#: src/client.cpp:607
+#: src/client.cpp:613
 #, c-format
 msgid "Cannot determine frame number for %s (this isn't a problem)"
 msgstr ""
 "Für %s kann keine Frame-Nummer festgestellt werden (dies ist kein Problem)."
 
-#: src/client.cpp:789
+#: src/client.cpp:795
 #, c-format
 msgid "%s has an unknown state (Unable to find a complete frame)"
 msgstr ""
 "Der Zustand von %s ist unbekannt (ein kompletter Frame kann nicht gefunden "
 "werden)."
 
-#: src/client.cpp:798
+#: src/client.cpp:804
 #, c-format
 msgid "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
 msgstr "%s ist gestoppt (Zeile \"Folding@Home Client Shutdown.\" gefunden)."
 
-#: src/client.cpp:806
+#: src/client.cpp:812
 #, c-format
 msgid "%s has been paused"
 msgstr "%s pausiert"
 
-#: src/client.cpp:815
+#: src/client.cpp:821
 #, c-format
 msgid ""
 "%s has an unknown state (Unable to extract a valid elapsed time since the "
@@ -289,17 +289,17 @@ msgstr ""
 "Der Zustand von %s ist unbekannt (eine gültige Zeitdauer seit dem zuletzt "
 "vervollständigtem Frame kann nicht festgestellt werden)."
 
-#: src/client.cpp:823
+#: src/client.cpp:829
 #, c-format
 msgid "%s has been marked as having a asynchronous clock."
 msgstr "%s hat die Kennzeichnung für eine asynchrone Uhrzeit erhalten."
 
-#: src/client.cpp:858
+#: src/client.cpp:864
 #, c-format
 msgid "%s seems to have hung : Elapsed time is %um and limit is %um"
 msgstr "%s scheint zu hängen: verstrichene Zeit ist %um und Limit ist %um."
 
-#: src/client.cpp:863
+#: src/client.cpp:869
 #, c-format
 msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
 msgstr ""
@@ -322,10 +322,10 @@ msgstr ""
 msgid "Location:"
 msgstr "Ort:"
 
-#: src/clientDialog.cpp:97 src/preferencesDialog.cpp:371
-#: src/preferencesDialog.cpp:513 src/preferencesDialog.cpp:522
-#: src/preferencesDialog.cpp:531 src/preferencesDialog.cpp:598
-#: src/preferencesDialog.cpp:607 src/preferencesDialog.cpp:616
+#: src/clientDialog.cpp:97 src/preferencesDialog.cpp:369
+#: src/preferencesDialog.cpp:511 src/preferencesDialog.cpp:520
+#: src/preferencesDialog.cpp:529 src/preferencesDialog.cpp:596
+#: src/preferencesDialog.cpp:605 src/preferencesDialog.cpp:614
 msgid "Choose"
 msgstr "Auswahl"
 
@@ -341,12 +341,12 @@ msgstr "Bitte den Ordner wählen, in dem sich der F@H-Client befindet:"
 msgid "You must fill the name AND the locations fields."
 msgstr "Gib bitte sowohl einen Namen als auch einen Ort an."
 
-#: src/clientsManager.cpp:176 src/webMonitor.cpp:773
+#: src/clientsManager.cpp:178 src/webMonitor.cpp:773
 #, c-format
 msgid "Error while parsing %s on line %u"
 msgstr "Fehler beim Analysieren von %s in Zeile %u."
 
-#: src/clientsManager.cpp:196
+#: src/clientsManager.cpp:198
 #, c-format
 msgid ""
 "Could not open file <%s> for writing!\n"
@@ -355,7 +355,7 @@ msgstr ""
 "Datei <%s> kann nicht zum Schreiben geöffnet werden.\n"
 "Die Client-Liste wird nicht gespeichert!"
 
-#: src/clientsManager.cpp:201
+#: src/clientsManager.cpp:203
 #, fuzzy, c-format
 msgid ""
 "# %s : contains the list of clients\n"
@@ -594,11 +594,11 @@ msgstr "Client-Eintrag deaktivieren"
 msgid "Enable this client"
 msgstr "Client-Eintrag aktivieren"
 
-#: src/listViewClients.cpp:1072 src/mainDialog.cpp:1558
+#: src/listViewClients.cpp:1073 src/mainDialog.cpp:1558
 msgid "Do you really want to delete this client?"
 msgstr "Möchtest Du diesen Client-Eintrag tatsächlich löschen?"
 
-#: src/listViewClients.cpp:1132
+#: src/listViewClients.cpp:1133
 msgid ""
 "Unable to launch the default filemanager.\n"
 "\n"
@@ -979,28 +979,28 @@ msgstr ""
 msgid "No update found"
 msgstr "Kein Update gefunden."
 
-#: src/mainDialog.cpp:1501 src/projectsManager.cpp:307
+#: src/mainDialog.cpp:1501 src/projectsManager.cpp:323
 msgid "Unable to create a temporary file!"
 msgstr "Ein temporäres Verzeichnis kann nicht erstellt werden."
 
-#: src/mainDialog.cpp:1505 src/projectsManager.cpp:311
+#: src/mainDialog.cpp:1505 src/projectsManager.cpp:327
 #, c-format
 msgid "Unable to open the temporary file <%s>"
 msgstr "Die temporäre Datei <%s> kann nicht geöffnet werden."
 
-#: src/mainDialog.cpp:1509 src/projectsManager.cpp:315
+#: src/mainDialog.cpp:1509 src/projectsManager.cpp:331
 msgid "Unable to connect to the server!"
 msgstr "Es kann keine Verbindung zum Server hergestellt werden."
 
-#: src/mainDialog.cpp:1513 src/projectsManager.cpp:319
+#: src/mainDialog.cpp:1513 src/projectsManager.cpp:335
 msgid "Unable to send the request to the server!"
 msgstr "Die Anfrage kann nicht an den Server gesendet werden."
 
-#: src/mainDialog.cpp:1517 src/projectsManager.cpp:323
+#: src/mainDialog.cpp:1517 src/projectsManager.cpp:339
 msgid "Download aborted!"
 msgstr "Download abgebrochen."
 
-#: src/mainDialog.cpp:1523 src/projectsManager.cpp:329
+#: src/mainDialog.cpp:1523 src/projectsManager.cpp:345
 msgid "An unknown error happened!"
 msgstr "Ein unbekannter Fehler ist aufgetreten."
 
@@ -1151,7 +1151,7 @@ msgstr "Proxy für HTTP-Verbindungen verwenden"
 msgid "Proxy requires authentication"
 msgstr "Proxy benötigt Authentifizierung"
 
-#: src/preferencesDialog.cpp:312 src/preferencesDialog.cpp:364
+#: src/preferencesDialog.cpp:312 src/preferencesDialog.cpp:362
 msgid "Address:"
 msgstr "Adresse: "
 
@@ -1175,79 +1175,79 @@ msgstr ""
 "Proxy-\n"
 "Passwort: "
 
-#: src/preferencesDialog.cpp:362
+#: src/preferencesDialog.cpp:360
 msgid "Use the following settings for new project downloads"
 msgstr "Folgende Einstellungen für Download der Projektedaten verwenden"
 
-#: src/preferencesDialog.cpp:365
+#: src/preferencesDialog.cpp:363
 msgid "Use a local file for project data"
 msgstr "Lokale Datei für Projektedaten verwenden"
 
-#: src/preferencesDialog.cpp:367 src/preferencesDialog.cpp:509
-#: src/preferencesDialog.cpp:518 src/preferencesDialog.cpp:527
-#: src/preferencesDialog.cpp:594 src/preferencesDialog.cpp:603
-#: src/preferencesDialog.cpp:612
+#: src/preferencesDialog.cpp:365 src/preferencesDialog.cpp:507
+#: src/preferencesDialog.cpp:516 src/preferencesDialog.cpp:525
+#: src/preferencesDialog.cpp:592 src/preferencesDialog.cpp:601
+#: src/preferencesDialog.cpp:610
 msgid "Filename:"
 msgstr "Dateiname: "
 
-#: src/preferencesDialog.cpp:416
+#: src/preferencesDialog.cpp:414
 msgid "Web Browser:"
 msgstr "Webbrowser: "
 
-#: src/preferencesDialog.cpp:417
+#: src/preferencesDialog.cpp:415
 msgid "File Manager:"
 msgstr "Dateimanager: "
 
-#: src/preferencesDialog.cpp:419
+#: src/preferencesDialog.cpp:417
 msgid "File Manager Command:"
 msgstr "Befehlszeile: "
 
-#: src/preferencesDialog.cpp:420
+#: src/preferencesDialog.cpp:418
 msgid "Manually set timezone to UTC +"
 msgstr "Zeitzone manuell setzen auf UTC +"
 
-#: src/preferencesDialog.cpp:424
+#: src/preferencesDialog.cpp:422
 msgid "Windows Explorer"
 msgstr "Windows Explorer"
 
-#: src/preferencesDialog.cpp:424 src/preferencesDialog.cpp:427
-#: src/preferencesDialog.cpp:430
+#: src/preferencesDialog.cpp:422 src/preferencesDialog.cpp:425
+#: src/preferencesDialog.cpp:428
 msgid "Other"
 msgstr "Anderer"
 
-#: src/preferencesDialog.cpp:430
+#: src/preferencesDialog.cpp:428
 msgid "Finder"
 msgstr "Finder"
 
-#: src/preferencesDialog.cpp:507
+#: src/preferencesDialog.cpp:505
 msgid "Export Web Application"
 msgstr "WebApp exportieren"
 
-#: src/preferencesDialog.cpp:516
+#: src/preferencesDialog.cpp:514
 msgid "Export Simple Web page"
 msgstr "Einfache Webseite exportieren"
 
-#: src/preferencesDialog.cpp:525
+#: src/preferencesDialog.cpp:523
 msgid "Export Simple Text file"
 msgstr "Textdatei exportieren"
 
-#: src/preferencesDialog.cpp:592
+#: src/preferencesDialog.cpp:590
 msgid "Custom Web Application Template"
 msgstr "Vorlage für eigenes WebApp"
 
-#: src/preferencesDialog.cpp:601
+#: src/preferencesDialog.cpp:599
 msgid "Custom Simple Web Template"
 msgstr "Vorlage für eigene Webseite"
 
-#: src/preferencesDialog.cpp:610
+#: src/preferencesDialog.cpp:608
 msgid "Custom Simple Text Template"
 msgstr "Vorlage für eigene Textdatei"
 
-#: src/preferencesDialog.cpp:1041
+#: src/preferencesDialog.cpp:1039
 msgid "Choose a local project data file"
 msgstr "Bitte eine lokale Projektdaten-Datei wählen"
 
-#: src/preferencesDialog.cpp:1055
+#: src/preferencesDialog.cpp:1054
 msgid "Choose where to save the Web Application"
 msgstr "Speicherort für das WebApp"
 
@@ -1255,58 +1255,58 @@ msgstr "Speicherort für das WebApp"
 msgid "Choose where to save the simple web page"
 msgstr "Speicherort für die Webseite"
 
-#: src/preferencesDialog.cpp:1083
+#: src/preferencesDialog.cpp:1084
 msgid "Choose where to save the simple text file"
 msgstr "Speicherort für die Textdatei"
 
-#: src/preferencesDialog.cpp:1097
+#: src/preferencesDialog.cpp:1099
 msgid "Choose the Web Application Template"
 msgstr "Auswahl einer WebApp-Vorlage"
 
-#: src/preferencesDialog.cpp:1111
+#: src/preferencesDialog.cpp:1114
 msgid "Choose the Simple Web Page Template"
 msgstr "Auswahl einer Webseitenvorlage"
 
-#: src/preferencesDialog.cpp:1125
+#: src/preferencesDialog.cpp:1129
 msgid "Choose the Simple Text File Template"
 msgstr "Auswahl einer Textdateivorlage"
 
-#: src/preferencesManager.cpp:212
+#: src/preferencesManager.cpp:218
 msgid "There is no Preferences file, or it is not readable"
 msgstr "Die Einstellungsdatei ist nicht vorhanden oder nicht lesbar."
 
-#: src/projectsManager.cpp:100
+#: src/projectsManager.cpp:105
 msgid "There is no projects file, or it is not readable"
 msgstr "Die Projektedaten-Datei ist nicht vorhanden oder nicht lesbar."
 
-#: src/projectsManager.cpp:217
+#: src/projectsManager.cpp:233
 msgid "Updating projects database"
 msgstr "Aktualisierung der Projektedaten"
 
-#: src/projectsManager.cpp:221
+#: src/projectsManager.cpp:237
 msgid "Downloading new projects"
 msgstr "Projektedaten werden heruntergeladen"
 
-#: src/projectsManager.cpp:245
+#: src/projectsManager.cpp:261
 msgid "Adding the new projects to the database"
 msgstr "Projektedaten werden hinzugefügt"
 
-#: src/projectsManager.cpp:338
+#: src/projectsManager.cpp:354
 msgid "Local project update file doesn't exist!"
 msgstr "Lokale Datei für Projektedaten ist nicht vorhanden."
 
-#: src/projectsManager.cpp:347
+#: src/projectsManager.cpp:363
 msgid "Unable to copy local project update file to temporary location"
 msgstr ""
 "Die lokale Datei für Projektedaten kann nicht an temporärem Ort gespeichert "
 "werden."
 
-#: src/projectsManager.cpp:405
+#: src/projectsManager.cpp:421
 #, c-format
 msgid "Line %u is not correctly formatted! %s"
 msgstr "Zeile %u ist nicht richtig formatiert. %s"
 
-#: src/projectsManager.cpp:416
+#: src/projectsManager.cpp:432
 msgid "Update aborted!"
 msgstr "Update abgebrochen."
 

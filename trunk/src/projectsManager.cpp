@@ -57,6 +57,11 @@ ProjectsManager::ProjectsManager(void)
 
 ProjectsManager::~ProjectsManager(void)
 {
+	ProjectsListHashMap::iterator  iterator;
+	for(iterator=mProjectsHashMap.begin(); iterator!=mProjectsHashMap.end(); ++iterator)
+	{
+		delete iterator->second;
+	}
 }
 
 
@@ -105,7 +110,7 @@ void ProjectsManager::Load(void)
 	in.ReadUint(nbProjects);
 	for(i=0; i<nbProjects; ++i)
 	{
-		currentProject = new Project();
+		currentProject = new Project;
 		currentProject->Read(in);
 		AddProject(currentProject);
 	}
@@ -150,7 +155,18 @@ void ProjectsManager::AddProject(Project* project)
 {
 	wxASSERT(project != NULL);
 
-	// Add or update the project
+	// If the project already exists we must first delete the project pointer in the
+	// hashmap, and then remove the entry - prevent memory leaks due to pointers not being
+	// deleted on a straight update (a *new* is used futher up the chain).
+	ProjectsListHashMap::iterator iterator = mProjectsHashMap.find(project->GetProjectId());
+
+	if(iterator != mProjectsHashMap.end())
+	{
+		delete iterator->second;
+	}
+	mProjectsHashMap.erase(project->GetProjectId());
+
+	// Add the project
 	mProjectsHashMap[project->GetProjectId()] = project;
 }
 

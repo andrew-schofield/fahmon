@@ -286,6 +286,7 @@ int FahMonApp::OnExit(void)
 	WebMonitor::DestroyInstance();
 	PreferencesManager::DestroyInstance();
 	MessagesManager::DestroyInstance();
+	PathManager::DestroyInstance();
 
 #ifndef __WXMAC__
 	if (mInstanceChecker)

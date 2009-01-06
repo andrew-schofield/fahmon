@@ -99,6 +99,8 @@ public:
 	 * @return The local template path.
 	 **/
 	static wxString GetUserTplPath(void)   {return GetInstance()->mUserTplPath;}
+
+	static void DestroyInstance(void);
 };
 
 

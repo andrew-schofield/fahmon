@@ -995,6 +995,7 @@ void ListViewClients::OnColumnRightClick(wxListEvent& event)
 	deadlineMenu->Check(mDeadlineEnabled);
 
 	PopupMenu(columnContextMenu);
+	delete columnContextMenu;
 }
 
 

@@ -99,6 +99,18 @@ BenchmarksManager::BenchmarksManager(void)
 
 BenchmarksManager::~BenchmarksManager(void)
 {
+	BenchmarksListHashMap::iterator  benchmarkListIterator;
+	BenchmarkHashMap::iterator benchmarkIterator;
+	for(benchmarkListIterator=mProjectIdToBenchmarks.begin(); benchmarkListIterator!=mProjectIdToBenchmarks.end(); ++benchmarkListIterator)
+	{
+		for(benchmarkIterator=benchmarkListIterator->second->begin(); benchmarkIterator!=benchmarkListIterator->second->end(); ++benchmarkIterator)
+		{
+			delete benchmarkIterator->second;
+		}
+		benchmarkListIterator->second->clear();
+		delete benchmarkListIterator->second;
+	}
+	mProjectIdToBenchmarks.clear();
 }
 
 
@@ -220,7 +232,7 @@ void BenchmarksManager::Load(void)
 	in.ReadUint(nbProjects);
 	for(i=0; i<nbProjects; ++i)
 	{
-		listOfBenchmarks = new BenchmarkHashMap();
+		listOfBenchmarks = new BenchmarkHashMap;
 
 		in.Read(&projectId, sizeof(projectId));
 		in.ReadUint(nbBenchmarks);

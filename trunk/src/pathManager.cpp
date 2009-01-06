@@ -118,3 +118,11 @@ const PathManager* PathManager::GetInstance(void)
 
 	return mInstance;
 }
+
+
+void PathManager::DestroyInstance(void)
+{
+	if(mInstance != NULL)
+		delete mInstance;
+	mInstance = NULL;
+}

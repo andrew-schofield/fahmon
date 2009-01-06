@@ -533,6 +533,7 @@ bool Client::LoadQueueFile(wxString const &filename)
 		mUserName = qf->GetUserName();
 		mTeamNumber = qf->GetTeamNumber();
 		mUnitIndex = qf->GetUnitIndex();
+		delete qf;
 		return true;
 	}
 	delete qf;

@@ -42,6 +42,12 @@ PreferencesManager::PreferencesManager(void)
 
 PreferencesManager::~PreferencesManager(void)
 {
+	PreferencesHashMap::iterator iterator;
+
+	for(iterator = mPrefsHashMap.begin(); iterator != mPrefsHashMap.end(); ++iterator)
+	{
+		delete iterator->second;
+	}
 }
 
 
@@ -202,8 +208,8 @@ bool PreferencesManager::GetHiddenString(wxString const &name, wxString& value)
 
 void PreferencesManager::Load(void)
 {
-	wxUint32         nbPrefs, i;
 	Preference      *currentPrefValue;
+	wxUint32         nbPrefs, i;
 	DataInputStream  in(PathManager::GetCfgPath() + _T(FMC_FILE_PREFS));
 
 	// Could the file be opened ?
@@ -217,7 +223,7 @@ void PreferencesManager::Load(void)
 	in.ReadUint(nbPrefs);
 	for(i=0; i<nbPrefs; ++i)
 	{
-		currentPrefValue = new Preference();
+		currentPrefValue = new Preference;
 		currentPrefValue->Read(in);
 		SetPref(currentPrefValue);
 	}
