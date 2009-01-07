@@ -100,13 +100,21 @@ bool Tools::LoadFile(wxString const &filename, wxString& fileContent, wxUint32 l
 
 	if(read == wxInvalidOffset || (fromStart == false && seeked == wxInvalidOffset)) {
 		in.Close();
-		delete [] m_buffer;
+		if(m_buffer != NULL)
+		{
+			delete [] m_buffer;
+			m_buffer = NULL;
+		}
 		return false;
 	}
 
 	fileContent = wxString::FromAscii(m_buffer);
 
-	delete [] m_buffer;
+	if(m_buffer != NULL)
+	{
+		delete [] m_buffer;
+		m_buffer = NULL;
+	}
 
 	return true;
 }

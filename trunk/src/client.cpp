@@ -201,10 +201,11 @@ void Client::Reload(void)
 	{
 		_LogMsgError(wxString::Format(_("Error while reading %squeue.dat"), templocation.c_str()));
 	}
+	wxString logFilePath;
 #ifdef _FAHMON_WIN32_
-	wxString logFilePath = wxString::Format(_T("%swork\\logfile_%02i.txt"), templocation.c_str(), mUnitIndex);
+	logFilePath = wxString::Format(_T("%swork\\logfile_%02i.txt"), templocation.c_str(), mUnitIndex);
 #else
-	wxString logFilePath = wxString::Format(_T("%swork/logfile_%02i.txt"), templocation.c_str(), mUnitIndex);
+	logFilePath = wxString::Format(_T("%swork/logfile_%02i.txt"), templocation.c_str(), mUnitIndex);
 #endif
 	if(!LoadWULogFile(logFilePath))
 	{
@@ -409,6 +410,7 @@ void Client::Reload(void)
 	if(lastFrame != NULL)
 	{
 		delete lastFrame;
+		lastFrame = NULL;
 	}
 
 	_LogMsgInfo(wxString::Format(_("Finished Reloading %s"), mName.c_str()));
@@ -533,10 +535,18 @@ bool Client::LoadQueueFile(wxString const &filename)
 		mUserName = qf->GetUserName();
 		mTeamNumber = qf->GetTeamNumber();
 		mUnitIndex = qf->GetUnitIndex();
-		delete qf;
+		if(qf != NULL)
+		{
+			delete qf;
+			qf = NULL;
+		}
 		return true;
 	}
-	delete qf;
+	if(qf != NULL)
+	{
+		delete qf;
+		qf = NULL;
+	}
 	return false;
 }
 

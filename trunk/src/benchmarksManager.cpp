@@ -105,10 +105,18 @@ BenchmarksManager::~BenchmarksManager(void)
 	{
 		for(benchmarkIterator=benchmarkListIterator->second->begin(); benchmarkIterator!=benchmarkListIterator->second->end(); ++benchmarkIterator)
 		{
-			delete benchmarkIterator->second;
+			if(benchmarkIterator->second != NULL)
+			{
+				delete benchmarkIterator->second;
+				benchmarkIterator->second = NULL;
+			}
 		}
 		benchmarkListIterator->second->clear();
-		delete benchmarkListIterator->second;
+		if(benchmarkListIterator->second != NULL)
+		{
+			delete benchmarkListIterator->second;
+			benchmarkListIterator->second = NULL;
+		}
 	}
 	mProjectIdToBenchmarks.clear();
 }

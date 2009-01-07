@@ -48,17 +48,20 @@ DataOutputStream::~DataOutputStream(void)
 	if(mDataOS != NULL)
 	{
 		delete mDataOS;
+		mDataOS = NULL;
 	}
 
 	if(mBufferedOS != NULL)
 	{
 		mBufferedOS->Close();
 		delete mBufferedOS;
+		mBufferedOS = NULL;
 	}
 
 	if(mFileOS != NULL)
 	{
 		delete mFileOS;
+		mFileOS = NULL;
 	}
 }
 

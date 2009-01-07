@@ -57,16 +57,19 @@ DataInputStream::~DataInputStream(void)
 	if(mDataIS != NULL)
 	{
 		delete mDataIS;
+		mDataIS = NULL;
 	}
 
 	if(mBufferedIS != NULL)
 	{
 		delete mBufferedIS;
+		mBufferedIS = NULL;
 	}
 
 	if(mFileIS != NULL)
 	{
 		delete mFileIS;
+		mFileIS = NULL;
 	}
 }
 

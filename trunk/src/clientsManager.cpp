@@ -51,7 +51,13 @@ ClientsManager::ClientsManager(void)
 ClientsManager::~ClientsManager(void)
 {
 	for(wxUint32 i=0; i<GetCount(); ++i)
-		delete mClients[i];
+	{
+		if(mClients[i] != NULL)
+		{
+			delete mClients[i];
+			mClients[i] = NULL;
+		}
+	}
 }
 
 

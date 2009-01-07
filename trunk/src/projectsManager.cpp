@@ -60,7 +60,11 @@ ProjectsManager::~ProjectsManager(void)
 	ProjectsListHashMap::iterator  iterator;
 	for(iterator=mProjectsHashMap.begin(); iterator!=mProjectsHashMap.end(); ++iterator)
 	{
-		delete iterator->second;
+		if(iterator->second != NULL)
+		{
+			delete iterator->second;
+			iterator->second = NULL;
+		}
 	}
 }
 
@@ -162,7 +166,11 @@ void ProjectsManager::AddProject(Project* project)
 
 	if(iterator != mProjectsHashMap.end())
 	{
-		delete iterator->second;
+		if(iterator->second != NULL)
+		{
+			delete iterator->second;
+			iterator->second = NULL;
+		}
 	}
 	mProjectsHashMap.erase(project->GetProjectId());
 

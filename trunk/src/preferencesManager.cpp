@@ -46,7 +46,11 @@ PreferencesManager::~PreferencesManager(void)
 
 	for(iterator = mPrefsHashMap.begin(); iterator != mPrefsHashMap.end(); ++iterator)
 	{
-		delete iterator->second;
+		if(iterator->second != NULL)
+		{
+			delete iterator->second;
+			iterator->second = NULL;
+		}
 	}
 }
 
@@ -89,7 +93,11 @@ void PreferencesManager::SetPref(Preference* preference)
 	iterator = mPrefsHashMap.find(preference->GetName());
 	if(iterator != mPrefsHashMap.end())
 	{
-		delete iterator->second;
+		if(iterator->second != NULL)
+		{
+			delete iterator->second;
+			iterator->second = NULL;
+		}
 	}
 
 	// We can now insert the new value into the table

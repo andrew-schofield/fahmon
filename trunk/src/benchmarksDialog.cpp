@@ -202,8 +202,11 @@ void BenchmarksDialog::PopulateProjectsList(ProjectId projectIdToSelect)
 	}
 
 	// No memory leak
-	delete[] projectsList;
-
+	if(projectsList != NULL)
+	{
+		delete[] projectsList;
+		projectsList = NULL;
+	}
 
 	// Select the correct entry
 	mListOfProjects->Select(entryToSelect);
@@ -365,7 +368,10 @@ void BenchmarksDialog::ShowBenchmarks(ProjectId projectIdToShow)
 		//delete project;
 
 	if(benchmarks != NULL)
+	{
 		delete [ ] benchmarks;
+		benchmarks = NULL;
+	}
 }
 
 

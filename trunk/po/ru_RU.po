@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru_RU\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2009-01-06 16:08+0000\n"
+"POT-Creation-Date: 2009-01-07 20:28+0000\n"
 "PO-Revision-Date: 2008-10-30 23:36+0300\n"
 "Last-Translator: Evgeniy aka Behc <tsc.behc@gmail.com>\n"
 "Language-Team: Russian\n"
@@ -69,99 +69,99 @@ msgstr "Производительность"
 msgid "Projects"
 msgstr "Задание"
 
-#: src/benchmarksDialog.cpp:247
+#: src/benchmarksDialog.cpp:250
 msgid "No benchmarks for this project!"
 msgstr "Нет производительности для этого задания!"
 
-#: src/benchmarksDialog.cpp:257
+#: src/benchmarksDialog.cpp:260
 #, c-format
 msgid "Project : %u\n"
 msgstr "Задание : %u\n"
 
-#: src/benchmarksDialog.cpp:258
+#: src/benchmarksDialog.cpp:261
 #, c-format
 msgid "Core    : %s\n"
 msgstr "Ядро    : %s\n"
 
-#: src/benchmarksDialog.cpp:259
+#: src/benchmarksDialog.cpp:262
 #, c-format
 msgid "Frames  : %u\n"
 msgstr "Фреймы  : %u\n"
 
-#: src/benchmarksDialog.cpp:260
+#: src/benchmarksDialog.cpp:263
 #, c-format
 msgid "Credit  : %u\n"
 msgstr "Очки    : %u\n"
 
-#: src/benchmarksDialog.cpp:264
+#: src/benchmarksDialog.cpp:267
 #, c-format
 msgid "Project : %u (Unknown)\n"
 msgstr "Задание : %u (Unknown)\n"
 
-#: src/benchmarksDialog.cpp:290
+#: src/benchmarksDialog.cpp:293
 #, c-format
 msgid "Min. Time / Frame : %s"
 msgstr "Мин. Время / Шаг : %s"
 
-#: src/benchmarksDialog.cpp:296 src/benchmarksDialog.cpp:317
-#: src/benchmarksDialog.cpp:342 src/benchmarksDialog.cpp:344
-#: src/benchmarksDialog.cpp:346
+#: src/benchmarksDialog.cpp:299 src/benchmarksDialog.cpp:320
+#: src/benchmarksDialog.cpp:345 src/benchmarksDialog.cpp:347
+#: src/benchmarksDialog.cpp:349
 #, c-format
 msgid " - %.2f ppd"
 msgstr " - %.2f ppd"
 
-#: src/benchmarksDialog.cpp:301
+#: src/benchmarksDialog.cpp:304
 msgid "No Min. Time / Frame"
 msgstr "Нет мин. времени / Шаг"
 
-#: src/benchmarksDialog.cpp:311
+#: src/benchmarksDialog.cpp:314
 #, c-format
 msgid "Avg. Time / Frame : %s"
 msgstr "Среднее время / Шаг : %s"
 
-#: src/benchmarksDialog.cpp:322
+#: src/benchmarksDialog.cpp:325
 msgid "No Avg. Time / Frame"
 msgstr "Нет среднего времени / Шаг"
 
-#: src/benchmarksDialog.cpp:334
+#: src/benchmarksDialog.cpp:337
 #, c-format
 msgid "Cur. Time / Frame : %s"
 msgstr "Текущее время / Шаг : %s"
 
-#: src/benchmarksDialog.cpp:335
+#: src/benchmarksDialog.cpp:338
 #, c-format
 msgid "R3F. Time / Frame : %s"
 msgstr "П3Ш. Время / Шаг : %s"
 
-#: src/benchmarksDialog.cpp:336
+#: src/benchmarksDialog.cpp:339
 #, c-format
 msgid "Eff. Time / Frame : %s"
 msgstr "Эфф. Время / Шаг : %s"
 
-#: src/benchmarksDialog.cpp:351
+#: src/benchmarksDialog.cpp:354
 msgid "No Cur. Time / Frame"
 msgstr "Нет текущего времени / Шага"
 
-#: src/benchmarksDialog.cpp:352
+#: src/benchmarksDialog.cpp:355
 msgid "No R3F. Time / Frame"
 msgstr "Нет П3Ш Времени / Шага"
 
-#: src/benchmarksDialog.cpp:353
+#: src/benchmarksDialog.cpp:356
 msgid "No Eff. Time / Frame"
 msgstr "Нет Эфф. Времени / Шага"
 
-#: src/benchmarksManager.cpp:156 src/preferencesManager.cpp:240
-#: src/projectsManager.cpp:137
+#: src/benchmarksManager.cpp:164 src/preferencesManager.cpp:248
+#: src/projectsManager.cpp:141
 #, c-format
 msgid "Could not open file <%s> for writing!"
 msgstr "Невозможно открыть файл <%s> для записи!"
 
-#: src/benchmarksManager.cpp:311
+#: src/benchmarksManager.cpp:319
 msgid "(Benchmarks) The maximum number of known clients has been reached!"
 msgstr ""
 "(Производительность) Максимальная скорость расчетов, достигнутая клиентами!"
 
-#: src/benchmarksManager.cpp:441
+#: src/benchmarksManager.cpp:449
 msgid "Unknown client"
 msgstr "Неизвестный клиент"
 
@@ -217,73 +217,73 @@ msgstr "Ошибка чтения %sFAHlog.txt!"
 msgid "Error while reading %squeue.dat"
 msgstr "Ошибка чтения %squeue.dat!"
 
-#: src/client.cpp:211
+#: src/client.cpp:212
 #, fuzzy, c-format
 msgid "Error while reading %s"
 msgstr "Ошибка чтения %squeue.dat!"
 
-#: src/client.cpp:217
+#: src/client.cpp:218
 #, c-format
 msgid "Error while reading %sunitinfo.txt!"
 msgstr "Ошибка чтения %sunitinfo.txt!"
 
-#: src/client.cpp:414
+#: src/client.cpp:416
 #, fuzzy, c-format
 msgid "Finished Reloading %s"
 msgstr "Обновить %s"
 
-#: src/client.cpp:468
+#: src/client.cpp:470
 #, c-format
 msgid "The progress value in file %s could not be found/parsed"
 msgstr "Значение прогресса в файле %s не найдено/обработано"
 
-#: src/client.cpp:515
+#: src/client.cpp:517
 #, fuzzy, c-format
 msgid "The core version in file %s could not be found/parsed"
 msgstr "Значение прогресса в файле %s не найдено/обработано"
 
-#: src/client.cpp:565
+#: src/client.cpp:575
 #, c-format
 msgid "Unable to save %s because it does not exist"
 msgstr "Невозможно сохранить %s потому что он не создан."
 
-#: src/client.cpp:572
+#: src/client.cpp:582
 #, c-format
 msgid "Unable to create directory %s"
 msgstr "Невозможно создать папку %s"
 
-#: src/client.cpp:585
+#: src/client.cpp:595
 #, c-format
 msgid "Unable to copy %s to %s"
 msgstr "Невозможно скопировать %s в %s"
 
-#: src/client.cpp:609
+#: src/client.cpp:619
 #, c-format
 msgid "%s is on frame %u"
 msgstr "%s находится на шаге %u"
 
-#: src/client.cpp:613
+#: src/client.cpp:623
 #, c-format
 msgid "Cannot determine frame number for %s (this isn't a problem)"
 msgstr ""
 "Невозможно определить количество шагов для %s (это не является проблемой)"
 
-#: src/client.cpp:795
+#: src/client.cpp:805
 #, c-format
 msgid "%s has an unknown state (Unable to find a complete frame)"
 msgstr "%s неизвестный статус (Невозможно найти законченный шаг)"
 
-#: src/client.cpp:804
+#: src/client.cpp:814
 #, c-format
 msgid "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
 msgstr "%s остановлен (Найдена строка \"Folding@Home Client Shutdown.\" )"
 
-#: src/client.cpp:812
+#: src/client.cpp:822
 #, c-format
 msgid "%s has been paused"
 msgstr "%s приостановлен"
 
-#: src/client.cpp:821
+#: src/client.cpp:831
 #, c-format
 msgid ""
 "%s has an unknown state (Unable to extract a valid elapsed time since the "
@@ -292,17 +292,17 @@ msgstr ""
 "%s имеет неизвестный статус (Невозможно определить время окончания расчетов "
 "по последнему выполненному шагу)"
 
-#: src/client.cpp:829
+#: src/client.cpp:839
 #, c-format
 msgid "%s has been marked as having a asynchronous clock."
 msgstr "%s отмечен как работающих с асинхронной настройкой часов."
 
-#: src/client.cpp:864
+#: src/client.cpp:874
 #, c-format
 msgid "%s seems to have hung : Elapsed time is %um and limit is %um"
 msgstr "%s возможно завис: Время окончания расчета %um и лимит времени %um"
 
-#: src/client.cpp:869
+#: src/client.cpp:879
 #, c-format
 msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
 msgstr ""
@@ -344,12 +344,12 @@ msgstr "Выберите папку"
 msgid "You must fill the name AND the locations fields."
 msgstr "Вы должны заполнить строки Имя и Расположение."
 
-#: src/clientsManager.cpp:178 src/webMonitor.cpp:773
+#: src/clientsManager.cpp:184 src/webMonitor.cpp:773
 #, c-format
 msgid "Error while parsing %s on line %u"
 msgstr "Ошибка обработки %s на линии %u"
 
-#: src/clientsManager.cpp:198
+#: src/clientsManager.cpp:204
 #, c-format
 msgid ""
 "Could not open file <%s> for writing!\n"
@@ -358,7 +358,7 @@ msgstr ""
 "Невозможно открыть файл <%s> для записи!\n"
 "Список клиентов не сохранён!"
 
-#: src/clientsManager.cpp:203
+#: src/clientsManager.cpp:209
 #, fuzzy, c-format
 msgid ""
 "# %s : contains the list of clients\n"
@@ -982,28 +982,28 @@ msgstr ""
 msgid "No update found"
 msgstr "Новых версий нет"
 
-#: src/mainDialog.cpp:1501 src/projectsManager.cpp:323
+#: src/mainDialog.cpp:1501 src/projectsManager.cpp:331
 msgid "Unable to create a temporary file!"
 msgstr "Невозможно создать временный файл!"
 
-#: src/mainDialog.cpp:1505 src/projectsManager.cpp:327
+#: src/mainDialog.cpp:1505 src/projectsManager.cpp:335
 #, c-format
 msgid "Unable to open the temporary file <%s>"
 msgstr "Невозможно открыть временный файл <%s>"
 
-#: src/mainDialog.cpp:1509 src/projectsManager.cpp:331
+#: src/mainDialog.cpp:1509 src/projectsManager.cpp:339
 msgid "Unable to connect to the server!"
 msgstr "Невозможно соединиться с сервером!"
 
-#: src/mainDialog.cpp:1513 src/projectsManager.cpp:335
+#: src/mainDialog.cpp:1513 src/projectsManager.cpp:343
 msgid "Unable to send the request to the server!"
 msgstr "Невозможно послать запрос на сервер!"
 
-#: src/mainDialog.cpp:1517 src/projectsManager.cpp:339
+#: src/mainDialog.cpp:1517 src/projectsManager.cpp:347
 msgid "Download aborted!"
 msgstr "Скачивание прервано!"
 
-#: src/mainDialog.cpp:1523 src/projectsManager.cpp:345
+#: src/mainDialog.cpp:1523 src/projectsManager.cpp:353
 msgid "An unknown error happened!"
 msgstr "Вы словили неизвестную ошибку! Карамба!"
 
@@ -1270,41 +1270,41 @@ msgstr "Выберите куда сохранить простую Web стра
 msgid "Choose the Simple Text File Template"
 msgstr "Выберите куда сохранить простой текстовый файл"
 
-#: src/preferencesManager.cpp:218
+#: src/preferencesManager.cpp:226
 msgid "There is no Preferences file, or it is not readable"
 msgstr "Это не файл с Настройками или его не прочитать"
 
-#: src/projectsManager.cpp:105
+#: src/projectsManager.cpp:109
 msgid "There is no projects file, or it is not readable"
 msgstr "Это не файл с заданиями или его не прочитать"
 
-#: src/projectsManager.cpp:233
+#: src/projectsManager.cpp:241
 msgid "Updating projects database"
 msgstr "Обновляется база заданий"
 
-#: src/projectsManager.cpp:237
+#: src/projectsManager.cpp:245
 msgid "Downloading new projects"
 msgstr "Скачиваются новые задания"
 
-#: src/projectsManager.cpp:261
+#: src/projectsManager.cpp:269
 msgid "Adding the new projects to the database"
 msgstr "Добавление новых заданий в базу"
 
-#: src/projectsManager.cpp:354
+#: src/projectsManager.cpp:362
 msgid "Local project update file doesn't exist!"
 msgstr "Обновлённого файла данных заданий не существует!"
 
-#: src/projectsManager.cpp:363
+#: src/projectsManager.cpp:371
 msgid "Unable to copy local project update file to temporary location"
 msgstr ""
 "Невозможно скопировать локальный файл с данными заданий во временную папку."
 
-#: src/projectsManager.cpp:421
+#: src/projectsManager.cpp:429
 #, c-format
 msgid "Line %u is not correctly formatted! %s"
 msgstr "Линия %u имеет неправильный формат! %s"
 
-#: src/projectsManager.cpp:432
+#: src/projectsManager.cpp:440
 msgid "Update aborted!"
 msgstr "Обновление прервано!"
 

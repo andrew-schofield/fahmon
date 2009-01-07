@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2009-01-06 16:08+0000\n"
+"POT-Creation-Date: 2009-01-07 20:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -65,98 +65,98 @@ msgstr ""
 msgid "Projects"
 msgstr ""
 
-#: src/benchmarksDialog.cpp:247
+#: src/benchmarksDialog.cpp:250
 msgid "No benchmarks for this project!"
-msgstr ""
-
-#: src/benchmarksDialog.cpp:257
-#, c-format
-msgid "Project : %u\n"
-msgstr ""
-
-#: src/benchmarksDialog.cpp:258
-#, c-format
-msgid "Core    : %s\n"
-msgstr ""
-
-#: src/benchmarksDialog.cpp:259
-#, c-format
-msgid "Frames  : %u\n"
 msgstr ""
 
 #: src/benchmarksDialog.cpp:260
 #, c-format
+msgid "Project : %u\n"
+msgstr ""
+
+#: src/benchmarksDialog.cpp:261
+#, c-format
+msgid "Core    : %s\n"
+msgstr ""
+
+#: src/benchmarksDialog.cpp:262
+#, c-format
+msgid "Frames  : %u\n"
+msgstr ""
+
+#: src/benchmarksDialog.cpp:263
+#, c-format
 msgid "Credit  : %u\n"
 msgstr ""
 
-#: src/benchmarksDialog.cpp:264
+#: src/benchmarksDialog.cpp:267
 #, c-format
 msgid "Project : %u (Unknown)\n"
 msgstr ""
 
-#: src/benchmarksDialog.cpp:290
+#: src/benchmarksDialog.cpp:293
 #, c-format
 msgid "Min. Time / Frame : %s"
 msgstr ""
 
-#: src/benchmarksDialog.cpp:296 src/benchmarksDialog.cpp:317
-#: src/benchmarksDialog.cpp:342 src/benchmarksDialog.cpp:344
-#: src/benchmarksDialog.cpp:346
+#: src/benchmarksDialog.cpp:299 src/benchmarksDialog.cpp:320
+#: src/benchmarksDialog.cpp:345 src/benchmarksDialog.cpp:347
+#: src/benchmarksDialog.cpp:349
 #, c-format
 msgid " - %.2f ppd"
 msgstr ""
 
-#: src/benchmarksDialog.cpp:301
+#: src/benchmarksDialog.cpp:304
 msgid "No Min. Time / Frame"
 msgstr ""
 
-#: src/benchmarksDialog.cpp:311
+#: src/benchmarksDialog.cpp:314
 #, c-format
 msgid "Avg. Time / Frame : %s"
 msgstr ""
 
-#: src/benchmarksDialog.cpp:322
+#: src/benchmarksDialog.cpp:325
 msgid "No Avg. Time / Frame"
 msgstr ""
 
-#: src/benchmarksDialog.cpp:334
+#: src/benchmarksDialog.cpp:337
 #, c-format
 msgid "Cur. Time / Frame : %s"
 msgstr ""
 
-#: src/benchmarksDialog.cpp:335
+#: src/benchmarksDialog.cpp:338
 #, c-format
 msgid "R3F. Time / Frame : %s"
 msgstr ""
 
-#: src/benchmarksDialog.cpp:336
+#: src/benchmarksDialog.cpp:339
 #, c-format
 msgid "Eff. Time / Frame : %s"
 msgstr ""
 
-#: src/benchmarksDialog.cpp:351
+#: src/benchmarksDialog.cpp:354
 msgid "No Cur. Time / Frame"
 msgstr ""
 
-#: src/benchmarksDialog.cpp:352
+#: src/benchmarksDialog.cpp:355
 msgid "No R3F. Time / Frame"
 msgstr ""
 
-#: src/benchmarksDialog.cpp:353
+#: src/benchmarksDialog.cpp:356
 msgid "No Eff. Time / Frame"
 msgstr ""
 
-#: src/benchmarksManager.cpp:156 src/preferencesManager.cpp:240
-#: src/projectsManager.cpp:137
+#: src/benchmarksManager.cpp:164 src/preferencesManager.cpp:248
+#: src/projectsManager.cpp:141
 #, c-format
 msgid "Could not open file <%s> for writing!"
 msgstr ""
 
-#: src/benchmarksManager.cpp:311
+#: src/benchmarksManager.cpp:319
 msgid "(Benchmarks) The maximum number of known clients has been reached!"
 msgstr ""
 
-#: src/benchmarksManager.cpp:441
+#: src/benchmarksManager.cpp:449
 msgid "Unknown client"
 msgstr ""
 
@@ -212,89 +212,89 @@ msgstr ""
 msgid "Error while reading %squeue.dat"
 msgstr ""
 
-#: src/client.cpp:211
+#: src/client.cpp:212
 #, c-format
 msgid "Error while reading %s"
 msgstr ""
 
-#: src/client.cpp:217
+#: src/client.cpp:218
 #, c-format
 msgid "Error while reading %sunitinfo.txt!"
 msgstr ""
 
-#: src/client.cpp:414
+#: src/client.cpp:416
 #, c-format
 msgid "Finished Reloading %s"
 msgstr ""
 
-#: src/client.cpp:468
+#: src/client.cpp:470
 #, c-format
 msgid "The progress value in file %s could not be found/parsed"
 msgstr ""
 
-#: src/client.cpp:515
+#: src/client.cpp:517
 #, c-format
 msgid "The core version in file %s could not be found/parsed"
 msgstr ""
 
-#: src/client.cpp:565
+#: src/client.cpp:575
 #, c-format
 msgid "Unable to save %s because it does not exist"
 msgstr ""
 
-#: src/client.cpp:572
+#: src/client.cpp:582
 #, c-format
 msgid "Unable to create directory %s"
 msgstr ""
 
-#: src/client.cpp:585
+#: src/client.cpp:595
 #, c-format
 msgid "Unable to copy %s to %s"
 msgstr ""
 
-#: src/client.cpp:609
+#: src/client.cpp:619
 #, c-format
 msgid "%s is on frame %u"
 msgstr ""
 
-#: src/client.cpp:613
+#: src/client.cpp:623
 #, c-format
 msgid "Cannot determine frame number for %s (this isn't a problem)"
 msgstr ""
 
-#: src/client.cpp:795
+#: src/client.cpp:805
 #, c-format
 msgid "%s has an unknown state (Unable to find a complete frame)"
 msgstr ""
 
-#: src/client.cpp:804
+#: src/client.cpp:814
 #, c-format
 msgid "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
 msgstr ""
 
-#: src/client.cpp:812
+#: src/client.cpp:822
 #, c-format
 msgid "%s has been paused"
 msgstr ""
 
-#: src/client.cpp:821
+#: src/client.cpp:831
 #, c-format
 msgid ""
 "%s has an unknown state (Unable to extract a valid elapsed time since the "
 "last completed frame)"
 msgstr ""
 
-#: src/client.cpp:829
+#: src/client.cpp:839
 #, c-format
 msgid "%s has been marked as having a asynchronous clock."
 msgstr ""
 
-#: src/client.cpp:864
+#: src/client.cpp:874
 #, c-format
 msgid "%s seems to have hung : Elapsed time is %um and limit is %um"
 msgstr ""
 
-#: src/client.cpp:869
+#: src/client.cpp:879
 #, c-format
 msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
 msgstr ""
@@ -335,19 +335,19 @@ msgstr ""
 msgid "You must fill the name AND the locations fields."
 msgstr ""
 
-#: src/clientsManager.cpp:178 src/webMonitor.cpp:773
+#: src/clientsManager.cpp:184 src/webMonitor.cpp:773
 #, c-format
 msgid "Error while parsing %s on line %u"
 msgstr ""
 
-#: src/clientsManager.cpp:198
+#: src/clientsManager.cpp:204
 #, c-format
 msgid ""
 "Could not open file <%s> for writing!\n"
 "The list of clients will not be saved!"
 msgstr ""
 
-#: src/clientsManager.cpp:203
+#: src/clientsManager.cpp:209
 #, c-format
 msgid ""
 "# %s : contains the list of clients\n"
@@ -944,28 +944,28 @@ msgstr ""
 msgid "No update found"
 msgstr ""
 
-#: src/mainDialog.cpp:1501 src/projectsManager.cpp:323
+#: src/mainDialog.cpp:1501 src/projectsManager.cpp:331
 msgid "Unable to create a temporary file!"
 msgstr ""
 
-#: src/mainDialog.cpp:1505 src/projectsManager.cpp:327
+#: src/mainDialog.cpp:1505 src/projectsManager.cpp:335
 #, c-format
 msgid "Unable to open the temporary file <%s>"
 msgstr ""
 
-#: src/mainDialog.cpp:1509 src/projectsManager.cpp:331
+#: src/mainDialog.cpp:1509 src/projectsManager.cpp:339
 msgid "Unable to connect to the server!"
 msgstr ""
 
-#: src/mainDialog.cpp:1513 src/projectsManager.cpp:335
+#: src/mainDialog.cpp:1513 src/projectsManager.cpp:343
 msgid "Unable to send the request to the server!"
 msgstr ""
 
-#: src/mainDialog.cpp:1517 src/projectsManager.cpp:339
+#: src/mainDialog.cpp:1517 src/projectsManager.cpp:347
 msgid "Download aborted!"
 msgstr ""
 
-#: src/mainDialog.cpp:1523 src/projectsManager.cpp:345
+#: src/mainDialog.cpp:1523 src/projectsManager.cpp:353
 msgid "An unknown error happened!"
 msgstr ""
 
@@ -1229,40 +1229,40 @@ msgstr ""
 msgid "Choose the Simple Text File Template"
 msgstr ""
 
-#: src/preferencesManager.cpp:218
+#: src/preferencesManager.cpp:226
 msgid "There is no Preferences file, or it is not readable"
 msgstr ""
 
-#: src/projectsManager.cpp:105
+#: src/projectsManager.cpp:109
 msgid "There is no projects file, or it is not readable"
 msgstr ""
 
-#: src/projectsManager.cpp:233
+#: src/projectsManager.cpp:241
 msgid "Updating projects database"
 msgstr ""
 
-#: src/projectsManager.cpp:237
+#: src/projectsManager.cpp:245
 msgid "Downloading new projects"
 msgstr ""
 
-#: src/projectsManager.cpp:261
+#: src/projectsManager.cpp:269
 msgid "Adding the new projects to the database"
 msgstr ""
 
-#: src/projectsManager.cpp:354
+#: src/projectsManager.cpp:362
 msgid "Local project update file doesn't exist!"
 msgstr ""
 
-#: src/projectsManager.cpp:363
+#: src/projectsManager.cpp:371
 msgid "Unable to copy local project update file to temporary location"
 msgstr ""
 
-#: src/projectsManager.cpp:421
+#: src/projectsManager.cpp:429
 #, c-format
 msgid "Line %u is not correctly formatted! %s"
 msgstr ""
 
-#: src/projectsManager.cpp:432
+#: src/projectsManager.cpp:440
 msgid "Update aborted!"
 msgstr ""
 
