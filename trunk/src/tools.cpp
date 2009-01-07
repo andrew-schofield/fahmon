@@ -85,16 +85,16 @@ bool Tools::LoadFile(wxString const &filename, wxString& fileContent, wxUint32 l
 		return false;
 
 	wxFile in(filename, wxFile::read);
-	length = (length == 0) ? in.Length() : length;
+	length = (length == 0) ? in.Length() : std::min<off_t>(length, in.Length());
 	if(length==0)
 		return false;
 	char *m_buffer;
-	m_buffer = new char[length];
-	m_buffer[length-1] = 0;
+	m_buffer = new char[length+1];
+	m_buffer[length] = 0;
 	int seeked = 0;
 
 	if(fromStart == false)
-		seeked = in.SeekEnd(-(std::min<off_t>(length, in.Length())-1));
+		seeked = in.SeekEnd(-(std::min<off_t>(length, in.Length())));
 
 	int read = in.Read(m_buffer, std::min<off_t>(length, in.Length()));
 
