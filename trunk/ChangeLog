@@ -25,6 +25,7 @@ SVN
       for each client. Will improve memory usage with large numbers of clients.
     * Added partial Norwegian translation.
     * Plugged several memory leaks.
+    * Significantly reduced CPU usage while reloading.
 
     Windows
 

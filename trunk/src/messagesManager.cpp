@@ -36,6 +36,7 @@
 
 // This mutex is there to ensure that two threads won't try to log something at the same time
 wxMutex MessagesManager::mMutexLog;
+wxMutex MessagesManager::mMutexLogSave;
 
 // The single instance of MessagesManager accross the application
 MessagesManager* MessagesManager::mInstance = NULL;
@@ -63,6 +64,7 @@ void MessagesManager::CreateInstance(void)
 
 void MessagesManager::DestroyInstance(void)
 {
+	mInstance->SaveMessages();
 	wxASSERT(mInstance != NULL);
 
 	delete mInstance;
@@ -83,8 +85,6 @@ void MessagesManager::Log(wxString const &msg)
 	wxMutexLocker  lock(mMutexLog);        // --- Lock the access to this method
 	wxString       currentDate;
 	wxCommandEvent event(EVT_NEW_MESSAGE_LOGGED);
-	wxFileOutputStream   fileOS(PathManager::GetMsgPath() + _T("messages.log"));
-	wxTextOutputStream   textOS(fileOS);
 
 	// Format the current time correctly
 	currentDate = wxDateTime::UNow().Format(_T("%d/%m/%y - %H:%M:%S.%l"));
@@ -92,18 +92,6 @@ void MessagesManager::Log(wxString const &msg)
 	// Add the new message
 	mMessages += _T("[") + currentDate + _T("] ") + msg + _T("\n");
 	mNewMessages += _T("[") + currentDate + _T("] ") + msg + _T("\n");
-
-	// Could the file be opened?
-	if(fileOS.Ok() == false)
-	{
-		Tools::ErrorMsgBox(wxString::Format(_("Could not open file for writing!\nThe log will not be saved!")));
-		return;
-	}
-	else
-	{
-		textOS.WriteString(mMessages);
-		fileOS.Close();
-	}
 
 	// Warn the main dialog about this message
 	// We can't directly call methods of MessagesFrame, we must use the main dialog to transfer the warning
@@ -118,4 +106,24 @@ wxString MessagesManager::GetNewMessages(void)
 	wxString tmpString = mNewMessages;
 	mNewMessages = _T("");
 	return tmpString;
+}
+
+
+void MessagesManager::SaveMessages(void)
+{	
+	wxMutexLocker  lock(mMutexLogSave);        // --- Lock the access to this method
+	wxFileOutputStream   fileOS(PathManager::GetMsgPath() + _T("messages.log"));
+	wxTextOutputStream   textOS(fileOS);	
+
+	// Could the file be opened?
+	if(fileOS.Ok() == false)
+	{
+		Tools::ErrorMsgBox(wxString::Format(_("Could not open file for writing!\nThe log will not be saved!")));
+		return;
+	}
+	else
+	{
+		textOS.WriteString(mMessages);
+		fileOS.Close();
+	}
 }

@@ -69,6 +69,7 @@ class MessagesManager
 {
 protected:
 	static wxMutex          mMutexLog; /**< Locks access to the log method */
+	static wxMutex          mMutexLogSave; /**< Locks access to the log save method */
 	static MessagesManager *mInstance; /**< The single instance of the MessagesManager object */
 
 	wxString mMessages; /**< Object storing all the logged messages */
@@ -141,6 +142,8 @@ public:
 	 * @param msg The message to log.
 	 **/
 	void LogError(const wxString& msg)       {Log(wxT("X ") + msg);}
+
+	void SaveMessages(void);
 };
 
 
