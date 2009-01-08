@@ -602,7 +602,7 @@ wxPanel* PreferencesDialog::CreateWebApp2Tab(wxBookCtrlBase* parent)
 #ifndef __WXMAC__
 	mWebAppSimpleWebTemplateLocationChooser  = new wxButton(panel, BTN_BROWSE_SIMPLEWEB_TEMPLATE, _T("..."), wxDefaultPosition, wxSize(26, 26));
 #else
-	mWebAppSimpleWebLocationTemplateChooser  = new wxButton(panel, BTN_BROWSE_SIMPLEWEB_TEMPLATE, _("Choose"), wxDefaultPosition);
+	mWebAppSimpleWebTemplateLocationChooser  = new wxButton(panel, BTN_BROWSE_SIMPLEWEB_TEMPLATE, _("Choose"), wxDefaultPosition);
 #endif
 
 	mWebAppSimpleTextTemplateLabel     = new wxStaticText(panel, wxID_ANY, _("Custom Simple Text Template"));
