@@ -234,7 +234,7 @@ bool FahMonApp::OnInit(void)
 	MessagesManager::CreateInstance();          // MUST be created first, so that other manager can log messages immediately
 #ifdef _FAHMON_WIN32_
 	if(copied > 0)
-		_LogMsgInfo(wxString::Format(_("Old settings imported into %s"), PathManager::GetCfgPath()));
+		_LogMsgInfo(wxString::Format(_("Old settings imported into %s"), PathManager::GetCfgPath()), false);
 #endif
 	PreferencesManager::CreateInstance();       // MUST be created second, so that other managers can retrieve some preferences when created
 	ProjectsManager::CreateInstance();
