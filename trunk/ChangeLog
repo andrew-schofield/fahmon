@@ -35,6 +35,7 @@ SVN
     * Reduced executable size by aggressively stripping unneeded options
       from wxWidgets.
     * Added --local option to allow config to be managed from local directory.
+    * Fixed main window location behaviour.
 
 v2.3.4 (04/11/08)
 

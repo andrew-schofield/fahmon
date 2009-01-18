@@ -908,14 +908,14 @@ void MainDialog::RestoreFrameState(void)
 	// If some values are not correct, they are changed to default ones
 	wxDisplaySize(&displayWidth, &displayHeight);
 
-	if(frameWidth >= displayWidth || frameHeight >= displayHeight)
+	if(frameWidth >= displayWidth || frameHeight >= displayHeight || frameHeight <= 0 || frameWidth <= 0 )
 	{
 		// -1 indicates defaults values
 		frameWidth  = -1;
 		frameHeight = -1;
 	}
 
-	if(framePosX >= displayWidth || framePosY >= displayHeight)
+	if(framePosX >= displayWidth || framePosY >= displayHeight || framePosX <= 0 || framePosY <= 0 )
 	{
 		// -1 indicates defaults values
 		framePosX = -1;
