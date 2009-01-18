@@ -87,7 +87,7 @@ bool Queue::LoadQueueFile(wxString const &filename, wxString clientName)
 		fclose(fp);
 		if(i < 6844)
 		{
-			_LogMsgWarning(_T("Invalid queue!"));
+			_LogMsgWarning(_T("Invalid queue!"), false);
 			return false;
 		}
 		q = NULL;
@@ -169,8 +169,8 @@ tt:				if (genome)
 			if (i > MAXQVER)
 			{
 
-				_LogMsgInfo(wxString::Format(_T("%s Queue version %i.%02d"), clientName.c_str(), i / 100, i % 100));
-				_LogMsgInfo(_T("WARNING: unknown version number"));
+				_LogMsgInfo(wxString::Format(_T("%s Queue version %i.%02d"), clientName.c_str(), i / 100, i % 100), false);
+				_LogMsgWarning(_T("WARNING: unknown version number"), false);
 				if (queueversion == 0)
 				{
 					queueversion = 400;

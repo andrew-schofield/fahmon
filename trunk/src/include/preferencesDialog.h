@@ -87,6 +87,7 @@ protected:
 	wxTextCtrl   *mAdvancedLocalFileLocation; /**< Input box for local file location */
 	wxStaticText *mAdvancedLabelLocalFile; /**< Text control for local file location */
 	wxButton     *mAdvancedLocationChooser; /**< Button to open file chooser for local file */
+	wxCheckBox   *mAdvancedLogErrorsOnly; /**< Checkbox for logging errors only */
 
 	// Widgets for the system tab
 	wxTextCtrl   *mSystemBrowser; /**< Input box for web browser */

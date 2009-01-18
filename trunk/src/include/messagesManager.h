@@ -34,9 +34,9 @@
  * Logs an info message.
  * @param msg The message to log
  **/
-#define _LogMsgInfo(msg)                                  \
-{                                                         \
-	MessagesManager::GetInstance()->LogInformation(msg);  \
+#define _LogMsgInfo(msg, force)                                  \
+{                                                                \
+	MessagesManager::GetInstance()->LogInformation(msg, force);  \
 }
 
 /**
@@ -44,9 +44,9 @@
  * Logs a warning message.
  * @param msg The message to log
  **/
-#define _LogMsgWarning(msg)                           \
-{                                                     \
-	MessagesManager::GetInstance()->LogWarning(msg);  \
+#define _LogMsgWarning(msg, force)                           \
+{                                                            \
+	MessagesManager::GetInstance()->LogWarning(msg, force);  \
 }
 
 /**
@@ -129,13 +129,13 @@ public:
 	 * Log an information message.
 	 * @param msg The message to log.
 	 **/
-	void LogInformation(const wxString& msg) {Log(wxT("  ") + msg);}
+	void LogInformation(const wxString& msg, bool force);
 
 	/**
 	 * Log a warning message.
 	 * @param msg The message to log.
 	 **/
-	void LogWarning(const wxString& msg)     {Log(wxT("! ") + msg);}
+	void LogWarning(const wxString& msg, bool force);
 
 	/**
 	 * Log an error message.

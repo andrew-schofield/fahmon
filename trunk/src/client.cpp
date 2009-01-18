@@ -171,7 +171,7 @@ void Client::Reload(void)
 		mState = ST_INACCESSIBLE;
 		return;
 	}
-	_LogMsgInfo(wxString::Format(_("Reloading %s"), mName.c_str()));
+	_LogMsgInfo(wxString::Format(_("Reloading %s"), mName.c_str()), false);
 
 	Reset();
 
@@ -413,7 +413,7 @@ void Client::Reload(void)
 		lastFrame = NULL;
 	}
 
-	_LogMsgInfo(wxString::Format(_("Finished Reloading %s"), mName.c_str()));
+	_LogMsgInfo(wxString::Format(_("Finished Reloading %s"), mName.c_str()), false);
 }
 
 
@@ -467,7 +467,7 @@ bool Client::LoadUnitInfoFile(wxString const &filename)
 	// Log any error encountered
 	if(!progressOk)
 	{
-		_LogMsgWarning(wxString::Format(_("The progress value in file %s could not be found/parsed"), filename.c_str()));
+		_LogMsgWarning(wxString::Format(_("The progress value in file %s could not be found/parsed"), filename.c_str()), false);
 	}
 
 	return false;
@@ -514,7 +514,7 @@ bool Client::LoadWULogFile(wxString const &filename)
 	// Log any error encountered
 	if(!versionOk)
 	{
-		_LogMsgWarning(wxString::Format(_("The core version in file %s could not be found/parsed"), filename.c_str()));
+		_LogMsgWarning(wxString::Format(_("The core version in file %s could not be found/parsed"), filename.c_str()), false);
 	}
 
 	return false;
@@ -572,14 +572,14 @@ void Client::SaveXYZFile(void) const
 	// Check that the file to save exists
 	if(!wxFileExists(xyzInFile))
 	{
-		_LogMsgWarning(wxString::Format(_("Unable to save %s because it does not exist"), xyzInFile.c_str()));
+		_LogMsgWarning(wxString::Format(_("Unable to save %s because it does not exist"), xyzInFile.c_str()), false);
 		return;
 	}
 
 	// Create the ouput directory if needed
 	if(!wxDirExists(PathManager::GetXYZPath()) && !wxMkdir(PathManager::GetXYZPath(), 0777))
 	{
-		_LogMsgWarning(wxString::Format(_("Unable to create directory %s"), PathManager::GetXYZPath().c_str()));
+		_LogMsgWarning(wxString::Format(_("Unable to create directory %s"), PathManager::GetXYZPath().c_str()), false);
 		return;
 	}
 
@@ -592,7 +592,7 @@ void Client::SaveXYZFile(void) const
 	// Ok, we can finally copy the file
 	if(!wxCopyFile(xyzInFile, xyzOutFile))
 	{
-		_LogMsgWarning(wxString::Format(_("Unable to copy %s to %s"), xyzInFile.c_str(), xyzOutFile.c_str()));
+		_LogMsgWarning(wxString::Format(_("Unable to copy %s to %s"), xyzInFile.c_str(), xyzOutFile.c_str()), false);
 	}
 }
 
@@ -616,11 +616,11 @@ void Client::ComputeETA(WorkUnitFrame* lastFrame)
 	//logLine = wxString::Format(_T("%s [ETA]"), mName.c_str());
 	if(lastFrame != NULL)
 	{
-		_LogMsgInfo(wxString::Format(_("%s is on frame %u"), mName.c_str(), lastFrame->GetId()));
+		_LogMsgInfo(wxString::Format(_("%s is on frame %u"), mName.c_str(), lastFrame->GetId()), false);
 	}
 	else
 	{
-		_LogMsgInfo(wxString::Format(_("Cannot determine frame number for %s (this isn't a problem)"), mName.c_str()));
+		_LogMsgInfo(wxString::Format(_("Cannot determine frame number for %s (this isn't a problem)"), mName.c_str()), false);
 	}
 
 	// --- 1) Retrieve the total number of frames for the current project, or try to guess it if possible
@@ -802,7 +802,7 @@ void Client::FindCurrentState(WorkUnitFrame* lastFrame)
 	if(lastFrame == NULL)
 	{
 		mState = ST_INACTIVE;
-		_LogMsgInfo(wxString::Format(_("%s has an unknown state (Unable to find a complete frame)"), mName.c_str()));
+		_LogMsgInfo(wxString::Format(_("%s has an unknown state (Unable to find a complete frame)"), mName.c_str()), false);
 		return;
 	}
 
@@ -811,7 +811,7 @@ void Client::FindCurrentState(WorkUnitFrame* lastFrame)
 	if(lastFrame->ClientIsStopped())
 	{
 		mState = ST_STOPPED;
-		_LogMsgInfo(wxString::Format(_("%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"), mName.c_str()));
+		_LogMsgInfo(wxString::Format(_("%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"), mName.c_str()), false);
 		return;
 	}
 
@@ -819,7 +819,7 @@ void Client::FindCurrentState(WorkUnitFrame* lastFrame)
 	if(lastFrame->ClientIsPaused())
 	{
 		mState = ST_PAUSED;
-		_LogMsgInfo(wxString::Format(_("%s has been paused"), mName.c_str()));
+		_LogMsgInfo(wxString::Format(_("%s has been paused"), mName.c_str()), false);
 		return;
 	}
 
@@ -828,7 +828,7 @@ void Client::FindCurrentState(WorkUnitFrame* lastFrame)
 	if(lastFrame->GetElapsedSeconds() == 0)
 	{
 		mState = ST_INACTIVE;
-		_LogMsgInfo(wxString::Format(_("%s has an unknown state (Unable to extract a valid elapsed time since the last completed frame)"), mName.c_str()));
+		_LogMsgInfo(wxString::Format(_("%s has an unknown state (Unable to extract a valid elapsed time since the last completed frame)"), mName.c_str()), false);
 		return;
 	}
 
@@ -836,7 +836,7 @@ void Client::FindCurrentState(WorkUnitFrame* lastFrame)
 	if(lastFrame->GetElapsedSeconds() == 65535 && !mVM)
 	{
 		mState = ST_ASYNCH;
-		_LogMsgInfo(wxString::Format(_("%s has been marked as having a asynchronous clock."), mName.c_str()));
+		_LogMsgInfo(wxString::Format(_("%s has been marked as having a asynchronous clock."), mName.c_str()), false);
 		return;
 	}
 
@@ -871,12 +871,12 @@ void Client::FindCurrentState(WorkUnitFrame* lastFrame)
 		if(lastFrame->GetElapsedSeconds() > 2 * trigger)
 		{
 			mState = ST_HUNG;
-			_LogMsgWarning(wxString::Format(_("%s seems to have hung : Elapsed time is %um and limit is %um"), mName.c_str(), lastFrame->GetElapsedSeconds()/60, trigger/30));
+			_LogMsgWarning(wxString::Format(_("%s seems to have hung : Elapsed time is %um and limit is %um"), mName.c_str(), lastFrame->GetElapsedSeconds()/60, trigger/30), false);
 		}
 		else
 		{
 			mState = ST_INACTIVE;
-			_LogMsgInfo(wxString::Format(_("%s seems to be inactive : Elapsed time is %um and limit is %um"), mName.c_str(), lastFrame->GetElapsedSeconds()/60, trigger/60));
+			_LogMsgInfo(wxString::Format(_("%s seems to be inactive : Elapsed time is %um and limit is %um"), mName.c_str(), lastFrame->GetElapsedSeconds()/60, trigger/60), false);
 		}
 	}
 }

@@ -27,6 +27,7 @@
 #include "pathManager.h"
 #include "mainDialog.h"
 #include "tools.h"
+#include "preferencesManager.h"
 
 #include "wx/datetime.h"
 #include "wx/txtstrm.h"
@@ -110,10 +111,10 @@ wxString MessagesManager::GetNewMessages(void)
 
 
 void MessagesManager::SaveMessages(void)
-{	
+{
 	wxMutexLocker  lock(mMutexLogSave);        // --- Lock the access to this method
 	wxFileOutputStream   fileOS(PathManager::GetMsgPath() + _T("messages.log"));
-	wxTextOutputStream   textOS(fileOS);	
+	wxTextOutputStream   textOS(fileOS);
 
 	// Could the file be opened?
 	if(fileOS.Ok() == false)
@@ -126,4 +127,24 @@ void MessagesManager::SaveMessages(void)
 		textOS.WriteString(mMessages);
 		fileOS.Close();
 	}
+}
+
+
+void MessagesManager::LogWarning(const wxString& msg, bool force)
+{
+	bool              logMessagesError;
+
+	_PrefsGetBool        (PREF_MAINDIALOG_LOG_ERRORS_ONLY,                     logMessagesError);
+	if(!logMessagesError || force)
+		Log(wxT("! ") + msg);
+}
+
+
+void MessagesManager::LogInformation(const wxString& msg, bool force)
+{
+	bool              logMessagesError;
+
+	_PrefsGetBool        (PREF_MAINDIALOG_LOG_ERRORS_ONLY,                     logMessagesError);
+	if(!logMessagesError || force)
+		Log(wxT("  ") + msg);
 }

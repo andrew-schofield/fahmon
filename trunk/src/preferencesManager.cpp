@@ -223,7 +223,7 @@ void PreferencesManager::Load(void)
 	// Could the file be opened ?
 	if(in.Ok() == false)
 	{
-		_LogMsgWarning(_("There is no Preferences file, or it is not readable"));
+		_LogMsgWarning(_("There is no Preferences file, or it is not readable"), false);
 		return;
 	}
 

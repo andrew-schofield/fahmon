@@ -116,6 +116,9 @@
 #define PREF_MAINDIALOG_UPDATE_CHECK wxT("MainDialog.UpdateCheck") /**< Preference setting for checking for new FahMon updates */
 #define PREF_MAINDIALOG_UPDATE_CHECK_DV false /**< Default value for checking for new FahMon updates */
 
+#define PREF_MAINDIALOG_LOG_ERRORS_ONLY wxT("MainDialog.LogErrorsOnly") /**< Preference setting for checking for new FahMon updates */
+#define PREF_MAINDIALOG_LOG_ERRORS_ONLY_DV true /**< Default value for checking for new FahMon updates */
+
 
 #ifdef __WXMAC__
 /**

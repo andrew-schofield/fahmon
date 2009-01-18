@@ -182,20 +182,20 @@ MainDialog::MainDialog(void) : wxFrame(NULL, wxID_ANY, _T(FMC_PRODUCT))
 	CreateLayout();
 	RestoreFrameState();     // MUST be called when all controls have been created !
 
-	_LogMsgInfo(wxString::Format(_("%s is licenced under the GNU GPL v2"), _T(FMC_PRODUCT)));
-	_LogMsgInfo(_("Copyright (C) 2003-2007 Fran\u00E7ois Ingelrest"));
-	_LogMsgInfo(_("Copyright (C) 2007-2009 Andrew Schofield"));
-	_LogMsgInfo(_T(""));
-	_LogMsgInfo(_("FahMon contains code from qd, also licenced under the GNU GPL v2"));
-	_LogMsgInfo(_("Copyright (C) 2002-2005 Richard P. Howell IV."));
-	_LogMsgInfo(_("Copyright (C) 2005-2009 Sebastiaan Couwenberg"));
-	_LogMsgInfo(_T(""));
+	_LogMsgInfo(wxString::Format(_("%s is licenced under the GNU GPL v2"), _T(FMC_PRODUCT)), true); // add true to force this notice
+	_LogMsgInfo(_("Copyright (C) 2003-2007 Fran\u00E7ois Ingelrest"), true);
+	_LogMsgInfo(_("Copyright (C) 2007-2009 Andrew Schofield"), true);
+	_LogMsgInfo(_T(""), true);
+	_LogMsgInfo(_("FahMon contains code from qd, also licenced under the GNU GPL v2"), true);
+	_LogMsgInfo(_("Copyright (C) 2002-2005 Richard P. Howell IV."), true);
+	_LogMsgInfo(_("Copyright (C) 2005-2009 Sebastiaan Couwenberg"), true);
+	_LogMsgInfo(_T(""), true);
 	// this needs to be before the tray icon, otherwise you can still click the tray icon and crash FahMon
 	_PrefsGetBool(PREF_MAINDIALOG_UPDATE_CHECK, updateCheck);
 	if(updateCheck == true)
 	{
 		CheckForUpdates();
-		_LogMsgInfo(_T(""));
+		_LogMsgInfo(_T(""), false);
 	}
 
 	// The timer used for auto-reloading
@@ -508,7 +508,7 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 			mPreferredDeadline->SetLabel(_("Unknown"));
 			mFinalDeadline->SetLabel(_("Unknown"));
 		}
-		_LogMsgWarning(wxString::Format(_("Project %u is unknown, you should try to update the projects database"), client->GetProjectId()));
+		_LogMsgWarning(wxString::Format(_("Project %u is unknown, you should try to update the projects database"), client->GetProjectId()), false);
 	}
 	else if(mSplitterWindow->IsSplit())
 	{
@@ -1423,7 +1423,7 @@ void MainDialog::CheckForUpdates(bool silent)
 	bool            updateAvailable = false;
 	ProgressManager progressManager(false);
 
-	_LogMsgInfo(_("Checking for FahMon updates"));
+	_LogMsgInfo(_("Checking for FahMon updates"), false);
 
 	// --- We first have to download the new update file
 	progressManager.SetTextAndProgress(_("Checking for update"), 0);
@@ -1449,7 +1449,7 @@ void MainDialog::CheckForUpdates(bool silent)
 	}
 
 	versionInfo = in.GetLine(in.GetLineCount()-1);
-	_LogMsgInfo(wxString::Format(_("Your version: %s; New version: %s"), _T(FMC_VERSION), versionInfo.c_str()));
+	_LogMsgInfo(wxString::Format(_("Your version: %s; New version: %s"), _T(FMC_VERSION), versionInfo.c_str()), false);
 
 	if(versionInfo.Cmp(_T(FMC_VERSION)) > 0)
 	{
@@ -1463,7 +1463,7 @@ void MainDialog::CheckForUpdates(bool silent)
 
 	if(updateAvailable == true)
 	{
-		_LogMsgInfo(_("Update available"));
+		_LogMsgInfo(_("Update available"), false);
 		if(Tools::QuestionMsgBox(_("A newer version of FahMon is available\nDo you want to go to the FahMon website?")) == true)
 		{
 			Tools::OpenURLInBrowser(_T("http://fahmon.net/download.html"));
@@ -1471,7 +1471,7 @@ void MainDialog::CheckForUpdates(bool silent)
 	}
 	else
 	{
-		_LogMsgInfo(_("No update found"));
+		_LogMsgInfo(_("No update found"), false);
 		if (!silent)
 			Tools::InfoMsgBox(_("No update found"));
 	}

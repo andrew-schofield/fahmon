@@ -247,7 +247,7 @@ WorkUnitFrame* FahLogAnalyzer::AnalyzeLastFrame(wxString const &fahlogComplete, 
 		}
 		if(isAsync == true)
 		{
-			_LogMsgInfo(wxString::Format(_("Possible clock asynchrony detected!")));
+			_LogMsgInfo(wxString::Format(_("Possible clock asynchrony detected!")), false);
 			if(ignoreAsynchrony)
 			{
 				// forces the client to be detected as still active (may break other detection routines though)

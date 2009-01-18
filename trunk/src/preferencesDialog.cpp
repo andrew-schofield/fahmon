@@ -53,6 +53,7 @@ enum _CONTROL_ID
 	CHK_USESIMPLEWEB,
 	CHK_USESIMPLETEXT,
 	CHK_USENONTHREADED,
+	CHK_LOGERRORSONLY,
 	BTN_BROWSE_WEBAPP,
 	BTN_BROWSE_SIMPLEWEB,
 	BTN_BROWSE_SIMPLETEXT,
@@ -368,6 +369,7 @@ wxPanel* PreferencesDialog::CreateAdvancedTab(wxBookCtrlBase* parent)
 #else
 	mAdvancedLocationChooser                        = new wxButton(panel, BTN_BROWSE, _("Choose"), wxDefaultPosition);
 #endif
+	mAdvancedLogErrorsOnly                          = new wxCheckBox(panel, CHK_LOGERRORSONLY, _("Log error messages only"));
 
 	LocalFileSizer->Add(mAdvancedLabelLocalFile, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
 	LocalFileSizer->Add(mAdvancedLocalFileLocation, 1, wxALIGN_CENTER_VERTICAL);
@@ -384,6 +386,8 @@ wxPanel* PreferencesDialog::CreateAdvancedTab(wxBookCtrlBase* parent)
 	sizer->AddStretchSpacer();
 	sizer->Add(mAdvancedUseLocalFile, 0, wxALIGN_LEFT);
 	sizer->Add(LocalFileSizer, 0, wxALIGN_LEFT | wxEXPAND);
+	sizer->AddStretchSpacer();
+	sizer->Add(mAdvancedLogErrorsOnly, 0, wxALIGN_LEFT);
 	sizer->AddStretchSpacer();
 
 	topLevelSizer->Add(sizer, 1, wxEXPAND | wxALL, FMC_GUI_BORDER);
@@ -602,7 +606,7 @@ wxPanel* PreferencesDialog::CreateWebApp2Tab(wxBookCtrlBase* parent)
 #ifndef __WXMAC__
 	mWebAppSimpleWebTemplateLocationChooser  = new wxButton(panel, BTN_BROWSE_SIMPLEWEB_TEMPLATE, _T("..."), wxDefaultPosition, wxSize(26, 26));
 #else
-	mWebAppSimpleWebTemplateLocationChooser  = new wxButton(panel, BTN_BROWSE_SIMPLEWEB_TEMPLATE, _("Choose"), wxDefaultPosition);
+	mWebAppSimpleWebLocationTemplateChooser  = new wxButton(panel, BTN_BROWSE_SIMPLEWEB_TEMPLATE, _("Choose"), wxDefaultPosition);
 #endif
 
 	mWebAppSimpleTextTemplateLabel     = new wxStaticText(panel, wxID_ANY, _("Custom Simple Text Template"));
@@ -674,6 +678,7 @@ void PreferencesDialog::LoadPreferences(void)
 	bool     useSimpleText;
 	bool     updateCheck;
 	bool     nonThreadedReload;
+	bool     logMessagesError;
 	wxUint32 proxyPort;
 	wxString proxyAddress;
 	wxString proxyUsername;
@@ -787,9 +792,11 @@ void PreferencesDialog::LoadPreferences(void)
 	_PrefsGetString      (PREF_HTTPDOWNLOADER_ALTERNATEUPDATEADDRESS,          projectLocationAddress);
 	_PrefsGetBool        (PREF_HTTPDOWNLOADER_USELOCALFILE,                    useLocalFile);
 	_PrefsGetString      (PREF_HTTPDOWNLOADER_LOCALFILELOCATION,               projectLocalFile);
+	_PrefsGetBool        (PREF_MAINDIALOG_LOG_ERRORS_ONLY,                     logMessagesError);
 
 	mAdvancedUseAlternateProjectSource->SetValue(useAlternate);
 	mAdvancedUseLocalFile->SetValue(useLocalFile);
+	mAdvancedLogErrorsOnly->SetValue(logMessagesError);
 
 	if(useAlternate == false)
 	{
@@ -959,6 +966,7 @@ void PreferencesDialog::SavePreferences(void)
 	_PrefsSetString(PREF_HTTPDOWNLOADER_ALTERNATEUPDATEADDRESS,          mAdvancedAlternateProjectSourceLocationAddress->GetValue());
 	_PrefsSetBool  (PREF_HTTPDOWNLOADER_USELOCALFILE,                    mAdvancedUseLocalFile->GetValue());
 	_PrefsSetString(PREF_HTTPDOWNLOADER_LOCALFILELOCATION,               mAdvancedLocalFileLocation->GetValue());
+	_PrefsSetBool  (PREF_MAINDIALOG_LOG_ERRORS_ONLY,                     mAdvancedLogErrorsOnly->GetValue());
 
 	// -----===== System preferences =====-----
 	_PrefsSetString(PREF_TOOLS_BROWSER,     mSystemBrowser->GetValue());

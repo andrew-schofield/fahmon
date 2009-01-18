@@ -106,7 +106,7 @@ void ProjectsManager::Load(void)
 	// Could the file be opened ?
 	if(in.Ok() == false)
 	{
-		_LogMsgWarning(_("There is no projects file, or it is not readable"));
+		_LogMsgWarning(_("There is no projects file, or it is not readable"), false);
 		return;
 	}
 
@@ -238,7 +238,7 @@ bool ProjectsManager::UpdateDatabase(bool forced, bool silentMode)
 	// This update will be the new reference
 	mLastUpdateTimestamp = wxGetLocalTime();
 
-	_LogMsgInfo(_("Updating projects database"));
+	_LogMsgInfo(_("Updating projects database"), false);
 
 	// --- We first have to download the new projects
 	// This part is estimated to be 90% of the total work
@@ -426,7 +426,7 @@ bool ProjectsManager::Update_ParseProjectsFile(wxString const &fileName, Progres
 				}
 				else
 				{
-					_LogMsgWarning(wxString::Format(_("Line %u is not correctly formatted! %s"), i+1, currentLine.c_str()));
+					_LogMsgWarning(wxString::Format(_("Line %u is not correctly formatted! %s"), i+1, currentLine.c_str()), false);
 					//errorOccured = true;
 				}
 			}

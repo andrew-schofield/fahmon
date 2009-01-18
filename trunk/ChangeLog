@@ -26,6 +26,7 @@ SVN
     * Added partial Norwegian translation.
     * Plugged several memory leaks.
     * Significantly reduced CPU usage while reloading.
+    * Message Manager now only logs errors by default.
 
     Windows
 
