@@ -317,11 +317,11 @@ int ListViewClients::CompareClients(wxUint32 clientId1, wxUint32 clientId2) cons
 	// Invalid clients must always be at the end of the list
 	if(keepDeadLast == true)
 	{
-		if(!client1->IsAccessible() || !client1->IsEnabled())
+		if((!client1->IsAccessible() || !client1->IsEnabled()) && (client2->IsAccessible() || client1->IsEnabled()))
 		{
 			return 1;
 		}
-		else if(!client2->IsAccessible() || !client1->IsEnabled())
+		else if((!client2->IsAccessible() || !client1->IsEnabled()) && (client1->IsAccessible() || client1->IsEnabled()))
 		{
 			return -1;
 		}

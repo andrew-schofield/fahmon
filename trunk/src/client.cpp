@@ -97,6 +97,9 @@ void Client::Reset(void)
 	mCredit         = 0;
 	mDeadlineDate   = wxInvalidDateTime;
 	mClientType     = _("Unknown");
+	mRun            = 0;
+	mClone          = 0;
+	mGen            = 0;
 
 	mETA.Invalidate();
 }
@@ -610,6 +613,7 @@ void Client::ComputeETA(WorkUnitFrame* lastFrame)
 	// If we don't have a valid project id or the client is stopped, there is no ETA
 	if(mProjectId == INVALID_PROJECT_ID || mProjectId == 0 || (lastFrame && lastFrame->ClientIsStopped()))
 	{
+		mETA.SetLeftTimeInMinutes(0);
 		return;
 	}
 
@@ -638,6 +642,7 @@ void Client::ComputeETA(WorkUnitFrame* lastFrame)
 	else
 	{
 		// If we really have no clue about the total number of frames, we cannot tell anything about the ETA
+		mETA.SetLeftTimeInMinutes(0);
 		return;
 	}
 
@@ -737,6 +742,7 @@ void Client::ComputeETA(WorkUnitFrame* lastFrame)
 		//_LogMsgInfo(logLine);
 
 		// No indication on the average duration of a frame, nor on the duration of the last frame, so we cannot do anything
+		mETA.SetLeftTimeInMinutes(0);
 		return;
 	}
 

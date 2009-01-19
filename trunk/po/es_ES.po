@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es_ES\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2009-01-18 01:21+0000\n"
+"POT-Creation-Date: 2009-01-19 00:36+0000\n"
 "PO-Revision-Date: 2008-10-30 00:13+0000\n"
 "Last-Translator: Antonio Lucendo <alt_alm@hotmail.com>\n"
 "Language-Team: Spanish\n"
@@ -195,96 +195,96 @@ msgstr "Anónimo"
 msgid "N/A"
 msgstr "N/A"
 
-#: src/client.cpp:174
+#: src/client.cpp:177
 #, c-format
 msgid "Reloading %s"
 msgstr "Volviendo a cargar %s"
 
-#: src/client.cpp:182
+#: src/client.cpp:185
 #, c-format
 msgid "Directory %s does not exist or cannot be read!"
 msgstr "¡El directorio %s no existe o no se puede leer!"
 
-#: src/client.cpp:194
+#: src/client.cpp:197
 #, c-format
 msgid "Error while reading %sFAHlog.txt!"
 msgstr "¡No se puede leer %sFAHlog.txt!"
 
-#: src/client.cpp:202
+#: src/client.cpp:205
 #, c-format
 msgid "Error while reading %squeue.dat"
 msgstr "¡No se puede leer %squeue.dat!"
 
-#: src/client.cpp:212
+#: src/client.cpp:215
 #, fuzzy, c-format
 msgid "Error while reading %s"
 msgstr "¡No se puede leer %squeue.dat!"
 
-#: src/client.cpp:218
+#: src/client.cpp:221
 #, c-format
 msgid "Error while reading %sunitinfo.txt!"
 msgstr "¡No se puede leer %sunitinfo.txt!"
 
-#: src/client.cpp:416
+#: src/client.cpp:419
 #, fuzzy, c-format
 msgid "Finished Reloading %s"
 msgstr "Volviendo a cargar %s"
 
-#: src/client.cpp:470
+#: src/client.cpp:473
 #, c-format
 msgid "The progress value in file %s could not be found/parsed"
 msgstr "No se pudo encontrar el valor de progreso en el archivo %s"
 
-#: src/client.cpp:517
+#: src/client.cpp:520
 #, fuzzy, c-format
 msgid "The core version in file %s could not be found/parsed"
 msgstr "No se pudo encontrar el valor de progreso en el archivo %s"
 
-#: src/client.cpp:575
+#: src/client.cpp:578
 #, c-format
 msgid "Unable to save %s because it does not exist"
 msgstr "No se puede guardar %s porque no existe"
 
-#: src/client.cpp:582
+#: src/client.cpp:585
 #, c-format
 msgid "Unable to create directory %s"
 msgstr "No se puede crear el directorio %s"
 
-#: src/client.cpp:595
+#: src/client.cpp:598
 #, c-format
 msgid "Unable to copy %s to %s"
 msgstr "No se puede copiar %s en %s"
 
-#: src/client.cpp:619
+#: src/client.cpp:623
 #, c-format
 msgid "%s is on frame %u"
 msgstr "%s va por el cuadro %u"
 
-#: src/client.cpp:623
+#: src/client.cpp:627
 #, c-format
 msgid "Cannot determine frame number for %s (this isn't a problem)"
 msgstr ""
 "No se puede determinar el número del cuadro para %s (no representa un "
 "problema)"
 
-#: src/client.cpp:805
+#: src/client.cpp:811
 #, c-format
 msgid "%s has an unknown state (Unable to find a complete frame)"
 msgstr ""
 "%s está en un estado desconocido (No se puede encontrar un cuadro completo)"
 
-#: src/client.cpp:814
+#: src/client.cpp:820
 #, c-format
 msgid "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
 msgstr ""
 "%s está detenido (Se encontró la línea \"Folding@Home Client Shutdown.\")"
 
-#: src/client.cpp:822
+#: src/client.cpp:828
 #, c-format
 msgid "%s has been paused"
 msgstr ""
 
-#: src/client.cpp:831
+#: src/client.cpp:837
 #, c-format
 msgid ""
 "%s has an unknown state (Unable to extract a valid elapsed time since the "
@@ -293,18 +293,18 @@ msgstr ""
 "%s está en un estado desconocido (No se puede calcular el tiempo "
 "transcurrido desde el último cuadro completado)"
 
-#: src/client.cpp:839
+#: src/client.cpp:845
 #, c-format
 msgid "%s has been marked as having a asynchronous clock."
 msgstr "%s se ha marcado como que tiene un reloj asíncrono."
 
-#: src/client.cpp:874
+#: src/client.cpp:880
 #, c-format
 msgid "%s seems to have hung : Elapsed time is %um and limit is %um"
 msgstr ""
 "%s parece haberse colgado : El tiempo transcurrido es %um y el límite es %um"
 
-#: src/client.cpp:879
+#: src/client.cpp:885
 #, c-format
 msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
 msgstr ""
