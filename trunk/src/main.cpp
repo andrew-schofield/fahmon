@@ -42,6 +42,7 @@
 #include "wx/filename.h"
 #include "wx/debugrpt.h"
 #include "wx/cmdline.h"
+#include "wx/socket.h"
 
 #include "locale.h"
 
@@ -77,6 +78,8 @@ bool FahMonApp::OnInit(void)
 
     // call this to tell the library to call our OnFatalException()
 	wxHandleFatalExceptions();
+
+	wxSocketBase::Initialize();
 
 	wxCmdLineParser cmdline(FahMonApp::argc, FahMonApp::argv);
 

@@ -37,7 +37,7 @@
 #define BUFFER_SIZE 1024
 
 
-HTTPDownloader::DownloadStatus HTTPDownloader::DownloadFile(wxString const &host, wxUint32 port, wxString const &resource, wxString& localFileName, ProgressManager& progressManager)
+HTTPDownloader::DownloadStatus HTTPDownloader::DownloadFile(wxString const &host, wxUint32 port, wxString const &resource, wxString& localFileName, ProgressManager& progressManager, wxInt32 byteRange)
 {
 	bool                isUsingProxy;
 	bool                proxyNeedsAuthentication;
@@ -53,6 +53,7 @@ HTTPDownloader::DownloadStatus HTTPDownloader::DownloadFile(wxString const &host
 	wxString            proxyPassword;
 	wxString            request;
 	wxString            base64ProxyAuthentication;
+	wxString            range;
 	wxLongLong          startingTime;
 	wxLongLong          elapsedTime;
 	wxIPV4address       serverAddress;
@@ -67,6 +68,19 @@ HTTPDownloader::DownloadStatus HTTPDownloader::DownloadFile(wxString const &host
 	_PrefsGetBool        (PREF_HTTPDOWNLOADER_USE_PROXY_AUTHENTICATION,   proxyNeedsAuthentication);
 	_PrefsGetString      (PREF_HTTPDOWNLOADER_PROXY_USERNAME,             proxyUsername);
 	_PrefsGetHiddenString(PREF_HTTPDOWNLOADER_PROXY_PASSWORD,             proxyPassword);
+
+	if(byteRange == 0)
+	{
+		range = wxT("");
+	}
+	else if(byteRange > 0)
+	{
+		range = wxString::Format(wxT("Range: bytes=0-%i"), byteRange-1);
+	}
+	else
+	{
+		range = wxString::Format(wxT("Range: bytes=%i"), byteRange);
+	}
 
 	// --- Create a temporary local file and try to open it
 	localFileName = wxFileName::CreateTempFileName(_T(FMC_APPNAME));
@@ -89,11 +103,11 @@ HTTPDownloader::DownloadStatus HTTPDownloader::DownloadFile(wxString const &host
 		if(proxyNeedsAuthentication == true)
 		{
 			base64ProxyAuthentication = Base64Codec::Encode(wxString::Format(_T("%s:%s"), proxyUsername.c_str(), proxyPassword.c_str()));
-			request                   = wxString::Format(_T("GET http://%s:%u/%s HTTP/1.0\nHost: %s\nProxy-Authorization: Basic %s\nUser-Agent: %s/%s\n\n"), host.c_str(), port, resource.c_str(), host.c_str(), base64ProxyAuthentication.c_str(), _T(FMC_APPNAME), _T(FMC_VERSION));
+			request                   = wxString::Format(_T("GET http://%s:%u/%s HTTP/1.1\nHost: %s\nProxy-Authorization: Basic %s\nUser-Agent: %s/%s\n%s\n\n"), host.c_str(), port, resource.c_str(), host.c_str(), base64ProxyAuthentication.c_str(), _T(FMC_APPNAME), _T(FMC_VERSION), range.c_str());
 		}
 		else
 		{
-			request = wxString::Format(_T("GET http://%s:%u/%s HTTP/1.0\nHost: %s\nUser-Agent: %s/%s\n\n"), host.c_str(), port, resource.c_str(), host.c_str(), _T(FMC_APPNAME), _T(FMC_VERSION));
+			request = wxString::Format(_T("GET http://%s:%u/%s HTTP/1.1\nHost: %s\nUser-Agent: %s/%s\n%S\n\n"), host.c_str(), port, resource.c_str(), host.c_str(), _T(FMC_APPNAME), _T(FMC_VERSION), range.c_str());
 		}
 
 		serverAddress.Hostname(proxyAddress);
@@ -101,7 +115,7 @@ HTTPDownloader::DownloadStatus HTTPDownloader::DownloadFile(wxString const &host
 	}
 	else
 	{
-		request = wxString::Format(_T("GET /%s HTTP/1.0\nHost: %s\nUser-Agent: %s/%s\n\n"), resource.c_str(), host.c_str(), _T(FMC_APPNAME), _T(FMC_VERSION));
+		request = wxString::Format(_T("GET /%s HTTP/1.1\nHost: %s\nUser-Agent: %s/%s\n%s\n\n"), resource.c_str(), host.c_str(), _T(FMC_APPNAME), _T(FMC_VERSION), range.c_str());
 		serverAddress.Hostname(host);
 		serverAddress.Service(port);
 	}
@@ -229,7 +243,7 @@ wxUint32 HTTPDownloader::ExtractContentSize(wxByte* buffer, wxUint32 bufferSize)
 }
 
 
-HTTPDownloader::DownloadStatus HTTPDownloader::Url(wxString const &url, wxString& localFileName, ProgressManager& progressManager)
+HTTPDownloader::DownloadStatus HTTPDownloader::Url(wxString const &url, wxString& localFileName, ProgressManager& progressManager, wxInt32 byteRange)
 {
 	wxString      tempString;
 	wxInt32       portPosition;
@@ -256,7 +270,7 @@ HTTPDownloader::DownloadStatus HTTPDownloader::Url(wxString const &url, wxString
 		}
 		clientResource = tempString.Mid(fslashPosition +1 , tempString.Length() - fslashPosition);
 		clientPortStr.ToULong(&clientPort);
-		return DownloadFile(clientServer, clientPort, clientResource, localFileName, progressManager);
+		return DownloadFile(clientServer, clientPort, clientResource, localFileName, progressManager, byteRange);
 	}
 	return STATUS_CONNECT_ERROR;
 }

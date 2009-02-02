@@ -25,6 +25,7 @@
 #include "tools.h"
 
 #include "preferencesManager.h"
+#include "multiProtocolFile.h"
 
 #include "wx/textfile.h"
 
@@ -81,10 +82,10 @@ bool Tools::LoadFile(wxString const &filename, wxString& fileContent, wxUint32 l
 {
 	wxMutexLocker lock(mMutexLoadFile);
 
-	if(!wxFile::Exists(filename))
+	if(!multiProtocolFile::FileExists(filename))
 		return false;
 
-	wxFile in(filename, wxFile::read);
+	wxFile in(multiProtocolFile::GetLocalFileName(filename), wxFile::read);
 	length = (length == 0) ? in.Length() : std::min<off_t>(length, in.Length());
 	if(length==0)
 		return false;

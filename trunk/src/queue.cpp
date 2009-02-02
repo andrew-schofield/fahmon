@@ -30,6 +30,7 @@
 #include "messagesManager.h"
 #include "preferencesManager.h"
 #include "mainDialog.h"
+#include "multiProtocolFile.h"
 
 #include "wx/file.h"
 
@@ -73,11 +74,11 @@ bool Queue::LoadQueueFile(wxString const &filename, wxString clientName)
 
 
 	// Try to open the file, check if it exists
-	if(!wxFileExists(filename))
+	if(!multiProtocolFile::FileExists(filename))
 	{
 		return false;
 	}
-	if((fp = fopen(filename.mb_str(), "rb")) == NULL)
+	if((fp = fopen(multiProtocolFile::GetLocalFileName(filename).mb_str(), "rb")) == NULL)
 	{
 		return false;
 	}

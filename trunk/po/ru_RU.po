@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru_RU\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2009-01-19 00:36+0000\n"
+"POT-Creation-Date: 2009-02-02 18:53+0000\n"
 "PO-Revision-Date: 2008-10-30 23:36+0300\n"
 "Last-Translator: Evgeniy aka Behc <tsc.behc@gmail.com>\n"
 "Language-Team: Russian\n"
@@ -165,22 +165,22 @@ msgstr ""
 msgid "Unknown client"
 msgstr "Неизвестный клиент"
 
-#: src/client.cpp:56 src/client.cpp:99 src/core.cpp:142
+#: src/client.cpp:57 src/client.cpp:100 src/core.cpp:142
 #: src/listViewClients.cpp:696 src/listViewClients.cpp:749
 #: src/mainDialog.cpp:506 src/mainDialog.cpp:507 src/mainDialog.cpp:508
 #: src/mainDialog.cpp:509
 msgid "Unknown"
 msgstr "Неизвестный клиент"
 
-#: src/client.cpp:86
+#: src/client.cpp:87
 msgid "Log not loaded!"
 msgstr "Лог не загружен!"
 
-#: src/client.cpp:89
+#: src/client.cpp:90
 msgid "anonymous"
 msgstr "аноним"
 
-#: src/client.cpp:94 src/listViewClients.cpp:773 src/listViewClients.cpp:777
+#: src/client.cpp:95 src/listViewClients.cpp:773 src/listViewClients.cpp:777
 #: src/mainDialog.cpp:474 src/mainDialog.cpp:479 src/mainDialog.cpp:480
 #: src/mainDialog.cpp:481 src/mainDialog.cpp:482 src/mainDialog.cpp:483
 #: src/mainDialog.cpp:573 src/mainDialog.cpp:629 src/webMonitor.cpp:135
@@ -197,93 +197,98 @@ msgstr "аноним"
 msgid "N/A"
 msgstr "Н/А"
 
-#: src/client.cpp:177
+#: src/client.cpp:148
+#, c-format
+msgid "%s cannot be reloaded! (FAHlog.txt does not exist)"
+msgstr ""
+
+#: src/client.cpp:151
 #, c-format
 msgid "Reloading %s"
 msgstr "Обновить %s"
 
-#: src/client.cpp:185
+#: src/client.cpp:159
 #, c-format
 msgid "Directory %s does not exist or cannot be read!"
 msgstr "Папка %s отсутствует или не может быть прочитана!"
 
-#: src/client.cpp:197
+#: src/client.cpp:171
 #, c-format
 msgid "Error while reading %sFAHlog.txt!"
 msgstr "Ошибка чтения %sFAHlog.txt!"
 
-#: src/client.cpp:205
+#: src/client.cpp:179
 #, c-format
 msgid "Error while reading %squeue.dat"
 msgstr "Ошибка чтения %squeue.dat!"
 
-#: src/client.cpp:215
+#: src/client.cpp:189
 #, fuzzy, c-format
 msgid "Error while reading %s"
 msgstr "Ошибка чтения %squeue.dat!"
 
-#: src/client.cpp:221
+#: src/client.cpp:195
 #, c-format
 msgid "Error while reading %sunitinfo.txt!"
 msgstr "Ошибка чтения %sunitinfo.txt!"
 
-#: src/client.cpp:419
+#: src/client.cpp:393
 #, fuzzy, c-format
 msgid "Finished Reloading %s"
 msgstr "Обновить %s"
 
-#: src/client.cpp:473
+#: src/client.cpp:447
 #, c-format
 msgid "The progress value in file %s could not be found/parsed"
 msgstr "Значение прогресса в файле %s не найдено/обработано"
 
-#: src/client.cpp:520
+#: src/client.cpp:494
 #, fuzzy, c-format
 msgid "The core version in file %s could not be found/parsed"
 msgstr "Значение прогресса в файле %s не найдено/обработано"
 
-#: src/client.cpp:578
+#: src/client.cpp:552
 #, c-format
 msgid "Unable to save %s because it does not exist"
 msgstr "Невозможно сохранить %s потому что он не создан."
 
-#: src/client.cpp:585
+#: src/client.cpp:559
 #, c-format
 msgid "Unable to create directory %s"
 msgstr "Невозможно создать папку %s"
 
-#: src/client.cpp:598
+#: src/client.cpp:572
 #, c-format
 msgid "Unable to copy %s to %s"
 msgstr "Невозможно скопировать %s в %s"
 
-#: src/client.cpp:623
+#: src/client.cpp:597
 #, c-format
 msgid "%s is on frame %u"
 msgstr "%s находится на шаге %u"
 
-#: src/client.cpp:627
+#: src/client.cpp:601
 #, c-format
 msgid "Cannot determine frame number for %s (this isn't a problem)"
 msgstr ""
 "Невозможно определить количество шагов для %s (это не является проблемой)"
 
-#: src/client.cpp:811
+#: src/client.cpp:785
 #, c-format
 msgid "%s has an unknown state (Unable to find a complete frame)"
 msgstr "%s неизвестный статус (Невозможно найти законченный шаг)"
 
-#: src/client.cpp:820
+#: src/client.cpp:794
 #, c-format
 msgid "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
 msgstr "%s остановлен (Найдена строка \"Folding@Home Client Shutdown.\" )"
 
-#: src/client.cpp:828
+#: src/client.cpp:802
 #, c-format
 msgid "%s has been paused"
 msgstr "%s приостановлен"
 
-#: src/client.cpp:837
+#: src/client.cpp:811
 #, c-format
 msgid ""
 "%s has an unknown state (Unable to extract a valid elapsed time since the "
@@ -292,17 +297,17 @@ msgstr ""
 "%s имеет неизвестный статус (Невозможно определить время окончания расчетов "
 "по последнему выполненному шагу)"
 
-#: src/client.cpp:845
+#: src/client.cpp:819
 #, c-format
 msgid "%s has been marked as having a asynchronous clock."
 msgstr "%s отмечен как работающих с асинхронной настройкой часов."
 
-#: src/client.cpp:880
+#: src/client.cpp:854
 #, c-format
 msgid "%s seems to have hung : Elapsed time is %um and limit is %um"
 msgstr "%s возможно завис: Время окончания расчета %um и лимит времени %um"
 
-#: src/client.cpp:885
+#: src/client.cpp:859
 #, c-format
 msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
 msgstr ""
@@ -468,12 +473,12 @@ msgid ""
 "The latest version of %s will always be available on the official website:"
 msgstr "Последняя версия %s всегда доступна на официальном сайте:"
 
-#: src/firstTimeDialog.cpp:139 src/main.cpp:207 src/main.cpp:213
+#: src/firstTimeDialog.cpp:139 src/main.cpp:210 src/main.cpp:216
 #, c-format
 msgid "Could not create directory <%s>"
 msgstr "Невозможно создать папку <%s>"
 
-#: src/httpDownloader.cpp:159
+#: src/httpDownloader.cpp:173
 #, c-format
 msgid "%.1f KB/s"
 msgstr "%.1f кБ/с"
@@ -614,12 +619,12 @@ msgstr ""
 "\n"
 "Пожалуйста проверьте правильность параметров менеджера файлов в Настройках"
 
-#: src/main.cpp:125
+#: src/main.cpp:128
 #, c-format
 msgid "Another instance of %s is already running!"
 msgstr "Другая копия %s уже запущена!"
 
-#: src/main.cpp:237
+#: src/main.cpp:240
 #, c-format
 msgid "Old settings imported into %s"
 msgstr ""
@@ -1313,7 +1318,7 @@ msgstr "Линия %u имеет неправильный формат! %s"
 msgid "Update aborted!"
 msgstr "Обновление прервано!"
 
-#: src/tools.cpp:65
+#: src/tools.cpp:66
 msgid ""
 "Unable to launch the default browser.\n"
 "\n"

@@ -34,6 +34,7 @@ EXTRA_DIST = \
 	main.h \
 	messagesFrame.h \
 	messagesManager.h \
+	multiProtocolFile.h \
 	queue.h \
 	pathManager.h \
 	preference.h \

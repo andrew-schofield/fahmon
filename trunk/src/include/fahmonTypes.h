@@ -61,4 +61,9 @@ typedef wxUint16 WuCredit;
 typedef wxByte PrefType;
 
 
+// --- Type of file protocol (file, http)
+typedef wxByte FileProtocol;
+#define MAX_PROTOCOL_ID
+
+
 #endif /* _FAHMONTYPES_H */

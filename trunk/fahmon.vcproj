@@ -287,6 +287,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\src\include\multiFileProtocol.h"
+				>
+			</File>
+			<File
 				RelativePath=".\src\include\pathManager.h"
 				>
 			</File>
@@ -456,6 +460,9 @@
 			</File>
 			<File
 				RelativePath=".\src\messagesManager.cpp"
+				>
+			<File
+				RelativePath=".\src\multiFileProtocol.cpp"
 				>
 			</File>
 			<File
