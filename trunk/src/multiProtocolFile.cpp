@@ -386,7 +386,7 @@ wxString multiProtocolFile::GetHTTPHeader(wxSocketClient& socket, wxString heade
 		{
 			wxString token = tkz.GetNextToken();
 
-			if(token.BeforeFirst(':').Strip(wxString::both) == header);
+			if(token.BeforeFirst(':').Strip(wxString::both) == header)
 				return token.AfterFirst(':').Strip(wxString::both);
 		}
 	}
