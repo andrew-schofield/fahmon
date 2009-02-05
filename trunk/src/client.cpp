@@ -72,7 +72,7 @@ void Client::SetLocation(const wxString& location)
 
 	// Ensure that the location ends with a slash
 #ifdef _FAHMON_WIN32_
-	if(multiProtocolFile::GetFileProtocol(location) != HTTP && multiProtocolFile::GetFileProtocol(location) != FTP)
+	if(multiProtocolFile::GetFileProtocol(location) != multiProtocolFile::HTTP && multiProtocolFile::GetFileProtocol(location) != multiProtocolFile::FTP)
 	{
 		mLocation.Replace(_T("/"), _T("\\"));
 		if(mLocation.Last() != '\\')
@@ -188,7 +188,7 @@ void Client::Reload(void)
 	}
 	wxString logFilePath;
 #ifdef _FAHMON_WIN32_
-	if(multiProtocolFile::GetFileProtocol(mLocation) != HTTP && multiProtocolFile::GetFileProtocol(mLocation) != FTP)
+	if(multiProtocolFile::GetFileProtocol(mLocation) != multiProtocolFile::HTTP && multiProtocolFile::GetFileProtocol(mLocation) != multiProtocolFile::FTP)
 		logFilePath = wxString::Format(_T("%swork\\logfile_%02i.txt"), mLocation.c_str(), mUnitIndex);
 	else
 		logFilePath = wxString::Format(_T("%swork/logfile_%02i.txt"), mLocation.c_str(), mUnitIndex);
@@ -550,7 +550,7 @@ void Client::SaveXYZFile(void) const
 
 	// Cosmetic issue so Windows users see the \ they expect
 #ifdef _FAHMON_WIN32_
-	if(multiProtocolFile::GetFileProtocol(mLocation) != HTTP && multiProtocolFile::GetFileProtocol(mLocation) != FTP)
+	if(multiProtocolFile::GetFileProtocol(mLocation) != multiProtocolFile::HTTP && multiProtocolFile::GetFileProtocol(mLocation) != multiProtocolFile::FTP)
 		xyzInFile  = mLocation + _T("work\\current.xyz");
 	else
 		xyzInFile  = mLocation + _T("work/current.xyz");

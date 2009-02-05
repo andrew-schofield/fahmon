@@ -1125,7 +1125,7 @@ void ListViewClients::ShowClientFiles()
 
 	#ifdef _FAHMON_WIN32_
 		// Converts / to \ in filepaths so Windows can use them correctly
-	if(multiProtocolFile::GetFileProtocol(ClientLocation) != HTTP && multiProtocolFile::GetFileProtocol(ClientLocation) != FTP)
+	if(multiProtocolFile::GetFileProtocol(ClientLocation) != multiProtocolFile::HTTP && multiProtocolFile::GetFileProtocol(ClientLocation) != multiProtocolFile::FTP)
 			ClientLocation.Replace(_T("/"), _T("\\"), true);
 	#endif
 
