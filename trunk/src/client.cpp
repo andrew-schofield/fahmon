@@ -72,9 +72,17 @@ void Client::SetLocation(const wxString& location)
 
 	// Ensure that the location ends with a slash
 #ifdef _FAHMON_WIN32_
-	mLocation.Replace(_T("/"), _T("\\"));
-	if(mLocation.Last() != '\\')
-		mLocation += '\\';
+	if(multiProtocolFile::GetFileProtocol(location) == FILE)
+	{
+		mLocation.Replace(_T("/"), _T("\\"));
+		if(mLocation.Last() != '\\')
+			mLocation += '\\';
+	}
+	else
+	{
+		if(mLocation.Last() != '/')
+			mLocation += '/';
+	}
 #else
 	if(mLocation.Last() != '/')
 		mLocation += '/';
@@ -180,7 +188,10 @@ void Client::Reload(void)
 	}
 	wxString logFilePath;
 #ifdef _FAHMON_WIN32_
-	logFilePath = wxString::Format(_T("%swork\\logfile_%02i.txt"), mLocation.c_str(), mUnitIndex);
+	if(multiProtocolFile::GetFileProtocol(mLocation) == FILE)
+		logFilePath = wxString::Format(_T("%swork\\logfile_%02i.txt"), mLocation.c_str(), mUnitIndex);
+	else
+		logFilePath = wxString::Format(_T("%swork/logfile_%02i.txt"), mLocation.c_str(), mUnitIndex);
 #else
 	logFilePath = wxString::Format(_T("%swork/logfile_%02i.txt"), mLocation.c_str(), mUnitIndex);
 #endif
@@ -539,7 +550,10 @@ void Client::SaveXYZFile(void) const
 
 	// Cosmetic issue so Windows users see the \ they expect
 #ifdef _FAHMON_WIN32_
-	xyzInFile  = mLocation + _T("work\\current.xyz");
+	if(multiProtocolFile::GetFileProtocol(mLocation) == FILE)
+		xyzInFile  = mLocation + _T("work\\current.xyz");
+	else
+		xyzInFile  = mLocation + _T("work/current.xyz");
 #else
 	xyzInFile  = mLocation + _T("work/current.xyz");
 #endif

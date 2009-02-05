@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru_RU\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2009-02-02 18:53+0000\n"
+"POT-Creation-Date: 2009-02-05 09:09+0000\n"
 "PO-Revision-Date: 2008-10-30 23:36+0300\n"
 "Last-Translator: Evgeniy aka Behc <tsc.behc@gmail.com>\n"
 "Language-Team: Russian\n"
@@ -61,92 +61,92 @@ msgstr "Лицензия:"
 msgid "Library:"
 msgstr "Библиотека:"
 
-#: src/benchmarksDialog.cpp:63 src/trayManager.cpp:173
+#: src/benchmarksDialog.cpp:64 src/trayManager.cpp:173
 msgid "Benchmarks"
 msgstr "Производительность"
 
-#: src/benchmarksDialog.cpp:89
+#: src/benchmarksDialog.cpp:90
 msgid "Projects"
 msgstr "Задание"
 
-#: src/benchmarksDialog.cpp:250
+#: src/benchmarksDialog.cpp:251
 msgid "No benchmarks for this project!"
 msgstr "Нет производительности для этого задания!"
 
-#: src/benchmarksDialog.cpp:260
+#: src/benchmarksDialog.cpp:261
 #, c-format
 msgid "Project : %u\n"
 msgstr "Задание : %u\n"
 
-#: src/benchmarksDialog.cpp:261
+#: src/benchmarksDialog.cpp:262
 #, c-format
 msgid "Core    : %s\n"
 msgstr "Ядро    : %s\n"
 
-#: src/benchmarksDialog.cpp:262
+#: src/benchmarksDialog.cpp:263
 #, c-format
 msgid "Frames  : %u\n"
 msgstr "Фреймы  : %u\n"
 
-#: src/benchmarksDialog.cpp:263
+#: src/benchmarksDialog.cpp:264
 #, c-format
 msgid "Credit  : %u\n"
 msgstr "Очки    : %u\n"
 
-#: src/benchmarksDialog.cpp:267
+#: src/benchmarksDialog.cpp:268
 #, c-format
 msgid "Project : %u (Unknown)\n"
 msgstr "Задание : %u (Unknown)\n"
 
-#: src/benchmarksDialog.cpp:293
+#: src/benchmarksDialog.cpp:295
 #, c-format
 msgid "Min. Time / Frame : %s"
 msgstr "Мин. Время / Шаг : %s"
 
-#: src/benchmarksDialog.cpp:299 src/benchmarksDialog.cpp:320
-#: src/benchmarksDialog.cpp:345 src/benchmarksDialog.cpp:347
-#: src/benchmarksDialog.cpp:349
+#: src/benchmarksDialog.cpp:301 src/benchmarksDialog.cpp:322
+#: src/benchmarksDialog.cpp:347 src/benchmarksDialog.cpp:349
+#: src/benchmarksDialog.cpp:351
 #, c-format
 msgid " - %.2f ppd"
 msgstr " - %.2f ppd"
 
-#: src/benchmarksDialog.cpp:304
+#: src/benchmarksDialog.cpp:306
 msgid "No Min. Time / Frame"
 msgstr "Нет мин. времени / Шаг"
 
-#: src/benchmarksDialog.cpp:314
+#: src/benchmarksDialog.cpp:316
 #, c-format
 msgid "Avg. Time / Frame : %s"
 msgstr "Среднее время / Шаг : %s"
 
-#: src/benchmarksDialog.cpp:325
+#: src/benchmarksDialog.cpp:327
 msgid "No Avg. Time / Frame"
 msgstr "Нет среднего времени / Шаг"
 
-#: src/benchmarksDialog.cpp:337
+#: src/benchmarksDialog.cpp:339
 #, c-format
 msgid "Cur. Time / Frame : %s"
 msgstr "Текущее время / Шаг : %s"
 
-#: src/benchmarksDialog.cpp:338
+#: src/benchmarksDialog.cpp:340
 #, c-format
 msgid "R3F. Time / Frame : %s"
 msgstr "П3Ш. Время / Шаг : %s"
 
-#: src/benchmarksDialog.cpp:339
+#: src/benchmarksDialog.cpp:341
 #, c-format
 msgid "Eff. Time / Frame : %s"
 msgstr "Эфф. Время / Шаг : %s"
 
-#: src/benchmarksDialog.cpp:354
+#: src/benchmarksDialog.cpp:356
 msgid "No Cur. Time / Frame"
 msgstr "Нет текущего времени / Шага"
 
-#: src/benchmarksDialog.cpp:355
+#: src/benchmarksDialog.cpp:357
 msgid "No R3F. Time / Frame"
 msgstr "Нет П3Ш Времени / Шага"
 
-#: src/benchmarksDialog.cpp:356
+#: src/benchmarksDialog.cpp:358
 msgid "No Eff. Time / Frame"
 msgstr "Нет Эфф. Времени / Шага"
 
@@ -165,22 +165,22 @@ msgstr ""
 msgid "Unknown client"
 msgstr "Неизвестный клиент"
 
-#: src/client.cpp:57 src/client.cpp:100 src/core.cpp:142
+#: src/client.cpp:57 src/client.cpp:108 src/core.cpp:142
 #: src/listViewClients.cpp:696 src/listViewClients.cpp:749
 #: src/mainDialog.cpp:506 src/mainDialog.cpp:507 src/mainDialog.cpp:508
 #: src/mainDialog.cpp:509
 msgid "Unknown"
 msgstr "Неизвестный клиент"
 
-#: src/client.cpp:87
+#: src/client.cpp:95
 msgid "Log not loaded!"
 msgstr "Лог не загружен!"
 
-#: src/client.cpp:90
+#: src/client.cpp:98
 msgid "anonymous"
 msgstr "аноним"
 
-#: src/client.cpp:95 src/listViewClients.cpp:773 src/listViewClients.cpp:777
+#: src/client.cpp:103 src/listViewClients.cpp:773 src/listViewClients.cpp:777
 #: src/mainDialog.cpp:474 src/mainDialog.cpp:479 src/mainDialog.cpp:480
 #: src/mainDialog.cpp:481 src/mainDialog.cpp:482 src/mainDialog.cpp:483
 #: src/mainDialog.cpp:573 src/mainDialog.cpp:629 src/webMonitor.cpp:135
@@ -197,98 +197,98 @@ msgstr "аноним"
 msgid "N/A"
 msgstr "Н/А"
 
-#: src/client.cpp:148
+#: src/client.cpp:156
 #, c-format
 msgid "%s cannot be reloaded! (FAHlog.txt does not exist)"
 msgstr ""
 
-#: src/client.cpp:151
+#: src/client.cpp:159
 #, c-format
 msgid "Reloading %s"
 msgstr "Обновить %s"
 
-#: src/client.cpp:159
+#: src/client.cpp:167
 #, c-format
 msgid "Directory %s does not exist or cannot be read!"
 msgstr "Папка %s отсутствует или не может быть прочитана!"
 
-#: src/client.cpp:171
+#: src/client.cpp:179
 #, c-format
 msgid "Error while reading %sFAHlog.txt!"
 msgstr "Ошибка чтения %sFAHlog.txt!"
 
-#: src/client.cpp:179
+#: src/client.cpp:187
 #, c-format
 msgid "Error while reading %squeue.dat"
 msgstr "Ошибка чтения %squeue.dat!"
 
-#: src/client.cpp:189
+#: src/client.cpp:200
 #, fuzzy, c-format
 msgid "Error while reading %s"
 msgstr "Ошибка чтения %squeue.dat!"
 
-#: src/client.cpp:195
+#: src/client.cpp:206
 #, c-format
 msgid "Error while reading %sunitinfo.txt!"
 msgstr "Ошибка чтения %sunitinfo.txt!"
 
-#: src/client.cpp:393
+#: src/client.cpp:404
 #, fuzzy, c-format
 msgid "Finished Reloading %s"
 msgstr "Обновить %s"
 
-#: src/client.cpp:447
+#: src/client.cpp:458
 #, c-format
 msgid "The progress value in file %s could not be found/parsed"
 msgstr "Значение прогресса в файле %s не найдено/обработано"
 
-#: src/client.cpp:494
+#: src/client.cpp:505
 #, fuzzy, c-format
 msgid "The core version in file %s could not be found/parsed"
 msgstr "Значение прогресса в файле %s не найдено/обработано"
 
-#: src/client.cpp:552
+#: src/client.cpp:566
 #, c-format
 msgid "Unable to save %s because it does not exist"
 msgstr "Невозможно сохранить %s потому что он не создан."
 
-#: src/client.cpp:559
+#: src/client.cpp:573
 #, c-format
 msgid "Unable to create directory %s"
 msgstr "Невозможно создать папку %s"
 
-#: src/client.cpp:572
+#: src/client.cpp:586
 #, c-format
 msgid "Unable to copy %s to %s"
 msgstr "Невозможно скопировать %s в %s"
 
-#: src/client.cpp:597
+#: src/client.cpp:611
 #, c-format
 msgid "%s is on frame %u"
 msgstr "%s находится на шаге %u"
 
-#: src/client.cpp:601
+#: src/client.cpp:615
 #, c-format
 msgid "Cannot determine frame number for %s (this isn't a problem)"
 msgstr ""
 "Невозможно определить количество шагов для %s (это не является проблемой)"
 
-#: src/client.cpp:785
+#: src/client.cpp:799
 #, c-format
 msgid "%s has an unknown state (Unable to find a complete frame)"
 msgstr "%s неизвестный статус (Невозможно найти законченный шаг)"
 
-#: src/client.cpp:794
+#: src/client.cpp:808
 #, c-format
 msgid "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
 msgstr "%s остановлен (Найдена строка \"Folding@Home Client Shutdown.\" )"
 
-#: src/client.cpp:802
+#: src/client.cpp:816
 #, c-format
 msgid "%s has been paused"
 msgstr "%s приостановлен"
 
-#: src/client.cpp:811
+#: src/client.cpp:825
 #, c-format
 msgid ""
 "%s has an unknown state (Unable to extract a valid elapsed time since the "
@@ -297,17 +297,17 @@ msgstr ""
 "%s имеет неизвестный статус (Невозможно определить время окончания расчетов "
 "по последнему выполненному шагу)"
 
-#: src/client.cpp:819
+#: src/client.cpp:833
 #, c-format
 msgid "%s has been marked as having a asynchronous clock."
 msgstr "%s отмечен как работающих с асинхронной настройкой часов."
 
-#: src/client.cpp:854
+#: src/client.cpp:868
 #, c-format
 msgid "%s seems to have hung : Elapsed time is %um and limit is %um"
 msgstr "%s возможно завис: Время окончания расчета %um и лимит времени %um"
 
-#: src/client.cpp:859
+#: src/client.cpp:873
 #, c-format
 msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
 msgstr ""
@@ -609,7 +609,7 @@ msgstr "Добавить этого клиента"
 msgid "Do you really want to delete this client?"
 msgstr "Вы действительно хотите удалить этого клиента?"
 
-#: src/listViewClients.cpp:1133
+#: src/listViewClients.cpp:1134
 msgid ""
 "Unable to launch the default filemanager.\n"
 "\n"

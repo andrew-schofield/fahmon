@@ -1124,7 +1124,8 @@ void ListViewClients::ShowClientFiles()
 
 	#ifdef _FAHMON_WIN32_
 		// Converts / to \ in filepaths so Windows can use them correctly
-		ClientLocation.Replace(_T("/"), _T("\\"), true);
+		if(multiProtocolFile::GetProtocol(ClientLocation) == FILE)
+			ClientLocation.Replace(_T("/"), _T("\\"), true);
 	#endif
 
 	// Not sure why, but this *never* fails
