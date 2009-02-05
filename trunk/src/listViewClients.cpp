@@ -33,6 +33,7 @@
 #include "preferencesManager.h"
 #include "projectsManager.h"
 #include "benchmarksManager.h"
+#include "multiProtocolFile.h"
 
 #include "wx/dir.h"
 #include "wx/filename.h"
@@ -1124,7 +1125,7 @@ void ListViewClients::ShowClientFiles()
 
 	#ifdef _FAHMON_WIN32_
 		// Converts / to \ in filepaths so Windows can use them correctly
-		if(multiProtocolFile::GetProtocol(ClientLocation) == FILE)
+	if(multiProtocolFile::GetFileProtocol(ClientLocation) != HTTP && multiProtocolFile::GetFileProtocol(ClientLocation) != FTP)
 			ClientLocation.Replace(_T("/"), _T("\\"), true);
 	#endif
 

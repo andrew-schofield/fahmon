@@ -50,8 +50,9 @@ class multiProtocolFile
 		static wxString GetLocalFileName(const wxString& fileName);
 
 		static bool CopyFile(const wxString& inFile, const wxString& outFile);
-	private:
+
 		static FileProtocol GetFileProtocol(const wxString& fileName);
+	private:
 
 		static bool SetHTTPConnection(wxSocketClient& socket, wxURI uri, wxInt32 byteRange = 0);
 
