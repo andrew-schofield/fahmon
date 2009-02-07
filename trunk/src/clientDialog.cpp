@@ -189,6 +189,7 @@ int ClientDialog::ShowModal(wxUint32 clientId, wxString filename)
 		// Otherwise, we simply clear the fields
 		mClientNameCtrl->SetValue(_T(""));
 		mClientLocationCtrl->SetValue(filename);
+		mClientVMCtrl->SetValue(false);
 	}
 
 	Center();
