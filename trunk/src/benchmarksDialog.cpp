@@ -72,7 +72,7 @@ BenchmarksDialog::BenchmarksDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY
 
 	// ---
 	mSplitter              = new wxSplitterWindow(this, wxID_ANY);
-	mListOfProjects        = new wxListView(mSplitter, LST_PROJECTS, wxDefaultPosition, wxDefaultSize, wxLC_REPORT | wxLC_SINGLE_SEL);
+	mListOfProjects        = new wxListView(mSplitter, LST_PROJECTS, wxDefaultPosition, wxDefaultSize, wxLC_REPORT | wxLC_SINGLE_SEL | wxLC_HRULES);
 	mBenchmarksInformation = new wxTextCtrl(mSplitter, wxID_ANY, _T(""), wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE | wxTE_READONLY | wxTE_DONTWRAP);
 
 	_PrefsGetUint(PREF_BENCHMARKSDIALOG_SASHPOSITION, sashPosition);
@@ -189,16 +189,6 @@ void BenchmarksDialog::PopulateProjectsList(ProjectId projectIdToSelect)
 		if(projectsList[i] == projectIdToSelect)
 		{
 			entryToSelect = i;
-		}
-
-		// Give a different color to odd lines
-		if((i&1) != 0)
-		{
-			mListOfProjects->SetItemBackgroundColour(i, FMC_COLOR_LIST_ODD_LINES);
-		}
-		else
-		{
-			mListOfProjects->SetItemBackgroundColour(i, *wxWHITE);
 		}
 	}
 

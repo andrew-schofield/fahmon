@@ -29,6 +29,7 @@ SVN
     * Message Manager now only logs errors by default.
     * Improved sorting of inaccessible or disabled clients.
     * Added support for monitoring clients over http.
+    * Removed "zebra" background colour scheme from benchmarks list.
 
     Windows
 
