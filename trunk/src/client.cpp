@@ -146,6 +146,16 @@ void Client::Reload(void)
 	wxUint32          frameCount;
 	wxUint32          frameTime;
 
+	// The directory must exist, otherwise we can't do anything
+	// If it doesn't exist, display an explicit message in the log part of the window
+	if(!multiProtocolFile::DirExists(mLocation))
+	{
+		mLog = wxString::Format(_("Directory %s does not exist or cannot be read!"), mLocation.c_str());
+		mState = ST_INACCESSIBLE;
+		_LogMsgError(mLog);
+		return;
+	}
+
 	if (multiProtocolFile::FileExists(mLocation + _T("FAHlog.txt")))
 	{
 		mLastModification = multiProtocolFile::LastModification(mLocation + _T("FAHlog.txt"));
@@ -159,19 +169,6 @@ void Client::Reload(void)
 	_LogMsgInfo(wxString::Format(_("Reloading %s"), mName.c_str()), false);
 
 	Reset();
-
-	// The directory must exist, otherwise we can't do anything
-	// If it doesn't exist, display an explicit message in the log part of the window
-	if(!multiProtocolFile::DirExists(mLocation))
-	{
-		mLog = wxString::Format(_("Directory %s does not exist or cannot be read!"), mLocation.c_str());
-		_LogMsgError(mLog);
-		return;
-	}
-	else
-	{
-		mState = ST_STOPPED;
-	}
 
 	// Try to load the log file of the client
 	if(!LoadLogFile(mLocation + _T("FAHlog.txt")))
@@ -493,7 +490,7 @@ bool Client::LoadWULogFile(wxString const &filename)
 
 	setlocale(LC_NUMERIC, locOld);
 
-	// We only succeed if we have found the progress value
+	// We only succeed if we have found the version value
 	if(versionOk)
 	{
 		return true;
