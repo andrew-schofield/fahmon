@@ -51,7 +51,8 @@ bool multiProtocolFile::FileExists(const wxString& fileName)
 			wxURI uri(fileName);
 			wxSocketClient socket;
 			socket.SetFlags(wxSOCKET_NOWAIT);
-			SetHTTPConnection(socket, uri);
+			if(!SetHTTPConnection(socket, uri))
+				return false;
 			switch(GetHTTPResponseCode(socket))
 			{
 				case 200:
@@ -119,7 +120,8 @@ time_t multiProtocolFile::LastModification(const wxString& fileName)
 			socket.SetFlags(wxSOCKET_NOWAIT);
 			wxString lastMod;
 			wxDateTime lastModTime;
-			SetHTTPConnection(socket, uri);
+			if(!SetHTTPConnection(socket, uri))
+				return false;
 			lastMod = GetHTTPHeader(socket, wxT("Last-Modified"));
 			lastModTime.ParseDateTime(lastMod);
 			socket.Close();
@@ -148,7 +150,8 @@ bool multiProtocolFile::DirExists(const wxString& dirName)
 			wxURI uri(dirName);
 			wxSocketClient socket;
 			socket.SetFlags(wxSOCKET_NOWAIT);
-			SetHTTPConnection(socket, uri);
+			if(!SetHTTPConnection(socket, uri))
+				return false;
 			switch(GetHTTPResponseCode(socket))
 			{
 				case 200:
@@ -224,7 +227,11 @@ wxString multiProtocolFile::GetLocalFileName(const wxString& fileName)
 			wxURI uri(fileName);
 			wxSocketClient socket;
 			socket.SetFlags(wxSOCKET_NOWAIT);
-			SetHTTPConnection(socket, uri);
+			if(!SetHTTPConnection(socket, uri))
+			{
+				fn = wxT("");
+				break;
+			}
 			fn =  GetFile(socket);
 			socket.Close();
 			break;
