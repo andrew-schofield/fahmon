@@ -109,6 +109,7 @@ class HTTPDownloader
 		 * @param resource location of file on host
 		 * @param localFileName Location to download file to
 		 * @param progressManager The progressManager object
+		 * @param byteRange How much of the file should be downloaded. 0 = all, positive = from start, negative = from end.
 		 * @return A download status object.
 		 **/
 		static DownloadStatus DownloadFile(wxString const &host, wxUint32 port, wxString const &resource, wxString& localFileName, ProgressManager& progressManager, wxInt32 byteRange = 0);
@@ -119,6 +120,7 @@ class HTTPDownloader
 		 * @param url The real url like 'http://fah-web.stanford.edu/psummary.html'
 		 * @param localFileName Location to download file to
 		 * @param progressManager The progressManager object
+		 * @param byteRange How much of the file should be downloaded. 0 = all, positive = from start, negative = from end.
 		 * @return A download status object.
 		 **/
 		static DownloadStatus Url(wxString const &url, wxString& localFileName, ProgressManager& progressManager, wxInt32 byteRange = 0);

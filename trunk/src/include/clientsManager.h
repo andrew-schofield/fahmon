@@ -103,6 +103,7 @@ public:
 	 * @param clientId The Id of the client to edit.
 	 * @param name The edited name for the client.
 	 * @param location The edited location for the client.
+	 * @param VM Is client in a virtual machine
 	 **/
 	void Edit(wxUint32 clientId, wxString const &name, wxString const &location, bool VM);
 
@@ -118,6 +119,7 @@ public:
 	 * @param location The client location.
 	 * @param enabled Is client enabled
 	 * @return The clientId of the added client.
+	 * @param VM Is client in a virtual machine
 	 **/
 	wxUint32 Add(wxString const &name, wxString const &location, bool enabled, bool VM);
 

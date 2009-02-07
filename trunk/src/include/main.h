@@ -26,7 +26,7 @@
  * \mainpage FahMon
  * \section Overview
  * FahMon is an open-source tool (GPL license) that allows you to quickly check the
- * progress of your Folding@Home client (or clients if you have multiple), avoiding
+ * progress of your Folding\@Home client (or clients if you have multiple), avoiding
  * you having to open different files and/or to go to the Internet (for example to know
  * how much your current work unit is worth). Other monitoring tools exist (such as
  * Electron Microscope or FahLogStats), so if you don't like FahMon, have a look at them!
@@ -41,8 +41,8 @@
  * - Work units benchmarking
  * - Exists for both Linux & Windows
  * \section Details
- * FahMon is a multi-platform application for monitoring the various Folding@home clients.
- * It is capable of monitoring all the current Folding@home clients with the only exception
+ * FahMon is a multi-platform application for monitoring the various Folding\@home clients.
+ * It is capable of monitoring all the current Folding\@home clients with the only exception
  * being the PS3 client which can't export the data required by FahMon to monitor it.
  *
  * Monitoring multiple machines is easy with FahMon too. You can monitor clients that are

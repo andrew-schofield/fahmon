@@ -67,8 +67,8 @@ public:
 class SerialClientHelperThread : public wxThread
 {
 protected:
-	wxUint32 mClientCount;
-	bool mForce;
+	wxUint32 mClientCount; /**< Total number of clients */
+	bool mForce; /**< Force reloading of client even if not necessary */
 
 	/**
 	 * This is the entry point of the thread, where the client is reloaded.
@@ -79,6 +79,8 @@ protected:
 public:
 	/**
 	 * Constructor.
+	 * @param clientCount Number of clients in list.
+	 * @param force Force reloading of all clients.
 	 **/
 	SerialClientHelperThread(wxUint32 clientCount, bool force);
 };

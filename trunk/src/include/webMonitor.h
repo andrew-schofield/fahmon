@@ -134,7 +134,7 @@ private:
 	/**
 	 * Template decoder.
 	 * This method takes template code and returns the decoded string.
-	 * @param templateCode The template to decode, like '@NAME@'
+	 * @param templateCode The template to decode, like '\@NAME\@'
 	 * @param clientId The client Id to which the decoded text applies
 	 * @return The decoded template
 	 **/

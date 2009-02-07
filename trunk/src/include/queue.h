@@ -27,7 +27,7 @@
  * \file queue.h
  * Structural definition of queue.dat.
  * This file contains the structures and conversion routines to allow access to
- * all elements of a Folding@home or Genome@home queue.dat
+ * all elements of a Folding\@home or Genome\@home queue.dat
  * In FahMon, only the PRCG, issue date, username and teamname are used for anything
  * useful.
  * \author Andrew Schofield
@@ -141,7 +141,7 @@ protected:
 					char clone[2];    /**< 212 Clone (LE) */
 					char gen[2];      /**< 214 Generation (LE) */
 					char issue[2][4]; /**< 216 WU issue time (LE) */
-				} f; /**< Folding@home data */
+				} f; /**< Folding\@home data */
 				struct
 				{
 					char proj[2];     /**< 208 Project number (LE) */
@@ -149,7 +149,7 @@ protected:
 					char issue[2][4]; /**< 212 WU issue time (LE) */
 					u16  miscg2;      /**< 220 Miscg2 */
 					u16  miscg3;      /**< 222 Miscg3 */
-				} g; /**< Genome@home data */
+				} g; /**< Genome\@home data */
 			} wuid; /**< 208 Work unit ID information */
 			char z224[36];
 			char mid[4];      /**< 260 Machine ID (LE) */

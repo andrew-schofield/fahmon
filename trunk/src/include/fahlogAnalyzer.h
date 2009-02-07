@@ -45,7 +45,7 @@ protected:
 		LLT_COMPLETED, /**< [10:36:18] Completed 770000 out of 1000000 steps  (77%) */
 		LLT_FINISHED, /**< [13:25:00] Finished a frame (1) */
 		LLT_EMPTY, /**< An empty line (excluding the timestamp) */
-		LLT_SHUTDOWN, /**< Folding@Home Client Shutdown. */
+		LLT_SHUTDOWN, /**< Folding\@Home Client Shutdown. */
 		LLT_WU_COMPLETE, /**< A WU has been completed */
 		LLT_WU_STARTED, /**< A WU has been started */
 		LLT_PAUSED, /**< +Paused */
@@ -98,6 +98,7 @@ public:
 	 * [16:38:42] Finished a frame (3) <-+
 	 *
 	 * @param fahlogComplete The FAHlog to analyze
+	 * @param VM Is client in a virtual machine
 	 * @return A WorkUnitFrame object representing the last frame.
 	 **/
 	static WorkUnitFrame* AnalyzeLastFrame(wxString const &fahlogComplete, bool VM);

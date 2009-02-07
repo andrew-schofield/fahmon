@@ -33,6 +33,7 @@
  * Info message macro.
  * Logs an info message.
  * @param msg The message to log
+ * @param force Force message to be logged, even if "log only errors" is enabled
  **/
 #define _LogMsgInfo(msg, force)                                  \
 {                                                                \
@@ -43,6 +44,7 @@
  * Warning message macro.
  * Logs a warning message.
  * @param msg The message to log
+ * @param force Force message to be logged, even if "log only errors" is enabled
  **/
 #define _LogMsgWarning(msg, force)                           \
 {                                                            \
@@ -128,12 +130,14 @@ public:
 	/**
 	 * Log an information message.
 	 * @param msg The message to log.
+	 * @param force Force message to be logged, even if "log only errors" is enabled
 	 **/
 	void LogInformation(const wxString& msg, bool force);
 
 	/**
 	 * Log a warning message.
 	 * @param msg The message to log.
+	 * @param force Force message to be logged, even if "log only errors" is enabled
 	 **/
 	void LogWarning(const wxString& msg, bool force);
 

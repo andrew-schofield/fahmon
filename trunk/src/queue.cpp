@@ -18,7 +18,7 @@
  * \file queue.cpp
  * Structural definition of queue.dat.
  * This file contains the structures and conversion routines to allow access to
- * all elements of a Folding@home or Genome@home queue.dat
+ * all elements of a Folding\@home or Genome\@home queue.dat
  * In FahMon, only the PRCG, download date, username and teamname are used for anything
  * useful.
  * \author Andrew Schofield

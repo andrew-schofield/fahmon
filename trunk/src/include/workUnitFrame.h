@@ -41,7 +41,7 @@
 class WorkUnitFrame
 {
 protected:
-	bool     mClientIsStopped;        /**< true if the message 'Folding@Home Client Shutdown.' was found. In this case, other information is not valid! */
+	bool     mClientIsStopped;        /**< true if the message 'Folding\@Home Client Shutdown.' was found. In this case, other information is not valid! */
 	bool     mClientIsPaused;         /**< true if the message '+paused' was found. */
 	FrameId  mId;                     /**< The ID of the current frame */
 	wxUint32 mDuration;               /**< Duration of current frame in seconds */
@@ -60,6 +60,7 @@ public:
 	 * @param elapsedSeconds Elapsed time since frame was completed in seconds.
 	 * @param effectiveDuration The effective frame time in seconds.
 	 * @param frames The number of "frames" in the current WU.
+	 * @param clientIsPaused Is client paused?
 	 **/
 	WorkUnitFrame(FrameId id = 0, bool clientIsStopped = true, wxUint32 duration = 0, wxUint32 elapsedSeconds = 0, wxUint32 effectiveDuration = 0, wxUint32 frames = 0, bool clientIsPaused = false);
 

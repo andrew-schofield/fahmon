@@ -57,7 +57,7 @@ protected:
 		ST_RUNNING, /**< Client is running */
 		ST_ASYNCH, /** Client is in async state */
 		ST_PAUSED, /** Client is paused */
-		ST_HUNG,
+		ST_HUNG, /** Client is hung */
 	} State;
 
 	static wxMutex mMutexXYZFiles; /**< Access lock for saving xyz files */
@@ -150,6 +150,7 @@ public:
 	 * @param name Client name
 	 * @param location Client location
 	 * @param enabled Is client enabled
+	 * @param VM Is client in a virtual machine
 	 **/
 	Client(wxString const &name, wxString const &location, bool enabled, bool VM);
 
@@ -202,8 +203,16 @@ public:
 	 **/
 	void SetIsFrameCountAccurate(bool isAccurate) {mIsFrameCountAccurate = isAccurate;}
 
+	/**
+	 * Enable or disable the client
+	 * @param value Is client enabled?
+	 **/
 	void Enable(bool value) {mEnabled = value;}
 
+	/**
+	 * Set virtual machine state
+	 * @param value Is client on a virtual machine
+	 **/
 	void SetVM(bool value) {mVM = value;}
 
 	// -- 'Getters' --
