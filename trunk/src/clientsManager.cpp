@@ -206,7 +206,7 @@ void ClientsManager::Save(void)
 	}
 
 	// Write a small header
-	textOS.WriteString(wxString::Format(_("# %s : contains the list of clients\n#\n# \"Name\"\t\"Location\"\tDisabled(*)\n\n"), (PathManager::GetCfgPath() + _T(FMC_FILE_CLIENTS)).c_str()));
+	textOS.WriteString(wxString::Format(_("# %s : contains the list of clients\n#\n# \"Name\"\t\"Location\"\tDisabled(*)\tVM(*)\n\n"), (PathManager::GetCfgPath() + _T(FMC_FILE_CLIENTS)).c_str()));
 
 	// And then each client
 	for(i=0; i<GetCount(); ++i)
