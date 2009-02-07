@@ -77,6 +77,7 @@ enum _CONTROL_ID
 	MID_VIEWCLIENT,
 	MID_TOGGLE_INFOPANEL,
 	MID_CREATE_DEBUG_REPORT,
+	MID_WWWFAHMONIRC,
 
 	// --- ListView
 	LST_CLIENTS
@@ -127,6 +128,7 @@ BEGIN_EVENT_TABLE(MainDialog, wxFrame)
 	EVT_MENU    (MID_WWWFCORG,              MainDialog::OnMenuWeb)
 	EVT_MENU    (MID_WWWPROJECTS,           MainDialog::OnMenuWeb)
 	EVT_MENU    (MID_WWWSERVERS,            MainDialog::OnMenuWeb)
+	EVT_MENU    (MID_WWWFAHMONIRC,          MainDialog::OnMenuWeb)
 	EVT_MENU    (wxID_HELP,                 MainDialog::OnMenuWeb)
 	EVT_MENU    (wxID_ABOUT,                MainDialog::OnMenuAbout)
 	EVT_MENU    (MID_UPDATECHECK,           MainDialog::OnUpdateCheck)
@@ -723,6 +725,7 @@ void MainDialog::CreateMenuBar(void)
 	#else
 	menu->Append(wxID_HELP, _("&Help Contents\tCtrl+?"), _("See help contents"));
 	#endif
+	menu->Append(MID_WWWFAHMONIRC, _("FahMon &IRC Channel"), _("Join the FahMon IRC channel for online help"));
 	menu->Append(wxID_ABOUT, _("&About"), wxString::Format(_("About %s"), _T(FMC_APPNAME)));
 #ifdef __WXMAC__
 	{
@@ -1103,6 +1106,11 @@ void MainDialog::OnMenuWeb(wxCommandEvent& event)
 		//--
 		case wxID_HELP:
 			Tools::OpenURLInBrowser(_T(FMC_URL_HELP));
+			break;
+
+		//--
+		case MID_WWWFAHMONIRC:
+			Tools::OpenURLInBrowser(_T(FMC_URL_FAHMON_IRC));
 			break;
 
 		//--

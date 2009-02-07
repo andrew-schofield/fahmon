@@ -49,6 +49,7 @@
 #define FMC_URL_QD                "http://linuxminded.nl/?target=software-qd-tools.plc"
 #define FMC_URL_LICENCE           "http://trac.fahmon.net/browser/trunk/COPYING?format=raw"
 #define FMC_URL_WXWIDGETS         "http://www.wxwidgets.org"
+#define FMC_URL_FAHMON_IRC        "http://widget.mibbit.com/?server=irc.freenode.net&channel=%23fahmon"
 
 
 // --- Dates format
