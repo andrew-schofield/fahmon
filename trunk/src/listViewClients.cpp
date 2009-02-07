@@ -594,10 +594,6 @@ void ListViewClients::UpdateClient(wxUint32 clientId)
 	wxString	clientName;
 	const Client *client;
 	wxInt32       timeInMinutes;
-	wxInt32       nbDays;
-	wxInt32       nbHours;
-	wxInt32       nbMinutes;
-	wxString      tempString;
 	wxUint32      deadlineDays;
 	wxDateTime    preferredDeadline;
 	wxDateTime    finalDeadline;
@@ -662,26 +658,7 @@ void ListViewClients::UpdateClient(wxUint32 clientId)
 			//timeDiff = timeNow.Subtract(downloadTime);
 				timeInMinutes = timeNow.Subtract(downloadTime).GetMinutes();
 
-			// Split the left time into days, hours and minutes
-				nbDays    = timeInMinutes / (24 * 60);
-				nbMinutes = timeInMinutes % (24 * 60);
-				nbHours   = nbMinutes / 60;
-				nbMinutes = nbMinutes % 60;
-			// Use a friendly format
-				if(nbDays != 0)
-				{
-					tempString = wxString::Format(_T("%id %02ih %02imn"), nbDays, nbHours, nbMinutes);
-				}
-				else if(nbHours != 0)
-				{
-					tempString = wxString::Format(_T("%ih %02imn"), nbHours, nbMinutes);
-				}
-				else
-				{
-					tempString = wxString::Format(_T("%imn"), nbMinutes);
-				}
-
-				SetItem(clientIndex, LVC_DOWNLOADED, wxString::Format(_("%s ago"), tempString.c_str()));
+				SetItem(clientIndex, LVC_DOWNLOADED, wxString::Format(_("%s ago"), ETA::FormatLeftTime(timeInMinutes).c_str()));
 			}
 			else if (deadlineDays == ETADS_DATE_DAY_MONTH)
 			{
@@ -707,32 +684,13 @@ void ListViewClients::UpdateClient(wxUint32 clientId)
 					timeInMinutes = 0 - timeInMinutes;
 				}
 
-				// Split the left time into days, hours and minutes
-				nbDays    = timeInMinutes / (24 * 60);
-				nbMinutes = timeInMinutes % (24 * 60);
-				nbHours   = nbMinutes / 60;
-				nbMinutes = nbMinutes % 60;
-				// Use a friendly format
-				if(nbDays != 0)
-				{
-					tempString = wxString::Format(_T("%id %02ih %02imn"), nbDays, nbHours, nbMinutes);
-				}
-				else if(nbHours != 0)
-				{
-					tempString = wxString::Format(_T("%ih %02imn"), nbHours, nbMinutes);
-				}
-				else
-				{
-					tempString = wxString::Format(_T("%imn"), nbMinutes);
-				}
-
 				if(timeDiff.GetMinutes() < 0)
 				{
-					SetItem(clientIndex, LVC_DEADLINE, wxString::Format(_("%s ago"), tempString.c_str()));
+					SetItem(clientIndex, LVC_DEADLINE, wxString::Format(_("%s ago"), ETA::FormatLeftTime(timeInMinutes).c_str()));
 				}
 				else
 				{
-					SetItem(clientIndex, LVC_DEADLINE, wxString::Format(_("In %s"), tempString.c_str()));
+					SetItem(clientIndex, LVC_DEADLINE, wxString::Format(_("In %s"), ETA::FormatLeftTime(timeInMinutes).c_str()));
 				}
 
 			}

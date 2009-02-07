@@ -93,14 +93,10 @@ void WebMonitor::WriteApp(void)
 	wxString       webAppLocation;
 	wxString       simpleWebLocation;
 	wxString       simpleTextLocation;
-	wxString       tempString;
 	const Client  *client;
 	const Project *project;
 	wxInt32        timeInMinutes;
 	wxUint32       currentClient, i;
-	wxInt32        nbDays;
-	wxInt32        nbHours;
-	wxInt32        nbMinutes;
 	wxDateTime     preferredDeadline;
 	wxDateTime     finalDeadline;
 	wxDateTime     downloadTime;
@@ -159,26 +155,8 @@ void WebMonitor::WriteApp(void)
 					{
 						timeDiff = timeNow.Subtract(downloadTime);
 						timeInMinutes = timeDiff.GetMinutes();
-					// Split the left time into days, hours and minutes
-						nbDays    = timeInMinutes / (24 * 60);
-						nbMinutes = timeInMinutes % (24 * 60);
-						nbHours   = nbMinutes / 60;
-						nbMinutes = nbMinutes % 60;
-					// Use a friendly format
-						if(nbDays != 0)
-						{
-							tempString = wxString::Format(_T("%id %02ih %02imn"), nbDays, nbHours, nbMinutes);
-						}
-						else if(nbHours != 0)
-						{
-							tempString = wxString::Format(_T("%ih %02imn"), nbHours, nbMinutes);
-						}
-						else
-						{
-							tempString = wxString::Format(_T("%imn"), nbMinutes);
-						}
 
-						mDataArray[currentClient][8] = wxString::Format(_("%s ago"), tempString.c_str());
+						mDataArray[currentClient][8] = wxString::Format(_("%s ago"), ETA::FormatLeftTime(timeInMinutes).c_str());
 						mUpdateDate = wxString::Format(_T("%s"), timeNow.Format(_T("%d %B, %H:%M")).c_str());
 					}
 					else if (deadlineDays == ETADS_DATE_DAY_MONTH)
@@ -234,32 +212,13 @@ void WebMonitor::WriteApp(void)
 								{
 									timeInMinutes = 0 - timeInMinutes;
 								}
-							// Split the left time into days, hours and minutes
-								nbDays    = timeInMinutes / (24 * 60);
-								nbMinutes = timeInMinutes % (24 * 60);
-								nbHours   = nbMinutes / 60;
-								nbMinutes = nbMinutes % 60;
-							// Use a friendly format
-								if(nbDays != 0)
-								{
-									tempString = wxString::Format(_T("%id %02ih %02imn"), nbDays, nbHours, nbMinutes);
-								}
-								else if(nbHours != 0)
-								{
-									tempString = wxString::Format(_T("%ih %02imn"), nbHours, nbMinutes);
-								}
-								else
-								{
-									tempString = wxString::Format(_T("%imn"), nbMinutes);
-								}
-
 								if(timeDiff.GetMinutes() < 0)
 								{
-									mDataArray[currentClient][9] = wxString::Format(_("%s ago"), tempString.c_str());
+									mDataArray[currentClient][9] = wxString::Format(_("%s ago"), ETA::FormatLeftTime(timeInMinutes).c_str());
 								}
 								else
 								{
-									mDataArray[currentClient][9] = wxString::Format(_("In %s"), tempString.c_str());
+									mDataArray[currentClient][9] = wxString::Format(_("In %s"), ETA::FormatLeftTime(timeInMinutes).c_str());
 								}
 							}
 							else if (deadlineDays == ETADS_DATE_DAY_MONTH)
@@ -289,31 +248,13 @@ void WebMonitor::WriteApp(void)
 								{
 									timeInMinutes = 0 - timeInMinutes;
 								}
-							// Split the left time into days, hours and minutes
-								nbDays    = timeInMinutes / (24 * 60);
-								nbMinutes = timeInMinutes % (24 * 60);
-								nbHours   = nbMinutes / 60;
-								nbMinutes = nbMinutes % 60;
-							// Use a friendly format
-								if(nbDays != 0)
-								{
-									tempString = wxString::Format(_T("%id %02ih %02imn"), nbDays, nbHours, nbMinutes);
-								}
-								else if(nbHours != 0)
-								{
-									tempString = wxString::Format(_T("%ih %02imn"), nbHours, nbMinutes);
-								}
-								else
-								{
-									tempString = wxString::Format(_T("%imn"), nbMinutes);
-								}
 								if(timeDiff.GetMinutes() < 0)
 								{
-									mDataArray[currentClient][10] = wxString::Format(_("%s ago"), tempString.c_str());
+									mDataArray[currentClient][10] = wxString::Format(_("%s ago"), ETA::FormatLeftTime(timeInMinutes).c_str());
 								}
 								else
 								{
-									mDataArray[currentClient][10] = wxString::Format(_("In %s"), tempString.c_str());
+									mDataArray[currentClient][10] = wxString::Format(_("In %s"), ETA::FormatLeftTime(timeInMinutes).c_str());
 								}
 							}
 							else if (deadlineDays == ETADS_DATE_DAY_MONTH)

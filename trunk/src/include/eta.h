@@ -143,6 +143,13 @@ public:
 	 * @return the ETA using the format defined in preferences
 	 **/
 	wxString GetString(void)          const;
+
+	/**
+	 * Format a time in minutes, into days, hours minutes.
+	 * @param minutes The timespan in minutes
+	 * @return The formatted time
+	 **/
+	static wxString FormatLeftTime(wxUint32 minutes);
 };
 
 

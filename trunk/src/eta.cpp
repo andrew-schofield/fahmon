@@ -63,29 +63,7 @@ wxString ETA::GetString_American(void) const
 
 wxString ETA::GetString_LeftTime(void) const
 {
-	wxUint32 nbDays;
-	wxUint32 nbHours;
-	wxUint32 nbMinutes;
-
-	// Split the left time into days, hours and minutes
-	nbDays    = mLeftTimeInMinutes / (24 * 60);
-	nbMinutes = mLeftTimeInMinutes % (24 * 60);
-	nbHours   = nbMinutes / 60;
-	nbMinutes = nbMinutes % 60;
-
-	// Use a friendly format
-	if(nbDays != 0)
-	{
-		return wxString::Format(_T("%ud %02uh %02umn"), nbDays, nbHours, nbMinutes);
-	}
-	else if(nbHours != 0)
-	{
-		return wxString::Format(_T("%uh %02umn"), nbHours, nbMinutes);
-	}
-	else
-	{
-		return wxString::Format(_T("%umn"), nbMinutes);
-	}
+	return FormatLeftTime(mLeftTimeInMinutes);
 }
 
 
@@ -119,4 +97,31 @@ wxString ETA::GetString(void) const
 	};
 
 	return GetString_Standard();
+}
+
+
+wxString ETA::FormatLeftTime(wxUint32 minutes)
+{
+	wxUint32 nbDays;
+	wxUint32 nbHours;
+	wxUint32 nbMinutes;
+
+	// Split the left time into days, hours and minutes
+	nbDays    = minutes / (24 * 60);
+	nbMinutes = minutes % (24 * 60);
+	nbHours   = nbMinutes / 60;
+	nbMinutes = nbMinutes % 60;
+	// Use a friendly format
+	if(nbDays != 0)
+	{
+		return wxString::Format(_T("%id %02ih %02imn"), nbDays, nbHours, nbMinutes);
+	}
+	else if(nbHours != 0)
+	{
+		return wxString::Format(_T("%ih %02imn"), nbHours, nbMinutes);
+	}
+	else
+	{
+		return wxString::Format(_T("%imn"), nbMinutes);
+	}
 }
