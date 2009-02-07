@@ -65,6 +65,7 @@ Configuring MSVC
 * Add the following directories to the list:
   "c:\program files\microsoft platform sdk\include"
   "c:\wxMSW-2.8.x\include"
+  "c:\wxMSW-2.8.x\include\msvc"
 * Change "Show directories for:" to "Library files"
 * Add the following directories to the list:
   "c:\program files\microsoft platform sdk\lib"
