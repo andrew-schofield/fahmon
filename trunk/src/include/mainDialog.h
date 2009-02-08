@@ -44,7 +44,7 @@
 
 
 #define PREF_MAINDIALOG_FRAMEWIDTH    wxT("MainDialog.FrameWidth") /**< Preference setting for dialog width */
-#define PREF_MAINDIALOG_FRAMEWIDTH_DV 650 /**< Default value for dialog width */
+#define PREF_MAINDIALOG_FRAMEWIDTH_DV 862 /**< Default value for dialog width */
 
 #define PREF_MAINDIALOG_FRAMEHEIGHT    wxT("MainDialog.FrameHeight") /**< Preference setting for dialog height */
 #define PREF_MAINDIALOG_FRAMEHEIGHT_DV 280 /**< Default value for dialog height */
@@ -62,7 +62,7 @@
 #define PREF_MAINDIALOG_SHOWLOG_DV false /**< Default value for showing log */
 
 #define PREF_MAINDIALOG_SHOWINFOPANEL    wxT("MainDialog.ShowInfoPanel")
-#define PREF_MAINDIALOG_SHOWINFOPANEL_DV true
+#define PREF_MAINDIALOG_SHOWINFOPANEL_DV false
 
 #define PREF_MAINDIALOG_AUTOUPDATEPROJECTS    wxT("MainDialog.AutoUpdateProjects") /**< Preference setting for auto updating projects */
 #define PREF_MAINDIALOG_AUTOUPDATEPROJECTS_DV true /**< Default value for auto updating projects */
