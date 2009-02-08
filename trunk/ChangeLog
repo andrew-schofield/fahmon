@@ -4,34 +4,42 @@ SVN
 
     General
 
-    * Fixed total PPD value not updating unless a client is clicked.
-    * Improved handling of clients within Virtual Machines.
-    * Prevented FahMon from crashing when the FAH client produces excessively
-      large unitinfo.txt files.
-    * Fixed miscalculation of frame count when step count is a non-standard
-      number.
-    * Allow about and benchmark dialogs to be closed with escape key (thanks to
-      smartcat99s).
-    * Added crash reporter to help debugging.
-    * Limited FAHlog parsing to last 4KiB.
-    * Fixed non-fatal bug in single-instance handler.
-    * Fixed internal queue.dat/wx character conversion.
-    * FahMon messages are now logged with millisecond timestamps.
-    * Added columns for client type (determined from the core type) and core
-      version number.
-    * Main progress bar now hides along with the WU Info panel.
-    * Total PPD display moved into the status bar.
-    * Added ability to reload client in series rather than launching a thread
-      for each client. Will improve memory usage with large numbers of clients.
-    * Added partial Norwegian translation.
-    * Plugged several memory leaks.
-    * Significantly reduced CPU usage while reloading.
-    * Message Manager now only logs errors by default.
-    * Improved sorting of inaccessible or disabled clients.
-    * Added support for monitoring clients over http.
-    * Removed "zebra" background colour scheme from benchmarks list.
-    * Added IRC channel link to help menu and First Time Dialog.
-    * Removed info panel from default view, and replaced with extra columns.
+      GUI
+
+      * Fixed total PPD value not updating unless a client is clicked.
+      * Allow about and benchmark dialogs to be closed with escape key (thanks to
+        smartcat99s).
+      * Added columns for client type (determined from the core type) and core
+        version number.
+      * Main progress bar now hides along with the WU Info panel.
+      * Total PPD display moved into the status bar.
+      * Improved sorting of inaccessible or disabled clients.
+      * Removed "zebra" background colour scheme from benchmarks list.
+      * Added IRC channel link to help menu and First Time Dialog.
+      * Removed info panel from default view, and replaced with extra columns.
+
+      Monitoring
+
+      * Improved handling of clients within Virtual Machines.
+      * Prevented FahMon from crashing when the FAH client produces excessively
+        large unitinfo.txt files.
+      * Fixed miscalculation of frame count when step count is a non-standard
+        number.
+      * Limited FAHlog parsing to last 4KiB.
+      * Added ability to reload client in series rather than launching a thread
+        for each client. Will improve memory usage with large numbers of clients.
+      * Significantly reduced CPU usage while reloading.
+      * Added support for monitoring clients over http.
+
+      Other
+
+      * Added crash reporter to help debugging.
+      * Fixed non-fatal bug in single-instance handler.
+      * Fixed internal queue.dat/wx character conversion.
+      * FahMon messages are now logged with millisecond timestamps.
+      * Added partial Norwegian translation.
+      * Plugged several memory leaks.
+      * Message Manager now only logs errors by default.
 
     Windows
 
