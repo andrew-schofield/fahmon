@@ -330,10 +330,6 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 	const Client  *client;
 	const Project *project;
 	wxInt32       timeInMinutes;
-	wxInt32       nbDays;
-	wxInt32       nbHours;
-	wxInt32       nbMinutes;
-	wxString      tempString;
 
 	_PrefsGetUint(PREF_ETA_DISPLAYSTYLE, deadlineDays);
 
@@ -441,26 +437,7 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 				//timeDiff = timeNow.Subtract(downloadTime);
 				timeInMinutes = timeNow.Subtract(downloadTime).GetMinutes();
 
-				// Split the left time into days, hours and minutes
-				nbDays    = timeInMinutes / (24 * 60);
-				nbMinutes = timeInMinutes % (24 * 60);
-				nbHours   = nbMinutes / 60;
-				nbMinutes = nbMinutes % 60;
-				// Use a friendly format
-				if(nbDays != 0)
-				{
-					tempString = wxString::Format(_T("%id %02ih %02imn"), nbDays, nbHours, nbMinutes);
-				}
-				else if(nbHours != 0)
-				{
-					tempString = wxString::Format(_T("%ih %02imn"), nbHours, nbMinutes);
-				}
-				else
-				{
-					tempString = wxString::Format(_T("%imn"), nbMinutes);
-				}
-
-				mDownloaded->SetLabel(wxString::Format(_("%s ago"), tempString.c_str()));
+				mDownloaded->SetLabel(wxString::Format(_("%s ago"), ETA::FormatLeftTime(timeInMinutes).c_str()));
 			}
 			else if (deadlineDays == ETADS_DATE_DAY_MONTH)
 			{
@@ -532,32 +509,13 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 					timeInMinutes = 0 - timeInMinutes;
 				}
 
-				// Split the left time into days, hours and minutes
-				nbDays    = timeInMinutes / (24 * 60);
-				nbMinutes = timeInMinutes % (24 * 60);
-				nbHours   = nbMinutes / 60;
-				nbMinutes = nbMinutes % 60;
-				// Use a friendly format
-				if(nbDays != 0)
-				{
-					tempString = wxString::Format(_T("%id %02ih %02imn"), nbDays, nbHours, nbMinutes);
-				}
-				else if(nbHours != 0)
-				{
-					tempString = wxString::Format(_T("%ih %02imn"), nbHours, nbMinutes);
-				}
-				else
-				{
-					tempString = wxString::Format(_T("%imn"), nbMinutes);
-				}
-
 				if(timeDiff.GetMinutes() < 0)
 				{
-					mPreferredDeadline->SetLabel(wxString::Format(_("%s ago"), tempString.c_str()));
+					mPreferredDeadline->SetLabel(wxString::Format(_("%s ago"), ETA::FormatLeftTime(timeInMinutes).c_str()));
 				}
 				else
 				{
-					mPreferredDeadline->SetLabel(wxString::Format(_("In %s"), tempString.c_str()));
+					mPreferredDeadline->SetLabel(wxString::Format(_("In %s"), ETA::FormatLeftTime(timeInMinutes).c_str()));
 				}
 
 			}
@@ -589,32 +547,13 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 					timeInMinutes = 0 - timeInMinutes;
 				}
 
-				// Split the left time into days, hours and minutes
-				nbDays    = timeInMinutes / (24 * 60);
-				nbMinutes = timeInMinutes % (24 * 60);
-				nbHours   = nbMinutes / 60;
-				nbMinutes = nbMinutes % 60;
-				// Use a friendly format
-				if(nbDays != 0)
-				{
-					tempString = wxString::Format(_T("%id %02ih %02imn"), nbDays, nbHours, nbMinutes);
-				}
-				else if(nbHours != 0)
-				{
-					tempString = wxString::Format(_T("%ih %02imn"), nbHours, nbMinutes);
-				}
-				else
-				{
-					tempString = wxString::Format(_T("%imn"), nbMinutes);
-				}
-
 				if(timeDiff.GetMinutes() < 0)
 				{
-					mFinalDeadline->SetLabel(wxString::Format(_("%s ago"), tempString.c_str()));
+					mFinalDeadline->SetLabel(wxString::Format(_("%s ago"), ETA::FormatLeftTime(timeInMinutes).c_str()));
 				}
 				else
 				{
-					mFinalDeadline->SetLabel(wxString::Format(_("In %s"), tempString.c_str()));
+					mFinalDeadline->SetLabel(wxString::Format(_("In %s"), ETA::FormatLeftTime(timeInMinutes).c_str()));
 				}
 			}
 			else if (deadlineDays == ETADS_DATE_DAY_MONTH)
