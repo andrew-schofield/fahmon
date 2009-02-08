@@ -658,7 +658,7 @@ void ListViewClients::UpdateClient(wxUint32 clientId)
 			//timeDiff = timeNow.Subtract(downloadTime);
 				timeInMinutes = timeNow.Subtract(downloadTime).GetMinutes();
 
-				SetItem(clientIndex, LVC_DOWNLOADED, wxString::Format(_("%s ago"), ETA::FormatLeftTime(timeInMinutes).c_str()));
+				SetItem(clientIndex, LVC_DOWNLOADED, wxString::Format(_("%s ago"), ETA::FormatMinutes(timeInMinutes).c_str()));
 			}
 			else if (deadlineDays == ETADS_DATE_DAY_MONTH)
 			{
@@ -686,11 +686,11 @@ void ListViewClients::UpdateClient(wxUint32 clientId)
 
 				if(timeDiff.GetMinutes() < 0)
 				{
-					SetItem(clientIndex, LVC_DEADLINE, wxString::Format(_("%s ago"), ETA::FormatLeftTime(timeInMinutes).c_str()));
+					SetItem(clientIndex, LVC_DEADLINE, wxString::Format(_("%s ago"), ETA::FormatMinutes(timeInMinutes).c_str()));
 				}
 				else
 				{
-					SetItem(clientIndex, LVC_DEADLINE, wxString::Format(_("In %s"), ETA::FormatLeftTime(timeInMinutes).c_str()));
+					SetItem(clientIndex, LVC_DEADLINE, wxString::Format(_("In %s"), ETA::FormatMinutes(timeInMinutes).c_str()));
 				}
 
 			}

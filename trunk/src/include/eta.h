@@ -149,7 +149,14 @@ public:
 	 * @param minutes The timespan in minutes
 	 * @return The formatted time
 	 **/
-	static wxString FormatLeftTime(wxUint32 minutes);
+	static wxString FormatMinutes(wxUint32 minutes);
+
+	/**
+	 * Format a given time.
+	 * @param nbSeconds A time span in number of seconds.
+	 * @return The formatted string.
+	 **/
+	static wxString FormatSeconds(wxUint32 nbSeconds);
 };
 
 

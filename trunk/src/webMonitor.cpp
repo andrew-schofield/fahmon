@@ -156,7 +156,7 @@ void WebMonitor::WriteApp(void)
 						timeDiff = timeNow.Subtract(downloadTime);
 						timeInMinutes = timeDiff.GetMinutes();
 
-						mDataArray[currentClient][8] = wxString::Format(_("%s ago"), ETA::FormatLeftTime(timeInMinutes).c_str());
+						mDataArray[currentClient][8] = wxString::Format(_("%s ago"), ETA::FormatMinutes(timeInMinutes).c_str());
 						mUpdateDate = wxString::Format(_T("%s"), timeNow.Format(_T("%d %B, %H:%M")).c_str());
 					}
 					else if (deadlineDays == ETADS_DATE_DAY_MONTH)
@@ -214,11 +214,11 @@ void WebMonitor::WriteApp(void)
 								}
 								if(timeDiff.GetMinutes() < 0)
 								{
-									mDataArray[currentClient][9] = wxString::Format(_("%s ago"), ETA::FormatLeftTime(timeInMinutes).c_str());
+									mDataArray[currentClient][9] = wxString::Format(_("%s ago"), ETA::FormatMinutes(timeInMinutes).c_str());
 								}
 								else
 								{
-									mDataArray[currentClient][9] = wxString::Format(_("In %s"), ETA::FormatLeftTime(timeInMinutes).c_str());
+									mDataArray[currentClient][9] = wxString::Format(_("In %s"), ETA::FormatMinutes(timeInMinutes).c_str());
 								}
 							}
 							else if (deadlineDays == ETADS_DATE_DAY_MONTH)
@@ -250,11 +250,11 @@ void WebMonitor::WriteApp(void)
 								}
 								if(timeDiff.GetMinutes() < 0)
 								{
-									mDataArray[currentClient][10] = wxString::Format(_("%s ago"), ETA::FormatLeftTime(timeInMinutes).c_str());
+									mDataArray[currentClient][10] = wxString::Format(_("%s ago"), ETA::FormatMinutes(timeInMinutes).c_str());
 								}
 								else
 								{
-									mDataArray[currentClient][10] = wxString::Format(_("In %s"), ETA::FormatLeftTime(timeInMinutes).c_str());
+									mDataArray[currentClient][10] = wxString::Format(_("In %s"), ETA::FormatMinutes(timeInMinutes).c_str());
 								}
 							}
 							else if (deadlineDays == ETADS_DATE_DAY_MONTH)

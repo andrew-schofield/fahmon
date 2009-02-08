@@ -63,7 +63,7 @@ wxString ETA::GetString_American(void) const
 
 wxString ETA::GetString_LeftTime(void) const
 {
-	return FormatLeftTime(mLeftTimeInMinutes);
+	return FormatMinutes(mLeftTimeInMinutes);
 }
 
 
@@ -100,7 +100,7 @@ wxString ETA::GetString(void) const
 }
 
 
-wxString ETA::FormatLeftTime(wxUint32 minutes)
+wxString ETA::FormatMinutes(wxUint32 minutes)
 {
 	wxUint32 nbDays;
 	wxUint32 nbHours;
@@ -123,5 +123,30 @@ wxString ETA::FormatLeftTime(wxUint32 minutes)
 	else
 	{
 		return wxString::Format(_T("%imn"), nbMinutes);
+	}
+}
+
+
+wxString ETA::FormatSeconds(wxUint32 nbSeconds)
+{
+	wxUint32 nbHours;
+	wxUint32 nbMinutes;
+
+	nbHours   = nbSeconds / 3600;        // There are 3600 seconds in an hour
+	nbSeconds = nbSeconds % 3600;
+	nbMinutes = nbSeconds / 60;          // There are 60 seconds in a minute
+	nbSeconds = nbSeconds % 60;
+
+	if(nbHours != 0)
+	{
+		return wxString::Format(_T("%uh %02umn %02us"), nbHours, nbMinutes, nbSeconds);
+	}
+	else if(nbMinutes != 0)
+	{
+		return wxString::Format(_T("%umn %02us"), nbMinutes, nbSeconds);
+	}
+	else
+	{
+		return wxString::Format(_T("%us"), nbSeconds);
 	}
 }

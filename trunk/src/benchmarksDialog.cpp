@@ -25,12 +25,12 @@
 #include "fahmon.h"
 #include "benchmarksDialog.h"
 
-#include "tools.h"
 #include "clientsManager.h"
 #include "projectsManager.h"
 #include "benchmarksManager.h"
 #include "preferencesManager.h"
 #include "multiProtocolFile.h"
+#include "eta.h"
 
 #include "wx/sizer.h"
 
@@ -282,7 +282,7 @@ void BenchmarksDialog::ShowBenchmarks(ProjectId projectIdToShow)
 		if(benchmarks[i]->GetMinDuration() != 0)
 		{
 			iFrameTime = benchmarks[i]->GetMinDuration();
-			infoString += _T(" ") + wxString::Format(_("Min. Time / Frame : %s"), Tools::FormatSeconds(iFrameTime).c_str());
+			infoString += _T(" ") + wxString::Format(_("Min. Time / Frame : %s"), ETA::FormatSeconds(iFrameTime).c_str());
 
 			// Compute points per day if possible
 			if(project != NULL)
@@ -303,7 +303,7 @@ void BenchmarksDialog::ShowBenchmarks(ProjectId projectIdToShow)
 		if(benchmarks[i]->GetAvgDuration() != 0)
 		{
 			iFrameTime = benchmarks[i]->GetAvgDuration();
-			infoString += _T(" ") + wxString::Format(_("Avg. Time / Frame : %s"), Tools::FormatSeconds(iFrameTime).c_str());
+			infoString += _T(" ") + wxString::Format(_("Avg. Time / Frame : %s"), ETA::FormatSeconds(iFrameTime).c_str());
 
 			// Compute points per day if possible
 			if(project != NULL)
@@ -326,9 +326,9 @@ void BenchmarksDialog::ShowBenchmarks(ProjectId projectIdToShow)
 			iFrameTime = benchmarks[i]->GetInstantDuration();
 			tFrameTime = benchmarks[i]->Get3FrameDuration();
 			eFrameTime = benchmarks[i]->GetEffectiveDuration();
-			currentString = _T(" ") + wxString::Format(_("Cur. Time / Frame : %s"), Tools::FormatSeconds(iFrameTime).c_str());
-			r3fString = _T(" ") + wxString::Format(_("R3F. Time / Frame : %s"), Tools::FormatSeconds(tFrameTime).c_str());
-			effectiveString = _T(" ") + wxString::Format(_("Eff. Time / Frame : %s"), Tools::FormatSeconds(eFrameTime).c_str());
+			currentString = _T(" ") + wxString::Format(_("Cur. Time / Frame : %s"), ETA::FormatSeconds(iFrameTime).c_str());
+			r3fString = _T(" ") + wxString::Format(_("R3F. Time / Frame : %s"), ETA::FormatSeconds(tFrameTime).c_str());
+			effectiveString = _T(" ") + wxString::Format(_("Eff. Time / Frame : %s"), ETA::FormatSeconds(eFrameTime).c_str());
 
 			// Compute points per day if possible
 			if(project != NULL)

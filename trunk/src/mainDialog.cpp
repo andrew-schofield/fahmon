@@ -437,7 +437,7 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 				//timeDiff = timeNow.Subtract(downloadTime);
 				timeInMinutes = timeNow.Subtract(downloadTime).GetMinutes();
 
-				mDownloaded->SetLabel(wxString::Format(_("%s ago"), ETA::FormatLeftTime(timeInMinutes).c_str()));
+				mDownloaded->SetLabel(wxString::Format(_("%s ago"), ETA::FormatMinutes(timeInMinutes).c_str()));
 			}
 			else if (deadlineDays == ETADS_DATE_DAY_MONTH)
 			{
@@ -511,11 +511,11 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 
 				if(timeDiff.GetMinutes() < 0)
 				{
-					mPreferredDeadline->SetLabel(wxString::Format(_("%s ago"), ETA::FormatLeftTime(timeInMinutes).c_str()));
+					mPreferredDeadline->SetLabel(wxString::Format(_("%s ago"), ETA::FormatMinutes(timeInMinutes).c_str()));
 				}
 				else
 				{
-					mPreferredDeadline->SetLabel(wxString::Format(_("In %s"), ETA::FormatLeftTime(timeInMinutes).c_str()));
+					mPreferredDeadline->SetLabel(wxString::Format(_("In %s"), ETA::FormatMinutes(timeInMinutes).c_str()));
 				}
 
 			}
@@ -549,11 +549,11 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 
 				if(timeDiff.GetMinutes() < 0)
 				{
-					mFinalDeadline->SetLabel(wxString::Format(_("%s ago"), ETA::FormatLeftTime(timeInMinutes).c_str()));
+					mFinalDeadline->SetLabel(wxString::Format(_("%s ago"), ETA::FormatMinutes(timeInMinutes).c_str()));
 				}
 				else
 				{
-					mFinalDeadline->SetLabel(wxString::Format(_("In %s"), ETA::FormatLeftTime(timeInMinutes).c_str()));
+					mFinalDeadline->SetLabel(wxString::Format(_("In %s"), ETA::FormatMinutes(timeInMinutes).c_str()));
 				}
 			}
 			else if (deadlineDays == ETADS_DATE_DAY_MONTH)
