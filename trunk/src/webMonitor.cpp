@@ -128,12 +128,12 @@ void WebMonitor::WriteApp(void)
 			client      = ClientsManager::GetInstance()->Get(currentClient);
 			if(!client->IsAccessible() || !client->IsEnabled())
 			{
-				mDataArray[currentClient][4] = _("N/A");
-				mDataArray[currentClient][7] = _("N/A");
-				mDataArray[currentClient][5] = _("N/A");
-				mDataArray[currentClient][6] = _("N/A");
-				mDataArray[currentClient][8] = _("N/A");
-				mDataArray[currentClient][9] = _("N/A");
+				mDataArray[currentClient][4]  = _("N/A");
+				mDataArray[currentClient][7]  = _("N/A");
+				mDataArray[currentClient][5]  = _("N/A");
+				mDataArray[currentClient][6]  = _("N/A");
+				mDataArray[currentClient][8]  = _("N/A");
+				mDataArray[currentClient][9]  = _("N/A");
 				mDataArray[currentClient][10] = _("N/A");
 				mDataArray[currentClient][13] = _("N/A");
 				mDataArray[currentClient][14] = _("N/A");
@@ -172,10 +172,10 @@ void WebMonitor::WriteApp(void)
 				}
 				if(client->GetProjectId() == INVALID_PROJECT_ID)
 				{
-					mDataArray[currentClient][5] = _("N/A");
-					mDataArray[currentClient][4] = _("N/A");
-					mDataArray[currentClient][6] = _("N/A");
-					mDataArray[currentClient][9] = _("N/A");
+					mDataArray[currentClient][5]  = _("N/A");
+					mDataArray[currentClient][4]  = _("N/A");
+					mDataArray[currentClient][6]  = _("N/A");
+					mDataArray[currentClient][9]  = _("N/A");
 					mDataArray[currentClient][10] = _("N/A");
 					mDataArray[currentClient][13] = _("N/A");
 					mDataArray[currentClient][14] = _("N/A");
@@ -188,10 +188,10 @@ void WebMonitor::WriteApp(void)
 					project = ProjectsManager::GetInstance()->GetProject(client->GetProjectId());
 					if(project == NULL) // this may need to be INVALID_PROJECT
 					{
-						mDataArray[currentClient][5] = _("N/A");
-						mDataArray[currentClient][4] = _("N/A");
-						mDataArray[currentClient][6] = _("N/A");
-						mDataArray[currentClient][9] = _("N/A");
+						mDataArray[currentClient][5]  = _("N/A");
+						mDataArray[currentClient][4]  = _("N/A");
+						mDataArray[currentClient][6]  = _("N/A");
+						mDataArray[currentClient][9]  = _("N/A");
 						mDataArray[currentClient][10] = _("N/A");
 						mDataArray[currentClient][15] = _("N/A");
 						mDataArray[currentClient][16] = _("N/A");
@@ -509,26 +509,26 @@ const wxString WebMonitor::DecodeTemplate(wxString templateCode, wxUint32 client
 		padding = 0;
 	padding = (wxUint32)tmpDouble;
 
-	if (templateCode == _T("@PERCENTAGE@")) tCode = mDataArray[clientId][0];
-	else if (templateCode == _T("@NAME@")) tCode = mDataArray[clientId][1];
-	else if (templateCode == _T("@ETA@")) tCode = mDataArray[clientId][2];
-	else if (templateCode == _T("@PPD@")) tCode = mDataArray[clientId][3];
-	else if (templateCode == _T("@CORE@")) tCode = mDataArray[clientId][4];
-	else if (templateCode == _T("@PRCG@")) tCode = mDataArray[clientId][5];
-	else if (templateCode == _T("@POINTS@")) tCode = mDataArray[clientId][6];
-	else if (templateCode == _T("@USER_TEAM@")) tCode = mDataArray[clientId][7];
-	else if (templateCode == _T("@DOWNLOAD_DATE@")) tCode = mDataArray[clientId][8];
+	if (templateCode == _T("@PERCENTAGE@"))          tCode = mDataArray[clientId][0];
+	else if (templateCode == _T("@NAME@"))           tCode = mDataArray[clientId][1];
+	else if (templateCode == _T("@ETA@"))            tCode = mDataArray[clientId][2];
+	else if (templateCode == _T("@PPD@"))            tCode = mDataArray[clientId][3];
+	else if (templateCode == _T("@CORE@"))           tCode = mDataArray[clientId][4];
+	else if (templateCode == _T("@PRCG@"))           tCode = mDataArray[clientId][5];
+	else if (templateCode == _T("@POINTS@"))         tCode = mDataArray[clientId][6];
+	else if (templateCode == _T("@USER_TEAM@"))      tCode = mDataArray[clientId][7];
+	else if (templateCode == _T("@DOWNLOAD_DATE@"))  tCode = mDataArray[clientId][8];
 	else if (templateCode == _T("@PREFERRED_DATE@")) tCode = mDataArray[clientId][9];
-	else if (templateCode == _T("@FINAL_DATE@")) tCode = mDataArray[clientId][10];
-	else if (templateCode == _T("@STATE_COLOR@")) tCode = mDataArray[clientId][11];
-	else if (templateCode == _T("@STATE@")) tCode = mDataArray[clientId][12];
-	else if (templateCode == _T("@USERNAME@")) tCode = mDataArray[clientId][13];
-	else if (templateCode == _T("@TEAMNUMBER@")) tCode = mDataArray[clientId][14];
-	else if (templateCode == _T("@CLIENT_TYPE@")) tCode = mDataArray[clientId][15];
-	else if (templateCode == _T("@CORE_VERSION@")) tCode = mDataArray[clientId][16];
+	else if (templateCode == _T("@FINAL_DATE@"))     tCode = mDataArray[clientId][10];
+	else if (templateCode == _T("@STATE_COLOR@"))    tCode = mDataArray[clientId][11];
+	else if (templateCode == _T("@STATE@"))          tCode = mDataArray[clientId][12];
+	else if (templateCode == _T("@USERNAME@"))       tCode = mDataArray[clientId][13];
+	else if (templateCode == _T("@TEAMNUMBER@"))     tCode = mDataArray[clientId][14];
+	else if (templateCode == _T("@CLIENT_TYPE@"))    tCode = mDataArray[clientId][15];
+	else if (templateCode == _T("@CORE_VERSION@"))   tCode = mDataArray[clientId][16];
 	else if (templateCode == _T("@FAHMON_VERSION@")) tCode = _T(FMC_PRODUCT);
-	else if (templateCode == _T("@UPDATE_TIME@")) tCode = mUpdateDate;
-	else if (templateCode == _T("@TOTAL_PPD@")) tCode = wxString::Format(_T("%.2f"), MainDialog::GetInstance()->GetTotalPPD());
+	else if (templateCode == _T("@UPDATE_TIME@"))    tCode = mUpdateDate;
+	else if (templateCode == _T("@TOTAL_PPD@"))      tCode = wxString::Format(_T("%.2f"), MainDialog::GetInstance()->GetTotalPPD());
 	else if (templateCode == _T("@STATE_IMAGE@"))
 	{
 		if(mDataArray[clientId][12] == _("Inaccessible"))
@@ -564,29 +564,29 @@ const wxString WebMonitor::DecodeTemplate(wxString templateCode, wxUint32 client
 	{
 		tCode = wxString::Format(_T("%i"), clientId+1);
 	}
-	else if (templateCode == _T("@_State@")) tCode = _("State");
-	else if (templateCode == _T("@_PRCG@")) tCode = _("PRCG");
-	else if (templateCode == _T("@_Credit@")) tCode = _("Credit");
-	else if (templateCode == _T("@_Downloaded@")) tCode = _("Downloaded");
-	else if (templateCode == _T("@_Progress@")) tCode = _("Progress");
-	else if (templateCode == _T("@_Name@")) tCode = _("Name");
-	else if (templateCode == _T("@_ETA@")) tCode = _("ETA");
-	else if (templateCode == _T("@_PPD@")) tCode = _("PPD");
-	else if (templateCode == _T("@_Work_Unit_Information@")) tCode = _("Work Unit Information");
-	else if (templateCode == _T("@_Core@")) tCode = _("Core:");
-	else if (templateCode == _T("@_Project:@")) tCode = _("Project:");
-	else if (templateCode == _T("@_Credit:@")) tCode = _("Credit:");
-	else if (templateCode == _T("@_Username:@")) tCode = _("Username:");
-	else if (templateCode == _T("@_Preferred_Deadline:@")) tCode = _("Preferred Deadline:");
-	else if (templateCode == _T("@_Final_Deadline:@")) tCode = _("Final Deadline:");
-	else if (templateCode == _T("@_Total_PPD:@")) tCode = _("Total PPD:");
-	else if (templateCode == _T("@_Web_View@")) tCode = _("Web View");
+	else if (templateCode == _T("@_State@"))                    tCode = _("State");
+	else if (templateCode == _T("@_PRCG@"))                     tCode = _("PRCG");
+	else if (templateCode == _T("@_Credit@"))                   tCode = _("Credit");
+	else if (templateCode == _T("@_Downloaded@"))               tCode = _("Downloaded");
+	else if (templateCode == _T("@_Progress@"))                 tCode = _("Progress");
+	else if (templateCode == _T("@_Name@"))                     tCode = _("Name");
+	else if (templateCode == _T("@_ETA@"))                      tCode = _("ETA");
+	else if (templateCode == _T("@_PPD@"))                      tCode = _("PPD");
+	else if (templateCode == _T("@_Work_Unit_Information@"))    tCode = _("Work Unit Information");
+	else if (templateCode == _T("@_Core@"))                     tCode = _("Core:");
+	else if (templateCode == _T("@_Project:@"))                 tCode = _("Project:");
+	else if (templateCode == _T("@_Credit:@"))                  tCode = _("Credit:");
+	else if (templateCode == _T("@_Username:@"))                tCode = _("Username:");
+	else if (templateCode == _T("@_Preferred_Deadline:@"))      tCode = _("Preferred Deadline:");
+	else if (templateCode == _T("@_Final_Deadline:@"))          tCode = _("Final Deadline:");
+	else if (templateCode == _T("@_Total_PPD:@"))               tCode = _("Total PPD:");
+	else if (templateCode == _T("@_Web_View@"))                 tCode = _("Web View");
 	else if (templateCode == _T("@_FahMon_Client_Monitoring@")) tCode = _("FahMon Client Monitoring");
-	else if (templateCode == _T("@_Simple_Text_Output@")) tCode = _("Simple Text Output");
-	else if (templateCode == _T("@_Last_updated:@")) tCode = _("Last updated:");
-	else if (templateCode == _T("@_Downloaded:@")) tCode = _("Downloaded:");
-	else if (templateCode == _T("@_Client_Type@")) tCode = _("Client Type");
-	else if (templateCode == _T("@_Core_Version@")) tCode = _("Core Version");
+	else if (templateCode == _T("@_Simple_Text_Output@"))       tCode = _("Simple Text Output");
+	else if (templateCode == _T("@_Last_updated:@"))            tCode = _("Last updated:");
+	else if (templateCode == _T("@_Downloaded:@"))              tCode = _("Downloaded:");
+	else if (templateCode == _T("@_Client_Type@"))              tCode = _("Client Type");
+	else if (templateCode == _T("@_Core_Version@"))             tCode = _("Core Version");
 	else tCode = GetVariable(templateCode);
 
 	if(padding>0)
