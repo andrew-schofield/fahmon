@@ -245,6 +245,7 @@ bool ProjectsManager::UpdateDatabase(bool forced, bool silentMode)
 	progressManager.SetTextAndProgress(_("Downloading new projects"), 0);
 
 	progressManager.CreateTask(90);
+	projectFile = wxFileName::CreateTempFileName(_T(FMC_APPNAME));
 	if(Update_DownloadProjectsFile(projectFile, progressManager, errorMsg) == false)
 	{
 		// Display the message only if we are not in silent mode
@@ -296,8 +297,6 @@ bool ProjectsManager::Update_DownloadProjectsFile(wxString& fileName, ProgressMa
 	wxString projectLocalFile;
 	wxString resource, alternateAddress;
 
-	HTTPDownloader::DownloadStatus downloadStatus;
-
 	_PrefsGetBool        (PREF_HTTPDOWNLOADER_USEALTERNATEUPDATE,              useAlternate);
 	_PrefsGetBool        (PREF_HTTPDOWNLOADER_USELOCALFILE,                    useLocalFile);
 	_PrefsGetString      (PREF_HTTPDOWNLOADER_LOCALFILELOCATION,               projectLocalFile);
@@ -316,43 +315,10 @@ bool ProjectsManager::Update_DownloadProjectsFile(wxString& fileName, ProgressMa
 		}
 
 		// Download the file
-		downloadStatus = HTTPDownloader::Url(resource, fileName, progressManager);
-
-		// If nothing went wrong, we can stop here
-		if(downloadStatus == HTTPDownloader::STATUS_NO_ERROR)
-		{
+		if(HTTPDownloader::GetHTTPFile(resource, fileName))
 			return true;
-		}
+		errorMsg = wxT("Something went wrong!");
 
-		// Otherwise, we create an explicit error message to specify what went wrong
-		switch(downloadStatus)
-		{
-			case HTTPDownloader::STATUS_TEMP_FILE_CREATION_ERROR:
-				errorMsg = _("Unable to create a temporary file!");
-				break;
-
-			case HTTPDownloader::STATUS_TEMP_FILE_OPEN_ERROR:
-				errorMsg = wxString::Format(_("Unable to open the temporary file <%s>"), fileName.c_str());
-				break;
-
-			case HTTPDownloader::STATUS_CONNECT_ERROR:
-				errorMsg = _("Unable to connect to the server!");
-				break;
-
-			case HTTPDownloader::STATUS_SEND_REQUEST_ERROR:
-				errorMsg = _("Unable to send the request to the server!");
-				break;
-
-			case HTTPDownloader::STATUS_ABORTED:
-				errorMsg = _("Download aborted!");
-				break;
-
-			// We should never fall here
-			default:
-				wxASSERT(false);
-				errorMsg = _("An unknown error happened!");
-				break;
-		}
 	}
 	else
 	{

@@ -4,6 +4,7 @@ Running FahMon
 Software for running FahMon on Linux
 REQUIRED
 * wxGTK >=2.8.0 (Unicode build)
+* libcurl >= 7.15.0
 
 Software for running FahMon on Windows
 REQUIRED
@@ -22,6 +23,7 @@ REQUIRED
 * wxGTK >=2.8.0 (unicode build)
 * wxGTK-Devel >=2.8.0 (unicode build)
 * m4
+* libcurl >= 7.15.0
 
 OPTIONAL
 * gettext (required to edit or create new translations)

@@ -72,6 +72,13 @@ Configuring MSVC
   "c:\wxSW-2.8.x\lib\vc_lib"
 * Close the options dialog (with OK).
 
+Compiling libcurl
+=================
+
+* Open wxcurl\win32_libcurl\curl.sln
+* Make sure the build type is set to "DLL Release"
+* Go to the build menu and hit "Build Solution"
+
 Compiling FahMon
 ================
 

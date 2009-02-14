@@ -40,6 +40,7 @@ Section "!FahMon" SecFahMon
   SetOutPath "$INSTDIR"
 
   File "fahmon.exe"
+  File "libcurl.dll"
   SetOutPath "$INSTDIR\images"
   File "images\list_client_asynch.png"
   File "images\list_client_inaccessible.png"

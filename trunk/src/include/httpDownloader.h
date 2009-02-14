@@ -26,7 +26,6 @@
 
 
 #include "wx/string.h"
-#include "progressManager.h"
 
 
 #define PREF_HTTPDOWNLOADER_USEPROXY    wxT("HTTPDownloader.UseProxy") /**< Preference setting for whether a proxy should be used */
@@ -68,62 +67,21 @@ class HTTPDownloader
 {
 	public:
 		/**
-		 * Download Status definition.
+		 * Download a file via HTTP to the specified (temporary) location.
+		 * @param url The file to download.
+		 * @param tempFile The location to store the downloaded file.
+		 * @return Success of operation.
 		 **/
-		typedef enum _DOWNLOAD_STATUS
-		{
-			STATUS_TEMP_FILE_CREATION_ERROR, /**< Temporary file creation error */
-			STATUS_TEMP_FILE_OPEN_ERROR, /**< Temporary file opening error */
-			STATUS_CONNECT_ERROR, /**< Connection error */
-			STATUS_SEND_REQUEST_ERROR, /**< Send request error */
-			STATUS_ABORTED, /**< Connection aborted */
-			STATUS_NO_ERROR /**< Connection successful */
-		} DownloadStatus;
-
-
-	protected:
-		/**
-		 * Get the size of the downloaded content.
-		 * Uses the content-size field.
-		 * If no field is found, value is 0.
-		 * ! buffer will be modified by this function!
-		 * @param buffer The downloaded content buffer.
-		 * @param bufferSize The size of the downloaded content buffer.
-		 * @return The content size.
-		 **/
-		static wxUint32 ExtractContentSize(wxByte* buffer, wxUint32 bufferSize);
-
-	public:
-		/**
-		 * Create a temporary file and download the remote resource to this file.
-		 *
-		 * The path to the temporary file is stored in the parameter localFileName, empty string if it could not be created
-		 * This file must be deleted by the caller, if this is needed, regardless of the return value
-		 *
-		 * Use the defined proxy in preferences, if any
-		 *
-		 * Using wxURL would have been a lot easier, but wxURL::SetProxy() doesn't work, and I can't ask
-		 * users to patch their version of wxWindows to compile this app
-		 * @param host host part of the url
-		 * @param port port part of url (default is 80)
-		 * @param resource location of file on host
-		 * @param localFileName Location to download file to
-		 * @param progressManager The progressManager object
-		 * @param byteRange How much of the file should be downloaded. 0 = all, positive = from start, negative = from end.
-		 * @return A download status object.
-		 **/
-		static DownloadStatus DownloadFile(wxString const &host, wxUint32 port, wxString const &resource, wxString& localFileName, ProgressManager& progressManager, wxInt32 byteRange = 0);
+		static bool GetHTTPFile(wxString url, wxString tempFile);
 
 		/**
-		 * Decontructs a "real" url into its Server, Port and Resource fields.
-		 * This is a wrapper around the DownloadFile method to allow access by a readable url.
-		 * @param url The real url like 'http://fah-web.stanford.edu/psummary.html'
-		 * @param localFileName Location to download file to
-		 * @param progressManager The progressManager object
-		 * @param byteRange How much of the file should be downloaded. 0 = all, positive = from start, negative = from end.
-		 * @return A download status object.
+		 * Grab the response headers from an http request and get the response code.
+		 * @param url The url to query
+		 * @return The HTTP response code
 		 **/
-		static DownloadStatus Url(wxString const &url, wxString& localFileName, ProgressManager& progressManager, wxInt32 byteRange = 0);
+		static long GetHTTPResponseCode(wxString url);
+
+		static wxString GetHTTPHeader(wxString url, wxString header);
 };
 
 

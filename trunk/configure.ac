@@ -8,6 +8,9 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 m4_include(m4/wxwin.m4)
+m4_include(m4/libcurl.m4)
+m4_define([wxcurl_lt_current], [1])
+
 AC_INIT([FahMon],
         [2.3.4],
         [Andrew Schofield andrew_s@fahmon.net],
@@ -16,14 +19,32 @@ AC_PREFIX
 AM_CONFIG_HEADER(config.h)
 AM_INIT_AUTOMAKE([dist-bzip2])
 
+WXCURL_LT_VERSION_INFO="wxcurl_lt_current"
+AC_SUBST(WXCURL_LT_VERSION_INFO)
+
 AC_PROG_CXX
+AC_PROG_LIBTOOL
+
+LIBCURL_CHECK_CONFIG([yes], [7.15.0], [curlOk=1], [curlOk=0])
+if [[ $curlOk = 0 ]]; then
+    AC_MSG_ERROR([
+    Could not find a valid libCURL installation on your system.
+
+    If you do not have libCURL installed or you have an old version
+    then please install the latest version from
+      http://curl.haxx.se/libcurl/
+
+    If you have a valid libCURL installed, then please check the config.log
+    file for more details about the failure of this check.
+    ])
+fi
 
 AM_OPTIONS_WXCONFIG
 reqwx=2.8.0
 AC_MSG_NOTICE([ANSI wxWidgets])
-AM_PATH_WXCONFIG($reqwx, wxWin=1, wxWin=0)
+AM_PATH_WXCONFIG($reqwx, wxWin=1, wxWin=0, adv core qa net)
 AC_MSG_NOTICE([Unicode wxWidgets])
-AM_PATH_WXCONFIG($reqwx, wxWinU=1, wxWinU=0, --unicode)
+AM_PATH_WXCONFIG($reqwx, wxWinU=1, wxWinU=0, --unicode adv core qa net)
 if test "$wxWin" != 1; then
 	if test "$wxWinU" != 1; then
 		AC_MSG_ERROR([
@@ -49,10 +70,10 @@ if test "$wxWinU" != 1; then
 		])
 fi
 
-CPPFLAGS="$CPPFLAGS $WX_CPPFLAGS"
-CXXFLAGS="$CXXFLAGS $WX_CXXFLAGS_ONLY"
-CFLAGS="$CFLAGS $WX_CFLAGS_ONLY"
-LIBS="$LIBS $WX_LIBS"
+CPPFLAGS="$CPPFLAGS $WX_CPPFLAGS $LIBCURL_CPPFLAGS"
+CXXFLAGS="$CXXFLAGS $WX_CXXFLAGS_ONLY $LIBCURL_CPPFLAGS"
+CFLAGS="$CFLAGS $WX_CFLAGS_ONLY $LIBCURL_CPPFLAGS"
+LIBS="$LIBS $WX_LIBS $LIBCURL"
 
 ALL_LINGUAS="en_GB fr_FR pt_PT ru_RU pl_PL sv_SE cs_CZ nl_NL pt_BR es_ES de_DE it_IT nb_NB"
 
@@ -69,6 +90,15 @@ AC_CONFIG_FILES([
    m4/Makefile
    po/Makefile.in
    resources/Makefile
+   wxcurl/Makefile
+   wxcurl/include/Makefile
+   wxcurl/include/wx/Makefile
+   wxcurl/include/wx/curl/Makefile
+   wxcurl/src/Makefile
+   wxcurl/win32_libcurl/Makefile
+   wxcurl/win32_libcurl/include/Makefile
+   wxcurl/win32_libcurl/include/curl/Makefile
+   wxcurl/win32_libcurl/lib/Makefile
    src/Makefile
    src/include/Makefile
    src/include/fahmonConsts.h

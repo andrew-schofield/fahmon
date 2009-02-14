@@ -17,6 +17,7 @@ EXTRA_DIST = config.rpath  \
 	REQUIRES \
 	fahmon.sln \
 	fahmon.vcproj \
+	wxcurl.vcproj \
 	FahMon.nsi \
 	README.win32.txt \
 	po_to_lang.bat \
@@ -25,8 +26,10 @@ EXTRA_DIST = config.rpath  \
 	gen_msw.bat \
 	fahmon.spec \
 	FahMon-Info.plist \
-	mac-lang
-SUBDIRS = m4 src doc po src/include src/images resources templates FahMon.xcodeproj mac
+	mac-lang \
+	libtool \
+	ltmain.sh
+SUBDIRS = m4 wxcurl src doc po src/include src/images resources templates FahMon.xcodeproj mac
 
 appsdir = $(datadir)/applications
 apps_in_files = fahmon.desktop

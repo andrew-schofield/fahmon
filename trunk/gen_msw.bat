@@ -3,6 +3,7 @@ if not exist .\Release (
 mkdir .\Release
 )
 call po_to_lang.bat
+copy /y .\wxcurl\lib\libcurl.dll .\Release
 if not exist .\Release\images (
 mkdir .\Release\images
 )

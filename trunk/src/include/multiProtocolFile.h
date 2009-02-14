@@ -29,6 +29,7 @@
 #include "wx/protocol/http.h"
 #include "wx/uri.h"
 #include "wx/filename.h"
+#include "wx/thread.h"
 
 class multiProtocolFile
 {
@@ -43,24 +44,24 @@ class multiProtocolFile
 
 		static bool FileExists(const wxString& fileName);
 
+		static wxMutex          mMutexFileExists;
+
 		static time_t LastModification(const wxString& fileName);
+
+		static wxMutex          mMutexLastModification;
 
 		static bool DirExists(const wxString& dirName);
 
+		static wxMutex          mMutexDirExists;
+
 		static wxString GetLocalFileName(const wxString& fileName);
+
+		static wxMutex          mMutexGetLocalFileName;
 
 		static bool CopyFile(const wxString& inFile, const wxString& outFile);
 
 		static FileProtocol GetFileProtocol(const wxString& fileName);
 	private:
-
-		static bool SetHTTPConnection(wxSocketClient& socket, wxURI uri, wxInt32 byteRange = 0);
-
-		static wxUint32 GetHTTPResponseCode(wxSocketClient& socket);
-
-		static wxString GetHTTPHeader(wxSocketClient& socket, wxString header);
-
-		static wxString GetFile(wxSocketClient& socket);
 };
 
 #endif /* _MULTIPROTOCOLFILE_H */

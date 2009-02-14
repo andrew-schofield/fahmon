@@ -12,7 +12,7 @@
 m4datadir = $(datadir)/aclocal
 
 # List your m4 macros here
-# m4macros = wxwin.m4
+# m4macros = wxwin.m4 libcurl.m4
 
 # The following is boilerplate
 m4data_DATA = $(m4macros)

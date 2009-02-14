@@ -34,7 +34,6 @@
 #include "clientDialog.h"
 #include "messagesFrame.h"
 #include "clientsManager.h"
-#include "httpDownloader.h"
 #include "messagesManager.h"
 #include "projectsManager.h"
 #include "staticBoldedText.h"
@@ -42,11 +41,13 @@
 #include "preferencesDialog.h"
 #include "preferencesManager.h"
 #include "listViewClients.h"
+#include "httpDownloader.h"
 
 #include "wx/colour.h"
 #include "wx/filefn.h"
 #include "wx/textfile.h"
 #include "wx/hyperlink.h"
+#include "wx/filename.h"
 #ifdef __WXMAC__
 #include "wx/sysopt.h"
 #endif
@@ -1364,31 +1365,16 @@ void MainDialog::CheckForUpdates(bool silent)
 {
 	wxMutexLocker   lock(mMutexUpdateCheck);        // --- Lock the access to this method
 	wxString        updateFile;
+	updateFile = wxFileName::CreateTempFileName(_T(FMC_APPNAME));
 	wxString        errorMsg;
 	wxString        versionInfo;
 	wxTextFile      in;
 	bool            updateAvailable = false;
-	ProgressManager progressManager(false);
 
 	_LogMsgInfo(_("Checking for FahMon updates"), false);
 
-	// --- We first have to download the new update file
-	progressManager.SetTextAndProgress(_("Checking for update"), 0);
-	progressManager.CreateTask(100);
-	if(DownloadUpdateFile(updateFile, progressManager, errorMsg, _T("http://fahmon.net/downloads/update.chk")) == false)
-	{
-		Tools::ErrorMsgBox(errorMsg);
-
-		// Don't forget to remove the file before leaving, if it is needed
-		if(updateFile.IsEmpty() == false)
-		{
-			wxRemoveFile(updateFile);
-		}
-
-		// Stop there, since we cannot parse a non-existing file
+	if(!HTTPDownloader::GetHTTPFile(wxT("http://fahmon.net/downloads/update.chk"), updateFile))
 		return;
-	}
-	progressManager.EndTask();
 
 	if(!wxFileExists(updateFile) || !in.Open(updateFile))
 	{
@@ -1422,55 +1408,6 @@ void MainDialog::CheckForUpdates(bool silent)
 		if (!silent)
 			Tools::InfoMsgBox(_("No update found"));
 	}
-}
-
-
-bool MainDialog::DownloadUpdateFile(wxString& fileName, ProgressManager& progressManager, wxString& errorMsg, wxString resource)
-{
-
-	HTTPDownloader::DownloadStatus downloadStatus;
-
-	//Initialise the port number
-
-	// Download the file
-	downloadStatus = HTTPDownloader::Url(resource, fileName, progressManager);
-
-	// If nothing went wrong, we can stop here
-	if(downloadStatus == HTTPDownloader::STATUS_NO_ERROR)
-	{
-		return true;
-	}
-
-	// Otherwise, we create an explicit error message to specify what went wrong
-	switch(downloadStatus)
-	{
-		case HTTPDownloader::STATUS_TEMP_FILE_CREATION_ERROR:
-			errorMsg = _("Unable to create a temporary file!");
-			break;
-
-		case HTTPDownloader::STATUS_TEMP_FILE_OPEN_ERROR:
-			errorMsg = wxString::Format(_("Unable to open the temporary file <%s>"), fileName.c_str());
-			break;
-
-		case HTTPDownloader::STATUS_CONNECT_ERROR:
-			errorMsg = _("Unable to connect to the server!");
-			break;
-
-		case HTTPDownloader::STATUS_SEND_REQUEST_ERROR:
-			errorMsg = _("Unable to send the request to the server!");
-			break;
-
-		case HTTPDownloader::STATUS_ABORTED:
-			errorMsg = _("Download aborted!");
-			break;
-
-		// We should never fall here
-		default:
-			wxASSERT(false);
-			errorMsg = _("An unknown error happened!");
-			break;
-	}
-	return false;
 }
 
 

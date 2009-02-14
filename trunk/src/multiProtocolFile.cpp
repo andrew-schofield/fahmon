@@ -25,20 +25,20 @@
 #include "tools.h"
 #include "preferencesManager.h"
 #include "httpDownloader.h"
-#include "base64Codec.h"
 #include "messagesManager.h"
 
-#include "wx/file.h"
-#include "wx/protocol/http.h"
-#include "wx/uri.h"
-#include "wx/socket.h"
-#include "wx/sstream.h"
-#include "wx/tokenzr.h"
 #include "wx/filename.h"
 
+wxMutex multiProtocolFile::mMutexFileExists;
+wxMutex multiProtocolFile::mMutexLastModification;
+wxMutex multiProtocolFile::mMutexDirExists;
+wxMutex multiProtocolFile::mMutexGetLocalFileName;
 
 bool multiProtocolFile::FileExists(const wxString& fileName)
 {
+	// ----- Access Lock -----
+	wxMutexLocker lock(mMutexFileExists);
+	// ----- Access Lock -----
 	bool returnValue;
 	returnValue = false;
 	switch(GetFileProtocol(fileName))
@@ -48,12 +48,7 @@ bool multiProtocolFile::FileExists(const wxString& fileName)
 			break;
 		case HTTP:
 		{
-			wxURI uri(fileName);
-			wxSocketClient socket;
-			socket.SetFlags(wxSOCKET_NOWAIT);
-			if(!SetHTTPConnection(socket, uri))
-				return false;
-			switch(GetHTTPResponseCode(socket))
+			switch(HTTPDownloader::GetHTTPResponseCode(fileName))
 			{
 				case 200:
 				case 201:
@@ -99,7 +94,6 @@ bool multiProtocolFile::FileExists(const wxString& fileName)
 					returnValue = false;
 					break;
 			}
-			socket.Close();
 			break;
 		}
 		default:
@@ -111,20 +105,17 @@ bool multiProtocolFile::FileExists(const wxString& fileName)
 
 time_t multiProtocolFile::LastModification(const wxString& fileName)
 {
+	// ----- Access Lock -----
+	wxMutexLocker lock(mMutexLastModification);
+	// ----- Access Lock -----
 	switch(GetFileProtocol(fileName))
 	{
 		case HTTP:
 		{
-			wxURI uri(fileName);
-			wxSocketClient socket;
-			socket.SetFlags(wxSOCKET_NOWAIT);
 			wxString lastMod;
 			wxDateTime lastModTime;
-			if(!SetHTTPConnection(socket, uri))
-				return false;
-			lastMod = GetHTTPHeader(socket, wxT("Last-Modified"));
+			lastMod = HTTPDownloader::GetHTTPHeader(fileName, wxT("Last-Modified"));
 			lastModTime.ParseDateTime(lastMod);
-			socket.Close();
 			return lastModTime.GetTicks();
 		}
 			break;
@@ -142,17 +133,15 @@ time_t multiProtocolFile::LastModification(const wxString& fileName)
 
 bool multiProtocolFile::DirExists(const wxString& dirName)
 {
+	// ----- Access Lock -----
+	wxMutexLocker lock(mMutexDirExists);
+	// ----- Access Lock -----
 	bool returnValue = false;
 	switch(GetFileProtocol(dirName))
 	{
 		case HTTP:
 		{
-			wxURI uri(dirName);
-			wxSocketClient socket;
-			socket.SetFlags(wxSOCKET_NOWAIT);
-			if(!SetHTTPConnection(socket, uri))
-				return false;
-			switch(GetHTTPResponseCode(socket))
+			switch(HTTPDownloader::GetHTTPResponseCode(dirName))
 			{
 				case 200:
 				case 201:
@@ -202,7 +191,6 @@ bool multiProtocolFile::DirExists(const wxString& dirName)
 					break;
 				}
 			}
-			socket.Close();
 		}
 			break;
 		case FTP:
@@ -219,21 +207,22 @@ bool multiProtocolFile::DirExists(const wxString& dirName)
 
 wxString multiProtocolFile::GetLocalFileName(const wxString& fileName)
 {
+	// ----- Access Lock -----
+	wxMutexLocker lock(mMutexGetLocalFileName);
+	// ----- Access Lock -----
 	wxString fn;
 	switch(GetFileProtocol(fileName))
 	{
 		case HTTP:
 		{
-			wxURI uri(fileName);
-			wxSocketClient socket;
-			socket.SetFlags(wxSOCKET_NOWAIT);
-			if(!SetHTTPConnection(socket, uri))
+			wxString localFileName;
+			localFileName = wxFileName::CreateTempFileName(_T(FMC_APPNAME));
+			if(!HTTPDownloader::GetHTTPFile(fileName, localFileName))
 			{
 				fn = wxT("");
 				break;
 			}
-			fn =  GetFile(socket);
-			socket.Close();
+			fn = localFileName;
 			break;
 		}
 		case FTP:
@@ -274,190 +263,4 @@ FileProtocol multiProtocolFile::GetFileProtocol(const wxString& fileName)
 	if(fileName.Mid(0, 3) == _T("ftp"))
 		return FTP;
 	return FILE;
-}
-
-
-bool multiProtocolFile::SetHTTPConnection(wxSocketClient& socket, wxURI uri, wxInt32 byteRange)
-{
-	bool isUsingProxy;
-	wxString proxyAddress;
-	wxUint32 proxyPort;
-	bool proxyNeedsAuthentication;
-	wxString proxyUsername;
-	wxString proxyPassword;
-	wxIPV4address addr;
-	wxString base64ProxyAuthentication;
-	wxString server;
-	wxString request;
-	wxString range;
-
-	_PrefsGetBool        (PREF_HTTPDOWNLOADER_USEPROXY,                   isUsingProxy);
-	_PrefsGetString      (PREF_HTTPDOWNLOADER_PROXYADDRESS,               proxyAddress);
-	_PrefsGetUint        (PREF_HTTPDOWNLOADER_PROXYPORT,                  proxyPort);
-	_PrefsGetBool        (PREF_HTTPDOWNLOADER_USE_PROXY_AUTHENTICATION,   proxyNeedsAuthentication);
-	_PrefsGetString      (PREF_HTTPDOWNLOADER_PROXY_USERNAME,             proxyUsername);
-	_PrefsGetHiddenString(PREF_HTTPDOWNLOADER_PROXY_PASSWORD,             proxyPassword);
-
-	if(byteRange == 0)
-	{
-		range = wxT("");
-	}
-	else if(byteRange > 0)
-	{
-		range = wxString::Format(wxT("Range: bytes=0-%i"), byteRange-1);
-	}
-	else
-	{
-		range = wxString::Format(wxT("Range: bytes=-%i"), byteRange);
-	}
-
-	wxInt32 port;
-	port = (uri.GetPort() == wxT("")) ? 80 : wxAtoi(uri.GetPort());
-
-		// --- Forge the request, considering the proxy configuration, and fill the address of the 'real' host to contact
-	if(isUsingProxy == true)
-	{
-		// Do we need to use authentication?
-		if(proxyNeedsAuthentication == true)
-		{
-			base64ProxyAuthentication = Base64Codec::Encode(wxString::Format(_T("%s:%s"), proxyUsername.c_str(), proxyPassword.c_str()));
-			request                   = wxString::Format(_T("GET http://%s:%u/%s HTTP/1.1\nHost: %s\nProxy-Authorization: Basic %s\nUser-Agent: %s/%s\n%s\n\n"), uri.GetServer().c_str(), port, uri.GetPath().c_str(), uri.GetServer().c_str(), base64ProxyAuthentication.c_str(), _T(FMC_APPNAME), _T(FMC_VERSION), range.c_str());
-		}
-		else
-		{
-			request = wxString::Format(_T("GET http://%s:%u/%s HTTP/1.1\nHost: %s\nUser-Agent: %s/%s\n%s\n\n"), uri.GetServer().c_str(), port, uri.GetPath().c_str(), uri.GetServer().c_str(), _T(FMC_APPNAME), _T(FMC_VERSION), range.c_str());
-		}
-
-		addr.Hostname(proxyAddress);
-		addr.Service(proxyPort);
-	}
-	else
-	{
-		request = wxString::Format(_T("GET %s HTTP/1.1\nHost: %s\nUser-Agent: %s/%s\n%s\n\n"), uri.GetPath().c_str(), uri.GetServer().c_str(), _T(FMC_APPNAME), _T(FMC_VERSION), range.c_str());
-		addr.Hostname(uri.GetServer());
-		addr.Service(port);
-	}
-	socket.SetTimeout(1);
-	if(socket.Connect(addr) == true)
-	{
-		socket.Write((const char*)request.mb_str(), request.Len());
-		if(socket.LastCount() == request.Len())
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-	else
-	{
-		return false;
-	}
-
-}
-
-
-wxUint32 multiProtocolFile::GetHTTPResponseCode(wxSocketClient& socket)
-{
-	wxByte buffer[12];
-	while(!socket.WaitForRead(0,0)){}
-	socket.Read(buffer, 12);
-
-	wxUint32 output = 404;
-	wxStringOutputStream *out;
-	out = new wxStringOutputStream();
-	if(socket.LastCount() != 0)
-	{
-		out->Write(buffer, socket.LastCount());
-		output = wxAtoi(out->GetString().Mid(9,3));
-	}
-	delete out;
-	return output;
-}
-
-
-wxString multiProtocolFile::GetHTTPHeader(wxSocketClient& socket, wxString header)
-{
-	wxChar buffer[1024];
-	while(!socket.WaitForRead(0,0)){}
-	socket.Read(buffer, 1024);
-	wxString output = wxT("");
-	wxStringOutputStream *out;
-	out = new wxStringOutputStream();
-	if(socket.LastCount() != 0)
-	{
-		out->Write(buffer, socket.LastCount());
-		wxStringTokenizer tkz(out->GetString(), wxT("\n"));
-		while ( tkz.HasMoreTokens() )
-		{
-			wxString token = tkz.GetNextToken();
-
-			if(token.BeforeFirst(':').Strip(wxString::both) == header)
-				return token.AfterFirst(':').Strip(wxString::both);
-		}
-	}
-	delete out;
-	return output;
-}
-
-
-wxString multiProtocolFile::GetFile(wxSocketClient& socket)
-{
-	wxByte buffer[1024];
-	wxFileOutputStream *out;
-	wxString localFileName;
-	localFileName = wxFileName::CreateTempFileName(_T(FMC_APPNAME));
-	bool moreDataToRead;
-	bool isFirstSlice = true;
-	if(localFileName.empty() == true)
-	{
-		return wxT("");
-	}
-
-	out = new wxFileOutputStream(localFileName);
-	if(out->Ok() == false)
-	{
-		return wxT("");
-	}
-	moreDataToRead      = true;
-	while(!socket.WaitForRead(0,0)){}
-
-
-	_LogMsgInfo(wxT("Streaming socket data"), false);
-	while(moreDataToRead == true)
-	{
-		if(isFirstSlice == true)
-		{
-			socket.Peek(buffer, 1024);
-			wxInt32 pos = -1;
-			wxUint32 streamPos = 0;
-			if(socket.LastCount() != 0)
-			{
-				while( pos == -1)
-				{
-					if(buffer[streamPos] == 13 && buffer[streamPos+1] == 10 && buffer[streamPos+2] == 13 && buffer[streamPos+3] == 10)
-						pos = streamPos;
-					streamPos++;
-				}
-				if(pos > 0)
-					socket.Read(buffer, pos+4);
-			}
-			isFirstSlice        = false;
-		}
-
-		socket.Read(buffer, 1024);
-
-		if(socket.LastCount() != 0)
-		{
-			out->Write(buffer, socket.LastCount());
-		}
-		else
-		{
-			moreDataToRead = false;
-		}
-	}
-	_LogMsgInfo(wxT("Socket emptied"), false);
-	delete out;
-	return localFileName;
 }
