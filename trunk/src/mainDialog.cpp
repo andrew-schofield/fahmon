@@ -42,6 +42,7 @@
 #include "preferencesManager.h"
 #include "listViewClients.h"
 #include "httpDownloader.h"
+#include "webMonitor.h"
 
 #include "wx/colour.h"
 #include "wx/filefn.h"
@@ -79,6 +80,8 @@ enum _CONTROL_ID
 	MID_TOGGLE_INFOPANEL,
 	MID_CREATE_DEBUG_REPORT,
 	MID_WWWFAHMONIRC,
+	MID_LOCALTIMER,
+	MID_INETTIMER,
 
 	// --- ListView
 	LST_CLIENTS
@@ -202,8 +205,10 @@ MainDialog::MainDialog(void) : wxFrame(NULL, wxID_ANY, _T(FMC_PRODUCT))
 	}
 
 	// The timer used for auto-reloading
-	mAutoReloadTimer.SetOwner(this);
+	mAutoReloadTimer.SetOwner(this, MID_LOCALTIMER);
 	SetAutoReloadTimer();
+	mInetAutoReloadTimer.SetOwner(this, MID_INETTIMER);
+	SetInetAutoReloadTimer();
 
 	// The tray icon
 	_PrefsGetBool(PREF_MAINDIALOG_ENABLE_TRAY_ICON, trayIconEnabled);
@@ -304,6 +309,29 @@ void MainDialog::SetAutoReloadTimer(void)
 		{
 			mAutoReloadTimer.Start(autoReloadFrequency * 60 * 1000); // regular update system
 		}
+	}
+}
+
+
+void MainDialog::SetInetAutoReloadTimer(void)
+{
+	bool     isAutoReloadOn;
+	wxUint32 autoReloadFrequency;
+
+	// First, we have to stop the timer if it is running, because preferences may be different from the last time
+	if(mInetAutoReloadTimer.IsRunning())
+	{
+		mInetAutoReloadTimer.Stop();
+	}
+
+	// Then, retrieve the (perhaps new) preferences
+	_PrefsGetBool(PREF_MAINDIALOG_AUTORELOAD,          isAutoReloadOn);
+	_PrefsGetUint(PREF_MAINDIALOG_INETAUTORELOADFREQUENCY, autoReloadFrequency);
+
+	// Ok, now we can start the timer if needed but we need to convert minutes to milliseconds
+	if(isAutoReloadOn)
+	{
+		mInetAutoReloadTimer.Start(autoReloadFrequency * 60 * 1000); // regular update system
 	}
 }
 
@@ -901,6 +929,7 @@ void MainDialog::OnMenuReload(wxCommandEvent& event)
 void MainDialog::OnMenuReloadAll(wxCommandEvent& event)
 {
 	ClientsManager::GetInstance()->ReloadThreaded(CM_LOADALLF);
+	WebMonitor::GetInstance()->WriteApp();
 }
 
 
@@ -1232,16 +1261,25 @@ void MainDialog::OnAutoReloadTimer(wxTimerEvent& event)
 
 	_PrefsGetBool(PREF_MAINDIALOG_ADVANCEDRELOAD, isAdvancedReloadOn);
 
-	if(isAdvancedReloadOn == true)
+	if(event.GetId() == MID_LOCALTIMER)
 	{
-		// For now, we have only one timer (auto-reload), so we don't have to test which one fired the event
-		// Reload using experimental method testing last update time
-		ClientsManager::GetInstance()->ReloadThreaded(CM_LOADALL);
+		_LogMsgInfo(wxT("Triggered auto-reload of local clients"), false);
+		if(isAdvancedReloadOn == true)
+		{
+			// Reload using experimental method testing last update time
+			ClientsManager::GetInstance()->ReloadThreaded(CM_LOADLOCAL);
+		}
+		else
+		{
+			// Reload using old method - forces an upload regardless of changes
+			ClientsManager::GetInstance()->ReloadThreaded(CM_LOADLOCALF);
+		}
 	}
 	else
 	{
-		// Reload using old method - forces an upload regardless of changes
-		ClientsManager::GetInstance()->ReloadThreaded(CM_LOADALLF);
+		_LogMsgInfo(wxT("Triggered auto-reload of inet clients"), false);
+		ClientsManager::GetInstance()->ReloadThreaded(CM_LOADINETF);
+		WebMonitor::GetInstance()->WriteApp();
 	}
 }
 

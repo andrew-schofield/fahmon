@@ -26,11 +26,14 @@
 
 #include "mainDialog.h"
 #include "clientsManager.h"
+#include "multiProtocolFile.h"
+#include "messagesManager.h"
 
 
-ClientHelperThread::ClientHelperThread(wxUint32 clientId) : wxThread(wxTHREAD_DETACHED)
+ClientHelperThread::ClientHelperThread(wxUint32 clientId, wxUint32 type) : wxThread(wxTHREAD_DETACHED)
 {
 	mClientId = clientId;
+	mType = type;
 
 	Create();
 	Run();
@@ -39,27 +42,34 @@ ClientHelperThread::ClientHelperThread(wxUint32 clientId) : wxThread(wxTHREAD_DE
 
 void* ClientHelperThread::Entry(void)
 {
+	const Client* client;
+	client = ClientsManager::GetInstance()->Get(mClientId);
 
 	if(MainDialog::GetInstance()->ClientReloadAllowed(mClientId))
 	{
 		wxCommandEvent event(EVT_CLIENTRELOADED);
-		// We use the 'inlined' method to reload the client
-		// (The job is done in the current execution flow)
-		ClientsManager::GetInstance()->Reload(mClientId);
+		if(mType == CM_LOADALL || mType == CM_LOADALLF ||
+			((mType == CM_LOADLOCAL || mType == CM_LOADLOCALF) && multiProtocolFile::GetFileProtocol(client->GetLocation()) == multiProtocolFile::FILE) ||
+			((mType == CM_LOADINET || mType == CM_LOADINETF) && (multiProtocolFile::GetFileProtocol(client->GetLocation()) == multiProtocolFile::FTP || multiProtocolFile::GetFileProtocol(client->GetLocation()) == multiProtocolFile::HTTP)))
+		{
+			// We use the 'inlined' method to reload the client
+			// (The job is done in the current execution flow)
+			ClientsManager::GetInstance()->Reload(mClientId);
+		}
 		// Post an event to the queue of the MainDialog to warn it that the job is done
 		event.SetInt(mClientId);
 		MainDialog::GetInstance()->AddPendingEvent(event);
 	}
-
 	// Dummy return code
 	return NULL;
 }
 
 
-SerialClientHelperThread::SerialClientHelperThread(wxUint32 clientCount, bool force) : wxThread(wxTHREAD_DETACHED)
+SerialClientHelperThread::SerialClientHelperThread(wxUint32 clientCount, bool force, wxUint32 type) : wxThread(wxTHREAD_DETACHED)
 {
 	mClientCount = clientCount;
 	mForce = force;
+	mType = type;
 
 	Create();
 	Run();
@@ -80,9 +90,12 @@ void* SerialClientHelperThread::Entry(void)
 		if(MainDialog::GetInstance()->ClientReloadAllowed(i))
 		{
 			wxCommandEvent event(EVT_CLIENTRELOADED);
-			// We use the 'inlined' method to reload the client
-			// (The job is done in the current execution flow)
-			ClientsManager::GetInstance()->Reload(i);
+			if(mType == CM_LOADALL || mType == CM_LOADALLF || ((mType == CM_LOADLOCAL || mType == CM_LOADLOCALF) && multiProtocolFile::GetFileProtocol(client->GetLocation()) == multiProtocolFile::FILE) || ((mType == CM_LOADINET || mType == CM_LOADINETF) && (multiProtocolFile::GetFileProtocol(client->GetLocation()) == multiProtocolFile::FTP || multiProtocolFile::GetFileProtocol(client->GetLocation()) == multiProtocolFile::HTTP)))
+			{
+				// We use the 'inlined' method to reload the client
+				// (The job is done in the current execution flow)
+				ClientsManager::GetInstance()->Reload(i);
+			}
 			// Post an event to the queue of the MainDialog to warn it that the job is done
 			event.SetInt(i);
 			MainDialog::GetInstance()->AddPendingEvent(event);

@@ -235,35 +235,42 @@ wxPanel* PreferencesDialog::CreateMonitoringTab(wxBookCtrlBase* parent)
 	wxBoxSizer *topLevelSizer;
 	wxBoxSizer *sizerETA;
 	wxBoxSizer *sizerAutoReload;
+	wxBoxSizer *sizerInetAutoReload;
 	wxBoxSizer *sizerNonThreadedReload;
 	wxBoxSizer *sizerPPDType;
 	wxBoxSizer *sizerAsynchrony;
 	const wxString    etaFormats[3] = {_("A date (dd/mm)"), _("A date (mm/dd)"), _("Time left")};    // The order *MUST* correspond to the one used for the definition of ETA_DisplayStyle
 	const wxString    ppdFormats[4] = {_("All frames"), _("Last frame only"), _("Last 3 frames"), _("Effective rate")};    // The order *MUST* correspond to the one use for the definition of PPD_DisplayStyle
 
-	panel                          = new wxPanel(parent);
-	sizer                          = new wxBoxSizer(wxVERTICAL);
-	sizerETA                       = new wxBoxSizer(wxHORIZONTAL);
-	topLevelSizer                  = new wxBoxSizer(wxVERTICAL);
-	sizerAutoReload                = new wxBoxSizer(wxHORIZONTAL);
-	sizerNonThreadedReload         = new wxBoxSizer(wxHORIZONTAL);
-	sizerPPDType                   = new wxBoxSizer(wxHORIZONTAL);
-	sizerAsynchrony                = new wxBoxSizer(wxHORIZONTAL);
+	panel                              = new wxPanel(parent);
+	sizer                              = new wxBoxSizer(wxVERTICAL);
+	sizerETA                           = new wxBoxSizer(wxHORIZONTAL);
+	topLevelSizer                      = new wxBoxSizer(wxVERTICAL);
+	sizerAutoReload                    = new wxBoxSizer(wxHORIZONTAL);
+	sizerInetAutoReload                    = new wxBoxSizer(wxHORIZONTAL);
+	sizerNonThreadedReload             = new wxBoxSizer(wxHORIZONTAL);
+	sizerPPDType                       = new wxBoxSizer(wxHORIZONTAL);
+	sizerAsynchrony                    = new wxBoxSizer(wxHORIZONTAL);
 
-	mMonitoringAutoReload          = new wxCheckBox(panel, CHK_AUTORELOAD, _("Auto reload clients"));
-	mMonitoringAutoReloadInt       = new wxStaticText(panel, wxID_ANY, wxString::Format(_T("%s "),  _("Reload interval (mn)")));
-	mMonitoringAdvancedReload      = new wxCheckBox(panel, CHK_ADVANCEDRELOAD, _("Use experimental reload system"));
-	mMonitoringNonThreadedReload   = new wxCheckBox(panel, CHK_USENONTHREADED, _("Reload clients in series"));
-	mMonitoringETADisplayStyle     = new wxChoice(panel, wxID_ANY, wxDefaultPosition, wxDefaultSize, 3, etaFormats);
-	mMonitoringAutoReloadFrequency = new wxSpinCtrl(panel, wxID_ANY, _T(""), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 1, 1000, 5);
-	mMonitoringPPDType             = new wxChoice(panel, wxID_ANY, wxDefaultPosition, wxDefaultSize, 4, ppdFormats);
-	mMonitoringIgnoreAsynchrony    = new wxCheckBox(panel, wxID_ANY, _("Ignore asynchronous clocks"));
+	mMonitoringAutoReload              = new wxCheckBox(panel, CHK_AUTORELOAD, _("Auto reload clients"));
+	mMonitoringAutoReloadInt           = new wxStaticText(panel, wxID_ANY, wxString::Format(_T("%s "),  _("Local client reload interval (mn)")));
+	mMonitoringAdvancedReload          = new wxCheckBox(panel, CHK_ADVANCEDRELOAD, _("Use experimental reload system (local only)"));
+	mMonitoringInetAutoReloadInt       = new wxStaticText(panel, wxID_ANY, wxString::Format(_T("%s "),  _("HTTP/FTP client reload interval (mn)")));
+	mMonitoringNonThreadedReload       = new wxCheckBox(panel, CHK_USENONTHREADED, _("Reload clients in series"));
+	mMonitoringETADisplayStyle         = new wxChoice(panel, wxID_ANY, wxDefaultPosition, wxDefaultSize, 3, etaFormats);
+	mMonitoringAutoReloadFrequency     = new wxSpinCtrl(panel, wxID_ANY, _T(""), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 1, 1000, 5);
+	mMonitoringInetAutoReloadFrequency = new wxSpinCtrl(panel, wxID_ANY, _T(""), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 10, 1000, 5);
+	mMonitoringPPDType                 = new wxChoice(panel, wxID_ANY, wxDefaultPosition, wxDefaultSize, 4, ppdFormats);
+	mMonitoringIgnoreAsynchrony        = new wxCheckBox(panel, wxID_ANY, _("Ignore asynchronous clocks"));
 
 	sizerETA->Add(new wxStaticText(panel, wxID_ANY, wxString::Format(_T("%s "),  _("Display dates as"))), 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL);
 	sizerETA->Add(mMonitoringETADisplayStyle, 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL);
 
 	sizerAutoReload->Add(mMonitoringAutoReloadInt, 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL);
 	sizerAutoReload->Add(mMonitoringAutoReloadFrequency, 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL);
+
+	sizerInetAutoReload->Add(mMonitoringInetAutoReloadInt, 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL);
+	sizerInetAutoReload->Add(mMonitoringInetAutoReloadFrequency, 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL);
 
 	sizerPPDType->Add(new wxStaticText(panel, wxID_ANY, wxString::Format(_T("%s  "),  _("Calculate PPD based on"))), 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL);
 	sizerPPDType->Add(mMonitoringPPDType, 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL);
@@ -275,9 +282,11 @@ wxPanel* PreferencesDialog::CreateMonitoringTab(wxBookCtrlBase* parent)
 	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	sizer->Add(mMonitoringAutoReload, 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL);
 	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
+	sizer->Add(mMonitoringAdvancedReload, 0, wxALIGN_LEFT);
+	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	sizer->Add(sizerAutoReload, 0, wxALIGN_LEFT);
 	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
-	sizer->Add(mMonitoringAdvancedReload, 0, wxALIGN_LEFT);
+	sizer->Add(sizerInetAutoReload, 0, wxALIGN_LEFT);
 	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	sizer->Add(mMonitoringNonThreadedReload, 0, wxALIGN_LEFT);
 	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
@@ -768,17 +777,19 @@ void PreferencesDialog::LoadPreferences(void)
 	mGeneralUpdateCheck->SetValue(updateCheck);
 
 	// -----===== Monitoring preferences =====-----
-	_PrefsGetBool(PREF_MAINDIALOG_ADVANCEDRELOAD,      mInitAdvancedReload);
-	_PrefsGetBool(PREF_MAINDIALOG_AUTORELOAD,          mInitAutoReload);
-	_PrefsGetUint(PREF_MAINDIALOG_AUTORELOADFREQUENCY, mInitAutoReloadFrequency);
-	_PrefsGetUint(PREF_ETA_DISPLAYSTYLE,               mInitETADisplayStyle);
-	_PrefsGetUint(PREF_PPD_DISPLAYSTYLE,               mInitPPDDisplayStyle);
-	_PrefsGetBool(PREF_IGNORE_ASYNCHRONY,              mInitIgnoreAsynchronousClocks);
-	_PrefsGetBool(PREF_NON_THREADED_RELOAD,            nonThreadedReload);
+	_PrefsGetBool(PREF_MAINDIALOG_ADVANCEDRELOAD,          mInitAdvancedReload);
+	_PrefsGetBool(PREF_MAINDIALOG_AUTORELOAD,              mInitAutoReload);
+	_PrefsGetUint(PREF_MAINDIALOG_AUTORELOADFREQUENCY,     mInitAutoReloadFrequency);
+	_PrefsGetUint(PREF_MAINDIALOG_INETAUTORELOADFREQUENCY, mInitInetAutoReloadFrequency);
+	_PrefsGetUint(PREF_ETA_DISPLAYSTYLE,                   mInitETADisplayStyle);
+	_PrefsGetUint(PREF_PPD_DISPLAYSTYLE,                   mInitPPDDisplayStyle);
+	_PrefsGetBool(PREF_IGNORE_ASYNCHRONY,                  mInitIgnoreAsynchronousClocks);
+	_PrefsGetBool(PREF_NON_THREADED_RELOAD,                nonThreadedReload);
 
 	mMonitoringAdvancedReload->SetValue(mInitAdvancedReload);
 	mMonitoringAutoReload->SetValue(mInitAutoReload);
 	mMonitoringAutoReloadFrequency->SetValue(wxString::Format(_T("%u"), mInitAutoReloadFrequency));
+	mMonitoringInetAutoReloadFrequency->SetValue(wxString::Format(_T("%u"), mInitInetAutoReloadFrequency));
 	mMonitoringAutoReloadFrequency->Enable(!mInitAdvancedReload);
 	mMonitoringETADisplayStyle->Select(mInitETADisplayStyle);
 	mMonitoringPPDType->Select(mInitPPDDisplayStyle);
@@ -789,10 +800,12 @@ void PreferencesDialog::LoadPreferences(void)
 	if(mMonitoringAutoReload->GetValue() == true)
 	{
 		mMonitoringAutoReloadFrequency->Enable(!mMonitoringAdvancedReload->GetValue());
+		mMonitoringInetAutoReloadFrequency->Enable(true);
 	}
 	else
 	{
 		mMonitoringAutoReloadFrequency->Enable(false);
+		mMonitoringInetAutoReloadFrequency->Enable(false);
 	}
 
 	// -----===== Networking preferences =====-----
@@ -1038,13 +1051,14 @@ void PreferencesDialog::SavePreferences(void)
 	_PrefsSetBool(PREF_MAINDIALOG_UPDATE_CHECK,       mGeneralUpdateCheck->GetValue());
 
 	// -----===== Monitoring preferences =====-----
-	_PrefsSetBool(PREF_MAINDIALOG_ADVANCEDRELOAD,      mMonitoringAdvancedReload->GetValue());
-	_PrefsSetBool(PREF_MAINDIALOG_AUTORELOAD,          mMonitoringAutoReload->GetValue());
-	_PrefsSetUint(PREF_MAINDIALOG_AUTORELOADFREQUENCY, mMonitoringAutoReloadFrequency->GetValue());
-	_PrefsSetUint(PREF_ETA_DISPLAYSTYLE,               mMonitoringETADisplayStyle->GetSelection());
-	_PrefsSetUint(PREF_PPD_DISPLAYSTYLE,               mMonitoringPPDType->GetSelection());
-	_PrefsSetBool(PREF_IGNORE_ASYNCHRONY,              mMonitoringIgnoreAsynchrony->GetValue());
-	_PrefsSetBool(PREF_NON_THREADED_RELOAD,            mMonitoringNonThreadedReload->GetValue());
+	_PrefsSetBool(PREF_MAINDIALOG_ADVANCEDRELOAD,          mMonitoringAdvancedReload->GetValue());
+	_PrefsSetBool(PREF_MAINDIALOG_AUTORELOAD,              mMonitoringAutoReload->GetValue());
+	_PrefsSetUint(PREF_MAINDIALOG_AUTORELOADFREQUENCY,     mMonitoringAutoReloadFrequency->GetValue());
+	_PrefsSetUint(PREF_MAINDIALOG_INETAUTORELOADFREQUENCY, mMonitoringInetAutoReloadFrequency->GetValue());
+	_PrefsSetUint(PREF_ETA_DISPLAYSTYLE,                   mMonitoringETADisplayStyle->GetSelection());
+	_PrefsSetUint(PREF_PPD_DISPLAYSTYLE,                   mMonitoringPPDType->GetSelection());
+	_PrefsSetBool(PREF_IGNORE_ASYNCHRONY,                  mMonitoringIgnoreAsynchrony->GetValue());
+	_PrefsSetBool(PREF_NON_THREADED_RELOAD,                mMonitoringNonThreadedReload->GetValue());
 
 	// -----===== Networking preferences =====-----
 	HTTPproxyPort = wxAtoi(mNetworkingHTTPProxyPort->GetValue());
@@ -1100,7 +1114,7 @@ void PreferencesDialog::SavePreferences(void)
 	}
 	#endif
 
-	if(mMonitoringAdvancedReload->GetValue() != mInitAdvancedReload || (wxUint32)mMonitoringAutoReloadFrequency->GetValue() != mInitAutoReloadFrequency)
+	if(mMonitoringAdvancedReload->GetValue() != mInitAdvancedReload || (wxUint32)mMonitoringAutoReloadFrequency->GetValue() != mInitAutoReloadFrequency || (wxUint32)mMonitoringInetAutoReloadFrequency->GetValue() != mInitInetAutoReloadFrequency)
 	{
 		MainDialog::GetInstance()->OnAutoReloadPrefChanged();
 	}
@@ -1312,10 +1326,12 @@ void PreferencesDialog::OnCheckboxes(wxCommandEvent& event)
 			if(mMonitoringAutoReload->GetValue() == true)
 			{
 				mMonitoringAutoReloadFrequency->Enable(!mMonitoringAdvancedReload->GetValue());
+				mMonitoringInetAutoReloadFrequency->Enable(true);
 			}
 			else
 			{
 				mMonitoringAutoReloadFrequency->Enable(false);
+				mMonitoringInetAutoReloadFrequency->Enable(false);
 			}
 			break;
 

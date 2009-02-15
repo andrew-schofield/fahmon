@@ -31,6 +31,8 @@ SVN
       * Significantly reduced CPU usage while reloading.
       * Added support for monitoring clients over http.
       * Added limited support for monitoring clients over ftp.
+      * Added slower, configurable timer for reloading http/ftp clients. This
+        is also used for web output.
 
       Other
 

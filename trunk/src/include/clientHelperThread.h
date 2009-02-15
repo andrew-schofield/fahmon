@@ -40,6 +40,7 @@ class ClientHelperThread : public wxThread
 {
 protected:
 	wxUint32 mClientId; /**< The client id to reload */
+	wxUint32 mType;
 
 	/**
 	 * This is the entry point of the thread, where the client is reloaded.
@@ -51,8 +52,9 @@ public:
 	/**
 	 * Constructor.
 	 * @param clientId The ID of the client to reload.
+	 * @param type Local/inet or all
 	 **/
-	ClientHelperThread(wxUint32 clientId);
+	ClientHelperThread(wxUint32 clientId, wxUint32 type);
 };
 
 
@@ -69,6 +71,7 @@ class SerialClientHelperThread : public wxThread
 protected:
 	wxUint32 mClientCount; /**< Total number of clients */
 	bool mForce; /**< Force reloading of client even if not necessary */
+	wxUint32 mType;
 
 	/**
 	 * This is the entry point of the thread, where the client is reloaded.
@@ -81,8 +84,9 @@ public:
 	 * Constructor.
 	 * @param clientCount Number of clients in list.
 	 * @param force Force reloading of all clients.
+	 * @param type Local/inet or all
 	 **/
-	SerialClientHelperThread(wxUint32 clientCount, bool force);
+	SerialClientHelperThread(wxUint32 clientCount, bool force, wxUint32 type);
 };
 
 

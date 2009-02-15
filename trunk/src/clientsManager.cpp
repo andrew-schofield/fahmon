@@ -30,7 +30,6 @@
 #include "pathManager.h"
 #include "messagesManager.h"
 #include "clientHelperThread.h"
-#include "webMonitor.h"
 #include "trayManager.h"
 #include "preferencesManager.h"
 
@@ -234,18 +233,27 @@ void ClientsManager::ReloadThreaded(wxUint32 clientId)
 
 	_PrefsGetBool(PREF_NON_THREADED_RELOAD, nonThreaded);
 
-	if(clientId != CM_LOADALL && clientId != CM_LOADALLF)
+
+	if(clientId != CM_LOADALL && clientId != CM_LOADALLF && clientId != CM_LOADLOCAL && clientId != CM_LOADLOCALF && clientId != CM_LOADINET && clientId != CM_LOADINETF)
 	{
-		new ClientHelperThread(clientId);
+		new ClientHelperThread(clientId, CM_LOADALL);
 	}
 	else
 	{
 		if(nonThreaded)
 		{
 			if(clientId == CM_LOADALL)
-				new SerialClientHelperThread(GetCount(), false);
-			if(clientId == CM_LOADALLF)
-				new SerialClientHelperThread(GetCount(), true);
+				new SerialClientHelperThread(GetCount(), false, CM_LOADALL);
+			else if(clientId == CM_LOADALLF)
+				new SerialClientHelperThread(GetCount(), true, CM_LOADALLF);
+			else if(clientId == CM_LOADLOCAL)
+				new SerialClientHelperThread(GetCount(), false, CM_LOADLOCAL);
+			else if(clientId == CM_LOADLOCALF)
+				new SerialClientHelperThread(GetCount(), true, CM_LOADLOCALF);
+			else if(clientId == CM_LOADINET)
+				new SerialClientHelperThread(GetCount(), false, CM_LOADINET);
+			else if(clientId == CM_LOADINETF)
+				new SerialClientHelperThread(GetCount(), true, CM_LOADINETF);
 		}
 		else
 		{
@@ -254,16 +262,33 @@ void ClientsManager::ReloadThreaded(wxUint32 clientId)
 				if(clientId == CM_LOADALL)
 				{
 					if(mClients.Item(i)->ReloadNeeded() == true)
-						new ClientHelperThread(i);
+						new ClientHelperThread(i, CM_LOADALL);
 				}
-				if(clientId == CM_LOADALLF)
+				else if(clientId == CM_LOADALLF)
 				{
-					new ClientHelperThread(i);
+					new ClientHelperThread(i, CM_LOADALLF);
+				}
+				else if(clientId == CM_LOADLOCAL)
+				{
+					if(mClients.Item(i)->ReloadNeeded() == true)
+						new ClientHelperThread(i, CM_LOADLOCAL);
+				}
+				else if(clientId == CM_LOADLOCALF)
+				{
+					new ClientHelperThread(i, CM_LOADLOCALF);
+				}
+				else if(clientId == CM_LOADINET)
+				{
+					if(mClients.Item(i)->ReloadNeeded() == true)
+						new ClientHelperThread(i, CM_LOADINET);
+				}
+				else if(clientId == CM_LOADINETF)
+				{
+					new ClientHelperThread(i, CM_LOADINETF);
 				}
 			}
 		}
 	}
-	WebMonitor::GetInstance()->WriteApp();
 	TrayManager::GetInstance()->SetTooltip(_T(""));
 }
 

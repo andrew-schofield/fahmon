@@ -62,7 +62,9 @@ protected:
 	wxCheckBox   *mMonitoringAdvancedReload; /**< Checkbox for advanced reload system */
 	wxCheckBox   *mMonitoringAutoReload; /**< Checkbox for auto reload */
 	wxStaticText *mMonitoringAutoReloadInt; /**< Text control for reload interval */
+	wxStaticText *mMonitoringInetAutoReloadInt; /**< Text control for inet reload interval */
 	wxSpinCtrl   *mMonitoringAutoReloadFrequency; /**< Spin control for reload interval */
+	wxSpinCtrl   *mMonitoringInetAutoReloadFrequency; /**< Spin control for inet reload interval */
 	wxChoice     *mMonitoringPPDType; /**< Select box for PPD calculation method */
 	wxCheckBox   *mMonitoringIgnoreAsynchrony; /**< Checkbox for ignoring asynchronous clocks */
 	wxCheckBox   *mMonitoringNonThreadedReload; /**< Checkbox for turning off threaded reloads */
@@ -146,6 +148,7 @@ protected:
 	bool     mInitIgnoreAsynchronousClocks; /**< Initial value for ignoring asynchronous clocks */
 	wxInt32  mInitTimezone; /**< Initial value for timezone */
 	wxUint32 mInitAutoReloadFrequency; /**< Initial value for auto reload frequency */
+	wxUint32 mInitInetAutoReloadFrequency; /**< Initial value for inet auto reload frequency */
 	wxUint32 mInitETADisplayStyle; /**< Initial value for ETA display style */
 	wxUint32 mInitPPDDisplayStyle; /**< Initial value for PPD display style */
 

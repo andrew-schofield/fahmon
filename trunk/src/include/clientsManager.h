@@ -30,6 +30,10 @@
 
 #define CM_LOADALL FMC_INTMAX
 #define CM_LOADALLF FMC_INTMAX2
+#define CM_LOADLOCAL FMC_INTMAX3
+#define CM_LOADLOCALF FMC_INTMAX4
+#define CM_LOADINET FMC_INTMAX5
+#define CM_LOADINETF FMC_INTMAX6
 
 
 WX_DEFINE_ARRAY_PTR(Client*, ArrayOfClients); /**< Definition of client array. */

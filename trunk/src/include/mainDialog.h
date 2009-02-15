@@ -76,6 +76,9 @@
 #define PREF_MAINDIALOG_AUTORELOADFREQUENCY    wxT("MainDialog.AutoReloadFrequency") /**< Preference setting for auto reload frequency */
 #define PREF_MAINDIALOG_AUTORELOADFREQUENCY_DV 5 /**< Default value for auto reload frequency */
 
+#define PREF_MAINDIALOG_INETAUTORELOADFREQUENCY    wxT("MainDialog.InetAutoReloadFrequency") /**< Preference setting for inet auto reload frequency */
+#define PREF_MAINDIALOG_INETAUTORELOADFREQUENCY_DV 10 /**< Default value for inet auto reload frequency */
+
 #define PREF_MAINDIALOG_ENABLE_TRAY_ICON    wxT("MainDialog.EnableTrayIcon") /**< Preference setting for use of tray icon */
 #define PREF_MAINDIALOG_ENABLE_TRAY_ICON_DV false /**< Default value for use of tray icon */
 
@@ -182,6 +185,7 @@ protected:
 
 	// Misc
 	wxTimer       mAutoReloadTimer; /**< Timer object for reloading clients */
+	wxTimer       mInetAutoReloadTimer; /**< Timer object for reloading inet clients */
 	wxTaskBarIcon mSystemTray; /**< System tray icon object */
 
 	/**
@@ -219,6 +223,11 @@ protected:
 	 * Create/Kill/Modify the timer for auto-reloading, according to the preferences.
 	 **/
 	void SetAutoReloadTimer(void);
+
+	/**
+	 * Create/Kill/Modify the timer for auto-reloading, according to the preferences.
+	 **/
+	void SetInetAutoReloadTimer(void);
 
 	/**
 	 * Update the fields using the given client and refresh the GUI.
