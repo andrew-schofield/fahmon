@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it-IT\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2009-02-13 20:37+0000\n"
+"POT-Creation-Date: 2009-02-15 00:10+0000\n"
 "PO-Revision-Date: 2008-02-25 12:46+0100\n"
 "Last-Translator: Zurgo <zurgo@virgilio.it>\n"
 "Language-Team:  <zurgo@virgilio.it>\n"
@@ -329,10 +329,10 @@ msgstr ""
 msgid "Location:"
 msgstr "Posizione:"
 
-#: src/clientDialog.cpp:97 src/preferencesDialog.cpp:370
-#: src/preferencesDialog.cpp:515 src/preferencesDialog.cpp:524
-#: src/preferencesDialog.cpp:533 src/preferencesDialog.cpp:600
-#: src/preferencesDialog.cpp:609 src/preferencesDialog.cpp:618
+#: src/clientDialog.cpp:97 src/preferencesDialog.cpp:410
+#: src/preferencesDialog.cpp:559 src/preferencesDialog.cpp:568
+#: src/preferencesDialog.cpp:577 src/preferencesDialog.cpp:644
+#: src/preferencesDialog.cpp:653 src/preferencesDialog.cpp:662
 msgid "Choose"
 msgstr "Scegli"
 
@@ -1045,139 +1045,140 @@ msgid ""
 "The log will not be saved!"
 msgstr "Impossibile aprire il file per la scrittura!/nIl log non sarà salvato!"
 
-#: src/preferencesDialog.cpp:105
+#: src/preferencesDialog.cpp:110
 #, c-format
 msgid "Preferences / %s"
 msgstr "Preferenze / %s"
 
-#: src/preferencesDialog.cpp:123
+#: src/preferencesDialog.cpp:128
 msgid "General"
 msgstr "Generale"
 
-#: src/preferencesDialog.cpp:124
+#: src/preferencesDialog.cpp:129
 msgid "Monitoring"
 msgstr "Monitoraggio"
 
-#: src/preferencesDialog.cpp:125
+#: src/preferencesDialog.cpp:130
 msgid "Networking"
 msgstr "Rete"
 
-#: src/preferencesDialog.cpp:126
+#: src/preferencesDialog.cpp:131
 msgid "Advanced"
 msgstr "Avanzate"
 
-#: src/preferencesDialog.cpp:127
+#: src/preferencesDialog.cpp:132
 msgid "System"
 msgstr "Sistema"
 
-#: src/preferencesDialog.cpp:129
+#: src/preferencesDialog.cpp:134
 #, fuzzy
 msgid "WebApp 1"
 msgstr "WebApp"
 
-#: src/preferencesDialog.cpp:130
+#: src/preferencesDialog.cpp:135
 #, fuzzy
 msgid "WebApp 2"
 msgstr "WebApp"
 
-#: src/preferencesDialog.cpp:195
+#: src/preferencesDialog.cpp:200
 msgid "Enable system tray icon"
 msgstr "Attiva l'icona nella system tray"
 
-#: src/preferencesDialog.cpp:197
+#: src/preferencesDialog.cpp:202
 msgid "Start minimized"
 msgstr "Avvia minimizzato"
 
-#: src/preferencesDialog.cpp:198
+#: src/preferencesDialog.cpp:203
 msgid "Collect .xyz files"
 msgstr "Conserva i file .xyz"
 
-#: src/preferencesDialog.cpp:199
+#: src/preferencesDialog.cpp:204
 msgid "Auto update projects database when needed"
 msgstr "Aggiorna automaticamenti il database dei progetti quando è richiesto"
 
-#: src/preferencesDialog.cpp:200
+#: src/preferencesDialog.cpp:205
 msgid "Always list inaccessible clients last"
 msgstr "Mostra sempre i client inaccessibili in fondo alla lista"
 
-#: src/preferencesDialog.cpp:201
+#: src/preferencesDialog.cpp:206
 msgid "Check for FahMon updates on startup"
 msgstr "Controlla gli aggiornamenti di FahMon all'avvio"
 
-#: src/preferencesDialog.cpp:236
+#: src/preferencesDialog.cpp:241
 msgid "A date (dd/mm)"
 msgstr "Una data (gg/mm)"
 
-#: src/preferencesDialog.cpp:236
+#: src/preferencesDialog.cpp:241
 msgid "A date (mm/dd)"
 msgstr "Una data (mm/gg)"
 
-#: src/preferencesDialog.cpp:236
+#: src/preferencesDialog.cpp:241
 msgid "Time left"
 msgstr "Tempo rimasto"
 
-#: src/preferencesDialog.cpp:237
+#: src/preferencesDialog.cpp:242
 msgid "All frames"
 msgstr "Tutti i frames"
 
-#: src/preferencesDialog.cpp:237
+#: src/preferencesDialog.cpp:242
 msgid "Last frame only"
 msgstr "Solo gli ultimi frame"
 
-#: src/preferencesDialog.cpp:237
+#: src/preferencesDialog.cpp:242
 msgid "Last 3 frames"
 msgstr "Gli ultimi 3 frames"
 
-#: src/preferencesDialog.cpp:237
+#: src/preferencesDialog.cpp:242
 msgid "Effective rate"
 msgstr "Rapporto effettivo"
 
-#: src/preferencesDialog.cpp:248
+#: src/preferencesDialog.cpp:253
 msgid "Auto reload clients"
 msgstr "Aggiorna i clients automaticamente"
 
-#: src/preferencesDialog.cpp:249
+#: src/preferencesDialog.cpp:254
 msgid "Reload interval (mn)"
 msgstr "Intervallo di aggiornamento (min)"
 
-#: src/preferencesDialog.cpp:250
+#: src/preferencesDialog.cpp:255
 msgid "Use experimental reload system"
 msgstr "Usa il sistema di aggiornamento sperimentale"
 
-#: src/preferencesDialog.cpp:251
+#: src/preferencesDialog.cpp:256
 #, fuzzy
 msgid "Reload clients in series"
 msgstr "Ricarica questo client"
 
-#: src/preferencesDialog.cpp:255
+#: src/preferencesDialog.cpp:260
 msgid "Ignore asynchronous clocks"
 msgstr "Ignora l'asincronizzazione dell'orologio"
 
-#: src/preferencesDialog.cpp:257
+#: src/preferencesDialog.cpp:262
 msgid "Display dates as"
 msgstr "Mostra le date come"
 
-#: src/preferencesDialog.cpp:263
+#: src/preferencesDialog.cpp:268
 msgid "Calculate PPD based on"
 msgstr "Calcolo il PPD in base a"
 
-#: src/preferencesDialog.cpp:307
+#: src/preferencesDialog.cpp:316
 msgid "Use a proxy for HTTP connections"
 msgstr "Usa un proxy per le connessioni HTTP"
 
-#: src/preferencesDialog.cpp:310
+#: src/preferencesDialog.cpp:319 src/preferencesDialog.cpp:330
 msgid "Proxy requires authentication"
 msgstr "Il proxy richiede l'autenticazione"
 
-#: src/preferencesDialog.cpp:313 src/preferencesDialog.cpp:363
+#: src/preferencesDialog.cpp:322 src/preferencesDialog.cpp:333
+#: src/preferencesDialog.cpp:403
 msgid "Address:"
 msgstr "Indirizzo:"
 
-#: src/preferencesDialog.cpp:314
+#: src/preferencesDialog.cpp:323 src/preferencesDialog.cpp:334
 msgid "Port:"
 msgstr "Porta:"
 
-#: src/preferencesDialog.cpp:315
+#: src/preferencesDialog.cpp:324 src/preferencesDialog.cpp:335
 msgid ""
 "Proxy\n"
 "Username:"
@@ -1185,7 +1186,7 @@ msgstr ""
 "Proxy\n"
 "Nome utente:"
 
-#: src/preferencesDialog.cpp:316
+#: src/preferencesDialog.cpp:325 src/preferencesDialog.cpp:336
 msgid ""
 "Proxy\n"
 "Password:"
@@ -1193,111 +1194,116 @@ msgstr ""
 "Proxy\n"
 "Password:"
 
-#: src/preferencesDialog.cpp:361
+#: src/preferencesDialog.cpp:327
+#, fuzzy
+msgid "Use a proxy for FTP connections"
+msgstr "Usa un proxy per le connessioni HTTP"
+
+#: src/preferencesDialog.cpp:401
 msgid "Use the following settings for new project downloads"
 msgstr "Utilizza i seguenti settaggi per lo scaricamento dei nuovi progetti"
 
-#: src/preferencesDialog.cpp:364
+#: src/preferencesDialog.cpp:404
 msgid "Use a local file for project data"
 msgstr "Usa un file locale per i dati del progetto"
 
-#: src/preferencesDialog.cpp:366 src/preferencesDialog.cpp:511
-#: src/preferencesDialog.cpp:520 src/preferencesDialog.cpp:529
-#: src/preferencesDialog.cpp:596 src/preferencesDialog.cpp:605
-#: src/preferencesDialog.cpp:614
+#: src/preferencesDialog.cpp:406 src/preferencesDialog.cpp:555
+#: src/preferencesDialog.cpp:564 src/preferencesDialog.cpp:573
+#: src/preferencesDialog.cpp:640 src/preferencesDialog.cpp:649
+#: src/preferencesDialog.cpp:658
 msgid "Filename:"
 msgstr "Nome del file:"
 
-#: src/preferencesDialog.cpp:372
+#: src/preferencesDialog.cpp:412
 #, fuzzy
 msgid "Log error messages only"
 msgstr "Abilita/Disabilita la finestra dei messaggi"
 
-#: src/preferencesDialog.cpp:418
+#: src/preferencesDialog.cpp:458
 msgid "Web Browser:"
 msgstr "Web Browser:"
 
-#: src/preferencesDialog.cpp:419
+#: src/preferencesDialog.cpp:459
 msgid "File Manager:"
 msgstr "File Manager:"
 
-#: src/preferencesDialog.cpp:421
+#: src/preferencesDialog.cpp:461
 msgid "File Manager Command:"
 msgstr "Comando File Manager:"
 
-#: src/preferencesDialog.cpp:422
+#: src/preferencesDialog.cpp:462
 msgid "Manually set timezone to UTC +"
 msgstr "Imposta manualmente la timezone a UTC +"
 
-#: src/preferencesDialog.cpp:426
+#: src/preferencesDialog.cpp:466
 msgid "Windows Explorer"
 msgstr "Windows Explorer"
 
-#: src/preferencesDialog.cpp:426 src/preferencesDialog.cpp:429
-#: src/preferencesDialog.cpp:432
+#: src/preferencesDialog.cpp:466 src/preferencesDialog.cpp:469
+#: src/preferencesDialog.cpp:472
 #, fuzzy
 msgid "Other"
 msgstr "Altro"
 
-#: src/preferencesDialog.cpp:432
+#: src/preferencesDialog.cpp:472
 #, fuzzy
 msgid "Finder"
 msgstr "Finder"
 
-#: src/preferencesDialog.cpp:509
+#: src/preferencesDialog.cpp:553
 msgid "Export Web Application"
 msgstr "Esporta come Web Application"
 
-#: src/preferencesDialog.cpp:518
+#: src/preferencesDialog.cpp:562
 msgid "Export Simple Web page"
 msgstr "Esporta come pagina Web semplice"
 
-#: src/preferencesDialog.cpp:527
+#: src/preferencesDialog.cpp:571
 msgid "Export Simple Text file"
 msgstr "Esporta come file di testo semplice"
 
-#: src/preferencesDialog.cpp:594
+#: src/preferencesDialog.cpp:638
 #, fuzzy
 msgid "Custom Web Application Template"
 msgstr "Esporta come Web Application"
 
-#: src/preferencesDialog.cpp:603
+#: src/preferencesDialog.cpp:647
 #, fuzzy
 msgid "Custom Simple Web Template"
 msgstr "Esporta come pagina Web semplice"
 
-#: src/preferencesDialog.cpp:612
+#: src/preferencesDialog.cpp:656
 #, fuzzy
 msgid "Custom Simple Text Template"
 msgstr "Esporta come file di testo semplice"
 
-#: src/preferencesDialog.cpp:1047
+#: src/preferencesDialog.cpp:1152
 msgid "Choose a local project data file"
 msgstr "Scegli un project data file locale"
 
-#: src/preferencesDialog.cpp:1062
+#: src/preferencesDialog.cpp:1167
 msgid "Choose where to save the Web Application"
 msgstr "Scegli dove salvare la Web Application"
 
-#: src/preferencesDialog.cpp:1077
+#: src/preferencesDialog.cpp:1182
 msgid "Choose where to save the simple web page"
 msgstr "Choose where to save the simple web page"
 
-#: src/preferencesDialog.cpp:1092
+#: src/preferencesDialog.cpp:1197
 msgid "Choose where to save the simple text file"
 msgstr "Scegli dove salvare il file di testo semplice"
 
-#: src/preferencesDialog.cpp:1107
+#: src/preferencesDialog.cpp:1212
 #, fuzzy
 msgid "Choose the Web Application Template"
 msgstr "Scegli dove salvare la Web Application"
 
-#: src/preferencesDialog.cpp:1122
+#: src/preferencesDialog.cpp:1227
 #, fuzzy
 msgid "Choose the Simple Web Page Template"
 msgstr "Choose where to save the simple web page"
 
-#: src/preferencesDialog.cpp:1137
+#: src/preferencesDialog.cpp:1242
 #, fuzzy
 msgid "Choose the Simple Text File Template"
 msgstr "Scegli dove salvare il file di testo semplice"

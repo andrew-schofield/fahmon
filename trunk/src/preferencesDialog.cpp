@@ -28,6 +28,7 @@
 #include "client.h"
 #include "mainDialog.h"
 #include "httpDownloader.h"
+#include "ftpDownloader.h"
 #include "preferencesManager.h"
 #include "tools.h"
 #include "webMonitor.h"
@@ -41,8 +42,10 @@ enum _CONTROL_ID
 {
 	// Checkboxes
 	CHK_AUTORELOAD,
-	CHK_USEPROXY,
-	CHK_PROXYAUTHENTICATION,
+	CHK_USEHTTPPROXY,
+	CHK_HTTPPROXYAUTHENTICATION,
+	CHK_USEFTPPROXY,
+	CHK_FTPPROXYAUTHENTICATION,
 	CHK_USEALTERNATEPROJECTSOURCE,
 	CHK_USELOCALFILE,
 	CHC_FILEMANAGER,
@@ -68,20 +71,22 @@ enum _CONTROL_ID
 BEGIN_EVENT_TABLE(PreferencesDialog, wxDialog)
 
 	// --- Buttons
-	EVT_BUTTON(BTN_BROWSE,            PreferencesDialog::OnBrowseButton)
-	EVT_BUTTON(BTN_BROWSE_WEBAPP,     PreferencesDialog::OnWebAppBrowseButton)
-	EVT_BUTTON(BTN_BROWSE_SIMPLEWEB,  PreferencesDialog::OnSimpleWebBrowseButton)
-	EVT_BUTTON(BTN_BROWSE_SIMPLETEXT, PreferencesDialog::OnSimpleTextBrowseButton)
+	EVT_BUTTON(BTN_BROWSE,                     PreferencesDialog::OnBrowseButton)
+	EVT_BUTTON(BTN_BROWSE_WEBAPP,              PreferencesDialog::OnWebAppBrowseButton)
+	EVT_BUTTON(BTN_BROWSE_SIMPLEWEB,           PreferencesDialog::OnSimpleWebBrowseButton)
+	EVT_BUTTON(BTN_BROWSE_SIMPLETEXT,          PreferencesDialog::OnSimpleTextBrowseButton)
 	EVT_BUTTON(BTN_BROWSE_WEBAPP_TEMPLATE,     PreferencesDialog::OnWebAppTemplateBrowseButton)
 	EVT_BUTTON(BTN_BROWSE_SIMPLEWEB_TEMPLATE,  PreferencesDialog::OnSimpleWebTemplateBrowseButton)
 	EVT_BUTTON(BTN_BROWSE_SIMPLETEXT_TEMPLATE, PreferencesDialog::OnSimpleTextTemplateBrowseButton)
-	EVT_BUTTON(wxID_OK,               PreferencesDialog::OnOkButton)
+	EVT_BUTTON(wxID_OK,                        PreferencesDialog::OnOkButton)
 
 	// --- Checkboxes
-	EVT_CHECKBOX(CHK_USEPROXY,                  PreferencesDialog::OnCheckboxes)
+	EVT_CHECKBOX(CHK_USEHTTPPROXY,              PreferencesDialog::OnCheckboxes)
+	EVT_CHECKBOX(CHK_USEFTPPROXY,               PreferencesDialog::OnCheckboxes)
 	EVT_CHECKBOX(CHK_AUTORELOAD,                PreferencesDialog::OnCheckboxes)
 	EVT_CHECKBOX(CHK_ADVANCEDRELOAD,            PreferencesDialog::OnCheckboxes)
-	EVT_CHECKBOX(CHK_PROXYAUTHENTICATION,       PreferencesDialog::OnCheckboxes)
+	EVT_CHECKBOX(CHK_HTTPPROXYAUTHENTICATION,   PreferencesDialog::OnCheckboxes)
+	EVT_CHECKBOX(CHK_FTPPROXYAUTHENTICATION,    PreferencesDialog::OnCheckboxes)
 	EVT_CHECKBOX(CHK_USEALTERNATEPROJECTSOURCE, PreferencesDialog::OnCheckboxes)
 	EVT_CHECKBOX(CHK_USELOCALFILE,              PreferencesDialog::OnCheckboxes)
 	EVT_CHECKBOX(CHK_TZOVERRIDE,                PreferencesDialog::OnCheckboxes)
@@ -126,8 +131,8 @@ PreferencesDialog::PreferencesDialog(wxWindow* parent) : wxDialog(parent, wxID_A
 	noteBook->AddPage(CreateAdvancedTab(noteBook),   _("Advanced"));
 	noteBook->AddPage(CreateSystemTab(noteBook),     _("System"));
 	//noteBook->AddPage(CreateFahinfoTab(noteBook),    _T("fahinfo.org"));
-	noteBook->AddPage(CreateWebApp1Tab(noteBook),     _("WebApp 1"));
-	noteBook->AddPage(CreateWebApp2Tab(noteBook),     _("WebApp 2"));
+	noteBook->AddPage(CreateWebApp1Tab(noteBook),    _("WebApp 1"));
+	noteBook->AddPage(CreateWebApp2Tab(noteBook),    _("WebApp 2"));
 
 	// Buttons 'Ok' and 'Cancel' are right-aligned
 #ifndef __WXMAC__
@@ -201,18 +206,18 @@ wxPanel* PreferencesDialog::CreateGeneralTab(wxBookCtrlBase* parent)
 	mGeneralUpdateCheck                 = new wxCheckBox(panel, wxID_ANY, _("Check for FahMon updates on startup"));
 
 	#ifndef __WXMAC__
-	sizer->AddStretchSpacer();
+	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	sizer->Add(mGeneralEnableTrayIcon, 0, wxALIGN_LEFT | wxALIGN_TOP);
 	#endif
-	sizer->AddStretchSpacer();
+	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	sizer->Add(mGeneralCollectXYZFiles, 0, wxALIGN_LEFT | wxALIGN_TOP );
-	sizer->AddStretchSpacer();
+	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	sizer->Add(mGeneralAutoUpdateProjectsDatabase, 0, wxALIGN_LEFT | wxALIGN_TOP);
-	sizer->AddStretchSpacer();
+	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	sizer->Add(mGeneralKeepInaccessibleClientsLast, 0, wxALIGN_LEFT | wxALIGN_TOP);
-	sizer->AddStretchSpacer();
+	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	sizer->Add(mGeneralStartMinimised, 0, wxALIGN_LEFT | wxALIGN_TOP);
-	sizer->AddStretchSpacer();
+	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	sizer->Add(mGeneralUpdateCheck, 0, wxALIGN_LEFT | wxALIGN_TOP);
 	sizer->AddStretchSpacer();
 
@@ -267,19 +272,19 @@ wxPanel* PreferencesDialog::CreateMonitoringTab(wxBookCtrlBase* parent)
 
 	sizerNonThreadedReload->Add(mMonitoringNonThreadedReload, 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL);
 
-	sizer->AddStretchSpacer();
+	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	sizer->Add(mMonitoringAutoReload, 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL);
-	sizer->AddStretchSpacer();
+	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	sizer->Add(sizerAutoReload, 0, wxALIGN_LEFT);
-	sizer->AddStretchSpacer();
+	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	sizer->Add(mMonitoringAdvancedReload, 0, wxALIGN_LEFT);
-	sizer->AddStretchSpacer();
+	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	sizer->Add(mMonitoringNonThreadedReload, 0, wxALIGN_LEFT);
-	sizer->AddStretchSpacer();
+	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	sizer->Add(sizerETA, 0, wxALIGN_LEFT);
-	sizer->AddStretchSpacer();
+	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	sizer->Add(sizerPPDType, 0, wxALIGN_LEFT);
-	sizer->AddStretchSpacer();
+	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	sizer->Add(sizerAsynchrony, 0, wxALIGN_LEFT);
 	sizer->AddStretchSpacer();
 
@@ -295,46 +300,81 @@ wxPanel* PreferencesDialog::CreateNetworkingTab(wxBookCtrlBase* parent)
 	wxPanel    *panel;
 	wxBoxSizer *sizer;
 	wxBoxSizer *topLevelSizer;
-	wxBoxSizer *proxyAddressSizer;
-	wxBoxSizer *proxyAuthenticationSizer;
+	wxBoxSizer *HTTPproxyAddressSizer;
+	wxBoxSizer *HTTPproxyAuthenticationSizer;
+	wxBoxSizer *FTPproxyAddressSizer;
+	wxBoxSizer *FTPproxyAuthenticationSizer;
 
-	panel                             = new wxPanel(parent);
-	sizer                             = new wxBoxSizer(wxVERTICAL);
-	topLevelSizer                     = new wxBoxSizer(wxVERTICAL);
-	proxyAddressSizer                 = new wxBoxSizer(wxHORIZONTAL);
-	proxyAuthenticationSizer          = new wxBoxSizer(wxHORIZONTAL);
+	panel                                 = new wxPanel(parent);
+	sizer                                 = new wxBoxSizer(wxVERTICAL);
+	topLevelSizer                         = new wxBoxSizer(wxVERTICAL);
+	HTTPproxyAddressSizer                 = new wxBoxSizer(wxHORIZONTAL);
+	HTTPproxyAuthenticationSizer          = new wxBoxSizer(wxHORIZONTAL);
+	FTPproxyAddressSizer                  = new wxBoxSizer(wxHORIZONTAL);
+	FTPproxyAuthenticationSizer           = new wxBoxSizer(wxHORIZONTAL);
 
-	mNetworkingUseProxy               = new wxCheckBox(panel, CHK_USEPROXY, _("Use a proxy for HTTP connections"));
-	mNetworkingProxyAddress           = new wxTextCtrl(panel, wxID_ANY, _T(""), wxDefaultPosition);
-	mNetworkingProxyPort              = new wxTextCtrl(panel, wxID_ANY, _T(""), wxDefaultPosition, wxDefaultSize, 0, wxTextValidator(wxFILTER_NUMERIC));
-	mNetworkingUseProxyAuthentication = new wxCheckBox(panel, CHK_PROXYAUTHENTICATION, _("Proxy requires authentication"));
-	mNetworkingProxyUsername          = new wxTextCtrl(panel, wxID_ANY, _T(""), wxDefaultPosition);
-	mNetworkingProxyPassword          = new wxTextCtrl(panel, wxID_ANY, _T(""), wxDefaultPosition, wxDefaultSize, wxTE_PASSWORD);
-	mNetworkingLabelAddress           = new wxStaticText(panel, wxID_ANY, _("Address:"));
-	mNetworkingLabelPort              = new wxStaticText(panel, wxID_ANY, _("Port:"));
-	mNetworkingLabelUsername          = new wxStaticText(panel, wxID_ANY, _("Proxy\nUsername:"));
-	mNetworkingLabelPassword          = new wxStaticText(panel, wxID_ANY, _("Proxy\nPassword:"));
+	mNetworkingUseHTTPProxy               = new wxCheckBox(panel, CHK_USEHTTPPROXY, _("Use a proxy for HTTP connections"));
+	mNetworkingHTTPProxyAddress           = new wxTextCtrl(panel, wxID_ANY, _T(""), wxDefaultPosition);
+	mNetworkingHTTPProxyPort              = new wxTextCtrl(panel, wxID_ANY, _T(""), wxDefaultPosition, wxDefaultSize, 0, wxTextValidator(wxFILTER_NUMERIC));
+	mNetworkingUseHTTPProxyAuthentication = new wxCheckBox(panel, CHK_HTTPPROXYAUTHENTICATION, _("Proxy requires authentication"));
+	mNetworkingHTTPProxyUsername          = new wxTextCtrl(panel, wxID_ANY, _T(""), wxDefaultPosition);
+	mNetworkingHTTPProxyPassword          = new wxTextCtrl(panel, wxID_ANY, _T(""), wxDefaultPosition, wxDefaultSize, wxTE_PASSWORD);
+	mNetworkingLabelHTTPAddress           = new wxStaticText(panel, wxID_ANY, _("Address:"));
+	mNetworkingLabelHTTPPort              = new wxStaticText(panel, wxID_ANY, _("Port:"));
+	mNetworkingLabelHTTPUsername          = new wxStaticText(panel, wxID_ANY, _("Proxy\nUsername:"));
+	mNetworkingLabelHTTPPassword          = new wxStaticText(panel, wxID_ANY, _("Proxy\nPassword:"));
 
-	proxyAddressSizer->Add(mNetworkingLabelAddress, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
-	proxyAddressSizer->Add(mNetworkingProxyAddress, 1, wxALIGN_CENTER_VERTICAL | wxEXPAND);
-	proxyAddressSizer->AddSpacer(FMC_GUI_SPACING_LOW);
-	proxyAddressSizer->Add(mNetworkingLabelPort, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
-	proxyAddressSizer->Add(mNetworkingProxyPort, 1, wxALIGN_CENTER_VERTICAL);
+	mNetworkingUseFTPProxy                = new wxCheckBox(panel, CHK_USEFTPPROXY, _("Use a proxy for FTP connections"));
+	mNetworkingFTPProxyAddress            = new wxTextCtrl(panel, wxID_ANY, _T(""), wxDefaultPosition);
+	mNetworkingFTPProxyPort               = new wxTextCtrl(panel, wxID_ANY, _T(""), wxDefaultPosition, wxDefaultSize, 0, wxTextValidator(wxFILTER_NUMERIC));
+	mNetworkingUseFTPProxyAuthentication  = new wxCheckBox(panel, CHK_FTPPROXYAUTHENTICATION, _("Proxy requires authentication"));
+	mNetworkingFTPProxyUsername           = new wxTextCtrl(panel, wxID_ANY, _T(""), wxDefaultPosition);
+	mNetworkingFTPProxyPassword           = new wxTextCtrl(panel, wxID_ANY, _T(""), wxDefaultPosition, wxDefaultSize, wxTE_PASSWORD);
+	mNetworkingLabelFTPAddress            = new wxStaticText(panel, wxID_ANY, _("Address:"));
+	mNetworkingLabelFTPPort               = new wxStaticText(panel, wxID_ANY, _("Port:"));
+	mNetworkingLabelFTPUsername           = new wxStaticText(panel, wxID_ANY, _("Proxy\nUsername:"));
+	mNetworkingLabelFTPPassword           = new wxStaticText(panel, wxID_ANY, _("Proxy\nPassword:"));
 
-	proxyAuthenticationSizer->Add(mNetworkingLabelUsername, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
-	proxyAuthenticationSizer->Add(mNetworkingProxyUsername, 1, wxALIGN_CENTER_VERTICAL);
-	proxyAuthenticationSizer->AddSpacer(FMC_GUI_SPACING_LOW);
-	proxyAuthenticationSizer->Add(mNetworkingLabelPassword, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
-	proxyAuthenticationSizer->Add(mNetworkingProxyPassword, 1, wxALIGN_CENTER_VERTICAL);
+	HTTPproxyAddressSizer->Add(mNetworkingLabelHTTPAddress, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
+	HTTPproxyAddressSizer->Add(mNetworkingHTTPProxyAddress, 1, wxALIGN_CENTER_VERTICAL | wxEXPAND);
+	HTTPproxyAddressSizer->AddSpacer(FMC_GUI_SPACING_LOW);
+	HTTPproxyAddressSizer->Add(mNetworkingLabelHTTPPort, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
+	HTTPproxyAddressSizer->Add(mNetworkingHTTPProxyPort, 1, wxALIGN_CENTER_VERTICAL);
 
-	sizer->AddStretchSpacer();
-	sizer->Add(mNetworkingUseProxy, 0, wxALIGN_LEFT);
+	HTTPproxyAuthenticationSizer->Add(mNetworkingLabelHTTPUsername, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
+	HTTPproxyAuthenticationSizer->Add(mNetworkingHTTPProxyUsername, 1, wxALIGN_CENTER_VERTICAL);
+	HTTPproxyAuthenticationSizer->AddSpacer(FMC_GUI_SPACING_LOW);
+	HTTPproxyAuthenticationSizer->Add(mNetworkingLabelHTTPPassword, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
+	HTTPproxyAuthenticationSizer->Add(mNetworkingHTTPProxyPassword, 1, wxALIGN_CENTER_VERTICAL);
+
+	FTPproxyAddressSizer->Add(mNetworkingLabelFTPAddress, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
+	FTPproxyAddressSizer->Add(mNetworkingFTPProxyAddress, 1, wxALIGN_CENTER_VERTICAL | wxEXPAND);
+	FTPproxyAddressSizer->AddSpacer(FMC_GUI_SPACING_LOW);
+	FTPproxyAddressSizer->Add(mNetworkingLabelFTPPort, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
+	FTPproxyAddressSizer->Add(mNetworkingFTPProxyPort, 1, wxALIGN_CENTER_VERTICAL);
+
+	FTPproxyAuthenticationSizer->Add(mNetworkingLabelFTPUsername, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
+	FTPproxyAuthenticationSizer->Add(mNetworkingFTPProxyUsername, 1, wxALIGN_CENTER_VERTICAL);
+	FTPproxyAuthenticationSizer->AddSpacer(FMC_GUI_SPACING_LOW);
+	FTPproxyAuthenticationSizer->Add(mNetworkingLabelFTPPassword, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
+	FTPproxyAuthenticationSizer->Add(mNetworkingFTPProxyPassword, 1, wxALIGN_CENTER_VERTICAL);
+
 	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
-	sizer->Add(proxyAddressSizer, 0, wxALIGN_LEFT | wxEXPAND);
+	sizer->Add(mNetworkingUseHTTPProxy, 0, wxALIGN_LEFT);
 	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
-	sizer->Add(mNetworkingUseProxyAuthentication, 0, wxALIGN_LEFT);
+	sizer->Add(HTTPproxyAddressSizer, 0, wxALIGN_LEFT | wxEXPAND);
 	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
-	sizer->Add(proxyAuthenticationSizer, 0, wxALIGN_LEFT | wxEXPAND);
+	sizer->Add(mNetworkingUseHTTPProxyAuthentication, 0, wxALIGN_LEFT);
+	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
+	sizer->Add(HTTPproxyAuthenticationSizer, 0, wxALIGN_LEFT | wxEXPAND);
+	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
+	sizer->Add(mNetworkingUseFTPProxy, 0, wxALIGN_LEFT);
+	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
+	sizer->Add(FTPproxyAddressSizer, 0, wxALIGN_LEFT | wxEXPAND);
+	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
+	sizer->Add(mNetworkingUseFTPProxyAuthentication, 0, wxALIGN_LEFT);
+	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
+	sizer->Add(FTPproxyAuthenticationSizer, 0, wxALIGN_LEFT | wxEXPAND);
 	sizer->AddStretchSpacer();
 
 	topLevelSizer->Add(sizer, 1, wxEXPAND | wxALL, FMC_GUI_BORDER);
@@ -379,14 +419,14 @@ wxPanel* PreferencesDialog::CreateAdvancedTab(wxBookCtrlBase* parent)
 	AddressSizer->Add(mAdvancedLabelLocationAddress, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
 	AddressSizer->Add(mAdvancedAlternateProjectSourceLocationAddress, 1, wxALIGN_CENTER_VERTICAL | wxEXPAND);
 
-	sizer->AddStretchSpacer();
+	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	sizer->Add(mAdvancedUseAlternateProjectSource, 0, wxALIGN_LEFT);
 	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	sizer->Add(AddressSizer, 0, wxALIGN_LEFT | wxEXPAND);
-	sizer->AddStretchSpacer();
+	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	sizer->Add(mAdvancedUseLocalFile, 0, wxALIGN_LEFT);
 	sizer->Add(LocalFileSizer, 0, wxALIGN_LEFT | wxEXPAND);
-	sizer->AddStretchSpacer();
+	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	sizer->Add(mAdvancedLogErrorsOnly, 0, wxALIGN_LEFT);
 	sizer->AddStretchSpacer();
 
@@ -433,14 +473,16 @@ wxPanel* PreferencesDialog::CreateSystemTab(wxBookCtrlBase* parent)
 	mSystemFileManager     = new wxChoice(panel, CHC_FILEMANAGER, wxDefaultPosition, wxDefaultSize, 2, fileManagers);
 	#endif
 
-	sizer->AddStretchSpacer();
+	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
+	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
 
 	#ifdef __WXGTK__
 	browserSizer->Add(mSystemBrowserLabel, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_LEFT);
 	browserSizer->Add(mSystemBrowser, 1, wxALIGN_CENTER_VERTICAL | wxEXPAND);
 
 	sizer->Add(browserSizer, 0, wxALIGN_LEFT | wxEXPAND);
-	sizer->AddStretchSpacer();
+	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
+	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	#else
 	mSystemBrowser->Hide();
 	mSystemBrowserLabel->Hide();
@@ -450,13 +492,15 @@ wxPanel* PreferencesDialog::CreateSystemTab(wxBookCtrlBase* parent)
 	filemanagerSizer->Add(mSystemFileManager, 1, wxALIGN_CENTER_VERTICAL | wxEXPAND);
 
 	sizer->Add(filemanagerSizer, 0, wxALIGN_LEFT | wxEXPAND);
-	sizer->AddStretchSpacer();
+	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
+	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
 
 	otherSizer->Add(mSystemOtherFMLabel, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_LEFT);
 	otherSizer->Add(mSystemOtherFM, 1, wxALIGN_CENTER_VERTICAL | wxEXPAND);
 
 	sizer->Add(otherSizer, 0, wxALIGN_LEFT | wxEXPAND);
-	sizer->AddStretchSpacer();
+	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
+	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
 
 	sizerTZOverride->Add(mSystemOverrideTimezone, 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL);
 	sizerTZOverride->Add(mSystemTZ, 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL);
@@ -551,13 +595,13 @@ wxPanel* PreferencesDialog::CreateWebApp1Tab(wxBookCtrlBase* parent)
 	simpleTextLocationSizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	simpleTextLocationSizer->Add(mWebAppSimpleTextLocationChooser, 0, wxALIGN_CENTER_VERTICAL);
 
-	sizer->AddStretchSpacer();
+	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	sizer->Add(webAppSizer, 0, wxALIGN_LEFT | wxEXPAND);
 	sizer->Add(webAppLocationSizer, 0, wxALIGN_LEFT | wxEXPAND);
-	sizer->AddStretchSpacer();
+	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	sizer->Add(simpleWebSizer, 0, wxALIGN_LEFT | wxEXPAND);
 	sizer->Add(simpleWebLocationSizer, 0, wxALIGN_LEFT | wxEXPAND);
-	sizer->AddStretchSpacer();
+	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	sizer->Add(simpleTextSizer, 0, wxALIGN_LEFT | wxEXPAND);
 	sizer->Add(simpleTextLocationSizer, 0, wxALIGN_LEFT | wxEXPAND);
 	sizer->AddStretchSpacer();
@@ -636,14 +680,17 @@ wxPanel* PreferencesDialog::CreateWebApp2Tab(wxBookCtrlBase* parent)
 	simpleTextLocationTemplateSizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	simpleTextLocationTemplateSizer->Add(mWebAppSimpleTextTemplateLocationChooser, 0, wxALIGN_CENTER_VERTICAL);
 
-	sizer->AddStretchSpacer();
+	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	sizer->Add(webAppSizer, 0, wxALIGN_LEFT | wxEXPAND);
+	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	sizer->Add(webAppLocationTemplateSizer, 0, wxALIGN_LEFT | wxEXPAND);
-	sizer->AddStretchSpacer();
+	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	sizer->Add(simpleWebSizer, 0, wxALIGN_LEFT | wxEXPAND);
+	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	sizer->Add(simpleWebLocationTemplateSizer, 0, wxALIGN_LEFT | wxEXPAND);
-	sizer->AddStretchSpacer();
+	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	sizer->Add(simpleTextSizer, 0, wxALIGN_LEFT | wxEXPAND);
+	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	sizer->Add(simpleTextLocationTemplateSizer, 0, wxALIGN_LEFT | wxEXPAND);
 	sizer->AddStretchSpacer();
 
@@ -665,11 +712,13 @@ int PreferencesDialog::ShowModal(void)
 
 void PreferencesDialog::LoadPreferences(void)
 {
-	bool     useProxy;
+	bool     useHTTPProxy;
+	bool     useFTPProxy;
 	bool     isCollectingXYZFiles;
 	bool     autoUpdateProjects;
 	bool     keepInaccessibleLast;
-	bool     useProxyAuthentication;
+	bool     useHTTPProxyAuthentication;
+	bool     useFTPProxyAuthentication;
 	bool     useAlternate;
 	bool     useLocalFile;
 	bool     startMinimised;
@@ -679,10 +728,14 @@ void PreferencesDialog::LoadPreferences(void)
 	bool     updateCheck;
 	bool     nonThreadedReload;
 	bool     logMessagesError;
-	wxUint32 proxyPort;
-	wxString proxyAddress;
-	wxString proxyUsername;
-	wxString proxyPassword;
+	wxUint32 HTTPproxyPort;
+	wxString HTTPproxyAddress;
+	wxString HTTPproxyUsername;
+	wxString HTTPproxyPassword;
+	wxUint32 FTPproxyPort;
+	wxString FTPproxyAddress;
+	wxString FTPproxyUsername;
+	wxString FTPproxyPassword;
 	wxString browser;
 	wxString projectLocationAddress;
 	wxString projectLocalFile;
@@ -745,46 +798,88 @@ void PreferencesDialog::LoadPreferences(void)
 	// -----===== Networking preferences =====-----
 
 	// --- Proxy
-	_PrefsGetBool        (PREF_HTTPDOWNLOADER_USEPROXY,                 useProxy);
-	_PrefsGetString      (PREF_HTTPDOWNLOADER_PROXYADDRESS,             proxyAddress);
-	_PrefsGetUint        (PREF_HTTPDOWNLOADER_PROXYPORT,                proxyPort);
-	_PrefsGetBool        (PREF_HTTPDOWNLOADER_USE_PROXY_AUTHENTICATION, useProxyAuthentication);
-	_PrefsGetString      (PREF_HTTPDOWNLOADER_PROXY_USERNAME,           proxyUsername);
-	_PrefsGetHiddenString(PREF_HTTPDOWNLOADER_PROXY_PASSWORD,           proxyPassword);
+	_PrefsGetBool        (PREF_HTTPDOWNLOADER_USEPROXY,                 useHTTPProxy);
+	_PrefsGetString      (PREF_HTTPDOWNLOADER_PROXYADDRESS,             HTTPproxyAddress);
+	_PrefsGetUint        (PREF_HTTPDOWNLOADER_PROXYPORT,                HTTPproxyPort);
+	_PrefsGetBool        (PREF_HTTPDOWNLOADER_USE_PROXY_AUTHENTICATION, useHTTPProxyAuthentication);
+	_PrefsGetString      (PREF_HTTPDOWNLOADER_PROXY_USERNAME,           HTTPproxyUsername);
+	_PrefsGetHiddenString(PREF_HTTPDOWNLOADER_PROXY_PASSWORD,           HTTPproxyPassword);
 
-	mNetworkingUseProxy->SetValue(useProxy);
-	mNetworkingProxyAddress->Enable(useProxy);
-	mNetworkingLabelAddress->Enable(useProxy);
-	mNetworkingProxyPort->Enable(useProxy);
-	mNetworkingLabelPort->Enable(useProxy);
-	mNetworkingUseProxyAuthentication->Enable(useProxy);
-	mNetworkingProxyUsername->Enable(useProxy && useProxyAuthentication);
-	mNetworkingLabelUsername->Enable(useProxy && useProxyAuthentication);
-	mNetworkingProxyPassword->Enable(useProxy && useProxyAuthentication);
-	mNetworkingLabelPassword->Enable(useProxy && useProxyAuthentication);
+	mNetworkingUseHTTPProxy->SetValue(useHTTPProxy);
+	mNetworkingHTTPProxyAddress->Enable(useHTTPProxy);
+	mNetworkingLabelHTTPAddress->Enable(useHTTPProxy);
+	mNetworkingHTTPProxyPort->Enable(useHTTPProxy);
+	mNetworkingLabelHTTPPort->Enable(useHTTPProxy);
+	mNetworkingUseHTTPProxyAuthentication->Enable(useHTTPProxy);
+	mNetworkingHTTPProxyUsername->Enable(useHTTPProxy && useHTTPProxyAuthentication);
+	mNetworkingLabelHTTPUsername->Enable(useHTTPProxy && useHTTPProxyAuthentication);
+	mNetworkingHTTPProxyPassword->Enable(useHTTPProxy && useHTTPProxyAuthentication);
+	mNetworkingLabelHTTPPassword->Enable(useHTTPProxy && useHTTPProxyAuthentication);
 
-	if(useProxy == true)
+	if(useHTTPProxy == true)
 	{
-		mNetworkingProxyAddress->SetValue(proxyAddress);
-		mNetworkingProxyPort->SetValue(wxString::Format(_T("%u"), proxyPort));
-		mNetworkingUseProxyAuthentication->SetValue(useProxyAuthentication);
+		mNetworkingHTTPProxyAddress->SetValue(HTTPproxyAddress);
+		mNetworkingHTTPProxyPort->SetValue(wxString::Format(_T("%u"), HTTPproxyPort));
+		mNetworkingUseHTTPProxyAuthentication->SetValue(useHTTPProxyAuthentication);
 	}
 	else
 	{
-		mNetworkingProxyAddress->SetValue(_T(""));
-		mNetworkingProxyPort->SetValue(_T(""));
-		mNetworkingUseProxyAuthentication->SetValue(false);
+		mNetworkingHTTPProxyAddress->SetValue(_T(""));
+		mNetworkingHTTPProxyPort->SetValue(_T(""));
+		mNetworkingUseHTTPProxyAuthentication->SetValue(false);
 	}
 
-	if(useProxy == true && useProxyAuthentication == true)
+	if(useHTTPProxy == true && useHTTPProxyAuthentication == true)
 	{
-		mNetworkingProxyUsername->SetValue(proxyUsername);
-		mNetworkingProxyPassword->SetValue(proxyPassword);
+		mNetworkingHTTPProxyUsername->SetValue(HTTPproxyUsername);
+		mNetworkingHTTPProxyPassword->SetValue(HTTPproxyPassword);
 	}
 	else
 	{
-		mNetworkingProxyUsername->SetValue(_T(""));
-		mNetworkingProxyPassword->SetValue(_T(""));
+		mNetworkingHTTPProxyUsername->SetValue(_T(""));
+		mNetworkingHTTPProxyPassword->SetValue(_T(""));
+	}
+
+	_PrefsGetBool        (PREF_FTPDOWNLOADER_USEPROXY,                 useFTPProxy);
+	_PrefsGetString      (PREF_FTPDOWNLOADER_PROXYADDRESS,             FTPproxyAddress);
+	_PrefsGetUint        (PREF_FTPDOWNLOADER_PROXYPORT,                FTPproxyPort);
+	_PrefsGetBool        (PREF_FTPDOWNLOADER_USE_PROXY_AUTHENTICATION, useFTPProxyAuthentication);
+	_PrefsGetString      (PREF_FTPDOWNLOADER_PROXY_USERNAME,           FTPproxyUsername);
+	_PrefsGetHiddenString(PREF_FTPDOWNLOADER_PROXY_PASSWORD,           FTPproxyPassword);
+
+	mNetworkingUseFTPProxy->SetValue(useFTPProxy);
+	mNetworkingFTPProxyAddress->Enable(useFTPProxy);
+	mNetworkingLabelFTPAddress->Enable(useFTPProxy);
+	mNetworkingFTPProxyPort->Enable(useFTPProxy);
+	mNetworkingLabelFTPPort->Enable(useFTPProxy);
+	mNetworkingUseFTPProxyAuthentication->Enable(useFTPProxy);
+	mNetworkingFTPProxyUsername->Enable(useFTPProxy && useFTPProxyAuthentication);
+	mNetworkingLabelFTPUsername->Enable(useFTPProxy && useFTPProxyAuthentication);
+	mNetworkingFTPProxyPassword->Enable(useFTPProxy && useFTPProxyAuthentication);
+	mNetworkingLabelFTPPassword->Enable(useFTPProxy && useFTPProxyAuthentication);
+
+	if(useFTPProxy == true)
+	{
+		mNetworkingFTPProxyAddress->SetValue(FTPproxyAddress);
+		mNetworkingFTPProxyPort->SetValue(wxString::Format(_T("%u"), FTPproxyPort));
+		mNetworkingUseFTPProxyAuthentication->SetValue(useFTPProxyAuthentication);
+	}
+	else
+	{
+		mNetworkingFTPProxyAddress->SetValue(_T(""));
+		mNetworkingFTPProxyPort->SetValue(_T(""));
+		mNetworkingUseFTPProxyAuthentication->SetValue(false);
+	}
+
+	if(useFTPProxy == true && useFTPProxyAuthentication == true)
+	{
+		mNetworkingFTPProxyUsername->SetValue(FTPproxyUsername);
+		mNetworkingFTPProxyPassword->SetValue(FTPproxyPassword);
+	}
+	else
+	{
+		mNetworkingFTPProxyUsername->SetValue(_T(""));
+		mNetworkingFTPProxyPassword->SetValue(_T(""));
 	}
 
 	// -----===== Advanced preferences =====-----
@@ -846,12 +941,12 @@ void PreferencesDialog::LoadPreferences(void)
 	mSystemTZ->SetValue(mInitTimezone);
 
 	// -----===== WebApp preferences =====-----
-	_PrefsGetBool(PREF_WEBAPP_WEBAPP,               useWebApp);
-	_PrefsGetBool(PREF_WEBAPP_SIMPLEWEB,            useSimpleWeb);
-	_PrefsGetBool(PREF_WEBAPP_SIMPLETEXT,           useSimpleText);
-	_PrefsGetString(PREF_WEBAPP_WEBAPPLOCATION,     webAppLocation);
-	_PrefsGetString(PREF_WEBAPP_SIMPLEWEBLOCATION,  simpleWebLocation);
-	_PrefsGetString(PREF_WEBAPP_SIMPLETEXTLOCATION, simpleTextLocation);
+	_PrefsGetBool(PREF_WEBAPP_WEBAPP,                       useWebApp);
+	_PrefsGetBool(PREF_WEBAPP_SIMPLEWEB,                    useSimpleWeb);
+	_PrefsGetBool(PREF_WEBAPP_SIMPLETEXT,                   useSimpleText);
+	_PrefsGetString(PREF_WEBAPP_WEBAPPLOCATION,             webAppLocation);
+	_PrefsGetString(PREF_WEBAPP_SIMPLEWEBLOCATION,          simpleWebLocation);
+	_PrefsGetString(PREF_WEBAPP_SIMPLETEXTLOCATION,         simpleTextLocation);
 	_PrefsGetString(PREF_WEBAPP_WEBAPPTEMPLATELOCATION,     webAppTemplateLocation);
 	_PrefsGetString(PREF_WEBAPP_SIMPLEWEBTEMPLATELOCATION,  simpleWebTemplateLocation);
 	_PrefsGetString(PREF_WEBAPP_SIMPLETEXTTEMPLATELOCATION, simpleTextTemplateLocation);
@@ -929,7 +1024,8 @@ void PreferencesDialog::LoadPreferences(void)
 
 void PreferencesDialog::SavePreferences(void)
 {
-	wxUint32 proxyPort;
+	wxUint32 HTTPproxyPort;
+	wxUint32 FTPproxyPort;
 
 	// -----===== General preferences =====-----
 	_PrefsSetBool(PREF_FAHCLIENT_COLLECTXYZFILES,     mGeneralCollectXYZFiles->GetValue());
@@ -951,15 +1047,24 @@ void PreferencesDialog::SavePreferences(void)
 	_PrefsSetBool(PREF_NON_THREADED_RELOAD,            mMonitoringNonThreadedReload->GetValue());
 
 	// -----===== Networking preferences =====-----
-	proxyPort = wxAtoi(mNetworkingProxyPort->GetValue());
+	HTTPproxyPort = wxAtoi(mNetworkingHTTPProxyPort->GetValue());
+	FTPproxyPort = wxAtoi(mNetworkingFTPProxyPort->GetValue());
 
-	_PrefsSetBool  (PREF_HTTPDOWNLOADER_USEPROXY,     mNetworkingUseProxy->GetValue());
-	_PrefsSetString(PREF_HTTPDOWNLOADER_PROXYADDRESS, mNetworkingProxyAddress->GetValue());
-	_PrefsSetUint  (PREF_HTTPDOWNLOADER_PROXYPORT,    proxyPort);
+	_PrefsSetBool  (PREF_HTTPDOWNLOADER_USEPROXY,     mNetworkingUseHTTPProxy->GetValue());
+	_PrefsSetString(PREF_HTTPDOWNLOADER_PROXYADDRESS, mNetworkingHTTPProxyAddress->GetValue());
+	_PrefsSetUint  (PREF_HTTPDOWNLOADER_PROXYPORT,    HTTPproxyPort);
 
-	_PrefsSetBool        (PREF_HTTPDOWNLOADER_USE_PROXY_AUTHENTICATION, mNetworkingUseProxyAuthentication->GetValue());
-	_PrefsSetString      (PREF_HTTPDOWNLOADER_PROXY_USERNAME,           mNetworkingProxyUsername->GetValue());
-	_PrefsSetHiddenString(PREF_HTTPDOWNLOADER_PROXY_PASSWORD,           mNetworkingProxyPassword->GetValue());
+	_PrefsSetBool        (PREF_HTTPDOWNLOADER_USE_PROXY_AUTHENTICATION, mNetworkingUseHTTPProxyAuthentication->GetValue());
+	_PrefsSetString      (PREF_HTTPDOWNLOADER_PROXY_USERNAME,           mNetworkingHTTPProxyUsername->GetValue());
+	_PrefsSetHiddenString(PREF_HTTPDOWNLOADER_PROXY_PASSWORD,           mNetworkingHTTPProxyPassword->GetValue());
+
+	_PrefsSetBool  (PREF_FTPDOWNLOADER_USEPROXY,     mNetworkingUseFTPProxy->GetValue());
+	_PrefsSetString(PREF_FTPDOWNLOADER_PROXYADDRESS, mNetworkingFTPProxyAddress->GetValue());
+	_PrefsSetUint  (PREF_FTPDOWNLOADER_PROXYPORT,    FTPproxyPort);
+
+	_PrefsSetBool        (PREF_FTPDOWNLOADER_USE_PROXY_AUTHENTICATION, mNetworkingUseFTPProxyAuthentication->GetValue());
+	_PrefsSetString      (PREF_FTPDOWNLOADER_PROXY_USERNAME,           mNetworkingFTPProxyUsername->GetValue());
+	_PrefsSetHiddenString(PREF_FTPDOWNLOADER_PROXY_PASSWORD,           mNetworkingFTPProxyPassword->GetValue());
 
 	// -----===== Advanced preferences =====-----
 	_PrefsSetBool  (PREF_HTTPDOWNLOADER_USEALTERNATEUPDATE,              mAdvancedUseAlternateProjectSource->GetValue());
@@ -1150,26 +1255,50 @@ void PreferencesDialog::OnCheckboxes(wxCommandEvent& event)
 	switch(event.GetId())
 	{
 		// ---
-		case CHK_USEPROXY:
-			mNetworkingProxyAddress->Enable(mNetworkingUseProxy->GetValue());
-			mNetworkingLabelAddress->Enable(mNetworkingUseProxy->GetValue());
-			mNetworkingProxyPort->Enable(mNetworkingUseProxy->GetValue());
-			mNetworkingLabelPort->Enable(mNetworkingUseProxy->GetValue());
-			mNetworkingUseProxyAuthentication->Enable(mNetworkingUseProxy->GetValue());
+		case CHK_USEHTTPPROXY:
+			mNetworkingHTTPProxyAddress->Enable(mNetworkingUseHTTPProxy->GetValue());
+			mNetworkingLabelHTTPAddress->Enable(mNetworkingUseHTTPProxy->GetValue());
+			mNetworkingHTTPProxyPort->Enable(mNetworkingUseHTTPProxy->GetValue());
+			mNetworkingLabelHTTPPort->Enable(mNetworkingUseHTTPProxy->GetValue());
+			mNetworkingUseHTTPProxyAuthentication->Enable(mNetworkingUseHTTPProxy->GetValue());
 
-			if(mNetworkingUseProxy->GetValue() == false)
+			if(mNetworkingUseHTTPProxy->GetValue() == false)
 			{
-				mNetworkingProxyUsername->Enable(false);
-				mNetworkingLabelUsername->Enable(false);
-				mNetworkingProxyPassword->Enable(false);
-				mNetworkingLabelPassword->Enable(false);
+				mNetworkingHTTPProxyUsername->Enable(false);
+				mNetworkingLabelHTTPUsername->Enable(false);
+				mNetworkingHTTPProxyPassword->Enable(false);
+				mNetworkingLabelHTTPPassword->Enable(false);
 			}
-			else if(mNetworkingUseProxyAuthentication->GetValue() == true)
+			else if(mNetworkingUseHTTPProxyAuthentication->GetValue() == true)
 			{
-				mNetworkingProxyUsername->Enable(true);
-				mNetworkingLabelUsername->Enable(true);
-				mNetworkingProxyPassword->Enable(true);
-				mNetworkingLabelPassword->Enable(true);
+				mNetworkingHTTPProxyUsername->Enable(true);
+				mNetworkingLabelHTTPUsername->Enable(true);
+				mNetworkingHTTPProxyPassword->Enable(true);
+				mNetworkingLabelHTTPPassword->Enable(true);
+			}
+			break;
+
+		// ---
+		case CHK_USEFTPPROXY:
+			mNetworkingFTPProxyAddress->Enable(mNetworkingUseFTPProxy->GetValue());
+			mNetworkingLabelFTPAddress->Enable(mNetworkingUseFTPProxy->GetValue());
+			mNetworkingFTPProxyPort->Enable(mNetworkingUseFTPProxy->GetValue());
+			mNetworkingLabelFTPPort->Enable(mNetworkingUseFTPProxy->GetValue());
+			mNetworkingUseFTPProxyAuthentication->Enable(mNetworkingUseFTPProxy->GetValue());
+
+			if(mNetworkingUseFTPProxy->GetValue() == false)
+			{
+				mNetworkingFTPProxyUsername->Enable(false);
+				mNetworkingLabelFTPUsername->Enable(false);
+				mNetworkingFTPProxyPassword->Enable(false);
+				mNetworkingLabelFTPPassword->Enable(false);
+			}
+			else if(mNetworkingUseFTPProxyAuthentication->GetValue() == true)
+			{
+				mNetworkingFTPProxyUsername->Enable(true);
+				mNetworkingLabelFTPUsername->Enable(true);
+				mNetworkingFTPProxyPassword->Enable(true);
+				mNetworkingLabelFTPPassword->Enable(true);
 			}
 			break;
 
@@ -1191,11 +1320,19 @@ void PreferencesDialog::OnCheckboxes(wxCommandEvent& event)
 			break;
 
 		// ---
-		case CHK_PROXYAUTHENTICATION:
-			mNetworkingProxyUsername->Enable(mNetworkingUseProxyAuthentication->GetValue());
-			mNetworkingLabelUsername->Enable(mNetworkingUseProxyAuthentication->GetValue());
-			mNetworkingProxyPassword->Enable(mNetworkingUseProxyAuthentication->GetValue());
-			mNetworkingLabelPassword->Enable(mNetworkingUseProxyAuthentication->GetValue());
+		case CHK_HTTPPROXYAUTHENTICATION:
+			mNetworkingHTTPProxyUsername->Enable(mNetworkingUseHTTPProxyAuthentication->GetValue());
+			mNetworkingLabelHTTPUsername->Enable(mNetworkingUseHTTPProxyAuthentication->GetValue());
+			mNetworkingHTTPProxyPassword->Enable(mNetworkingUseHTTPProxyAuthentication->GetValue());
+			mNetworkingLabelHTTPPassword->Enable(mNetworkingUseHTTPProxyAuthentication->GetValue());
+			break;
+
+		// ---
+		case CHK_FTPPROXYAUTHENTICATION:
+			mNetworkingFTPProxyUsername->Enable(mNetworkingUseFTPProxyAuthentication->GetValue());
+			mNetworkingLabelFTPUsername->Enable(mNetworkingUseFTPProxyAuthentication->GetValue());
+			mNetworkingFTPProxyPassword->Enable(mNetworkingUseFTPProxyAuthentication->GetValue());
+			mNetworkingLabelFTPPassword->Enable(mNetworkingUseFTPProxyAuthentication->GetValue());
 			break;
 
 		// ---

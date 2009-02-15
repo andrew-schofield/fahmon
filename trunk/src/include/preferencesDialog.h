@@ -68,16 +68,27 @@ protected:
 	wxCheckBox   *mMonitoringNonThreadedReload; /**< Checkbox for turning off threaded reloads */
 
 	// Widgets for the networking tab
-	wxCheckBox   *mNetworkingUseProxy; /**< Checkbox for use of proxy */
-	wxTextCtrl   *mNetworkingProxyAddress; /**< Input box for proxy address */
-	wxTextCtrl   *mNetworkingProxyPort; /**< Input box for proxy port */
-	wxCheckBox   *mNetworkingUseProxyAuthentication; /**< Checkbox for use of proxy authentication */
-	wxTextCtrl   *mNetworkingProxyUsername; /**< Input box for proxy username */
-	wxTextCtrl   *mNetworkingProxyPassword; /**< Input box for proxy password */
-	wxStaticText *mNetworkingLabelAddress; /**< Text control for proxy address */
-	wxStaticText *mNetworkingLabelPort; /**< Text control for proxy port */
-	wxStaticText *mNetworkingLabelUsername; /**< Text control for proxy username */
-	wxStaticText *mNetworkingLabelPassword; /**< Text control for proxy password */
+	wxCheckBox   *mNetworkingUseHTTPProxy; /**< Checkbox for use of HTTP proxy */
+	wxTextCtrl   *mNetworkingHTTPProxyAddress; /**< Input box for HTTP proxy address */
+	wxTextCtrl   *mNetworkingHTTPProxyPort; /**< Input box for HTTP proxy port */
+	wxCheckBox   *mNetworkingUseHTTPProxyAuthentication; /**< Checkbox for use of HTTP proxy authentication */
+	wxTextCtrl   *mNetworkingHTTPProxyUsername; /**< Input box for HTTP proxy username */
+	wxTextCtrl   *mNetworkingHTTPProxyPassword; /**< Input box for HTTP proxy password */
+	wxStaticText *mNetworkingLabelHTTPAddress; /**< Text control for HTTP proxy address */
+	wxStaticText *mNetworkingLabelHTTPPort; /**< Text control for HTTP proxy port */
+	wxStaticText *mNetworkingLabelHTTPUsername; /**< Text control for HTTP proxy username */
+	wxStaticText *mNetworkingLabelHTTPPassword; /**< Text control for HTTP proxy password */
+
+	wxCheckBox   *mNetworkingUseFTPProxy; /**< Checkbox for use of FTP proxy */
+	wxTextCtrl   *mNetworkingFTPProxyAddress; /**< Input box for FTP proxy address */
+	wxTextCtrl   *mNetworkingFTPProxyPort; /**< Input box for FTP proxy port */
+	wxCheckBox   *mNetworkingUseFTPProxyAuthentication; /**< Checkbox for use of FTP proxy authentication */
+	wxTextCtrl   *mNetworkingFTPProxyUsername; /**< Input box for FTP proxy username */
+	wxTextCtrl   *mNetworkingFTPProxyPassword; /**< Input box for FTP proxy password */
+	wxStaticText *mNetworkingLabelFTPAddress; /**< Text control for FTP proxy address */
+	wxStaticText *mNetworkingLabelFTPPort; /**< Text control for FTP proxy port */
+	wxStaticText *mNetworkingLabelFTPUsername; /**< Text control for FTP proxy username */
+	wxStaticText *mNetworkingLabelFTPPassword; /**< Text control for FTP proxy password */
 
 	// Widgets for the advanced tab
 	wxCheckBox   *mAdvancedUseAlternateProjectSource; /**< Checkbox for use of alternative update source */

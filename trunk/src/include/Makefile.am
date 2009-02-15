@@ -27,6 +27,7 @@ EXTRA_DIST = \
 	fahmonConsts.h \
 	fahmonTypes.h \
 	firstTimeDialog.h \
+	ftpDownloader.h \
 	htmlParser.h \
 	httpDownloader.h \
 	listViewClients.h \
