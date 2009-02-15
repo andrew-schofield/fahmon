@@ -28,20 +28,111 @@
 #include "preferencesManager.h"
 #include "messagesManager.h"
 
+#include "wx/curl/ftp.h"
+#include "wx/curl/ftptool.h"
+
 
 bool FTPConnection::GetFTPFile(wxString url, wxString tempFile)
 {
-	return true;
+	bool isUsingProxy;
+	wxString proxyAddress;
+	wxUint32 proxyPort;
+	bool proxyNeedsAuthentication;
+	wxString proxyUsername;
+	wxString proxyPassword;
+	wxString agent;
+
+	_PrefsGetBool        (PREF_FTPCONNECTION_USEPROXY,                   isUsingProxy);
+	_PrefsGetString      (PREF_FTPCONNECTION_PROXYADDRESS,               proxyAddress);
+	_PrefsGetUint        (PREF_FTPCONNECTION_PROXYPORT,                  proxyPort);
+	_PrefsGetBool        (PREF_FTPCONNECTION_USE_PROXY_AUTHENTICATION,   proxyNeedsAuthentication);
+	_PrefsGetString      (PREF_FTPCONNECTION_PROXY_USERNAME,             proxyUsername);
+	_PrefsGetHiddenString(PREF_FTPCONNECTION_PROXY_PASSWORD,             proxyPassword);
+
+	agent = wxString::Format(wxT("%s/%s"), _T(FMC_APPNAME), _T(FMC_VERSION));
+
+	wxCurlFTP ftp(url);
+	ftp.UseProxy(isUsingProxy);
+	ftp.SetProxyHost(proxyAddress);
+	ftp.SetProxyPort(proxyPort);
+	ftp.SetProxyUsername(proxyUsername);
+	ftp.SetProxyPassword(proxyPassword);
+	ftp.SetOpt(CURLOPT_USERAGENT, (const char*)agent.c_str());
+	ftp.UseEPSV(true);
+
+	if(!ftp.Get(tempFile))
+	{
+		if(tempFile.IsEmpty() == false)
+		{
+			wxRemoveFile(tempFile);
+		}
+		return false;
+	}
+	else
+		return true;
 }
 
 
 long FTPConnection::GetFTPResponseCode(wxString url)
 {
-	return 0;
+	bool isUsingProxy;
+	wxString proxyAddress;
+	wxUint32 proxyPort;
+	bool proxyNeedsAuthentication;
+	wxString proxyUsername;
+	wxString proxyPassword;
+	wxString agent;
+
+	_PrefsGetBool        (PREF_FTPCONNECTION_USEPROXY,                   isUsingProxy);
+	_PrefsGetString      (PREF_FTPCONNECTION_PROXYADDRESS,               proxyAddress);
+	_PrefsGetUint        (PREF_FTPCONNECTION_PROXYPORT,                  proxyPort);
+	_PrefsGetBool        (PREF_FTPCONNECTION_USE_PROXY_AUTHENTICATION,   proxyNeedsAuthentication);
+	_PrefsGetString      (PREF_FTPCONNECTION_PROXY_USERNAME,             proxyUsername);
+	_PrefsGetHiddenString(PREF_FTPCONNECTION_PROXY_PASSWORD,             proxyPassword);
+
+	agent = wxString::Format(wxT("%s/%s"), _T(FMC_APPNAME), _T(FMC_VERSION));
+
+	wxCurlFTP ftp(url);
+	ftp.UseProxy(isUsingProxy);
+	ftp.SetProxyHost(proxyAddress);
+	ftp.SetProxyPort(proxyPort);
+	ftp.SetProxyUsername(proxyUsername);
+	ftp.SetProxyPassword(proxyPassword);
+	ftp.SetOpt(CURLOPT_USERAGENT, (const char*)agent.c_str());
+	ftp.UseEPSV(true);
+
+	ftp.List();
+	return ftp.GetResponseCode();
 }
 
 
-wxString FTPConnection::GetFTPHeader(wxString url, wxString header)
+wxDateTime FTPConnection::GetFTPFileModificationTime(wxString url)
 {
-	return wxT("");
+	bool isUsingProxy;
+	wxString proxyAddress;
+	wxUint32 proxyPort;
+	bool proxyNeedsAuthentication;
+	wxString proxyUsername;
+	wxString proxyPassword;
+	wxString agent;
+
+	_PrefsGetBool        (PREF_FTPCONNECTION_USEPROXY,                   isUsingProxy);
+	_PrefsGetString      (PREF_FTPCONNECTION_PROXYADDRESS,               proxyAddress);
+	_PrefsGetUint        (PREF_FTPCONNECTION_PROXYPORT,                  proxyPort);
+	_PrefsGetBool        (PREF_FTPCONNECTION_USE_PROXY_AUTHENTICATION,   proxyNeedsAuthentication);
+	_PrefsGetString      (PREF_FTPCONNECTION_PROXY_USERNAME,             proxyUsername);
+	_PrefsGetHiddenString(PREF_FTPCONNECTION_PROXY_PASSWORD,             proxyPassword);
+
+	agent = wxString::Format(wxT("%s/%s"), _T(FMC_APPNAME), _T(FMC_VERSION));
+
+	wxCurlFTPTool ftp(url);
+
+	ftp.UseProxy(isUsingProxy);
+	ftp.SetProxyHost(proxyAddress);
+	ftp.SetProxyPort(proxyPort);
+	ftp.SetProxyUsername(proxyUsername);
+	ftp.SetProxyPassword(proxyPassword);
+	ftp.SetOpt(CURLOPT_USERAGENT, (const char*)agent.c_str());
+	//return ftp.GetLastModified();
+	return wxDateTime((double)0);
 }

@@ -25,6 +25,7 @@
 #include "tools.h"
 #include "preferencesManager.h"
 #include "httpDownloader.h"
+#include "ftpConnection.h"
 #include "messagesManager.h"
 
 #include "wx/filename.h"
@@ -40,6 +41,7 @@ bool multiProtocolFile::FileExists(const wxString& fileName)
 	wxMutexLocker lock(mMutexFileExists);
 	// ----- Access Lock -----
 	bool returnValue;
+	long temp;
 	returnValue = false;
 	switch(GetFileProtocol(fileName))
 	{
@@ -96,6 +98,19 @@ bool multiProtocolFile::FileExists(const wxString& fileName)
 			}
 			break;
 		}
+		case FTP:
+		{
+			temp = FTPConnection::GetFTPResponseCode(fileName);
+			if( temp >= 200 && temp < 300)
+			{
+				returnValue = true;
+			}
+			else
+			{
+				returnValue = false;
+			}
+			break;
+		}
 		default:
 			returnValue = false;
 	}
@@ -120,6 +135,7 @@ time_t multiProtocolFile::LastModification(const wxString& fileName)
 		}
 			break;
 		case FTP:
+			return FTPConnection::GetFTPFileModificationTime(fileName).GetTicks();
 			break;
 		case FILE:
 			return wxFileModificationTime(fileName);
@@ -137,6 +153,7 @@ bool multiProtocolFile::DirExists(const wxString& dirName)
 	wxMutexLocker lock(mMutexDirExists);
 	// ----- Access Lock -----
 	bool returnValue = false;
+	long temp;
 	switch(GetFileProtocol(dirName))
 	{
 		case HTTP:
@@ -194,7 +211,18 @@ bool multiProtocolFile::DirExists(const wxString& dirName)
 		}
 			break;
 		case FTP:
+		{
+			temp = FTPConnection::GetFTPResponseCode(dirName);
+			if( temp >= 200 && temp < 300)
+			{
+				returnValue = true;
+			}
+			else
+			{
+				returnValue = false;
+			}
 			break;
+		}
 		case FILE:
 			returnValue = wxDirExists(dirName);
 			break;
@@ -226,7 +254,17 @@ wxString multiProtocolFile::GetLocalFileName(const wxString& fileName)
 			break;
 		}
 		case FTP:
+		{
+			wxString localFileName;
+			localFileName = wxFileName::CreateTempFileName(_T(FMC_APPNAME));
+			if(!FTPConnection::GetFTPFile(fileName, localFileName))
+			{
+				fn = wxT("");
+				break;
+			}
+			fn = localFileName;
 			break;
+		}
 		case FILE:
 			fn = fileName;
 			break;

@@ -26,6 +26,7 @@
 
 
 #include "wx/string.h"
+#include "wx/datetime.h"
 
 
 #define PREF_FTPCONNECTION_USEPROXY    wxT("FTPDownloader.UseProxy") /**< Preference setting for whether a proxy should be used */
@@ -69,7 +70,7 @@ class FTPConnection
 		 **/
 		static long GetFTPResponseCode(wxString url);
 
-		static wxString GetFTPHeader(wxString url, wxString header);
+		static wxDateTime GetFTPFileModificationTime(wxString url);
 };
 
 

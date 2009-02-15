@@ -30,6 +30,7 @@ SVN
         for each client. Will improve memory usage with large numbers of clients.
       * Significantly reduced CPU usage while reloading.
       * Added support for monitoring clients over http.
+      * Added limited support for monitoring clients over ftp.
 
       Other
 
