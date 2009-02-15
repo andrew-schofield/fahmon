@@ -43,6 +43,7 @@
 #include "listViewClients.h"
 #include "httpDownloader.h"
 #include "webMonitor.h"
+#include "multiProtocolFile.h"
 
 #include "wx/colour.h"
 #include "wx/filefn.h"
@@ -359,6 +360,7 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 	const Client  *client;
 	const Project *project;
 	wxInt32       timeInMinutes;
+	wxString      maskedLocation;
 
 	_PrefsGetUint(PREF_ETA_DISPLAYSTYLE, deadlineDays);
 
@@ -399,7 +401,18 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 	// This method cannot be called for 'ghost' clients, if this is the case, then there's a big problem
 	wxASSERT(client != NULL);
 
-	SetStatusText(client->GetLocation(), STATUS_CLIENTNAME);
+	maskedLocation = client->GetLocation();
+	if(multiProtocolFile::GetFileProtocol(maskedLocation) != multiProtocolFile::FILE)
+	{
+		int start = maskedLocation.Find(wxT("://")) + 3;
+		int end = maskedLocation.Find(wxT("@"));
+		if(end != wxNOT_FOUND)
+		{
+			maskedLocation.Replace(maskedLocation.Mid(start, end-start+1), wxT(""));
+		}
+
+	}
+	SetStatusText(maskedLocation, STATUS_CLIENTNAME);
 
 	// Clear information if this client is not a valid one
 	if(!client->IsAccessible())
