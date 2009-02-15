@@ -33,10 +33,13 @@
 #include "mainDialog.h"
 #include "fahmonConsts.h"
 #include "messagesManager.h"
+#include "multiProtocolFile.h"
+#include "ftpConnection.h"
 
 #include "wx/textfile.h"
 #include "wx/txtstrm.h"
 #include "wx/wfstream.h"
+#include "wx/curl/ftp.h"
 
 #include <vector>
 
@@ -386,7 +389,17 @@ void WebMonitor::WriteApp(void)
 
 void WebMonitor::ProcessTemplate(wxString const &templateFile, wxString const &outputFile)
 {
-	wxFileOutputStream    fileOS(outputFile);
+	bool ftp = false;
+	wxString fn;
+	if(multiProtocolFile::GetFileProtocol(outputFile) == multiProtocolFile::FTP)
+	{
+		fn = wxFileName::CreateTempFileName(_T(FMC_APPNAME));
+		ftp = true;
+	}
+	else
+		fn = outputFile;
+
+	wxFileOutputStream    fileOS(fn);
 	wxTextOutputStream    textOS(fileOS);
 	wxFileInputStream     fileIS(templateFile);
 	wxTextInputStream     textIS(fileIS);
@@ -407,7 +420,7 @@ void WebMonitor::ProcessTemplate(wxString const &templateFile, wxString const &o
 		return;
 	}
 	// check that images exist in output folder (only check first one, if !exist, recopy all)
-	if (!wxFileExists(wxPathOnly(outputFile) + _T("/dialog_icon.png")))
+	if (!wxFileExists(wxPathOnly(outputFile) + _T("/dialog_icon.png")) && ftp == false)
 	{
 		wxCopyFile(PathManager::GetImgPath() + _T("/dialog_icon.png"), wxPathOnly(outputFile) + _T("/dialog_icon.png"));
 		wxCopyFile(PathManager::GetImgPath() + _T("/list_client_asynch.png"), wxPathOnly(outputFile) + _T("/list_client_asynch.png"));
@@ -475,6 +488,11 @@ void WebMonitor::ProcessTemplate(wxString const &templateFile, wxString const &o
 	}
 
 	fileOS.Close();
+	if(ftp)
+	{
+		FTPConnection::PutFTPFile(outputFile, fn);
+		wxRemoveFile(fn);
+	}
 }
 
 const wxString WebMonitor::PadToLength(wxString text, wxUint32 length)

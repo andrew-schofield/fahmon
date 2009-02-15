@@ -71,6 +71,8 @@ class FTPConnection
 		static long GetFTPResponseCode(wxString url);
 
 		static wxDateTime GetFTPFileModificationTime(wxString url);
+
+		static bool PutFTPFile(wxString url, wxString tempFile);
 };
 
 

@@ -33,6 +33,7 @@ SVN
       * Added limited support for monitoring clients over ftp.
       * Added slower, configurable timer for reloading http/ftp clients. This
         is also used for web output.
+      * Added support for saving web output to an ftp server.
 
       Other
 
