@@ -255,6 +255,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\src\include\ftpConnection.h"
+				>
+			</File>
+			<File
 				RelativePath=".\src\include\gettext.h"
 				>
 			</File>
@@ -432,6 +436,10 @@
 			</File>
 			<File
 				RelativePath=".\src\firstTimeDialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\ftpConnection.cpp"
 				>
 			</File>
 			<File
