@@ -28,7 +28,7 @@
 #include "client.h"
 #include "mainDialog.h"
 #include "httpDownloader.h"
-#include "ftpDownloader.h"
+#include "ftpConnection.h"
 #include "preferencesManager.h"
 #include "tools.h"
 #include "webMonitor.h"
@@ -840,12 +840,12 @@ void PreferencesDialog::LoadPreferences(void)
 		mNetworkingHTTPProxyPassword->SetValue(_T(""));
 	}
 
-	_PrefsGetBool        (PREF_FTPDOWNLOADER_USEPROXY,                 useFTPProxy);
-	_PrefsGetString      (PREF_FTPDOWNLOADER_PROXYADDRESS,             FTPproxyAddress);
-	_PrefsGetUint        (PREF_FTPDOWNLOADER_PROXYPORT,                FTPproxyPort);
-	_PrefsGetBool        (PREF_FTPDOWNLOADER_USE_PROXY_AUTHENTICATION, useFTPProxyAuthentication);
-	_PrefsGetString      (PREF_FTPDOWNLOADER_PROXY_USERNAME,           FTPproxyUsername);
-	_PrefsGetHiddenString(PREF_FTPDOWNLOADER_PROXY_PASSWORD,           FTPproxyPassword);
+	_PrefsGetBool        (PREF_FTPCONNECTION_USEPROXY,                 useFTPProxy);
+	_PrefsGetString      (PREF_FTPCONNECTION_PROXYADDRESS,             FTPproxyAddress);
+	_PrefsGetUint        (PREF_FTPCONNECTION_PROXYPORT,                FTPproxyPort);
+	_PrefsGetBool        (PREF_FTPCONNECTION_USE_PROXY_AUTHENTICATION, useFTPProxyAuthentication);
+	_PrefsGetString      (PREF_FTPCONNECTION_PROXY_USERNAME,           FTPproxyUsername);
+	_PrefsGetHiddenString(PREF_FTPCONNECTION_PROXY_PASSWORD,           FTPproxyPassword);
 
 	mNetworkingUseFTPProxy->SetValue(useFTPProxy);
 	mNetworkingFTPProxyAddress->Enable(useFTPProxy);
@@ -1058,13 +1058,13 @@ void PreferencesDialog::SavePreferences(void)
 	_PrefsSetString      (PREF_HTTPDOWNLOADER_PROXY_USERNAME,           mNetworkingHTTPProxyUsername->GetValue());
 	_PrefsSetHiddenString(PREF_HTTPDOWNLOADER_PROXY_PASSWORD,           mNetworkingHTTPProxyPassword->GetValue());
 
-	_PrefsSetBool  (PREF_FTPDOWNLOADER_USEPROXY,     mNetworkingUseFTPProxy->GetValue());
-	_PrefsSetString(PREF_FTPDOWNLOADER_PROXYADDRESS, mNetworkingFTPProxyAddress->GetValue());
-	_PrefsSetUint  (PREF_FTPDOWNLOADER_PROXYPORT,    FTPproxyPort);
+	_PrefsSetBool  (PREF_FTPCONNECTION_USEPROXY,     mNetworkingUseFTPProxy->GetValue());
+	_PrefsSetString(PREF_FTPCONNECTION_PROXYADDRESS, mNetworkingFTPProxyAddress->GetValue());
+	_PrefsSetUint  (PREF_FTPCONNECTION_PROXYPORT,    FTPproxyPort);
 
-	_PrefsSetBool        (PREF_FTPDOWNLOADER_USE_PROXY_AUTHENTICATION, mNetworkingUseFTPProxyAuthentication->GetValue());
-	_PrefsSetString      (PREF_FTPDOWNLOADER_PROXY_USERNAME,           mNetworkingFTPProxyUsername->GetValue());
-	_PrefsSetHiddenString(PREF_FTPDOWNLOADER_PROXY_PASSWORD,           mNetworkingFTPProxyPassword->GetValue());
+	_PrefsSetBool        (PREF_FTPCONNECTION_USE_PROXY_AUTHENTICATION, mNetworkingUseFTPProxyAuthentication->GetValue());
+	_PrefsSetString      (PREF_FTPCONNECTION_PROXY_USERNAME,           mNetworkingFTPProxyUsername->GetValue());
+	_PrefsSetHiddenString(PREF_FTPCONNECTION_PROXY_PASSWORD,           mNetworkingFTPProxyPassword->GetValue());
 
 	// -----===== Advanced preferences =====-----
 	_PrefsSetBool  (PREF_HTTPDOWNLOADER_USEALTERNATEUPDATE,              mAdvancedUseAlternateProjectSource->GetValue());

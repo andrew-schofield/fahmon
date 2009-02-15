@@ -15,33 +15,33 @@
 */
 
 /**
- * \file ftpDownloader.cpp
+ * \file ftpConnection.cpp
  * Create a class to download files over ftp.
  * \author François Ingelrest
  * \author Andrew Schofield
  **/
 
 #include "fahmon.h"
-#include "ftpDownloader.h"
+#include "ftpConnection.h"
 
 #include "tools.h"
 #include "preferencesManager.h"
 #include "messagesManager.h"
 
 
-bool FTPDownloader::GetFTPFile(wxString url, wxString tempFile)
+bool FTPConnection::GetFTPFile(wxString url, wxString tempFile)
 {
 	return true;
 }
 
 
-long FTPDownloader::GetFTPResponseCode(wxString url)
+long FTPConnection::GetFTPResponseCode(wxString url)
 {
 	return 0;
 }
 
 
-wxString FTPDownloader::GetFTPHeader(wxString url, wxString header)
+wxString FTPConnection::GetFTPHeader(wxString url, wxString header)
 {
 	return wxT("");
 }
