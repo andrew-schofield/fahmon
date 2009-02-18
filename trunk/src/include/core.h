@@ -65,6 +65,8 @@ public:
 		DGROMACSC, /**< Double Gromacs C (7c) */
 		ATIDEV, /**< ATI development Core (12) */
 		NVDEV, /**< NVIDIA development Core (13) */
+		GROA4, /**< Gromacs 4 GB */
+		GROGPU2MT, /**< NVIDIA w/Mem-Test */
 		CORE_ID_COUNT /**<  */
 	};
 

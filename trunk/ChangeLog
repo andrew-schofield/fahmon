@@ -34,6 +34,7 @@ SVN
       * Added slower, configurable timer for reloading http/ftp clients. This
         is also used for web output.
       * Added support for saving web output to an ftp server.
+      * Added support for additional cores.
 
       Other
 

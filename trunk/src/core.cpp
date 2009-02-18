@@ -45,6 +45,8 @@ wxString Core::mCoreLongName[CORE_ID_COUNT] = {
 	_T("Double Gromacs C"),
 	_T("GPU2 ATI Dev"),
 	_T("GPU2 NV Dev"),
+	_T("Gromacs 4 GB"),
+	_T("GPU2 NV MT")
 };
 wxString Core::mCoreShortName[CORE_ID_COUNT] = {
 	_T("tinker"),
@@ -65,7 +67,9 @@ wxString Core::mCoreShortName[CORE_ID_COUNT] = {
 	_T("grogpu2"),
 	_T("dgromacsc"),
 	_T("ati-dev"),
-	_T("nvidia-dev")
+	_T("nvidia-dev"),
+	_T("gro-a4"),
+	_T("grogpu2-mt")
 };
 
 
