@@ -128,7 +128,8 @@ void WebMonitor::WriteApp(void)
 		// load up the array with data
 		for(currentClient=0; currentClient<ClientsManager::GetInstance()->GetCount(); ++currentClient)
 		{
-			client      = ClientsManager::GetInstance()->Get(currentClient);
+			// pull list of clients in same order as listviewclients - presorted :)
+			client      = ClientsManager::GetInstance()->Get(MainDialog::GetInstance()->GetClientList()->GetItemData(currentClient));
 			if(!client->IsAccessible() || !client->IsEnabled())
 			{
 				mDataArray[currentClient][4]  = _("N/A");
@@ -735,3 +736,4 @@ void WebMonitor::LoadCustomVariables(void)
 
 	in.Close();
 }
+

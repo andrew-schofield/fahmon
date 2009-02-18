@@ -35,6 +35,7 @@ SVN
         is also used for web output.
       * Added support for saving web output to an ftp server.
       * Added support for additional cores.
+      * Web output is now sorted in the same way as the client list.
 
       Other
 

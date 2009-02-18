@@ -504,6 +504,8 @@ public:
 	 **/
 	bool ClientReloadAllowed(ClientId clientId);
 
+	ListViewClients* GetClientList(void) {return mClientsList;}
+
 private:
 	DECLARE_EVENT_TABLE()
 };
