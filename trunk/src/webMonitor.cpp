@@ -441,7 +441,7 @@ void WebMonitor::ProcessTemplate(wxString const &templateFile, wxString const &o
 		}
 		else //lets process our template
 		{
-			processLine = processLine + _T("") + currentLine;
+			processLine = processLine + _T("\n") + currentLine;
 			if (currentLine.Find(_T("tpl//-->")) == wxNOT_FOUND)
 			{
 				continueReading = true;
@@ -466,7 +466,7 @@ void WebMonitor::ProcessTemplate(wxString const &templateFile, wxString const &o
 						}
 						textOS.WriteString(outputLine + _T("\n"));
 					}
-					textOS.WriteString(processLine.Mid(endPos+9, processLine.length()-endPos-9) + _T("\n"));
+					//textOS.WriteString(processLine.Mid(endPos+9, processLine.length()-endPos-9) + _T("\n"));
 				}
 				else if (processLine.Find(_T("tpl_static")) != wxNOT_FOUND)
 				{
@@ -479,7 +479,7 @@ void WebMonitor::ProcessTemplate(wxString const &templateFile, wxString const &o
 					}
 					outputLine.Replace(_T("<!--tpl_static "), _T(""));
 					outputLine.Replace(_T(" tpl//-->"), _T(""));
-					textOS.WriteString(outputLine + _T("\n"));
+					//textOS.WriteString(outputLine + _T("\n"));
 				}
 				//must be last
 				processLine.clear();
