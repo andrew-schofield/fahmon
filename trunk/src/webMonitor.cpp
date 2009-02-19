@@ -130,21 +130,18 @@ void WebMonitor::WriteApp(void)
 		{
 			// pull list of clients in same order as listviewclients - presorted :)
 			client      = ClientsManager::GetInstance()->Get(MainDialog::GetInstance()->GetClientList()->GetItemData(currentClient));
-			if(!client->IsAccessible() || !client->IsEnabled())
-			{
-				mDataArray[currentClient][4]  = _("N/A");
-				mDataArray[currentClient][7]  = _("N/A");
-				mDataArray[currentClient][5]  = _("N/A");
-				mDataArray[currentClient][6]  = _("N/A");
-				mDataArray[currentClient][8]  = _("N/A");
-				mDataArray[currentClient][9]  = _("N/A");
-				mDataArray[currentClient][10] = _("N/A");
-				mDataArray[currentClient][13] = _("N/A");
-				mDataArray[currentClient][14] = _("N/A");
-				mDataArray[currentClient][15] = _("N/A");
-				mDataArray[currentClient][16] = _("N/A");
-			}
-			else
+			mDataArray[currentClient][4]  = _("N/A");
+			mDataArray[currentClient][7]  = _("N/A");
+			mDataArray[currentClient][5]  = _("N/A");
+			mDataArray[currentClient][6]  = _("N/A");
+			mDataArray[currentClient][8]  = _("N/A");
+			mDataArray[currentClient][9]  = _("N/A");
+			mDataArray[currentClient][10] = _("N/A");
+			mDataArray[currentClient][13] = _("N/A");
+			mDataArray[currentClient][14] = _("N/A");
+			mDataArray[currentClient][15] = _("N/A");
+			mDataArray[currentClient][16] = _("N/A");
+			if(client->IsAccessible() && client->IsEnabled())
 			{
 				mDataArray[currentClient][7] = wxString::Format(_T("%s (%u)"), client->GetDonatorName().c_str(), client->GetTeamNumber());
 				mDataArray[currentClient][13] = client->GetDonatorName();
@@ -174,33 +171,11 @@ void WebMonitor::WriteApp(void)
 						mUpdateDate = wxString::Format(_T("%s"), timeNow.Format(_T("%B %d, %H:%M")).c_str());
 					}
 				}
-				if(client->GetProjectId() == INVALID_PROJECT_ID)
-				{
-					mDataArray[currentClient][5]  = _("N/A");
-					mDataArray[currentClient][4]  = _("N/A");
-					mDataArray[currentClient][6]  = _("N/A");
-					mDataArray[currentClient][9]  = _("N/A");
-					mDataArray[currentClient][10] = _("N/A");
-					mDataArray[currentClient][13] = _("N/A");
-					mDataArray[currentClient][14] = _("N/A");
-					mDataArray[currentClient][15] = _("N/A");
-					mDataArray[currentClient][16] = _("N/A");
-				}
-				else
+				if(client->GetProjectId() != INVALID_PROJECT_ID)
 				{
 					mDataArray[currentClient][5] = wxString::Format(_T("%u (R%i, C%i, G%i)"), client->GetProjectId(), client->GetProjectRun(), client->GetProjectClone(), client->GetProjectGen());
 					project = ProjectsManager::GetInstance()->GetProject(client->GetProjectId());
-					if(project == NULL) // this may need to be INVALID_PROJECT
-					{
-						mDataArray[currentClient][5]  = _("N/A");
-						mDataArray[currentClient][4]  = _("N/A");
-						mDataArray[currentClient][6]  = _("N/A");
-						mDataArray[currentClient][9]  = _("N/A");
-						mDataArray[currentClient][10] = _("N/A");
-						mDataArray[currentClient][15] = _("N/A");
-						mDataArray[currentClient][16] = _("N/A");
-					}
-					else
+					if(project != NULL) // this may need to be INVALID_PROJECT
 					{
 						mDataArray[currentClient][6] = wxString::Format(_("%u points"), project->GetCredit());
 						mDataArray[currentClient][4] = Core::IdToLongName(project->GetCoreId());
