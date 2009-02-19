@@ -332,18 +332,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\wxcurl\src\dav.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\wxcurl\src\davtool.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\wxcurl\src\dialog.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\wxcurl\src\ftp.cpp"
 				>
 			</File>
@@ -359,22 +347,6 @@
 				RelativePath=".\wxcurl\src\http.cpp"
 				>
 			</File>
-			<File
-				RelativePath=".\wxcurl\src\panel.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\wxcurl\src\telnet.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\wxcurl\src\thread.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\wxcurl\src\utils.cpp"
-				>
-			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -383,18 +355,6 @@
 			>
 			<File
 				RelativePath=".\wxcurl\include\wx\curl\base.h"
-				>
-			</File>
-			<File
-				RelativePath=".\wxcurl\include\wx\curl\dav.h"
-				>
-			</File>
-			<File
-				RelativePath=".\wxcurl\include\wx\curl\davtool.h"
-				>
-			</File>
-			<File
-				RelativePath=".\wxcurl\include\wx\curl\dialog.h"
 				>
 			</File>
 			<File
@@ -407,22 +367,6 @@
 			</File>
 			<File
 				RelativePath=".\wxcurl\include\wx\curl\http.h"
-				>
-			</File>
-			<File
-				RelativePath=".\wxcurl\include\wx\curl\panel.h"
-				>
-			</File>
-			<File
-				RelativePath=".\wxcurl\include\wx\curl\telnet.h"
-				>
-			</File>
-			<File
-				RelativePath=".\wxcurl\include\wx\curl\thread.h"
-				>
-			</File>
-			<File
-				RelativePath=".\wxcurl\include\wx\curl\utils.h"
 				>
 			</File>
 		</Filter>
