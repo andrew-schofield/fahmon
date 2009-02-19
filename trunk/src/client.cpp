@@ -79,14 +79,11 @@ void Client::SetLocation(const wxString& location)
 			mLocation += '\\';
 	}
 	else
+#endif
 	{
 		if(mLocation.Last() != '/')
 			mLocation += '/';
 	}
-#else
-	if(mLocation.Last() != '/')
-		mLocation += '/';
-#endif
 }
 
 
@@ -188,10 +185,8 @@ void Client::Reload(void)
 	if(multiProtocolFile::GetFileProtocol(mLocation) != multiProtocolFile::HTTP && multiProtocolFile::GetFileProtocol(mLocation) != multiProtocolFile::FTP)
 		logFilePath = wxString::Format(_T("%swork\\logfile_%02i.txt"), mLocation.c_str(), mUnitIndex);
 	else
-		logFilePath = wxString::Format(_T("%swork/logfile_%02i.txt"), mLocation.c_str(), mUnitIndex);
-#else
-	logFilePath = wxString::Format(_T("%swork/logfile_%02i.txt"), mLocation.c_str(), mUnitIndex);
 #endif
+		logFilePath = wxString::Format(_T("%swork/logfile_%02i.txt"), mLocation.c_str(), mUnitIndex);
 	if(!LoadWULogFile(logFilePath))
 	{
 		_LogMsgError(wxString::Format(_("Error while reading %s"), logFilePath.c_str()));
@@ -550,10 +545,8 @@ void Client::SaveXYZFile(void) const
 	if(multiProtocolFile::GetFileProtocol(mLocation) != multiProtocolFile::HTTP && multiProtocolFile::GetFileProtocol(mLocation) != multiProtocolFile::FTP)
 		xyzInFile  = mLocation + _T("work\\current.xyz");
 	else
-		xyzInFile  = mLocation + _T("work/current.xyz");
-#else
-	xyzInFile  = mLocation + _T("work/current.xyz");
 #endif
+		xyzInFile  = mLocation + _T("work/current.xyz");
 	// Create the complete path of the files
 	xyzOutFile = PathManager::GetXYZPath() + wxString::Format(_T("%i"), mProjectId) + _T(".xyz");
 
