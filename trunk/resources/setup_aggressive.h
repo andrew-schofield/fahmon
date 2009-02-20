@@ -4,7 +4,7 @@
 // Author:      Julian Smart
 // Modified by:
 // Created:     01/02/97
-// RCS-ID:      $Id: setup0.h 43908 2006-12-11 06:19:27Z RD $
+// RCS-ID:      $Id: setup0.h 51451 2008-01-29 23:11:55Z VZ $
 // Copyright:   (c) Julian Smart
 // Licence:     wxWindows licence
 /////////////////////////////////////////////////////////////////////////////
@@ -219,17 +219,17 @@
 #define wxUSE_LOGWINDOW 1
 
 // Recommended setting: 1
-#define wxUSE_LOGGUI 0
+#define wxUSE_LOGGUI 1
 
 // Recommended setting: 1
-#define wxUSE_LOG_DIALOG 0
+#define wxUSE_LOG_DIALOG 1
 
 // Support for command line parsing using wxCmdLineParser class.
 //
 // Default is 1
 //
 // Recommended setting: 1 (can be set to 0 if you don't use the cmd line)
-#define wxUSE_CMDLINE_PARSER 0
+#define wxUSE_CMDLINE_PARSER 1
 
 // Support for multithreaded applications: if 1, compile in thread classes
 // (thread.h) and make the library a bit more thread safe. Although thread
@@ -328,7 +328,7 @@
 // Recommended setting: 1 (wxFile is highly recommended as it is required by
 // i18n code, wxFileConfig and others)
 #define wxUSE_FILE          1
-#define wxUSE_FFILE         0
+#define wxUSE_FFILE         1
 
 // Use wxFSVolume class providing access to the configured/active mount points
 //
@@ -435,22 +435,22 @@
 #define wxUSE_SOCKETS       1
 
 // Set to 1 to enable virtual file systems (required by wxHTML)
-#define wxUSE_FILESYSTEM    0
+#define wxUSE_FILESYSTEM    1
 
 // Set to 1 to enable virtual ZIP filesystem (requires wxUSE_FILESYSTEM)
-#define wxUSE_FS_ZIP        0
+#define wxUSE_FS_ZIP        1
 
 // Set to 1 to enable virtual archive filesystem (requires wxUSE_FILESYSTEM)
-#define wxUSE_FS_ARCHIVE    0
+#define wxUSE_FS_ARCHIVE    1
 
 // Set to 1 to enable virtual Internet filesystem (requires wxUSE_FILESYSTEM)
 #define wxUSE_FS_INET       0
 
 // wxArchive classes for accessing archives such as zip and tar
-#define wxUSE_ARCHIVE_STREAMS     0
+#define wxUSE_ARCHIVE_STREAMS     1
 
 // Set to 1 to compile wxZipInput/OutputStream classes.
-#define wxUSE_ZIPSTREAM     0
+#define wxUSE_ZIPSTREAM     1
 
 // Set to 1 to compile wxTarInput/OutputStream classes.
 #define wxUSE_TARSTREAM     0
@@ -555,7 +555,7 @@
 // Default is the same as wxUSE_XRC, i.e. 1 by default.
 //
 // Recommended setting: 1 (required by XRC)
-#define wxUSE_XML       wxUSE_XRC
+#define wxUSE_XML       1
 
 // Use wxWidget's AUI docking system
 //
@@ -597,7 +597,7 @@
 // Default is 1
 //
 // Recommended setting: 1 (may be set to 0 if you don't wxUSE_TIPWINDOW)
-#define wxUSE_POPUPWIN     0
+#define wxUSE_POPUPWIN     1
 
 // wxTipWindow allows to implement the custom tooltips, it is used by the
 // context help classes. Requires wxUSE_POPUPWIN.
@@ -605,7 +605,7 @@
 // Default is 1
 //
 // Recommended setting: 1 (may be set to 0)
-#define wxUSE_TIPWINDOW    0
+#define wxUSE_TIPWINDOW    1
 
 // Each of the settings below corresponds to one wxWidgets control. They are
 // all switched on by default but may be disabled if you are sure that your
@@ -621,13 +621,13 @@
 #define wxUSE_BMPBUTTON     1   // wxBitmapButton
 #define wxUSE_CALENDARCTRL  0   // wxCalendarCtrl
 #define wxUSE_CHECKBOX      1   // wxCheckBox
-#define wxUSE_CHECKLISTBOX  0   // wxCheckListBox (requires wxUSE_OWNER_DRAWN)
+#define wxUSE_CHECKLISTBOX  1   // wxCheckListBox (requires wxUSE_OWNER_DRAWN)
 #define wxUSE_CHOICE        1   // wxChoice
-#define wxUSE_COLLPANE      0   // wxCollapsiblePane
+#define wxUSE_COLLPANE      1   // wxCollapsiblePane
 #define wxUSE_COLOURPICKERCTRL 0    // wxColourPickerCtrl
 #define wxUSE_COMBOBOX      1   // wxComboBox
 #define wxUSE_DATAVIEWCTRL  0   // wxDataViewCtrl
-#define wxUSE_DATEPICKCTRL  1   // wxDatePickerCtrl
+#define wxUSE_DATEPICKCTRL  0   // wxDatePickerCtrl
 #define wxUSE_DIRPICKERCTRL 1   // wxDirPickerCtrl
 #define wxUSE_FILEPICKERCTRL 1  // wxFilePickerCtrl
 #define wxUSE_FONTPICKERCTRL 1  // wxFontPickerCtrl
@@ -750,7 +750,7 @@
 //
 // Recommended setting: 1 but can be safely set to 0 except for wxUniv where it
 //                      it used by wxComboBox
-#define wxUSE_COMBOCTRL 0
+#define wxUSE_COMBOCTRL 1
 
 // wxOwnerDrawnComboBox is a custom combobox allowing to paint the combobox
 // items.
@@ -776,7 +776,7 @@
 #define wxUSE_ACCEL 1
 
 // Hotkey support (currently Windows only)
-#define wxUSE_HOTKEY 0
+#define wxUSE_HOTKEY 1
 
 // Use wxCaret: a class implementing a "cursor" in a text control (called caret
 // under Windows).
@@ -906,7 +906,7 @@
 #define wxUSE_PROGRESSDLG 1
 
 // support for startup tips (wxShowTip &c)
-#define wxUSE_STARTUP_TIPS 0
+#define wxUSE_STARTUP_TIPS 1
 
 // text entry dialog and wxGetTextFromUser function
 #define wxUSE_TEXTDLG 0
@@ -1042,7 +1042,7 @@
 // ----------------------------------------------------------------------------
 
 // wxSingleInstanceChecker class allows to verify at startup if another program
-// instance is running (it is only available under Win32)
+// instance is running.
 //
 // Default is 1
 //
@@ -1078,7 +1078,7 @@
 #define wxUSE_SPLINES     0
                                 // 0 for no splines
 
-#define wxUSE_MOUSEWHEEL        1
+#define wxUSE_MOUSEWHEEL        0
                                 // Include mouse wheel support
 
 // ----------------------------------------------------------------------------
@@ -1105,7 +1105,7 @@
 // that use the connection) should support forward only scrolling of cursors,
 // or both forward and backward support for backward scrolling cursors is
 // dependent on the data source as well as the ODBC driver being used.
-#define wxODBC_FWD_ONLY_CURSORS	 1
+#define wxODBC_FWD_ONLY_CURSORS	 0
 
 // Default is 0.  Set to 1 to use the deprecated classes, enum types, function,
 // member variables.  With a setting of 1, full backward compatibility with the
@@ -1134,7 +1134,7 @@
 // Default is 1.
 //
 // Recommended setting: whatever your compiler likes more
-#define wxUSE_IOSTREAMH     0
+#define wxUSE_IOSTREAMH     1
 
 // ----------------------------------------------------------------------------
 // image format support
@@ -1176,13 +1176,13 @@
 #define wxUSE_IFF           0
 
 // Set to 1 for XPM format support
-#define wxUSE_XPM           1
+#define wxUSE_XPM           0
 
 // Set to 1 for MS Icons and Cursors format support
 #define wxUSE_ICO_CUR       1
 
 // Set to 1 to compile in wxPalette class
-#define wxUSE_PALETTE       1
+#define wxUSE_PALETTE       0
 
 // ----------------------------------------------------------------------------
 // wxUniversal-only options
@@ -1284,7 +1284,7 @@
 //
 // Recommended setting: 1, only set it to 0 if your compiler doesn't have
 //                      or can't compile <richedit.h>
-#define wxUSE_RICHEDIT  1
+#define wxUSE_RICHEDIT  0
 
 // Set this to 1 to use extra features of richedit v2 and later controls
 //
@@ -1299,7 +1299,7 @@
 // Default is 1.
 //
 // Recommended setting: 1, set to 0 for a small library size reduction
-#define wxUSE_OWNER_DRAWN 0
+#define wxUSE_OWNER_DRAWN 1
 
 // Set to 1 to compile MS Windows XP theme engine support
 #define wxUSE_UXTHEME           1
@@ -1333,7 +1333,7 @@
 // Default is 1 if supported by the compiler (VC++ and recent BC++ only).
 //
 // Recommended setting: 1, set to 0 if your programs never crash
-#define wxUSE_CRASHREPORT 0
+#define wxUSE_CRASHREPORT 1
 
 // ----------------------------------------------------------------------------
 // obsolete settings
