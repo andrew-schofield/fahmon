@@ -138,7 +138,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="wxmsw28u_core.lib wxmsw28u_adv.lib wxbase28u.lib wxpng.lib comctl32.lib rpcrt4.lib wsock32.lib oleacc.lib odbc32.lib wxbase28u_net.lib wxbase28u_xml.lib wxmsw28u_media.lib wxzlib.lib .\wxcurl\lib\libcurl.lib"
+				AdditionalDependencies="wxmsw28u_core.lib wxmsw28u_adv.lib wxbase28u.lib wxpng.lib comctl32.lib rpcrt4.lib wsock32.lib oleacc.lib wxbase28u_xml.lib wxzlib.lib .\wxcurl\lib\libcurl.lib"
 				LinkIncremental="0"
 				AdditionalLibraryDirectories=""
 				GenerateManifest="true"
