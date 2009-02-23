@@ -8,7 +8,30 @@
 			sepNavWindowFrame = "{{15, 27}, {1009, 719}}";
 		};
 	};
+	33C205B30D64C154006EE977 /* httpDownloader.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {963, 2114}}";
+			sepNavSelRange = "{1001, 26}";
+			sepNavVisRange = "{871, 248}";
+		};
+	};
+	33C205CD0D64C17E006EE977 /* preferencesDialog.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {963, 20356}}";
+			sepNavSelRange = "{31235, 0}";
+			sepNavVisRange = "{30157, 791}";
+		};
+	};
+	33C205FE0D64C1CE006EE977 /* firstTimeDialog.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1066, 1344}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1391}";
+			sepNavWindowFrame = "{{38, 238}, {1125, 764}}";
+		};
+	};
 	33DFF47B0D6255580095F52F /* Project object */ = {
+		activeArchitecture = i386;
 		activeBuildConfigurationName = Release;
 		activeExecutable = 33DFF48B0D6255770095F52F /* FahMon */;
 		activeTarget = 33DFF4880D6255770095F52F /* FahMon */;
@@ -17,7 +40,6 @@
 		);
 		breakpoints = (
 		);
-		breakpointsGroup = 33DFF5180D625A0C0095F52F /* XCBreakpointsBucket */;
 		codeSenseManager = 33DFF4800D6255590095F52F /* Code sense */;
 		executables = (
 			33DFF48B0D6255770095F52F /* FahMon */,
@@ -59,7 +81,7 @@
 				PBXFileTableDataSourceColumnWidthsKey = (
 					22,
 					300,
-					57.5835,
+					352,
 				);
 				PBXFileTableDataSourceColumnsKey = (
 					PBXExecutablesDataSource_ActiveFlagID,
@@ -146,8 +168,8 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					200,
-					284,
+					424,
+					60,
 					20,
 					48,
 					43,
@@ -163,8 +185,8 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 224818833;
-			PBXWorkspaceStateSaveDate = 224818833;
+			PBXPerProjectTemplateStateSaveDate = 257108582;
+			PBXWorkspaceStateSaveDate = 257108582;
 		};
 		sourceControlManager = 33DFF47F0D6255590095F52F /* Source Control */;
 		userBuildSettings = {
@@ -190,12 +212,12 @@
 	};
 	33DFF48B0D6255770095F52F /* FahMon */ = {
 		isa = PBXExecutable;
-		activeArgIndex = 2147483647;
 		activeArgIndices = (
 		);
 		argumentStrings = (
 		);
 		autoAttachOnCrash = 1;
+		breakpointsEnabled = 1;
 		configStateDict = {
 		};
 		customDataFormattersEnabled = 1;
@@ -212,12 +234,6 @@
 		savedGlobals = {
 		};
 		sourceDirectories = (
-		);
-	};
-	33DFF5180D625A0C0095F52F /* XCBreakpointsBucket */ = {
-		isa = XCBreakpointsBucket;
-		name = "Project Breakpoints";
-		objects = (
 		);
 	};
 }

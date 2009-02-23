@@ -7,6 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		330B467C0F531601009239FC /* ftpConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 330B467B0F531601009239FC /* ftpConnection.cpp */; };
+		330B467E0F531619009239FC /* multiProtocolFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 330B467D0F531619009239FC /* multiProtocolFile.cpp */; };
+		330B46860F531752009239FC /* libwx_macu_core-2.8.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 330B46840F531752009239FC /* libwx_macu_core-2.8.a */; };
+		330B46870F531752009239FC /* libwxpng-2.8.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 330B46850F531752009239FC /* libwxpng-2.8.a */; };
+		330B468B0F5317B1009239FC /* libwx_macu_adv-2.8.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 330B46890F5317B1009239FC /* libwx_macu_adv-2.8.a */; };
+		330B468C0F5317B1009239FC /* libwx_macu_qa-2.8.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 330B468A0F5317B1009239FC /* libwx_macu_qa-2.8.a */; };
+		330B46990F53182C009239FC /* libwx_base_carbonu-2.8.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 330B468E0F53182C009239FC /* libwx_base_carbonu-2.8.a */; };
+		330B469A0F53182C009239FC /* libwx_base_carbonu_net-2.8.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 330B468F0F53182C009239FC /* libwx_base_carbonu_net-2.8.a */; };
+		330B469B0F53182C009239FC /* libwx_base_carbonu_xml-2.8.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 330B46900F53182C009239FC /* libwx_base_carbonu_xml-2.8.a */; };
+		330B469C0F53182C009239FC /* libwx_macu_aui-2.8.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 330B46910F53182C009239FC /* libwx_macu_aui-2.8.a */; };
+		330B469D0F53182C009239FC /* libwx_macu_html-2.8.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 330B46920F53182C009239FC /* libwx_macu_html-2.8.a */; };
+		330B469E0F53182C009239FC /* libwx_macu_richtext-2.8.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 330B46930F53182C009239FC /* libwx_macu_richtext-2.8.a */; };
+		330B469F0F53182C009239FC /* libwx_macu_xrc-2.8.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 330B46940F53182C009239FC /* libwx_macu_xrc-2.8.a */; };
+		330B46A00F53182C009239FC /* libwxexpat-2.8.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 330B46950F53182C009239FC /* libwxexpat-2.8.a */; };
+		330B46A10F53182C009239FC /* libwxjpeg-2.8.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 330B46960F53182C009239FC /* libwxjpeg-2.8.a */; };
+		330B46A20F53182C009239FC /* libwxregexu-2.8.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 330B46970F53182C009239FC /* libwxregexu-2.8.a */; };
+		330B46A30F53182C009239FC /* libwxtiff-2.8.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 330B46980F53182C009239FC /* libwxtiff-2.8.a */; };
 		3397B24D0D667B8C00580155 /* fahmon.mo in Copy cs_CZ translation */ = {isa = PBXBuildFile; fileRef = 3397B22A0D667AA300580155 /* fahmon.mo */; };
 		3397B2510D667BD000580155 /* fahmon.mo in Copy de_DE translation */ = {isa = PBXBuildFile; fileRef = 3397B22C0D667AA300580155 /* fahmon.mo */; };
 		3397B2540D667BF300580155 /* fahmon.mo in Copy en_GB translation */ = {isa = PBXBuildFile; fileRef = 3397B22E0D667AA300580155 /* fahmon.mo */; };
@@ -68,8 +85,14 @@
 		33C205E90D64C17E006EE977 /* trayManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 33C205D60D64C17E006EE977 /* trayManager.cpp */; };
 		33C205EA0D64C17E006EE977 /* webMonitor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 33C205D70D64C17E006EE977 /* webMonitor.cpp */; };
 		33C205EB0D64C17E006EE977 /* workUnitFrame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 33C205D80D64C17E006EE977 /* workUnitFrame.cpp */; };
-		33DFF5430D626A2F0095F52F /* libwx_macu-2.8.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 33DFF53D0D626A2F0095F52F /* libwx_macu-2.8.a */; };
-		33DFF5460D626A2F0095F52F /* libwxpng-2.8.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 33DFF5400D626A2F0095F52F /* libwxpng-2.8.a */; };
+		33D309030F532A8500C6B636 /* libwxcode_macu_wxcurl-2.8.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 33D309020F532A8500C6B636 /* libwxcode_macu_wxcurl-2.8.a */; };
+		33D309080F53635900C6B636 /* libwx_macu_gl-2.8.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 33D309070F53635900C6B636 /* libwx_macu_gl-2.8.a */; };
+		33D309170F536B6000C6B636 /* list_client_error.png in Resources */ = {isa = PBXBuildFile; fileRef = 33D309150F536B6000C6B636 /* list_client_error.png */; };
+		33D309180F536B6000C6B636 /* list_client_paused.png in Resources */ = {isa = PBXBuildFile; fileRef = 33D309160F536B6000C6B636 /* list_client_paused.png */; };
+		33D3091C0F536C0D00C6B636 /* fahmon.mo in Resources */ = {isa = PBXBuildFile; fileRef = 33D3091B0F536C0D00C6B636 /* fahmon.mo */; };
+		33D3091E0F536CAA00C6B636 /* fahmon.mo in Copy it_IT translation */ = {isa = PBXBuildFile; fileRef = 33D3091B0F536C0D00C6B636 /* fahmon.mo */; };
+		33D309220F536CF700C6B636 /* fahmon.mo in Resources */ = {isa = PBXBuildFile; fileRef = 33D309210F536CF700C6B636 /* fahmon.mo */; };
+		33D309240F536D1A00C6B636 /* fahmon.mo in Copy nb_NB translation */ = {isa = PBXBuildFile; fileRef = 33D309210F536CF700C6B636 /* fahmon.mo */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -194,9 +217,50 @@
 			name = "Copy sv_SE translation";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		33D3091A0F536C0C00C6B636 /* Copy it_IT translation */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = lang/it_IT;
+			dstSubfolderSpec = 7;
+			files = (
+				33D3091E0F536CAA00C6B636 /* fahmon.mo in Copy it_IT translation */,
+			);
+			name = "Copy it_IT translation";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		33D309260F536D4B00C6B636 /* Copy nb_NB translation */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = lang/nb_NB;
+			dstSubfolderSpec = 7;
+			files = (
+				33D309240F536D1A00C6B636 /* fahmon.mo in Copy nb_NB translation */,
+			);
+			name = "Copy nb_NB translation";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		330B467B0F531601009239FC /* ftpConnection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ftpConnection.cpp; path = src/ftpConnection.cpp; sourceTree = "<group>"; };
+		330B467D0F531619009239FC /* multiProtocolFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = multiProtocolFile.cpp; path = src/multiProtocolFile.cpp; sourceTree = "<group>"; };
+		330B467F0F531632009239FC /* ftpConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ftpConnection.h; path = src/include/ftpConnection.h; sourceTree = "<group>"; };
+		330B46800F531632009239FC /* multiProtocolFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = multiProtocolFile.h; path = src/include/multiProtocolFile.h; sourceTree = "<group>"; };
+		330B46840F531752009239FC /* libwx_macu_core-2.8.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libwx_macu_core-2.8.a"; path = "../../../Development/wxMac-2.8.9/build-release/lib/libwx_macu_core-2.8.a"; sourceTree = SOURCE_ROOT; };
+		330B46850F531752009239FC /* libwxpng-2.8.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libwxpng-2.8.a"; path = "../../../Development/wxMac-2.8.9/build-release/lib/libwxpng-2.8.a"; sourceTree = SOURCE_ROOT; };
+		330B46890F5317B1009239FC /* libwx_macu_adv-2.8.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libwx_macu_adv-2.8.a"; path = "../../../Development/wxMac-2.8.9/build-release/lib/libwx_macu_adv-2.8.a"; sourceTree = SOURCE_ROOT; };
+		330B468A0F5317B1009239FC /* libwx_macu_qa-2.8.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libwx_macu_qa-2.8.a"; path = "../../../Development/wxMac-2.8.9/build-release/lib/libwx_macu_qa-2.8.a"; sourceTree = SOURCE_ROOT; };
+		330B468E0F53182C009239FC /* libwx_base_carbonu-2.8.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libwx_base_carbonu-2.8.a"; path = "../../../Development/wxMac-2.8.9/build-release/lib/libwx_base_carbonu-2.8.a"; sourceTree = SOURCE_ROOT; };
+		330B468F0F53182C009239FC /* libwx_base_carbonu_net-2.8.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libwx_base_carbonu_net-2.8.a"; path = "../../../Development/wxMac-2.8.9/build-release/lib/libwx_base_carbonu_net-2.8.a"; sourceTree = SOURCE_ROOT; };
+		330B46900F53182C009239FC /* libwx_base_carbonu_xml-2.8.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libwx_base_carbonu_xml-2.8.a"; path = "../../../Development/wxMac-2.8.9/build-release/lib/libwx_base_carbonu_xml-2.8.a"; sourceTree = SOURCE_ROOT; };
+		330B46910F53182C009239FC /* libwx_macu_aui-2.8.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libwx_macu_aui-2.8.a"; path = "../../../Development/wxMac-2.8.9/build-release/lib/libwx_macu_aui-2.8.a"; sourceTree = SOURCE_ROOT; };
+		330B46920F53182C009239FC /* libwx_macu_html-2.8.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libwx_macu_html-2.8.a"; path = "../../../Development/wxMac-2.8.9/build-release/lib/libwx_macu_html-2.8.a"; sourceTree = SOURCE_ROOT; };
+		330B46930F53182C009239FC /* libwx_macu_richtext-2.8.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libwx_macu_richtext-2.8.a"; path = "../../../Development/wxMac-2.8.9/build-release/lib/libwx_macu_richtext-2.8.a"; sourceTree = SOURCE_ROOT; };
+		330B46940F53182C009239FC /* libwx_macu_xrc-2.8.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libwx_macu_xrc-2.8.a"; path = "../../../Development/wxMac-2.8.9/build-release/lib/libwx_macu_xrc-2.8.a"; sourceTree = SOURCE_ROOT; };
+		330B46950F53182C009239FC /* libwxexpat-2.8.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libwxexpat-2.8.a"; path = "../../../Development/wxMac-2.8.9/build-release/lib/libwxexpat-2.8.a"; sourceTree = SOURCE_ROOT; };
+		330B46960F53182C009239FC /* libwxjpeg-2.8.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libwxjpeg-2.8.a"; path = "../../../Development/wxMac-2.8.9/build-release/lib/libwxjpeg-2.8.a"; sourceTree = SOURCE_ROOT; };
+		330B46970F53182C009239FC /* libwxregexu-2.8.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libwxregexu-2.8.a"; path = "../../../Development/wxMac-2.8.9/build-release/lib/libwxregexu-2.8.a"; sourceTree = SOURCE_ROOT; };
+		330B46980F53182C009239FC /* libwxtiff-2.8.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libwxtiff-2.8.a"; path = "../../../Development/wxMac-2.8.9/build-release/lib/libwxtiff-2.8.a"; sourceTree = SOURCE_ROOT; };
 		3397B22A0D667AA300580155 /* fahmon.mo */ = {isa = PBXFileReference; lastKnownFileType = file; path = fahmon.mo; sourceTree = "<group>"; };
 		3397B22C0D667AA300580155 /* fahmon.mo */ = {isa = PBXFileReference; lastKnownFileType = file; path = fahmon.mo; sourceTree = "<group>"; };
 		3397B22E0D667AA300580155 /* fahmon.mo */ = {isa = PBXFileReference; lastKnownFileType = file; path = fahmon.mo; sourceTree = "<group>"; };
@@ -299,9 +363,13 @@
 		33C206120D64C1CE006EE977 /* trayManager.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = trayManager.h; path = src/include/trayManager.h; sourceTree = "<group>"; };
 		33C206130D64C1CE006EE977 /* webMonitor.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = webMonitor.h; path = src/include/webMonitor.h; sourceTree = "<group>"; };
 		33C206140D64C1CE006EE977 /* workUnitFrame.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = workUnitFrame.h; path = src/include/workUnitFrame.h; sourceTree = "<group>"; };
+		33D309020F532A8500C6B636 /* libwxcode_macu_wxcurl-2.8.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libwxcode_macu_wxcurl-2.8.a"; path = "../../wxcurl/lib/libwxcode_macu_wxcurl-2.8.a"; sourceTree = SOURCE_ROOT; };
+		33D309070F53635900C6B636 /* libwx_macu_gl-2.8.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libwx_macu_gl-2.8.a"; path = "../../../Development/wxMac-2.8.9/build-release/lib/libwx_macu_gl-2.8.a"; sourceTree = SOURCE_ROOT; };
+		33D309150F536B6000C6B636 /* list_client_error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = list_client_error.png; path = src/images/list_client_error.png; sourceTree = "<group>"; };
+		33D309160F536B6000C6B636 /* list_client_paused.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = list_client_paused.png; path = src/images/list_client_paused.png; sourceTree = "<group>"; };
+		33D3091B0F536C0D00C6B636 /* fahmon.mo */ = {isa = PBXFileReference; lastKnownFileType = file; name = fahmon.mo; path = lang/it_IT/fahmon.mo; sourceTree = "<group>"; };
+		33D309210F536CF700C6B636 /* fahmon.mo */ = {isa = PBXFileReference; lastKnownFileType = file; name = fahmon.mo; path = lang/nb_NB/fahmon.mo; sourceTree = "<group>"; };
 		33DFF4890D6255770095F52F /* FahMon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FahMon.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		33DFF53D0D626A2F0095F52F /* libwx_macu-2.8.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libwx_macu-2.8.a"; sourceTree = "<group>"; };
-		33DFF5400D626A2F0095F52F /* libwxpng-2.8.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libwxpng-2.8.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -309,8 +377,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33DFF5430D626A2F0095F52F /* libwx_macu-2.8.a in Frameworks */,
-				33DFF5460D626A2F0095F52F /* libwxpng-2.8.a in Frameworks */,
+				330B46860F531752009239FC /* libwx_macu_core-2.8.a in Frameworks */,
+				330B46870F531752009239FC /* libwxpng-2.8.a in Frameworks */,
+				330B468B0F5317B1009239FC /* libwx_macu_adv-2.8.a in Frameworks */,
+				330B468C0F5317B1009239FC /* libwx_macu_qa-2.8.a in Frameworks */,
+				330B46990F53182C009239FC /* libwx_base_carbonu-2.8.a in Frameworks */,
+				330B469A0F53182C009239FC /* libwx_base_carbonu_net-2.8.a in Frameworks */,
+				330B469B0F53182C009239FC /* libwx_base_carbonu_xml-2.8.a in Frameworks */,
+				330B469C0F53182C009239FC /* libwx_macu_aui-2.8.a in Frameworks */,
+				330B469D0F53182C009239FC /* libwx_macu_html-2.8.a in Frameworks */,
+				330B469E0F53182C009239FC /* libwx_macu_richtext-2.8.a in Frameworks */,
+				330B469F0F53182C009239FC /* libwx_macu_xrc-2.8.a in Frameworks */,
+				330B46A00F53182C009239FC /* libwxexpat-2.8.a in Frameworks */,
+				330B46A10F53182C009239FC /* libwxjpeg-2.8.a in Frameworks */,
+				330B46A20F53182C009239FC /* libwxregexu-2.8.a in Frameworks */,
+				330B46A30F53182C009239FC /* libwxtiff-2.8.a in Frameworks */,
+				33D309030F532A8500C6B636 /* libwxcode_macu_wxcurl-2.8.a in Frameworks */,
+				33D309080F53635900C6B636 /* libwx_macu_gl-2.8.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,11 +502,13 @@
 		3397B24C0D667B5400580155 /* lang */ = {
 			isa = PBXGroup;
 			children = (
+				33D309200F536CE400C6B636 /* nb_NB */,
 				3397B2290D667AA300580155 /* cs_CZ */,
 				3397B22B0D667AA300580155 /* de_DE */,
 				3397B22D0D667AA300580155 /* en_GB */,
 				3397B22F0D667AA300580155 /* es_ES */,
 				3397B2310D667AA300580155 /* fr_FR */,
+				33D3091F0F536CBE00C6B636 /* it_IT */,
 				3397B2330D667AA300580155 /* nl_NL */,
 				3397B2350D667AA300580155 /* pl_PL */,
 				3397B2370D667AA300580155 /* pt_BR */,
@@ -437,6 +522,8 @@
 		33C205530D64BA55006EE977 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				330B467D0F531619009239FC /* multiProtocolFile.cpp */,
+				330B467B0F531601009239FC /* ftpConnection.cpp */,
 				33C205C60D64C17E006EE977 /* listViewClients.cpp */,
 				33C205C70D64C17E006EE977 /* main.cpp */,
 				33C205C80D64C17E006EE977 /* mainDialog.cpp */,
@@ -509,6 +596,8 @@
 		33C2055D0D64BB3A006EE977 /* include */ = {
 			isa = PBXGroup;
 			children = (
+				330B467F0F531632009239FC /* ftpConnection.h */,
+				330B46800F531632009239FC /* multiProtocolFile.h */,
 				33C205ED0D64C1CD006EE977 /* aboutDialog.h */,
 				33C205EE0D64C1CD006EE977 /* base64Codec.h */,
 				33C205EF0D64C1CD006EE977 /* benchmark.h */,
@@ -562,15 +651,48 @@
 			name = mac;
 			sourceTree = "<group>";
 		};
+		33D3091F0F536CBE00C6B636 /* it_IT */ = {
+			isa = PBXGroup;
+			children = (
+				33D3091B0F536C0D00C6B636 /* fahmon.mo */,
+			);
+			name = it_IT;
+			sourceTree = "<group>";
+		};
+		33D309200F536CE400C6B636 /* nb_NB */ = {
+			isa = PBXGroup;
+			children = (
+				33D309210F536CF700C6B636 /* fahmon.mo */,
+			);
+			name = nb_NB;
+			sourceTree = "<group>";
+		};
 		33DFF4790D6255580095F52F = {
 			isa = PBXGroup;
 			children = (
+				33D309150F536B6000C6B636 /* list_client_error.png */,
+				33D309160F536B6000C6B636 /* list_client_paused.png */,
+				33D309070F53635900C6B636 /* libwx_macu_gl-2.8.a */,
+				33D309020F532A8500C6B636 /* libwxcode_macu_wxcurl-2.8.a */,
+				330B468E0F53182C009239FC /* libwx_base_carbonu-2.8.a */,
+				330B468F0F53182C009239FC /* libwx_base_carbonu_net-2.8.a */,
+				330B46900F53182C009239FC /* libwx_base_carbonu_xml-2.8.a */,
+				330B46910F53182C009239FC /* libwx_macu_aui-2.8.a */,
+				330B46920F53182C009239FC /* libwx_macu_html-2.8.a */,
+				330B46930F53182C009239FC /* libwx_macu_richtext-2.8.a */,
+				330B46940F53182C009239FC /* libwx_macu_xrc-2.8.a */,
+				330B46950F53182C009239FC /* libwxexpat-2.8.a */,
+				330B46960F53182C009239FC /* libwxjpeg-2.8.a */,
+				330B46970F53182C009239FC /* libwxregexu-2.8.a */,
+				330B46980F53182C009239FC /* libwxtiff-2.8.a */,
+				330B46890F5317B1009239FC /* libwx_macu_adv-2.8.a */,
+				330B468A0F5317B1009239FC /* libwx_macu_qa-2.8.a */,
+				330B46840F531752009239FC /* libwx_macu_core-2.8.a */,
+				330B46850F531752009239FC /* libwxpng-2.8.a */,
 				3397B24C0D667B5400580155 /* lang */,
 				33C205780D64BB9C006EE977 /* mac */,
 				33C2055B0D64BB07006EE977 /* templates */,
 				33C205530D64BA55006EE977 /* src */,
-				33DFF53D0D626A2F0095F52F /* libwx_macu-2.8.a */,
-				33DFF5400D626A2F0095F52F /* libwxpng-2.8.a */,
 				33DFF48A0D6255770095F52F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -604,6 +726,8 @@
 				3397B2640D667CC500580155 /* Copy pt_PT translation */,
 				3397B2670D667CE600580155 /* Copy ru_RU translation */,
 				3397B26A0D667D1100580155 /* Copy sv_SE translation */,
+				33D3091A0F536C0C00C6B636 /* Copy it_IT translation */,
+				33D309260F536D4B00C6B636 /* Copy nb_NB translation */,
 			);
 			buildRules = (
 			);
@@ -620,10 +744,12 @@
 		33DFF47B0D6255580095F52F /* Project object */ = {
 			isa = PBXProject;
 			buildConfigurationList = 33DFF47C0D6255590095F52F /* Build configuration list for PBXProject "FahMon" */;
+			compatibilityVersion = "Xcode 2.4";
 			hasScannedForEncodings = 0;
 			mainGroup = 33DFF4790D6255580095F52F;
 			productRefGroup = 33DFF48A0D6255770095F52F /* Products */;
 			projectDirPath = "";
+			projectRoot = "";
 			targets = (
 				33DFF4880D6255770095F52F /* FahMon */,
 			);
@@ -649,6 +775,10 @@
 				33C2059D0D64BEC5006EE977 /* list_up_arrow.png in Resources */,
 				33C2059E0D64BEC5006EE977 /* main_icon.png in Resources */,
 				33C205A00D64BF07006EE977 /* dialog_icon.png in Resources */,
+				33D309170F536B6000C6B636 /* list_client_error.png in Resources */,
+				33D309180F536B6000C6B636 /* list_client_paused.png in Resources */,
+				33D3091C0F536C0D00C6B636 /* fahmon.mo in Resources */,
+				33D309220F536CF700C6B636 /* fahmon.mo in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -695,6 +825,8 @@
 				33C205E90D64C17E006EE977 /* trayManager.cpp in Sources */,
 				33C205EA0D64C17E006EE977 /* webMonitor.cpp in Sources */,
 				33C205EB0D64C17E006EE977 /* workUnitFrame.cpp in Sources */,
+				330B467C0F531601009239FC /* ftpConnection.cpp in Sources */,
+				330B467E0F531619009239FC /* multiProtocolFile.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -767,8 +899,14 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../Development/wxMac-2.8.9/build-release/lib\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../wxcurl/lib\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../../Development/wxMac-2.8.9/build-release/lib\"";
 				OTHER_CFLAGS = (
 					"-D_FILE_OFFSET_BITS=64",
 					"-D_LARGE_FILES",
@@ -813,14 +951,21 @@
 					"/usr/local/include/wx-2.8",
 					"/usr/local/lib/wx/include/mac-unicode-release-static-2.8",
 					"$(inherited)",
+					./wxcurl/include,
 				);
 				INFOPLIST_FILE = "FahMon-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../Development/wxMac-2.8.9/build-release/lib\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../wxcurl/lib\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../../Development/wxMac-2.8.9/build-release/lib\"";
 				OTHER_CFLAGS = (
 					"-D_FILE_OFFSET_BITS=64",
 					"-D_LARGE_FILES",
@@ -839,6 +984,11 @@
 					"-lz",
 					"-framework",
 					Carbon,
+					"-framework",
+					OpenGL,
+					"-lcurl",
+					"-lssl",
+					"-lcrypto",
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = FahMon;
