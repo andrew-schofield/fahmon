@@ -221,7 +221,7 @@
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = lang/it_IT;
-			dstSubfolderSpec = 7;
+			dstSubfolderSpec = 12;
 			files = (
 				33D3091E0F536CAA00C6B636 /* fahmon.mo in Copy it_IT translation */,
 			);
@@ -232,7 +232,7 @@
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = lang/nb_NB;
-			dstSubfolderSpec = 7;
+			dstSubfolderSpec = 12;
 			files = (
 				33D309240F536D1A00C6B636 /* fahmon.mo in Copy nb_NB translation */,
 			);
