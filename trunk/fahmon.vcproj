@@ -100,7 +100,7 @@
 			UseOfMFC="0"
 			UseOfATL="0"
 			ATLMinimizesCRunTimeLibraryUsage="false"
-			WholeProgramOptimization="0"
+			WholeProgramOptimization="1"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -119,8 +119,12 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				Optimization="3"
+				FavorSizeOrSpeed="2"
+				WholeProgramOptimization="true"
 				AdditionalIncludeDirectories=".\src\include;.\wxcurl\include;.\wxcurl\win32_libcurl\include"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_FAHMON_WIN32_;_FILE_OFFSET_BITS=64;_LARGE_FILES;_LARGEFILE_SOURCE=1;UNICODE;_UNICODE"
+				StringPooling="true"
 				RuntimeLibrary="0"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
