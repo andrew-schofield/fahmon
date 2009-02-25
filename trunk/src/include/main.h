@@ -99,17 +99,27 @@ public:
 	 **/
 	virtual bool OnInit(void);
 
-    // called when a crash occurs in this application
+    /**
+	 * Called when a crash occurs in this application.
+	 **/
 	virtual void OnFatalException();
 
-    // this is where we really generate the debug report
+    /**
+	 * This is where we really generate the debug report.
+	 **/
 	void GenerateReport(wxDebugReport::Context ctx);
 
-    // if this function is called, we'll use MyDebugReport which would try to
-    // upload the (next) generated debug report to its URL, otherwise we just
-    // generate the debug report and leave it in a local file
+    /**
+	 * Upload the debug report.
+	 * If this function is called, we'll use MyDebugReport which would try to
+     * upload the (next) generated debug report to its URL, otherwise we just
+     * generate the debug report and leave it in a local file
+	 **/
 	void UploadReport(bool doIt) { m_uploadReport = doIt; }
 
+	/**
+	 * Should FahMOn run from a local directory only (no special config folder)
+	 **/
 	bool GetLocal(void) {return mLocal;}
 
 	/**

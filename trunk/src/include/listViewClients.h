@@ -145,6 +145,11 @@ protected:
 	 **/
 	void OnColumnLeftClick(wxListEvent& event);
 
+	/**
+	 * Event: Right click on column title.
+	 * Brings up the enabled column popup menu.
+	 * @param event The actual event. This is sent automatically.
+	 **/
 	void OnColumnRightClick(wxListEvent& event);
 
 	/**
@@ -182,6 +187,11 @@ protected:
 	void OnMenuClientType(wxCommandEvent& event);
 	void OnMenuCoreVersion(wxCommandEvent& event);
 
+	/**
+	 * Event: Dragging the column sizers.
+	 * Required so we can veto the status column to prevent it being hidden.
+	 * @param event The actual event. This is sent automatically.
+	 **/
 	void OnColBeginDrag(wxListEvent& event);
 
 	/**

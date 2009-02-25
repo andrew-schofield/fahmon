@@ -15,9 +15,8 @@
 */
 
 /**
- * \file ftpDownloader.h
+ * \file ftpConnection.h
  * Create a class to download files over ftp.
- * \author François Ingelrest
  * \author Andrew Schofield
  **/
 
@@ -70,10 +69,23 @@ class FTPConnection
 		 **/
 		static long GetFTPResponseCode(wxString url);
 
+		/**
+		 * Try to work out the last file modification time.
+		 * \note This will currently return 0 for all queries.
+		 * FIXME
+		 * @param url The url to query
+		 * @return Time last modified
+		 **/
 		static wxDateTime GetFTPFileModificationTime(wxString url);
 
+		/**
+		 * Upload a given file to a specified fto address.
+		 * @param url The url to upload to.
+		 * @param tempFile The file to upload.
+		 * @return Success
+		 **/
 		static bool PutFTPFile(wxString url, wxString tempFile);
 };
 
 
-#endif /* _FTPCONNETION_H */
+#endif /* _FTPCONNECTION_H */

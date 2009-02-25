@@ -104,6 +104,12 @@ public:
 	 **/
 	static void InfoMsgBox(wxString const &information) {MsgBox(information, wxICON_INFORMATION | wxOK);}
 
+	/**
+	 * Function to split a line into separate elements based on a given delimiter.
+	 * @param line The line to parse
+	 * @param delim The delimiter
+	 * @return A vector containing the elements split from the line.
+	 **/
 	static std::vector<wxString> SplitLineByDelim(wxString const &line, wxString const &delim);
 };
 

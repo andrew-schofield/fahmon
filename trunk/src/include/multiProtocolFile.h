@@ -16,7 +16,7 @@
 
 /**
  * \file multiProtocolFile.h
- * Creates a class for managing files across different protocols (local and http).
+ * Creates a class of statics for managing files across different protocols (local and http).
  * \author Andrew Schofield
  **/
 
@@ -31,35 +31,79 @@
 #include "wx/filename.h"
 #include "wx/thread.h"
 
+/**
+ * Abstraction class to hide any internal file protocol messiness behind a single interface.
+ * Not a <i>real</i> class, but rather a collection of static methods that link to other classes.
+ **/
 class multiProtocolFile
 {
 	public:
+		/**
+		 * The currently supported protocols.
+		 * Adding more is simple, just add a new ID and modify the statics in \file multiProtocolFile.cpp
+		 * to deal with the new protocol.
+		 **/
 		enum _PROTOCOL_ID
 		{
-			FILE,
-			HTTP,
-			FTP,
+			FILE, /**< Local files */
+			HTTP, /**< Files accessible via http:// (no support for SSL) */
+			FTP, /**< Files accessible via ftp:// */
 			PROTOCOL_ID_COUNT
 		};
 
+		/**
+		 * Checks if file exists.
+		 * @param fileName File to check
+		 * @return existence
+		 **/
 		static bool FileExists(const wxString& fileName);
 
 		static wxMutex          mMutexFileExists;
 
+		/**
+		 * Retrieves time of last modification of a file.
+		 * @param fileName File to check
+		 * @return time of last modification
+		 **/
 		static time_t LastModification(const wxString& fileName);
 
 		static wxMutex          mMutexLastModification;
 
+		/**
+		 * Checks if directory exists.
+		 * @param dirName directory to check
+		 * @return existence
+		 **/
 		static bool DirExists(const wxString& dirName);
 
 		static wxMutex          mMutexDirExists;
 
+		/**
+		 * Get sanitized filename.
+		 * This allows all files to be accessed as if local by silently downloading
+		 * http/ftp files in the background. Currently this will leave messy remains
+		 * in your temp folder, as no cleanup is performed. It essentially acts as a
+		 * web browser with an unlimited cache size.
+		 * @param fileName File to retrieve
+		 * @return sanitized local filename
+		 **/
 		static wxString GetLocalFileName(const wxString& fileName);
 
 		static wxMutex          mMutexGetLocalFileName;
 
+		/**
+		 * Copy file.
+		 * @param inFile File to copy from, may be FILE, HTTP or FTP
+		 * @param outFile File to copy to. Must be FILE.
+		 * @return success
+		 **/
 		static bool CopyFile(const wxString& inFile, const wxString& outFile);
 
+		/**
+		 * Get protocol from filename.
+		 * @param fileName File to check
+		 * @return File Protocol of file.
+		 **/
 		static FileProtocol GetFileProtocol(const wxString& fileName);
 	private:
 };

@@ -75,12 +75,18 @@ class HTTPDownloader
 		static bool GetHTTPFile(wxString url, wxString tempFile);
 
 		/**
-		 * Grab the response headers from an http request and get the response code.
+		 * Grab the response code form an url.
 		 * @param url The url to query
 		 * @return The HTTP response code
 		 **/
 		static long GetHTTPResponseCode(wxString url);
 
+		/**
+		 * Retrieve a specific header from an HTTP HEAD request.
+		 * @param url The url to query
+		 * @param header The header required
+		 * @return Resulting header value if any.
+		 **/
 		static wxString GetHTTPHeader(wxString url, wxString header);
 };
 

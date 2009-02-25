@@ -147,6 +147,9 @@ public:
 	 **/
 	void LogError(const wxString& msg)       {Log(wxT("X ") + msg);}
 
+	/**
+	 * Save messages to logfile
+	 **/
 	void SaveMessages(void);
 };
 

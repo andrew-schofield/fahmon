@@ -17,7 +17,6 @@
 /**
  * \file ftpConnection.cpp
  * Create a class to download files over ftp.
- * \author François Ingelrest
  * \author Andrew Schofield
  **/
 

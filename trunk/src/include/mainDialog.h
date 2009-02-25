@@ -504,6 +504,9 @@ public:
 	 **/
 	bool ClientReloadAllowed(ClientId clientId);
 
+	/**
+	 * Get pointer to current clientlist.
+	 **/
 	ListViewClients* GetClientList(void) {return mClientsList;}
 
 private:

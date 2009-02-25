@@ -107,6 +107,11 @@ public:
 	 **/
 	void WriteApp(void);
 
+	/**
+	 * Retrieve custom variables from custom.dat
+	 * @param variable The variable name to find
+	 * @return The value of the given variable
+	 **/
 	const wxString GetVariable(wxString const &variable);
 
 private:
