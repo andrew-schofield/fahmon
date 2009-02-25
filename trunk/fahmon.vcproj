@@ -40,7 +40,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;C:\wxWidgets-2.8.6\include\msvc&quot;;&quot;C:\wxWidgets-2.8.6\include&quot;;.\src\include"
+				AdditionalIncludeDirectories="&quot;C:\wxWidgets-2.8.6\include\msvc&quot;;&quot;C:\wxWidgets-2.8.6\include&quot;;.\src\include;.\wxcurl\include;.\wxcurl\win32_libcurl\include"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_FAHMON_WIN32_;_UNICODE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -61,7 +61,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="wxmsw28ud_core.lib wxbase28ud.lib wxpngd.lib wxtiffd.lib wxjpegd.lib wxzlibd.lib wxregexud.lib wxexpatd.lib winmm.lib comctl32.lib rpcrt4.lib wsock32.lib oleacc.lib"
+				AdditionalDependencies="wxmsw28ud_core.lib wxbase28ud.lib wxpngd.lib wxtiffd.lib wxjpegd.lib wxzlibd.lib wxregexud.lib wxexpatd.lib winmm.lib comctl32.lib rpcrt4.lib wsock32.lib oleacc.lib .\wxcurl\lib\libcurl.lib"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="&quot;C:\wxWidgets-2.8.6\lib\vc_lib&quot;"
 				GenerateDebugInformation="true"
