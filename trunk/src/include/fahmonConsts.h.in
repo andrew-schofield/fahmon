@@ -36,7 +36,7 @@
 #define FMC_INTMAX5 2147483643l
 #define FMC_INTMAX6 2147483642l
 #define FMC_CLIENTSTAB_FIELDS 4 /**< The number of fields in current clientstab format*/
-#define FMC_MAX_LOG_LENGTH 4096 /**< Limit in bytes for loading FAHlog.txt */
+#define FMC_MAX_LOG_LENGTH 16384 /**< Limit in bytes for loading FAHlog.txt */
 
 
 // --- Strings

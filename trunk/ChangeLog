@@ -25,7 +25,7 @@ SVN
         large unitinfo.txt files.
       * Fixed miscalculation of frame count when step count is a non-standard
         number.
-      * Limited FAHlog parsing to last 4KiB.
+      * Limited FAHlog parsing to last 16KiB.
       * Added ability to reload client in series rather than launching a thread
         for each client. Will improve memory usage with large numbers of clients.
       * Significantly reduced CPU usage while reloading.
