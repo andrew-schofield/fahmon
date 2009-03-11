@@ -400,13 +400,19 @@ void Client::Reload(void)
 bool Client::LoadLogFile(wxString const &filename)
 {
 	wxString myLog;
-	if(multiProtocolFile::FileExists(filename) == false || Tools::LoadFile(filename, myLog, FMC_MAX_LOG_LENGTH, false) == false)
+	wxString localFile;
+
+	if(multiProtocolFile::FileExists(GetPreviousFAHlog()) && (multiProtocolFile::GetFileProtocol(filename) == multiProtocolFile::FTP || multiProtocolFile::GetFileProtocol(filename) == multiProtocolFile::HTTP))
+		wxRemoveFile(GetPreviousFAHlog());
+
+	if(multiProtocolFile::FileExists(filename) == false || Tools::LoadFile(filename, myLog, localFile, FMC_MAX_LOG_LENGTH, false) == false)
 	{
 		mLog = _T("");
 		return false;
 	}
 
 	mLog = myLog;
+	SetPreviousFAHlog(localFile);
 	return true;
 }
 
@@ -417,11 +423,16 @@ bool Client::LoadUnitInfoFile(wxString const &filename)
 	wxInt32           endingPos, startingPos;
 	unsigned long     tmpLong;
 	wxString          currentLine;
+	wxString          localFile;
 
-	if(multiProtocolFile::FileExists(filename) == false || Tools::LoadFile(filename, currentLine, 512) == false)
+	if(multiProtocolFile::FileExists(GetPreviousUnitinfo()) && (multiProtocolFile::GetFileProtocol(filename) == multiProtocolFile::FTP || multiProtocolFile::GetFileProtocol(filename) == multiProtocolFile::HTTP))
+		wxRemoveFile(GetPreviousUnitinfo());
+
+	if(multiProtocolFile::FileExists(filename) == false || Tools::LoadFile(filename, currentLine, localFile, 512) == false)
 	{
 		return false;
 	}
+	SetPreviousUnitinfo(localFile);
 
 	progressOk     = false;
 	startingPos = currentLine.Find(_T("Progress:")) + 9;
@@ -461,11 +472,17 @@ bool Client::LoadWULogFile(wxString const &filename)
 	double            tmpDouble;
 	wxString          tmpString;
 	wxString          currentLine;
+	wxString          localFile;
 
-	if(multiProtocolFile::FileExists(filename) == false || Tools::LoadFile(filename, currentLine, 256) == false)
+	if(multiProtocolFile::FileExists(GetPreviousLogfile()) && (multiProtocolFile::GetFileProtocol(filename) == multiProtocolFile::FTP || multiProtocolFile::GetFileProtocol(filename) == multiProtocolFile::HTTP))
+		wxRemoveFile(GetPreviousLogfile());
+
+
+	if(multiProtocolFile::FileExists(filename) == false || Tools::LoadFile(filename, currentLine, localFile, 256) == false)
 	{
 		return false;
 	}
+	SetPreviousLogfile(localFile);
 
 	char *locOld = setlocale(LC_NUMERIC, "C");
 
@@ -505,7 +522,12 @@ bool Client::LoadQueueFile(wxString const &filename)
 {
 	Queue    *qf;
 	qf = new Queue();
-	if (qf->LoadQueueFile(filename, mName))
+	wxString localFile;
+
+	if(multiProtocolFile::FileExists(GetPreviousQueue()) && (multiProtocolFile::GetFileProtocol(filename) == multiProtocolFile::FTP || multiProtocolFile::GetFileProtocol(filename) == multiProtocolFile::HTTP))
+		wxRemoveFile(GetPreviousQueue());
+
+	if (qf->LoadQueueFile(filename, mName, localFile))
 	{
 		mProjectId = qf->GetProjectId();
 		mRun = qf->GetProjectRun();
@@ -520,6 +542,7 @@ bool Client::LoadQueueFile(wxString const &filename)
 			delete qf;
 			qf = NULL;
 		}
+		SetPreviousQueue(localFile);
 		return true;
 	}
 	if(qf != NULL)

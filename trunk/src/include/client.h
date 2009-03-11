@@ -89,6 +89,10 @@ protected:
 	wxString   mClientType; /**< CPU/GPU/SMP */
 	wxUint32   mUnitIndex; /**< Current work unit index */
 	double     mCoreVersion; /**< Core version number */
+	wxString   mPreviousFAHlog; /**< Previous location of temporary file (http/ftp) */
+	wxString   mPreviousQueue; /**< Previous location of temporary file (http/ftp) */
+	wxString   mPreviousUnitinfo; /**< Previous location of temporary file (http/ftp) */
+	wxString   mPreviousLogfile; /**< Previous location of temporary file (http/ftp) */
 
 	/**
 	 * Calculate the client's ETA.
@@ -251,6 +255,16 @@ public:
 	 * Return true if some modification occurred since the last reload
 	 **/
 	bool ReloadNeeded(void) const;
+
+	wxString GetPreviousFAHlog(void) {return mPreviousFAHlog;}
+	wxString GetPreviousQueue(void) {return mPreviousQueue;}
+	wxString GetPreviousUnitinfo(void) {return mPreviousUnitinfo;}
+	wxString GetPreviousLogfile(void) {return mPreviousLogfile;}
+
+	void SetPreviousFAHlog(wxString value) {mPreviousFAHlog = value;}
+	void SetPreviousQueue(wxString value) {mPreviousQueue = value;}
+	void SetPreviousUnitinfo(wxString value) {mPreviousUnitinfo = value;}
+	void SetPreviousLogfile(wxString value) {mPreviousLogfile = value;}
 };
 
 

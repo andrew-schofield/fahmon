@@ -46,7 +46,7 @@ Queue::~Queue(void)
 {
 }
 
-bool Queue::LoadQueueFile(wxString const &filename, wxString clientName)
+bool Queue::LoadQueueFile(wxString const &filename, wxString clientName, wxString& localname)
 {
 	queueformat       queuebuffer, *bp;
 	queueformat::qs  *p;
@@ -78,7 +78,8 @@ bool Queue::LoadQueueFile(wxString const &filename, wxString clientName)
 	{
 		return false;
 	}
-	if((fp = fopen(multiProtocolFile::GetLocalFileName(filename).mb_str(), "rb")) == NULL)
+	localname = multiProtocolFile::GetLocalFileName(filename);
+	if((fp = fopen(localname.mb_str(), "rb")) == NULL)
 	{
 		return false;
 	}

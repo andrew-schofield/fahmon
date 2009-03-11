@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cs_CZ\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2009-03-11 21:59+0000\n"
+"POT-Creation-Date: 2009-03-11 23:17+0000\n"
 "PO-Revision-Date: 2008-11-02 14:31+0100\n"
 "Last-Translator: Martin Bednar <serafean@gmail.com>\n"
 "Language-Team: Czech <en@li.org>\n"
@@ -228,57 +228,57 @@ msgstr "Nastala chyba při načítání %sunitinfo.txt!"
 msgid "Finished Reloading %s"
 msgstr "Znovu načítám %s"
 
-#: src/client.cpp:450
+#: src/client.cpp:461
 #, c-format
 msgid "The progress value in file %s could not be found/parsed"
 msgstr "Hodnotu postupu v souboru %s nelze najít/analyzovat"
 
-#: src/client.cpp:497
+#: src/client.cpp:514
 #, fuzzy, c-format
 msgid "The core version in file %s could not be found/parsed"
 msgstr "Hodnotu postupu v souboru %s nelze najít/analyzovat"
 
-#: src/client.cpp:556
+#: src/client.cpp:579
 #, c-format
 msgid "Unable to save %s because it does not exist"
 msgstr "Nelze uložit %s jelikož neexistuje"
 
-#: src/client.cpp:563
+#: src/client.cpp:586
 #, c-format
 msgid "Unable to create directory %s"
 msgstr "Nelze vytvořit složku %s"
 
-#: src/client.cpp:576
+#: src/client.cpp:599
 #, c-format
 msgid "Unable to copy %s to %s"
 msgstr "Nelze kopírovat %s do %s"
 
-#: src/client.cpp:601
+#: src/client.cpp:624
 #, c-format
 msgid "%s is on frame %u"
 msgstr "%s dělá obrázek %u"
 
-#: src/client.cpp:605
+#: src/client.cpp:628
 #, c-format
 msgid "Cannot determine frame number for %s (this isn't a problem)"
 msgstr "Nelze určit číslo obrázku pro %s (toto není problém)"
 
-#: src/client.cpp:789
+#: src/client.cpp:812
 #, c-format
 msgid "%s has an unknown state (Unable to find a complete frame)"
 msgstr "%s je v neznámém stavu (Nelze najít hotový obrázek)"
 
-#: src/client.cpp:798
+#: src/client.cpp:821
 #, c-format
 msgid "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
 msgstr "%s je zastaven (\"Folding@Home Client Shutdown.\"nalezeno v logu)"
 
-#: src/client.cpp:806
+#: src/client.cpp:829
 #, c-format
 msgid "%s has been paused"
 msgstr "%s byl pozastaven"
 
-#: src/client.cpp:815
+#: src/client.cpp:838
 #, c-format
 msgid ""
 "%s has an unknown state (Unable to extract a valid elapsed time since the "
@@ -287,17 +287,17 @@ msgstr ""
 "%s je v neznámém stavu (Nedaří se načíst platný uplynutý čas od posledního "
 "hotového obrázku)"
 
-#: src/client.cpp:823
+#: src/client.cpp:846
 #, c-format
 msgid "%s has been marked as having a asynchronous clock."
 msgstr "%s byl označen jako majíc nesynchronizované hodiny"
 
-#: src/client.cpp:858
+#: src/client.cpp:881
 #, c-format
 msgid "%s seems to have hung : Elapsed time is %um and limit is %um"
 msgstr "y%s se zdá zablokovaný : Uplynulý čas je %um a limit je %um"
 
-#: src/client.cpp:863
+#: src/client.cpp:886
 #, c-format
 msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
 msgstr "%s se zdá být neaktivní : Uplynulý čas je %um a limit je %um"
@@ -349,12 +349,12 @@ msgstr "Vyberte si složku"
 msgid "You must fill the name AND the locations fields."
 msgstr "Musíte vyplnit pole 'Název' a 'Umístění'"
 
-#: src/clientsManager.cpp:184 src/webMonitor.cpp:708
+#: src/clientsManager.cpp:192 src/webMonitor.cpp:708
 #, c-format
 msgid "Error while parsing %s on line %u"
 msgstr "Chyba při čtení %s na řádce %u"
 
-#: src/clientsManager.cpp:204
+#: src/clientsManager.cpp:212
 #, c-format
 msgid ""
 "Could not open file <%s> for writing!\n"
@@ -363,7 +363,7 @@ msgstr ""
 "Soubor %s nelze otevřít pro zapisování!\n"
 "Seznam klientů nebude uložen."
 
-#: src/clientsManager.cpp:209
+#: src/clientsManager.cpp:217
 #, fuzzy, c-format
 msgid ""
 "# %s : contains the list of clients\n"

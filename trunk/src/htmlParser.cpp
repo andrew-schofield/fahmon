@@ -43,8 +43,9 @@ bool HTMLParser::ParseFile(wxString const &fileName)
 	mParsedContent = _T("");
 	mCurrentText   = _T("");
 	mCurrentToken  = TOKEN_UNKNOWN;
+	wxString localFile;
 
-	if(fileName.IsEmpty() == false && Tools::LoadFile(fileName, mParsedContent) == false)
+	if(fileName.IsEmpty() == false && Tools::LoadFile(fileName, mParsedContent, localFile) == false)
 	{
 		mParsedContent = _T("");
 		return false;

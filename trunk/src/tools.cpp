@@ -78,14 +78,16 @@ void Tools::OpenURLInBrowser(wxString const &url)
 }
 
 
-bool Tools::LoadFile(wxString const &filename, wxString& fileContent, wxUint32 length, bool fromStart)
+bool Tools::LoadFile(wxString const &filename, wxString& fileContent, wxString& localname, wxUint32 length, bool fromStart)
 {
 	wxMutexLocker lock(mMutexLoadFile);
 
 	if(!multiProtocolFile::FileExists(filename))
 		return false;
 
-	wxFile in(multiProtocolFile::GetLocalFileName(filename), wxFile::read);
+	localname = multiProtocolFile::GetLocalFileName(filename);
+
+	wxFile in(localname, wxFile::read);
 	length = (length == 0) ? in.Length() : std::min<off_t>(length, in.Length());
 	if(length==0)
 		return false;

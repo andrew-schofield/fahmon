@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fr_FR\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2009-03-11 21:59+0000\n"
+"POT-Creation-Date: 2009-03-11 23:17+0000\n"
 "PO-Revision-Date: 2008-10-05 01:15+0000\n"
 "Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
 "Language-Team: French\n"
@@ -228,60 +228,60 @@ msgstr "Erreur durant la lecture de %sunitinfo.txt!"
 msgid "Finished Reloading %s"
 msgstr "Rechargement %s"
 
-#: src/client.cpp:450
+#: src/client.cpp:461
 #, c-format
 msgid "The progress value in file %s could not be found/parsed"
 msgstr "La valeur de progression du fichier %s ne peut pas étre trouvée/parsée"
 
-#: src/client.cpp:497
+#: src/client.cpp:514
 #, fuzzy, c-format
 msgid "The core version in file %s could not be found/parsed"
 msgstr "La valeur de progression du fichier %s ne peut pas étre trouvée/parsée"
 
-#: src/client.cpp:556
+#: src/client.cpp:579
 #, c-format
 msgid "Unable to save %s because it does not exist"
 msgstr "Impossible de sauvegarder %s car il n'existe pas"
 
-#: src/client.cpp:563
+#: src/client.cpp:586
 #, c-format
 msgid "Unable to create directory %s"
 msgstr "Impossible de créer le dossier %s"
 
-#: src/client.cpp:576
+#: src/client.cpp:599
 #, c-format
 msgid "Unable to copy %s to %s"
 msgstr "Impossible de copier %s vers %s"
 
-#: src/client.cpp:601
+#: src/client.cpp:624
 #, c-format
 msgid "%s is on frame %u"
 msgstr "%s Est a la frame %u"
 
-#: src/client.cpp:605
+#: src/client.cpp:628
 #, c-format
 msgid "Cannot determine frame number for %s (this isn't a problem)"
 msgstr ""
 "Impossible de déterminer le nombre de frames pour %s (Ceci n'est pas un "
 "problème)"
 
-#: src/client.cpp:789
+#: src/client.cpp:812
 #, c-format
 msgid "%s has an unknown state (Unable to find a complete frame)"
 msgstr "%s a un état inconnu (Impossible de trouver une frame compléte)"
 
-#: src/client.cpp:798
+#: src/client.cpp:821
 #, c-format
 msgid "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
 msgstr ""
 "%s est stoppé (La ligne \"Folding@Home Client Shutdown.\" a été trouvée)"
 
-#: src/client.cpp:806
+#: src/client.cpp:829
 #, c-format
 msgid "%s has been paused"
 msgstr ""
 
-#: src/client.cpp:815
+#: src/client.cpp:838
 #, c-format
 msgid ""
 "%s has an unknown state (Unable to extract a valid elapsed time since the "
@@ -290,18 +290,18 @@ msgstr ""
 "%s est dans un état inconnu (Impossible d'extraire une durée valide du temps "
 "écoulé depuis la derniére frame terminée)"
 
-#: src/client.cpp:823
+#: src/client.cpp:846
 #, c-format
 msgid "%s has been marked as having a asynchronous clock."
 msgstr "%s est indiqué comme ayant une horloge désynchronisée."
 
-#: src/client.cpp:858
+#: src/client.cpp:881
 #, c-format
 msgid "%s seems to have hung : Elapsed time is %um and limit is %um"
 msgstr ""
 "%s semble être en pause : Le temps écoulé est de %um et la limite est %um"
 
-#: src/client.cpp:863
+#: src/client.cpp:886
 #, c-format
 msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
 msgstr ""
@@ -354,12 +354,12 @@ msgstr "Choisissez un dossier"
 msgid "You must fill the name AND the locations fields."
 msgstr "Vous devez remplir les champs 'nom' et 'localisation'"
 
-#: src/clientsManager.cpp:184 src/webMonitor.cpp:708
+#: src/clientsManager.cpp:192 src/webMonitor.cpp:708
 #, c-format
 msgid "Error while parsing %s on line %u"
 msgstr "Erreur en parsant %s a la ligne %u"
 
-#: src/clientsManager.cpp:204
+#: src/clientsManager.cpp:212
 #, c-format
 msgid ""
 "Could not open file <%s> for writing!\n"
@@ -368,7 +368,7 @@ msgstr ""
 "Impossible d'ouvrir le fichier <%s> en écriture!\n"
 "La liste des clients ne sera pas sauvegardée!"
 
-#: src/clientsManager.cpp:209
+#: src/clientsManager.cpp:217
 #, c-format
 msgid ""
 "# %s : contains the list of clients\n"

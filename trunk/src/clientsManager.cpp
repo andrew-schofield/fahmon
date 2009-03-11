@@ -54,6 +54,14 @@ ClientsManager::~ClientsManager(void)
 	{
 		if(mClients[i] != NULL)
 		{
+			if(multiProtocolFile::FileExists(mClients.Item(i)->GetPreviousFAHlog()) && (multiProtocolFile::GetFileProtocol(mClients.Item(i)->GetLocation()) == multiProtocolFile::FTP || multiProtocolFile::GetFileProtocol(mClients.Item(i)->GetLocation()) == multiProtocolFile::HTTP))
+				wxRemoveFile(mClients.Item(i)->GetPreviousFAHlog());
+			if(multiProtocolFile::FileExists(mClients.Item(i)->GetPreviousUnitinfo()) && (multiProtocolFile::GetFileProtocol(mClients.Item(i)->GetLocation()) == multiProtocolFile::FTP || multiProtocolFile::GetFileProtocol(mClients.Item(i)->GetLocation()) == multiProtocolFile::HTTP))
+				wxRemoveFile(mClients.Item(i)->GetPreviousUnitinfo());
+			if(multiProtocolFile::FileExists(mClients.Item(i)->GetPreviousQueue()) && (multiProtocolFile::GetFileProtocol(mClients.Item(i)->GetLocation()) == multiProtocolFile::FTP || multiProtocolFile::GetFileProtocol(mClients.Item(i)->GetLocation()) == multiProtocolFile::HTTP))
+				wxRemoveFile(mClients.Item(i)->GetPreviousQueue());
+			if(multiProtocolFile::FileExists(mClients.Item(i)->GetPreviousLogfile()) && (multiProtocolFile::GetFileProtocol(mClients.Item(i)->GetLocation()) == multiProtocolFile::FTP || multiProtocolFile::GetFileProtocol(mClients.Item(i)->GetLocation()) == multiProtocolFile::HTTP))
+				wxRemoveFile(mClients.Item(i)->GetPreviousLogfile());
 			delete mClients[i];
 			mClients[i] = NULL;
 		}
