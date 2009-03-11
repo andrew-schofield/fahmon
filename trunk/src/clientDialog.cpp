@@ -84,7 +84,9 @@ ClientDialog::ClientDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, wxStri
 	clientInfoSizer     = new wxFlexGridSizer(2, FMC_GUI_SPACING_LOW, FMC_GUI_SPACING_LOW);
 
 	mClientNameCtrl     = new wxTextCtrl(this, wxID_ANY, _T(""), wxDefaultPosition, wxSize(FMC_GUI_TEXTCTRL_MIN_LENGTH, -1));
+	mClientNameCtrl->SetToolTip(_("Enter a name to describe this client."));
 	mClientLocationCtrl = new wxTextCtrl(this, wxID_ANY, _T(""), wxDefaultPosition, wxSize(FMC_GUI_TEXTCTRL_MIN_LENGTH, -1));
+	mClientLocationCtrl->SetToolTip(_("Select the directory containing FAHlog.txt for the client you wish to monitor."));
 	mClientVMCtrl       = new wxCheckBox(this, wxID_ANY, _("Client is on a Virtual Machine"));
 
 	locationLSizer->Add(new StaticBoldedText(this, wxID_ANY, _("Location:")),0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);

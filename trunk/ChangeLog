@@ -17,6 +17,7 @@ SVN
       * Removed "zebra" background colour scheme from benchmarks list.
       * Added IRC channel link to help menu and First Time Dialog.
       * Removed info panel from default view, and replaced with extra columns.
+      * Added informative tooltips to a number of controls.
 
       Monitoring
 

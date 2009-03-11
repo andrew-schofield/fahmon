@@ -201,8 +201,11 @@ wxPanel* PreferencesDialog::CreateGeneralTab(wxBookCtrlBase* parent)
 	#endif
 	mGeneralStartMinimised              = new wxCheckBox(panel, wxID_ANY, _("Start minimized"));
 	mGeneralCollectXYZFiles             = new wxCheckBox(panel, wxID_ANY, _("Collect .xyz files"));
+	mGeneralCollectXYZFiles->SetToolTip(_("By collecting xyz files you can help the jmol project by submitting missing projects."));
 	mGeneralAutoUpdateProjectsDatabase  = new wxCheckBox(panel, wxID_ANY, _("Auto update projects database when needed"));
+	mGeneralAutoUpdateProjectsDatabase->SetToolTip(_("This allows FahMon to keep up to date with any new projects you might download automatically."));
 	mGeneralKeepInaccessibleClientsLast = new wxCheckBox(panel, wxID_ANY, _("Always list inaccessible clients last"));
+	mGeneralKeepInaccessibleClientsLast->SetToolTip(_("Keeps inaccessible clients at the bottom of the clients list."));
 	mGeneralUpdateCheck                 = new wxCheckBox(panel, wxID_ANY, _("Check for FahMon updates on startup"));
 
 	#ifndef __WXMAC__
@@ -255,13 +258,17 @@ wxPanel* PreferencesDialog::CreateMonitoringTab(wxBookCtrlBase* parent)
 	mMonitoringAutoReload              = new wxCheckBox(panel, CHK_AUTORELOAD, _("Auto reload clients"));
 	mMonitoringAutoReloadInt           = new wxStaticText(panel, wxID_ANY, wxString::Format(_T("%s "),  _("Local client reload interval (mn)")));
 	mMonitoringAdvancedReload          = new wxCheckBox(panel, CHK_ADVANCEDRELOAD, _("Use experimental reload system (local only)"));
+	mMonitoringAdvancedReload->SetToolTip(_("Check when the log was last modified before deciding to reload the client. This can prevent unecessary reloads and gives a more timely response to changes in the log."));
 	mMonitoringInetAutoReloadInt       = new wxStaticText(panel, wxID_ANY, wxString::Format(_T("%s "),  _("HTTP/FTP client reload interval (mn)")));
 	mMonitoringNonThreadedReload       = new wxCheckBox(panel, CHK_USENONTHREADED, _("Reload clients in series"));
+	mMonitoringNonThreadedReload->SetToolTip(_("This option can reduce memory consumption if monitoring a large number of clients. Clients are reloaded sequentially in a single thread."));
 	mMonitoringETADisplayStyle         = new wxChoice(panel, wxID_ANY, wxDefaultPosition, wxDefaultSize, 3, etaFormats);
 	mMonitoringAutoReloadFrequency     = new wxSpinCtrl(panel, wxID_ANY, _T(""), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 1, 1000, 5);
 	mMonitoringInetAutoReloadFrequency = new wxSpinCtrl(panel, wxID_ANY, _T(""), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 10, 1000, 5);
 	mMonitoringPPDType                 = new wxChoice(panel, wxID_ANY, wxDefaultPosition, wxDefaultSize, 4, ppdFormats);
+	mMonitoringPPDType->SetToolTip(_("PPD Calculation formats\nAll frames: 255 stored datapoints used\nLast frame only: Instantaneous PPD\nLast 3 frames: 3 frames rolling average\nEffective rate: Based on download time and current frame"));
 	mMonitoringIgnoreAsynchrony        = new wxCheckBox(panel, wxID_ANY, _("Ignore asynchronous clocks"));
+	mMonitoringIgnoreAsynchrony->SetToolTip(_("Prevents clients from being reported as *hung* if their local clocks are out of sync with this machine."));
 
 	sizerETA->Add(new wxStaticText(panel, wxID_ANY, wxString::Format(_T("%s "),  _("Display dates as"))), 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL);
 	sizerETA->Add(mMonitoringETADisplayStyle, 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL);
@@ -465,10 +472,13 @@ wxPanel* PreferencesDialog::CreateSystemTab(wxBookCtrlBase* parent)
 	topLevelSizer           = new wxBoxSizer(wxVERTICAL);
 	mSystemBrowser          = new wxTextCtrl(panel, wxID_ANY, _T(""), wxDefaultPosition);
 	mSystemBrowserLabel     = new wxStaticText(panel, wxID_ANY, _("Web Browser:"));
+	mSystemBrowser->SetToolTip(_("Enter the location of your preferred web browser. In most cases \"firefox\" should suffice."));
 	mSystemFileManagerLabel = new wxStaticText(panel, wxID_ANY, _("File Manager:"));
 	mSystemOtherFM          = new wxTextCtrl(panel, wxID_ANY, _T(""), wxDefaultPosition);
 	mSystemOtherFMLabel     = new wxStaticText(panel, wxID_ANY, _("File Manager Command:"));
+	mSystemOtherFM->SetToolTip(_("Provide any modifications to the file manager command."));
 	mSystemOverrideTimezone = new wxCheckBox(panel, CHK_TZOVERRIDE, wxString::Format(_T("%s  "),  _("Manually set timezone to UTC +")));
+	mSystemOverrideTimezone->SetToolTip(_("Set this option if you find that FahMon isn't detecting your timezone correctly."));
 	mSystemTZ               = new wxSpinCtrl(panel, wxID_ANY, _T(""), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, -24, 24, 0);
 
 	#ifdef _FAHMON_WIN32_
@@ -481,6 +491,7 @@ wxPanel* PreferencesDialog::CreateSystemTab(wxBookCtrlBase* parent)
 	const wxString fileManagers[2] = {_("Finder"), _("Other")};
 	mSystemFileManager     = new wxChoice(panel, CHC_FILEMANAGER, wxDefaultPosition, wxDefaultSize, 2, fileManagers);
 	#endif
+	mSystemFileManager->SetToolTip(_("Select your preferred file manager. Used for opening client folders."));
 
 	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
@@ -560,7 +571,9 @@ wxPanel* PreferencesDialog::CreateWebApp1Tab(wxBookCtrlBase* parent)
 	simpleTextLocationSizer          = new wxBoxSizer(wxHORIZONTAL);
 
 	mWebAppUseWebApp                 = new wxCheckBox(panel, CHK_USEWEBAPP, _("Export Web Application"));
+	mWebAppUseWebApp->SetToolTip(_("Enables the creation of a fancy web page that mimics the old FahMon layout showing current client data."));
 	mWebAppWebAppLocation            = new wxTextCtrl(panel, wxID_ANY, _T(""), wxDefaultPosition);
+	mWebAppWebAppLocation->SetToolTip(_("Enter the location where the output should be saved. This can be a local file, or an ftp url."));
 	mWebAppWebAppLabel               = new wxStaticText(panel, wxID_ANY, _("Filename:"));
 #ifndef __WXMAC__
 	mWebAppWebAppLocationChooser     = new wxButton(panel, BTN_BROWSE_WEBAPP, _T("..."), wxDefaultPosition, wxSize(26, 26));
@@ -569,7 +582,9 @@ wxPanel* PreferencesDialog::CreateWebApp1Tab(wxBookCtrlBase* parent)
 #endif
 
 	mWebAppUseSimpleWeb              = new wxCheckBox(panel, CHK_USESIMPLEWEB, _("Export Simple Web page"));
+	mWebAppUseSimpleWeb->SetToolTip(_("Enables the creation of a compact web page showing current client data."));
 	mWebAppSimpleWebLocation         = new wxTextCtrl(panel, wxID_ANY, _T(""), wxDefaultPosition);
+	mWebAppSimpleWebLocation->SetToolTip(_("Enter the location where the output should be saved. This can be a local file, or an ftp url."));
 	mWebAppSimpleWebLabel            = new wxStaticText(panel, wxID_ANY, _("Filename:"));
 #ifndef __WXMAC__
 	mWebAppSimpleWebLocationChooser  = new wxButton(panel, BTN_BROWSE_SIMPLEWEB, _T("..."), wxDefaultPosition, wxSize(26, 26));
@@ -578,7 +593,9 @@ wxPanel* PreferencesDialog::CreateWebApp1Tab(wxBookCtrlBase* parent)
 #endif
 
 	mWebAppUseSimpleText             = new wxCheckBox(panel, CHK_USESIMPLETEXT, _("Export Simple Text file"));
+	mWebAppUseSimpleText->SetToolTip(_("Enables the creation of a compact text file showing current client data."));
 	mWebAppSimpleTextLocation        = new wxTextCtrl(panel, wxID_ANY, _T(""), wxDefaultPosition);
+	mWebAppSimpleTextLocation->SetToolTip(_("Enter the location where the output should be saved. This can be a local file, or an ftp url."));
 	mWebAppSimpleTextLabel           = new wxStaticText(panel, wxID_ANY, _("Filename:"));
 #ifndef __WXMAC__
 	mWebAppSimpleTextLocationChooser = new wxButton(panel, BTN_BROWSE_SIMPLETEXT, _T("..."), wxDefaultPosition, wxSize(26, 26));
@@ -646,6 +663,7 @@ wxPanel* PreferencesDialog::CreateWebApp2Tab(wxBookCtrlBase* parent)
 
 	mWebAppWebAppTemplateLabel       = new wxStaticText(panel, wxID_ANY, _("Custom Web Application Template"));
 	mWebAppWebAppTemplateLocation    = new wxTextCtrl(panel, wxID_ANY, _T(""), wxDefaultPosition);
+	mWebAppWebAppTemplateLocation->SetToolTip(_("Enter the location of the web application template."));
 	mWebAppWebAppFilenameLabel       = new wxStaticText(panel, wxID_ANY, _("Filename:"));
 #ifndef __WXMAC__
 	mWebAppWebAppTemplateLocationChooser     = new wxButton(panel, BTN_BROWSE_WEBAPP_TEMPLATE, _T("..."), wxDefaultPosition, wxSize(26, 26));
@@ -655,6 +673,7 @@ wxPanel* PreferencesDialog::CreateWebApp2Tab(wxBookCtrlBase* parent)
 
 	mWebAppSimpleWebTemplateLabel     = new wxStaticText(panel, wxID_ANY, _("Custom Simple Web Template"));
 	mWebAppSimpleWebTemplateLocation  = new wxTextCtrl(panel, wxID_ANY, _T(""), wxDefaultPosition);
+	mWebAppSimpleWebTemplateLocation->SetToolTip(_("Enter the location of the simple web template."));
 	mWebAppSimpleWebFilenameLabel     = new wxStaticText(panel, wxID_ANY, _("Filename:"));
 #ifndef __WXMAC__
 	mWebAppSimpleWebTemplateLocationChooser  = new wxButton(panel, BTN_BROWSE_SIMPLEWEB_TEMPLATE, _T("..."), wxDefaultPosition, wxSize(26, 26));
@@ -664,6 +683,7 @@ wxPanel* PreferencesDialog::CreateWebApp2Tab(wxBookCtrlBase* parent)
 
 	mWebAppSimpleTextTemplateLabel     = new wxStaticText(panel, wxID_ANY, _("Custom Simple Text Template"));
 	mWebAppSimpleTextTemplateLocation  = new wxTextCtrl(panel, wxID_ANY, _T(""), wxDefaultPosition);
+	mWebAppSimpleTextTemplateLocation->SetToolTip(_("Enter the location of the simple text template."));
 	mWebAppSimpleTextFilenameLabel     = new wxStaticText(panel, wxID_ANY, _("Filename:"));
 #ifndef __WXMAC__
 	mWebAppSimpleTextTemplateLocationChooser = new wxButton(panel, BTN_BROWSE_SIMPLETEXT_TEMPLATE, _T("..."), wxDefaultPosition, wxSize(26, 26));
