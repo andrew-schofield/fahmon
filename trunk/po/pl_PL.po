@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl_PL\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2009-03-11 15:42+0000\n"
+"POT-Creation-Date: 2009-03-11 16:29+0000\n"
 "PO-Revision-Date: 2008-11-01 00:02+0100\n"
 "Last-Translator: Mariusz Pociask <mariusz-pociask@o2.pl>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -344,12 +344,12 @@ msgstr "Wybierz katalog"
 msgid "You must fill the name AND the locations fields."
 msgstr "Należy wypełnić pola nazwy ORAZ lokalizacji."
 
-#: src/clientsManager.cpp:183 src/webMonitor.cpp:708
+#: src/clientsManager.cpp:184 src/webMonitor.cpp:708
 #, c-format
 msgid "Error while parsing %s on line %u"
 msgstr "Wystąpił błąd przy przetwarzaniu %s w linii %u"
 
-#: src/clientsManager.cpp:203
+#: src/clientsManager.cpp:204
 #, c-format
 msgid ""
 "Could not open file <%s> for writing!\n"
@@ -358,7 +358,7 @@ msgstr ""
 "Brak możliwości zapisu do pliku <%s>!\n"
 "Lista klientów nie zostanie zachowana!"
 
-#: src/clientsManager.cpp:208
+#: src/clientsManager.cpp:209
 #, fuzzy, c-format
 msgid ""
 "# %s : contains the list of clients\n"

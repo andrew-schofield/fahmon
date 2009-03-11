@@ -48,14 +48,9 @@ void* ClientHelperThread::Entry(void)
 	if(MainDialog::GetInstance()->ClientReloadAllowed(mClientId))
 	{
 		wxCommandEvent event(EVT_CLIENTRELOADED);
-		if(mType == CM_LOADALL || mType == CM_LOADALLF ||
-			((mType == CM_LOADLOCAL || mType == CM_LOADLOCALF) && multiProtocolFile::GetFileProtocol(client->GetLocation()) == multiProtocolFile::FILE) ||
-			((mType == CM_LOADINET || mType == CM_LOADINETF) && (multiProtocolFile::GetFileProtocol(client->GetLocation()) == multiProtocolFile::FTP || multiProtocolFile::GetFileProtocol(client->GetLocation()) == multiProtocolFile::HTTP)))
-		{
-			// We use the 'inlined' method to reload the client
-			// (The job is done in the current execution flow)
-			ClientsManager::GetInstance()->Reload(mClientId);
-		}
+		// We use the 'inlined' method to reload the client
+		// (The job is done in the current execution flow)
+		ClientsManager::GetInstance()->Reload(mClientId);
 		// Post an event to the queue of the MainDialog to warn it that the job is done
 		event.SetInt(mClientId);
 		MainDialog::GetInstance()->AddPendingEvent(event);
@@ -84,18 +79,17 @@ void* SerialClientHelperThread::Entry(void)
 	{
 		client = ClientsManager::GetInstance()->Get(i);
 
+		if(!(mType == CM_LOADALL || mType == CM_LOADALLF || ((mType == CM_LOADLOCAL || mType == CM_LOADLOCALF) && multiProtocolFile::GetFileProtocol(client->GetLocation()) == multiProtocolFile::FILE) || ((mType == CM_LOADINET || mType == CM_LOADINETF) && (multiProtocolFile::GetFileProtocol(client->GetLocation()) == multiProtocolFile::FTP || multiProtocolFile::GetFileProtocol(client->GetLocation()) == multiProtocolFile::HTTP))))
+			continue;
 		if(mForce == false && !client->ReloadNeeded())
 			continue;
 
 		if(MainDialog::GetInstance()->ClientReloadAllowed(i))
 		{
 			wxCommandEvent event(EVT_CLIENTRELOADED);
-			if(mType == CM_LOADALL || mType == CM_LOADALLF || ((mType == CM_LOADLOCAL || mType == CM_LOADLOCALF) && multiProtocolFile::GetFileProtocol(client->GetLocation()) == multiProtocolFile::FILE) || ((mType == CM_LOADINET || mType == CM_LOADINETF) && (multiProtocolFile::GetFileProtocol(client->GetLocation()) == multiProtocolFile::FTP || multiProtocolFile::GetFileProtocol(client->GetLocation()) == multiProtocolFile::HTTP)))
-			{
-				// We use the 'inlined' method to reload the client
-				// (The job is done in the current execution flow)
-				ClientsManager::GetInstance()->Reload(i);
-			}
+			// We use the 'inlined' method to reload the client
+			// (The job is done in the current execution flow)
+			ClientsManager::GetInstance()->Reload(i);
 			// Post an event to the queue of the MainDialog to warn it that the job is done
 			event.SetInt(i);
 			MainDialog::GetInstance()->AddPendingEvent(event);

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nl_NL\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2009-03-11 15:42+0000\n"
+"POT-Creation-Date: 2009-03-11 16:29+0000\n"
 "PO-Revision-Date: 2008-11-03 19:19+0000\n"
 "Last-Translator: Bastien <bastien@knife-edge.nl>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -340,12 +340,12 @@ msgstr "Kies een map"
 msgid "You must fill the name AND the locations fields."
 msgstr "Je moet de naam EN de lokatie invullen."
 
-#: src/clientsManager.cpp:183 src/webMonitor.cpp:708
+#: src/clientsManager.cpp:184 src/webMonitor.cpp:708
 #, c-format
 msgid "Error while parsing %s on line %u"
 msgstr "Fout bij het weergeven van %s op regel %u"
 
-#: src/clientsManager.cpp:203
+#: src/clientsManager.cpp:204
 #, c-format
 msgid ""
 "Could not open file <%s> for writing!\n"
@@ -354,7 +354,7 @@ msgstr ""
 "Kan bestand <%s> niet openen om te schrijven!\n"
 "De lijst met clients kan niet worden opgeslagen!"
 
-#: src/clientsManager.cpp:208
+#: src/clientsManager.cpp:209
 #, fuzzy, c-format
 msgid ""
 "# %s : contains the list of clients\n"

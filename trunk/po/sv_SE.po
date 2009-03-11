@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv_SE\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2009-03-11 15:42+0000\n"
+"POT-Creation-Date: 2009-03-11 16:29+0000\n"
 "PO-Revision-Date: 2008-02-01 20:20+0100\n"
 "Last-Translator: Olof Persson <floffe@gmail.com>\n"
 "Language-Team: Swedish\n"
@@ -341,12 +341,12 @@ msgstr "Välj en katalog"
 msgid "You must fill the name AND the locations fields."
 msgstr "Du måste fylla i namnet OCH platsen."
 
-#: src/clientsManager.cpp:183 src/webMonitor.cpp:708
+#: src/clientsManager.cpp:184 src/webMonitor.cpp:708
 #, c-format
 msgid "Error while parsing %s on line %u"
 msgstr "Fel vid tolkning av %s på rad %u"
 
-#: src/clientsManager.cpp:203
+#: src/clientsManager.cpp:204
 #, c-format
 msgid ""
 "Could not open file <%s> for writing!\n"
@@ -355,7 +355,7 @@ msgstr ""
 "Kunde inte öppna <%s> for skrivning!\n"
 "Listan med klienter kommer inte att sparas!"
 
-#: src/clientsManager.cpp:208
+#: src/clientsManager.cpp:209
 #, fuzzy, c-format
 msgid ""
 "# %s : contains the list of clients\n"

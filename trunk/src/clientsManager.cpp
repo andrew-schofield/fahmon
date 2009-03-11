@@ -32,6 +32,7 @@
 #include "clientHelperThread.h"
 #include "trayManager.h"
 #include "preferencesManager.h"
+#include "multiProtocolFile.h"
 
 #include "wx/txtstrm.h"
 #include "wx/intl.h"
@@ -259,32 +260,34 @@ void ClientsManager::ReloadThreaded(wxUint32 clientId)
 		{
 			for(i=0; i<GetCount(); ++i)
 			{
-				if(clientId == CM_LOADALL)
+				if(clientId == CM_LOADALL) //reload all if necessary
 				{
 					if(mClients.Item(i)->ReloadNeeded() == true)
 						new ClientHelperThread(i, CM_LOADALL);
 				}
-				else if(clientId == CM_LOADALLF)
+				else if(clientId == CM_LOADALLF) //reload all always
 				{
 					new ClientHelperThread(i, CM_LOADALLF);
 				}
-				else if(clientId == CM_LOADLOCAL)
+				else if(clientId == CM_LOADLOCAL) //reload local if necessary
 				{
-					if(mClients.Item(i)->ReloadNeeded() == true)
+					if(multiProtocolFile::GetFileProtocol(mClients.Item(i)->GetLocation()) == multiProtocolFile::FILE && mClients.Item(i)->ReloadNeeded() == true)
 						new ClientHelperThread(i, CM_LOADLOCAL);
 				}
-				else if(clientId == CM_LOADLOCALF)
+				else if(clientId == CM_LOADLOCALF) //reload local always
 				{
-					new ClientHelperThread(i, CM_LOADLOCALF);
+					if(multiProtocolFile::GetFileProtocol(mClients.Item(i)->GetLocation()) == multiProtocolFile::FILE)
+						new ClientHelperThread(i, CM_LOADLOCALF);
 				}
-				else if(clientId == CM_LOADINET)
+				else if(clientId == CM_LOADINET) //reload inet if necessasry
 				{
-					if(mClients.Item(i)->ReloadNeeded() == true)
+					if((multiProtocolFile::GetFileProtocol(mClients.Item(i)->GetLocation()) == multiProtocolFile::HTTP || multiProtocolFile::GetFileProtocol(mClients.Item(i)->GetLocation()) == multiProtocolFile::FTP) && mClients.Item(i)->ReloadNeeded() == true)
 						new ClientHelperThread(i, CM_LOADINET);
 				}
-				else if(clientId == CM_LOADINETF)
+				else if(clientId == CM_LOADINETF) //reload inet always
 				{
-					new ClientHelperThread(i, CM_LOADINETF);
+					if(multiProtocolFile::GetFileProtocol(mClients.Item(i)->GetLocation()) == multiProtocolFile::HTTP || multiProtocolFile::GetFileProtocol(mClients.Item(i)->GetLocation()) == multiProtocolFile::FTP)
+						new ClientHelperThread(i, CM_LOADINETF);
 				}
 			}
 		}
