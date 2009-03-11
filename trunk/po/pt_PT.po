@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pt_PT\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2009-02-19 21:58+0000\n"
+"POT-Creation-Date: 2009-03-11 15:42+0000\n"
 "PO-Revision-Date: 2008-10-29 19:28+0000\n"
 "Last-Translator: Filipe Rodrigues <shello.stb@gmail.com>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -162,7 +162,7 @@ msgstr "(Referências) Foi atingido o máximo de clientes conhecidos!"
 msgid "Unknown client"
 msgstr "Cliente Desconhecido"
 
-#: src/client.cpp:57 src/client.cpp:105 src/core.cpp:146
+#: src/client.cpp:57 src/client.cpp:105 src/core.cpp:148
 #: src/listViewClients.cpp:674 src/listViewClients.cpp:708
 #: src/mainDialog.cpp:527 src/mainDialog.cpp:528 src/mainDialog.cpp:529
 #: src/mainDialog.cpp:530
@@ -373,15 +373,15 @@ msgstr ""
 "# \"Nome\"\t\"Localização\"\tInactivo(*)\n"
 "\n"
 
-#: src/core.cpp:131
+#: src/core.cpp:132
 msgid "CPU"
 msgstr "CPU"
 
-#: src/core.cpp:135
+#: src/core.cpp:136
 msgid "SMP"
 msgstr "SMP"
 
-#: src/core.cpp:141
+#: src/core.cpp:143
 msgid "GPU"
 msgstr "GPU"
 

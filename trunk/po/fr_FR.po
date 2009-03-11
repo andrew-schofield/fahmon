@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fr_FR\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2009-02-19 21:58+0000\n"
+"POT-Creation-Date: 2009-03-11 15:42+0000\n"
 "PO-Revision-Date: 2008-10-05 01:15+0000\n"
 "Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
 "Language-Team: French\n"
@@ -161,7 +161,7 @@ msgstr "(Benchmarks) Le nombre maximum de clients connu est atteint!"
 msgid "Unknown client"
 msgstr "Client inconnu"
 
-#: src/client.cpp:57 src/client.cpp:105 src/core.cpp:146
+#: src/client.cpp:57 src/client.cpp:105 src/core.cpp:148
 #: src/listViewClients.cpp:674 src/listViewClients.cpp:708
 #: src/mainDialog.cpp:527 src/mainDialog.cpp:528 src/mainDialog.cpp:529
 #: src/mainDialog.cpp:530
@@ -366,15 +366,15 @@ msgid ""
 "\n"
 msgstr ""
 
-#: src/core.cpp:131
+#: src/core.cpp:132
 msgid "CPU"
 msgstr ""
 
-#: src/core.cpp:135
+#: src/core.cpp:136
 msgid "SMP"
 msgstr ""
 
-#: src/core.cpp:141
+#: src/core.cpp:143
 msgid "GPU"
 msgstr ""
 

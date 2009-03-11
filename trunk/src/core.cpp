@@ -128,6 +128,7 @@ wxString Core::IdToClientType(CoreId identifier)
 		case GROSIMT:
 		case DGROMACSB:
 		case DGROMACSC:
+		case GROA4:
 			clientType = _("CPU");
 			break;
 		case GROSMP:
@@ -138,6 +139,7 @@ wxString Core::IdToClientType(CoreId identifier)
 		case GROGPU2:
 		case ATIDEV:
 		case NVDEV:
+		case GROGPU2MT:
 			clientType = _("GPU");
 			break;
 		case UNKNOWN:
