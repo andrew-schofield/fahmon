@@ -330,4 +330,6 @@ const wxString ClientsManager::GetNameFromLocation(wxString const &location) con
 void ClientsManager::Enable(wxUint32 clientId, bool value)
 {
 	mClients.Item(clientId)->Enable(value);
+	if(!value)
+		mClients.Item(clientId)->Reset();
 }

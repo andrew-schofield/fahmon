@@ -134,12 +134,6 @@ protected:
 	bool LoadQueueFile(wxString const &filename);
 
 	/**
-	 * Restore the initial state of the client.
-	 * Resets everything to no information loaded
-	 **/
-	void Reset(void);
-
-	/**
 	 * Save xyz file.
 	 * Save the file 'current.xyz' to the appropriate directory with the approppriate name
 	 * This method is thread-safe, two files won't be overwritten at the same time by two different threads
@@ -167,6 +161,12 @@ public:
 	 * (Re)Load this client.
 	 **/
 	void Reload(void);
+
+	/**
+	 * Restore the initial state of the client.
+	 * Resets everything to no information loaded
+	 **/
+	void Reset(void);
 
 	/**
 	 * Return the URL of the user's stats.
