@@ -360,6 +360,8 @@ void FahLogAnalyzer::ParseLogLine(wxString& lineToParse, LogLine& logLine)
 	// When a frame is finished, extract its identifier and the timestamp
 	if(logLine.type == LLT_COMPLETED || logLine.type == LLT_FINISHED)
 	{
+		// Trim the excess whitespace
+		lineToParse = lineToParse.Trim();
 		// Extract the frame identifier
 		// We can't pass logLine.frameId to ToULong() because it's too short : the next bytes would be modified
 
