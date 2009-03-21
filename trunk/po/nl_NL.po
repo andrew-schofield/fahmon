@@ -9,13 +9,13 @@ msgstr ""
 "Project-Id-Version: nl_NL\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
 "POT-Creation-Date: 2009-03-11 23:17+0000\n"
-"PO-Revision-Date: 2008-11-03 19:19+0000\n"
-"Last-Translator: Bastien <bastien@knife-edge.nl>\n"
+"PO-Revision-Date: 2009-03-20 16:40+0000\n"
+"Last-Translator: Bastien van 't Wel <bastien@vantwel.nl>\n"
 "Language-Team: British English <en@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-11-03 19:48+0000\n"
+"X-Launchpad-Export-Date: 2009-03-21 01:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/aboutDialog.cpp:49
@@ -197,7 +197,7 @@ msgstr "Directory %s bestaat niet of kan niet gelezen worden!"
 #: src/client.cpp:163
 #, c-format
 msgid "%s cannot be reloaded! (FAHlog.txt does not exist)"
-msgstr ""
+msgstr "%s kan niet opnieuw worden herladen (FAHlog.txt bestaat niet)"
 
 #: src/client.cpp:166
 #, c-format
@@ -215,9 +215,9 @@ msgid "Error while reading %squeue.dat"
 msgstr "Fout tijdens lezen van %squeue.dat!"
 
 #: src/client.cpp:192
-#, fuzzy, c-format
+#, c-format
 msgid "Error while reading %s"
-msgstr "Fout tijdens lezen van %squeue.dat!"
+msgstr "Fout tijdens lezen van %s"
 
 #: src/client.cpp:198
 #, c-format
@@ -225,9 +225,9 @@ msgid "Error while reading %sunitinfo.txt!"
 msgstr "Fout tijdens lezen van %sunitinfo.txt!"
 
 #: src/client.cpp:396
-#, fuzzy, c-format
+#, c-format
 msgid "Finished Reloading %s"
-msgstr "Herladen %s"
+msgstr "%s is herladen"
 
 #: src/client.cpp:461
 #, c-format
@@ -235,9 +235,9 @@ msgid "The progress value in file %s could not be found/parsed"
 msgstr "De voortgang in bestand %s kan niet gevonden of weergegeven worden"
 
 #: src/client.cpp:514
-#, fuzzy, c-format
+#, c-format
 msgid "The core version in file %s could not be found/parsed"
-msgstr "De voortgang in bestand %s kan niet gevonden of weergegeven worden"
+msgstr "De core versie in bestand %s kan niet worden gevonden/geanalyseerd"
 
 #: src/client.cpp:579
 #, c-format
@@ -314,19 +314,20 @@ msgid "Client information"
 msgstr "Client informatie"
 
 #: src/clientDialog.cpp:87
-#, fuzzy
 msgid "Enter a name to describe this client."
-msgstr "Deze client inschakelen"
+msgstr "Voeg een naam toe om de client te omschrijven."
 
 #: src/clientDialog.cpp:89
 msgid ""
 "Select the directory containing FAHlog.txt for the client you wish to "
 "monitor."
 msgstr ""
+"Selecteer de directory welke FAHlog.txt bevat voor de client die je wilt "
+"monitoren."
 
 #: src/clientDialog.cpp:90
 msgid "Client is on a Virtual Machine"
-msgstr ""
+msgstr "Client staat op een Virtual Machine"
 
 #: src/clientDialog.cpp:92
 msgid "Location:"
@@ -366,16 +367,16 @@ msgstr ""
 "De lijst met clients kan niet worden opgeslagen!"
 
 #: src/clientsManager.cpp:217
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "# %s : contains the list of clients\n"
 "#\n"
 "# \"Name\"\t\"Location\"\tDisabled(*)\tVM(*)\n"
 "\n"
 msgstr ""
-"#%s: bevat de lijst met clients\n"
+"# %s : bevat de clientlijst\n"
 "#\n"
-"#\"Naam\"\t\"Lokatie\"\tUitgeschakeld(*)\n"
+"# \"Naam\"\t\"Lokatie\"\tUitgeschakeld(*)\tVM(*)\n"
 "\n"
 
 #: src/core.cpp:132
@@ -441,27 +442,24 @@ msgstr ""
 "weergegeven (bijvoorbeeld tijdslimieten)."
 
 #: src/firstTimeDialog.cpp:79
-#, fuzzy
 msgid "You will be able to perform updates by using the 'Tools' menu."
-msgstr "Het is mogelijk om deze te gebruiken via het 'FahMon' menu."
+msgstr "Het is mogelijk om te bij te werken via het 'Hulpmiddelen' menu."
 
 #: src/firstTimeDialog.cpp:83
-#, fuzzy
 msgid ""
 "To monitor a client, you need to add it by choosing 'Add a new client' from "
 "the 'Clients' menu."
 msgstr ""
-"Om een client te monitoren, klik op de rechter muisknop en kies voor 'Nieuwe "
-"client toevoegen'."
+"Om een client te monitoren is het noodzakelijk om deze toe te voegen door "
+"'Nieuwe client toevoegen' te kiezen in het 'Client' menu."
 
 #: src/firstTimeDialog.cpp:84
-#, fuzzy
 msgid ""
 "Alternatively you can right click the client list and choose 'Add a new "
 "client' from the menu."
 msgstr ""
-"Om een client te monitoren, klik op de rechter muisknop en kies voor 'Nieuwe "
-"client toevoegen'."
+"Het is ook mogelijk om 'Nieuwe client toevoegen' te selecteren via de "
+"rechter muisknop."
 
 #: src/firstTimeDialog.cpp:85
 msgid ""
@@ -472,13 +470,12 @@ msgstr ""
 "zien als een bijnaam."
 
 #: src/firstTimeDialog.cpp:86
-#, fuzzy
 msgid ""
 "All further operations on clients (e.g. edition, deletion) can also made by "
 "right-clicking on the list."
 msgstr ""
-"Alle verdere wijzigingen m.b.t. clients (bijv. wijzigen of verwijderen), kun "
-"je maken door eerst op de rechter muisknop te klikken."
+"Alle verdere handelingen m.b.t. clients (bijv. wijzigen, verwijderen) zijn "
+"ook mogelijk met de rechter muisknop via de lijst."
 
 #: src/firstTimeDialog.cpp:90
 #, c-format
@@ -490,7 +487,7 @@ msgstr ""
 #: src/firstTimeDialog.cpp:93
 msgid ""
 "For interactive help you can join our IRC channel at #fahmon on freenode.net:"
-msgstr ""
+msgstr "Voor interactieve hulp kun je naar IRC kanaal #fahmon op freenode.net:"
 
 #: src/firstTimeDialog.cpp:143 src/main.cpp:210 src/main.cpp:216
 #, c-format
@@ -509,9 +506,8 @@ msgstr "Naam"
 
 #: src/listViewClients.cpp:171 src/listViewClients.cpp:921
 #: src/webMonitor.cpp:582
-#, fuzzy
 msgid "Client Type"
-msgstr "&Clients"
+msgstr "Client type"
 
 #: src/listViewClients.cpp:172 src/listViewClients.cpp:922
 #: src/webMonitor.cpp:567
@@ -530,7 +526,7 @@ msgstr "Core"
 #: src/listViewClients.cpp:175 src/listViewClients.cpp:925
 #: src/webMonitor.cpp:583
 msgid "Core Version"
-msgstr ""
+msgstr "Core versie"
 
 #: src/listViewClients.cpp:176 src/listViewClients.cpp:926
 #: src/webMonitor.cpp:562
@@ -641,7 +637,7 @@ msgstr "Een ander proces van %s is reeds aktief!"
 #: src/main.cpp:240
 #, c-format
 msgid "Old settings imported into %s"
-msgstr ""
+msgstr "Oude instellingen geimporteerd in %s"
 
 #: src/mainDialog.cpp:192
 #, c-format
@@ -688,7 +684,7 @@ msgstr "Project %u is onbekend, probeer de projectendatabase bij te werken"
 #: src/mainDialog.cpp:616 src/mainDialog.cpp:1208
 #, c-format
 msgid "%.2f PPD"
-msgstr ""
+msgstr "%.2f PPD"
 
 #: src/mainDialog.cpp:637
 msgid "&Check for update"
@@ -921,11 +917,11 @@ msgstr "&Help inhoud\tCtrl+?"
 
 #: src/mainDialog.cpp:709
 msgid "FahMon &IRC Channel"
-msgstr ""
+msgstr "FahMon &IRC kanaal"
 
 #: src/mainDialog.cpp:709
 msgid "Join the FahMon IRC channel for online help"
-msgstr ""
+msgstr "Ga naar het FahMon IRC kanaal voor online hulp"
 
 #: src/mainDialog.cpp:710
 msgid "&About"
@@ -1080,6 +1076,8 @@ msgid ""
 "By collecting xyz files you can help the jmol project by submitting missing "
 "projects."
 msgstr ""
+"Door het verzamelen van xyz bestanden is het mogelijk mee te helpen aan het "
+"jmol project door missende projecten aan te leveren."
 
 #: src/preferencesDialog.cpp:205
 msgid "Auto update projects database when needed"
@@ -1090,6 +1088,8 @@ msgid ""
 "This allows FahMon to keep up to date with any new projects you might "
 "download automatically."
 msgstr ""
+"Dit geeft FahMon te mogelijkheid om actueel te blijven door alle nieuwe "
+"projecten automatisch te downloaden."
 
 #: src/preferencesDialog.cpp:207
 msgid "Always list inaccessible clients last"
@@ -1097,7 +1097,7 @@ msgstr "Altijd ontoegankelijke clients als laatste weergeven"
 
 #: src/preferencesDialog.cpp:208
 msgid "Keeps inaccessible clients at the bottom of the clients list."
-msgstr ""
+msgstr "Onbereikbare clients aan de onderkant van de clientlijst plaatsen."
 
 #: src/preferencesDialog.cpp:209
 msgid "Check for FahMon updates on startup"
@@ -1136,14 +1136,12 @@ msgid "Auto reload clients"
 msgstr "Automatisch herladen clients"
 
 #: src/preferencesDialog.cpp:259
-#, fuzzy
 msgid "Local client reload interval (mn)"
-msgstr "Herlaad interval (minuten)"
+msgstr "Lokale client herlaad interval (min)"
 
 #: src/preferencesDialog.cpp:260
-#, fuzzy
 msgid "Use experimental reload system (local only)"
-msgstr "Gebruik experimenteel herlaad systeem"
+msgstr "Gebruik experimenteel herlaadsysteem (alleen lokaal)"
 
 #: src/preferencesDialog.cpp:261
 msgid ""
@@ -1151,22 +1149,25 @@ msgid ""
 "This can prevent unecessary reloads and gives a more timely response to "
 "changes in the log."
 msgstr ""
+"Controleer wanneer het logbestand voor het laatst is gewijzigd voordat er "
+"een client opnieuw geladen wordt. Dit kan onnodig herladen voorkomen en "
+"geeft een betere tijdsrespons in de log."
 
 #: src/preferencesDialog.cpp:262
-#, fuzzy
 msgid "HTTP/FTP client reload interval (mn)"
-msgstr "Herlaad interval (minuten)"
+msgstr "HTTP/FTP client herlaad interval (min)"
 
 #: src/preferencesDialog.cpp:263
-#, fuzzy
 msgid "Reload clients in series"
-msgstr "Client opnieuw inlezen"
+msgstr "Herlaad clients in delen"
 
 #: src/preferencesDialog.cpp:264
 msgid ""
 "This option can reduce memory consumption if monitoring a large number of "
 "clients. Clients are reloaded sequentially in a single thread."
 msgstr ""
+"Deze optie kan het geheugenverbruik verminderen als er veel clients "
+"gemonitord worden. Clients worden sequentieel herladen in een enkele thread."
 
 #: src/preferencesDialog.cpp:269
 msgid ""
@@ -1176,6 +1177,11 @@ msgid ""
 "Last 3 frames: 3 frames rolling average\n"
 "Effective rate: Based on download time and current frame"
 msgstr ""
+"PPD berekeningsmogelijkheden\n"
+"Alle frames: 255 opgeslagen datapunten gebruiken\n"
+"Alleen laatste frame: direct PPD\n"
+"Laatste 3 frames: 3 frames continue gemiddelde\n"
+"Effectieve verhouding: Gebaseerd op downloadtijd en het huidige frame"
 
 #: src/preferencesDialog.cpp:270
 msgid "Ignore asynchronous clocks"
@@ -1186,6 +1192,8 @@ msgid ""
 "Prevents clients from being reported as *hung* if their local clocks are out "
 "of sync with this machine."
 msgstr ""
+"Voorkomen dat clients als *Hangt* aangemerkt worden als hun lokale tijd "
+"afwijkt van deze computer."
 
 #: src/preferencesDialog.cpp:273
 msgid "Display dates as"
@@ -1229,9 +1237,8 @@ msgstr ""
 "Wachtwoord:"
 
 #: src/preferencesDialog.cpp:343
-#, fuzzy
 msgid "Use a proxy for FTP connections"
-msgstr "Gebruik een proxy voor HTTP verbindingen"
+msgstr "Gebruik een proxy voor FTP verbindingen"
 
 #: src/preferencesDialog.cpp:417
 msgid "Use the following settings for new project downloads"
@@ -1250,9 +1257,8 @@ msgid "Filename:"
 msgstr "Bestandsnaam:"
 
 #: src/preferencesDialog.cpp:428
-#, fuzzy
 msgid "Log error messages only"
-msgstr "Selecteer het berichtenvenster"
+msgstr "Alleen foutmeldingen loggen"
 
 #: src/preferencesDialog.cpp:474
 msgid "Web Browser:"
@@ -1263,6 +1269,8 @@ msgid ""
 "Enter the location of your preferred web browser. In most cases \"firefox\" "
 "should suffice."
 msgstr ""
+"Voer de lokatie van de voorkeursbrowser in. In de meeste gevallen voldoet "
+"'firefox' bijvoorbeeld."
 
 #: src/preferencesDialog.cpp:476
 msgid "File Manager:"
@@ -1274,7 +1282,7 @@ msgstr "File manager commando:"
 
 #: src/preferencesDialog.cpp:479
 msgid "Provide any modifications to the file manager command."
-msgstr ""
+msgstr "Geef wijzigingen aan voor de file manager."
 
 #: src/preferencesDialog.cpp:480
 msgid "Manually set timezone to UTC +"
@@ -1284,7 +1292,7 @@ msgstr "Zet tijdszone handmatig naar UTC +"
 msgid ""
 "Set this option if you find that FahMon isn't detecting your timezone "
 "correctly."
-msgstr ""
+msgstr "Selecteer deze optie als FahMon niet de juiste tijdzone ophaalt."
 
 #: src/preferencesDialog.cpp:485
 msgid "Windows Explorer"
@@ -1302,6 +1310,8 @@ msgstr "Zoeker"
 #: src/preferencesDialog.cpp:494
 msgid "Select your preferred file manager. Used for opening client folders."
 msgstr ""
+"Selecteer de voorkeurs file manager; deze zal worden gebruikt om "
+"clientmappen te openen."
 
 #: src/preferencesDialog.cpp:573
 msgid "Export Web Application"
@@ -1312,6 +1322,8 @@ msgid ""
 "Enables the creation of a fancy web page that mimics the old FahMon layout "
 "showing current client data."
 msgstr ""
+"Inschakelen van het aanmaken van webpagina die overeen komt met de oude "
+"FahMon layout om de huidige clientgegevens te tonen."
 
 #: src/preferencesDialog.cpp:576 src/preferencesDialog.cpp:587
 #: src/preferencesDialog.cpp:598
@@ -1319,6 +1331,8 @@ msgid ""
 "Enter the location where the output should be saved. This can be a local "
 "file, or an ftp url."
 msgstr ""
+"Voer de lokatie in waar de gegevens moeten worden opgeslagen. Dit kan een "
+"lokaal bestand zijn of een FTP adres."
 
 #: src/preferencesDialog.cpp:584
 msgid "Export Simple Web page"
@@ -1327,6 +1341,8 @@ msgstr "Exporteer naar webpagina"
 #: src/preferencesDialog.cpp:585
 msgid "Enables the creation of a compact web page showing current client data."
 msgstr ""
+"Inschakelen van het aanmaken van een simpele webpagina om de huidige "
+"clientgegevens te tonen."
 
 #: src/preferencesDialog.cpp:595
 msgid "Export Simple Text file"
@@ -1336,33 +1352,32 @@ msgstr "Exporteer naar tekstbestand"
 msgid ""
 "Enables the creation of a compact text file showing current client data."
 msgstr ""
+"Inschakelen van het aanmaken van een simpel tekstbestand om de huidige "
+"clientgegevens te tonen."
 
 #: src/preferencesDialog.cpp:664
 msgid "Custom Web Application Template"
 msgstr "Eigen Web Application template"
 
 #: src/preferencesDialog.cpp:666
-#, fuzzy
 msgid "Enter the location of the web application template."
-msgstr "Kies de Web Application template"
+msgstr "Voer de lokatie in waar de webapplication template staat."
 
 #: src/preferencesDialog.cpp:674
 msgid "Custom Simple Web Template"
 msgstr "Eigen webpagina template"
 
 #: src/preferencesDialog.cpp:676
-#, fuzzy
 msgid "Enter the location of the simple web template."
-msgstr "Kies waar er moet worden opgeslagen voor de webpagina"
+msgstr "Voer de lokatie in van het simpele webpagina template in."
 
 #: src/preferencesDialog.cpp:684
 msgid "Custom Simple Text Template"
 msgstr "Eigen tekstpagina template"
 
 #: src/preferencesDialog.cpp:686
-#, fuzzy
 msgid "Enter the location of the simple text template."
-msgstr "Kies waar er moet worden opgeslagen voor het tekstbestand"
+msgstr "Voer de lokatie in van het simpele textbestand template in."
 
 #: src/preferencesDialog.cpp:1186
 msgid "Choose a local project data file"
@@ -1539,6 +1554,12 @@ msgstr "Laatste update:"
 #~ msgid "%.1f KB/s"
 #~ msgstr "%.1f KB/s"
 
+#~ msgid " :: Total PPD: %.2f"
+#~ msgstr " :: Totaal PPD: %.2f"
+
+#~ msgid " :: Total PPD:"
+#~ msgstr " :: Totaal PPD:"
+
 #~ msgid "Checking for update"
 #~ msgstr "Controleren op updates"
 
@@ -1559,15 +1580,6 @@ msgstr "Laatste update:"
 
 #~ msgid "An unknown error happened!"
 #~ msgstr "Een onbekende fout is opgetreden!"
-
-#~ msgid "Error while reading %swork/logfile_%02i.txt"
-#~ msgstr "Fout tijdens lezen van %swork/logfile_%02i.txt"
-
-#~ msgid " :: Total PPD: %.2f"
-#~ msgstr " :: Totaal PPD: %.2f"
-
-#~ msgid " :: Total PPD:"
-#~ msgstr " :: Totaal PPD:"
 
 #~ msgid "Author:"
 #~ msgstr "Auteur:"
@@ -1610,3 +1622,6 @@ msgstr "Laatste update:"
 
 #~ msgid "Resource:"
 #~ msgstr "Bron:"
+
+#~ msgid "Error while reading %swork/logfile_%02i.txt"
+#~ msgstr "Fout tijdens lezen van %swork/logfile_%02i.txt"
