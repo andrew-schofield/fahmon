@@ -7,8 +7,8 @@ SVN
       GUI
 
       * Fixed total PPD value not updating unless a client is clicked.
-      * Allow about and benchmark dialogs to be closed with escape key (thanks to
-        smartcat99s).
+      * Allow about and benchmark dialogs to be closed with escape key (thanks
+        to smartcat99s).
       * Added columns for client type (determined from the core type) and core
         version number.
       * Main progress bar now hides along with the WU Info panel.
@@ -28,12 +28,13 @@ SVN
         number.
       * Limited FAHlog parsing to last 16KiB.
       * Added ability to reload client in series rather than launching a thread
-        for each client. Will improve memory usage with large numbers of clients.
+        for each client. Will improve memory usage with large numbers of
+        clients.
       * Significantly reduced CPU usage while reloading.
       * Added support for monitoring clients over http.
       * Added limited support for monitoring clients over ftp.
-      * Added slower, configurable timer for reloading http/ftp clients. This
-        is also used for web output.
+      * Added slower, configurable timer for reloading http/ftp clients. This is
+        also used for web output.
       * Added support for saving web output to an ftp server.
       * Added support for additional cores.
       * Web output is now sorted in the same way as the client list.
