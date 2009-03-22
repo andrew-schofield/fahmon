@@ -634,12 +634,16 @@ void MainDialog::CreateMenuBar(void)
 
 	// The 'Main' menu
 	menu = new wxMenu();
+	#ifndef __WXMAC__
 	menu->Append(MID_UPDATECHECK, _("&Check for update"), _("Check online for the latest version of FahMon"));
 	menu->AppendSeparator();
+	#endif
 	menu->Append(wxID_PREFERENCES, _("&Preferences...\tCTRL+P"), _("Open the preferences dialog"));
 	menu->AppendSeparator();
 	menu->Append(wxID_EXIT, _("&Quit\tCtrl+Q"), wxString::Format(_("Quit %s"), _T(FMC_APPNAME)));
+	#ifndef __WXMAC__
 	menuBar->Append(menu, wxString::Format(_T("&%s"), _T(FMC_APPNAME)));
+	#endif
 
 	//The 'Clients' menu
 	menu = new wxMenu();
@@ -679,6 +683,10 @@ void MainDialog::CreateMenuBar(void)
 	menu->Append(MID_BENCHMARKS, _("&Benchmarks...\tCTRL+B"), _("Open the benchmarks dialog"));
 	menu->Append(MID_UPDATEPROJECTS, _("&Download New Projects"), _("Update the local project database"));
 	//menu->Append(MID_CREATE_DEBUG_REPORT, _("Create debug report"), _("Create a debug state report to send to the developers"));
+	#ifdef __WXMAC__
+	menu->AppendSeparator();
+	menu->Append(MID_UPDATECHECK, _("&Check for update"), _("Check online for the latest version of FahMon"));
+	#endif
 	menuBar->Append(menu, _("&Tools"));
 
 	// The 'Web' menu
