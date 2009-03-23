@@ -84,15 +84,19 @@ MessagesManager* MessagesManager::GetInstance(void)
 void MessagesManager::Log(wxString const &msg)
 {
 	wxMutexLocker  lock(mMutexLog);        // --- Lock the access to this method
-	wxString       currentDate;
+	wxString       currentDate, temp;
 	wxCommandEvent event(EVT_NEW_MESSAGE_LOGGED);
 
 	// Format the current time correctly
 	currentDate = wxDateTime::UNow().Format(_T("%d/%m/%y - %H:%M:%S.%l"));
-
-	// Add the new message
-	mMessages += _T("[") + currentDate + _T("] ") + msg + _T("\n");
-	mNewMessages += _T("[") + currentDate + _T("] ") + msg + _T("\n");
+	temp = msg;
+	temp.Trim();
+	// Add the new message fixing any linebreaks that occur
+	temp.Replace(wxT("\r\n"), _T("\n"), true);
+	temp.Replace(wxT("\r"), _T("\n"), true);
+	temp.Replace(wxT("\n"), _T("\n[") + currentDate + _T("]   "), true);
+	mMessages += _T("[") + currentDate + _T("] ") + temp + _T("\n");
+	mNewMessages += _T("[") + currentDate + _T("] ") + temp + _T("\n");
 
 	// Warn the main dialog about this message
 	// We can't directly call methods of MessagesFrame, we must use the main dialog to transfer the warning
