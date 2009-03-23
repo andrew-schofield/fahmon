@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cs_CZ\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2009-03-11 23:17+0000\n"
+"POT-Creation-Date: 2009-03-23 00:02+0000\n"
 "PO-Revision-Date: 2008-11-02 14:31+0100\n"
 "Last-Translator: Martin Bednar <serafean@gmail.com>\n"
 "Language-Team: Czech <en@li.org>\n"
@@ -587,7 +587,7 @@ msgid "Paused"
 msgstr "Pozastaven"
 
 #: src/listViewClients.cpp:878 src/listViewClients.cpp:886
-#: src/mainDialog.cpp:646
+#: src/mainDialog.cpp:650
 msgid "Add a new client"
 msgstr "Přidat klienta"
 
@@ -615,7 +615,7 @@ msgstr "Zakázat klienta"
 msgid "Enable this client"
 msgstr "Povolit klienta"
 
-#: src/listViewClients.cpp:1032 src/mainDialog.cpp:1493
+#: src/listViewClients.cpp:1032 src/mainDialog.cpp:1501
 msgid "Do you really want to delete this client?"
 msgstr "Opravdu chcete smazat klienta?"
 
@@ -682,315 +682,315 @@ msgid "Project %u is unknown, you should try to update the projects database"
 msgstr ""
 "%u projektu je neznámé, měli byste zkusit aktualizovat databázi projektů."
 
-#: src/mainDialog.cpp:616 src/mainDialog.cpp:1208
+#: src/mainDialog.cpp:616 src/mainDialog.cpp:1216
 #, c-format
 msgid "%.2f PPD"
 msgstr ""
 
-#: src/mainDialog.cpp:637
+#: src/mainDialog.cpp:638 src/mainDialog.cpp:688
 msgid "&Check for update"
 msgstr "Vyhledat aktualiza&ce"
 
-#: src/mainDialog.cpp:637
+#: src/mainDialog.cpp:638 src/mainDialog.cpp:688
 msgid "Check online for the latest version of FahMon"
 msgstr "Zkontrolovat poslední verzi FahMon na Internetu."
 
-#: src/mainDialog.cpp:639
+#: src/mainDialog.cpp:641
 msgid "&Preferences...\tCTRL+P"
 msgstr "&Nastavení...\tCTRL+P"
 
-#: src/mainDialog.cpp:639
+#: src/mainDialog.cpp:641
 msgid "Open the preferences dialog"
 msgstr "Otevřít nastavení"
 
-#: src/mainDialog.cpp:641
+#: src/mainDialog.cpp:643
 msgid "&Quit\tCtrl+Q"
 msgstr "&Vypnout\tCtrl+Q"
 
-#: src/mainDialog.cpp:641
+#: src/mainDialog.cpp:643
 #, c-format
 msgid "Quit %s"
 msgstr "Vypnout %s"
 
-#: src/mainDialog.cpp:646
+#: src/mainDialog.cpp:650
 msgid "Add a new client to be monitored"
 msgstr "Přidat klienta ke sledování"
 
-#: src/mainDialog.cpp:648
+#: src/mainDialog.cpp:652
 msgid "Edit client"
 msgstr "Editovat klienta"
 
-#: src/mainDialog.cpp:648
+#: src/mainDialog.cpp:652
 msgid "Edit the selected client settings"
 msgstr "Změnit nastaveni navoleného klienta"
 
-#: src/mainDialog.cpp:649
+#: src/mainDialog.cpp:653
 msgid "Delete client"
 msgstr "Vymazat klienta"
 
-#: src/mainDialog.cpp:649
+#: src/mainDialog.cpp:653
 msgid "Delete the selected client"
 msgstr "Vymazat navoleného klienta"
 
-#: src/mainDialog.cpp:650
+#: src/mainDialog.cpp:654
 msgid "View client files"
 msgstr "Zobrazit soubory klienta"
 
-#: src/mainDialog.cpp:650
+#: src/mainDialog.cpp:654
 msgid "Open file browser in client folder"
 msgstr "Otevřít správce souborů ve složce"
 
-#: src/mainDialog.cpp:653
+#: src/mainDialog.cpp:657
 msgid "Reload &Selection\tF5"
 msgstr "Znovu načíst &výběr\tF5"
 
-#: src/mainDialog.cpp:653 src/mainDialog.cpp:656
+#: src/mainDialog.cpp:657 src/mainDialog.cpp:660
 msgid "Reload the selected client"
 msgstr "Znovu načíst vybraného klienta"
 
-#: src/mainDialog.cpp:654
+#: src/mainDialog.cpp:658
 msgid "Reload &All\tF6"
 msgstr "Znovu načíst &vše\tF6"
 
-#: src/mainDialog.cpp:654 src/mainDialog.cpp:657
+#: src/mainDialog.cpp:658 src/mainDialog.cpp:661
 msgid "Reload all the clients"
 msgstr "Znovu načíst všechny klienty"
 
-#: src/mainDialog.cpp:656
+#: src/mainDialog.cpp:660
 msgid "Reload &Selection\tCtrl+R"
 msgstr "Znovu načíst &výběr\tCtrl+R"
 
-#: src/mainDialog.cpp:657
+#: src/mainDialog.cpp:661
 msgid "Reload &All\tCtrl+Shift+R"
 msgstr "Znovu načíst &vše\tCtrl+Shift+R"
 
-#: src/mainDialog.cpp:659
+#: src/mainDialog.cpp:663
 msgid "&Clients"
 msgstr "Klienti"
 
-#: src/mainDialog.cpp:664
+#: src/mainDialog.cpp:668
 msgid "&Show/Hide FAHLog\tF8"
 msgstr "&Zobrazit/skrýt FAHlog.txt\tF8"
 
-#: src/mainDialog.cpp:664 src/mainDialog.cpp:668
+#: src/mainDialog.cpp:668 src/mainDialog.cpp:672
 msgid "Toggle the log file"
 msgstr "Přepnout soubor logu"
 
-#: src/mainDialog.cpp:666
+#: src/mainDialog.cpp:670
 msgid "&Cycle ETA Style\tF9"
 msgstr "Změnit zobrazení zbývajícího času"
 
-#: src/mainDialog.cpp:666 src/mainDialog.cpp:670
+#: src/mainDialog.cpp:670 src/mainDialog.cpp:674
 msgid "Cycle through the different ETA display styles"
 msgstr "Změnit styl zobrazení zbývajícího času"
 
-#: src/mainDialog.cpp:668
+#: src/mainDialog.cpp:672
 msgid "&Show/Hide FAHLog\tCtrl+L"
 msgstr "&Zobrazit/skrýt FAHlog.txt\tCtrl+L"
 
-#: src/mainDialog.cpp:670
+#: src/mainDialog.cpp:674
 msgid "&Cycle ETA Style\tCtrl+E"
 msgstr "&Změnit styl zobrazení zbývajícího času\tCtrl+E"
 
-#: src/mainDialog.cpp:673
+#: src/mainDialog.cpp:677
 msgid "Show/Hide &WU Info panel"
 msgstr "Zobrazit/Skrýt informační panel o Pracovní Jednotce"
 
-#: src/mainDialog.cpp:673
+#: src/mainDialog.cpp:677
 msgid "Toggle the display of the Work Unit Information panel"
 msgstr "Přepnout vzhled informačního panelu o Pracovní Jednotce"
 
-#: src/mainDialog.cpp:674
+#: src/mainDialog.cpp:678
 msgid "&View"
 msgstr "&Vzhled"
 
-#: src/mainDialog.cpp:678
+#: src/mainDialog.cpp:682
 msgid "&Show/Hide Messages Window"
 msgstr "&Zobrazit/Skrýt Hlášky"
 
-#: src/mainDialog.cpp:678
+#: src/mainDialog.cpp:682
 msgid "Toggle the messages window"
 msgstr "Přepnout okno hlášek"
 
-#: src/mainDialog.cpp:679
+#: src/mainDialog.cpp:683
 msgid "&Benchmarks...\tCTRL+B"
 msgstr "Benchmarky...\tCTRL+B"
 
-#: src/mainDialog.cpp:679
+#: src/mainDialog.cpp:683
 msgid "Open the benchmarks dialog"
 msgstr "Otevřít benchmarky"
 
-#: src/mainDialog.cpp:680
+#: src/mainDialog.cpp:684
 msgid "&Download New Projects"
 msgstr "Stáhnout nové projekty"
 
-#: src/mainDialog.cpp:680
+#: src/mainDialog.cpp:684
 msgid "Update the local project database"
 msgstr "Aktualizovat lokální databázi projektů"
 
-#: src/mainDialog.cpp:682
+#: src/mainDialog.cpp:690
 msgid "&Tools"
 msgstr "Nás&troje"
 
-#: src/mainDialog.cpp:687
+#: src/mainDialog.cpp:695
 msgid "&My Stats\tF2"
 msgstr "&Moje Statistika\tF2"
 
-#: src/mainDialog.cpp:687 src/mainDialog.cpp:691
+#: src/mainDialog.cpp:695 src/mainDialog.cpp:699
 msgid "View the personal statistics for the selected client"
 msgstr "Zobrazit osobní statistiky vybraného klienta"
 
-#: src/mainDialog.cpp:688
+#: src/mainDialog.cpp:696
 msgid "&Jmol\tF3"
 msgstr "&Jmol\tF3"
 
-#: src/mainDialog.cpp:688 src/mainDialog.cpp:692
+#: src/mainDialog.cpp:696 src/mainDialog.cpp:700
 msgid "View the current project on the Jmol website"
 msgstr "Zobrazit aktuální projekt na stránkách Jmol"
 
-#: src/mainDialog.cpp:689
+#: src/mainDialog.cpp:697
 msgid "fah&info\tF4"
 msgstr "fah&info\tF4"
 
-#: src/mainDialog.cpp:689 src/mainDialog.cpp:693
+#: src/mainDialog.cpp:697 src/mainDialog.cpp:701
 msgid "View the current project on fahinfo.org"
 msgstr "Zobrazit aktuální projekt na fahinfo.org"
 
-#: src/mainDialog.cpp:691
+#: src/mainDialog.cpp:699
 msgid "&My Stats\tCtrl+Shift+M"
 msgstr "&Moje Statistika\tCtrl+Shift+M"
 
-#: src/mainDialog.cpp:692
+#: src/mainDialog.cpp:700
 msgid "&Jmol\tCtrl+J"
 msgstr "&Jmol\tCtrl+J"
 
-#: src/mainDialog.cpp:693
+#: src/mainDialog.cpp:701
 msgid "fah&info\tCtrl+I"
 msgstr "fah&info\tCtrl+I"
 
-#: src/mainDialog.cpp:696
+#: src/mainDialog.cpp:704
 msgid "F@H &Website"
 msgstr "F@H &Stránky"
 
-#: src/mainDialog.cpp:696
+#: src/mainDialog.cpp:704
 msgid "Open to the official Stanford website"
 msgstr "Zobrazit oficiální stránky Stanfordu"
 
-#: src/mainDialog.cpp:697
+#: src/mainDialog.cpp:705
 msgid "Folding &Forum"
 msgstr "Folding &Forum"
 
-#: src/mainDialog.cpp:697
+#: src/mainDialog.cpp:705
 msgid "Open the Folding@Home support forum"
 msgstr "Otevřít forum technické podpory Folding@Home"
 
-#: src/mainDialog.cpp:698
+#: src/mainDialog.cpp:706
 msgid "&Projects Summary"
 msgstr "&Souhrn projektů"
 
-#: src/mainDialog.cpp:698
+#: src/mainDialog.cpp:706
 msgid "Open the list of the current projects"
 msgstr "Otevřít seznam aktuálních projektů"
 
-#: src/mainDialog.cpp:699
+#: src/mainDialog.cpp:707
 msgid "&Servers Status"
 msgstr "&Stav Serverů"
 
-#: src/mainDialog.cpp:699
+#: src/mainDialog.cpp:707
 msgid "Open the list of the servers with their status"
 msgstr "Otevřít seznam serverů s jejich stavem"
 
-#: src/mainDialog.cpp:700
+#: src/mainDialog.cpp:708
 msgid "&Web"
 msgstr "&Web"
 
-#: src/mainDialog.cpp:705
+#: src/mainDialog.cpp:713
 msgid "&Help Contents\tF1"
 msgstr "Obsah Nápovědy\tF1"
 
-#: src/mainDialog.cpp:705 src/mainDialog.cpp:707
+#: src/mainDialog.cpp:713 src/mainDialog.cpp:715
 msgid "See help contents"
 msgstr "Zobrazit obsah nápovědy"
 
-#: src/mainDialog.cpp:707
+#: src/mainDialog.cpp:715
 msgid "&Help Contents\tCtrl+?"
 msgstr "Obsah Nápovědy\tCtrl+?"
 
-#: src/mainDialog.cpp:709
+#: src/mainDialog.cpp:717
 msgid "FahMon &IRC Channel"
 msgstr ""
 
-#: src/mainDialog.cpp:709
+#: src/mainDialog.cpp:717
 msgid "Join the FahMon IRC channel for online help"
 msgstr ""
 
-#: src/mainDialog.cpp:710
+#: src/mainDialog.cpp:718
 msgid "&About"
 msgstr "&O Aplikaci"
 
-#: src/mainDialog.cpp:710
+#: src/mainDialog.cpp:718
 #, c-format
 msgid "About %s"
 msgstr "O aplikaci %s"
 
-#: src/mainDialog.cpp:717
+#: src/mainDialog.cpp:725
 msgid "&Help"
 msgstr "&Nápověda"
 
-#: src/mainDialog.cpp:749 src/webMonitor.cpp:569
+#: src/mainDialog.cpp:757 src/webMonitor.cpp:569
 msgid "Work Unit Information"
 msgstr "Informace o Pracovní Jednotce"
 
-#: src/mainDialog.cpp:777 src/webMonitor.cpp:570
+#: src/mainDialog.cpp:785 src/webMonitor.cpp:570
 msgid "Core:"
 msgstr "Jádro : "
 
-#: src/mainDialog.cpp:779 src/webMonitor.cpp:571
+#: src/mainDialog.cpp:787 src/webMonitor.cpp:571
 msgid "Project:"
 msgstr "Projekt:"
 
-#: src/mainDialog.cpp:781 src/webMonitor.cpp:572
+#: src/mainDialog.cpp:789 src/webMonitor.cpp:572
 msgid "Credit:"
 msgstr "Kredit:"
 
-#: src/mainDialog.cpp:783 src/webMonitor.cpp:573
+#: src/mainDialog.cpp:791 src/webMonitor.cpp:573
 msgid "Username:"
 msgstr "Uživatelské jméno:"
 
-#: src/mainDialog.cpp:785 src/webMonitor.cpp:581
+#: src/mainDialog.cpp:793 src/webMonitor.cpp:581
 msgid "Downloaded:"
 msgstr "Staženo:"
 
-#: src/mainDialog.cpp:787 src/webMonitor.cpp:574
+#: src/mainDialog.cpp:795 src/webMonitor.cpp:574
 msgid "Preferred Deadline:"
 msgstr "Preferovaný Termín:"
 
-#: src/mainDialog.cpp:789 src/webMonitor.cpp:575
+#: src/mainDialog.cpp:797 src/webMonitor.cpp:575
 msgid "Final Deadline:"
 msgstr "Poslední termín:"
 
-#: src/mainDialog.cpp:824
+#: src/mainDialog.cpp:832
 msgid "Log file."
 msgstr "Log"
 
-#: src/mainDialog.cpp:1064
+#: src/mainDialog.cpp:1072
 msgid "You must first select a client!"
 msgstr "Musíte nejprve vybrat klienta!"
 
-#: src/mainDialog.cpp:1425
+#: src/mainDialog.cpp:1433
 msgid "Checking for FahMon updates"
 msgstr "Ověřuji dostupnost aktualizací FahMon"
 
-#: src/mainDialog.cpp:1436
+#: src/mainDialog.cpp:1444
 #, c-format
 msgid "Your version: %s; New version: %s"
 msgstr "Vaše verze : %s ; Nová verze : %s"
 
-#: src/mainDialog.cpp:1450
+#: src/mainDialog.cpp:1458
 msgid "Update available"
 msgstr "Aktualizace dostupna"
 
-#: src/mainDialog.cpp:1451
+#: src/mainDialog.cpp:1459
 msgid ""
 "A newer version of FahMon is available\n"
 "Do you want to go to the FahMon website?"
@@ -998,19 +998,19 @@ msgstr ""
 "Nová verze FahMon je dostupná\n"
 "Chcete přejít na domovskou stránku FahMon?"
 
-#: src/mainDialog.cpp:1458 src/mainDialog.cpp:1460
+#: src/mainDialog.cpp:1466 src/mainDialog.cpp:1468
 msgid "No update found"
 msgstr "Nebyla nalezena žádná aktualizace"
 
-#: src/mainDialog.cpp:1604
+#: src/mainDialog.cpp:1612
 msgid "ctrl"
 msgstr "ctrl"
 
-#: src/mainDialog.cpp:1605
+#: src/mainDialog.cpp:1613
 msgid "shift"
 msgstr "shift"
 
-#: src/mainDialog.cpp:1606
+#: src/mainDialog.cpp:1614
 msgid "alt"
 msgstr "alt"
 
@@ -1019,7 +1019,7 @@ msgstr "alt"
 msgid "Messages / %s"
 msgstr "Hlášení / %s"
 
-#: src/messagesManager.cpp:122
+#: src/messagesManager.cpp:126
 msgid ""
 "Could not open file for writing!\n"
 "The log will not be saved!"
