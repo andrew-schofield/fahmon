@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cs_CZ\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2009-03-23 01:11+0000\n"
+"POT-Creation-Date: 2009-03-23 01:40+0000\n"
 "PO-Revision-Date: 2008-11-02 14:31+0100\n"
 "Last-Translator: Martin Bednar <serafean@gmail.com>\n"
 "Language-Team: Czech <en@li.org>\n"
@@ -619,7 +619,7 @@ msgstr "Zakázat klienta"
 msgid "Enable this client"
 msgstr "Povolit klienta"
 
-#: src/listViewClients.cpp:1032 src/mainDialog.cpp:1492
+#: src/listViewClients.cpp:1032 src/mainDialog.cpp:1494
 msgid "Do you really want to delete this client?"
 msgstr "Opravdu chcete smazat klienta?"
 
@@ -686,7 +686,7 @@ msgid "Project %u is unknown, you should try to update the projects database"
 msgstr ""
 "%u projektu je neznámé, měli byste zkusit aktualizovat databázi projektů."
 
-#: src/mainDialog.cpp:607 src/mainDialog.cpp:1207
+#: src/mainDialog.cpp:607 src/mainDialog.cpp:1209
 #, c-format
 msgid "%.2f PPD"
 msgstr ""
@@ -977,24 +977,24 @@ msgstr "Poslední termín:"
 msgid "Log file."
 msgstr "Log"
 
-#: src/mainDialog.cpp:1063
+#: src/mainDialog.cpp:1065
 msgid "You must first select a client!"
 msgstr "Musíte nejprve vybrat klienta!"
 
-#: src/mainDialog.cpp:1424
+#: src/mainDialog.cpp:1426
 msgid "Checking for FahMon updates"
 msgstr "Ověřuji dostupnost aktualizací FahMon"
 
-#: src/mainDialog.cpp:1435
+#: src/mainDialog.cpp:1437
 #, c-format
 msgid "Your version: %s; New version: %s"
 msgstr "Vaše verze : %s ; Nová verze : %s"
 
-#: src/mainDialog.cpp:1449
+#: src/mainDialog.cpp:1451
 msgid "Update available"
 msgstr "Aktualizace dostupna"
 
-#: src/mainDialog.cpp:1450
+#: src/mainDialog.cpp:1452
 msgid ""
 "A newer version of FahMon is available\n"
 "Do you want to go to the FahMon website?"
@@ -1002,19 +1002,19 @@ msgstr ""
 "Nová verze FahMon je dostupná\n"
 "Chcete přejít na domovskou stránku FahMon?"
 
-#: src/mainDialog.cpp:1457 src/mainDialog.cpp:1459
+#: src/mainDialog.cpp:1459 src/mainDialog.cpp:1461
 msgid "No update found"
 msgstr "Nebyla nalezena žádná aktualizace"
 
-#: src/mainDialog.cpp:1603
+#: src/mainDialog.cpp:1605
 msgid "ctrl"
 msgstr "ctrl"
 
-#: src/mainDialog.cpp:1604
+#: src/mainDialog.cpp:1606
 msgid "shift"
 msgstr "shift"
 
-#: src/mainDialog.cpp:1605
+#: src/mainDialog.cpp:1607
 msgid "alt"
 msgstr "alt"
 

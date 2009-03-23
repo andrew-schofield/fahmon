@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es_ES\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2009-03-23 01:11+0000\n"
+"POT-Creation-Date: 2009-03-23 01:40+0000\n"
 "PO-Revision-Date: 2008-10-30 00:13+0000\n"
 "Last-Translator: Antonio Lucendo <alt_alm@hotmail.com>\n"
 "Language-Team: Spanish\n"
@@ -629,7 +629,7 @@ msgstr "Inahabilitar este cliente"
 msgid "Enable this client"
 msgstr "Habilitar este cliente"
 
-#: src/listViewClients.cpp:1032 src/mainDialog.cpp:1492
+#: src/listViewClients.cpp:1032 src/mainDialog.cpp:1494
 msgid "Do you really want to delete this client?"
 msgstr "¿Confirma que quiere eliminar este cliente?"
 
@@ -698,7 +698,7 @@ msgstr ""
 "El Proyecto %u es desconocido, intente actualizar la base de datos de "
 "proyectos"
 
-#: src/mainDialog.cpp:607 src/mainDialog.cpp:1207
+#: src/mainDialog.cpp:607 src/mainDialog.cpp:1209
 #, c-format
 msgid "%.2f PPD"
 msgstr ""
@@ -989,24 +989,24 @@ msgstr "Fecha límite final:"
 msgid "Log file."
 msgstr "Archivo de registro."
 
-#: src/mainDialog.cpp:1063
+#: src/mainDialog.cpp:1065
 msgid "You must first select a client!"
 msgstr "¡Tiene que seleccionar un cliente primero!"
 
-#: src/mainDialog.cpp:1424
+#: src/mainDialog.cpp:1426
 msgid "Checking for FahMon updates"
 msgstr "Comprobando si hay actualizaciones de FahMon"
 
-#: src/mainDialog.cpp:1435
+#: src/mainDialog.cpp:1437
 #, c-format
 msgid "Your version: %s; New version: %s"
 msgstr "Su versión: %s; Nueva versión: %s"
 
-#: src/mainDialog.cpp:1449
+#: src/mainDialog.cpp:1451
 msgid "Update available"
 msgstr "Hay disponible una actualización"
 
-#: src/mainDialog.cpp:1450
+#: src/mainDialog.cpp:1452
 msgid ""
 "A newer version of FahMon is available\n"
 "Do you want to go to the FahMon website?"
@@ -1014,19 +1014,19 @@ msgstr ""
 "Está disponible una versión nueva de FahMon\n"
 "¿Quiere ir al sitio web de FahMon?"
 
-#: src/mainDialog.cpp:1457 src/mainDialog.cpp:1459
+#: src/mainDialog.cpp:1459 src/mainDialog.cpp:1461
 msgid "No update found"
 msgstr "No se encontraron actualizaciones"
 
-#: src/mainDialog.cpp:1603
+#: src/mainDialog.cpp:1605
 msgid "ctrl"
 msgstr "ctrl"
 
-#: src/mainDialog.cpp:1604
+#: src/mainDialog.cpp:1606
 msgid "shift"
 msgstr "mayúscula"
 
-#: src/mainDialog.cpp:1605
+#: src/mainDialog.cpp:1607
 msgid "alt"
 msgstr "alt"
 

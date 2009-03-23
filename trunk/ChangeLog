@@ -18,6 +18,8 @@ SVN
       * Added IRC channel link to help menu and First Time Dialog.
       * Removed info panel from default view, and replaced with extra columns.
       * Added informative tooltips to a number of controls.
+      * Window stays maximised after hiding the FAHlog if it was maximised
+        initially.
 
       Monitoring
 

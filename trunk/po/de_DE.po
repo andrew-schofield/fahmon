@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FahMon Translation - de_DE 1.1.b1\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2009-03-23 01:11+0000\n"
+"POT-Creation-Date: 2009-03-23 01:40+0000\n"
 "PO-Revision-Date: 2008-10-31 09:07+0100\n"
 "Last-Translator: Mark Gerber <mark.gerber@web.de>\n"
 "Language-Team: Mark Gerber <mark.gerber@web.de>\n"
@@ -622,7 +622,7 @@ msgstr "Client-Eintrag deaktivieren"
 msgid "Enable this client"
 msgstr "Client-Eintrag aktivieren"
 
-#: src/listViewClients.cpp:1032 src/mainDialog.cpp:1492
+#: src/listViewClients.cpp:1032 src/mainDialog.cpp:1494
 msgid "Do you really want to delete this client?"
 msgstr "Möchtest Du diesen Client-Eintrag tatsächlich löschen?"
 
@@ -691,7 +691,7 @@ msgstr ""
 "Projekt %u ist unbekannt. Probiere es mit einer Aktualisierung der "
 "Projektedaten."
 
-#: src/mainDialog.cpp:607 src/mainDialog.cpp:1207
+#: src/mainDialog.cpp:607 src/mainDialog.cpp:1209
 #, c-format
 msgid "%.2f PPD"
 msgstr ""
@@ -982,24 +982,24 @@ msgstr "Endgültige Fälligkeit:"
 msgid "Log file."
 msgstr "Log-Datei."
 
-#: src/mainDialog.cpp:1063
+#: src/mainDialog.cpp:1065
 msgid "You must first select a client!"
 msgstr "Wähle bitte zuerst einen Client aus."
 
-#: src/mainDialog.cpp:1424
+#: src/mainDialog.cpp:1426
 msgid "Checking for FahMon updates"
 msgstr "Suche nach Programmupdate"
 
-#: src/mainDialog.cpp:1435
+#: src/mainDialog.cpp:1437
 #, c-format
 msgid "Your version: %s; New version: %s"
 msgstr "Deine Version: %s - Verfügbare Version: %s"
 
-#: src/mainDialog.cpp:1449
+#: src/mainDialog.cpp:1451
 msgid "Update available"
 msgstr "Update verfügbar."
 
-#: src/mainDialog.cpp:1450
+#: src/mainDialog.cpp:1452
 msgid ""
 "A newer version of FahMon is available\n"
 "Do you want to go to the FahMon website?"
@@ -1007,19 +1007,19 @@ msgstr ""
 "Eine neue FahMon-Version ist verfügbar.\n"
 "Soll die FahMon-Website geöffnet werden?"
 
-#: src/mainDialog.cpp:1457 src/mainDialog.cpp:1459
+#: src/mainDialog.cpp:1459 src/mainDialog.cpp:1461
 msgid "No update found"
 msgstr "Kein Update gefunden."
 
-#: src/mainDialog.cpp:1603
+#: src/mainDialog.cpp:1605
 msgid "ctrl"
 msgstr "strg"
 
-#: src/mainDialog.cpp:1604
+#: src/mainDialog.cpp:1606
 msgid "shift"
 msgstr "umschalt"
 
-#: src/mainDialog.cpp:1605
+#: src/mainDialog.cpp:1607
 msgid "alt"
 msgstr "alt"
 

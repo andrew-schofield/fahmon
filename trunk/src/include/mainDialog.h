@@ -195,6 +195,7 @@ protected:
 	wxTimer       mAutoReloadTimer; /**< Timer object for reloading clients */
 	wxTimer       mInetAutoReloadTimer; /**< Timer object for reloading inet clients */
 	wxTaskBarIcon mSystemTray; /**< System tray icon object */
+	bool          mWasMaximised;
 
 	/**
 	 * Constructor.

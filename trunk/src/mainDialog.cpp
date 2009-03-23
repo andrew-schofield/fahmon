@@ -969,6 +969,7 @@ void MainDialog::OnMenuToggleLog(wxCommandEvent& event)
 	const wxUint32 frameResizingOffset = FMC_GUI_LOG_HEIGHT + FMC_GUI_SPACING_LOW;
 
 	// Show/Hide the log area
+	mWasMaximised = IsMaximized();
 	isLogShown = !mLogFile->IsShown();
 	mLogFile->Show(isLogShown);
 	mTopLevelSizer->Show(mLogFile, isLogShown);
@@ -981,7 +982,8 @@ void MainDialog::OnMenuToggleLog(wxCommandEvent& event)
 	}
 	else
 	{
-		SetSize(-1, GetSize().GetHeight() - frameResizingOffset);
+		if(!mWasMaximised)
+			SetSize(-1, GetSize().GetHeight() - frameResizingOffset);
 	}
 
 	// Load the correct log file (if any) when we are going to show the wxTextCtrl
