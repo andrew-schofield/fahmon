@@ -97,15 +97,6 @@ enum _LISTVIEW_COLUMN
 };
 
 
-// Indexes of the miscellaneous parts of the status bar
-enum _STATUSBAR_PART
-{
-	STATUS_UNUSED,
-	STATUS_CLIENTNAME,
-	STATUS_TOTALPPD
-};
-
-
 // Custom events
 DEFINE_EVENT_TYPE(EVT_CLIENTRELOADED)
 DEFINE_EVENT_TYPE(EVT_NEWCLIENTADDED)

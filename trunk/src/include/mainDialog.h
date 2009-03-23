@@ -150,6 +150,14 @@ private:
 
 #endif
 
+// Indexes of the miscellaneous parts of the status bar
+enum _STATUSBAR_PART
+{
+	STATUS_UNUSED,
+	STATUS_CLIENTNAME,
+	STATUS_TOTALPPD
+};
+
 /**
 * This is the main dialog box.
 * This class can only be instantiated once.

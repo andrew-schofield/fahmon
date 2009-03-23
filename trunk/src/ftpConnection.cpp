@@ -26,6 +26,7 @@
 #include "tools.h"
 #include "preferencesManager.h"
 #include "messagesManager.h"
+#include "mainDialog.h"
 
 #include "wx/curl/ftp.h"
 #include "wx/curl/ftptool.h"
@@ -187,6 +188,7 @@ bool FTPConnection::PutFTPFile(wxString url, wxString tempFile)
 		_LogMsgInfo(ftp.GetResponseHeader(), false);
 		_LogMsgInfo(ftp.GetResponseBody(), false);
 		_LogMsgInfo(ftp.GetErrorString(), false);
+		MainDialog::GetInstance()->SetStatusText(wxT("FTP Upload failure!"), STATUS_UNUSED);
 		return false;
 	}
 	else

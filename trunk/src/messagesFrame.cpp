@@ -27,11 +27,13 @@
 #include "pathManager.h"
 #include "messagesManager.h"
 #include "preferencesManager.h"
+#include "mainDialog.h"
 
 
 // Events processed by this class
 BEGIN_EVENT_TABLE(MessagesFrame, wxFrame)
 	// --- Frame
+	EVT_ACTIVATE(MessagesFrame::OnGetFocus)
 	EVT_CLOSE   (MessagesFrame::OnClose)
 END_EVENT_TABLE()
 
@@ -112,6 +114,8 @@ void MessagesFrame::Toggle(void)
 {
 	if(IsShown() == false)
 	{
+		// wipe any error status from status bar
+		MainDialog::GetInstance()->SetStatusText(wxT(""), STATUS_UNUSED);
 		// wipe previous pending messages
 		MessagesManager::GetInstance()->GetNewMessages();
 		// Change the content of the wxTextCtrl with the current messages before displaying the window
@@ -143,4 +147,11 @@ void MessagesFrame::OnNewMessage(void)
 		mInstance->mTextCtrl->AppendText(MessagesManager::GetInstance()->GetNewMessages());
 		mInstance->mTextCtrl->ShowPosition(mInstance->mTextCtrl->GetLastPosition());
 	}
+}
+
+
+void MessagesFrame::OnGetFocus(wxActivateEvent& event)
+{
+	// wipe any error status from status bar
+	MainDialog::GetInstance()->SetStatusText(wxT(""), STATUS_UNUSED);
 }

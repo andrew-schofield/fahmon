@@ -68,6 +68,8 @@ protected:
 	 **/
 	void OnClose(wxCloseEvent& event);
 
+	void OnGetFocus(wxActivateEvent& event);
+
 
 public:
 	// Singleton pattern
