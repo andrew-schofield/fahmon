@@ -59,16 +59,29 @@ bool FTPConnection::GetFTPFile(wxString url, wxString tempFile)
 	ftp.SetOpt(CURLOPT_USERAGENT, (const char*)agent.c_str());
 	ftp.UseEPSV(true);
 
+	_LogMsgInfo(wxString::Format(wxT("Downloading %s"), tempFile.c_str()), true);
+
 	if(!ftp.Get(tempFile))
 	{
 		if(tempFile.IsEmpty() == false)
 		{
 			wxRemoveFile(tempFile);
 		}
+		_LogMsgInfo(wxT("FTP connection failure!"), false);
+		_LogMsgInfo( wxString::Format(wxT("Response Code: %d"), ftp.GetResponseCode()), false);
+		_LogMsgInfo(ftp.GetResponseHeader(), false);
+		_LogMsgInfo(ftp.GetResponseBody(), false);
+		_LogMsgInfo(ftp.GetErrorString(), false);
 		return false;
 	}
 	else
+	{
+		_LogMsgInfo(wxT("FTP connection success!"), false);
+		_LogMsgInfo( wxString::Format(wxT("Response Code: %d"), ftp.GetResponseCode()), false);
+		_LogMsgInfo(ftp.GetResponseHeader(), false);
+		_LogMsgInfo(ftp.GetResponseBody(), false);
 		return true;
+	}
 }
 
 
@@ -165,10 +178,23 @@ bool FTPConnection::PutFTPFile(wxString url, wxString tempFile)
 	ftp.SetOpt(CURLOPT_USERAGENT, (const char*)agent.c_str());
 	ftp.UseEPSV(true);
 
+	_LogMsgInfo(wxString::Format(wxT("Uploading %s"), tempFile.c_str()), true);
+
 	if(!ftp.Put(tempFile))
 	{
+		_LogMsgInfo(wxT("FTP connection failure!"), false);
+		_LogMsgInfo( wxString::Format(wxT("Response Code: %d"), ftp.GetResponseCode()), false);
+		_LogMsgInfo(ftp.GetResponseHeader(), false);
+		_LogMsgInfo(ftp.GetResponseBody(), false);
+		_LogMsgInfo(ftp.GetErrorString(), false);
 		return false;
 	}
 	else
+	{
+		_LogMsgInfo(wxT("FTP connection success!"), false);
+		_LogMsgInfo( wxString::Format(wxT("Response Code: %d"), ftp.GetResponseCode()), false);
+		_LogMsgInfo(ftp.GetResponseHeader(), false);
+		_LogMsgInfo(ftp.GetResponseBody(), false);
 		return true;
+	}
 }
