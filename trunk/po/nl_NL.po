@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nl_NL\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2009-03-23 00:52+0000\n"
+"POT-Creation-Date: 2009-03-23 01:11+0000\n"
 "PO-Revision-Date: 2009-03-20 16:40+0000\n"
 "Last-Translator: Bastien van 't Wel <bastien@vantwel.nl>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -488,6 +488,11 @@ msgstr ""
 msgid ""
 "For interactive help you can join our IRC channel at #fahmon on freenode.net:"
 msgstr "Voor interactieve hulp kun je naar IRC kanaal #fahmon op freenode.net:"
+
+#: src/firstTimeDialog.cpp:94
+#, fuzzy
+msgid "Connect to the FahMon IRC channel in a web browser"
+msgstr "Ga naar het FahMon IRC kanaal voor online hulp"
 
 #: src/firstTimeDialog.cpp:143 src/main.cpp:210 src/main.cpp:216
 #, c-format

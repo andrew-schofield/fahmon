@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fahmon\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2009-03-23 00:52+0000\n"
+"POT-Creation-Date: 2009-03-23 01:11+0000\n"
 "PO-Revision-Date: 2008-11-22 12:38+0000\n"
 "Last-Translator: Kenneth Langdalen <Unknown>\n"
 "Language-Team: Norwegian Bokmal <nb@li.org>\n"
@@ -466,6 +466,10 @@ msgstr ""
 #: src/firstTimeDialog.cpp:93
 msgid ""
 "For interactive help you can join our IRC channel at #fahmon on freenode.net:"
+msgstr ""
+
+#: src/firstTimeDialog.cpp:94
+msgid "Connect to the FahMon IRC channel in a web browser"
 msgstr ""
 
 #: src/firstTimeDialog.cpp:143 src/main.cpp:210 src/main.cpp:216

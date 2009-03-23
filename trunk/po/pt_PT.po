@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pt_PT\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2009-03-23 00:52+0000\n"
+"POT-Creation-Date: 2009-03-23 01:11+0000\n"
 "PO-Revision-Date: 2009-03-20 23:03+0100\n"
 "Last-Translator: Filipe Rodrigues <shello@shello.org>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -499,6 +499,11 @@ msgid ""
 msgstr ""
 "Para ajuda interactiva (em Inglês), ligue-se ao nosso canal de IRC, #fahmon "
 "na freenode.net:"
+
+#: src/firstTimeDialog.cpp:94
+#, fuzzy
+msgid "Connect to the FahMon IRC channel in a web browser"
+msgstr "Ligue-se ao canal de IRC do FahMon para ajuda online"
 
 #: src/firstTimeDialog.cpp:143 src/main.cpp:210 src/main.cpp:216
 #, c-format

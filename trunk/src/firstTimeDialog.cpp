@@ -91,7 +91,7 @@ FirstTimeDialog::FirstTimeDialog(void) : wxDialog(NULL, wxID_ANY, wxString::Form
 	mainSizer->Add(new wxHyperlinkCtrl(this, wxID_ANY, _T(FMC_URL_FAHMON), _T(FMC_URL_FAHMON)), 0, wxALIGN_CENTER);
 	mainSizer->AddSpacer(FMC_GUI_SPACING_HIGH);
 	mainSizer->Add(new wxStaticText(this, wxID_ANY, wxString::Format(_("For interactive help you can join our IRC channel at #fahmon on freenode.net:"), _T(FMC_APPNAME))), 0, wxALIGN_CENTER);
-	mainSizer->Add(new wxHyperlinkCtrl(this, wxID_ANY, _T("Connect to the FahMon IRC channel in a web browser"), _T(FMC_URL_FAHMON_IRC)), 0, wxALIGN_CENTER);
+	mainSizer->Add(new wxHyperlinkCtrl(this, wxID_ANY, _("Connect to the FahMon IRC channel in a web browser"), _T(FMC_URL_FAHMON_IRC)), 0, wxALIGN_CENTER);
 	mainSizer->AddSpacer(FMC_GUI_SPACING_HIGH);
 	mainSizer->Add(new wxStaticLine(this, wxID_ANY, wxDefaultPosition, wxSize(150, -1)), 0, wxALIGN_CENTER);
 	mainSizer->AddSpacer(FMC_GUI_SPACING_HIGH);
