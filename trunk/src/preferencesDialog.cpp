@@ -264,7 +264,7 @@ wxPanel* PreferencesDialog::CreateMonitoringTab(wxBookCtrlBase* parent)
 	mMonitoringNonThreadedReload->SetToolTip(_("This option can reduce memory consumption if monitoring a large number of clients. Clients are reloaded sequentially in a single thread."));
 	mMonitoringETADisplayStyle         = new wxChoice(panel, wxID_ANY, wxDefaultPosition, wxDefaultSize, 3, etaFormats);
 	mMonitoringAutoReloadFrequency     = new wxSpinCtrl(panel, wxID_ANY, _T(""), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 1, 1000, 5);
-	mMonitoringInetAutoReloadFrequency = new wxSpinCtrl(panel, wxID_ANY, _T(""), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 10, 1000, 5);
+	mMonitoringInetAutoReloadFrequency = new wxSpinCtrl(panel, wxID_ANY, _T(""), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 1, 1000, 5);
 	mMonitoringPPDType                 = new wxChoice(panel, wxID_ANY, wxDefaultPosition, wxDefaultSize, 4, ppdFormats);
 	mMonitoringPPDType->SetToolTip(_("PPD Calculation formats\nAll frames: 255 stored datapoints used\nLast frame only: Instantaneous PPD\nLast 3 frames: 3 frames rolling average\nEffective rate: Based on download time and current frame"));
 	mMonitoringIgnoreAsynchrony        = new wxCheckBox(panel, wxID_ANY, _("Ignore asynchronous clocks"));
