@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru_RU\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2009-03-24 14:06+0000\n"
+"POT-Creation-Date: 2009-03-24 14:18+0000\n"
 "PO-Revision-Date: 2009-03-20 23:16+0300\n"
 "Last-Translator: Evgeniy aka Behc <tsc.behc@gmail.com>\n"
 "Language-Team: Russian\n"
@@ -498,7 +498,7 @@ msgid "Connect to the FahMon IRC channel in a web browser"
 msgstr ""
 "Войти на IRC канал FahMon для получения помощи онлайн (английский язык)"
 
-#: src/firstTimeDialog.cpp:143 src/main.cpp:212 src/main.cpp:218
+#: src/firstTimeDialog.cpp:143 src/main.cpp:216 src/main.cpp:222
 #, c-format
 msgid "Could not create directory <%s>"
 msgstr "Невозможно создать папку <%s>"
@@ -638,12 +638,12 @@ msgstr ""
 "\n"
 "Пожалуйста проверьте правильность параметров менеджера файлов в Настройках"
 
-#: src/main.cpp:130
+#: src/main.cpp:134
 #, c-format
 msgid "Another instance of %s is already running!"
 msgstr "Карамба! Другая копия %s уже запущена!"
 
-#: src/main.cpp:242
+#: src/main.cpp:246
 #, c-format
 msgid "Old settings imported into %s"
 msgstr "Старые настройки импортировать в %s"

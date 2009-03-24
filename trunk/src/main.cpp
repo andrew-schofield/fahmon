@@ -107,6 +107,10 @@ bool FahMonApp::OnInit(void)
 		return false;
 	}
 	mStress = cmdline.Found(wxT("stress"));
+	if(mStress)
+		if(wxMessageBox(wxT("You are about to launch FahMon in stress-test mode. It is highly recommended that you disable any remote uploads/downloads as they will be polled every 0.5 seconds. If you are specifically testing this behaviour, consider setting up local instances of the servers instead."), wxT("Confirm"),
+		   wxOK | wxCANCEL) == wxCANCEL)
+			return false;
 
 	// Check for another instance
 	#ifndef __WXMAC__

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl_PL\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2009-03-24 14:06+0000\n"
+"POT-Creation-Date: 2009-03-24 14:18+0000\n"
 "PO-Revision-Date: 2009-03-22 23:57+0100\n"
 "Last-Translator: Mariusz Pociask <mariusz-pociask@o2.pl>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -501,7 +501,7 @@ msgstr ""
 msgid "Connect to the FahMon IRC channel in a web browser"
 msgstr "Odwiedź IRCowy kanał FahMona, by uzyskać pomoc"
 
-#: src/firstTimeDialog.cpp:143 src/main.cpp:212 src/main.cpp:218
+#: src/firstTimeDialog.cpp:143 src/main.cpp:216 src/main.cpp:222
 #, c-format
 msgid "Could not create directory <%s>"
 msgstr "Nie można utworzyć katalogu <%s>"
@@ -641,12 +641,12 @@ msgstr ""
 "\n"
 "Sprawdź, czy w ustawieniach został wybrany właściwy"
 
-#: src/main.cpp:130
+#: src/main.cpp:134
 #, c-format
 msgid "Another instance of %s is already running!"
 msgstr "Działa już inna instancja %s !"
 
-#: src/main.cpp:242
+#: src/main.cpp:246
 #, c-format
 msgid "Old settings imported into %s"
 msgstr "Stare ustawienia zostały zaimportowane do %s"
