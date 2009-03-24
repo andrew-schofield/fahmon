@@ -50,7 +50,6 @@
 #include "wx/textfile.h"
 #include "wx/hyperlink.h"
 #include "wx/filename.h"
-#include "wx/font.h"
 #ifdef __WXMAC__
 #include "wx/sysopt.h"
 #endif
@@ -841,11 +840,6 @@ void MainDialog::CreateLayout(void)
 
 	// --- The bottom part : Log file
 	mLogFile = new wxTextCtrl(topLevelPanel, wxID_ANY, _("Log file."), wxDefaultPosition, wxSize(100, FMC_GUI_LOG_HEIGHT), wxTE_MULTILINE | wxTE_READONLY | wxHSCROLL);
-#ifndef __WXMAC__
-	mLogFile->SetFont(wxFont(8, wxFONTFAMILY_TELETYPE, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL));
-#else
-	mLogFile->SetFont(wxFont(9, wxFONTFAMILY_TELETYPE, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL));
-#endif
 
 	// -- Finally construct the frame itself
 	// Both the top part and the log area will expand vertically, a little more quickly for the log (4/3 ratio)
