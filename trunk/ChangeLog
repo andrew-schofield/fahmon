@@ -20,6 +20,7 @@ SVN
       * Added informative tooltips to a number of controls.
       * Window stays maximised after hiding the FAHlog if it was maximised
         initially.
+      * Log viewer now uses monospaced font.
 
       Monitoring
 

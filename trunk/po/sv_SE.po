@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv_SE\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2009-03-24 14:18+0000\n"
+"POT-Creation-Date: 2009-03-24 17:09+0000\n"
 "PO-Revision-Date: 2008-02-01 20:20+0100\n"
 "Last-Translator: Olof Persson <floffe@gmail.com>\n"
 "Language-Team: Swedish\n"
@@ -166,8 +166,8 @@ msgstr "Okänd klient"
 
 #: src/client.cpp:57 src/client.cpp:105 src/core.cpp:148
 #: src/listViewClients.cpp:674 src/listViewClients.cpp:708
-#: src/mainDialog.cpp:532 src/mainDialog.cpp:533 src/mainDialog.cpp:534
-#: src/mainDialog.cpp:535
+#: src/mainDialog.cpp:533 src/mainDialog.cpp:534 src/mainDialog.cpp:535
+#: src/mainDialog.cpp:536
 msgid "Unknown"
 msgstr "Okänd"
 
@@ -180,9 +180,9 @@ msgid "anonymous"
 msgstr "anonym"
 
 #: src/client.cpp:100 src/listViewClients.cpp:732 src/listViewClients.cpp:736
-#: src/mainDialog.cpp:500 src/mainDialog.cpp:505 src/mainDialog.cpp:506
-#: src/mainDialog.cpp:507 src/mainDialog.cpp:508 src/mainDialog.cpp:509
-#: src/mainDialog.cpp:580 src/mainDialog.cpp:617 src/webMonitor.cpp:133
+#: src/mainDialog.cpp:501 src/mainDialog.cpp:506 src/mainDialog.cpp:507
+#: src/mainDialog.cpp:508 src/mainDialog.cpp:509 src/mainDialog.cpp:510
+#: src/mainDialog.cpp:581 src/mainDialog.cpp:618 src/webMonitor.cpp:133
 #: src/webMonitor.cpp:134 src/webMonitor.cpp:135 src/webMonitor.cpp:136
 #: src/webMonitor.cpp:137 src/webMonitor.cpp:138 src/webMonitor.cpp:139
 #: src/webMonitor.cpp:140 src/webMonitor.cpp:141 src/webMonitor.cpp:142
@@ -562,19 +562,19 @@ msgstr "Slutgiltig tidsgräns:"
 msgid "Loading..."
 msgstr "Laddar..."
 
-#: src/listViewClients.cpp:648 src/mainDialog.cpp:543 src/webMonitor.cpp:180
+#: src/listViewClients.cpp:648 src/mainDialog.cpp:544 src/webMonitor.cpp:180
 #, c-format
 msgid "%u points"
 msgstr "%u poäng"
 
 #: src/listViewClients.cpp:661 src/listViewClients.cpp:689
-#: src/mainDialog.cpp:487 src/mainDialog.cpp:561 src/mainDialog.cpp:599
+#: src/mainDialog.cpp:488 src/mainDialog.cpp:562 src/mainDialog.cpp:600
 #: src/webMonitor.cpp:160 src/webMonitor.cpp:196 src/webMonitor.cpp:232
 #, c-format
 msgid "%s ago"
 msgstr "%s sedan"
 
-#: src/listViewClients.cpp:693 src/mainDialog.cpp:565 src/mainDialog.cpp:603
+#: src/listViewClients.cpp:693 src/mainDialog.cpp:566 src/mainDialog.cpp:604
 #: src/webMonitor.cpp:200 src/webMonitor.cpp:236
 #, c-format
 msgid "In %s"
@@ -598,7 +598,7 @@ msgid "Paused"
 msgstr ""
 
 #: src/listViewClients.cpp:878 src/listViewClients.cpp:886
-#: src/mainDialog.cpp:660
+#: src/mainDialog.cpp:661
 msgid "Add a new client"
 msgstr "Lägg till ny klient"
 
@@ -628,7 +628,7 @@ msgstr "Ta bort denna klient"
 msgid "Enable this client"
 msgstr "Ta bort denna klient"
 
-#: src/listViewClients.cpp:1032 src/mainDialog.cpp:1513
+#: src/listViewClients.cpp:1032 src/mainDialog.cpp:1519
 msgid "Do you really want to delete this client?"
 msgstr "Vill du verkligen ta bort denna klient?"
 
@@ -652,32 +652,32 @@ msgstr "En annan upplaga av %s körs redan!"
 msgid "Old settings imported into %s"
 msgstr ""
 
-#: src/mainDialog.cpp:183
+#: src/mainDialog.cpp:184
 #, c-format
 msgid "%s is licenced under the GNU GPL v2"
 msgstr "%s är licensierad under GNU GPL v2"
 
-#: src/mainDialog.cpp:184
+#: src/mainDialog.cpp:185
 msgid "Copyright (C) 2003-2007 Fran\\u00E7ois Ingelrest"
 msgstr "Copyright (C) 2003-2007 François Ingelrest"
 
-#: src/mainDialog.cpp:185
+#: src/mainDialog.cpp:186
 msgid "Copyright (C) 2007-2009 Andrew Schofield"
 msgstr "Copyright (C) 2007-2009 Andrew Schofield"
 
-#: src/mainDialog.cpp:187
+#: src/mainDialog.cpp:188
 msgid "FahMon contains code from qd, also licenced under the GNU GPL v2"
 msgstr "FahMon innehåller kod från qd, också licensierat under GNU GPL v2"
 
-#: src/mainDialog.cpp:188
+#: src/mainDialog.cpp:189
 msgid "Copyright (C) 2002-2005 Richard P. Howell IV."
 msgstr "Copyright (C) 2002-2005 Richard P. Howell IV."
 
-#: src/mainDialog.cpp:189
+#: src/mainDialog.cpp:190
 msgid "Copyright (C) 2005-2009 Sebastiaan Couwenberg"
 msgstr "Copyright (C) 2005-2009 Sebastiaan Couwenberg"
 
-#: src/mainDialog.cpp:444
+#: src/mainDialog.cpp:445
 #, fuzzy
 msgid ""
 "Something is wrong with this client.\n"
@@ -686,335 +686,335 @@ msgstr ""
 "Något är fel med denna klient.\n"
 "Se meddelanden för mer information (FahMon->Visa/Dölj Meddelandefönstret)."
 
-#: src/mainDialog.cpp:446
+#: src/mainDialog.cpp:447
 msgid "This client is currently disabled."
 msgstr ""
 
-#: src/mainDialog.cpp:537
+#: src/mainDialog.cpp:538
 #, c-format
 msgid "Project %u is unknown, you should try to update the projects database"
 msgstr "Projekt %u är okänt, försök uppdatera projektdatabasen"
 
-#: src/mainDialog.cpp:621 src/mainDialog.cpp:1228
+#: src/mainDialog.cpp:622 src/mainDialog.cpp:1234
 #, c-format
 msgid "%.2f PPD"
 msgstr ""
 
-#: src/mainDialog.cpp:648 src/mainDialog.cpp:698
+#: src/mainDialog.cpp:649 src/mainDialog.cpp:699
 msgid "&Check for update"
 msgstr "&Leta efter uppdateringar"
 
-#: src/mainDialog.cpp:648 src/mainDialog.cpp:698
+#: src/mainDialog.cpp:649 src/mainDialog.cpp:699
 msgid "Check online for the latest version of FahMon"
 msgstr "Kontrollera online om det finns en nyare version av FahMon"
 
-#: src/mainDialog.cpp:651
+#: src/mainDialog.cpp:652
 msgid "&Preferences...\tCTRL+P"
 msgstr "&Inställningar...\tCTRL+P"
 
-#: src/mainDialog.cpp:651
+#: src/mainDialog.cpp:652
 msgid "Open the preferences dialog"
 msgstr "Öppnar inställningarna"
 
-#: src/mainDialog.cpp:653
+#: src/mainDialog.cpp:654
 msgid "&Quit\tCtrl+Q"
 msgstr "&Avsluta\tCtrl+Q"
 
-#: src/mainDialog.cpp:653
+#: src/mainDialog.cpp:654
 #, c-format
 msgid "Quit %s"
 msgstr "Avslutar %s"
 
-#: src/mainDialog.cpp:660
+#: src/mainDialog.cpp:661
 #, fuzzy
 msgid "Add a new client to be monitored"
 msgstr "Lägg till ny klient"
 
-#: src/mainDialog.cpp:662
+#: src/mainDialog.cpp:663
 #, fuzzy
 msgid "Edit client"
 msgstr "Redigera denna klient"
 
-#: src/mainDialog.cpp:662
+#: src/mainDialog.cpp:663
 #, fuzzy
 msgid "Edit the selected client settings"
 msgstr "Laddar om vald klient"
 
-#: src/mainDialog.cpp:663
+#: src/mainDialog.cpp:664
 #, fuzzy
 msgid "Delete client"
 msgstr "Ta bort denna klient"
 
-#: src/mainDialog.cpp:663
+#: src/mainDialog.cpp:664
 #, fuzzy
 msgid "Delete the selected client"
 msgstr "Laddar om vald klient"
 
-#: src/mainDialog.cpp:664
+#: src/mainDialog.cpp:665
 #, fuzzy
 msgid "View client files"
 msgstr "Visa klientens filer"
 
-#: src/mainDialog.cpp:664
+#: src/mainDialog.cpp:665
 msgid "Open file browser in client folder"
 msgstr ""
 
-#: src/mainDialog.cpp:667
+#: src/mainDialog.cpp:668
 msgid "Reload &Selection\tF5"
 msgstr "Ladda &om vald\tF5"
 
-#: src/mainDialog.cpp:667 src/mainDialog.cpp:670
+#: src/mainDialog.cpp:668 src/mainDialog.cpp:671
 msgid "Reload the selected client"
 msgstr "Laddar om vald klient"
 
-#: src/mainDialog.cpp:668
+#: src/mainDialog.cpp:669
 msgid "Reload &All\tF6"
 msgstr "Ladda om &alla\tF6"
 
-#: src/mainDialog.cpp:668 src/mainDialog.cpp:671
+#: src/mainDialog.cpp:669 src/mainDialog.cpp:672
 msgid "Reload all the clients"
 msgstr "Laddar om alla klienter"
 
-#: src/mainDialog.cpp:670
+#: src/mainDialog.cpp:671
 msgid "Reload &Selection\tCtrl+R"
 msgstr "Ladda &om vald\tCtrl+R"
 
-#: src/mainDialog.cpp:671
+#: src/mainDialog.cpp:672
 msgid "Reload &All\tCtrl+Shift+R"
 msgstr "Ladda om &alla\tCtrl+Shift+R"
 
-#: src/mainDialog.cpp:673
+#: src/mainDialog.cpp:674
 #, fuzzy
 msgid "&Clients"
 msgstr "Klienter: %i"
 
-#: src/mainDialog.cpp:678
+#: src/mainDialog.cpp:679
 msgid "&Show/Hide FAHLog\tF8"
 msgstr "&Visa/dölj FAHLog\tF8"
 
-#: src/mainDialog.cpp:678 src/mainDialog.cpp:682
+#: src/mainDialog.cpp:679 src/mainDialog.cpp:683
 msgid "Toggle the log file"
 msgstr "Visa/dölj loggfilen"
 
-#: src/mainDialog.cpp:680
+#: src/mainDialog.cpp:681
 msgid "&Cycle ETA Style\tF9"
 msgstr "Växla tidsvisning"
 
-#: src/mainDialog.cpp:680 src/mainDialog.cpp:684
+#: src/mainDialog.cpp:681 src/mainDialog.cpp:685
 msgid "Cycle through the different ETA display styles"
 msgstr "Växla mellan de olika visningssätten för beräknad sluttid"
 
-#: src/mainDialog.cpp:682
+#: src/mainDialog.cpp:683
 msgid "&Show/Hide FAHLog\tCtrl+L"
 msgstr "&Visa/dölj FAHLog\tCtrl+L"
 
-#: src/mainDialog.cpp:684
+#: src/mainDialog.cpp:685
 msgid "&Cycle ETA Style\tCtrl+E"
 msgstr "&Växla tidsvisning\tCtrl+E"
 
-#: src/mainDialog.cpp:687
+#: src/mainDialog.cpp:688
 msgid "Show/Hide &WU Info panel"
 msgstr ""
 
-#: src/mainDialog.cpp:687
+#: src/mainDialog.cpp:688
 msgid "Toggle the display of the Work Unit Information panel"
 msgstr ""
 
-#: src/mainDialog.cpp:688
+#: src/mainDialog.cpp:689
 #, fuzzy
 msgid "&View"
 msgstr "Webb-vy"
 
-#: src/mainDialog.cpp:692
+#: src/mainDialog.cpp:693
 msgid "&Show/Hide Messages Window"
 msgstr "&Visa/dölj meddelandefönstret"
 
-#: src/mainDialog.cpp:692
+#: src/mainDialog.cpp:693
 msgid "Toggle the messages window"
 msgstr "Visar eller döljer meddelandefönstret"
 
-#: src/mainDialog.cpp:693
+#: src/mainDialog.cpp:694
 msgid "&Benchmarks...\tCTRL+B"
 msgstr "&Prestanda...\tCTRL+B"
 
-#: src/mainDialog.cpp:693
+#: src/mainDialog.cpp:694
 msgid "Open the benchmarks dialog"
 msgstr "Visar genomsnittilig prestanda"
 
-#: src/mainDialog.cpp:694
+#: src/mainDialog.cpp:695
 msgid "&Download New Projects"
 msgstr "&Ladda ner nya projekt"
 
-#: src/mainDialog.cpp:694
+#: src/mainDialog.cpp:695
 msgid "Update the local project database"
 msgstr "Uppdaterar den lokala projektdatabasen"
 
-#: src/mainDialog.cpp:700
+#: src/mainDialog.cpp:701
 msgid "&Tools"
 msgstr ""
 
-#: src/mainDialog.cpp:705
+#: src/mainDialog.cpp:706
 msgid "&My Stats\tF2"
 msgstr "&Min statistik\tF2"
 
-#: src/mainDialog.cpp:705 src/mainDialog.cpp:709
+#: src/mainDialog.cpp:706 src/mainDialog.cpp:710
 msgid "View the personal statistics for the selected client"
 msgstr "Visa den egna statistiken för den valda klienten"
 
-#: src/mainDialog.cpp:706
+#: src/mainDialog.cpp:707
 msgid "&Jmol\tF3"
 msgstr "&Jmol\tF3"
 
-#: src/mainDialog.cpp:706 src/mainDialog.cpp:710
+#: src/mainDialog.cpp:707 src/mainDialog.cpp:711
 msgid "View the current project on the Jmol website"
 msgstr "Visar det pågående projektet på Jmols webbplats"
 
-#: src/mainDialog.cpp:707
+#: src/mainDialog.cpp:708
 #, fuzzy
 msgid "fah&info\tF4"
 msgstr "&fahinfo\tF4"
 
-#: src/mainDialog.cpp:707 src/mainDialog.cpp:711
+#: src/mainDialog.cpp:708 src/mainDialog.cpp:712
 msgid "View the current project on fahinfo.org"
 msgstr "Visar det pågående projektet på fahinfo.org"
 
-#: src/mainDialog.cpp:709
+#: src/mainDialog.cpp:710
 msgid "&My Stats\tCtrl+Shift+M"
 msgstr "&Min statistik\tCtrl+Shift+M"
 
-#: src/mainDialog.cpp:710
+#: src/mainDialog.cpp:711
 msgid "&Jmol\tCtrl+J"
 msgstr "&Jmol\tCtrl+J"
 
-#: src/mainDialog.cpp:711
+#: src/mainDialog.cpp:712
 #, fuzzy
 msgid "fah&info\tCtrl+I"
 msgstr "&fahinfo\tCtrl+F"
 
-#: src/mainDialog.cpp:714
+#: src/mainDialog.cpp:715
 msgid "F@H &Website"
 msgstr "F@Hs &webbplats"
 
-#: src/mainDialog.cpp:714
+#: src/mainDialog.cpp:715
 msgid "Open to the official Stanford website"
 msgstr "Öppna den officiella webbplatsen hos Stanford"
 
-#: src/mainDialog.cpp:715
+#: src/mainDialog.cpp:716
 #, fuzzy
 msgid "Folding &Forum"
 msgstr "Folding-&Community"
 
-#: src/mainDialog.cpp:715
+#: src/mainDialog.cpp:716
 msgid "Open the Folding@Home support forum"
 msgstr "Öppna supportforumet för Folding@Home"
 
-#: src/mainDialog.cpp:716
+#: src/mainDialog.cpp:717
 msgid "&Projects Summary"
 msgstr "&Projektöversikt"
 
-#: src/mainDialog.cpp:716
+#: src/mainDialog.cpp:717
 msgid "Open the list of the current projects"
 msgstr "Öppna listan över pågående projekt"
 
-#: src/mainDialog.cpp:717
+#: src/mainDialog.cpp:718
 msgid "&Servers Status"
 msgstr "&Serverstatus"
 
-#: src/mainDialog.cpp:717
+#: src/mainDialog.cpp:718
 msgid "Open the list of the servers with their status"
 msgstr "Öppna server-listan med deras status"
 
-#: src/mainDialog.cpp:718
+#: src/mainDialog.cpp:719
 msgid "&Web"
 msgstr "&Online"
 
-#: src/mainDialog.cpp:723
+#: src/mainDialog.cpp:724
 msgid "&Help Contents\tF1"
 msgstr "&Hjälp\tF1"
 
-#: src/mainDialog.cpp:723 src/mainDialog.cpp:725
+#: src/mainDialog.cpp:724 src/mainDialog.cpp:726
 msgid "See help contents"
 msgstr "Se hjälpinnehållet"
 
-#: src/mainDialog.cpp:725
+#: src/mainDialog.cpp:726
 msgid "&Help Contents\tCtrl+?"
 msgstr "&Hjälp\tCtrl+?"
 
-#: src/mainDialog.cpp:727
+#: src/mainDialog.cpp:728
 msgid "FahMon &IRC Channel"
 msgstr ""
 
-#: src/mainDialog.cpp:727
+#: src/mainDialog.cpp:728
 msgid "Join the FahMon IRC channel for online help"
 msgstr ""
 
-#: src/mainDialog.cpp:728
+#: src/mainDialog.cpp:729
 msgid "&About"
 msgstr "&Om"
 
-#: src/mainDialog.cpp:728
+#: src/mainDialog.cpp:729
 #, fuzzy, c-format
 msgid "About %s"
 msgstr "Om "
 
-#: src/mainDialog.cpp:735
+#: src/mainDialog.cpp:736
 msgid "&Help"
 msgstr "&Hjälp"
 
-#: src/mainDialog.cpp:767 src/webMonitor.cpp:569
+#: src/mainDialog.cpp:768 src/webMonitor.cpp:569
 msgid "Work Unit Information"
 msgstr "Information om arbetsenhet"
 
-#: src/mainDialog.cpp:795 src/webMonitor.cpp:570
+#: src/mainDialog.cpp:796 src/webMonitor.cpp:570
 msgid "Core:"
 msgstr "Kärna: "
 
-#: src/mainDialog.cpp:797 src/webMonitor.cpp:571
+#: src/mainDialog.cpp:798 src/webMonitor.cpp:571
 msgid "Project:"
 msgstr "Projekt:"
 
-#: src/mainDialog.cpp:799 src/webMonitor.cpp:572
+#: src/mainDialog.cpp:800 src/webMonitor.cpp:572
 msgid "Credit:"
 msgstr "Poäng:"
 
-#: src/mainDialog.cpp:801 src/webMonitor.cpp:573
+#: src/mainDialog.cpp:802 src/webMonitor.cpp:573
 msgid "Username:"
 msgstr "Användarnamn:"
 
-#: src/mainDialog.cpp:803 src/webMonitor.cpp:581
+#: src/mainDialog.cpp:804 src/webMonitor.cpp:581
 msgid "Downloaded:"
 msgstr "Hämtad:"
 
-#: src/mainDialog.cpp:805 src/webMonitor.cpp:574
+#: src/mainDialog.cpp:806 src/webMonitor.cpp:574
 msgid "Preferred Deadline:"
 msgstr "Föredragen tidsgräns:"
 
-#: src/mainDialog.cpp:807 src/webMonitor.cpp:575
+#: src/mainDialog.cpp:808 src/webMonitor.cpp:575
 msgid "Final Deadline:"
 msgstr "Slutgiltig tidsgräns:"
 
-#: src/mainDialog.cpp:842
+#: src/mainDialog.cpp:843
 msgid "Log file."
 msgstr "Loggfil."
 
-#: src/mainDialog.cpp:1084
+#: src/mainDialog.cpp:1090
 msgid "You must first select a client!"
 msgstr "Du måste först välja en klient!"
 
-#: src/mainDialog.cpp:1445
+#: src/mainDialog.cpp:1451
 msgid "Checking for FahMon updates"
 msgstr "Letar efter uppdateringar till FahMon"
 
-#: src/mainDialog.cpp:1456
+#: src/mainDialog.cpp:1462
 #, c-format
 msgid "Your version: %s; New version: %s"
 msgstr "Din version: %s; Ny version: %s"
 
-#: src/mainDialog.cpp:1470
+#: src/mainDialog.cpp:1476
 msgid "Update available"
 msgstr "Nyare version hittad"
 
-#: src/mainDialog.cpp:1471
+#: src/mainDialog.cpp:1477
 msgid ""
 "A newer version of FahMon is available\n"
 "Do you want to go to the FahMon website?"
@@ -1022,19 +1022,19 @@ msgstr ""
 "En nyare version av FahMon är tillgänglig\n"
 "Vill du gå till FahMons webbplats?"
 
-#: src/mainDialog.cpp:1478 src/mainDialog.cpp:1480
+#: src/mainDialog.cpp:1484 src/mainDialog.cpp:1486
 msgid "No update found"
 msgstr "Ingen nyare version hittades"
 
-#: src/mainDialog.cpp:1624
+#: src/mainDialog.cpp:1630
 msgid "ctrl"
 msgstr ""
 
-#: src/mainDialog.cpp:1625
+#: src/mainDialog.cpp:1631
 msgid "shift"
 msgstr ""
 
-#: src/mainDialog.cpp:1626
+#: src/mainDialog.cpp:1632
 msgid "alt"
 msgstr ""
 
