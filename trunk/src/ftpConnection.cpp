@@ -197,6 +197,7 @@ bool FTPConnection::PutFTPFile(wxString url, wxString tempFile)
 		_LogMsgInfo( wxString::Format(wxT("Response Code: %d"), ftp.GetResponseCode()), false);
 		_LogMsgInfo(ftp.GetResponseHeader(), false);
 		_LogMsgInfo(ftp.GetResponseBody(), false);
+		MainDialog::GetInstance()->SetStatusText(wxT(""), STATUS_UNUSED);
 		return true;
 	}
 }
