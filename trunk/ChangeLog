@@ -51,6 +51,7 @@ SVN
       * Plugged several memory leaks.
       * Message Manager now only logs errors by default.
       * Replaced internal inet protocol handling with libcurl.
+      * Added "stress test" mode. Start with -s or --stress
 
     Windows
 

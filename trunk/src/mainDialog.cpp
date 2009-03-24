@@ -208,7 +208,6 @@ MainDialog::MainDialog(void) : wxFrame(NULL, wxID_ANY, _T(FMC_PRODUCT))
 	{
 		TrayManager::GetInstance()->InstallIcon();
 	}
-
 }
 
 
@@ -291,7 +290,7 @@ void MainDialog::SetAutoReloadTimer(void)
 	_PrefsGetUint(PREF_MAINDIALOG_AUTORELOADFREQUENCY, autoReloadFrequency);
 
 	// Ok, now we can start the timer if needed but we need to convert minutes to milliseconds
-	if(isAutoReloadOn)
+	if(isAutoReloadOn && !wxGetApp().GetStress())
 	{
 		if(isAdvancedReloadOn)
 		{
@@ -300,6 +299,17 @@ void MainDialog::SetAutoReloadTimer(void)
 		else
 		{
 			mAutoReloadTimer.Start(autoReloadFrequency * 60 * 1000); // regular update system
+		}
+	}
+	else if(wxGetApp().GetStress())
+	{
+		if(isAdvancedReloadOn)
+		{
+			mAutoReloadTimer.Start(500); // experimental updates
+		}
+		else
+		{
+			mAutoReloadTimer.Start(500); // regular update system
 		}
 	}
 }
@@ -321,9 +331,13 @@ void MainDialog::SetInetAutoReloadTimer(void)
 	_PrefsGetUint(PREF_MAINDIALOG_INETAUTORELOADFREQUENCY, autoReloadFrequency);
 
 	// Ok, now we can start the timer if needed but we need to convert minutes to milliseconds
-	if(isAutoReloadOn)
+	if(isAutoReloadOn  && !wxGetApp().GetStress())
 	{
 		mInetAutoReloadTimer.Start(autoReloadFrequency * 60 * 1000); // regular update system
+	}
+	else if(wxGetApp().GetStress())
+	{
+		mInetAutoReloadTimer.Start(500);
 	}
 }
 
@@ -614,7 +628,12 @@ void MainDialog::UpdateClientInformation(ClientId clientId)
 
 void MainDialog::CreateMenuBar(void)
 {
-	wxMenu    *menu;
+	wxMenu    *menuFahMon;
+	wxMenu    *menuClient;
+	wxMenu    *menuMonitoring;
+	wxMenu    *menuTools;
+	wxMenu    *menuWeb;
+	wxMenu    *menuHelp;
 	wxMenuBar *menuBar;
 
 	// This method must be called once!
@@ -624,96 +643,96 @@ void MainDialog::CreateMenuBar(void)
 	menuBar = new wxMenuBar();
 
 	// The 'Main' menu
-	menu = new wxMenu();
+	menuFahMon = new wxMenu();
 	#ifndef __WXMAC__
-	menu->Append(MID_UPDATECHECK, _("&Check for update"), _("Check online for the latest version of FahMon"));
-	menu->AppendSeparator();
+	menuFahMon->Append(MID_UPDATECHECK, _("&Check for update"), _("Check online for the latest version of FahMon"));
+	menuFahMon->AppendSeparator();
 	#endif
-	menu->Append(wxID_PREFERENCES, _("&Preferences...\tCTRL+P"), _("Open the preferences dialog"));
-	menu->AppendSeparator();
-	menu->Append(wxID_EXIT, _("&Quit\tCtrl+Q"), wxString::Format(_("Quit %s"), _T(FMC_APPNAME)));
+	menuFahMon->Append(wxID_PREFERENCES, _("&Preferences...\tCTRL+P"), _("Open the preferences dialog"));
+	menuFahMon->AppendSeparator();
+	menuFahMon->Append(wxID_EXIT, _("&Quit\tCtrl+Q"), wxString::Format(_("Quit %s"), _T(FMC_APPNAME)));
 	#ifndef __WXMAC__
-	menuBar->Append(menu, wxString::Format(_T("&%s"), _T(FMC_APPNAME)));
+	menuBar->Append(menuFahMon, wxString::Format(_T("&%s"), _T(FMC_APPNAME)));
 	#endif
 
 	//The 'Clients' menu
-	menu = new wxMenu();
-	menu->Append(MID_ADDCLIENT, _("Add a new client"), _("Add a new client to be monitored"));
-	menu->AppendSeparator();
-	menu->Append(MID_EDITCLIENT, _("Edit client"), _("Edit the selected client settings"));
-	menu->Append(MID_DELETECLIENT, _("Delete client"), _("Delete the selected client"));
-	menu->Append(MID_VIEWCLIENT, _("View client files"), _("Open file browser in client folder"));
-	menu->AppendSeparator();
+	menuClient = new wxMenu();
+	menuClient->Append(MID_ADDCLIENT, _("Add a new client"), _("Add a new client to be monitored"));
+	menuClient->AppendSeparator();
+	menuClient->Append(MID_EDITCLIENT, _("Edit client"), _("Edit the selected client settings"));
+	menuClient->Append(MID_DELETECLIENT, _("Delete client"), _("Delete the selected client"));
+	menuClient->Append(MID_VIEWCLIENT, _("View client files"), _("Open file browser in client folder"));
+	menuClient->AppendSeparator();
 	#ifndef __WXMAC__
-	menu->Append(MID_RELOAD, _("Reload &Selection\tF5"), _("Reload the selected client"));
-	menu->Append(MID_RELOAD_ALL, _("Reload &All\tF6"), _("Reload all the clients"));
+	menuClient->Append(MID_RELOAD, _("Reload &Selection\tF5"), _("Reload the selected client"));
+	menuClient->Append(MID_RELOAD_ALL, _("Reload &All\tF6"), _("Reload all the clients"));
 	#else
-	menu->Append(MID_RELOAD, _("Reload &Selection\tCtrl+R"), _("Reload the selected client"));
-	menu->Append(MID_RELOAD_ALL, _("Reload &All\tCtrl+Shift+R"), _("Reload all the clients"));
+	menuClient->Append(MID_RELOAD, _("Reload &Selection\tCtrl+R"), _("Reload the selected client"));
+	menuClient->Append(MID_RELOAD_ALL, _("Reload &All\tCtrl+Shift+R"), _("Reload all the clients"));
 	#endif
-	menuBar->Append(menu, _("&Clients"));
+	menuBar->Append(menuClient, _("&Clients"));
 
 	// The 'Monitoring' menu
-	menu = new wxMenu();
+	menuMonitoring = new wxMenu();
 	#ifndef __WXMAC__
-	menu->Append(MID_TOGGLELOG, _("&Show/Hide FAHLog\tF8"), _("Toggle the log file"));
-	menu->AppendSeparator();
-	menu->Append(MID_TOGGLE_ETADATE, _("&Cycle ETA Style\tF9"), _("Cycle through the different ETA display styles"));
+	menuMonitoring->Append(MID_TOGGLELOG, _("&Show/Hide FAHLog\tF8"), _("Toggle the log file"));
+	menuMonitoring->AppendSeparator();
+	menuMonitoring->Append(MID_TOGGLE_ETADATE, _("&Cycle ETA Style\tF9"), _("Cycle through the different ETA display styles"));
 	#else
-	menu->Append(MID_TOGGLELOG, _("&Show/Hide FAHLog\tCtrl+L"), _("Toggle the log file"));
-	menu->AppendSeparator();
-	menu->Append(MID_TOGGLE_ETADATE, _("&Cycle ETA Style\tCtrl+E"), _("Cycle through the different ETA display styles"));
+	menuMonitoring->Append(MID_TOGGLELOG, _("&Show/Hide FAHLog\tCtrl+L"), _("Toggle the log file"));
+	menuMonitoring->AppendSeparator();
+	menuMonitoring->Append(MID_TOGGLE_ETADATE, _("&Cycle ETA Style\tCtrl+E"), _("Cycle through the different ETA display styles"));
 	#endif
-	menu->AppendSeparator();
-	menu->Append(MID_TOGGLE_INFOPANEL, _("Show/Hide &WU Info panel"), _("Toggle the display of the Work Unit Information panel"));
-	menuBar->Append(menu, _("&View"));
+	menuMonitoring->AppendSeparator();
+	menuMonitoring->Append(MID_TOGGLE_INFOPANEL, _("Show/Hide &WU Info panel"), _("Toggle the display of the Work Unit Information panel"));
+	menuBar->Append(menuMonitoring, _("&View"));
 
 	// The 'Tools' menu
-	menu = new wxMenu();
-	menu->Append(MID_TOGGLE_MESSAGES_FRAME, _("&Show/Hide Messages Window"), _("Toggle the messages window"));
-	menu->Append(MID_BENCHMARKS, _("&Benchmarks...\tCTRL+B"), _("Open the benchmarks dialog"));
-	menu->Append(MID_UPDATEPROJECTS, _("&Download New Projects"), _("Update the local project database"));
+	menuTools = new wxMenu();
+	menuTools->Append(MID_TOGGLE_MESSAGES_FRAME, _("&Show/Hide Messages Window"), _("Toggle the messages window"));
+	menuTools->Append(MID_BENCHMARKS, _("&Benchmarks...\tCTRL+B"), _("Open the benchmarks dialog"));
+	menuTools->Append(MID_UPDATEPROJECTS, _("&Download New Projects"), _("Update the local project database"));
 	//menu->Append(MID_CREATE_DEBUG_REPORT, _("Create debug report"), _("Create a debug state report to send to the developers"));
 	#ifdef __WXMAC__
-	menu->AppendSeparator();
-	menu->Append(MID_UPDATECHECK, _("&Check for update"), _("Check online for the latest version of FahMon"));
+	menuTools->AppendSeparator();
+	menuTools->Append(MID_UPDATECHECK, _("&Check for update"), _("Check online for the latest version of FahMon"));
 	#endif
-	menuBar->Append(menu, _("&Tools"));
+	menuBar->Append(menuTools, _("&Tools"));
 
 	// The 'Web' menu
-	menu = new wxMenu();
+	menuWeb = new wxMenu();
 	#ifndef __WXMAC__
-	menu->Append(MID_WWWMYSTATS, _("&My Stats\tF2"), _("View the personal statistics for the selected client"));
-	menu->Append(MID_WWWJMOL, _("&Jmol\tF3"), _("View the current project on the Jmol website"));
-	menu->Append(MID_WWWFAHINFO, _("fah&info\tF4"), _("View the current project on fahinfo.org"));
+	menuWeb->Append(MID_WWWMYSTATS, _("&My Stats\tF2"), _("View the personal statistics for the selected client"));
+	menuWeb->Append(MID_WWWJMOL, _("&Jmol\tF3"), _("View the current project on the Jmol website"));
+	menuWeb->Append(MID_WWWFAHINFO, _("fah&info\tF4"), _("View the current project on fahinfo.org"));
 	#else
-	menu->Append(MID_WWWMYSTATS, _("&My Stats\tCtrl+Shift+M"), _("View the personal statistics for the selected client"));
-	menu->Append(MID_WWWJMOL, _("&Jmol\tCtrl+J"), _("View the current project on the Jmol website"));
-	menu->Append(MID_WWWFAHINFO, _("fah&info\tCtrl+I"), _("View the current project on fahinfo.org"));
+	menuWeb->Append(MID_WWWMYSTATS, _("&My Stats\tCtrl+Shift+M"), _("View the personal statistics for the selected client"));
+	menuWeb->Append(MID_WWWJMOL, _("&Jmol\tCtrl+J"), _("View the current project on the Jmol website"));
+	menuWeb->Append(MID_WWWFAHINFO, _("fah&info\tCtrl+I"), _("View the current project on fahinfo.org"));
 	#endif
-	menu->AppendSeparator();
-	menu->Append(MID_WWWFOLDING, _("F@H &Website"), _("Open to the official Stanford website"));
-	menu->Append(MID_WWWFCORG, _("Folding &Forum"), _("Open the Folding@Home support forum"));
-	menu->Append(MID_WWWPROJECTS, _("&Projects Summary"), _("Open the list of the current projects"));
-	menu->Append(MID_WWWSERVERS, _("&Servers Status"), _("Open the list of the servers with their status"));
-	menuBar->Append(menu, _("&Web"));
+	menuWeb->AppendSeparator();
+	menuWeb->Append(MID_WWWFOLDING, _("F@H &Website"), _("Open to the official Stanford website"));
+	menuWeb->Append(MID_WWWFCORG, _("Folding &Forum"), _("Open the Folding@Home support forum"));
+	menuWeb->Append(MID_WWWPROJECTS, _("&Projects Summary"), _("Open the list of the current projects"));
+	menuWeb->Append(MID_WWWSERVERS, _("&Servers Status"), _("Open the list of the servers with their status"));
+	menuBar->Append(menuWeb, _("&Web"));
 
 	// The 'Help' menu
-	menu = new wxMenu();
+	menuHelp = new wxMenu();
 	#ifndef __WXMAC__
-	menu->Append(wxID_HELP, _("&Help Contents\tF1"), _("See help contents"));
+	menuHelp->Append(wxID_HELP, _("&Help Contents\tF1"), _("See help contents"));
 	#else
-	menu->Append(wxID_HELP, _("&Help Contents\tCtrl+?"), _("See help contents"));
+	menuHelp->Append(wxID_HELP, _("&Help Contents\tCtrl+?"), _("See help contents"));
 	#endif
-	menu->Append(MID_WWWFAHMONIRC, _("FahMon &IRC Channel"), _("Join the FahMon IRC channel for online help"));
-	menu->Append(wxID_ABOUT, _("&About"), wxString::Format(_("About %s"), _T(FMC_APPNAME)));
+	menuHelp->Append(MID_WWWFAHMONIRC, _("FahMon &IRC Channel"), _("Join the FahMon IRC channel for online help"));
+	menuHelp->Append(wxID_ABOUT, _("&About"), wxString::Format(_("About %s"), _T(FMC_APPNAME)));
 #ifdef __WXMAC__
 	{
 		//wxApp::s_macHelpMenuTitleName = _("&Help");
 	    wxApp::s_macAboutMenuItemId = wxID_ABOUT;
 	}
 #endif
-	menuBar->Append(menu, _("&Help"));
+	menuBar->Append(menuHelp, _("&Help"));
 
 	SetMenuBar(menuBar);
 }

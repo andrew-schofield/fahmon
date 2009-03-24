@@ -36,7 +36,6 @@
 #include "preferencesManager.h"
 #include "webMonitor.h"
 #include "trayManager.h"
-
 #include "wx/image.h"
 #include "wx/intl.h"
 #include "wx/filename.h"
@@ -75,6 +74,7 @@ bool FahMonApp::OnInit(void)
 	m_uploadReport = false;
 
 	mLocal = false;
+	mStress = false;
 
     // call this to tell the library to call our OnFatalException()
 	wxHandleFatalExceptions();
@@ -87,6 +87,7 @@ bool FahMonApp::OnInit(void)
 #ifdef _FAHMON_WIN32_
 	cmdline.AddSwitch(wxT("l"), wxT("local"), wxT("Use local directory for all settings."));
 #endif
+	cmdline.AddSwitch(wxT("s"), wxT("stress"), wxT("Run FahMon in stress-test mode"));
 	cmdline.AddSwitch(wxT("h"), wxT("help"), wxT("Displays this information."));
 
 	// Show help on --help or invalid commands
@@ -105,6 +106,7 @@ bool FahMonApp::OnInit(void)
 		printf("%s\n", FMC_PRODUCT);
 		return false;
 	}
+	mStress = cmdline.Found(wxT("stress"));
 
 	// Check for another instance
 	#ifndef __WXMAC__

@@ -92,6 +92,7 @@ protected:
 	wxLocale                 m_locale; /**< The locale of the system */
 	wxServerBase            *mServerIPC; /**< The IPC server (unix socket on Linux, DDE on Windows) */
 	bool                     mLocal; /**< Should FahMon use local settings */
+	bool                     mStress; /**< Should FahMon be run in stress-test mode */
 
 public:
 	/**
@@ -118,9 +119,14 @@ public:
 	void UploadReport(bool doIt) { m_uploadReport = doIt; }
 
 	/**
-	 * Should FahMOn run from a local directory only (no special config folder)
+	 * Should FahMon run from a local directory only (no special config folder)
 	 **/
 	bool GetLocal(void) {return mLocal;}
+
+	/**
+	 * Should FahMon run in stress-test mode
+	 **/
+	bool GetStress(void) {return mStress;}
 
 	/**
 	 * This is called just before the application exits.
