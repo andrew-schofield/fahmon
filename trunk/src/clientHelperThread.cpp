@@ -79,7 +79,7 @@ void* SerialClientHelperThread::Entry(void)
 	{
 		client = ClientsManager::GetInstance()->Get(i);
 
-		if(!(mType == CM_LOADALL || mType == CM_LOADALLF || ((mType == CM_LOADLOCAL || mType == CM_LOADLOCALF) && multiProtocolFile::GetFileProtocol(client->GetLocation()) == multiProtocolFile::FILE) || ((mType == CM_LOADINET || mType == CM_LOADINETF) && (multiProtocolFile::GetFileProtocol(client->GetLocation()) == multiProtocolFile::FTP || multiProtocolFile::GetFileProtocol(client->GetLocation()) == multiProtocolFile::HTTP))))
+		if(!(mType == CM_LOADALL || mType == CM_LOADALLF || ((mType == CM_LOADLOCAL || mType == CM_LOADLOCALF) && multiProtocolFile::GetFileProtocol(client->GetLocation().c_str()) == multiProtocolFile::FILE) || ((mType == CM_LOADINET || mType == CM_LOADINETF) && (multiProtocolFile::GetFileProtocol(client->GetLocation().c_str()) == multiProtocolFile::FTP || multiProtocolFile::GetFileProtocol(client->GetLocation().c_str()) == multiProtocolFile::HTTP))))
 			continue;
 		if(mForce == false && !client->ReloadNeeded())
 			continue;
