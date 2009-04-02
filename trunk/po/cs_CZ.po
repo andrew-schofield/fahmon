@@ -2,20 +2,21 @@
 # Copyright (C) 2007-8 Andrew Schofield
 # This file is distributed under the same license as the FahMon package.
 #
-# Martin Bednar <serafean@gmail.com>, 2007, 2008.
+# Martin Bednar <serafean@gmail.com>, 2007, 2008, 2009.
 # Andrew Schofield <andrew_s@fahmon.net>, 2007, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: cs_CZ\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2009-03-24 14:18+0000\n"
-"PO-Revision-Date: 2008-11-02 14:31+0100\n"
+"POT-Creation-Date: 2009-04-02 14:55+0100\n"
+"PO-Revision-Date: 2009-03-28 13:41+0100\n"
 "Last-Translator: Martin Bednar <serafean@gmail.com>\n"
-"Language-Team: Czech <en@li.org>\n"
+"Language-Team: French <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Lokalize 0.3\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: src/aboutDialog.cpp:49
 msgid "About"
@@ -166,7 +167,7 @@ msgstr "Neznámý klient"
 #: src/mainDialog.cpp:532 src/mainDialog.cpp:533 src/mainDialog.cpp:534
 #: src/mainDialog.cpp:535
 msgid "Unknown"
-msgstr "Neznámý"
+msgstr "Neznámé"
 
 #: src/client.cpp:92
 msgid "Log not loaded!"
@@ -196,7 +197,7 @@ msgstr "Složka %s neexistuje nebo ji nelze číst"
 #: src/client.cpp:163
 #, c-format
 msgid "%s cannot be reloaded! (FAHlog.txt does not exist)"
-msgstr ""
+msgstr "Nelze znovu načíst %s (FAHlog.txt neexistuje)"
 
 #: src/client.cpp:166
 #, c-format
@@ -224,9 +225,9 @@ msgid "Error while reading %sunitinfo.txt!"
 msgstr "Nastala chyba při načítání %sunitinfo.txt!"
 
 #: src/client.cpp:396
-#, fuzzy, c-format
+#, c-format
 msgid "Finished Reloading %s"
-msgstr "Znovu načítám %s"
+msgstr "%s znovu načteno"
 
 #: src/client.cpp:461
 #, c-format
@@ -234,9 +235,9 @@ msgid "The progress value in file %s could not be found/parsed"
 msgstr "Hodnotu postupu v souboru %s nelze najít/analyzovat"
 
 #: src/client.cpp:514
-#, fuzzy, c-format
+#, c-format
 msgid "The core version in file %s could not be found/parsed"
-msgstr "Hodnotu postupu v souboru %s nelze najít/analyzovat"
+msgstr "Nelze načíst verzi jádra v %s"
 
 #: src/client.cpp:579
 #, c-format
@@ -312,19 +313,18 @@ msgid "Client information"
 msgstr "Informace o klientovi"
 
 #: src/clientDialog.cpp:87
-#, fuzzy
 msgid "Enter a name to describe this client."
-msgstr "Povolit klienta"
+msgstr "Vložte jméno pro popis klienta"
 
 #: src/clientDialog.cpp:89
 msgid ""
 "Select the directory containing FAHlog.txt for the client you wish to "
 "monitor."
-msgstr ""
+msgstr "Vybrat složku obsahující FAHlog.txt klienta, kterého chcete sledovat."
 
 #: src/clientDialog.cpp:90
 msgid "Client is on a Virtual Machine"
-msgstr ""
+msgstr "Klient je ve virtuálním stroji"
 
 #: src/clientDialog.cpp:92
 msgid "Location:"
@@ -364,7 +364,7 @@ msgstr ""
 "Seznam klientů nebude uložen."
 
 #: src/clientsManager.cpp:217
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "# %s : contains the list of clients\n"
 "#\n"
@@ -373,7 +373,7 @@ msgid ""
 msgstr ""
 "# %s : obsahuje seznam klientů\n"
 "#\n"
-"# \"Název\"\t\"Umístění\"\tZakázán(*)\n"
+"# \"Název\"\t\"Umístění\"\tVM(*)\n"
 "\n"
 
 #: src/core.cpp:132
@@ -439,27 +439,24 @@ msgstr ""
 "projektech (např. termíny)."
 
 #: src/firstTimeDialog.cpp:79
-#, fuzzy
 msgid "You will be able to perform updates by using the 'Tools' menu."
-msgstr "Budete je moci vykonat pomocí nabídky 'FahMon'."
+msgstr "Budete moci vykonat aktualizace pomocí nabídky 'Nástroje'."
 
 #: src/firstTimeDialog.cpp:83
-#, fuzzy
 msgid ""
 "To monitor a client, you need to add it by choosing 'Add a new client' from "
 "the 'Clients' menu."
 msgstr ""
-"Pro sledování klienta ho budete nejprve přidat pravým kliknutím a vybráním "
-"'Přidat nového klienta'."
+"Pro sledování klienta musíte jej nejprve přidat vybráním 'Přidat nového "
+"klienta' z nabídky 'Klienti'."
 
 #: src/firstTimeDialog.cpp:84
-#, fuzzy
 msgid ""
 "Alternatively you can right click the client list and choose 'Add a new "
 "client' from the menu."
 msgstr ""
-"Pro sledování klienta ho budete nejprve přidat pravým kliknutím a vybráním "
-"'Přidat nového klienta'."
+"Dále můžete kliknout pravym na seznam klientů a vybrat 'Přidat nového "
+"klienta' z nabídky."
 
 #: src/firstTimeDialog.cpp:85
 msgid ""
@@ -468,13 +465,12 @@ msgid ""
 msgstr "Název který dáte klientovi není důležité, je to jako přezdívka."
 
 #: src/firstTimeDialog.cpp:86
-#, fuzzy
 msgid ""
 "All further operations on clients (e.g. edition, deletion) can also made by "
 "right-clicking on the list."
 msgstr ""
-"Veškeré další operace s klienty (např. edice, mazání) jsou též provázeny "
-"praým kliknutím na seznam."
+"Veškeré další operace s klienty (např. edice, mazání) lze též provézt praým "
+"kliknutím na seznam."
 
 #: src/firstTimeDialog.cpp:90
 #, c-format
@@ -487,10 +483,12 @@ msgstr ""
 msgid ""
 "For interactive help you can join our IRC channel at #fahmon on freenode.net:"
 msgstr ""
+"Pro interaktivní pomoc se připojte na náš kanál IRC : #fahmon na freenode.net"
 
 #: src/firstTimeDialog.cpp:94
+#, fuzzy
 msgid "Connect to the FahMon IRC channel in a web browser"
-msgstr ""
+msgstr "Přihllašte se na kanál IRC FahMon pro pomoc"
 
 #: src/firstTimeDialog.cpp:143 src/main.cpp:216 src/main.cpp:222
 #, c-format
@@ -509,9 +507,8 @@ msgstr "Název"
 
 #: src/listViewClients.cpp:171 src/listViewClients.cpp:921
 #: src/webMonitor.cpp:582
-#, fuzzy
 msgid "Client Type"
-msgstr "Klienti"
+msgstr "typ klienta"
 
 #: src/listViewClients.cpp:172 src/listViewClients.cpp:922
 #: src/webMonitor.cpp:567
@@ -530,7 +527,7 @@ msgstr "Jádro"
 #: src/listViewClients.cpp:175 src/listViewClients.cpp:925
 #: src/webMonitor.cpp:583
 msgid "Core Version"
-msgstr ""
+msgstr "Verze jádra"
 
 #: src/listViewClients.cpp:176 src/listViewClients.cpp:926
 #: src/webMonitor.cpp:562
@@ -641,7 +638,7 @@ msgstr "Jiná instance %s již běží!"
 #: src/main.cpp:246
 #, c-format
 msgid "Old settings imported into %s"
-msgstr ""
+msgstr "Stará nastavení importována do %s"
 
 #: src/mainDialog.cpp:183
 #, c-format
@@ -689,7 +686,7 @@ msgstr ""
 #: src/mainDialog.cpp:621 src/mainDialog.cpp:1228
 #, c-format
 msgid "%.2f PPD"
-msgstr ""
+msgstr "%.2f PPD"
 
 #: src/mainDialog.cpp:648 src/mainDialog.cpp:698
 msgid "&Check for update"
@@ -922,11 +919,11 @@ msgstr "Obsah Nápovědy\tCtrl+?"
 
 #: src/mainDialog.cpp:727
 msgid "FahMon &IRC Channel"
-msgstr ""
+msgstr "FahMon &IRC Kanál"
 
 #: src/mainDialog.cpp:727
 msgid "Join the FahMon IRC channel for online help"
-msgstr ""
+msgstr "Přihllašte se na kanál IRC FahMon pro pomoc"
 
 #: src/mainDialog.cpp:728
 msgid "&About"
@@ -1081,6 +1078,8 @@ msgid ""
 "By collecting xyz files you can help the jmol project by submitting missing "
 "projects."
 msgstr ""
+"Sbíráním chybějících  xyz souborů a jejich odesláním můžete vypomoci "
+"projektu jmol."
 
 #: src/preferencesDialog.cpp:205
 msgid "Auto update projects database when needed"
@@ -1091,6 +1090,8 @@ msgid ""
 "This allows FahMon to keep up to date with any new projects you might "
 "download automatically."
 msgstr ""
+"Toto umožnuje Fahmon zůstat automaticky aktualizovaný s nově staženými "
+"projekty"
 
 #: src/preferencesDialog.cpp:207
 msgid "Always list inaccessible clients last"
@@ -1098,7 +1099,7 @@ msgstr "Vždy zobrazit nedostupné klienty poslední"
 
 #: src/preferencesDialog.cpp:208
 msgid "Keeps inaccessible clients at the bottom of the clients list."
-msgstr ""
+msgstr "Drží nepřístupné klienty ve spodu seznamu."
 
 #: src/preferencesDialog.cpp:209
 msgid "Check for FahMon updates on startup"
@@ -1137,14 +1138,12 @@ msgid "Auto reload clients"
 msgstr "Automaticky znovu načíst klienty"
 
 #: src/preferencesDialog.cpp:259
-#, fuzzy
 msgid "Local client reload interval (mn)"
-msgstr "Interval znovunačítání (mn)"
+msgstr "Interval znovunačítání lokálního klienta (mn)"
 
 #: src/preferencesDialog.cpp:260
-#, fuzzy
 msgid "Use experimental reload system (local only)"
-msgstr "Použit experimentální systém znovunačítání"
+msgstr "Použit experimentální systém znovunačítání (pouze lokální)"
 
 #: src/preferencesDialog.cpp:261
 msgid ""
@@ -1152,22 +1151,24 @@ msgid ""
 "This can prevent unecessary reloads and gives a more timely response to "
 "changes in the log."
 msgstr ""
+"Ověřit čas poslední modifikace logu před znovu načtením klienta. Tímto lze "
+"zamezit nepotřebnému načítání a poskytne včasnější reakci na změny v logu."
 
 #: src/preferencesDialog.cpp:262
-#, fuzzy
 msgid "HTTP/FTP client reload interval (mn)"
-msgstr "Interval znovunačítání (mn)"
+msgstr "Interval znovunačítání HTTP/FTP klienta (mn)"
 
 #: src/preferencesDialog.cpp:263
-#, fuzzy
 msgid "Reload clients in series"
-msgstr "Znovu načíst klienta "
+msgstr "Sériově znovunačíst klienta "
 
 #: src/preferencesDialog.cpp:264
 msgid ""
 "This option can reduce memory consumption if monitoring a large number of "
 "clients. Clients are reloaded sequentially in a single thread."
 msgstr ""
+"Tato možnost může snížit spotřebu paměti při sledování vysokého počtu "
+"klientů. Klienti jsou načteni sekvenčně v jednom vláknu."
 
 #: src/preferencesDialog.cpp:269
 msgid ""
@@ -1177,6 +1178,11 @@ msgid ""
 "Last 3 frames: 3 frames rolling average\n"
 "Effective rate: Based on download time and current frame"
 msgstr ""
+"Formát výpočtů PPD\n"
+"Všechny obrázky : 255 uložených datových  bodů využito\n"
+"Poslední obrázek : okamžité PPD\n"
+"Poslední 3 obrázky : Klouzavý průměr 3 obrázků\n"
+"Efektivní tempo : Na základě času na stažení a současným obrázku"
 
 #: src/preferencesDialog.cpp:270
 msgid "Ignore asynchronous clocks"
@@ -1187,6 +1193,8 @@ msgid ""
 "Prevents clients from being reported as *hung* if their local clocks are out "
 "of sync with this machine."
 msgstr ""
+"zabránit ohlášení se klienta jako *Zablokovaný* pokud jeho čas je mimo "
+"synchronizaci s časem stroje."
 
 #: src/preferencesDialog.cpp:273
 msgid "Display dates as"
@@ -1230,9 +1238,8 @@ msgstr ""
 "Heslo:"
 
 #: src/preferencesDialog.cpp:343
-#, fuzzy
 msgid "Use a proxy for FTP connections"
-msgstr "Použít proxy pro HTTP spojení"
+msgstr "Použít proxy pro FTP spojení"
 
 #: src/preferencesDialog.cpp:417
 msgid "Use the following settings for new project downloads"
@@ -1250,9 +1257,8 @@ msgid "Filename:"
 msgstr "Název souboru:"
 
 #: src/preferencesDialog.cpp:428
-#, fuzzy
 msgid "Log error messages only"
-msgstr "Přepnout okno hlášek"
+msgstr "Zapisovat pouze chyby"
 
 #: src/preferencesDialog.cpp:474
 msgid "Web Browser:"
@@ -1263,6 +1269,8 @@ msgid ""
 "Enter the location of your preferred web browser. In most cases \"firefox\" "
 "should suffice."
 msgstr ""
+"Vložte umístění vašeho oblíbeného prohlížeče. Většinou  \"firefox\" je "
+"postačující"
 
 #: src/preferencesDialog.cpp:476
 msgid "File Manager:"
@@ -1274,7 +1282,7 @@ msgstr "Příkaz pro správce souborů:"
 
 #: src/preferencesDialog.cpp:479
 msgid "Provide any modifications to the file manager command."
-msgstr ""
+msgstr "Uveďte případné modifikace příkazu pro správce souborů."
 
 #: src/preferencesDialog.cpp:480
 msgid "Manually set timezone to UTC +"
@@ -1285,6 +1293,7 @@ msgid ""
 "Set this option if you find that FahMon isn't detecting your timezone "
 "correctly."
 msgstr ""
+"Nastavte tuto možnost pokud FahMon nedetekuje správně vaše časové pásmo."
 
 #: src/preferencesDialog.cpp:485
 msgid "Windows Explorer"
@@ -1301,7 +1310,7 @@ msgstr "Vyhledávač"
 
 #: src/preferencesDialog.cpp:494
 msgid "Select your preferred file manager. Used for opening client folders."
-msgstr ""
+msgstr "Nastavte Váš oblíbený správce souborů. Pro otevírání složky klienta."
 
 #: src/preferencesDialog.cpp:573
 msgid "Export Web Application"
@@ -1312,6 +1321,7 @@ msgid ""
 "Enables the creation of a fancy web page that mimics the old FahMon layout "
 "showing current client data."
 msgstr ""
+"Umožnuje vytvoření webové stránky, která napodobuje starý vzhled FahMon."
 
 #: src/preferencesDialog.cpp:576 src/preferencesDialog.cpp:587
 #: src/preferencesDialog.cpp:598
@@ -1319,6 +1329,8 @@ msgid ""
 "Enter the location where the output should be saved. This can be a local "
 "file, or an ftp url."
 msgstr ""
+"Vložte umístění pro uložení výstupu. Může to být místní soubor, nebo ftp "
+"adresa."
 
 #: src/preferencesDialog.cpp:584
 msgid "Export Simple Web page"
@@ -1327,6 +1339,8 @@ msgstr "Exportovat jednoduchou webovou stránku"
 #: src/preferencesDialog.cpp:585
 msgid "Enables the creation of a compact web page showing current client data."
 msgstr ""
+"Umožnuje vytvoření  stručné webové stránky s aktuálními informacemi o "
+"klientech."
 
 #: src/preferencesDialog.cpp:595
 msgid "Export Simple Text file"
@@ -1336,33 +1350,32 @@ msgstr "Exportovat jednoduchý textový soubor"
 msgid ""
 "Enables the creation of a compact text file showing current client data."
 msgstr ""
+"Umožnuje vytvoření stručného textového souboru s aktuálními informacemi o "
+"klientech."
 
 #: src/preferencesDialog.cpp:664
 msgid "Custom Web Application Template"
 msgstr "Vlastní Šablona pro Webovou Aplikaci"
 
 #: src/preferencesDialog.cpp:666
-#, fuzzy
 msgid "Enter the location of the web application template."
-msgstr "Vybrat Šablonu pro Webovou Aplikaci"
+msgstr "Vložte umístění šablony pro Webovou Aplikaci."
 
 #: src/preferencesDialog.cpp:674
 msgid "Custom Simple Web Template"
 msgstr "Vlastní Šablona pro Jednoduchou Webovou Stránku"
 
 #: src/preferencesDialog.cpp:676
-#, fuzzy
 msgid "Enter the location of the simple web template."
-msgstr "Vybrat kam uložit jednoduchou webovou stránku"
+msgstr "Vložte umístění šablony jednoduché webové stránky."
 
 #: src/preferencesDialog.cpp:684
 msgid "Custom Simple Text Template"
 msgstr "Vlastní Šablona pro Jednoduchý Text"
 
 #: src/preferencesDialog.cpp:686
-#, fuzzy
 msgid "Enter the location of the simple text template."
-msgstr "Vybrat kam uložit jednoduchý textový soubor."
+msgstr "Vložte umístění šablony jednoduchého textového souboru."
 
 #: src/preferencesDialog.cpp:1186
 msgid "Choose a local project data file"
@@ -1532,7 +1545,7 @@ msgstr "Jednoduchý textový výstup"
 
 #: src/webMonitor.cpp:580
 msgid "Last updated:"
-msgstr "Naposled aktualizované:"
+msgstr "Naposled aktualizováno:"
 
 #~ msgid "%.1f KB/s"
 #~ msgstr "%.1f KB/s"
