@@ -52,6 +52,7 @@ SVN
       * Message Manager now only logs errors by default.
       * Replaced internal inet protocol handling with libcurl.
       * Added "stress test" mode. Start with -s or --stress
+      * New user manual.
 
     Windows
 
