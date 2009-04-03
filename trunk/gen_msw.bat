@@ -24,7 +24,7 @@ mkdir .\Release\docs
 copy /y .\AUTHORS .\Release\docs\AUTHORS.txt
 copy /y .\ChangeLog .\Release\docs\ChangeLog.txt
 copy /y .\COPYING .\Release\docs\COPYING.txt
-copy /y .\doc\help.pdf .\Release\docs\help.pdf
+copy /y .\doc\help\User_Guide.pdf .\Release\docs\help.pdf
 copy /y .\NEWS .\Release\docs\NEWS.txt
 copy /y .\README .\Release\docs\README.txt
 copy /y .\TEMPLATE_SYNTAX .\Release\docs\TEMPLATE_SYNTAX.txt
