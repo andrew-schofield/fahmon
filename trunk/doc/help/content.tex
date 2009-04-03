@@ -1,0 +1,589 @@
+\section{Introduction}
+
+This section gives an overview of FahMon, what it is and is not, and what it
+it might be used for.
+
+\subsection{What is FahMon?}
+
+FahMon is an open-source tool (GPL license) that allows you to quickly check the
+progress of your Folding@Home client (or clients if you have several), avoiding
+you having to open different files and/or to go to the Internet (for example to
+know how much your current work unit is worth). Other monitoring tools exist
+(such as Electron Microscope, FahSpy and InCrease), so if you don't like FahMon,
+have a look at them!
+
+FahMon is entirely coded in C++ and uses the wxWidgets library, which allows
+FahMon to exist both for Linux, Windows and OS X. It is designed to be really
+easy to use, and you should thus not encounter any major problems.
+
+\subsection{What is FahMon not?}
+
+FahMon is not a Folding@Home client manager, it is designed solely to monitor
+clients.
+
+\subsection{What can FahMon be used for?}
+
+FahMon can be used to simply check how far along your clients are on their
+current WUs. It can also track the performance of clients on different WUs
+thanks to its benchmark database. You can use FahMon to publish client stats
+to the web for remote monitoring too.
+
+\subsection{Licenses}
+
+FahMon is licensed under the GNU General Public License; a copy of this license
+is included in the file \url{COPYING}.
+FahMon also includes wxCurl which is licensed under the wxWidgets license which
+can be found here \url{http://www.wxwidgets.org/about/newlicen.htm}
+
+For more information on the licenses, please visit the \url{opensource.org}
+website.
+
+\section{Installing FahMon}
+
+This section describes how to install FahMon.
+
+\subsection{Windows}
+
+Windows users can either download a zipped version of FahMon, or as an
+installer. The two are identical except for the method of installation. The
+installer will create Start menu entries for you and install itself into
+\texttt{\%PROGRAM FILES\%}. The zipped version can simply be extracted wherever
+you want. You will need to create your own shortcuts etc. for the zipped
+version.
+
+\subsection{Linux}
+
+\subsubsection{Packages}
+
+If a package exists for your Linux distribution on the download page, it is
+easiest to use that. Note that some distributions maintain FahMon as part of
+their standard software repositories (Arch Linux for example does this), so it
+is often worthwhile checking your package manager to see if someone has done the
+hard work for you already.
+
+\subsubsection{Compiling from source}
+
+Compiling from source is \textit{harder} than installing from a pre-built
+package, however it is not \textit{that} hard.
+
+\paragraph{Prerequisites}
+
+\begin{itemize}
+ \item A C++ compiler. gcc-c++ (g++) is the usual compiler for most Linux
+ distributions.
+ \item The unicode wxGTK libraries and their development headers. Version 2.8.0
+ is the minimum required.
+ \item libcurl. This is usually installed when you install curl itself. Some
+ distributions also appear to require that you install the development headers
+ too.
+\end{itemize}
+
+The simplest way to install the above software is to open your package manager
+and search for the software to install if you don't already know the package
+names.
+
+The following table lists the package names of the required components form a
+number of common distributions.
+
+\begin{center}
+\begin{tabular}{l|l|l|l}
+\textbf{Component}   & \textbf{Ubuntu}       & \textbf{Fedora}        &
+\textbf{PCLinuxOS} \\
+\hline
+\textit{gcc-g++}     & g++                            & gcc-c++                &
+gcc-c++ \\
+\textit{wxGTK}       & libwxgtk2.8-dev                & wxgtk-devel            &
+wxgtk2.8-devel \\
+\textit{libcurl }    & libcurl3, libcurl4-openssl-dev & libcurl, libcurl-devel &
+libcurl3, libcurl3-devel \\
+\end{tabular}
+\end{center}
+
+\paragraph{Compiling}
+
+You normally only need to issue 3 commands after navigating to the source folder
+in a terminal
+
+\texttt{./configure}\\
+Optionally you can include a prefix parameter, which affects the install
+location. If this doesn't complete successfully, check the errors, which will
+usually be about a missing package. If it worked, continue:
+
+\texttt{make}\\
+This will take a while as it compiles the source. No errors should occur. Ignore
+any warnings. You now need to log in as root to install. Different distributions
+have different ways of achieving this. So either:
+
+\texttt{sudo make install}\\
+This will work for ubuntu and other sudo-enabled distributions and will prompt
+you for you sudo password.
+
+OR
+
+\texttt{su -c \textquotedblright make install\textquotedblright}\\
+This will work for non-sudo distributions and will prompt you for your root
+password.
+
+Depending on your system configuration you may find that you also need to run
+ldconfig in order for FahMon to find the new libwxcurl library. To do this
+either run
+
+\texttt{sudo ldconfig}
+
+OR
+
+\texttt{su -c \textquotedblright ldconfig\textquotedblright}
+
+
+\subsection{OS X}
+
+The package for OS X is in the form of a zipped universal binary. Installation
+is as simple as extracting the archive and copying FahMon into your applications
+folder.
+
+
+\section{Using FahMon}
+
+\subsection{First launch}
+
+When you launch FahMon for the first time, you should get a dialog like this
+one:
+
+\begin{center}
+ \includegraphics[width=9cm]{1.png}
+ % 1.png: 515x411 pixel, 72dpi, 18.17x14.50 cm, bb=0 0 515 411
+\end{center}
+
+
+It suggests that you should download the new projects definition from the
+Folding@home website. This definition contains information required by FahMon to
+display deadlines, calculate points-per-day etc. Beware that if you need to use
+a proxy for HTTP connections, you should not download the definition here as it
+will fail; you will have to first change the proxy settings in preferences, then
+update the project definition.
+
+
+\subsection{GUI overview}
+
+The default layout for FahMon is that of a simple list of clients. This is laid
+out in a tabular format with various pieces of information shown in columns.
+
+\begin{center}
+ \includegraphics[width=15cm]{2.png}
+ % 2.png: 870x307 pixel, 72dpi, 30.69x10.83 cm, bb=0 0 870 307
+\end{center}
+
+The columns that are displayed can be altered by right-clicking the column
+header and selecting the columns you wish to appear in the pop-up menu. Altering
+the order of columns is not supported. Various actions can be performed on the
+clients by right-clicking their entries in the client list. This includes
+editing details, and individually enabling/disabling monitoring of a particular
+client. Double-clicking on an entry will open up your file-manager at the
+location FahMon is monitoring for a given client.
+
+The statusbar at the bottom of the FahMon window is split into three sections.
+The left-most will display hints for various menu items, as well as warning you
+about any potential problems that wouldn't normally be apparent. The middle
+section will display the monitored location of the currently selected client. If
+you are monitoring via ftp or HTTP, the username and password will be masked.
+The right-most section will display the total calculated PPD from all monitored
+clients.
+
+By default FahMon does not display the contents of FAHlog.txt for any clients.
+You can enable this display from the view menu which will expand the layout and
+show the log for the current client below the client list.
+
+\begin{center}
+ \includegraphics[width=15cm]{3.png}
+ % 3.png: 870x662 pixel, 72dpi, 30.69x23.35 cm, bb=0 0 870 662
+\end{center}
+
+An alternative layout is available and will be familiar to users of previous
+versions of FahMon. To enable this select \textit{Show/Hide WU Info Panel}. This
+will create a panel on the right-hand side of the client-list which shows
+various pieces of information based on the currently selected client. In this
+layout a progress bar for the current client is shown beneath the client list.
+
+\begin{center}
+ \includegraphics[width=12cm]{4.png}
+ % 4.png: 792x307 pixel, 72dpi, 27.94x10.83 cm, bb=0 0 792 307
+\end{center}
+
+
+
+
+\subsection{Adding clients}
+
+Adding clients for FahMon to monitor can be accomplished in two different ways.
+The first, which is simplest if you have machines on a local network is to drag
+the folder in which FahMon should monitor onto the client list. The second way
+is either right-click the client list and select \textit{Add a new client}, or
+select the same from the \textit{Clients} menu.
+
+However you choose to add a client, the \textit{Client edition} dialog will
+appear.
+
+\begin{center}
+ \includegraphics[width=6.5cm]{5.png}
+ % 5.png: 328x186 pixel, 72dpi, 11.57x6.56 cm, bb=0 0 328 186
+\end{center}
+
+
+Here is where you tell FahMon where the new client is located. If you
+dragged-and-dropped your new client, this will be filled in for you. You also
+need to choose a name for each client you add. This name can be anything you
+want, it's just like a nickname for the client. Most people tend to use the
+computer name and client type or number e.g. \textit{Machine1 - GPU1}.
+
+Clients being monitored on remote machines may be accessed by a number of
+different methods. If the machines are accessible via Windows Network Shares
+(SMB/SAMBA) then you can use their UNC path as the monitoring location on
+Windows machines e.g. \textbackslash\textbackslash machine1\textbackslash
+Folding1. If you are using Linux/OS X you will need to mount these into your
+filesystem as there is no facility to access SMB shares directly in FahMon.
+
+Remote clients may also be accessed via FTP or HTTP if available. Monitoring
+these clients is as simple as entering the correct URI in the format
+\textit{http://username:password@server/path/to/client/} or
+\textit{ftp://username:password@server/path/to/client/}
+
+If you are monitoring a client running as a guest inside a Virtual Machine such
+as VMWare, it is recommended that you check the box for this on the client
+edition dialog. This will enable some extra heuristics to account for the fact
+that VMWare guests often have trouble keeping their clock synchronised with the
+host machine. Leaving this box unchecked for a VM guest may result in erroneous
+\textit{Hung} or \textit{Inactive} states being triggered. This heuristic is a
+workaround and is not 100\% reliable; to improve monitoring of VM guests it is
+recommended that they regularly synchronise with an NTP server to eliminate
+asynchrony with the host machine clock.
+
+\textbf{Note}: On Windows systems running the v6 Systray clients, the location
+you need to enter is the folder inside ``\texttt{Documents and
+Settings\textbackslash UserName\textbackslash Application Data\textbackslash
+Folding@home\textbackslash CLIENT}'' (XP) or ``\texttt{Users\textbackslash
+UserName\textbackslash AppData\textbackslash Roaming\textbackslash CLIENT}''
+(Vista).
+
+Once a client has been added FahMon will start monitoring it and will populate
+the various fields in the client list with information as it becomes available.
+
+\subsection{The monitoring process}
+
+The default behaviour for FahMon is to automatically reload any \textit{local
+clients} (local being defined as anything in the current filesystem, or
+accessible by UNC) every 5 minutes, and any \textit{internet clients} (via ftp
+or HTTP) every 10 minutes. These intervals can be altered if required.
+
+Clients can also be reloaded manually by either right-clicking a client and
+selecting \textit{Reload client} or selecting the same from the \textit{Clients}
+menu. The \textit{Clients} menu also offers the option to reload all clients.
+Choosing either of these options forcibly reloads any clients regardless of any
+other monitoring options (except for a client being disabled).
+
+The monitoring process relies on a number of files being available for FahMon to
+read:
+\begin{itemize}
+ \item \textbf{FAHlog.txt}
+  \\This most obvious source of data and is parsed for current progress, client
+status and is used to calculated the frame count.
+ \item \textbf{unitinfo.txt}
+  \\This is used to obtain current progress when unobtainable from FAHlog.txt.
+ \item \textbf{queue.dat}
+  \\This is parsed for information about the current WU including PRCG (Project,
+Run, Clone, Generation), and assignment specific data.
+ \item \textbf{work/logfile\_xx.txt}
+  \\This file is parsed for current core version. On Linux this information
+might not be available due to the file-permissions set by the core.
+\end{itemize}
+
+
+\subsection{Client status}
+
+The current status of a client is denoted by a small coloured square at the left
+of each client in the list.
+
+There are 6 different colours:
+\begin{itemize}
+ \item \textbf{Black}
+  \\FahMon is unable to access to the directory where this client is located.
+ \item \textbf{Red}
+  \\The client is currently stopped.
+ \item \textbf{Orange}
+  \\The client is currently paused.
+ \item \textbf{Yellow}
+  \\The client seems to be inactive or in an unknown state. The former happens
+   most of the time when the elapsed time since the last completed frame is too
+   high (this happens if another process is using the processor). An unknown
+   state occurs when FahMon does not have sufficient information to decide
+   whether the client is running or not. Check the Messages Window to find out
+   what is happening.
+ \item \textbf{Blue (optional)}
+  \\The client has been flagged as having an asynchronous clock, this state is
+   also triggered when the monitoring machine passes over 00:00 local time. The
+   basic meaning of this state is that the client is still working, but you
+   \textit{may} need to check on it.
+ \item \textbf{Green}
+  \\Everything is OK, FahMon should display all information about this client,
+   as long as the project database is up to date.
+\end{itemize}
+
+\subsection{Additional features}
+
+\subsubsection{Benchmarks database}
+
+FahMon keeps a record of the performance of all your WUs on each machine that is
+monitored. These data are stored in the benchmarks database which shows you the
+PPDs for each machine that has completed a given project. For clients currently
+running, you can see the result from all 5 PPD calculation algorithms; for
+stopped clients you can only see the minimum and average frame times.
+
+\begin{center}
+ \includegraphics[width=10cm]{6.png}
+ % 6.png: 558x377 pixel, 72dpi, 19.68x13.30 cm, bb=0 0 558 377
+\end{center}
+
+\subsubsection{Message window}
+
+FahMon's message window is used to log various error messages and other
+important status messages. This window is useful if clients aren't reloading
+properly as this can usually tell you why. If logging of non-error messages is
+enabled the message window will also log FTP transactions, and provide info on
+reloading status etc.
+
+The message windows also serves to provide a copy of the copyright and licence
+notice (this cannot be removed).
+
+\begin{center}
+ \includegraphics[width=13cm]{7.png}
+ % 7.png: 720x427 pixel, 72dpi, 25.40x15.06 cm, bb=0 0 720 427
+\end{center}
+
+
+\subsubsection{Web links}
+
+A number of useful web links are provided on the \textit{Web} menu. These are as
+follows:
+\begin{itemize}
+ \item \textbf{My Stats}
+  \\This links directly to your Stanford stats page using the username and team
+number from the currently selected client.
+ \item \textbf{Jmol}
+  \\This links to \url{http://www.jmol.org/} to provide visualisation data for
+the project running on the currently selected client (relies on submissions)
+ \item \textbf{fahinfo.org}
+  \\This links to \url{http://fahinfo.org/}, and alternative project data site
+that automatically keeps up-to-date data on every project released.
+ \item \textbf{F@H Website}
+  \\This links to \url{http://folding.stanford.edu/}, the official Folding@home
+website.
+ \item \textbf{Folding Forum}
+  \\This links to \url{http://foldingforum.org/}, the official Folding@home
+support forum.
+ \item \textbf{Projects Summary}
+  \\This links to \url{http://fah-web.stanford.edu/psummary.html} which shows
+the current active project list
+ \item \textbf{Servers status}
+  \\This links to \url{http://fah-web.stanford.edu/serverstat.html} which shows
+the current Folding@home server statuses.
+\end{itemize}
+
+
+\subsubsection{Web export}
+
+FahMon has the ability to automatically export up to 3 formatted web-pages based
+on the data obtained from the clients it is monitored. By default these are 3
+specific types of output, but since the output is governed by a templating
+system, completely unique output is possible.
+
+FahMon provides 3 templates; A fancy, Javascript powered page designed to mimic
+the FahMon interface from version 2.3.2; A simple, low-bandwidth formatted
+table; and a simple plain text template for easy access via ssh.
+
+The web output feature of FahMon is activated from the preferences dialog and is
+able to automatically upload the pages to an ftp server if provided with a valid
+URI.
+
+\section{Configuring FahMon}
+
+This section describes how to configure FahMon from the preferences dialog, and
+also explains some of the more advanced features.
+
+\subsection{General}
+\begin{itemize}
+ \item \textbf{Enable system tray icon} \textit{Default - disabled}
+  \\Place an icon in the system tray to which FahMon will minimise. This also
+   provides a right-click menu to access the preferences and benchmarks dialogs
+   in addition to a tooltip showing pertinent information.
+ \item \textbf{Collect .xyz files} \textit{Default - disabled}
+  \\These files are generated by the client and allow third-party tools to
+   display proteins in 3D (see Jmol website for example). If you select this
+   option, the .xyz files will automatically be collected in a directory named
+   \textit{xyz}.
+ \item \textbf{Auto update projects database when needed} \textit{Default -
+   enabled}
+  \\When a new unknown project is downloaded by a monitored client, you will
+   have to update the projects database to obtain information about this
+   project. If you select this, FahMon will try to automatically download the
+   new definitions when needed.
+ \item \textbf{Always list inaccessible clients last} \textit{Default - enabled}
+  \\Make sure that however the clients are sorted, inaccessible (black) clients
+   always get listed last.
+ \item \textbf{Start minimised} \textit{Default - disabled}
+  \\Start FahMon minimised - usually used in conjunction with the system tray
+   icon.
+ \item \textbf{Check for FahMon updates at startup} \textit{Default - disabled}
+  \\Automatically polls the FahMon website at every launch to see if a newer
+   version is available.
+\end{itemize}
+
+\subsection{Monitoring}
+\begin{itemize}
+ \item \textbf{Auto reload clients} \textit{Default - enabled}
+  \\If you select this option, FahMon will automatically reload the monitored
+   clients at the desired frequency.
+ \item \textbf{Use experimental reload system (local only)} \textit{Default -
+  disabled}
+  \\Checks the file modification times every 10 seconds and only proceeds to
+   reload the client if the log has changed. This reduces processing load, and
+   allows more "real-time" updates of client states. It is current experimental
+   as it can cause some clients to fail to update at all if they are being
+   accessed over a network. Windows (SAMBA) shares seem to be affected by this
+   as the modification times sometimes don't seem to update as they should. NFS
+   shares aren't affected.
+ \item   \textbf{Local client reload interval (mn)} \textit{Default - 5}
+  \\Reload all local (Current filesystem and UNC paths) clients with this time
+   interval.
+ \item   \textbf{HTTP/FTP client reload interval (mn)} \textit{Default - 10}
+  \\Reload all HTTP/FTP clients with this time interval. This is also the
+   interval at which web output is created.
+ \item \textbf{Reload clients in series} \textit{Default - disabled}
+  \\This will perform reloads in the same thread instead of created a new thread
+   for each client. This consumes slightly less memory at the expense of
+   marginally slower reloads.
+ \item   \textbf{Display dates as} \textit{Default - Time left}
+  \\This allows you to change the format used to display the ETA and deadline
+   information.
+ \item   \textbf{Calculate PPD based on} \textit{Default - Last 3 frames}
+  \\Allows you to choose which algorithm is used to display the PPD in the main
+   window. The default behaviour is ``Last 3 frames'', which calculates an
+   average PPD based on a rolling 3 frame average. ``All frames'' uses a stored
+   database of 255 previous values. ``Last frame only'' gives the instantaneous
+   PPD. ``Effective rate'' takes into account client downtime and projects this
+   forward to predict the final ETA.
+ \item   \textbf{Ignore asynchronous clocks} \textit{Default - disabled}
+  \\Prevents clients whose local clocks are not perfectly synced with the
+   monitoring machines clock from turning orange/yellow. When this option is
+   enabled, the clients turn blue and a message is noted in the log.
+\end{itemize}
+
+\subsection{Networking}
+\begin{itemize}
+ \item   \textbf{Use a proxy for HTTP connections} \textit{Default - disabled}
+  \\Select this option if you need to use a proxy for HTTP connections.
+ \item   \textbf{Proxy requires authentication} \textit{Default - disabled}
+  \\Select this option if you need to use authentication with your proxy. Beware
+   that once saved, the password will not be directly human readable from the
+   disk, but an attacker will easily be able to retrieve it.
+ \item   \textbf{Use a proxy for FTP connections} \textit{Default - disabled}
+  \\Select this option if you need to use a proxy for HTTP connections.
+ \item   \textbf{Proxy requires authentication} \textit{Default - disabled}
+  \\Select this option if you need to use authentication with your proxy. Beware
+   that once saved, the password will not be directly human readable from the
+   disk, but an attacker will easily be able to retrieve it.
+\end{itemize}
+
+\subsection{Advanced}
+\begin{itemize}
+ \item   \textbf{Use the following settings for new project downloads}
+  \\\textit{Default - http://fah-web.stanford.edu/psummary.html}
+  \\This setting allows you to alter the online data source for project
+   information. Unticking this box will result in default values being used.
+ \item   \textbf{Use a local file for project data} \textit{Default - disabled}
+  \\Uses a locally stored version of psummary.html (.html extension is
+   important) to update the project database. This is useful for times when
+   psummary isn't up-to-date with projects being assigned, like is the case with
+   Win-SMP WUs.
+ \item \textbf{Log error messages only} \textit{Default - enabled}
+  \\Ignore any non-error messages in the log. This will not prevent the
+   Copyright and Licence notice from being displayed
+\end{itemize}
+
+\subsection{System}
+\begin{itemize}
+\item   \textbf{Web Browser (Linux Only)} \textit{Default - }
+  \\You should specify the web-browser you wish to use for opening web-links
+   here. This replaces the old method of exporting the browser as an environment
+   variable used in previous versions of FahMon.
+\item   \textbf{File Manager} \textit{Default - Platform dependent}
+  \\Select the file manager you wish to use to open client folder with. The
+   default setting for Windows is ``Windows Explorer'', for Linux it is
+   ``Konqueror''.
+\item   \textbf{File Manager Command} \textit{Default - Platform dependent}
+  \\Alter the command used to execute your file manager.
+\item   \textbf{Manually set timezone to UTC + ...} \textit{Default - disabled}
+  \\Allows you to override the timezone that is automatically detected. This
+   provides a workaround for the bug in wxwidgets that causes DST timezones to
+   be reported incorrectly, which in turn causes state detection, ETA
+   calculation etc to be incorrect or fail. Only whole hours can be selected at
+   present.
+\end{itemize}
+
+\subsection{WebApp 1}
+The names of the components on this page reflect the default behaviour of
+FahMon, but does not mean that this behaviour needs to be adhered to if creating
+custom templates.
+\begin{itemize}
+ \item \textbf{Export *} \textit{Default - Disabled}
+  \\These allow FahMon to create a formatted web page based upon a simple
+   templating system. Each of these 3 boxes will allow a separate page to be
+   generated. These pages can either be saved to a local file, or uploaded via
+   FTP to a remote web server. For FTP upload, a correctly formatted URI needs
+   to be entered in the form\\
+   \textit{ftp://username:password@server/path/to/upload/file.html}.
+\end{itemize}
+
+\subsection{WebApp 2}
+The names of the components on this page reflect the default behaviour of
+FahMon, but does not mean that this behaviour needs to be adhered to if creating
+custom templates.
+\begin{itemize}
+ \item \textbf{Custom * Template} \textit{Default - Disabled}
+  \\These configure the template files FahMon will use to generate any enabled
+   web outputs from. For information on templating, see the
+\url{TEMPLATE_SYNTAX}
+   file.
+\end{itemize}
+
+\section{Contact and help}
+
+Reporting bugs in FahMon and its documents is appreciated. For bug reports,
+suggestions, or anything else about FahMon that you think is important, feel
+free to use our ticket tracking tool at:
+
+\hspace{0.5in}FahMon support \url{http://trac.fahmon.net/}
+
+Help may be available on irc, depending on the time of day at:
+
+\hspace{0.5in}\url{irc.freenode.net} \#\url{fahmon}
+
+Support is also available through the Folding forum 3rd party contributions
+section:
+
+\hspace{0.5in}\url{http://foldingforum.org/viewforum.php?f=14}
+
+\appendix
+
+\section{FahMon Commands Overview}
+
+FahMon has a number of command-line options, however these are for advanced
+users only.
+\begin{itemize}
+ \item \texttt{-v, --version}
+  \\Displays the current version number.
+ \item \texttt{-s, --stress}
+  \\Run FahMon in stress-test mode. This is meant only for trying to replicate
+   reloading bugs by forcibly reloading all clients every 0.5 seconds.
+ \item \texttt{-l, --local} \textit{Windows only}
+  \\This option tells FahMon to store all settings in it's own folder, rather
+   than using the standard \%APPDATA\% location.
+\end{itemize}

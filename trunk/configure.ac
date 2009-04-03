@@ -87,6 +87,8 @@ AC_CONFIG_FILES([
    doxconf
    FahMon-Info.plist
    doc/Makefile
+   doc/help/Makefile
+   doc/help/User_Guide.tex
    m4/Makefile
    po/Makefile.in
    resources/Makefile

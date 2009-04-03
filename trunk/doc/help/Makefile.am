@@ -8,4 +8,13 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-
+EXTRA_DIST = 1.png \
+ 2.png \
+ 3.png \
+ 4.png \
+ 5.png \
+ 6.png \
+ 7.png \
+ User_Guide.tex \
+ content.tex \
+ User_Guide.pdf

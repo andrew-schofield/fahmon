@@ -22819,7 +22819,7 @@ _ACEOF
 
 
 
-ac_config_files="$ac_config_files Makefile README FahMon.nsi fahmon.spec doxconf FahMon-Info.plist doc/Makefile m4/Makefile po/Makefile.in resources/Makefile wxcurl/Makefile wxcurl/include/Makefile wxcurl/include/wx/Makefile wxcurl/include/wx/curl/Makefile wxcurl/src/Makefile wxcurl/win32_libcurl/Makefile wxcurl/win32_libcurl/include/Makefile wxcurl/win32_libcurl/include/curl/Makefile wxcurl/win32_libcurl/lib/Makefile src/Makefile src/include/Makefile src/include/fahmonConsts.h src/images/Makefile src/images/icons/Makefile src/images/icons/16/Makefile src/images/icons/24/Makefile src/images/icons/32/Makefile src/images/icons/48/Makefile src/images/icons/64/Makefile src/images/icons/128/Makefile src/images/icons/256/Makefile templates/Makefile FahMon.xcodeproj/Makefile mac/FahMon-Info.plist mac/Makefile"
+ac_config_files="$ac_config_files Makefile README FahMon.nsi fahmon.spec doxconf FahMon-Info.plist doc/Makefile doc/help/Makefile doc/help/User_Guide.tex m4/Makefile po/Makefile.in resources/Makefile wxcurl/Makefile wxcurl/include/Makefile wxcurl/include/wx/Makefile wxcurl/include/wx/curl/Makefile wxcurl/src/Makefile wxcurl/win32_libcurl/Makefile wxcurl/win32_libcurl/include/Makefile wxcurl/win32_libcurl/include/curl/Makefile wxcurl/win32_libcurl/lib/Makefile src/Makefile src/include/Makefile src/include/fahmonConsts.h src/images/Makefile src/images/icons/Makefile src/images/icons/16/Makefile src/images/icons/24/Makefile src/images/icons/32/Makefile src/images/icons/48/Makefile src/images/icons/64/Makefile src/images/icons/128/Makefile src/images/icons/256/Makefile templates/Makefile FahMon.xcodeproj/Makefile mac/FahMon-Info.plist mac/Makefile"
 
 
 cat >confcache <<\_ACEOF
@@ -23419,6 +23419,8 @@ do
     "doxconf") CONFIG_FILES="$CONFIG_FILES doxconf" ;;
     "FahMon-Info.plist") CONFIG_FILES="$CONFIG_FILES FahMon-Info.plist" ;;
     "doc/Makefile") CONFIG_FILES="$CONFIG_FILES doc/Makefile" ;;
+    "doc/help/Makefile") CONFIG_FILES="$CONFIG_FILES doc/help/Makefile" ;;
+    "doc/help/User_Guide.tex") CONFIG_FILES="$CONFIG_FILES doc/help/User_Guide.tex" ;;
     "m4/Makefile") CONFIG_FILES="$CONFIG_FILES m4/Makefile" ;;
     "po/Makefile.in") CONFIG_FILES="$CONFIG_FILES po/Makefile.in" ;;
     "resources/Makefile") CONFIG_FILES="$CONFIG_FILES resources/Makefile" ;;

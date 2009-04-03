@@ -29,7 +29,7 @@ EXTRA_DIST = config.rpath  \
 	mac-lang \
 	libtool \
 	ltmain.sh
-SUBDIRS = m4 wxcurl src doc po src/include src/images resources templates FahMon.xcodeproj mac
+SUBDIRS = m4 wxcurl src doc doc/help po src/include src/images resources templates FahMon.xcodeproj mac
 
 appsdir = $(datadir)/applications
 apps_in_files = fahmon.desktop
