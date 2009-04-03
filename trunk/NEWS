@@ -6,6 +6,13 @@ See the end for copying conditions.
 
 Please send FahMon bug reports to andrew_s@fahmon.net.
 
+Version 2.3.99
+
+* Removed WU info panel from default view.
+* Lots of performance changes.
+* You can now monitor clients via FTP and HTTP.
+* You can upload web output to an FTP server automatically.
+
 Version 2.3.4
 
 * This version fixes the nasty bug in 2.3.3 which cause clients to fail to
