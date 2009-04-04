@@ -87,7 +87,12 @@ bool Tools::LoadFile(wxString const &filename, wxString& fileContent, wxString& 
 
 	localname = multiProtocolFile::GetLocalFileName(filename);
 
+	if(!wxFile::Access(localname, wxFile::read))
+		return false;
+
 	wxFile in(localname, wxFile::read);
+	if(!in.IsOpened())
+		return false;
 	length = (length == 0) ? in.Length() : std::min<off_t>(length, in.Length());
 	if(length==0)
 		return false;
