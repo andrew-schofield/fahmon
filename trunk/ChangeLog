@@ -1,6 +1,6 @@
 FahMon: The Folding@home client monitoring program
 
-SVN
+v2.3.99.1 (06/04/09)
 
     General
 
@@ -8,6 +8,10 @@ SVN
 
       * Added more rigorous checks to file handling to ensure that invalid file
         access attempts don't crash FahMon (particularly on Windows).
+
+      Other
+
+      * Updated German translation.
 
 v2.3.99 (03/04/09)
 

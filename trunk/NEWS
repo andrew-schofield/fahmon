@@ -6,6 +6,10 @@ See the end for copying conditions.
 
 Please send FahMon bug reports to andrew_s@fahmon.net.
 
+Version 2.3.99.1
+
+* Fixed nasty crash-bug on Windows when monitoring Linux clients.
+
 Version 2.3.99
 
 * Removed WU info panel from default view.
