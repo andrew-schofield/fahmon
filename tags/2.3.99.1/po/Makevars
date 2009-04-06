@@ -1,0 +1,12 @@
+DOMAIN = fahmon
+
+subdir = po
+top_builddir = ..
+
+XGETTEXT_OPTIONS = -C -n --keyword=_ --from-code=UTF-8
+
+COPYRIGHT_HOLDER = Andrew Schofield
+
+MSGID_BUGS_ADDRESS = andrew_s@fahmon.net
+
+EXTRA_LOCALE_CATEGORIES =
