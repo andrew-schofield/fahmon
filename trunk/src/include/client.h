@@ -261,10 +261,10 @@ public:
 	wxString GetPreviousUnitinfo(void) {return mPreviousUnitinfo;}
 	wxString GetPreviousLogfile(void) {return mPreviousLogfile;}
 
-	void SetPreviousFAHlog(wxString value) {mPreviousFAHlog = value;}
-	void SetPreviousQueue(wxString value) {mPreviousQueue = value;}
-	void SetPreviousUnitinfo(wxString value) {mPreviousUnitinfo = value;}
-	void SetPreviousLogfile(wxString value) {mPreviousLogfile = value;}
+	void SetPreviousFAHlog(const wxString &value) {mPreviousFAHlog = value;}
+	void SetPreviousQueue(const wxString &value) {mPreviousQueue = value;}
+	void SetPreviousUnitinfo(const wxString &value) {mPreviousUnitinfo = value;}
+	void SetPreviousLogfile(const wxString &value) {mPreviousLogfile = value;}
 };
 
 
