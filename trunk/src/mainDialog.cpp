@@ -356,7 +356,6 @@ void MainDialog::ShowClientInformation(ClientId clientId)
 
 void MainDialog::UpdateClientInformation(ClientId clientId)
 {
-	wxMutexLocker lock(mMutexClientInformation);
 	bool          autoUpdateProjects;
 	wxUint32      deadlineDays;
 	wxDateTime    preferredDeadline;
