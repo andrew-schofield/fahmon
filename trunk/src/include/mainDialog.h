@@ -168,6 +168,7 @@ protected:
 	static MainDialog *mInstance; /**< The single instance of the Main Dialog */
 	static wxMutex     mMutexUpdateCheck; /**< Locks access to the update method */
 	static wxMutex     mMutexArrayBlocker; /**< Locks access to the s_clientThreadsArray */
+	static wxMutex     mMutexClientInformation; /**< Locks access to updating client information in GUI */
 
 	// Widgets used in the frame
 #ifndef __WXMAC__
@@ -407,7 +408,7 @@ protected:
 	 * @param errorMsg The error message to display
 	 * @param resource The location of the file to download
 	 **/
-	bool DownloadUpdateFile(wxString& fileName, ProgressManager& progressManager, wxString& errorMsg, wxString resource);
+	bool DownloadUpdateFile(wxString const &fileName, ProgressManager& progressManager, wxString& errorMsg, wxString const &resource);
 
 	/**
 	 * Check online for FahMon updates.

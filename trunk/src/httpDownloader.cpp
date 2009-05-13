@@ -32,7 +32,7 @@
 #include "wx/tokenzr.h"
 
 
-bool HTTPDownloader::GetHTTPFile(wxString url, wxString tempFile)
+bool HTTPDownloader::GetHTTPFile(wxString const &url, wxString const &tempFile)
 {
 	bool isUsingProxy;
 	wxString proxyAddress;
@@ -72,7 +72,7 @@ bool HTTPDownloader::GetHTTPFile(wxString url, wxString tempFile)
 }
 
 
-long HTTPDownloader::GetHTTPResponseCode(wxString url)
+long HTTPDownloader::GetHTTPResponseCode(wxString const &url)
 {
 	bool isUsingProxy;
 	wxString proxyAddress;
@@ -104,7 +104,7 @@ long HTTPDownloader::GetHTTPResponseCode(wxString url)
 }
 
 
-wxString HTTPDownloader::GetHTTPHeader(wxString url, wxString header)
+wxString HTTPDownloader::GetHTTPHeader(wxString const &url, wxString const &header)
 {
 	bool isUsingProxy;
 	wxString proxyAddress;

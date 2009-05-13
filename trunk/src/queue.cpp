@@ -46,7 +46,7 @@ Queue::~Queue(void)
 {
 }
 
-bool Queue::LoadQueueFile(wxString const &filename, wxString clientName, wxString& localname)
+bool Queue::LoadQueueFile(wxString const &filename, wxString const &clientName, wxString& localname)
 {
 	queueformat       queuebuffer, *bp;
 	queueformat::qs  *p;

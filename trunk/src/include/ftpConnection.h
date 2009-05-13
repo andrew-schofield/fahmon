@@ -60,14 +60,14 @@ class FTPConnection
 		 * @param tempFile The location to store the downloaded file.
 		 * @return Success of operation.
 		 **/
-		static bool GetFTPFile(wxString url, wxString tempFile);
+		static bool GetFTPFile(wxString const &url, wxString const &tempFile);
 
 		/**
 		 * Grab the response headers from an ftp request and get the response code.
 		 * @param url The url to query
 		 * @return The FTP response code
 		 **/
-		static long GetFTPResponseCode(wxString url);
+		static long GetFTPResponseCode(wxString const &url);
 
 		/**
 		 * Try to work out the last file modification time.
@@ -76,7 +76,7 @@ class FTPConnection
 		 * @param url The url to query
 		 * @return Time last modified
 		 **/
-		static wxDateTime GetFTPFileModificationTime(wxString url);
+		static wxDateTime GetFTPFileModificationTime(wxString const &url);
 
 		/**
 		 * Upload a given file to a specified fto address.
@@ -84,7 +84,7 @@ class FTPConnection
 		 * @param tempFile The file to upload.
 		 * @return Success
 		 **/
-		static bool PutFTPFile(wxString url, wxString tempFile);
+		static bool PutFTPFile(wxString const &url, wxString const &tempFile);
 };
 
 

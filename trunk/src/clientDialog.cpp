@@ -171,7 +171,7 @@ void ClientDialog::DestroyInstance(void)
 }
 
 
-int ClientDialog::ShowModal(wxUint32 clientId, wxString filename)
+int ClientDialog::ShowModal(wxUint32 clientId, wxString const &filename)
 {
 	const Client* clientToEdit;
 

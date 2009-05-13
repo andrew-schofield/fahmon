@@ -158,6 +158,7 @@ MainDialog* MainDialog::mInstance = NULL;
 
 wxMutex MainDialog::mMutexUpdateCheck;
 wxMutex MainDialog::mMutexArrayBlocker;
+wxMutex MainDialog::mMutexClientInformation;
 
 
 MainDialog::MainDialog(void) : wxFrame(NULL, wxID_ANY, _T(FMC_PRODUCT))
@@ -355,6 +356,7 @@ void MainDialog::ShowClientInformation(ClientId clientId)
 
 void MainDialog::UpdateClientInformation(ClientId clientId)
 {
+	wxMutexLocker lock(mMutexClientInformation);
 	bool          autoUpdateProjects;
 	wxUint32      deadlineDays;
 	wxDateTime    preferredDeadline;

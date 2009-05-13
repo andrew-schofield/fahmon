@@ -267,7 +267,7 @@ void BenchmarksDialog::ShowBenchmarks(ProjectId projectIdToShow)
 		if(multiProtocolFile::GetFileProtocol(clientLocation) != multiProtocolFile::HTTP && multiProtocolFile::GetFileProtocol(clientLocation) != multiProtocolFile::FTP)
 			clientLocation.Replace(_T("/"), _T("\\"));
 #endif
-		clientName     = ClientsManager::GetInstance()->GetNameFromLocation(clientLocation);
+		clientName     = ClientsManager::GetInstance()->GetNameFromLocation(clientLocation.c_str());
 
 		if(clientName.IsEmpty() == false)
 		{

@@ -25,7 +25,7 @@
 #include "core.h"
 
 
-wxString Core::mCoreLongName[CORE_ID_COUNT] = {
+wxString const Core::mCoreLongName[CORE_ID_COUNT] = {
 	_T("Tinker"),
 	_T("Gromacs"),
 	_T("Double Gromacs"),
@@ -48,7 +48,7 @@ wxString Core::mCoreLongName[CORE_ID_COUNT] = {
 	_T("Gromacs 4 GB"),
 	_T("GPU2 NV MT")
 };
-wxString Core::mCoreShortName[CORE_ID_COUNT] = {
+wxString const Core::mCoreShortName[CORE_ID_COUNT] = {
 	_T("tinker"),
 	_T("gromacs"),
 	_T("dgromacs"),
@@ -73,7 +73,7 @@ wxString Core::mCoreShortName[CORE_ID_COUNT] = {
 };
 
 
-CoreId Core::ShortNameToId(const wxString& name)
+CoreId const Core::ShortNameToId(const wxString& name)
 {
 	CoreId identifier;
 
@@ -89,7 +89,7 @@ CoreId Core::ShortNameToId(const wxString& name)
 }
 
 
-wxString Core::IdToShortName(CoreId identifier)
+wxString const Core::IdToShortName(CoreId identifier)
 {
 	if(identifier >= CORE_ID_COUNT)
 	{
@@ -100,7 +100,7 @@ wxString Core::IdToShortName(CoreId identifier)
 }
 
 
-wxString Core::IdToLongName(CoreId identifier)
+wxString const Core::IdToLongName(CoreId identifier)
 {
 	if(identifier >= CORE_ID_COUNT)
 	{
@@ -111,7 +111,7 @@ wxString Core::IdToLongName(CoreId identifier)
 }
 
 
-wxString Core::IdToClientType(CoreId identifier)
+wxString const Core::IdToClientType(CoreId identifier)
 {
 	wxString clientType;
 

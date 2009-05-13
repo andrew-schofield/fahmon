@@ -75,28 +75,28 @@ public:
 	 * @param name Short name for core.
 	 * @return Indentifier for core
 	 **/
-	static CoreId   ShortNameToId(wxString const &name);
+	static const CoreId   ShortNameToId(wxString const &name);
 
 	/**
 	 * Translate a core identifier into a (short) core name.
 	 * @param identifier The core Id.
 	 * @return String containing short core name.
 	 **/
-	static wxString IdToShortName(CoreId identifier);
+	static const wxString IdToShortName(CoreId identifier);
 
 	/**
 	 * Translate a core identifier into a (long) core name.
 	 * @param identifier The core Id.
 	 * @return String containing the full core name.
 	 **/
-	static wxString IdToLongName(CoreId identifier);
+	static const wxString IdToLongName(CoreId identifier);
 
 	/**
 	 * Translate a core identifier into a client type (CPU/GPU/SMP).
 	 * @param identifier The core Id.
 	 * @return String containing the client type.
 	 **/
-	static wxString IdToClientType(CoreId identifier);
+	static const wxString IdToClientType(CoreId identifier);
 
 
 protected:
@@ -104,13 +104,13 @@ protected:
 	 * Array of core names as given on psummary.
 	 * The elements are case insensitive and need to match the order in _CORE_ID
 	 **/
-	static wxString mCoreShortName[CORE_ID_COUNT];
+	static const wxString mCoreShortName[CORE_ID_COUNT];
 
 	/**
 	 * Array of full core names as shown in the WU information panel.
 	 * The elements need to match the order in _CORE_ID but are descriptions not identifiers.
 	 **/
-	static wxString mCoreLongName[CORE_ID_COUNT];
+	static const wxString mCoreLongName[CORE_ID_COUNT];
 };
 
 

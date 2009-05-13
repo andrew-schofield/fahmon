@@ -235,7 +235,7 @@ public:
 	 * @param clientName The associated client name for the queue.
 	 * @returns true/false depending on whether the queue could be read successfully.
 	**/
-	bool LoadQueueFile(wxString const &filename, wxString clientName, wxString& localname);
+	bool LoadQueueFile(wxString const &filename, wxString const &clientName, wxString& localname);
 
 	ProjectId         GetProjectId(void)    const {return mProjectId;} /**< Returns the WU project number */
 	wxInt16           GetProjectRun(void)   const {return mRun;} /**< Returns the WU run number */

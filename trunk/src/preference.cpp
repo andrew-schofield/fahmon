@@ -33,7 +33,7 @@ Preference::Preference(void)
 }
 
 
-Preference::Preference(wxString name, bool value)
+Preference::Preference(wxString const &name, bool value)
 {
 	mPrefType  = PT_BOOL;
 	mPrefName  = name;
@@ -41,7 +41,7 @@ Preference::Preference(wxString name, bool value)
 }
 
 
-Preference::Preference(wxString name, wxUint32 value)
+Preference::Preference(wxString const &name, wxUint32 value)
 {
 	mPrefType  = PT_UINT;
 	mPrefName  = name;
@@ -49,7 +49,7 @@ Preference::Preference(wxString name, wxUint32 value)
 }
 
 
-Preference::Preference(wxString name, wxInt32 value)
+Preference::Preference(wxString const &name, wxInt32 value)
 {
 	mPrefType = PT_INT;
 	mPrefName = name;
@@ -57,7 +57,7 @@ Preference::Preference(wxString name, wxInt32 value)
 }
 
 
-Preference::Preference(wxString name, double value)
+Preference::Preference(wxString const &name, double value)
 {
 	mPrefType    = PT_DOUBLE;
 	mPrefName    = name;
@@ -65,7 +65,7 @@ Preference::Preference(wxString name, double value)
 }
 
 
-Preference::Preference(wxString name, wxString const &value, bool isHidden)
+Preference::Preference(wxString const &name, wxString const &value, bool isHidden)
 {
 	// Hidden strings are stored in the same way as 'normal' strings
 	// Only the method used to read/write them is different

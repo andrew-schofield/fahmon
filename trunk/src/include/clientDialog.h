@@ -93,7 +93,7 @@ public:
 	 * @param clientId The clientId to select.
 	 * @param filename The location of the client to add.
 	 **/
-	int ShowModal(wxUint32 clientId, wxString filename);
+	int ShowModal(wxUint32 clientId, wxString const &filename);
 
 
 private:

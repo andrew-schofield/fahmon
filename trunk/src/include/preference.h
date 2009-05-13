@@ -72,28 +72,28 @@ public:
 	 * @param name Preference name.
 	 * @param value Boolean value
 	 **/
-	Preference(wxString name, bool value);
+	Preference(wxString const &name, bool value);
 
 	/**
 	 * Contructor for double prefs.
 	 * @param name Preference name.
 	 * @param value Double value
 	 **/
-	Preference(wxString name, double value);
+	Preference(wxString const &name, double value);
 
 	/**
 	 * Contructor for signed integer prefs.
 	 * @param name Preference name.
 	 * @param value Int32 value
 	 **/
-	Preference(wxString name, wxInt32 value);
+	Preference(wxString const &name, wxInt32 value);
 
 	/**
 	 * Contructor for unsigned integer prefs.
 	 * @param name Preference name.
 	 * @param value Uint32 value
 	 **/
-	Preference(wxString name, wxUint32 value);
+	Preference(wxString const&name, wxUint32 value);
 
 	/**
 	 * Contructor for string and hidden string prefs.
@@ -101,7 +101,7 @@ public:
 	 * @param value string value
 	 * @param isHidden Hidden state
 	 **/
-	Preference(wxString name, wxString const &value, bool isHidden = false);
+	Preference(wxString const &name, wxString const &value, bool isHidden = false);
 
 	/**
 	 * Read the preference from the given input stream.

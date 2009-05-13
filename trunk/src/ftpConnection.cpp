@@ -32,7 +32,7 @@
 #include "wx/curl/ftptool.h"
 
 
-bool FTPConnection::GetFTPFile(wxString url, wxString tempFile)
+bool FTPConnection::GetFTPFile(wxString const &url, wxString const &tempFile)
 {
 	bool isUsingProxy;
 	wxString proxyAddress;
@@ -86,7 +86,7 @@ bool FTPConnection::GetFTPFile(wxString url, wxString tempFile)
 }
 
 
-long FTPConnection::GetFTPResponseCode(wxString url)
+long FTPConnection::GetFTPResponseCode(wxString const &url)
 {
 	bool isUsingProxy;
 	wxString proxyAddress;
@@ -119,7 +119,7 @@ long FTPConnection::GetFTPResponseCode(wxString url)
 }
 
 
-wxDateTime FTPConnection::GetFTPFileModificationTime(wxString url)
+wxDateTime FTPConnection::GetFTPFileModificationTime(wxString const &url)
 {
 	bool isUsingProxy;
 	wxString proxyAddress;
@@ -151,7 +151,7 @@ wxDateTime FTPConnection::GetFTPFileModificationTime(wxString url)
 }
 
 
-bool FTPConnection::PutFTPFile(wxString url, wxString tempFile)
+bool FTPConnection::PutFTPFile(wxString const &url, wxString const &tempFile)
 {
 	bool isUsingProxy;
 	wxString proxyAddress;

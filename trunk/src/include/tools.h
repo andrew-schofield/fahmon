@@ -81,7 +81,7 @@ public:
 	 * @param fromStart Should file be read from start or from end.
 	 * @param localname Reference to an object to store the local filename.
 	 **/
-	static bool     LoadFile(wxString const &filename, wxString& fileContent,wxString& localname, wxUint32 length = 0, bool fromStart = true );
+	static bool     LoadFile(wxString const &filename, wxString& fileContent, wxString& localname, wxUint32 length = 0, bool fromStart = true );
 
 	// Miscellaneous message boxes
 	/**
