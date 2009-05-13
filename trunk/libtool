@@ -335,7 +335,7 @@ link_all_deplibs=unknown
 sys_lib_search_path_spec=`echo "/usr/lib/gcc/i586-mandriva-linux-gnu/4.1.1 /usr/lib /lib" | $SED -e "s@${gcc_dir}@\${gcc_dir}@g;s@${gcc_ver}@\${gcc_ver}@g"`
 
 # Run-time system search path for libraries
-sys_lib_dlsearch_path_spec="/lib /usr/lib /usr/lib/graphviz /usr/lib/octave-3.0.1 /usr/X11R6/lib /usr/lib/qt3/lib "
+sys_lib_dlsearch_path_spec="/lib /usr/lib /usr/lib/graphviz /usr/lib/octave-3.0.5 /usr/X11R6/lib /usr/lib/qt3/lib "
 
 # Fix the shell variable $srcfile for the compiler.
 fix_srcfile_path=""
@@ -7614,7 +7614,7 @@ link_all_deplibs=unknown
 sys_lib_search_path_spec=`echo "/usr/lib/gcc/i586-mandriva-linux-gnu/4.1.1 /usr/lib /lib" | $SED -e "s@${gcc_dir}@\${gcc_dir}@g;s@${gcc_ver}@\${gcc_ver}@g"`
 
 # Run-time system search path for libraries
-sys_lib_dlsearch_path_spec="/lib /usr/lib /usr/lib/graphviz /usr/lib/octave-3.0.1 /usr/X11R6/lib /usr/lib/qt3/lib "
+sys_lib_dlsearch_path_spec="/lib /usr/lib /usr/lib/graphviz /usr/lib/octave-3.0.5 /usr/X11R6/lib /usr/lib/qt3/lib "
 
 # Fix the shell variable $srcfile for the compiler.
 fix_srcfile_path=""
@@ -7929,7 +7929,7 @@ link_all_deplibs=unknown
 sys_lib_search_path_spec=`echo "/usr/lib/gcc/i586-mandriva-linux-gnu/4.1.1 /usr/lib /lib" | $SED -e "s@${gcc_dir}@\${gcc_dir}@g;s@${gcc_ver}@\${gcc_ver}@g"`
 
 # Run-time system search path for libraries
-sys_lib_dlsearch_path_spec="/lib /usr/lib /usr/lib/graphviz /usr/lib/octave-3.0.1 /usr/X11R6/lib /usr/lib/qt3/lib "
+sys_lib_dlsearch_path_spec="/lib /usr/lib /usr/lib/graphviz /usr/lib/octave-3.0.5 /usr/X11R6/lib /usr/lib/qt3/lib "
 
 # Fix the shell variable $srcfile for the compiler.
 fix_srcfile_path=""
