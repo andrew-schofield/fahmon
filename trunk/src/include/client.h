@@ -62,6 +62,8 @@ protected:
 
 	static wxMutex mMutexXYZFiles; /**< Access lock for saving xyz files */
 
+	static wxMutex mMutexReadWrite; /**< Make read/write variables thread-safe */
+
 	ETA        mETA; /**< ETA for project client is working on */
 	State      mState; /**< State of client */
 	time_t     mLastModification; /**< Time FAHlog.txt was last modified */
@@ -139,6 +141,10 @@ protected:
 	 * This method is thread-safe, two files won't be overwritten at the same time by two different threads
 	 **/
 	void SaveXYZFile(void) const;
+
+	void SetState(State value);
+
+	const State GetState(void) const;
 
 
 public:
@@ -220,13 +226,13 @@ public:
 	void SetVM(bool value) {mVM = value;}
 
 	// -- 'Getters' --
-	bool              IsAccessible(void)            const {return mState != ST_INACCESSIBLE;} /**< Returns whether client is inaccessible or not */
-	bool              IsStopped(void)               const {return mState == ST_STOPPED;} /**< Returns whether client is stopped or not */
-	bool              IsInactive(void)              const {return mState == ST_INACTIVE;} /**< Returns whether client is inactive or not */
-	bool              IsRunning(void)               const {return mState == ST_RUNNING;} /**< Returns whether client is running or not */
-	bool              IsAsynch(void)                const {return mState == ST_ASYNCH;} /**< Returns whether client is asynchronous or not */
-	bool              IsHung(void)                  const {return mState == ST_HUNG;} /**< Returns whether client is hung or not */
-	bool              IsPaused(void)                const {return mState == ST_PAUSED;} /**< Returns whether client is paused or not */
+	bool              IsAccessible(void)            const {return GetState() != ST_INACCESSIBLE;} /**< Returns whether client is inaccessible or not */
+	bool              IsStopped(void)               const {return GetState() == ST_STOPPED;} /**< Returns whether client is stopped or not */
+	bool              IsInactive(void)              const {return GetState() == ST_INACTIVE;} /**< Returns whether client is inactive or not */
+	bool              IsRunning(void)               const {return GetState() == ST_RUNNING;} /**< Returns whether client is running or not */
+	bool              IsAsynch(void)                const {return GetState() == ST_ASYNCH;} /**< Returns whether client is asynchronous or not */
+	bool              IsHung(void)                  const {return GetState() == ST_HUNG;} /**< Returns whether client is hung or not */
+	bool              IsPaused(void)                const {return GetState() == ST_PAUSED;} /**< Returns whether client is paused or not */
 	wxString          GetName(void)                 const {return mName;} /**< Returns client name */
 	wxString          GetLocation(void)             const {return mLocation;} /**< Returns client location */
 	wxString          GetLog(void)                  const {return mLog;} /**< Returns client log */

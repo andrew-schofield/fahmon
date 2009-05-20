@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es_ES\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2009-05-13 21:26+0100\n"
+"POT-Creation-Date: 2009-05-20 15:38+0100\n"
 "PO-Revision-Date: 2008-10-30 00:13+0000\n"
 "Last-Translator: Antonio Lucendo <alt_alm@hotmail.com>\n"
 "Language-Team: Spanish\n"
@@ -163,22 +163,22 @@ msgstr "(Comparativas) ¡Se ha llegado al número máximo de clientes!"
 msgid "Unknown client"
 msgstr "Cliente desconocido"
 
-#: src/client.cpp:57 src/client.cpp:105 src/core.cpp:148
+#: src/client.cpp:58 src/client.cpp:106 src/core.cpp:148
 #: src/listViewClients.cpp:674 src/listViewClients.cpp:708
 #: src/mainDialog.cpp:533 src/mainDialog.cpp:534 src/mainDialog.cpp:535
 #: src/mainDialog.cpp:536
 msgid "Unknown"
 msgstr "Desconocido"
 
-#: src/client.cpp:92
+#: src/client.cpp:93
 msgid "Log not loaded!"
 msgstr "¡No se cargó el registro!"
 
-#: src/client.cpp:95
+#: src/client.cpp:96
 msgid "anonymous"
 msgstr "Anónimo"
 
-#: src/client.cpp:100 src/listViewClients.cpp:732 src/listViewClients.cpp:736
+#: src/client.cpp:101 src/listViewClients.cpp:732 src/listViewClients.cpp:736
 #: src/mainDialog.cpp:501 src/mainDialog.cpp:506 src/mainDialog.cpp:507
 #: src/mainDialog.cpp:508 src/mainDialog.cpp:509 src/mainDialog.cpp:510
 #: src/mainDialog.cpp:581 src/mainDialog.cpp:618 src/webMonitor.cpp:133
@@ -190,101 +190,101 @@ msgstr "Anónimo"
 msgid "N/A"
 msgstr "N/A"
 
-#: src/client.cpp:150
+#: src/client.cpp:151
 #, c-format
 msgid "Directory %s does not exist or cannot be read!"
 msgstr "¡El directorio %s no existe o no se puede leer!"
 
-#: src/client.cpp:163
+#: src/client.cpp:164
 #, c-format
 msgid "%s cannot be reloaded! (FAHlog.txt does not exist)"
 msgstr ""
 
-#: src/client.cpp:166
+#: src/client.cpp:167
 #, c-format
 msgid "Reloading %s"
 msgstr "Volviendo a cargar %s"
 
-#: src/client.cpp:173
+#: src/client.cpp:174
 #, c-format
 msgid "Error while reading %sFAHlog.txt!"
 msgstr "¡No se puede leer %sFAHlog.txt!"
 
-#: src/client.cpp:181
+#: src/client.cpp:182
 #, c-format
 msgid "Error while reading %squeue.dat"
 msgstr "¡No se puede leer %squeue.dat!"
 
-#: src/client.cpp:192
+#: src/client.cpp:193
 #, fuzzy, c-format
 msgid "Error while reading %s"
 msgstr "¡No se puede leer %squeue.dat!"
 
-#: src/client.cpp:198
+#: src/client.cpp:199
 #, c-format
 msgid "Error while reading %sunitinfo.txt!"
 msgstr "¡No se puede leer %sunitinfo.txt!"
 
-#: src/client.cpp:396
+#: src/client.cpp:397
 #, fuzzy, c-format
 msgid "Finished Reloading %s"
 msgstr "Volviendo a cargar %s"
 
-#: src/client.cpp:461
+#: src/client.cpp:462
 #, c-format
 msgid "The progress value in file %s could not be found/parsed"
 msgstr "No se pudo encontrar el valor de progreso en el archivo %s"
 
-#: src/client.cpp:514
+#: src/client.cpp:515
 #, fuzzy, c-format
 msgid "The core version in file %s could not be found/parsed"
 msgstr "No se pudo encontrar el valor de progreso en el archivo %s"
 
-#: src/client.cpp:579
+#: src/client.cpp:580
 #, c-format
 msgid "Unable to save %s because it does not exist"
 msgstr "No se puede guardar %s porque no existe"
 
-#: src/client.cpp:586
+#: src/client.cpp:587
 #, c-format
 msgid "Unable to create directory %s"
 msgstr "No se puede crear el directorio %s"
 
-#: src/client.cpp:599
+#: src/client.cpp:600
 #, c-format
 msgid "Unable to copy %s to %s"
 msgstr "No se puede copiar %s en %s"
 
-#: src/client.cpp:624
+#: src/client.cpp:625
 #, c-format
 msgid "%s is on frame %u"
 msgstr "%s va por el cuadro %u"
 
-#: src/client.cpp:628
+#: src/client.cpp:629
 #, c-format
 msgid "Cannot determine frame number for %s (this isn't a problem)"
 msgstr ""
 "No se puede determinar el número del cuadro para %s (no representa un "
 "problema)"
 
-#: src/client.cpp:812
+#: src/client.cpp:813
 #, c-format
 msgid "%s has an unknown state (Unable to find a complete frame)"
 msgstr ""
 "%s está en un estado desconocido (No se puede encontrar un cuadro completo)"
 
-#: src/client.cpp:821
+#: src/client.cpp:822
 #, c-format
 msgid "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
 msgstr ""
 "%s está detenido (Se encontró la línea \"Folding@Home Client Shutdown.\")"
 
-#: src/client.cpp:829
+#: src/client.cpp:830
 #, c-format
 msgid "%s has been paused"
 msgstr ""
 
-#: src/client.cpp:838
+#: src/client.cpp:839
 #, c-format
 msgid ""
 "%s has an unknown state (Unable to extract a valid elapsed time since the "
@@ -293,18 +293,18 @@ msgstr ""
 "%s está en un estado desconocido (No se puede calcular el tiempo "
 "transcurrido desde el último cuadro completado)"
 
-#: src/client.cpp:846
+#: src/client.cpp:847
 #, c-format
 msgid "%s has been marked as having a asynchronous clock."
 msgstr "%s se ha marcado como que tiene un reloj asíncrono."
 
-#: src/client.cpp:881
+#: src/client.cpp:882
 #, c-format
 msgid "%s seems to have hung : Elapsed time is %um and limit is %um"
 msgstr ""
 "%s parece haberse colgado : El tiempo transcurrido es %um y el límite es %um"
 
-#: src/client.cpp:886
+#: src/client.cpp:887
 #, c-format
 msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
 msgstr ""

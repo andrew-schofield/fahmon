@@ -2,6 +2,13 @@ FahMon: The Folding@home client monitoring program
 
 SVN
 
+    General
+
+      Other
+
+      * Fixed a number of thread safety issue which caused intermittent crashes
+        and generally undesirable behaviour.
+
     Linux
 
       * Fixed accidental inclusion of a gcc debug warning level into

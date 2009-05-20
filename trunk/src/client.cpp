@@ -43,6 +43,7 @@
 // This mutex is used to ensure that two threads won't try to overwite the same file at the same time
 wxMutex Client::mMutexXYZFiles;
 
+wxMutex Client::mMutexReadWrite;
 
 Client::Client(wxString const &name, wxString const &location, bool enabled, bool VM)
 {
@@ -90,7 +91,7 @@ void Client::SetLocation(const wxString& location)
 void Client::Reset(void)
 {
 	mLog            = _("Log not loaded!");
-	mState          = ST_INACCESSIBLE;
+	SetState(ST_INACCESSIBLE);
 	mProgress       = 0;
 	mUserName       = _("anonymous");
 	mProjectId      = INVALID_PROJECT_ID;
@@ -148,7 +149,7 @@ void Client::Reload(void)
 	if(!multiProtocolFile::DirExists(mLocation.c_str()))
 	{
 		mLog = wxString::Format(_("Directory %s does not exist or cannot be read!"), mLocation.c_str());
-		mState = ST_INACCESSIBLE;
+		SetState(ST_INACCESSIBLE);
 		_LogMsgError(mLog);
 		return;
 	}
@@ -159,7 +160,7 @@ void Client::Reload(void)
 	}
 	else
 	{
-		mState = ST_INACCESSIBLE;
+		SetState(ST_INACCESSIBLE);
 		_LogMsgError(wxString::Format(_("%s cannot be reloaded! (FAHlog.txt does not exist)"), mName.c_str()));
 		return;
 	}
@@ -172,7 +173,7 @@ void Client::Reload(void)
 	{
 		mLog = wxString::Format(_("Error while reading %sFAHlog.txt!"), mLocation.c_str());
 		_LogMsgError(mLog);
-		mState = ST_INACCESSIBLE;
+		SetState(ST_INACCESSIBLE);
 		return;
 	}
 
@@ -290,7 +291,7 @@ void Client::Reload(void)
 
 	// If current project is valid and is found in the benchmarks database, then grab the PPD
 	// Needs to check state too, no point getting PPD for stopped or dead clients.
-	if (mProjectId != INVALID_PROJECT_ID && project != 0 && mState != ST_STOPPED && mState != ST_INACCESSIBLE && mState != ST_HUNG && mState != ST_PAUSED)
+	if (mProjectId != INVALID_PROJECT_ID && project != 0 && GetState() != ST_STOPPED && GetState() != ST_INACCESSIBLE && GetState() != ST_HUNG && GetState() != ST_PAUSED)
 	{
 		if (project != INVALID_PROJECT_ID)
 		{
@@ -359,7 +360,7 @@ void Client::Reload(void)
 			}
 		}
 	}
-	if (mProjectId != INVALID_PROJECT_ID && project != 0 && mState != ST_INACCESSIBLE && lastFrame != NULL && mState != ST_STOPPED && mState != ST_PAUSED)
+	if (mProjectId != INVALID_PROJECT_ID && project != 0 && GetState() != ST_INACCESSIBLE && lastFrame != NULL && GetState() != ST_STOPPED && GetState() != ST_PAUSED)
 	{
 		if (project != INVALID_PROJECT_ID)
 		{
@@ -808,7 +809,7 @@ void Client::FindCurrentState(WorkUnitFrame* lastFrame)
 	// If we don't have information about the last frame, we decide that the corresponding client is inactive
 	if(lastFrame == NULL)
 	{
-		mState = ST_INACTIVE;
+		SetState(ST_INACTIVE);
 		_LogMsgInfo(wxString::Format(_("%s has an unknown state (Unable to find a complete frame)"), mName.c_str()), false);
 		return;
 	}
@@ -817,7 +818,7 @@ void Client::FindCurrentState(WorkUnitFrame* lastFrame)
 	// No ETA for stopped clients
 	if(lastFrame->ClientIsStopped())
 	{
-		mState = ST_STOPPED;
+		SetState(ST_STOPPED);
 		_LogMsgInfo(wxString::Format(_("%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"), mName.c_str()), false);
 		return;
 	}
@@ -825,7 +826,7 @@ void Client::FindCurrentState(WorkUnitFrame* lastFrame)
 
 	if(lastFrame->ClientIsPaused())
 	{
-		mState = ST_PAUSED;
+		SetState(ST_PAUSED);
 		_LogMsgInfo(wxString::Format(_("%s has been paused"), mName.c_str()), false);
 		return;
 	}
@@ -834,7 +835,7 @@ void Client::FindCurrentState(WorkUnitFrame* lastFrame)
 	// No elapsed time since the last frame means we couldn't get valid information on elapsed time
 	if(lastFrame->GetElapsedSeconds() == 0)
 	{
-		mState = ST_INACTIVE;
+		SetState(ST_INACTIVE);
 		_LogMsgInfo(wxString::Format(_("%s has an unknown state (Unable to extract a valid elapsed time since the last completed frame)"), mName.c_str()), false);
 		return;
 	}
@@ -842,7 +843,7 @@ void Client::FindCurrentState(WorkUnitFrame* lastFrame)
 	// Asynchronous client
 	if(lastFrame->GetElapsedSeconds() == 65535 && !mVM)
 	{
-		mState = ST_ASYNCH;
+		SetState(ST_ASYNCH);
 		_LogMsgInfo(wxString::Format(_("%s has been marked as having a asynchronous clock."), mName.c_str()), false);
 		return;
 	}
@@ -871,18 +872,18 @@ void Client::FindCurrentState(WorkUnitFrame* lastFrame)
 	// Last step
 	if(lastFrame->GetElapsedSeconds() < trigger || mVM)
 	{
-		mState = ST_RUNNING;
+		SetState(ST_RUNNING);
 	}
 	else
 	{
 		if(lastFrame->GetElapsedSeconds() > 2 * trigger)
 		{
-			mState = ST_HUNG;
+			SetState(ST_HUNG);
 			_LogMsgWarning(wxString::Format(_("%s seems to have hung : Elapsed time is %um and limit is %um"), mName.c_str(), lastFrame->GetElapsedSeconds()/60, trigger/30), false);
 		}
 		else
 		{
-			mState = ST_INACTIVE;
+			SetState(ST_INACTIVE);
 			_LogMsgInfo(wxString::Format(_("%s seems to be inactive : Elapsed time is %um and limit is %um"), mName.c_str(), lastFrame->GetElapsedSeconds()/60, trigger/60), false);
 		}
 	}
@@ -910,4 +911,17 @@ wxString Client::GetJmolURL(void) const
 wxString Client::GetFahinfoURL(void) const
 {
 	return wxString::Format(_T("%s%u"), _T(FMC_URL_FAHINFO), GetProjectId());
+}
+
+
+void Client::SetState(State value)
+{
+	wxMutexLocker lock(Client::mMutexReadWrite);
+	mState = value;
+}
+
+const Client::State Client::GetState(void) const
+{
+	wxMutexLocker lock(mMutexReadWrite);
+	return mState;
 }

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cs_CZ\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2009-05-13 21:26+0100\n"
+"POT-Creation-Date: 2009-05-20 15:38+0100\n"
 "PO-Revision-Date: 2009-03-28 13:41+0100\n"
 "Last-Translator: Martin Bednar <serafean@gmail.com>\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
@@ -162,22 +162,22 @@ msgstr "(Benchmarky) Maximální počet známých klientů byl dosažen!"
 msgid "Unknown client"
 msgstr "Neznámý klient"
 
-#: src/client.cpp:57 src/client.cpp:105 src/core.cpp:148
+#: src/client.cpp:58 src/client.cpp:106 src/core.cpp:148
 #: src/listViewClients.cpp:674 src/listViewClients.cpp:708
 #: src/mainDialog.cpp:533 src/mainDialog.cpp:534 src/mainDialog.cpp:535
 #: src/mainDialog.cpp:536
 msgid "Unknown"
 msgstr "Neznámé"
 
-#: src/client.cpp:92
+#: src/client.cpp:93
 msgid "Log not loaded!"
 msgstr "Log nenahrán"
 
-#: src/client.cpp:95
+#: src/client.cpp:96
 msgid "anonymous"
 msgstr "Anonymní"
 
-#: src/client.cpp:100 src/listViewClients.cpp:732 src/listViewClients.cpp:736
+#: src/client.cpp:101 src/listViewClients.cpp:732 src/listViewClients.cpp:736
 #: src/mainDialog.cpp:501 src/mainDialog.cpp:506 src/mainDialog.cpp:507
 #: src/mainDialog.cpp:508 src/mainDialog.cpp:509 src/mainDialog.cpp:510
 #: src/mainDialog.cpp:581 src/mainDialog.cpp:618 src/webMonitor.cpp:133
@@ -189,97 +189,97 @@ msgstr "Anonymní"
 msgid "N/A"
 msgstr "Není k dispozici"
 
-#: src/client.cpp:150
+#: src/client.cpp:151
 #, c-format
 msgid "Directory %s does not exist or cannot be read!"
 msgstr "Složka %s neexistuje nebo ji nelze číst"
 
-#: src/client.cpp:163
+#: src/client.cpp:164
 #, c-format
 msgid "%s cannot be reloaded! (FAHlog.txt does not exist)"
 msgstr "Nelze znovu načíst %s (FAHlog.txt neexistuje)"
 
-#: src/client.cpp:166
+#: src/client.cpp:167
 #, c-format
 msgid "Reloading %s"
 msgstr "Znovu načítám %s"
 
-#: src/client.cpp:173
+#: src/client.cpp:174
 #, c-format
 msgid "Error while reading %sFAHlog.txt!"
 msgstr "Nastala chyba při načítání %sFAHlog.txt!"
 
-#: src/client.cpp:181
+#: src/client.cpp:182
 #, c-format
 msgid "Error while reading %squeue.dat"
 msgstr "Nastala chyba při načítání %squeue.dat!"
 
-#: src/client.cpp:192
+#: src/client.cpp:193
 #, c-format
 msgid "Error while reading %s"
 msgstr "Nastala chyba při načítání %s"
 
-#: src/client.cpp:198
+#: src/client.cpp:199
 #, c-format
 msgid "Error while reading %sunitinfo.txt!"
 msgstr "Nastala chyba při načítání %sunitinfo.txt!"
 
-#: src/client.cpp:396
+#: src/client.cpp:397
 #, c-format
 msgid "Finished Reloading %s"
 msgstr "%s znovu načteno"
 
-#: src/client.cpp:461
+#: src/client.cpp:462
 #, c-format
 msgid "The progress value in file %s could not be found/parsed"
 msgstr "Hodnotu postupu v souboru %s nelze najít/analyzovat"
 
-#: src/client.cpp:514
+#: src/client.cpp:515
 #, c-format
 msgid "The core version in file %s could not be found/parsed"
 msgstr "Nelze načíst verzi jádra v %s"
 
-#: src/client.cpp:579
+#: src/client.cpp:580
 #, c-format
 msgid "Unable to save %s because it does not exist"
 msgstr "Nelze uložit %s jelikož neexistuje"
 
-#: src/client.cpp:586
+#: src/client.cpp:587
 #, c-format
 msgid "Unable to create directory %s"
 msgstr "Nelze vytvořit složku %s"
 
-#: src/client.cpp:599
+#: src/client.cpp:600
 #, c-format
 msgid "Unable to copy %s to %s"
 msgstr "Nelze kopírovat %s do %s"
 
-#: src/client.cpp:624
+#: src/client.cpp:625
 #, c-format
 msgid "%s is on frame %u"
 msgstr "%s dělá obrázek %u"
 
-#: src/client.cpp:628
+#: src/client.cpp:629
 #, c-format
 msgid "Cannot determine frame number for %s (this isn't a problem)"
 msgstr "Nelze určit číslo obrázku pro %s (toto není problém)"
 
-#: src/client.cpp:812
+#: src/client.cpp:813
 #, c-format
 msgid "%s has an unknown state (Unable to find a complete frame)"
 msgstr "%s je v neznámém stavu (Nelze najít hotový obrázek)"
 
-#: src/client.cpp:821
+#: src/client.cpp:822
 #, c-format
 msgid "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
 msgstr "%s je zastaven (\"Folding@Home Client Shutdown.\"nalezeno v logu)"
 
-#: src/client.cpp:829
+#: src/client.cpp:830
 #, c-format
 msgid "%s has been paused"
 msgstr "%s byl pozastaven"
 
-#: src/client.cpp:838
+#: src/client.cpp:839
 #, c-format
 msgid ""
 "%s has an unknown state (Unable to extract a valid elapsed time since the "
@@ -288,17 +288,17 @@ msgstr ""
 "%s je v neznámém stavu (Nedaří se načíst platný uplynutý čas od posledního "
 "hotového obrázku)"
 
-#: src/client.cpp:846
+#: src/client.cpp:847
 #, c-format
 msgid "%s has been marked as having a asynchronous clock."
 msgstr "%s byl označen jako majíc nesynchronizované hodiny"
 
-#: src/client.cpp:881
+#: src/client.cpp:882
 #, c-format
 msgid "%s seems to have hung : Elapsed time is %um and limit is %um"
 msgstr "y%s se zdá zablokovaný : Uplynulý čas je %um a limit je %um"
 
-#: src/client.cpp:886
+#: src/client.cpp:887
 #, c-format
 msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
 msgstr "%s se zdá být neaktivní : Uplynulý čas je %um a limit je %um"
