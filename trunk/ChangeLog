@@ -8,6 +8,7 @@ SVN
 
       * Fixed a number of thread safety issue which caused intermittent crashes
         and generally undesirable behaviour.
+      * Added Simplified Chinese translation.
 
     Linux
 

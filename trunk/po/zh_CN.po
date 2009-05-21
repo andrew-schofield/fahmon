@@ -1,0 +1,1502 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: FahMon 2.3.99.1\n"
+"Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
+"POT-Creation-Date: 2009-05-20 15:38+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: qiyuwanjia,lucksc,金鹏 <qiyuwanjia@gmail.com>\n"
+"Language-Team: www.equn.com\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Chinese\n"
+"X-Poedit-Country: CHINA\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Bookmarks: 63,24,27,-1,-1,-1,-1,-1,-1,-1\n"
+"X-Poedit-SearchPath-0: I:\\fahmon\\2.3.99\\src\n"
+"X-Poedit-SearchPath-1: I:\\fahmon\\2.3.99\\src\\include\n"
+
+#: src/aboutDialog.cpp:49
+msgid "About"
+msgstr "关于"
+
+#: src/aboutDialog.cpp:61
+msgid "Lead Developer:"
+msgstr "现任开发者:"
+
+#. TRANSLATORS: This is a proper name. See the gettext manual, section Names.
+#. Pronunciation is like "An-droo Skow(e)-fee-uld"
+#: src/aboutDialog.cpp:64
+msgid "Andrew Schofield"
+msgstr "Andrew Schofield"
+
+#: src/aboutDialog.cpp:65
+msgid "Retired Developer:"
+msgstr "前任开发者:"
+
+#. TRANSLATORS: This is a proper name. See the gettext manual, section Names. This is a non-ASCII name,
+#. hence the use of unicode escape codes. Pronunciation is like "Fran-swa Angle-ray"
+#: src/aboutDialog.cpp:68
+msgid "Fran\\u00E7ois Ingelrest"
+msgstr "Fran\\u00E7ois Ingelrest"
+
+#: src/aboutDialog.cpp:69
+msgid "Homepage:"
+msgstr "主页:"
+
+#: src/aboutDialog.cpp:71
+msgid "Qd homepage:"
+msgstr "Qd 主页:"
+
+#: src/aboutDialog.cpp:73
+msgid "Licence:"
+msgstr "许可证:"
+
+#. TRANSLATORS: This refers to the wxWidgets software library
+#: src/aboutDialog.cpp:78
+msgid "Library:"
+msgstr "库:"
+
+#: src/benchmarksDialog.cpp:64 src/trayManager.cpp:173
+msgid "Benchmarks"
+msgstr "基准分值"
+
+#: src/benchmarksDialog.cpp:90
+msgid "Projects"
+msgstr "任务"
+
+#: src/benchmarksDialog.cpp:241
+msgid "No benchmarks for this project!"
+msgstr "这个任务没有基准分值!"
+
+#: src/benchmarksDialog.cpp:251
+#, c-format
+msgid "Project : %u\n"
+msgstr "任务 : %u\n"
+
+#: src/benchmarksDialog.cpp:252
+#, c-format
+msgid "Core    : %s\n"
+msgstr "核心 : %s\n"
+
+#: src/benchmarksDialog.cpp:253
+#, c-format
+msgid "Frames  : %u\n"
+msgstr "帧数  : %u\n"
+
+#: src/benchmarksDialog.cpp:254
+#, c-format
+msgid "Credit  : %u\n"
+msgstr "分值  : %u\n"
+
+#: src/benchmarksDialog.cpp:258
+#, c-format
+msgid "Project : %u (Unknown)\n"
+msgstr "任务 : %u (未知)\n"
+
+#: src/benchmarksDialog.cpp:285
+#, c-format
+msgid "Min. Time / Frame : %s"
+msgstr "每帧最少用时 : %s"
+
+#: src/benchmarksDialog.cpp:291 src/benchmarksDialog.cpp:312
+#: src/benchmarksDialog.cpp:337 src/benchmarksDialog.cpp:339
+#: src/benchmarksDialog.cpp:341
+#, c-format
+msgid " - %.2f ppd"
+msgstr " - %.2f ppd"
+
+#: src/benchmarksDialog.cpp:296
+msgid "No Min. Time / Frame"
+msgstr "找不到 每帧最少用时"
+
+#: src/benchmarksDialog.cpp:306
+#, c-format
+msgid "Avg. Time / Frame : %s"
+msgstr "平均每帧用时 : %s"
+
+#: src/benchmarksDialog.cpp:317
+msgid "No Avg. Time / Frame"
+msgstr "找不到 平均每帧用时"
+
+#: src/benchmarksDialog.cpp:329
+#, c-format
+msgid "Cur. Time / Frame : %s"
+msgstr "当前每帧用时 : %s"
+
+#: src/benchmarksDialog.cpp:330
+#, c-format
+msgid "R3F. Time / Frame : %s"
+msgstr "最近3帧用时 : %s"
+
+#: src/benchmarksDialog.cpp:331
+#, c-format
+msgid "Eff. Time / Frame : %s"
+msgstr "每帧有效用时 : %s"
+
+#: src/benchmarksDialog.cpp:346
+msgid "No Cur. Time / Frame"
+msgstr "没找到 当前每帧用时"
+
+#: src/benchmarksDialog.cpp:347
+msgid "No R3F. Time / Frame"
+msgstr "没找到 最近3帧用时"
+
+#: src/benchmarksDialog.cpp:348
+msgid "No Eff. Time / Frame"
+msgstr "没找到 每帧有效用时"
+
+#: src/benchmarksManager.cpp:164 src/preferencesManager.cpp:248
+#: src/projectsManager.cpp:141
+#, c-format
+msgid "Could not open file <%s> for writing!"
+msgstr "打开文件失败 <%s> !"
+
+#: src/benchmarksManager.cpp:319
+msgid "(Benchmarks) The maximum number of known clients has been reached!"
+msgstr "(基准分值) 已经达到允许的最大客户端数量!"
+
+#: src/benchmarksManager.cpp:449
+msgid "Unknown client"
+msgstr "未知客户端"
+
+#: src/client.cpp:58 src/client.cpp:106 src/core.cpp:148
+#: src/listViewClients.cpp:674 src/listViewClients.cpp:708
+#: src/mainDialog.cpp:533 src/mainDialog.cpp:534 src/mainDialog.cpp:535
+#: src/mainDialog.cpp:536
+msgid "Unknown"
+msgstr "未知"
+
+#: src/client.cpp:93
+msgid "Log not loaded!"
+msgstr "Log未加载!"
+
+#: src/client.cpp:96
+msgid "anonymous"
+msgstr "anonymous"
+
+#: src/client.cpp:101 src/listViewClients.cpp:732 src/listViewClients.cpp:736
+#: src/mainDialog.cpp:501 src/mainDialog.cpp:506 src/mainDialog.cpp:507
+#: src/mainDialog.cpp:508 src/mainDialog.cpp:509 src/mainDialog.cpp:510
+#: src/mainDialog.cpp:581 src/mainDialog.cpp:618 src/webMonitor.cpp:133
+#: src/webMonitor.cpp:134 src/webMonitor.cpp:135 src/webMonitor.cpp:136
+#: src/webMonitor.cpp:137 src/webMonitor.cpp:138 src/webMonitor.cpp:139
+#: src/webMonitor.cpp:140 src/webMonitor.cpp:141 src/webMonitor.cpp:142
+#: src/webMonitor.cpp:143 src/webMonitor.cpp:214 src/webMonitor.cpp:250
+#: src/webMonitor.cpp:310 src/webMonitor.cpp:314
+msgid "N/A"
+msgstr "N/A"
+
+#: src/client.cpp:151
+#, c-format
+msgid "Directory %s does not exist or cannot be read!"
+msgstr "目录 <%s> 不存在或者无法读取!"
+
+#: src/client.cpp:164
+#, c-format
+msgid "%s cannot be reloaded! (FAHlog.txt does not exist)"
+msgstr "%s 不能被重新加载! (FAHlog.txt 文件不存在)"
+
+#: src/client.cpp:167
+#, c-format
+msgid "Reloading %s"
+msgstr "更新中... %s"
+
+#: src/client.cpp:174
+#, c-format
+msgid "Error while reading %sFAHlog.txt!"
+msgstr "读取 %sFAHlog.txt出错!"
+
+#: src/client.cpp:182
+#, c-format
+msgid "Error while reading %squeue.dat"
+msgstr "读取 %squeue.dat出错!"
+
+#: src/client.cpp:193
+#, c-format
+msgid "Error while reading %s"
+msgstr "读取 <%s> 出错!"
+
+#: src/client.cpp:199
+#, c-format
+msgid "Error while reading %sunitinfo.txt!"
+msgstr "读取 %sunitinfo.txt 出错!"
+
+#: src/client.cpp:397
+#, c-format
+msgid "Finished Reloading %s"
+msgstr "更新完成 %s"
+
+#: src/client.cpp:462
+#, c-format
+msgid "The progress value in file %s could not be found/parsed"
+msgstr "在文件%s中找不到进度值或者不能被解析"
+
+#: src/client.cpp:515
+#, c-format
+msgid "The core version in file %s could not be found/parsed"
+msgstr "核心版本找不到或者不能被解析 %s"
+
+#: src/client.cpp:580
+#, c-format
+msgid "Unable to save %s because it does not exist"
+msgstr "无法保存文件 %s 因为文件不存在"
+
+#: src/client.cpp:587
+#, c-format
+msgid "Unable to create directory %s"
+msgstr "无法创建目录 %s"
+
+#: src/client.cpp:600
+#, c-format
+msgid "Unable to copy %s to %s"
+msgstr "无法复制 %s 到 %s"
+
+#: src/client.cpp:625
+#, c-format
+msgid "%s is on frame %u"
+msgstr "%s 工作进行到了第 %u 帧"
+
+#: src/client.cpp:629
+#, c-format
+msgid "Cannot determine frame number for %s (this isn't a problem)"
+msgstr "无法为 %s 确定帧数(这不是错误)"
+
+#: src/client.cpp:813
+#, c-format
+msgid "%s has an unknown state (Unable to find a complete frame)"
+msgstr "%s 状态未知 (找不到一个已经完成的帧)"
+
+#: src/client.cpp:822
+#, c-format
+msgid "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
+msgstr "%s 已停止 (发现\"Folding@Home Client Shutdown.\")"
+
+#: src/client.cpp:830
+#, c-format
+msgid "%s has been paused"
+msgstr "%s 已暂停"
+
+#: src/client.cpp:839
+#, c-format
+msgid ""
+"%s has an unknown state (Unable to extract a valid elapsed time since the "
+"last completed frame)"
+msgstr "%s 状态未知 (找不到从 最后一次完成一帧 到 现在 所经过的时间)"
+
+#: src/client.cpp:847
+#, c-format
+msgid "%s has been marked as having a asynchronous clock."
+msgstr "%s 已经被标记为异步状态"
+
+#: src/client.cpp:882
+#, c-format
+msgid "%s seems to have hung : Elapsed time is %um and limit is %um"
+msgstr "%s 可能已经挂起 : 流逝时间是 %um  时间限制是 %um"
+
+#: src/client.cpp:887
+#, c-format
+msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
+msgstr "%s 可能是非活动的 : 流逝时间是 %um 时间限制是 %um"
+
+#: src/clientDialog.cpp:59
+#, c-format
+msgid "Client Edition / %s"
+msgstr "版本 / %s"
+
+#: src/clientDialog.cpp:83
+msgid "Client information"
+msgstr "客户端信息"
+
+#: src/clientDialog.cpp:87
+msgid "Enter a name to describe this client."
+msgstr "输入一个名字来描述这个客户端."
+
+#: src/clientDialog.cpp:89
+msgid ""
+"Select the directory containing FAHlog.txt for the client you wish to "
+"monitor."
+msgstr "选择包含FAHlog.txt的目录，一般也就是要监视的客户端的目录."
+
+#: src/clientDialog.cpp:90
+msgid "Client is on a Virtual Machine"
+msgstr "客户端在虚拟机上运行"
+
+#: src/clientDialog.cpp:92
+msgid "Location:"
+msgstr "位置:"
+
+#: src/clientDialog.cpp:99 src/preferencesDialog.cpp:426
+#: src/preferencesDialog.cpp:581 src/preferencesDialog.cpp:592
+#: src/preferencesDialog.cpp:603 src/preferencesDialog.cpp:671
+#: src/preferencesDialog.cpp:681 src/preferencesDialog.cpp:691
+msgid "Choose"
+msgstr "选择"
+
+#: src/clientDialog.cpp:103
+msgid "Name:"
+msgstr "名称:"
+
+#: src/clientDialog.cpp:211
+msgid "Choose a folder"
+msgstr "选择文件夹"
+
+#: src/clientDialog.cpp:237
+msgid "You must fill the name AND the locations fields."
+msgstr "你必须填写名称和目录."
+
+#: src/clientsManager.cpp:192 src/webMonitor.cpp:708
+#, c-format
+msgid "Error while parsing %s on line %u"
+msgstr "解析文件 %s 第 %u 行出错"
+
+#: src/clientsManager.cpp:212
+#, c-format
+msgid ""
+"Could not open file <%s> for writing!\n"
+"The list of clients will not be saved!"
+msgstr ""
+"无法打开文件 <%s> \n"
+"无法保存客户端列表!"
+
+#: src/clientsManager.cpp:217
+#, c-format
+msgid ""
+"# %s : contains the list of clients\n"
+"#\n"
+"# \"Name\"\t\"Location\"\tDisabled(*)\tVM(*)\n"
+"\n"
+msgstr ""
+"# %s : 包含客户端列表\n"
+"#\n"
+"# \"名称\"\t\"位置\" 是否禁用(*)\t是否在虚拟机上(*)\n"
+"\n"
+
+#: src/core.cpp:132
+msgid "CPU"
+msgstr "CPU"
+
+#: src/core.cpp:136
+msgid "SMP"
+msgstr "SMP"
+
+#: src/core.cpp:143
+msgid "GPU"
+msgstr "GPU"
+
+#: src/fahlogAnalyzer.cpp:250
+msgid "Possible clock asynchrony detected!"
+msgstr "探测到时钟频率可能不同步!"
+
+#: src/firstTimeDialog.cpp:59
+#, c-format
+msgid "Welcome to %s!"
+msgstr "欢迎使用 %s!"
+
+#: src/firstTimeDialog.cpp:68
+#, c-format
+msgid "Welcome to %s, a Folding@Home monitoring tool"
+msgstr "欢迎使用 %s, 一个开源Folding@Home监控软件！"
+
+#: src/firstTimeDialog.cpp:72
+msgid ""
+"Project information (e.g. deadlines) is read from a local file, which must "
+"be regularly updated."
+msgstr "此项目信息 (例如：截止日期)读取于本地文件, 必须定期更新。"
+
+#: src/firstTimeDialog.cpp:73
+msgid ""
+"Thus, you should first download the latest available information on "
+"currently running projects:"
+msgstr "因此，应该首先联网下载最新的本项目信息："
+
+#: src/firstTimeDialog.cpp:74
+msgid ""
+"(NOTE: If you use a proxy for HTTP connections, you will need to change the "
+"preferences first!)"
+msgstr "(注意：如果使用HTTP代理连接，您需要首先更改的偏好设置!)"
+
+#: src/firstTimeDialog.cpp:76
+msgid "Download current projects"
+msgstr "下载当前项目"
+
+#: src/firstTimeDialog.cpp:78
+msgid ""
+"New updates are needed when no information on projects can be displayed (e."
+"g. deadlines)."
+msgstr "当项目没有任何信息可以显示的时候需要联网更新（例如：截止日期)."
+
+#: src/firstTimeDialog.cpp:79
+msgid "You will be able to perform updates by using the 'Tools' menu."
+msgstr "你可以点击“工具”菜单里的更新按钮更新程序。"
+
+#: src/firstTimeDialog.cpp:83
+msgid ""
+"To monitor a client, you need to add it by choosing 'Add a new client' from "
+"the 'Clients' menu."
+msgstr "如果你需要监控一个客户端,你需要点击“客户端”菜单里的“添加新客户端”项 。"
+
+#: src/firstTimeDialog.cpp:84
+msgid ""
+"Alternatively you can right click the client list and choose 'Add a new "
+"client' from the menu."
+msgstr "当然你也可以在客户端列表中右键点出菜单点击其中的“添加新客户端”项 。"
+
+#: src/firstTimeDialog.cpp:85
+msgid ""
+"The name you choose for a client is not important, you can think of it as a "
+"nickname."
+msgstr "客户端的名称并不重要，你可以把仅仅它当作一个昵称。"
+
+#: src/firstTimeDialog.cpp:86
+msgid ""
+"All further operations on clients (e.g. edition, deletion) can also made by "
+"right-clicking on the list."
+msgstr ""
+"所有针对客户端的进一步操作（例如：版本，删除），也通过右键点击列表操作。"
+
+#: src/firstTimeDialog.cpp:90
+#, c-format
+msgid ""
+"The latest version of %s will always be available on the official website:"
+msgstr "最新版本的%s总是可以在官方网站下载："
+
+#: src/firstTimeDialog.cpp:93
+msgid ""
+"For interactive help you can join our IRC channel at #fahmon on freenode.net:"
+msgstr "你可以加入freenode.net网上的#fahmon IRC频道获取互动帮助。"
+
+#: src/firstTimeDialog.cpp:94
+msgid "Connect to the FahMon IRC channel in a web browser"
+msgstr "通过Web浏览器连接到FahMon IRC频道  "
+
+#: src/firstTimeDialog.cpp:143 src/main.cpp:216 src/main.cpp:222
+#, c-format
+msgid "Could not create directory <%s>"
+msgstr "无法创建目录 <%s>"
+
+#: src/listViewClients.cpp:169 src/listViewClients.cpp:919
+#: src/webMonitor.cpp:565
+msgid "Progress"
+msgstr "进度"
+
+#: src/listViewClients.cpp:170 src/listViewClients.cpp:920
+#: src/webMonitor.cpp:566
+msgid "Name"
+msgstr "名称"
+
+#: src/listViewClients.cpp:171 src/listViewClients.cpp:921
+#: src/webMonitor.cpp:582
+msgid "Client Type"
+msgstr "客户端类型"
+
+#: src/listViewClients.cpp:172 src/listViewClients.cpp:922
+#: src/webMonitor.cpp:567
+msgid "ETA"
+msgstr "完成时间"
+
+#: src/listViewClients.cpp:173 src/listViewClients.cpp:923
+#: src/webMonitor.cpp:568
+msgid "PPD"
+msgstr "PPD"
+
+#: src/listViewClients.cpp:174 src/listViewClients.cpp:924
+msgid "Core"
+msgstr "核心"
+
+#: src/listViewClients.cpp:175 src/listViewClients.cpp:925
+#: src/webMonitor.cpp:583
+msgid "Core Version"
+msgstr "核心版本"
+
+#: src/listViewClients.cpp:176 src/listViewClients.cpp:926
+#: src/webMonitor.cpp:562
+msgid "PRCG"
+msgstr "PRCG"
+
+#: src/listViewClients.cpp:177 src/listViewClients.cpp:927
+#: src/webMonitor.cpp:563
+msgid "Credit"
+msgstr "分值"
+
+#: src/listViewClients.cpp:178 src/listViewClients.cpp:928
+#: src/webMonitor.cpp:564
+msgid "Downloaded"
+msgstr "下载时间"
+
+#: src/listViewClients.cpp:179 src/listViewClients.cpp:929
+msgid "Deadline"
+msgstr "过期时间"
+
+#: src/listViewClients.cpp:565
+msgid "Loading..."
+msgstr "加载中..."
+
+#: src/listViewClients.cpp:648 src/mainDialog.cpp:544 src/webMonitor.cpp:180
+#, c-format
+msgid "%u points"
+msgstr "%u 分"
+
+#: src/listViewClients.cpp:661 src/listViewClients.cpp:689
+#: src/mainDialog.cpp:488 src/mainDialog.cpp:562 src/mainDialog.cpp:600
+#: src/webMonitor.cpp:160 src/webMonitor.cpp:196 src/webMonitor.cpp:232
+#, c-format
+msgid "%s ago"
+msgstr "%s 之前"
+
+#: src/listViewClients.cpp:693 src/mainDialog.cpp:566 src/mainDialog.cpp:604
+#: src/webMonitor.cpp:200 src/webMonitor.cpp:236
+#, c-format
+msgid "In %s"
+msgstr "%s 之后"
+
+#: src/listViewClients.cpp:724 src/webMonitor.cpp:258 src/webMonitor.cpp:302
+msgid "Disabled"
+msgstr "禁用"
+
+#: src/listViewClients.cpp:728 src/webMonitor.cpp:306
+msgid "Finished"
+msgstr "完成"
+
+#: src/listViewClients.cpp:740 src/webMonitor.cpp:318
+msgid "*Hung*"
+msgstr "*挂起*"
+
+#: src/listViewClients.cpp:744 src/webMonitor.cpp:288 src/webMonitor.cpp:322
+#: src/webMonitor.cpp:548
+msgid "Paused"
+msgstr "暂停"
+
+#: src/listViewClients.cpp:878 src/listViewClients.cpp:886
+#: src/mainDialog.cpp:661
+msgid "Add a new client"
+msgstr "添加"
+
+#: src/listViewClients.cpp:888
+msgid "Reload this client"
+msgstr "刷新"
+
+#: src/listViewClients.cpp:889
+msgid "Edit this client"
+msgstr "编辑"
+
+#: src/listViewClients.cpp:890
+msgid "Delete this client"
+msgstr "删除"
+
+#: src/listViewClients.cpp:891
+msgid "View Client Files"
+msgstr "查看文件"
+
+#: src/listViewClients.cpp:893
+msgid "Disable this client"
+msgstr "禁用"
+
+#: src/listViewClients.cpp:895
+msgid "Enable this client"
+msgstr "启用"
+
+#: src/listViewClients.cpp:1032 src/mainDialog.cpp:1514
+msgid "Do you really want to delete this client?"
+msgstr "真的要删除这个客户端监视么?"
+
+#: src/listViewClients.cpp:1093
+msgid ""
+"Unable to launch the default filemanager.\n"
+"\n"
+"Please check that the correct filemanager is set in Preferences"
+msgstr ""
+"无法运行默认的文件管理器.\n"
+"\n"
+"请检查是否已经在偏好设置中设置文件管理器."
+
+#: src/main.cpp:134
+#, c-format
+msgid "Another instance of %s is already running!"
+msgstr "另一个 %s 已经在运行!"
+
+#: src/main.cpp:246
+#, c-format
+msgid "Old settings imported into %s"
+msgstr "旧的设置已经导入 %s"
+
+#: src/mainDialog.cpp:184
+#, c-format
+msgid "%s is licenced under the GNU GPL v2"
+msgstr "%s is licenced under the GNU GPL v2"
+
+#: src/mainDialog.cpp:185
+msgid "Copyright (C) 2003-2007 Fran\\u00E7ois Ingelrest"
+msgstr "Copyright (C) 2003-2007 Fran\\u00E7ois Ingelrest"
+
+#: src/mainDialog.cpp:186
+msgid "Copyright (C) 2007-2009 Andrew Schofield"
+msgstr "Copyright (C) 2007-2009 Andrew Schofield"
+
+#: src/mainDialog.cpp:188
+msgid "FahMon contains code from qd, also licenced under the GNU GPL v2"
+msgstr "FahMon contains code from qd, also licenced under the GNU GPL v2"
+
+#: src/mainDialog.cpp:189
+msgid "Copyright (C) 2002-2005 Richard P. Howell IV."
+msgstr "Copyright (C) 2002-2005 Richard P. Howell IV."
+
+#: src/mainDialog.cpp:190
+msgid "Copyright (C) 2005-2009 Sebastiaan Couwenberg"
+msgstr "Copyright (C) 2005-2009 Sebastiaan Couwenberg"
+
+#: src/mainDialog.cpp:445
+msgid ""
+"Something is wrong with this client.\n"
+"Please check the messages (Tools->Show/Hide Messages Window)."
+msgstr ""
+"客户端某些地方出错.\n"
+"具体请看(工具->显示/隐藏消息窗口)."
+
+#: src/mainDialog.cpp:447
+msgid "This client is currently disabled."
+msgstr "客户端已被禁用."
+
+#: src/mainDialog.cpp:538
+#, c-format
+msgid "Project %u is unknown, you should try to update the projects database"
+msgstr "任务 %u 是未知的, 你应该更新任务信息数据库"
+
+#: src/mainDialog.cpp:622 src/mainDialog.cpp:1229
+#, c-format
+msgid "%.2f PPD"
+msgstr "%.2f PPD"
+
+#: src/mainDialog.cpp:649 src/mainDialog.cpp:699
+msgid "&Check for update"
+msgstr "&检查更新"
+
+#: src/mainDialog.cpp:649 src/mainDialog.cpp:699
+msgid "Check online for the latest version of FahMon"
+msgstr "在线检查最新版本FahMon"
+
+#: src/mainDialog.cpp:652
+msgid "&Preferences...\tCTRL+P"
+msgstr "&偏好设置...\tCTRL+P"
+
+#: src/mainDialog.cpp:652
+msgid "Open the preferences dialog"
+msgstr "打开偏好设置对话框"
+
+#: src/mainDialog.cpp:654
+msgid "&Quit\tCtrl+Q"
+msgstr "&退出\tCtrl+Q"
+
+#: src/mainDialog.cpp:654
+#, c-format
+msgid "Quit %s"
+msgstr "退出 FahMon %s"
+
+#: src/mainDialog.cpp:661
+msgid "Add a new client to be monitored"
+msgstr "添加一个供监视的客户端"
+
+#: src/mainDialog.cpp:663
+msgid "Edit client"
+msgstr "编辑客户端"
+
+#: src/mainDialog.cpp:663
+msgid "Edit the selected client settings"
+msgstr "编辑所选的客户端设置"
+
+#: src/mainDialog.cpp:664
+msgid "Delete client"
+msgstr "删除客户端"
+
+#: src/mainDialog.cpp:664
+msgid "Delete the selected client"
+msgstr "删除所选的客户端"
+
+#: src/mainDialog.cpp:665
+msgid "View client files"
+msgstr "查看客户端文件"
+
+#: src/mainDialog.cpp:665
+msgid "Open file browser in client folder"
+msgstr "在我的电脑中打开客户端文件夹"
+
+#: src/mainDialog.cpp:668
+msgid "Reload &Selection\tF5"
+msgstr "刷新选定的客户端(&S)\tF5"
+
+#: src/mainDialog.cpp:668 src/mainDialog.cpp:671
+msgid "Reload the selected client"
+msgstr "刷新选定的客户端"
+
+#: src/mainDialog.cpp:669
+msgid "Reload &All\tF6"
+msgstr "刷新全部客户端(&A)\tF6"
+
+#: src/mainDialog.cpp:669 src/mainDialog.cpp:672
+msgid "Reload all the clients"
+msgstr "刷新全部客户端"
+
+#: src/mainDialog.cpp:671
+msgid "Reload &Selection\tCtrl+R"
+msgstr "刷新选定的客户端\tCtrl+R"
+
+#: src/mainDialog.cpp:672
+msgid "Reload &All\tCtrl+Shift+R"
+msgstr "刷新所有客户端\tCtrl+Shift+R"
+
+#: src/mainDialog.cpp:674
+msgid "&Clients"
+msgstr "客户端(&C)"
+
+#: src/mainDialog.cpp:679
+msgid "&Show/Hide FAHLog\tF8"
+msgstr "显示/隐藏FAH日志(&S)\tF8"
+
+#: src/mainDialog.cpp:679 src/mainDialog.cpp:683
+msgid "Toggle the log file"
+msgstr "显示日志文件"
+
+#: src/mainDialog.cpp:681
+msgid "&Cycle ETA Style\tF9"
+msgstr "改变完成时间显示风格(&C)\tF9"
+
+#: src/mainDialog.cpp:681 src/mainDialog.cpp:685
+msgid "Cycle through the different ETA display styles"
+msgstr "改变完成时间显示风格"
+
+#: src/mainDialog.cpp:683
+msgid "&Show/Hide FAHLog\tCtrl+L"
+msgstr "显示/隐藏 FAH日志\tCtrl+L"
+
+#: src/mainDialog.cpp:685
+msgid "&Cycle ETA Style\tCtrl+E"
+msgstr "改变完成时间显示风格\tCtrl+E"
+
+#: src/mainDialog.cpp:688
+msgid "Show/Hide &WU Info panel"
+msgstr "显示/隐藏WU信息面板"
+
+#: src/mainDialog.cpp:688
+msgid "Toggle the display of the Work Unit Information panel"
+msgstr "显示/隐藏WU信息面板"
+
+#: src/mainDialog.cpp:689
+msgid "&View"
+msgstr "查看(&V)"
+
+#: src/mainDialog.cpp:693
+msgid "&Show/Hide Messages Window"
+msgstr "显示/隐藏消息窗口(&S)"
+
+#: src/mainDialog.cpp:693
+msgid "Toggle the messages window"
+msgstr "显示/隐藏消息窗口"
+
+#: src/mainDialog.cpp:694
+msgid "&Benchmarks...\tCTRL+B"
+msgstr "基准分值(&B)...\tCTRL+B"
+
+#: src/mainDialog.cpp:694
+msgid "Open the benchmarks dialog"
+msgstr "打开基准分值对话框"
+
+#: src/mainDialog.cpp:695
+msgid "&Download New Projects"
+msgstr "下载新任务（信息）(&D)"
+
+#: src/mainDialog.cpp:695
+msgid "Update the local project database"
+msgstr "更新本地任务信息数据库"
+
+#: src/mainDialog.cpp:701
+msgid "&Tools"
+msgstr "工具(&T)"
+
+#: src/mainDialog.cpp:706
+msgid "&My Stats\tF2"
+msgstr "我的统计(&M)\tF2"
+
+#: src/mainDialog.cpp:706 src/mainDialog.cpp:710
+msgid "View the personal statistics for the selected client"
+msgstr "查看所选客户端的个人状态"
+
+#: src/mainDialog.cpp:707
+msgid "&Jmol\tF3"
+msgstr "&Jmol网站\tF3"
+
+#: src/mainDialog.cpp:707 src/mainDialog.cpp:711
+msgid "View the current project on the Jmol website"
+msgstr "在Jmol网站上查看当前任务"
+
+#: src/mainDialog.cpp:708
+msgid "fah&info\tF4"
+msgstr "fah&info网站\tF4"
+
+#: src/mainDialog.cpp:708 src/mainDialog.cpp:712
+msgid "View the current project on fahinfo.org"
+msgstr "在fahinfo.org上查看当前任务"
+
+#: src/mainDialog.cpp:710
+msgid "&My Stats\tCtrl+Shift+M"
+msgstr "我的统计\tCtrl+Shift+M"
+
+#: src/mainDialog.cpp:711
+msgid "&Jmol\tCtrl+J"
+msgstr "&Jmol\tCtrl+J"
+
+#: src/mainDialog.cpp:712
+msgid "fah&info\tCtrl+I"
+msgstr "fah&info\tCtrl+I"
+
+#: src/mainDialog.cpp:715
+msgid "F@H &Website"
+msgstr "FAH官方网站(&W)"
+
+#: src/mainDialog.cpp:715
+msgid "Open to the official Stanford website"
+msgstr "斯坦福大学Folding@Home官方网站"
+
+#: src/mainDialog.cpp:716
+msgid "Folding &Forum"
+msgstr "FAH官方支持论坛"
+
+#: src/mainDialog.cpp:716
+msgid "Open the Folding@Home support forum"
+msgstr "打开Folding@Home支持论坛"
+
+#: src/mainDialog.cpp:717
+msgid "&Projects Summary"
+msgstr "任务摘要(&P)"
+
+#: src/mainDialog.cpp:717
+msgid "Open the list of the current projects"
+msgstr "打开当前任务列表"
+
+#: src/mainDialog.cpp:718
+msgid "&Servers Status"
+msgstr "服务器状态(&S)"
+
+#: src/mainDialog.cpp:718
+msgid "Open the list of the servers with their status"
+msgstr "打开服务器列表并显示他们的状态"
+
+#: src/mainDialog.cpp:719
+msgid "&Web"
+msgstr "网络(W)"
+
+#: src/mainDialog.cpp:724
+msgid "&Help Contents\tF1"
+msgstr "帮助目录(&H)\tF1"
+
+#: src/mainDialog.cpp:724 src/mainDialog.cpp:726
+msgid "See help contents"
+msgstr "查看帮助目录"
+
+#: src/mainDialog.cpp:726
+msgid "&Help Contents\tCtrl+?"
+msgstr "帮助目录\tCtrl+?"
+
+#: src/mainDialog.cpp:728
+msgid "FahMon &IRC Channel"
+msgstr "FahMon &IRC 频道"
+
+#: src/mainDialog.cpp:728
+msgid "Join the FahMon IRC channel for online help"
+msgstr "加入IRC频道，在线获得帮助"
+
+#: src/mainDialog.cpp:729
+msgid "&About"
+msgstr "关于(&A)"
+
+#: src/mainDialog.cpp:729
+#, c-format
+msgid "About %s"
+msgstr "关于 %s"
+
+#: src/mainDialog.cpp:736
+msgid "&Help"
+msgstr "帮助(&H)"
+
+#: src/mainDialog.cpp:768 src/webMonitor.cpp:569
+msgid "Work Unit Information"
+msgstr "任务信息"
+
+#: src/mainDialog.cpp:796 src/webMonitor.cpp:570
+msgid "Core:"
+msgstr "核心:"
+
+#: src/mainDialog.cpp:798 src/webMonitor.cpp:571
+msgid "Project:"
+msgstr "任务:"
+
+#: src/mainDialog.cpp:800 src/webMonitor.cpp:572
+msgid "Credit:"
+msgstr "分值:"
+
+#: src/mainDialog.cpp:802 src/webMonitor.cpp:573
+msgid "Username:"
+msgstr "用户:"
+
+#: src/mainDialog.cpp:804 src/webMonitor.cpp:581
+msgid "Downloaded:"
+msgstr "下载时间:"
+
+#: src/mainDialog.cpp:806 src/webMonitor.cpp:574
+msgid "Preferred Deadline:"
+msgstr "推荐完成时间:"
+
+#: src/mainDialog.cpp:808 src/webMonitor.cpp:575
+msgid "Final Deadline:"
+msgstr "过期时间:"
+
+#: src/mainDialog.cpp:843
+msgid "Log file."
+msgstr "日志文件。"
+
+#: src/mainDialog.cpp:1085
+msgid "You must first select a client!"
+msgstr "你必须选择一个客户端!"
+
+#: src/mainDialog.cpp:1446
+msgid "Checking for FahMon updates"
+msgstr "FahMon检查更新"
+
+#: src/mainDialog.cpp:1457
+#, c-format
+msgid "Your version: %s; New version: %s"
+msgstr "当前版本: %s; 最新版本: %s"
+
+#: src/mainDialog.cpp:1471
+msgid "Update available"
+msgstr "有可用的升级"
+
+#: src/mainDialog.cpp:1472
+msgid ""
+"A newer version of FahMon is available\n"
+"Do you want to go to the FahMon website?"
+msgstr ""
+"新版FahMon出现\n"
+"是否要去FahMon的网站?"
+
+#: src/mainDialog.cpp:1479 src/mainDialog.cpp:1481
+msgid "No update found"
+msgstr "没有发现更新"
+
+#: src/mainDialog.cpp:1625
+msgid "ctrl"
+msgstr "ctrl"
+
+#: src/mainDialog.cpp:1626
+msgid "shift"
+msgstr "shift"
+
+#: src/mainDialog.cpp:1627
+msgid "alt"
+msgstr "alt"
+
+#: src/messagesFrame.cpp:45
+#, c-format
+msgid "Messages / %s"
+msgstr "消息 / %s"
+
+#: src/messagesManager.cpp:133
+msgid ""
+"Could not open file for writing!\n"
+"The log will not be saved!"
+msgstr ""
+"无法保存文件!\n"
+"日志将不会被保存!"
+
+#: src/preferencesDialog.cpp:110
+#, c-format
+msgid "Preferences / %s"
+msgstr "偏好设置 / %s"
+
+#: src/preferencesDialog.cpp:128
+msgid "General"
+msgstr "常规"
+
+#: src/preferencesDialog.cpp:129
+msgid "Monitoring"
+msgstr "监视"
+
+#: src/preferencesDialog.cpp:130
+msgid "Networking"
+msgstr "网络"
+
+#: src/preferencesDialog.cpp:131
+msgid "Advanced"
+msgstr "高级"
+
+#: src/preferencesDialog.cpp:132
+msgid "System"
+msgstr "系统"
+
+#: src/preferencesDialog.cpp:134
+msgid "WebApp 1"
+msgstr "Web程序 1"
+
+#: src/preferencesDialog.cpp:135
+msgid "WebApp 2"
+msgstr "Web程序 2"
+
+#: src/preferencesDialog.cpp:200
+msgid "Enable system tray icon"
+msgstr "启用系统托盘图标"
+
+#: src/preferencesDialog.cpp:202
+msgid "Start minimized"
+msgstr "启动时最小化"
+
+#: src/preferencesDialog.cpp:203
+msgid "Collect .xyz files"
+msgstr "收集 .xyz 文件"
+
+#: src/preferencesDialog.cpp:204
+msgid ""
+"By collecting xyz files you can help the jmol project by submitting missing "
+"projects."
+msgstr "通过收集 .xyz文件，你可以通过提交丢失的任务来帮助jmol工程."
+
+#: src/preferencesDialog.cpp:205
+msgid "Auto update projects database when needed"
+msgstr "当需要的时候，自动升级任务信息数据库"
+
+#: src/preferencesDialog.cpp:206
+msgid ""
+"This allows FahMon to keep up to date with any new projects you might "
+"download automatically."
+msgstr "可以让FahMon自动下载新的任务信息."
+
+#: src/preferencesDialog.cpp:207
+msgid "Always list inaccessible clients last"
+msgstr "总是在最后列出不能连接的客户端"
+
+#: src/preferencesDialog.cpp:208
+msgid "Keeps inaccessible clients at the bottom of the clients list."
+msgstr "把不能连接的客户端放到客户端列表最下面."
+
+#: src/preferencesDialog.cpp:209
+msgid "Check for FahMon updates on startup"
+msgstr "启动时检查FahMon更新"
+
+#: src/preferencesDialog.cpp:245
+msgid "A date (dd/mm)"
+msgstr "日期 (日/月)"
+
+#: src/preferencesDialog.cpp:245
+msgid "A date (mm/dd)"
+msgstr "日期 (月/日)"
+
+#: src/preferencesDialog.cpp:245
+msgid "Time left"
+msgstr "完成时间"
+
+#: src/preferencesDialog.cpp:246
+msgid "All frames"
+msgstr "所有帧"
+
+#: src/preferencesDialog.cpp:246
+msgid "Last frame only"
+msgstr "最后一帧"
+
+#: src/preferencesDialog.cpp:246
+msgid "Last 3 frames"
+msgstr "最近3帧"
+
+#: src/preferencesDialog.cpp:246
+msgid "Effective rate"
+msgstr "实际效能"
+
+#: src/preferencesDialog.cpp:258
+msgid "Auto reload clients"
+msgstr "自动刷新客户端"
+
+#: src/preferencesDialog.cpp:259
+msgid "Local client reload interval (mn)"
+msgstr "本地客户端刷新时间间隔 (分)"
+
+#: src/preferencesDialog.cpp:260
+msgid "Use experimental reload system (local only)"
+msgstr "使用新型测试版的刷新方式 (只能用于本地客户端)"
+
+#: src/preferencesDialog.cpp:261
+msgid ""
+"Check when the log was last modified before deciding to reload the client. "
+"This can prevent unecessary reloads and gives a more timely response to "
+"changes in the log."
+msgstr "在读取LOG文件之前对其进行检查."
+
+#: src/preferencesDialog.cpp:262
+msgid "HTTP/FTP client reload interval (mn)"
+msgstr "HTTP/FTP 客户端刷新间隔时间 (分)"
+
+#: src/preferencesDialog.cpp:263
+msgid "Reload clients in series"
+msgstr "轮流刷新客户端"
+
+#: src/preferencesDialog.cpp:264
+msgid ""
+"This option can reduce memory consumption if monitoring a large number of "
+"clients. Clients are reloaded sequentially in a single thread."
+msgstr "可以减小内存开销"
+
+#: src/preferencesDialog.cpp:269
+msgid ""
+"PPD Calculation formats\n"
+"All frames: 255 stored datapoints used\n"
+"Last frame only: Instantaneous PPD\n"
+"Last 3 frames: 3 frames rolling average\n"
+"Effective rate: Based on download time and current frame"
+msgstr ""
+"PPD 计算方式\n"
+"所有帧: 255个存储的数据点会被使用\n"
+"仅最后一帧: 瞬时PPD\n"
+"最近3帧: 最近3帧的平均值\n"
+"实际效能: 基于下载时间和当前帧"
+
+#: src/preferencesDialog.cpp:270
+msgid "Ignore asynchronous clocks"
+msgstr "忽略时钟异步"
+
+#: src/preferencesDialog.cpp:271
+msgid ""
+"Prevents clients from being reported as *hung* if their local clocks are out "
+"of sync with this machine."
+msgstr "即使客户端的时钟和电脑时间不同步，客户端也不会被报告为“*挂起*”"
+
+#: src/preferencesDialog.cpp:273
+msgid "Display dates as"
+msgstr "日期显示方式"
+
+#: src/preferencesDialog.cpp:282
+msgid "Calculate PPD based on"
+msgstr "PPD计算方式"
+
+#: src/preferencesDialog.cpp:332
+msgid "Use a proxy for HTTP connections"
+msgstr "使用HTTP代理"
+
+#: src/preferencesDialog.cpp:335 src/preferencesDialog.cpp:346
+msgid "Proxy requires authentication"
+msgstr "代理服务器需要验证信息"
+
+#: src/preferencesDialog.cpp:338 src/preferencesDialog.cpp:349
+#: src/preferencesDialog.cpp:419
+msgid "Address:"
+msgstr "地址:"
+
+#: src/preferencesDialog.cpp:339 src/preferencesDialog.cpp:350
+msgid "Port:"
+msgstr "端口:"
+
+#: src/preferencesDialog.cpp:340 src/preferencesDialog.cpp:351
+msgid ""
+"Proxy\n"
+"Username:"
+msgstr "用户名:"
+
+#: src/preferencesDialog.cpp:341 src/preferencesDialog.cpp:352
+msgid ""
+"Proxy\n"
+"Password:"
+msgstr "密码:"
+
+#: src/preferencesDialog.cpp:343
+msgid "Use a proxy for FTP connections"
+msgstr "使用FTP代理"
+
+#: src/preferencesDialog.cpp:417
+msgid "Use the following settings for new project downloads"
+msgstr "设置任务信息服务器地址"
+
+#: src/preferencesDialog.cpp:420
+msgid "Use a local file for project data"
+msgstr "使用本地文件提供任务数据"
+
+#: src/preferencesDialog.cpp:422 src/preferencesDialog.cpp:577
+#: src/preferencesDialog.cpp:588 src/preferencesDialog.cpp:599
+#: src/preferencesDialog.cpp:667 src/preferencesDialog.cpp:677
+#: src/preferencesDialog.cpp:687
+msgid "Filename:"
+msgstr "文件名:"
+
+#: src/preferencesDialog.cpp:428
+msgid "Log error messages only"
+msgstr "仅日志错误信息"
+
+#: src/preferencesDialog.cpp:474
+msgid "Web Browser:"
+msgstr "Web 浏览器:"
+
+#: src/preferencesDialog.cpp:475
+msgid ""
+"Enter the location of your preferred web browser. In most cases \"firefox\" "
+"should suffice."
+msgstr "输入你喜欢的浏览器的路径，比如firefox,opera,IE"
+
+#: src/preferencesDialog.cpp:476
+msgid "File Manager:"
+msgstr "文件管理:"
+
+#: src/preferencesDialog.cpp:478
+msgid "File Manager Command:"
+msgstr "文件管理器命令行:"
+
+#: src/preferencesDialog.cpp:479
+msgid "Provide any modifications to the file manager command."
+msgstr "提供调用文件管理器的命令行."
+
+#: src/preferencesDialog.cpp:480
+msgid "Manually set timezone to UTC +"
+msgstr "手动设置时区UTC +"
+
+#: src/preferencesDialog.cpp:481
+msgid ""
+"Set this option if you find that FahMon isn't detecting your timezone "
+"correctly."
+msgstr "设置这个可以修正时区偏差."
+
+#: src/preferencesDialog.cpp:485
+msgid "Windows Explorer"
+msgstr "Windows Explorer"
+
+#: src/preferencesDialog.cpp:485 src/preferencesDialog.cpp:488
+#: src/preferencesDialog.cpp:491
+msgid "Other"
+msgstr "其他"
+
+#: src/preferencesDialog.cpp:491
+msgid "Finder"
+msgstr "查找"
+
+#: src/preferencesDialog.cpp:494
+msgid "Select your preferred file manager. Used for opening client folders."
+msgstr "选择你喜欢的文件管理器，用来打开客户端文件夹."
+
+#: src/preferencesDialog.cpp:573
+msgid "Export Web Application"
+msgstr "输出Web程序"
+
+#: src/preferencesDialog.cpp:574
+msgid ""
+"Enables the creation of a fancy web page that mimics the old FahMon layout "
+"showing current client data."
+msgstr "使用一种华丽的HTML页面来模仿本地FahMon显示当前客户端数据."
+
+#: src/preferencesDialog.cpp:576 src/preferencesDialog.cpp:587
+#: src/preferencesDialog.cpp:598
+msgid ""
+"Enter the location where the output should be saved. This can be a local "
+"file, or an ftp url."
+msgstr "输入保存路径， 可以是本地路径，也可以是FTP地址."
+
+#: src/preferencesDialog.cpp:584
+msgid "Export Simple Web page"
+msgstr "输出简单Web页"
+
+#: src/preferencesDialog.cpp:585
+msgid "Enables the creation of a compact web page showing current client data."
+msgstr "使用一种简洁的HTML页面来显示当前客户端数据."
+
+#: src/preferencesDialog.cpp:595
+msgid "Export Simple Text file"
+msgstr "输出简单文本文件"
+
+#: src/preferencesDialog.cpp:596
+msgid ""
+"Enables the creation of a compact text file showing current client data."
+msgstr "使用一种简洁的文本格式文件来显示当前客户端数据."
+
+#: src/preferencesDialog.cpp:664
+msgid "Custom Web Application Template"
+msgstr "自定义Web程序模板"
+
+#: src/preferencesDialog.cpp:666
+msgid "Enter the location of the web application template."
+msgstr "输入Web模板路径."
+
+#: src/preferencesDialog.cpp:674
+msgid "Custom Simple Web Template"
+msgstr "自定义简单Web页模板"
+
+#: src/preferencesDialog.cpp:676
+msgid "Enter the location of the simple web template."
+msgstr "输入简单Web页路径."
+
+#: src/preferencesDialog.cpp:684
+msgid "Custom Simple Text Template"
+msgstr "自定义简单文本文件模板"
+
+#: src/preferencesDialog.cpp:686
+msgid "Enter the location of the simple text template."
+msgstr "输入简单文本文件路径."
+
+#: src/preferencesDialog.cpp:1186
+msgid "Choose a local project data file"
+msgstr "选择本地任务数据文件"
+
+#: src/preferencesDialog.cpp:1201
+msgid "Choose where to save the Web Application"
+msgstr "选择Web程序保存位置"
+
+#: src/preferencesDialog.cpp:1216
+msgid "Choose where to save the simple web page"
+msgstr "选择简单Web页面保存位置"
+
+#: src/preferencesDialog.cpp:1231
+msgid "Choose where to save the simple text file"
+msgstr "选择简单文本文件保存位置"
+
+#: src/preferencesDialog.cpp:1246
+msgid "Choose the Web Application Template"
+msgstr "选择Web程序模板"
+
+#: src/preferencesDialog.cpp:1261
+msgid "Choose the Simple Web Page Template"
+msgstr "选择简单Web页面模板"
+
+#: src/preferencesDialog.cpp:1276
+msgid "Choose the Simple Text File Template"
+msgstr "选择简单文本文件模板"
+
+#: src/preferencesManager.cpp:226
+msgid "There is no Preferences file, or it is not readable"
+msgstr "无法加载偏好设置文件"
+
+#: src/projectsManager.cpp:109
+msgid "There is no projects file, or it is not readable"
+msgstr "无法读取任务文件"
+
+#: src/projectsManager.cpp:241
+msgid "Updating projects database"
+msgstr "正在更新任务信息数据库"
+
+#: src/projectsManager.cpp:245
+msgid "Downloading new projects"
+msgstr "更新任务信息"
+
+#: src/projectsManager.cpp:270
+msgid "Adding the new projects to the database"
+msgstr "正在添加新任务到任务信息数据库"
+
+#: src/projectsManager.cpp:328
+msgid "Local project update file doesn't exist!"
+msgstr "本地任务更新文件不存在!"
+
+#: src/projectsManager.cpp:337
+msgid "Unable to copy local project update file to temporary location"
+msgstr "无法复制本地任务更新文件到临时文件夹"
+
+#: src/projectsManager.cpp:395
+#, c-format
+msgid "Line %u is not correctly formatted! %s"
+msgstr "第 %u 行格式错误! %s"
+
+#: src/projectsManager.cpp:406
+msgid "Update aborted!"
+msgstr "更新中止!"
+
+#: src/tools.cpp:66
+msgid ""
+"Unable to launch the default browser.\n"
+"\n"
+"Please check that the environment variable BROWSER is defined or set it in "
+"Preferences."
+msgstr ""
+"无法启动默认浏览器，请检查环境变量中，浏览器是否已经定义或者是否已经在偏好设"
+"置中设置。"
+
+#: src/trayManager.cpp:126
+#, c-format
+msgid ""
+"%s\n"
+"Clients: %i\n"
+"Total PPD: %.2f"
+msgstr ""
+"%s\n"
+"客户端: %i\n"
+"合计PPD: %.2f"
+
+#: src/trayManager.cpp:175
+msgid "Preferences"
+msgstr "偏好设置"
+
+#: src/trayManager.cpp:183
+msgid "Hide FahMon"
+msgstr "隐藏 FahMon"
+
+#: src/trayManager.cpp:189
+msgid "Show FahMon"
+msgstr "显示 FahMon"
+
+#: src/trayManager.cpp:197
+msgid "Quit"
+msgstr "退出"
+
+#: src/webMonitor.cpp:263 src/webMonitor.cpp:528
+msgid "Inaccessible"
+msgstr "无效"
+
+#: src/webMonitor.cpp:268 src/webMonitor.cpp:532
+msgid "Stopped"
+msgstr "停止"
+
+#: src/webMonitor.cpp:273 src/webMonitor.cpp:536
+msgid "Inactive"
+msgstr "非活动"
+
+#: src/webMonitor.cpp:278 src/webMonitor.cpp:540
+msgid "Hung"
+msgstr "挂起"
+
+#: src/webMonitor.cpp:283 src/webMonitor.cpp:544
+msgid "Async"
+msgstr "异步"
+
+#: src/webMonitor.cpp:293
+msgid "Ok"
+msgstr "OK"
+
+#: src/webMonitor.cpp:390
+#, c-format
+msgid ""
+"Could not open template file <%s> for reading!\n"
+"The web application will not be created!"
+msgstr ""
+"无法打开模板 <%s>!\n"
+"Web程序将不会被创建!"
+
+#: src/webMonitor.cpp:395
+#, c-format
+msgid ""
+"Could not open file <%s> for writing!\n"
+"The web application will not be created!"
+msgstr ""
+"无法打开文件 <%s>!\n"
+"Web程序将不会被创建!"
+
+#: src/webMonitor.cpp:561
+msgid "State"
+msgstr "状态"
+
+#: src/webMonitor.cpp:576
+msgid "Total PPD:"
+msgstr "合计 PPD:"
+
+#: src/webMonitor.cpp:577
+msgid "Web View"
+msgstr "Web监控"
+
+#: src/webMonitor.cpp:578
+msgid "FahMon Client Monitoring"
+msgstr "FahMon 客户端监视器"
+
+#: src/webMonitor.cpp:579
+msgid "Simple Text Output"
+msgstr "简单文本输出"
+
+#: src/webMonitor.cpp:580
+msgid "Last updated:"
+msgstr "最后更新:"

@@ -165,6 +165,13 @@ Section /o "Russian" secLangruRU
   File "lang\ru_RU\fahmon.mo"
 
 SectionEnd
+Section /o "Simplified Chinese" secLangzhCN
+
+  SetOutPath "$INSTDIR\lang\zh_CN"
+  File "lang\zh_CN\zh_CN.po"
+  File "lang\zh_CN\fahmon.mo"
+
+SectionEnd
 Section /o "Spanish" secLangesES
 
   SetOutPath "$INSTDIR\lang\es_ES"
@@ -194,6 +201,7 @@ SectionGroupEnd
   LangString DESC_SecLangptBR ${LANG_ENGLISH} "Install Portuguese (Brazil) translation"
   LangString DESC_SecLangptPT ${LANG_ENGLISH} "Install Portuguese (Portugal) translation"
   LangString DESC_SecLangruRU ${LANG_ENGLISH} "Install Russian translation"
+  LangString DESC_SecLangzhCN ${LANG_ENGLISH} "Install Simplified Chinese translation"
   LangString DESC_SecLangesES ${LANG_ENGLISH} "Install Spanish translation"
   LangString DESC_SecLangsvSE ${LANG_ENGLISH} "Install Swedish translation"
 
@@ -210,6 +218,7 @@ SectionGroupEnd
     !insertmacro MUI_DESCRIPTION_TEXT ${SecLangplPL} $(DESC_SecLangplPL)
     !insertmacro MUI_DESCRIPTION_TEXT ${SecLangptBR} $(DESC_SecLangptBR)
     !insertmacro MUI_DESCRIPTION_TEXT ${SecLangptPT} $(DESC_SecLangptPT)
+    !insertmacro MUI_DESCRIPTION_TEXT ${SecLangzhCN} $(DESC_SecLangzhCN)
     !insertmacro MUI_DESCRIPTION_TEXT ${SecLangesES} $(DESC_SecLangesES)
     !insertmacro MUI_DESCRIPTION_TEXT ${SecLangsvSE} $(DESC_SecLangsvSE)
   !insertmacro MUI_FUNCTION_DESCRIPTION_END
