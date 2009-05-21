@@ -142,8 +142,16 @@ protected:
 	 **/
 	void SaveXYZFile(void) const;
 
+	/**
+	 * Provide thread-safe method for setting client state.
+	 * @param value The state to set
+	 **/
 	void SetState(State value);
 
+	/**
+	 * Provide thread-safe method for getting client state.
+	 * @return The client state
+	 **/
 	const State GetState(void) const;
 
 
