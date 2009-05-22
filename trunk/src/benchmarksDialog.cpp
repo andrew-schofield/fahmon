@@ -261,13 +261,13 @@ void BenchmarksDialog::ShowBenchmarks(ProjectId projectIdToShow)
 	for(i=0; i<nbBenchmarks; ++i)
 	{
 		// Use the name of the client if found, its location otherwise
-		clientLocation = BenchmarksManager::GetInstance()->GetClientLocationFromClientId(benchmarks[i]->GetClientId());
+		clientLocation = BenchmarksManager::GetInstance()->GetClientLocationFromClientId(benchmarks[i]->GetClientId()).c_str();
 #ifdef _FAHMON_WIN32_
 		// fixes old benchmarks from version 2.3.1 and earlier which used forward slash instead of back slash
 		if(multiProtocolFile::GetFileProtocol(clientLocation) != multiProtocolFile::HTTP && multiProtocolFile::GetFileProtocol(clientLocation) != multiProtocolFile::FTP)
 			clientLocation.Replace(_T("/"), _T("\\"));
 #endif
-		clientName     = ClientsManager::GetInstance()->GetNameFromLocation(clientLocation.c_str());
+		clientName     = ClientsManager::GetInstance()->GetNameFromLocation(clientLocation.c_str()).c_str();
 
 		if(clientName.IsEmpty() == false)
 		{

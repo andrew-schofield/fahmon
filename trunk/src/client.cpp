@@ -69,7 +69,7 @@ Client::~Client(void)
 
 void Client::SetLocation(const wxString& location)
 {
-	mLocation = location;
+	mLocation = location.c_str();
 
 	// Ensure that the location ends with a slash
 #ifdef _FAHMON_WIN32_
@@ -300,8 +300,8 @@ void Client::Reload(void)
 			{
 				for(i=0; i<nbBenchmarks; ++i)
 				{
-					clientLocation = BenchmarksManager::GetInstance()->GetClientLocationFromClientId(benchmarks[i]->GetClientId());
-					clientName     = ClientsManager::GetInstance()->GetNameFromLocation(clientLocation.c_str());
+					clientLocation = BenchmarksManager::GetInstance()->GetClientLocationFromClientId(benchmarks[i]->GetClientId()).c_str();
+					clientName     = ClientsManager::GetInstance()->GetNameFromLocation(clientLocation.c_str()).c_str();
 					if (clientName == mName)
 					{
 						switch(ppdDisplay)
@@ -377,9 +377,9 @@ void Client::Reload(void)
 	ComputeETA(lastFrame);
 	if (project != INVALID_PROJECT_ID && project != 0)
 	{
-		mCore = Core::IdToLongName(project->GetCoreId());
+		mCore = Core::IdToLongName(project->GetCoreId()).c_str();
 		mCredit = project->GetCredit();
-		mClientType = Core::IdToClientType(project->GetCoreId());
+		mClientType = Core::IdToClientType(project->GetCoreId()).c_str();
 		if(mDownloadDate.IsValid() && project->GetPreferredDeadlineInDays() != 0)
 		{
 			mDeadlineDate = mDownloadDate;
@@ -412,7 +412,7 @@ bool Client::LoadLogFile(wxString const &filename)
 		return false;
 	}
 
-	mLog = myLog;
+	mLog = myLog.c_str();
 	SetPreviousFAHlog(localFile);
 	return true;
 }
@@ -567,10 +567,10 @@ void Client::SaveXYZFile(void) const
 	// Cosmetic issue so Windows users see the \ they expect
 #ifdef _FAHMON_WIN32_
 	if(multiProtocolFile::GetFileProtocol(mLocation) != multiProtocolFile::HTTP && multiProtocolFile::GetFileProtocol(mLocation) != multiProtocolFile::FTP)
-		xyzInFile  = mLocation + _T("work\\current.xyz");
+		xyzInFile  = wxString::Format(wxT("%swork\\current.xyz"), mLocation.c_str());
 	else
 #endif
-		xyzInFile  = mLocation + _T("work/current.xyz");
+		xyzInFile  = wxString::Format(wxT("%swork/current.xyz"), mLocation.c_str());
 	// Create the complete path of the files
 	xyzOutFile = PathManager::GetXYZPath() + wxString::Format(_T("%i"), mProjectId) + _T(".xyz");
 
