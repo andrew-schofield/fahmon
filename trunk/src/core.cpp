@@ -46,7 +46,9 @@ wxString const Core::mCoreLongName[CORE_ID_COUNT] = {
 	_T("GPU2 ATI Dev"),
 	_T("GPU2 NV Dev"),
 	_T("Gromacs 4 GB"),
-	_T("GPU2 NV MT")
+	_T("GPU2 NV MT"),
+	_T("SMP2 Gromacs"),
+	_T("Protomol")
 };
 wxString const Core::mCoreShortName[CORE_ID_COUNT] = {
 	_T("tinker"),
@@ -69,7 +71,9 @@ wxString const Core::mCoreShortName[CORE_ID_COUNT] = {
 	_T("ati-dev"),
 	_T("nvidia-dev"),
 	_T("gro-a4"),
-	_T("grogpu2-mt")
+	_T("grogpu2-mt"),
+	_T("gro-a3"),
+	_T("protomol") // currently undefined by psummary
 };
 
 
@@ -129,10 +133,12 @@ wxString const Core::IdToClientType(CoreId identifier)
 		case DGROMACSB:
 		case DGROMACSC:
 		case GROA4:
+		case PROTOB4:
 			clientType = _("CPU");
 			break;
 		case GROSMP:
 		case GROCVS:
+		case GROA3:
 			clientType = _("SMP");
 			break;
 		case GROGPU:

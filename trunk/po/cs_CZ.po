@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cs_CZ\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2009-05-20 15:38+0100\n"
+"POT-Creation-Date: 2009-12-03 15:18+0000\n"
 "PO-Revision-Date: 2009-03-28 13:41+0100\n"
 "Last-Translator: Martin Bednar <serafean@gmail.com>\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
@@ -162,7 +162,7 @@ msgstr "(Benchmarky) Maximální počet známých klientů byl dosažen!"
 msgid "Unknown client"
 msgstr "Neznámý klient"
 
-#: src/client.cpp:58 src/client.cpp:106 src/core.cpp:148
+#: src/client.cpp:58 src/client.cpp:106 src/core.cpp:154
 #: src/listViewClients.cpp:674 src/listViewClients.cpp:708
 #: src/mainDialog.cpp:533 src/mainDialog.cpp:534 src/mainDialog.cpp:535
 #: src/mainDialog.cpp:536
@@ -376,15 +376,15 @@ msgstr ""
 "# \"Název\"\t\"Umístění\"\tVM(*)\n"
 "\n"
 
-#: src/core.cpp:132
+#: src/core.cpp:137
 msgid "CPU"
 msgstr "CPU"
 
-#: src/core.cpp:136
+#: src/core.cpp:142
 msgid "SMP"
 msgstr "SMP"
 
-#: src/core.cpp:143
+#: src/core.cpp:149
 msgid "GPU"
 msgstr "GPU"
 
