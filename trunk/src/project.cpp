@@ -25,7 +25,7 @@
 #include "project.h"
 
 
-Project::Project(ProjectId projectId, wxUint16 preferredDeadlineInDays, wxUint16 finalDeadlineInDays, wxUint16 nbFrames, WuCredit credit, CoreId coreId)
+Project::Project(ProjectId projectId, wxUint16 preferredDeadlineInDays, wxUint16 finalDeadlineInDays, wxUint16 nbFrames, WuCredit credit, CoreId coreId, wxUint16 kFactor)
 {
 	SetProjectId(projectId);
 	SetPreferredDeadlineInDays(preferredDeadlineInDays);
@@ -33,6 +33,7 @@ Project::Project(ProjectId projectId, wxUint16 preferredDeadlineInDays, wxUint16
 	SetNbFrames(nbFrames);
 	SetCredit(credit);
 	SetCoreId(coreId);
+	SetKFactor(kFactor);
 }
 
 
@@ -44,6 +45,7 @@ void Project::Write(DataOutputStream& out) const
 	out.Write(&mNbFrames, sizeof(mNbFrames));
 	out.Write(&mCredit, sizeof(mCredit));
 	out.Write(&mCoreId, sizeof(mCoreId));
+	out.Write(&mKFactor, sizeof(mKFactor));
 }
 
 
@@ -55,4 +57,5 @@ void Project::Read(DataInputStream& in)
 	in.Read(&mNbFrames, sizeof(mNbFrames));
 	in.Read(&mCredit, sizeof(mCredit));
 	in.Read(&mCoreId, sizeof(mCoreId));
+	in.Read(&mKFactor, sizeof(mKFactor));
 }

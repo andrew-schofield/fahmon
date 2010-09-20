@@ -127,6 +127,13 @@ void ProjectsManager::Load(void)
 	if(version == 1)
 	{
 		UpdateToV2();
+		version = 2;
+	}
+
+	if(version == 2)
+	{
+		UpdateToV3();
+		version = 3;
 	}
 }
 
@@ -382,6 +389,7 @@ bool ProjectsManager::Update_ParseProjectsFile(wxString const &fileName, Progres
 			{
 				// 23 is the length of the string we've been looking for, projectInfo string won't contain it
 				projectInfo = currentLine.Mid(pos+23);
+				//_LogMsgInfo(projectInfo, false);
 
 				// Try to parse this line
 				// If the parser fails, store the error and continue with the next line
@@ -424,6 +432,7 @@ Project* ProjectsManager::Update_ParseProjectInfo(wxString const &projectInfo) c
 	WuCredit   credit;
 	wxUint32   preferredDeadlineInDays;
 	wxUint32   finalDeadlineInDays;
+	wxUint32   kFactor;
 	ProjectId  projectId;
 	HTMLParser parser;
 
@@ -498,7 +507,15 @@ Project* ProjectsManager::Update_ParseProjectInfo(wxString const &projectInfo) c
 	parser.NextToken(3);
 	coreId = Core::ShortNameToId(parser.GetCurrentText());
 
-	return new Project(projectId, preferredDeadlineInDays, finalDeadlineInDays, nbFrames, credit, coreId);
+	//KFactor
+	parser.NextToken(15);
+	if(parser.GetCurrentText().ToDouble(&tmpDouble) == false)
+	{
+		return NULL;
+	}
+	kFactor = (wxUint32)(tmpDouble * 100);
+
+	return new Project(projectId, preferredDeadlineInDays, finalDeadlineInDays, nbFrames, credit, coreId, kFactor);
 }
 
 
@@ -518,6 +535,25 @@ void ProjectsManager::UpdateToV2(void)
 			preferredDeadlineInDays = editingProject->GetPreferredDeadlineInDays() * 100;
 			finalDeadlineInDays = editingProject->GetFinalDeadlineInDays() * 100;
 			editedProject = new Project(editingProject->GetProjectId(), preferredDeadlineInDays, finalDeadlineInDays, editingProject->GetNbFrames(), editingProject->GetCredit(), editingProject->GetCoreId());
+			AddProject(editedProject);
+		}
+	}
+
+}
+
+
+void ProjectsManager::UpdateToV3(void)
+{
+	ProjectsListHashMap::iterator  iterator;
+	const Project     *editingProject;
+	Project    *editedProject;
+
+	for(iterator=mProjectsHashMap.begin(); iterator!=mProjectsHashMap.end(); ++iterator)
+	{
+		editingProject = iterator->second;
+		if(editingProject != NULL)
+		{
+			editedProject = new Project(editingProject->GetProjectId(), editingProject->GetPreferredDeadlineInDays(), editingProject->GetFinalDeadlineInDays(), editingProject->GetNbFrames(), editingProject->GetCredit(), editingProject->GetCoreId(), 0);
 			AddProject(editedProject);
 		}
 	}

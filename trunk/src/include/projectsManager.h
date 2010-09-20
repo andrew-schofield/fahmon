@@ -73,6 +73,12 @@ protected:
 	void UpdateToV2(void);
 
 	/**
+	 * Updates version 2 database to version 3.
+	 * Adds kfactor information for fast return bonus.
+	 **/
+	void UpdateToV3(void);
+
+	/**
 	 * Test if an update should be performed.
 	 * This depends on the elapsed time since the last update
 	 **/

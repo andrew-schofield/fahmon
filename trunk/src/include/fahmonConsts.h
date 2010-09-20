@@ -25,7 +25,7 @@
 #define _FAHMONCONSTS_H
 
 // --- Versions
-#define FMC_PROJECTS_VERSION 2 /**< The current projects database version */
+#define FMC_PROJECTS_VERSION 3 /**< The current projects database version */
 
 
 // --- Limits

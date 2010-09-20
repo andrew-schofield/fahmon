@@ -42,6 +42,7 @@ protected:
 	wxUint16  mFinalDeadlineInDays; /**< The project final deadline */
 	wxUint16  mNbFrames; /**< The number of frames in the current WU */
 	ProjectId mProjectId; /**< The project projectId */
+	wxUint16  mKFactor; /**< The project kfactor */
 
 
 public:
@@ -54,8 +55,9 @@ public:
 	 * @param nbFrames Frame count.
 	 * @param credit Project credit value.
 	 * @param coreId Project core type.
+	 * @param kFactor Project kfactor.
 	 **/
-	Project(ProjectId projectId = 0, wxUint16 preferredDeadlineInDays = 0, wxUint16 finalDeadlineInDays = 0, wxUint16 nbFrames = 0, WuCredit credit = 0, CoreId coreId = Core::UNKNOWN);
+	Project(ProjectId projectId = 0, wxUint16 preferredDeadlineInDays = 0, wxUint16 finalDeadlineInDays = 0, wxUint16 nbFrames = 0, WuCredit credit = 0, CoreId coreId = Core::UNKNOWN, wxUint16 kFactor = 0);
 
 	/**
 	 * Write this project to the disk.
@@ -100,6 +102,11 @@ public:
 	 **/
 	void SetCoreId(CoreId coreId)                      {mCoreId = coreId;}
 
+	/**
+	 * Set the kfactor value.
+	 **/
+	void SetKFactor(wxUint16 kFactor)                  {mKFactor = kFactor;}
+
 	// --- Getters
 	/**
 	 * Get the core type.
@@ -130,6 +137,11 @@ public:
 	 * Get the project number.
 	 **/
 	ProjectId GetProjectId(void)               const {return mProjectId;}
+
+	/**
+	 * Get the project kfactor.
+	 **/
+	wxUint16  GetKFactor(void)                 const {return mKFactor;}
 };
 
 
