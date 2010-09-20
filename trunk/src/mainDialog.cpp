@@ -183,11 +183,11 @@ MainDialog::MainDialog(void) : wxFrame(NULL, wxID_ANY, _T(FMC_PRODUCT))
 
 	_LogMsgInfo(wxString::Format(_("%s is licenced under the GNU GPL v2"), _T(FMC_PRODUCT)), true); // add true to force this notice
 	_LogMsgInfo(_("Copyright (C) 2003-2007 Fran\u00E7ois Ingelrest"), true);
-	_LogMsgInfo(_("Copyright (C) 2007-2009 Andrew Schofield"), true);
+	_LogMsgInfo(_("Copyright (C) 2007-2010 Andrew Schofield"), true);
 	_LogMsgInfo(_T(""), true);
 	_LogMsgInfo(_("FahMon contains code from qd, also licenced under the GNU GPL v2"), true);
 	_LogMsgInfo(_("Copyright (C) 2002-2005 Richard P. Howell IV."), true);
-	_LogMsgInfo(_("Copyright (C) 2005-2009 Sebastiaan Couwenberg"), true);
+	_LogMsgInfo(_("Copyright (C) 2005-2010 Sebastiaan Couwenberg"), true);
 	_LogMsgInfo(_T(""), true);
 	// this needs to be before the tray icon, otherwise you can still click the tray icon and crash FahMon
 	_PrefsGetBool(PREF_MAINDIALOG_UPDATE_CHECK, updateCheck);
