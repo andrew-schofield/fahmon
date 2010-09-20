@@ -3,10 +3,14 @@ FahMon: The Folding@home client monitoring program
 SVN
 
     General
+    
+      Monitoring
+      
+      * Added missing protomol core support.
 
       Other
 
-      * Fixed a number of thread safety issue which caused intermittent crashes
+      * Fixed a number of thread safety issues which caused intermittent crashes
         and generally undesirable behaviour.
       * Added Simplified Chinese translation.
 
