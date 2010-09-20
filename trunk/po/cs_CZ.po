@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cs_CZ\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2009-12-03 15:18+0000\n"
+"POT-Creation-Date: 2010-09-20 10:28+0100\n"
 "PO-Revision-Date: 2009-03-28 13:41+0100\n"
 "Last-Translator: Martin Bednar <serafean@gmail.com>\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
@@ -149,7 +149,7 @@ msgid "No Eff. Time / Frame"
 msgstr "Žádný skutečný čas / Snímek"
 
 #: src/benchmarksManager.cpp:164 src/preferencesManager.cpp:248
-#: src/projectsManager.cpp:141
+#: src/projectsManager.cpp:148
 #, c-format
 msgid "Could not open file <%s> for writing!"
 msgstr "Nelze otevřít soubor <%s> pro zapisováni"
@@ -1413,32 +1413,32 @@ msgstr "Nelze najít soubor Nastavení, nebo jej nelze číst"
 msgid "There is no projects file, or it is not readable"
 msgstr "Nelze najít soubor Projektů, nebo jej nelze číst"
 
-#: src/projectsManager.cpp:241
+#: src/projectsManager.cpp:248
 msgid "Updating projects database"
 msgstr "Aktualizace databáze projektů"
 
-#: src/projectsManager.cpp:245
+#: src/projectsManager.cpp:252
 msgid "Downloading new projects"
 msgstr "Stahování nových projektů"
 
-#: src/projectsManager.cpp:270
+#: src/projectsManager.cpp:277
 msgid "Adding the new projects to the database"
 msgstr "Přidávání nových projektů do databáze"
 
-#: src/projectsManager.cpp:328
+#: src/projectsManager.cpp:335
 msgid "Local project update file doesn't exist!"
 msgstr "Lokaní soubor aktualizace projektu neexistuje!"
 
-#: src/projectsManager.cpp:337
+#: src/projectsManager.cpp:344
 msgid "Unable to copy local project update file to temporary location"
 msgstr "Nelze kopírovat lokální soubor aktualizace projektu do dočasné složky."
 
-#: src/projectsManager.cpp:395
+#: src/projectsManager.cpp:403
 #, c-format
 msgid "Line %u is not correctly formatted! %s"
 msgstr "řádka %u je v nesprávném formátu! %s"
 
-#: src/projectsManager.cpp:406
+#: src/projectsManager.cpp:414
 msgid "Update aborted!"
 msgstr "Aktualizace přerušena!"
 

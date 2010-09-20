@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fahmon\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2009-12-03 15:18+0000\n"
+"POT-Creation-Date: 2010-09-20 10:28+0100\n"
 "PO-Revision-Date: 2008-11-22 12:38+0000\n"
 "Last-Translator: Kenneth Langdalen <Unknown>\n"
 "Language-Team: Norwegian Bokmal <nb@li.org>\n"
@@ -148,7 +148,7 @@ msgid "No Eff. Time / Frame"
 msgstr ""
 
 #: src/benchmarksManager.cpp:164 src/preferencesManager.cpp:248
-#: src/projectsManager.cpp:141
+#: src/projectsManager.cpp:148
 #, c-format
 msgid "Could not open file <%s> for writing!"
 msgstr "Kunne ikke åpne filen <%s> for skriving!"
@@ -1365,32 +1365,32 @@ msgstr "Det finnes ingen fil med instillninger, eller den kunne inte leses"
 msgid "There is no projects file, or it is not readable"
 msgstr "Det finns ingen prosjektfil, eller den kunne ikke åpnes"
 
-#: src/projectsManager.cpp:241
+#: src/projectsManager.cpp:248
 msgid "Updating projects database"
 msgstr "Oppdaterer prosjektdatabasen"
 
-#: src/projectsManager.cpp:245
+#: src/projectsManager.cpp:252
 msgid "Downloading new projects"
 msgstr "Henter nye prosjekt"
 
-#: src/projectsManager.cpp:270
+#: src/projectsManager.cpp:277
 msgid "Adding the new projects to the database"
 msgstr "Legger til det nye prosjektet i databasen"
 
-#: src/projectsManager.cpp:328
+#: src/projectsManager.cpp:335
 msgid "Local project update file doesn't exist!"
 msgstr ""
 
-#: src/projectsManager.cpp:337
+#: src/projectsManager.cpp:344
 msgid "Unable to copy local project update file to temporary location"
 msgstr ""
 
-#: src/projectsManager.cpp:395
+#: src/projectsManager.cpp:403
 #, c-format
 msgid "Line %u is not correctly formatted! %s"
 msgstr "Linjen %u er formatert feil! %s"
 
-#: src/projectsManager.cpp:406
+#: src/projectsManager.cpp:414
 msgid "Update aborted!"
 msgstr "Oppdatering avbrutt!"
 

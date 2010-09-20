@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fr_FR\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2009-12-03 15:18+0000\n"
+"POT-Creation-Date: 2010-09-20 10:28+0100\n"
 "PO-Revision-Date: 2009-03-25 21:27+0000\n"
 "Last-Translator: Johan Serre <Unknown>\n"
 "Language-Team: French\n"
@@ -148,7 +148,7 @@ msgid "No Eff. Time / Frame"
 msgstr "No Eff. Temps / Frame"
 
 #: src/benchmarksManager.cpp:164 src/preferencesManager.cpp:248
-#: src/projectsManager.cpp:141
+#: src/projectsManager.cpp:148
 #, c-format
 msgid "Could not open file <%s> for writing!"
 msgstr "Impossible d'ouvrir le fichier <%s> en écriture!"
@@ -1426,34 +1426,34 @@ msgstr "Il n'existes pas de fichier de préférences, ou il n'est pas lisible"
 msgid "There is no projects file, or it is not readable"
 msgstr "Il n'existe pas de fichier de projets, ou il n'est pas lisible"
 
-#: src/projectsManager.cpp:241
+#: src/projectsManager.cpp:248
 msgid "Updating projects database"
 msgstr "Mises a jour de la base de données des projets"
 
-#: src/projectsManager.cpp:245
+#: src/projectsManager.cpp:252
 msgid "Downloading new projects"
 msgstr "Téléchargement des nouveaux projets"
 
-#: src/projectsManager.cpp:270
+#: src/projectsManager.cpp:277
 msgid "Adding the new projects to the database"
 msgstr "Ajouts des nouveaux projets a la base de données"
 
-#: src/projectsManager.cpp:328
+#: src/projectsManager.cpp:335
 msgid "Local project update file doesn't exist!"
 msgstr "Le fichier local de mise a jour des projets n'existe pas!"
 
-#: src/projectsManager.cpp:337
+#: src/projectsManager.cpp:344
 msgid "Unable to copy local project update file to temporary location"
 msgstr ""
 "Impossible de copier le fichier local de mise a jour des projets vers leur "
 "localisation temporaire"
 
-#: src/projectsManager.cpp:395
+#: src/projectsManager.cpp:403
 #, c-format
 msgid "Line %u is not correctly formatted! %s"
 msgstr "La ligne %u n'est pas correctement formatée! %s"
 
-#: src/projectsManager.cpp:406
+#: src/projectsManager.cpp:414
 msgid "Update aborted!"
 msgstr "Mise à jour abandonnée!"
 

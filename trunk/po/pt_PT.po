@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pt_PT\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2009-12-03 15:18+0000\n"
+"POT-Creation-Date: 2010-09-20 10:28+0100\n"
 "PO-Revision-Date: 2009-03-20 23:03+0100\n"
 "Last-Translator: Filipe Rodrigues <shello@shello.org>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -149,7 +149,7 @@ msgid "No Eff. Time / Frame"
 msgstr "Sem Tempo / Frame Efectivo"
 
 #: src/benchmarksManager.cpp:164 src/preferencesManager.cpp:248
-#: src/projectsManager.cpp:141
+#: src/projectsManager.cpp:148
 #, c-format
 msgid "Could not open file <%s> for writing!"
 msgstr "Não é possível abrir o ficheiro <%s> para escrita!"
@@ -1451,34 +1451,34 @@ msgstr "Não há ficheiro de Preferências, ou não pode ser lido"
 msgid "There is no projects file, or it is not readable"
 msgstr "Não há ficheiro de projectos ou não pode ser lido"
 
-#: src/projectsManager.cpp:241
+#: src/projectsManager.cpp:248
 msgid "Updating projects database"
 msgstr "A actualizar a base de dados dos projectos"
 
-#: src/projectsManager.cpp:245
+#: src/projectsManager.cpp:252
 msgid "Downloading new projects"
 msgstr "A descarregar novos projectos"
 
-#: src/projectsManager.cpp:270
+#: src/projectsManager.cpp:277
 msgid "Adding the new projects to the database"
 msgstr "A adicionar novos projectos à base de dados"
 
-#: src/projectsManager.cpp:328
+#: src/projectsManager.cpp:335
 msgid "Local project update file doesn't exist!"
 msgstr "Ficheiro de actualização do projecto local não existe!"
 
-#: src/projectsManager.cpp:337
+#: src/projectsManager.cpp:344
 msgid "Unable to copy local project update file to temporary location"
 msgstr ""
 "Impossível copiar o ficheiro de actualização do projecto local para uma "
 "localização temporária"
 
-#: src/projectsManager.cpp:395
+#: src/projectsManager.cpp:403
 #, c-format
 msgid "Line %u is not correctly formatted! %s"
 msgstr "a linha %u não está formatada correctamente! %s"
 
-#: src/projectsManager.cpp:406
+#: src/projectsManager.cpp:414
 msgid "Update aborted!"
 msgstr "Actualização abortada!"
 
