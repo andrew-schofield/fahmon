@@ -288,6 +288,9 @@ void Client::Reload(void)
 	// Default PPD is always 0
 	mPPD = 0;
 	frameTime = 0;
+	
+	// Compute ETA
+	ComputeETA(lastFrame);
 
 	// If current project is valid and is found in the benchmarks database, then grab the PPD
 	// Needs to check state too, no point getting PPD for stopped or dead clients.
@@ -354,7 +357,7 @@ void Client::Reload(void)
 								wxASSERT(false);
 								break;
 						}
-						mPPD = (project->GetCredit() * 86400.0) / ((double)frameTime * (double)frameCount);
+						mPPD = (project->GetCredit() * std::max(1.0,sqrt((double)project->GetKFactor() / 100 * (double)project->GetPreferredDeadlineInDays()/ 100 / mETA.GetTotalTimeInDays(mDownloadDate))) * 86400.0 / ((double)frameTime * (double)frameCount));
 					}
 				}
 			}
@@ -373,12 +376,10 @@ void Client::Reload(void)
 		}
 	}
 	mProgressString  = wxString::Format(_T("%u%%"), mProgress);
-	// Compute ETA
-	ComputeETA(lastFrame);
 	if (project != INVALID_PROJECT_ID && project != 0)
 	{
 		mCore = Core::IdToLongName(project->GetCoreId()).c_str();
-		mCredit = project->GetCredit();
+		mCredit = project->GetCredit() * std::max(1.0,sqrt((double)project->GetKFactor() / 100 * (double)project->GetPreferredDeadlineInDays()/ 100 / mETA.GetTotalTimeInDays(mDownloadDate)));
 		mClientType = Core::IdToClientType(project->GetCoreId()).c_str();
 		if(mDownloadDate.IsValid() && project->GetPreferredDeadlineInDays() != 0)
 		{

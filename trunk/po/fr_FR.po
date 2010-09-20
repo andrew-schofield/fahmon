@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fr_FR\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2010-09-20 11:52+0100\n"
+"POT-Creation-Date: 2010-09-20 15:48+0100\n"
 "PO-Revision-Date: 2009-03-25 21:27+0000\n"
 "Last-Translator: Johan Serre <Unknown>\n"
 "Language-Team: French\n"
@@ -148,7 +148,7 @@ msgid "No Eff. Time / Frame"
 msgstr "No Eff. Temps / Frame"
 
 #: src/benchmarksManager.cpp:164 src/preferencesManager.cpp:248
-#: src/projectsManager.cpp:148
+#: src/projectsManager.cpp:149
 #, c-format
 msgid "Could not open file <%s> for writing!"
 msgstr "Impossible d'ouvrir le fichier <%s> en écriture!"
@@ -223,65 +223,65 @@ msgstr "Erreur lors de la lecture de %s"
 msgid "Error while reading %sunitinfo.txt!"
 msgstr "Erreur durant la lecture de %sunitinfo.txt!"
 
-#: src/client.cpp:397
+#: src/client.cpp:398
 #, c-format
 msgid "Finished Reloading %s"
 msgstr "le rechargement de %s est terminé"
 
-#: src/client.cpp:462
+#: src/client.cpp:463
 #, c-format
 msgid "The progress value in file %s could not be found/parsed"
 msgstr "La valeur de progression du fichier %s ne peut pas étre trouvée/parsée"
 
-#: src/client.cpp:515
+#: src/client.cpp:516
 #, c-format
 msgid "The core version in file %s could not be found/parsed"
 msgstr "La version du coeur dans le fichier %s n'a pu être trouvée / analysée"
 
-#: src/client.cpp:580
+#: src/client.cpp:581
 #, c-format
 msgid "Unable to save %s because it does not exist"
 msgstr "Impossible de sauvegarder %s car il n'existe pas"
 
-#: src/client.cpp:587
+#: src/client.cpp:588
 #, c-format
 msgid "Unable to create directory %s"
 msgstr "Impossible de créer le dossier %s"
 
-#: src/client.cpp:600
+#: src/client.cpp:601
 #, c-format
 msgid "Unable to copy %s to %s"
 msgstr "Impossible de copier %s vers %s"
 
-#: src/client.cpp:625
+#: src/client.cpp:626
 #, c-format
 msgid "%s is on frame %u"
 msgstr "%s Est a la frame %u"
 
-#: src/client.cpp:629
+#: src/client.cpp:630
 #, c-format
 msgid "Cannot determine frame number for %s (this isn't a problem)"
 msgstr ""
 "Impossible de déterminer le nombre de frames pour %s (Ceci n'est pas un "
 "problème)"
 
-#: src/client.cpp:813
+#: src/client.cpp:814
 #, c-format
 msgid "%s has an unknown state (Unable to find a complete frame)"
 msgstr "%s a un état inconnu (Impossible de trouver une frame compléte)"
 
-#: src/client.cpp:822
+#: src/client.cpp:823
 #, c-format
 msgid "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
 msgstr ""
 "%s est stoppé (La ligne \"Folding@Home Client Shutdown.\" a été trouvée)"
 
-#: src/client.cpp:830
+#: src/client.cpp:831
 #, c-format
 msgid "%s has been paused"
 msgstr "%s a été mis(e) en pause"
 
-#: src/client.cpp:839
+#: src/client.cpp:840
 #, c-format
 msgid ""
 "%s has an unknown state (Unable to extract a valid elapsed time since the "
@@ -290,18 +290,18 @@ msgstr ""
 "%s est dans un état inconnu (Impossible d'extraire une durée valide du temps "
 "écoulé depuis la derniére frame terminée)"
 
-#: src/client.cpp:847
+#: src/client.cpp:848
 #, c-format
 msgid "%s has been marked as having a asynchronous clock."
 msgstr "%s est indiqué comme ayant une horloge désynchronisée."
 
-#: src/client.cpp:882
+#: src/client.cpp:883
 #, c-format
 msgid "%s seems to have hung : Elapsed time is %um and limit is %um"
 msgstr ""
 "%s semble être en pause : Le temps écoulé est de %um et la limite est %um"
 
-#: src/client.cpp:887
+#: src/client.cpp:888
 #, c-format
 msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
 msgstr ""
@@ -1428,34 +1428,34 @@ msgstr "Il n'existes pas de fichier de préférences, ou il n'est pas lisible"
 msgid "There is no projects file, or it is not readable"
 msgstr "Il n'existe pas de fichier de projets, ou il n'est pas lisible"
 
-#: src/projectsManager.cpp:248
+#: src/projectsManager.cpp:249
 msgid "Updating projects database"
 msgstr "Mises a jour de la base de données des projets"
 
-#: src/projectsManager.cpp:252
+#: src/projectsManager.cpp:253
 msgid "Downloading new projects"
 msgstr "Téléchargement des nouveaux projets"
 
-#: src/projectsManager.cpp:277
+#: src/projectsManager.cpp:278
 msgid "Adding the new projects to the database"
 msgstr "Ajouts des nouveaux projets a la base de données"
 
-#: src/projectsManager.cpp:335
+#: src/projectsManager.cpp:336
 msgid "Local project update file doesn't exist!"
 msgstr "Le fichier local de mise a jour des projets n'existe pas!"
 
-#: src/projectsManager.cpp:344
+#: src/projectsManager.cpp:345
 msgid "Unable to copy local project update file to temporary location"
 msgstr ""
 "Impossible de copier le fichier local de mise a jour des projets vers leur "
 "localisation temporaire"
 
-#: src/projectsManager.cpp:403
+#: src/projectsManager.cpp:404
 #, c-format
 msgid "Line %u is not correctly formatted! %s"
 msgstr "La ligne %u n'est pas correctement formatée! %s"
 
-#: src/projectsManager.cpp:414
+#: src/projectsManager.cpp:415
 msgid "Update aborted!"
 msgstr "Mise à jour abandonnée!"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2010-09-20 11:52+0100\n"
+"POT-Creation-Date: 2010-09-20 15:48+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -147,7 +147,7 @@ msgid "No Eff. Time / Frame"
 msgstr ""
 
 #: src/benchmarksManager.cpp:164 src/preferencesManager.cpp:248
-#: src/projectsManager.cpp:148
+#: src/projectsManager.cpp:149
 #, c-format
 msgid "Could not open file <%s> for writing!"
 msgstr ""
@@ -222,79 +222,79 @@ msgstr ""
 msgid "Error while reading %sunitinfo.txt!"
 msgstr ""
 
-#: src/client.cpp:397
+#: src/client.cpp:398
 #, c-format
 msgid "Finished Reloading %s"
 msgstr ""
 
-#: src/client.cpp:462
+#: src/client.cpp:463
 #, c-format
 msgid "The progress value in file %s could not be found/parsed"
 msgstr ""
 
-#: src/client.cpp:515
+#: src/client.cpp:516
 #, c-format
 msgid "The core version in file %s could not be found/parsed"
 msgstr ""
 
-#: src/client.cpp:580
+#: src/client.cpp:581
 #, c-format
 msgid "Unable to save %s because it does not exist"
 msgstr ""
 
-#: src/client.cpp:587
+#: src/client.cpp:588
 #, c-format
 msgid "Unable to create directory %s"
 msgstr ""
 
-#: src/client.cpp:600
+#: src/client.cpp:601
 #, c-format
 msgid "Unable to copy %s to %s"
 msgstr ""
 
-#: src/client.cpp:625
+#: src/client.cpp:626
 #, c-format
 msgid "%s is on frame %u"
 msgstr ""
 
-#: src/client.cpp:629
+#: src/client.cpp:630
 #, c-format
 msgid "Cannot determine frame number for %s (this isn't a problem)"
 msgstr ""
 
-#: src/client.cpp:813
+#: src/client.cpp:814
 #, c-format
 msgid "%s has an unknown state (Unable to find a complete frame)"
 msgstr ""
 
-#: src/client.cpp:822
+#: src/client.cpp:823
 #, c-format
 msgid "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
 msgstr ""
 
-#: src/client.cpp:830
+#: src/client.cpp:831
 #, c-format
 msgid "%s has been paused"
 msgstr ""
 
-#: src/client.cpp:839
+#: src/client.cpp:840
 #, c-format
 msgid ""
 "%s has an unknown state (Unable to extract a valid elapsed time since the "
 "last completed frame)"
 msgstr ""
 
-#: src/client.cpp:847
+#: src/client.cpp:848
 #, c-format
 msgid "%s has been marked as having a asynchronous clock."
 msgstr ""
 
-#: src/client.cpp:882
+#: src/client.cpp:883
 #, c-format
 msgid "%s seems to have hung : Elapsed time is %um and limit is %um"
 msgstr ""
 
-#: src/client.cpp:887
+#: src/client.cpp:888
 #, c-format
 msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
 msgstr ""
@@ -1347,32 +1347,32 @@ msgstr ""
 msgid "There is no projects file, or it is not readable"
 msgstr ""
 
-#: src/projectsManager.cpp:248
+#: src/projectsManager.cpp:249
 msgid "Updating projects database"
 msgstr ""
 
-#: src/projectsManager.cpp:252
+#: src/projectsManager.cpp:253
 msgid "Downloading new projects"
 msgstr ""
 
-#: src/projectsManager.cpp:277
+#: src/projectsManager.cpp:278
 msgid "Adding the new projects to the database"
 msgstr ""
 
-#: src/projectsManager.cpp:335
+#: src/projectsManager.cpp:336
 msgid "Local project update file doesn't exist!"
 msgstr ""
 
-#: src/projectsManager.cpp:344
+#: src/projectsManager.cpp:345
 msgid "Unable to copy local project update file to temporary location"
 msgstr ""
 
-#: src/projectsManager.cpp:403
+#: src/projectsManager.cpp:404
 #, c-format
 msgid "Line %u is not correctly formatted! %s"
 msgstr ""
 
-#: src/projectsManager.cpp:414
+#: src/projectsManager.cpp:415
 msgid "Update aborted!"
 msgstr ""
 

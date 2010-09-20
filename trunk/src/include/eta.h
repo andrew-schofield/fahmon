@@ -157,6 +157,11 @@ public:
 	 * @return The formatted string.
 	 **/
 	static wxString FormatSeconds(wxUint32 nbSeconds);
+	
+	double GetTotalTimeInDays(wxDateTime DownloadDate)
+	{
+	    return (double)mETA.Subtract(DownloadDate).GetHours()/24;
+	}
 };
 
 

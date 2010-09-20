@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv_SE\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2010-09-20 11:52+0100\n"
+"POT-Creation-Date: 2010-09-20 15:48+0100\n"
 "PO-Revision-Date: 2009-03-30 18:45+0100\n"
 "Last-Translator: Olof Persson <floffe@gmail.com>\n"
 "Language-Team: Swedish\n"
@@ -150,7 +150,7 @@ msgid "No Eff. Time / Frame"
 msgstr "Ingen effektiv tid / bildruta"
 
 #: src/benchmarksManager.cpp:164 src/preferencesManager.cpp:248
-#: src/projectsManager.cpp:148
+#: src/projectsManager.cpp:149
 #, c-format
 msgid "Could not open file <%s> for writing!"
 msgstr "Kunde inte öppna filen <%s> för att skriva till!"
@@ -225,62 +225,62 @@ msgstr "Fel vid inläsning av %s"
 msgid "Error while reading %sunitinfo.txt!"
 msgstr "Fel vid inläsning av %sunitinfo.txt!"
 
-#: src/client.cpp:397
+#: src/client.cpp:398
 #, c-format
 msgid "Finished Reloading %s"
 msgstr "Uppdatering av %s lyckad"
 
-#: src/client.cpp:462
+#: src/client.cpp:463
 #, c-format
 msgid "The progress value in file %s could not be found/parsed"
 msgstr "Förloppet kunde inte utläsas ur %s"
 
-#: src/client.cpp:515
+#: src/client.cpp:516
 #, c-format
 msgid "The core version in file %s could not be found/parsed"
 msgstr "Kärnversionen i %s hittades inte"
 
-#: src/client.cpp:580
+#: src/client.cpp:581
 #, c-format
 msgid "Unable to save %s because it does not exist"
 msgstr "Kunde inte spara %s för att den inte finns"
 
-#: src/client.cpp:587
+#: src/client.cpp:588
 #, c-format
 msgid "Unable to create directory %s"
 msgstr "Kunde inte skapa katalogen %s"
 
-#: src/client.cpp:600
+#: src/client.cpp:601
 #, c-format
 msgid "Unable to copy %s to %s"
 msgstr "Kunde inte kopiera %s till %s"
 
-#: src/client.cpp:625
+#: src/client.cpp:626
 #, c-format
 msgid "%s is on frame %u"
 msgstr "%s är på bildruta %u"
 
-#: src/client.cpp:629
+#: src/client.cpp:630
 #, c-format
 msgid "Cannot determine frame number for %s (this isn't a problem)"
 msgstr "Kan inte bestämma bildruta för %s (det här är inget problem)"
 
-#: src/client.cpp:813
+#: src/client.cpp:814
 #, c-format
 msgid "%s has an unknown state (Unable to find a complete frame)"
 msgstr "%s är i okänt tillstånd (kunde inte hitta en hel bildruta)"
 
-#: src/client.cpp:822
+#: src/client.cpp:823
 #, c-format
 msgid "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
 msgstr "%s är stoppad (hittade raden \"Folding@Home Client Shutdown.\")"
 
-#: src/client.cpp:830
+#: src/client.cpp:831
 #, c-format
 msgid "%s has been paused"
 msgstr "%s är pausad"
 
-#: src/client.cpp:839
+#: src/client.cpp:840
 #, c-format
 msgid ""
 "%s has an unknown state (Unable to extract a valid elapsed time since the "
@@ -289,17 +289,17 @@ msgstr ""
 "%s är i okänt tillstånd (kunde inte beräkna en giltig tid sedan senast "
 "avklarade bildruta)"
 
-#: src/client.cpp:847
+#: src/client.cpp:848
 #, c-format
 msgid "%s has been marked as having a asynchronous clock."
 msgstr "%s har flaggats för en asynkron klocka"
 
-#: src/client.cpp:882
+#: src/client.cpp:883
 #, c-format
 msgid "%s seems to have hung : Elapsed time is %um and limit is %um"
 msgstr "%s verkar ha hängt sig : %um har förflutit och gränsen är %um"
 
-#: src/client.cpp:887
+#: src/client.cpp:888
 #, c-format
 msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
 msgstr "%s verkar vara inaktiv : %um har förflutit och gränsen är %um"
@@ -1407,33 +1407,33 @@ msgid "There is no projects file, or it is not readable"
 msgstr ""
 "Det finns ingen fil med projektinformation, eller den kunde inte öppnas"
 
-#: src/projectsManager.cpp:248
+#: src/projectsManager.cpp:249
 msgid "Updating projects database"
 msgstr "Uppdaterar projektdatabasen"
 
-#: src/projectsManager.cpp:252
+#: src/projectsManager.cpp:253
 msgid "Downloading new projects"
 msgstr "Hämtar nya projekt"
 
-#: src/projectsManager.cpp:277
+#: src/projectsManager.cpp:278
 msgid "Adding the new projects to the database"
 msgstr "Lägger till nya projekt i databasen"
 
-#: src/projectsManager.cpp:335
+#: src/projectsManager.cpp:336
 msgid "Local project update file doesn't exist!"
 msgstr "Den lokala projektinformationsfilen finns inte!"
 
-#: src/projectsManager.cpp:344
+#: src/projectsManager.cpp:345
 msgid "Unable to copy local project update file to temporary location"
 msgstr ""
 "Kunde inte kopiera lokal projektinformationsfil till en tillfällig plats"
 
-#: src/projectsManager.cpp:403
+#: src/projectsManager.cpp:404
 #, c-format
 msgid "Line %u is not correctly formatted! %s"
 msgstr "Raden %u är inte rätt formaterad! %s"
 
-#: src/projectsManager.cpp:414
+#: src/projectsManager.cpp:415
 msgid "Update aborted!"
 msgstr "Uppdatering avbruten!"
 

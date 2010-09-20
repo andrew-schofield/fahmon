@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FahMon 2.3.99.1\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2010-09-20 11:52+0100\n"
+"POT-Creation-Date: 2010-09-20 15:48+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: qiyuwanjia,lucksc,金鹏 <qiyuwanjia@gmail.com>\n"
 "Language-Team: www.equn.com\n"
@@ -148,7 +148,7 @@ msgid "No Eff. Time / Frame"
 msgstr "没找到 每帧有效用时"
 
 #: src/benchmarksManager.cpp:164 src/preferencesManager.cpp:248
-#: src/projectsManager.cpp:148
+#: src/projectsManager.cpp:149
 #, c-format
 msgid "Could not open file <%s> for writing!"
 msgstr "打开文件失败 <%s> !"
@@ -223,79 +223,79 @@ msgstr "读取 <%s> 出错!"
 msgid "Error while reading %sunitinfo.txt!"
 msgstr "读取 %sunitinfo.txt 出错!"
 
-#: src/client.cpp:397
+#: src/client.cpp:398
 #, c-format
 msgid "Finished Reloading %s"
 msgstr "更新完成 %s"
 
-#: src/client.cpp:462
+#: src/client.cpp:463
 #, c-format
 msgid "The progress value in file %s could not be found/parsed"
 msgstr "在文件%s中找不到进度值或者不能被解析"
 
-#: src/client.cpp:515
+#: src/client.cpp:516
 #, c-format
 msgid "The core version in file %s could not be found/parsed"
 msgstr "核心版本找不到或者不能被解析 %s"
 
-#: src/client.cpp:580
+#: src/client.cpp:581
 #, c-format
 msgid "Unable to save %s because it does not exist"
 msgstr "无法保存文件 %s 因为文件不存在"
 
-#: src/client.cpp:587
+#: src/client.cpp:588
 #, c-format
 msgid "Unable to create directory %s"
 msgstr "无法创建目录 %s"
 
-#: src/client.cpp:600
+#: src/client.cpp:601
 #, c-format
 msgid "Unable to copy %s to %s"
 msgstr "无法复制 %s 到 %s"
 
-#: src/client.cpp:625
+#: src/client.cpp:626
 #, c-format
 msgid "%s is on frame %u"
 msgstr "%s 工作进行到了第 %u 帧"
 
-#: src/client.cpp:629
+#: src/client.cpp:630
 #, c-format
 msgid "Cannot determine frame number for %s (this isn't a problem)"
 msgstr "无法为 %s 确定帧数(这不是错误)"
 
-#: src/client.cpp:813
+#: src/client.cpp:814
 #, c-format
 msgid "%s has an unknown state (Unable to find a complete frame)"
 msgstr "%s 状态未知 (找不到一个已经完成的帧)"
 
-#: src/client.cpp:822
+#: src/client.cpp:823
 #, c-format
 msgid "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
 msgstr "%s 已停止 (发现\"Folding@Home Client Shutdown.\")"
 
-#: src/client.cpp:830
+#: src/client.cpp:831
 #, c-format
 msgid "%s has been paused"
 msgstr "%s 已暂停"
 
-#: src/client.cpp:839
+#: src/client.cpp:840
 #, c-format
 msgid ""
 "%s has an unknown state (Unable to extract a valid elapsed time since the "
 "last completed frame)"
 msgstr "%s 状态未知 (找不到从 最后一次完成一帧 到 现在 所经过的时间)"
 
-#: src/client.cpp:847
+#: src/client.cpp:848
 #, c-format
 msgid "%s has been marked as having a asynchronous clock."
 msgstr "%s 已经被标记为异步状态"
 
-#: src/client.cpp:882
+#: src/client.cpp:883
 #, c-format
 msgid "%s seems to have hung : Elapsed time is %um and limit is %um"
 msgstr "%s 可能已经挂起 : 流逝时间是 %um  时间限制是 %um"
 
-#: src/client.cpp:887
+#: src/client.cpp:888
 #, c-format
 msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
 msgstr "%s 可能是非活动的 : 流逝时间是 %um 时间限制是 %um"
@@ -1371,32 +1371,32 @@ msgstr "无法加载偏好设置文件"
 msgid "There is no projects file, or it is not readable"
 msgstr "无法读取任务文件"
 
-#: src/projectsManager.cpp:248
+#: src/projectsManager.cpp:249
 msgid "Updating projects database"
 msgstr "正在更新任务信息数据库"
 
-#: src/projectsManager.cpp:252
+#: src/projectsManager.cpp:253
 msgid "Downloading new projects"
 msgstr "更新任务信息"
 
-#: src/projectsManager.cpp:277
+#: src/projectsManager.cpp:278
 msgid "Adding the new projects to the database"
 msgstr "正在添加新任务到任务信息数据库"
 
-#: src/projectsManager.cpp:335
+#: src/projectsManager.cpp:336
 msgid "Local project update file doesn't exist!"
 msgstr "本地任务更新文件不存在!"
 
-#: src/projectsManager.cpp:344
+#: src/projectsManager.cpp:345
 msgid "Unable to copy local project update file to temporary location"
 msgstr "无法复制本地任务更新文件到临时文件夹"
 
-#: src/projectsManager.cpp:403
+#: src/projectsManager.cpp:404
 #, c-format
 msgid "Line %u is not correctly formatted! %s"
 msgstr "第 %u 行格式错误! %s"
 
-#: src/projectsManager.cpp:414
+#: src/projectsManager.cpp:415
 msgid "Update aborted!"
 msgstr "更新中止!"
 
