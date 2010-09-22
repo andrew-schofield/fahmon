@@ -357,7 +357,7 @@ void Client::Reload(void)
 								wxASSERT(false);
 								break;
 						}
-						mPPD = (project->GetCredit() * std::max(1.0,sqrt((double)project->GetKFactor() / 100 * (double)project->GetPreferredDeadlineInDays()/ 100 / mETA.GetTotalTimeInDays(mDownloadDate))) * 86400.0 / ((double)frameTime * (double)frameCount));
+						mPPD = ((double)mETA.GetTotalTimeInDays(mDownloadDate) < (double)project->GetPreferredDeadlineInDays()) ? (project->GetCredit() * std::max(1.0,sqrt(((double)project->GetKFactor() / 100) * ((double)project->GetFinalDeadlineInDays() / 100) / (double)mETA.GetTotalTimeInDays(mDownloadDate))) * 86400.0 / ((double)frameTime * (double)frameCount)) : project->GetCredit() * 86400.0 / ((double)frameTime * (double)frameCount);
 					}
 				}
 			}
@@ -379,7 +379,7 @@ void Client::Reload(void)
 	if (project != INVALID_PROJECT_ID && project != 0)
 	{
 		mCore = Core::IdToLongName(project->GetCoreId()).c_str();
-		mCredit = project->GetCredit() * std::max(1.0,sqrt((double)project->GetKFactor() / 100 * (double)project->GetPreferredDeadlineInDays()/ 100 / mETA.GetTotalTimeInDays(mDownloadDate)));
+		mCredit = ((double)mETA.GetTotalTimeInDays(mDownloadDate) < (double)project->GetPreferredDeadlineInDays()) ? project->GetCredit() * std::max(1.0,sqrt(((double)project->GetKFactor() / 100) * ((double)project->GetFinalDeadlineInDays() / 100) / (double)mETA.GetTotalTimeInDays(mDownloadDate))) : project->GetCredit();
 		mClientType = Core::IdToClientType(project->GetCoreId()).c_str();
 		if(mDownloadDate.IsValid() && project->GetPreferredDeadlineInDays() != 0)
 		{
