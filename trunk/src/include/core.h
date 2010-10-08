@@ -69,6 +69,7 @@ public:
 		GROGPU2MT, /**< NVIDIA w/Mem-Test (14) */
 		GROA3, /**< Threaded SMP Gromacs (a3) */
 		PROTOB4, /**< Protomol (b4) */
+		OPENMMGPU, /**< OpenMM GPU (15) */
 		CORE_ID_COUNT /**<  */
 	};
 

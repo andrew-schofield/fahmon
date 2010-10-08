@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fahmon\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2010-09-20 15:48+0100\n"
+"POT-Creation-Date: 2010-10-08 15:41+0100\n"
 "PO-Revision-Date: 2008-11-22 12:38+0000\n"
 "Last-Translator: Kenneth Langdalen <Unknown>\n"
 "Language-Team: Norwegian Bokmal <nb@li.org>\n"
@@ -148,7 +148,7 @@ msgid "No Eff. Time / Frame"
 msgstr ""
 
 #: src/benchmarksManager.cpp:164 src/preferencesManager.cpp:248
-#: src/projectsManager.cpp:149
+#: src/projectsManager.cpp:148
 #, c-format
 msgid "Could not open file <%s> for writing!"
 msgstr "Kunne ikke åpne filen <%s> for skriving!"
@@ -161,7 +161,7 @@ msgstr ""
 msgid "Unknown client"
 msgstr "Ukjent klient"
 
-#: src/client.cpp:58 src/client.cpp:106 src/core.cpp:154
+#: src/client.cpp:58 src/client.cpp:106 src/core.cpp:157
 #: src/listViewClients.cpp:674 src/listViewClients.cpp:708
 #: src/mainDialog.cpp:533 src/mainDialog.cpp:534 src/mainDialog.cpp:535
 #: src/mainDialog.cpp:536
@@ -370,15 +370,15 @@ msgid ""
 "\n"
 msgstr ""
 
-#: src/core.cpp:137
+#: src/core.cpp:139
 msgid "CPU"
 msgstr ""
 
-#: src/core.cpp:142
+#: src/core.cpp:144
 msgid "SMP"
 msgstr ""
 
-#: src/core.cpp:149
+#: src/core.cpp:152
 msgid "GPU"
 msgstr ""
 
@@ -1367,32 +1367,32 @@ msgstr "Det finnes ingen fil med instillninger, eller den kunne inte leses"
 msgid "There is no projects file, or it is not readable"
 msgstr "Det finns ingen prosjektfil, eller den kunne ikke åpnes"
 
-#: src/projectsManager.cpp:249
+#: src/projectsManager.cpp:248
 msgid "Updating projects database"
 msgstr "Oppdaterer prosjektdatabasen"
 
-#: src/projectsManager.cpp:253
+#: src/projectsManager.cpp:252
 msgid "Downloading new projects"
 msgstr "Henter nye prosjekt"
 
-#: src/projectsManager.cpp:278
+#: src/projectsManager.cpp:277
 msgid "Adding the new projects to the database"
 msgstr "Legger til det nye prosjektet i databasen"
 
-#: src/projectsManager.cpp:336
+#: src/projectsManager.cpp:335
 msgid "Local project update file doesn't exist!"
 msgstr ""
 
-#: src/projectsManager.cpp:345
+#: src/projectsManager.cpp:344
 msgid "Unable to copy local project update file to temporary location"
 msgstr ""
 
-#: src/projectsManager.cpp:404
+#: src/projectsManager.cpp:403
 #, c-format
 msgid "Line %u is not correctly formatted! %s"
 msgstr "Linjen %u er formatert feil! %s"
 
-#: src/projectsManager.cpp:415
+#: src/projectsManager.cpp:414
 msgid "Update aborted!"
 msgstr "Oppdatering avbrutt!"
 

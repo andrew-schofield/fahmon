@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it-IT\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2010-09-20 15:48+0100\n"
+"POT-Creation-Date: 2010-10-08 15:41+0100\n"
 "PO-Revision-Date: 2008-02-25 12:46+0100\n"
 "Last-Translator: Zurgo <zurgo@virgilio.it>\n"
 "Language-Team:  <zurgo@virgilio.it>\n"
@@ -149,7 +149,7 @@ msgid "No Eff. Time / Frame"
 msgstr "Nessun Tempo Effettivo / Frame"
 
 #: src/benchmarksManager.cpp:164 src/preferencesManager.cpp:248
-#: src/projectsManager.cpp:149
+#: src/projectsManager.cpp:148
 #, c-format
 msgid "Could not open file <%s> for writing!"
 msgstr "Non posso aprire il file <%s> per la scrittura!"
@@ -162,7 +162,7 @@ msgstr "(Benchmark) Il numero massimo di client conosciuti è stato raggiunto!"
 msgid "Unknown client"
 msgstr "Client sconosciuto"
 
-#: src/client.cpp:58 src/client.cpp:106 src/core.cpp:154
+#: src/client.cpp:58 src/client.cpp:106 src/core.cpp:157
 #: src/listViewClients.cpp:674 src/listViewClients.cpp:708
 #: src/mainDialog.cpp:533 src/mainDialog.cpp:534 src/mainDialog.cpp:535
 #: src/mainDialog.cpp:536
@@ -381,15 +381,15 @@ msgstr ""
 "# \"Nome\"          \"Posizione\"\n"
 "\n"
 
-#: src/core.cpp:137
+#: src/core.cpp:139
 msgid "CPU"
 msgstr "CPU"
 
-#: src/core.cpp:142
+#: src/core.cpp:144
 msgid "SMP"
 msgstr "SMP"
 
-#: src/core.cpp:149
+#: src/core.cpp:152
 msgid "GPU"
 msgstr "GPU"
 
@@ -1436,34 +1436,34 @@ msgstr "Non esiste il file delle Preferenze, o non è leggibile"
 msgid "There is no projects file, or it is not readable"
 msgstr "Non esiste il file dei progetti, o non è leggibile"
 
-#: src/projectsManager.cpp:249
+#: src/projectsManager.cpp:248
 msgid "Updating projects database"
 msgstr "Aggiornamento del database dei progetti"
 
-#: src/projectsManager.cpp:253
+#: src/projectsManager.cpp:252
 msgid "Downloading new projects"
 msgstr "Scaricamento dei nuovi progetti"
 
-#: src/projectsManager.cpp:278
+#: src/projectsManager.cpp:277
 msgid "Adding the new projects to the database"
 msgstr "Aggiunta dei nuovi progetti al databse"
 
-#: src/projectsManager.cpp:336
+#: src/projectsManager.cpp:335
 msgid "Local project update file doesn't exist!"
 msgstr "Il file di update dei progetti locali non esiste!"
 
-#: src/projectsManager.cpp:345
+#: src/projectsManager.cpp:344
 msgid "Unable to copy local project update file to temporary location"
 msgstr ""
 "Impossibile copiare il file di update dei progetti locali in un posto "
 "temporaneo"
 
-#: src/projectsManager.cpp:404
+#: src/projectsManager.cpp:403
 #, c-format
 msgid "Line %u is not correctly formatted! %s"
 msgstr "La linea %u non è correttamente formattata! %s"
 
-#: src/projectsManager.cpp:415
+#: src/projectsManager.cpp:414
 msgid "Update aborted!"
 msgstr "Aggiornamento fermato!"
 

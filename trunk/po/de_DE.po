@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FahMon Translation - de_DE 1.1.b1\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2010-09-20 15:48+0100\n"
+"POT-Creation-Date: 2010-10-08 15:41+0100\n"
 "PO-Revision-Date: 2009-04-05 20:46+0100\n"
 "Last-Translator: Mark Gerber <mark.gerber@web.de>\n"
 "Language-Team: Mark Gerber <mark.gerber@web.de>\n"
@@ -153,7 +153,7 @@ msgid "No Eff. Time / Frame"
 msgstr "Keine effektive Frame-Dauer"
 
 #: src/benchmarksManager.cpp:164 src/preferencesManager.cpp:248
-#: src/projectsManager.cpp:149
+#: src/projectsManager.cpp:148
 #, c-format
 msgid "Could not open file <%s> for writing!"
 msgstr "Es ist kein Schreibzugriff auf die Datei <%s> möglich."
@@ -168,7 +168,7 @@ msgstr ""
 msgid "Unknown client"
 msgstr "Unbekannter Client"
 
-#: src/client.cpp:58 src/client.cpp:106 src/core.cpp:154
+#: src/client.cpp:58 src/client.cpp:106 src/core.cpp:157
 #: src/listViewClients.cpp:674 src/listViewClients.cpp:708
 #: src/mainDialog.cpp:533 src/mainDialog.cpp:534 src/mainDialog.cpp:535
 #: src/mainDialog.cpp:536
@@ -393,15 +393,15 @@ msgstr ""
 "# \"Name\"\t\"Ort\"\tDeaktiviert(*)\tVM(*)\n"
 "\n"
 
-#: src/core.cpp:137
+#: src/core.cpp:139
 msgid "CPU"
 msgstr "CPU"
 
-#: src/core.cpp:142
+#: src/core.cpp:144
 msgid "SMP"
 msgstr "SMP"
 
-#: src/core.cpp:149
+#: src/core.cpp:152
 msgid "GPU"
 msgstr "GPU"
 
@@ -1442,34 +1442,34 @@ msgstr "Die Einstellungsdatei ist nicht vorhanden oder nicht lesbar."
 msgid "There is no projects file, or it is not readable"
 msgstr "Die Projektedaten-Datei ist nicht vorhanden oder nicht lesbar."
 
-#: src/projectsManager.cpp:249
+#: src/projectsManager.cpp:248
 msgid "Updating projects database"
 msgstr "Aktualisierung der Projektedaten"
 
-#: src/projectsManager.cpp:253
+#: src/projectsManager.cpp:252
 msgid "Downloading new projects"
 msgstr "Projektedaten werden heruntergeladen"
 
-#: src/projectsManager.cpp:278
+#: src/projectsManager.cpp:277
 msgid "Adding the new projects to the database"
 msgstr "Projektedaten werden hinzugefügt"
 
-#: src/projectsManager.cpp:336
+#: src/projectsManager.cpp:335
 msgid "Local project update file doesn't exist!"
 msgstr "Lokale Datei für Projektedaten ist nicht vorhanden."
 
-#: src/projectsManager.cpp:345
+#: src/projectsManager.cpp:344
 msgid "Unable to copy local project update file to temporary location"
 msgstr ""
 "Die lokale Datei für Projektedaten kann nicht an temporärem Ort gespeichert "
 "werden."
 
-#: src/projectsManager.cpp:404
+#: src/projectsManager.cpp:403
 #, c-format
 msgid "Line %u is not correctly formatted! %s"
 msgstr "Zeile %u ist nicht richtig formatiert. %s"
 
-#: src/projectsManager.cpp:415
+#: src/projectsManager.cpp:414
 msgid "Update aborted!"
 msgstr "Update abgebrochen."
 

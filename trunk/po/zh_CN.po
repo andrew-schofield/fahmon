@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FahMon 2.3.99.1\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2010-09-20 15:48+0100\n"
+"POT-Creation-Date: 2010-10-08 15:41+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: qiyuwanjia,lucksc,金鹏 <qiyuwanjia@gmail.com>\n"
 "Language-Team: www.equn.com\n"
@@ -148,7 +148,7 @@ msgid "No Eff. Time / Frame"
 msgstr "没找到 每帧有效用时"
 
 #: src/benchmarksManager.cpp:164 src/preferencesManager.cpp:248
-#: src/projectsManager.cpp:149
+#: src/projectsManager.cpp:148
 #, c-format
 msgid "Could not open file <%s> for writing!"
 msgstr "打开文件失败 <%s> !"
@@ -161,7 +161,7 @@ msgstr "(基准分值) 已经达到允许的最大客户端数量!"
 msgid "Unknown client"
 msgstr "未知客户端"
 
-#: src/client.cpp:58 src/client.cpp:106 src/core.cpp:154
+#: src/client.cpp:58 src/client.cpp:106 src/core.cpp:157
 #: src/listViewClients.cpp:674 src/listViewClients.cpp:708
 #: src/mainDialog.cpp:533 src/mainDialog.cpp:534 src/mainDialog.cpp:535
 #: src/mainDialog.cpp:536
@@ -373,15 +373,15 @@ msgstr ""
 "# \"名称\"\t\"位置\" 是否禁用(*)\t是否在虚拟机上(*)\n"
 "\n"
 
-#: src/core.cpp:137
+#: src/core.cpp:139
 msgid "CPU"
 msgstr "CPU"
 
-#: src/core.cpp:142
+#: src/core.cpp:144
 msgid "SMP"
 msgstr "SMP"
 
-#: src/core.cpp:149
+#: src/core.cpp:152
 msgid "GPU"
 msgstr "GPU"
 
@@ -1371,32 +1371,32 @@ msgstr "无法加载偏好设置文件"
 msgid "There is no projects file, or it is not readable"
 msgstr "无法读取任务文件"
 
-#: src/projectsManager.cpp:249
+#: src/projectsManager.cpp:248
 msgid "Updating projects database"
 msgstr "正在更新任务信息数据库"
 
-#: src/projectsManager.cpp:253
+#: src/projectsManager.cpp:252
 msgid "Downloading new projects"
 msgstr "更新任务信息"
 
-#: src/projectsManager.cpp:278
+#: src/projectsManager.cpp:277
 msgid "Adding the new projects to the database"
 msgstr "正在添加新任务到任务信息数据库"
 
-#: src/projectsManager.cpp:336
+#: src/projectsManager.cpp:335
 msgid "Local project update file doesn't exist!"
 msgstr "本地任务更新文件不存在!"
 
-#: src/projectsManager.cpp:345
+#: src/projectsManager.cpp:344
 msgid "Unable to copy local project update file to temporary location"
 msgstr "无法复制本地任务更新文件到临时文件夹"
 
-#: src/projectsManager.cpp:404
+#: src/projectsManager.cpp:403
 #, c-format
 msgid "Line %u is not correctly formatted! %s"
 msgstr "第 %u 行格式错误! %s"
 
-#: src/projectsManager.cpp:415
+#: src/projectsManager.cpp:414
 msgid "Update aborted!"
 msgstr "更新中止!"
 
