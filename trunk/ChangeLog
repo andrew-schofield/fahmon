@@ -20,6 +20,7 @@ SVN
 
       * Fixed accidental inclusion of a gcc debug warning level into
         compiliation. Removes the scary output from 2.3.99.1.
+      * Fixed RPM .spec file. Thanks to "error".
 
 v2.3.99.1 (06/04/09)
 

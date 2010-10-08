@@ -17,9 +17,9 @@ Packager:   Andrew Schofield <andrew_s@fahmon.net>
 BuildRoot:  %{_tmppath}/%{name}-%{version}-root
 
 # Generic build requirements
-BuildRequires: wxGTK2.8-devel
+BuildRequires: wxGTK-devel
 
-Requires: wxGTK2.8
+Requires: wxGTK
 
 %description
 FahMon is an open-source tool (GPL license) that allows you to quickly
@@ -73,9 +73,10 @@ rm -rf %{buildroot}
 %doc README
 %doc REQUIRES
 %doc THANKS
-%doc doc/help.pdf
+%doc doc/help/User_Guide.pdf
 
 %{_bindir}/fahmon
+%{_libdir}/libwxcurl.*
 %{_datadir}/pixmaps/fahmon
 %{_datadir}/icons/hicolor/*/apps/fahmon*
 %{_datadir}/applications/*
@@ -83,6 +84,9 @@ rm -rf %{buildroot}
 %{_datadir}/fahmon/templates/*
 
 %changelog
+* Fri Oct 08 2010 Andrew Schofield <andrew_s@fahmon.net>
+- Fixed spec file. Thanks to "error".
+
 * Thu Jan 17 2008 Andrew Schofield <andrew_s@fahmon.net>
 - Added GNU build macros to auto insert version number.
 
