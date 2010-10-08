@@ -186,6 +186,13 @@ Section /o "Swedish" secLangsvSE
   File "lang\sv_SE\fahmon.mo"
 
 SectionEnd
+Section /o "Slovak" secLangskSK
+
+  SetOutPath "$INSTDIR\lang\sk_SK"
+  File "lang\sk_SK\sk_SK.po"
+  File "lang\sk_SK\fahmon.mo"
+
+SectionEnd
 SectionGroupEnd
 
   LangString DESC_SecFahMon ${LANG_ENGLISH} "Install FahMon"
@@ -204,6 +211,7 @@ SectionGroupEnd
   LangString DESC_SecLangzhCN ${LANG_ENGLISH} "Install Simplified Chinese translation"
   LangString DESC_SecLangesES ${LANG_ENGLISH} "Install Spanish translation"
   LangString DESC_SecLangsvSE ${LANG_ENGLISH} "Install Swedish translation"
+  LangString DESC_SecLangskSK ${LANG_ENGLISH} "Install Slovak translation"
 
   !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
     !insertmacro MUI_DESCRIPTION_TEXT ${SecFahMon} $(DESC_SecFahMon)
@@ -221,6 +229,7 @@ SectionGroupEnd
     !insertmacro MUI_DESCRIPTION_TEXT ${SecLangzhCN} $(DESC_SecLangzhCN)
     !insertmacro MUI_DESCRIPTION_TEXT ${SecLangesES} $(DESC_SecLangesES)
     !insertmacro MUI_DESCRIPTION_TEXT ${SecLangsvSE} $(DESC_SecLangsvSE)
+    !insertmacro MUI_DESCRIPTION_TEXT ${SecLangskSK} $(DESC_SecLangskSK)
   !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
 Section "Uninstall"
