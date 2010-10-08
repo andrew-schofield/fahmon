@@ -59,7 +59,7 @@
  * of version 2.3.2a) and also as a source package for compiling on Linux.
  * \section Legal
  * FahMon is Copyright François Ingelrest (Original Author/Retired Developer) 2003-2007
- * and Andrew Schofield (Lead Developer) 2007-2009
+ * and Andrew Schofield (Lead Developer) 2007-2010
  *
  * FahMon is free software and released under the GNU Public Licence (GPL). As such you are
  * free to modify and distribute FahMon with the only condition being that you reference

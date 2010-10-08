@@ -17,7 +17,7 @@
 /*
 * qd
 * Copyright (C) 2002-2005 Richard P. Howell IV.
-* Copyright (C) 2005-2009 Sebastiaan Couwenberg
+* Copyright (C) 2005-2010 Sebastiaan Couwenberg
 * This is free software; you can distribute it and/or modify it under
 * the terms of the GNU General Public License.  There is no warranty
 * whatsoever.
