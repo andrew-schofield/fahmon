@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FahMon 2.3.99.1\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2010-10-08 15:41+0100\n"
+"POT-Creation-Date: 2010-10-09 18:57+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: qiyuwanjia,lucksc,金鹏 <qiyuwanjia@gmail.com>\n"
 "Language-Team: www.equn.com\n"
@@ -101,8 +101,8 @@ msgid "Min. Time / Frame : %s"
 msgstr "每帧最少用时 : %s"
 
 #: src/benchmarksDialog.cpp:291 src/benchmarksDialog.cpp:312
-#: src/benchmarksDialog.cpp:337 src/benchmarksDialog.cpp:339
-#: src/benchmarksDialog.cpp:341
+#: src/benchmarksDialog.cpp:338 src/benchmarksDialog.cpp:340
+#: src/benchmarksDialog.cpp:342
 #, c-format
 msgid " - %.2f ppd"
 msgstr " - %.2f ppd"
@@ -135,15 +135,15 @@ msgstr "最近3帧用时 : %s"
 msgid "Eff. Time / Frame : %s"
 msgstr "每帧有效用时 : %s"
 
-#: src/benchmarksDialog.cpp:346
+#: src/benchmarksDialog.cpp:347
 msgid "No Cur. Time / Frame"
 msgstr "没找到 当前每帧用时"
 
-#: src/benchmarksDialog.cpp:347
+#: src/benchmarksDialog.cpp:348
 msgid "No R3F. Time / Frame"
 msgstr "没找到 最近3帧用时"
 
-#: src/benchmarksDialog.cpp:348
+#: src/benchmarksDialog.cpp:349
 msgid "No Eff. Time / Frame"
 msgstr "没找到 每帧有效用时"
 

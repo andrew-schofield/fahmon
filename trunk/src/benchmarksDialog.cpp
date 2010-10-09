@@ -287,7 +287,7 @@ void BenchmarksDialog::ShowBenchmarks(ProjectId projectIdToShow)
 			// Compute points per day if possible
 			if(project != NULL)
 			{
-				minPPD = (credit * 86400.0) / ((double)iFrameTime * (double)frameCount);    // There are 86400 seconds in a day
+				minPPD = (double)iFrameTime * (double)frameCount / (double)86400 < (double)project->GetPreferredDeadlineInDays() ? (project->GetCredit() * std::max(1.0,sqrt(((double)project->GetKFactor() / 100) * ((double)project->GetFinalDeadlineInDays() / 100) / (double)((double)iFrameTime * (double)frameCount / 86400))) * 86400.0 / ((double)iFrameTime * (double)frameCount)) : (credit * 86400.0) / ((double)iFrameTime * (double)frameCount);    // There are 86400 seconds in a day
 				infoString += _T(" ") + wxString::Format(_(" - %.2f ppd"), minPPD);
 			}
 		}
@@ -308,7 +308,7 @@ void BenchmarksDialog::ShowBenchmarks(ProjectId projectIdToShow)
 			// Compute points per day if possible
 			if(project != NULL)
 			{
-				avgPPD = (credit * 86400.0) / ((double)iFrameTime * (double)frameCount);    // There are 86400 seconds in a day
+				avgPPD = (double)iFrameTime * (double)frameCount / (double)86400 < (double)project->GetPreferredDeadlineInDays() ? (project->GetCredit() * std::max(1.0,sqrt(((double)project->GetKFactor() / 100) * ((double)project->GetFinalDeadlineInDays() / 100) / (double)((double)iFrameTime * (double)frameCount / 86400))) * 86400.0 / ((double)iFrameTime * (double)frameCount)) : (credit * 86400.0) / ((double)iFrameTime * (double)frameCount);    // There are 86400 seconds in a day
 				infoString += _T(" ") + wxString::Format(_(" - %.2f ppd"), avgPPD);
 			}
 		}
@@ -332,12 +332,13 @@ void BenchmarksDialog::ShowBenchmarks(ProjectId projectIdToShow)
 
 			// Compute points per day if possible
 			if(project != NULL)
-			{
-				instantPPD = (credit * 86400.0) / ((double)iFrameTime * (double)frameCount);    // There are 86400 seconds in a day
+			{			
+			    //ugh, horrible but it'll do until the client class is re-written
+				instantPPD = (double)iFrameTime * (double)frameCount / (double)86400 < (double)project->GetPreferredDeadlineInDays() ? (project->GetCredit() * std::max(1.0,sqrt(((double)project->GetKFactor() / 100) * ((double)project->GetFinalDeadlineInDays() / 100) / (double)((double)iFrameTime * (double)frameCount / 86400))) * 86400.0 / ((double)iFrameTime * (double)frameCount)) : (credit * 86400.0) / ((double)iFrameTime * (double)frameCount);    // There are 86400 seconds in a day
 				currentString += _T(" ") + wxString::Format(_(" - %.2f ppd"), instantPPD);
-				tFramePPD = (credit * 86400.0) / ((double)tFrameTime * (double)frameCount);    // There are 86400 seconds in a day
+				tFramePPD = (double)tFrameTime * (double)frameCount / (double)86400 < (double)project->GetPreferredDeadlineInDays() ? (project->GetCredit() * std::max(1.0,sqrt(((double)project->GetKFactor() / 100) * ((double)project->GetFinalDeadlineInDays() / 100) / (double)((double)tFrameTime * (double)frameCount / 86400))) * 86400.0 / ((double)tFrameTime * (double)frameCount)) : (credit * 86400.0) / ((double)tFrameTime * (double)frameCount);    // There are 86400 seconds in a day
 				r3fString += _T(" ") + wxString::Format(_(" - %.2f ppd"), tFramePPD);
-				tFramePPD = (credit * 86400.0) / ((double)eFrameTime * (double)frameCount);    // There are 86400 seconds in a day
+				tFramePPD = (double)eFrameTime * (double)frameCount / (double)86400 < (double)project->GetPreferredDeadlineInDays() ? (project->GetCredit() * std::max(1.0,sqrt(((double)project->GetKFactor() / 100) * ((double)project->GetFinalDeadlineInDays() / 100) / (double)((double)eFrameTime * (double)frameCount / 86400))) * 86400.0 / ((double)eFrameTime * (double)frameCount)) : (credit * 86400.0) / ((double)eFrameTime * (double)frameCount);    // There are 86400 seconds in a day
 				effectiveString += _T(" ") + wxString::Format(_(" - %.2f ppd"), tFramePPD);
 			}
 		}

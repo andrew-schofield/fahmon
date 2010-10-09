@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru_RU\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2010-10-08 15:41+0100\n"
+"POT-Creation-Date: 2010-10-09 18:57+0100\n"
 "PO-Revision-Date: 2009-03-20 23:16+0300\n"
 "Last-Translator: Evgeniy aka Behc <tsc.behc@gmail.com>\n"
 "Language-Team: Russian\n"
@@ -102,8 +102,8 @@ msgid "Min. Time / Frame : %s"
 msgstr "Мин. Время / Шаг : %s"
 
 #: src/benchmarksDialog.cpp:291 src/benchmarksDialog.cpp:312
-#: src/benchmarksDialog.cpp:337 src/benchmarksDialog.cpp:339
-#: src/benchmarksDialog.cpp:341
+#: src/benchmarksDialog.cpp:338 src/benchmarksDialog.cpp:340
+#: src/benchmarksDialog.cpp:342
 #, c-format
 msgid " - %.2f ppd"
 msgstr " - %.2f ppd"
@@ -136,15 +136,15 @@ msgstr "П3Ш. Время / Шаг : %s"
 msgid "Eff. Time / Frame : %s"
 msgstr "Эфф. Время / Шаг : %s"
 
-#: src/benchmarksDialog.cpp:346
+#: src/benchmarksDialog.cpp:347
 msgid "No Cur. Time / Frame"
 msgstr "Нет текущего времени / Шага"
 
-#: src/benchmarksDialog.cpp:347
+#: src/benchmarksDialog.cpp:348
 msgid "No R3F. Time / Frame"
 msgstr "Нет П3Ш Времени / Шага"
 
-#: src/benchmarksDialog.cpp:348
+#: src/benchmarksDialog.cpp:349
 msgid "No Eff. Time / Frame"
 msgstr "Нет Эфф. Времени / Шага"
 
