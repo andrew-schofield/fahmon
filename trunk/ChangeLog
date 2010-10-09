@@ -9,6 +9,7 @@ SVN
       * Added missing protomol core support.
       * Added missing openmmgpu core support.
       * Added bonus ppd (kfactor) support.
+      * Added missing smp2 core support.
 
       Other
 
