@@ -47,6 +47,8 @@ EXTRA_DIST = \
 	projectsManager.h \
 	resource.h \
 	staticBoldedText.h \
+	tinystr.h \
+	tinyxml.h \
 	tools.h \
 	trayManager.h \
 	workUnitFrame.h \
