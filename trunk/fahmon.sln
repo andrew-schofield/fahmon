@@ -1,12 +1,9 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual C++ Express 2008
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "fahmon", "fahmon.vcproj", "{123E1A2B-0065-4F88-9904-A6603F8882DE}"
-	ProjectSection(ProjectDependencies) = postProject
-		{5FDEAEA0-10EE-5385-9F20-F3BCF5AF333A} = {5FDEAEA0-10EE-5385-9F20-F3BCF5AF333A}
-	EndProjectSection
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "fahmon", "fahmon.vcxproj", "{123E1A2B-0065-4F88-9904-A6603F8882DE}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "wxcurl", "wxcurl.vcproj", "{5FDEAEA0-10EE-5385-9F20-F3BCF5AF333A}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "wxcurl", "wxcurl.vcxproj", "{5FDEAEA0-10EE-5385-9F20-F3BCF5AF333A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
