@@ -23,6 +23,7 @@
 
 #include "fahmon.h"
 #include "project.h"
+#include "core.h"
 
 
 Project::Project(ProjectId projectId, wxUint16 preferredDeadlineInDays, wxUint16 finalDeadlineInDays, wxUint16 nbFrames, WuCredit credit, CoreId coreId, wxUint16 kFactor)
@@ -37,19 +38,38 @@ Project::Project(ProjectId projectId, wxUint16 preferredDeadlineInDays, wxUint16
 }
 
 
-void Project::Write(DataOutputStream& out) const
+void Project::Write(TiXmlElement* out) const
 {
-	out.Write(&mProjectId, sizeof(mProjectId));
-	out.Write(&mPreferredDeadlineInDays, sizeof(mPreferredDeadlineInDays));
-	out.Write(&mFinalDeadlineInDays, sizeof(mFinalDeadlineInDays));
-	out.Write(&mNbFrames, sizeof(mNbFrames));
-	out.Write(&mCredit, sizeof(mCredit));
-	out.Write(&mCoreId, sizeof(mCoreId));
-	out.Write(&mKFactor, sizeof(mKFactor));
+	out->SetAttribute( "Id", wxString::Format(wxT("%i"), mProjectId).mb_str( wxConvUTF8 ) );
+	out->SetAttribute( "PreferredDeadline", wxString::Format(wxT("%i"), mPreferredDeadlineInDays).mb_str( wxConvUTF8 ) );
+	out->SetAttribute( "FinalDeadline", wxString::Format(wxT("%i"), mFinalDeadlineInDays).mb_str( wxConvUTF8 ) );
+	out->SetAttribute( "FrameCount", wxString::Format(wxT("%i"), mNbFrames).mb_str( wxConvUTF8 ) );
+	out->SetAttribute( "Credit", wxString::Format(wxT("%i"), mCredit).mb_str( wxConvUTF8 ) );
+	out->SetAttribute( "CoreId", Core::IdToShortName(mCoreId).mb_str( wxConvUTF8 ) );
+	out->SetAttribute( "KFactor", wxString::Format(wxT("%i"), mKFactor).mb_str( wxConvUTF8 ) );
 }
 
 
-void Project::Read(DataInputStream& in)
+void Project::Read(TiXmlElement* in)
+{
+	int val;
+	in->QueryIntAttribute("Id", &val);
+	SetProjectId(val);
+	in->QueryIntAttribute("PreferredDeadline", &val);
+	SetPreferredDeadlineInDays(val);
+	in->QueryIntAttribute("FinalDeadline", &val);
+	SetFinalDeadlineInDays(val);
+	in->QueryIntAttribute("FrameCount", &val);
+	SetNbFrames(val);
+	in->QueryIntAttribute("Credit", &val);
+	SetCredit(val);
+	SetCoreId(Core::ShortNameToId(wxString::FromUTF8(in->Attribute("CoreId"))));
+	in->QueryIntAttribute("KFactor", &val);
+	SetKFactor(val);
+}
+
+
+void Project::ReadOld(DataInputStream& in)
 {
 	in.Read(&mProjectId, sizeof(mProjectId));
 	in.Read(&mPreferredDeadlineInDays, sizeof(mPreferredDeadlineInDays));
@@ -57,5 +77,5 @@ void Project::Read(DataInputStream& in)
 	in.Read(&mNbFrames, sizeof(mNbFrames));
 	in.Read(&mCredit, sizeof(mCredit));
 	in.Read(&mCoreId, sizeof(mCoreId));
-	in.Read(&mKFactor, sizeof(mKFactor));
+	mKFactor = 0;
 }

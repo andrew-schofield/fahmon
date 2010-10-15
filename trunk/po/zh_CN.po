@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FahMon 2.3.99.1\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2010-10-09 18:57+0100\n"
+"POT-Creation-Date: 2010-10-16 00:05+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: qiyuwanjia,lucksc,金鹏 <qiyuwanjia@gmail.com>\n"
 "Language-Team: www.equn.com\n"
@@ -148,7 +148,7 @@ msgid "No Eff. Time / Frame"
 msgstr "没找到 每帧有效用时"
 
 #: src/benchmarksManager.cpp:164 src/preferencesManager.cpp:248
-#: src/projectsManager.cpp:148
+#: src/projectsManager.cpp:172
 #, c-format
 msgid "Could not open file <%s> for writing!"
 msgstr "打开文件失败 <%s> !"
@@ -1367,36 +1367,36 @@ msgstr "选择简单文本文件模板"
 msgid "There is no Preferences file, or it is not readable"
 msgstr "无法加载偏好设置文件"
 
-#: src/projectsManager.cpp:109
+#: src/projectsManager.cpp:109 src/projectsManager.cpp:193
 msgid "There is no projects file, or it is not readable"
 msgstr "无法读取任务文件"
 
-#: src/projectsManager.cpp:248
+#: src/projectsManager.cpp:297
 msgid "Updating projects database"
 msgstr "正在更新任务信息数据库"
 
-#: src/projectsManager.cpp:252
+#: src/projectsManager.cpp:301
 msgid "Downloading new projects"
 msgstr "更新任务信息"
 
-#: src/projectsManager.cpp:277
+#: src/projectsManager.cpp:326
 msgid "Adding the new projects to the database"
 msgstr "正在添加新任务到任务信息数据库"
 
-#: src/projectsManager.cpp:335
+#: src/projectsManager.cpp:384
 msgid "Local project update file doesn't exist!"
 msgstr "本地任务更新文件不存在!"
 
-#: src/projectsManager.cpp:344
+#: src/projectsManager.cpp:393
 msgid "Unable to copy local project update file to temporary location"
 msgstr "无法复制本地任务更新文件到临时文件夹"
 
-#: src/projectsManager.cpp:403
+#: src/projectsManager.cpp:452
 #, c-format
 msgid "Line %u is not correctly formatted! %s"
 msgstr "第 %u 行格式错误! %s"
 
-#: src/projectsManager.cpp:414
+#: src/projectsManager.cpp:463
 msgid "Update aborted!"
 msgstr "更新中止!"
 

@@ -28,7 +28,7 @@
 #include "core.h"
 #include "fahmonTypes.h"
 #include "dataInputStream.h"
-#include "dataOutputStream.h"
+#include "tinyxml.h"
 
 /**
  * The project class.
@@ -63,13 +63,19 @@ public:
 	 * Write this project to the disk.
 	 * @param out The output stream.
 	 **/
-	void Write(DataOutputStream& out) const;
+	void Write(TiXmlElement* out) const;
 
 	/**
 	 * Read the project from the disk.
 	 * @param in The input stream.
 	 **/
-	void Read(DataInputStream& in);
+	void Read(TiXmlElement* in);
+
+	/**
+	 * Read the project from the disk.
+	 * @param in The input stream.
+	 **/
+	void ReadOld(DataInputStream& in);
 
 	// --- Setters
 	/**

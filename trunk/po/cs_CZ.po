@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cs_CZ\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2010-10-09 18:57+0100\n"
+"POT-Creation-Date: 2010-10-16 00:05+0100\n"
 "PO-Revision-Date: 2009-03-28 13:41+0100\n"
 "Last-Translator: Martin Bednar <serafean@gmail.com>\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
@@ -149,7 +149,7 @@ msgid "No Eff. Time / Frame"
 msgstr "Žádný skutečný čas / Snímek"
 
 #: src/benchmarksManager.cpp:164 src/preferencesManager.cpp:248
-#: src/projectsManager.cpp:148
+#: src/projectsManager.cpp:172
 #, c-format
 msgid "Could not open file <%s> for writing!"
 msgstr "Nelze otevřít soubor <%s> pro zapisováni"
@@ -1411,36 +1411,36 @@ msgstr "Vybrat Šablonu pro Jednoduchý Textový Soubor."
 msgid "There is no Preferences file, or it is not readable"
 msgstr "Nelze najít soubor Nastavení, nebo jej nelze číst"
 
-#: src/projectsManager.cpp:109
+#: src/projectsManager.cpp:109 src/projectsManager.cpp:193
 msgid "There is no projects file, or it is not readable"
 msgstr "Nelze najít soubor Projektů, nebo jej nelze číst"
 
-#: src/projectsManager.cpp:248
+#: src/projectsManager.cpp:297
 msgid "Updating projects database"
 msgstr "Aktualizace databáze projektů"
 
-#: src/projectsManager.cpp:252
+#: src/projectsManager.cpp:301
 msgid "Downloading new projects"
 msgstr "Stahování nových projektů"
 
-#: src/projectsManager.cpp:277
+#: src/projectsManager.cpp:326
 msgid "Adding the new projects to the database"
 msgstr "Přidávání nových projektů do databáze"
 
-#: src/projectsManager.cpp:335
+#: src/projectsManager.cpp:384
 msgid "Local project update file doesn't exist!"
 msgstr "Lokaní soubor aktualizace projektu neexistuje!"
 
-#: src/projectsManager.cpp:344
+#: src/projectsManager.cpp:393
 msgid "Unable to copy local project update file to temporary location"
 msgstr "Nelze kopírovat lokální soubor aktualizace projektu do dočasné složky."
 
-#: src/projectsManager.cpp:403
+#: src/projectsManager.cpp:452
 #, c-format
 msgid "Line %u is not correctly formatted! %s"
 msgstr "řádka %u je v nesprávném formátu! %s"
 
-#: src/projectsManager.cpp:414
+#: src/projectsManager.cpp:463
 msgid "Update aborted!"
 msgstr "Aktualizace přerušena!"
 

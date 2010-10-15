@@ -31,10 +31,10 @@
 #include "httpDownloader.h"
 #include "messagesManager.h"
 #include "dataInputStream.h"
-#include "dataOutputStream.h"
 #include "preferencesManager.h"
 #include "projectHelperThread.h"
 #include "progressManager.h"
+#include "tinyxml.h"
 
 #include "wx/textfile.h"
 #include "wx/filename.h"
@@ -97,11 +97,11 @@ ProjectsManager* ProjectsManager::GetInstance(void)
 }
 
 
-void ProjectsManager::Load(void)
+void ProjectsManager::LoadOld(void)
 {
 	Project         *currentProject;
 	wxUint32         nbProjects, i, version;
-	DataInputStream  in(PathManager::GetCfgPath() + _T(FMC_FILE_PROJECTS));
+	DataInputStream  in(PathManager::GetCfgPath() + _T("projects.dat"));
 
 	// Could the file be opened ?
 	if(in.Ok() == false)
@@ -115,7 +115,7 @@ void ProjectsManager::Load(void)
 	for(i=0; i<nbProjects; ++i)
 	{
 		currentProject = new Project;
-		currentProject->Read(in);
+		currentProject->ReadOld(in);
 		AddProject(currentProject);
 	}
 	in.ReadUint(version);
@@ -135,30 +135,79 @@ void ProjectsManager::Load(void)
 		UpdateToV3();
 		version = 3;
 	}
+	wxRemoveFile(PathManager::GetCfgPath() + _T("projects.dat"));
 }
 
 
 void ProjectsManager::Save(void)
 {
-	DataOutputStream               out(PathManager::GetCfgPath() + _T(FMC_FILE_PROJECTS));
+    TiXmlDocument doc;
+	TiXmlComment * comment;
 	ProjectsListHashMap::iterator  iterator;
 
-	if(out.Ok() == false)
+
+	TiXmlDeclaration* decl = new TiXmlDeclaration("1.0", "UTF-8", "yes");
+	doc.LinkEndChild( decl );
+	
+	comment = new TiXmlComment();
+	comment->SetValue(wxString::Format(_T(" %s Projects Database "), _T(FMC_APPNAME)).mb_str( wxConvUTF8 ));
+	doc.LinkEndChild( comment );
+	
+	TiXmlElement * root = new TiXmlElement( "Database" );
+	doc.LinkEndChild( root );
+	wxString Version = wxString::Format(wxT("%i"), FMC_PROJECTS_VERSION);
+	root->SetAttribute( "Version", Version.mb_str( wxConvUTF8 ) );
+	
+	TiXmlElement * projects = new TiXmlElement( "Projects" );
+	root->LinkEndChild( projects );
+
+	for(iterator=mProjectsHashMap.begin(); iterator!=mProjectsHashMap.end(); ++iterator)
+	{
+    	TiXmlElement * project = new TiXmlElement( "Project" );
+		iterator->second->Write( project );
+		projects->LinkEndChild( project );
+	}
+	if( doc.SaveFile( (PathManager::GetCfgPath() + _T(FMC_FILE_PROJECTS)).mb_str( wxConvUTF8 ) ) == false )
 	{
 		Tools::ErrorMsgBox(wxString::Format(_("Could not open file <%s> for writing!"), (PathManager::GetCfgPath() + _T(FMC_FILE_PROJECTS)).c_str()));
 		return;
 	}
+}
 
-	// A simple format is used
-	//  1) An unsigned int is first written, containing the number of projects
-	//  2) Then, each project is written
-	out.WriteUint(mProjectsHashMap.size());
-	for(iterator=mProjectsHashMap.begin(); iterator!=mProjectsHashMap.end(); ++iterator)
+
+void ProjectsManager::Load(void)
+{
+    if(wxFileExists(PathManager::GetCfgPath() + _T("projects.dat")))
+    {
+        LoadOld();
+        return;
+    }
+    TiXmlDocument  doc((PathManager::GetCfgPath() + _T(FMC_FILE_PROJECTS)).mb_str( wxConvUTF8 ));
+	TiXmlElement*  elem;
+	Project       *currentProject;
+	int            version;
+	
+	bool loadOkay = doc.LoadFile();
+	if(loadOkay == false)
 	{
-		iterator->second->Write(out);
+		_LogMsgWarning(_("There is no projects file, or it is not readable"), false);
+		return;
 	}
-	// write projects database version
-	out.WriteUint(FMC_PROJECTS_VERSION);
+
+	TiXmlHandle docHandle( &doc );
+	TiXmlElement* root = docHandle.FirstChild( "Database" ).ToElement();
+	root->QueryIntAttribute("Version", &version); //for future changes
+	if( root )
+	{
+	    elem = docHandle.FirstChild( "Database" ).FirstChild( "Projects" ).FirstChild( "Project" ).ToElement();
+		while( elem )
+		{
+		    currentProject = new Project;
+		    currentProject->Read(elem);
+		    AddProject(currentProject);
+			elem=elem->NextSiblingElement();
+		}
+	}
 }
 
 
@@ -526,19 +575,19 @@ void ProjectsManager::UpdateToV2(void)
 	Project    *editedProject;
 	wxUint32   preferredDeadlineInDays;
 	wxUint32   finalDeadlineInDays;
+	ProjectsListHashMap tempHM = mProjectsHashMap;
 
-	for(iterator=mProjectsHashMap.begin(); iterator!=mProjectsHashMap.end(); ++iterator)
+	for(iterator=tempHM.begin(); iterator!=tempHM.end(); ++iterator)
 	{
 		editingProject = iterator->second;
 		if(editingProject != NULL)
 		{
 			preferredDeadlineInDays = editingProject->GetPreferredDeadlineInDays() * 100;
 			finalDeadlineInDays = editingProject->GetFinalDeadlineInDays() * 100;
-			editedProject = new Project(editingProject->GetProjectId(), preferredDeadlineInDays, finalDeadlineInDays, editingProject->GetNbFrames(), editingProject->GetCredit(), editingProject->GetCoreId());
+			editedProject = new Project(editingProject->GetProjectId(), preferredDeadlineInDays, finalDeadlineInDays, editingProject->GetNbFrames(), editingProject->GetCredit(), editingProject->GetCoreId(),0);
 			AddProject(editedProject);
 		}
 	}
-
 }
 
 
@@ -547,8 +596,9 @@ void ProjectsManager::UpdateToV3(void)
 	ProjectsListHashMap::iterator  iterator;
 	const Project     *editingProject;
 	Project    *editedProject;
+	ProjectsListHashMap tempHM = mProjectsHashMap;
 
-	for(iterator=mProjectsHashMap.begin(); iterator!=mProjectsHashMap.end(); ++iterator)
+	for(iterator=tempHM.begin(); iterator!=tempHM.end(); ++iterator)
 	{
 		editingProject = iterator->second;
 		if(editingProject != NULL)
@@ -557,5 +607,4 @@ void ProjectsManager::UpdateToV3(void)
 			AddProject(editedProject);
 		}
 	}
-
 }

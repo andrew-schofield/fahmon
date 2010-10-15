@@ -301,8 +301,8 @@ EXTRA_DIST = config.rpath  \
 	src/gettext.h \
 	REQUIRES \
 	fahmon.sln \
-	fahmon.vcproj \
-	wxcurl.vcproj \
+	fahmon.vcxproj \
+	wxcurl.vcxproj \
 	FahMon.nsi \
 	README.win32.txt \
 	po_to_lang.bat \

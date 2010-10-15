@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fahmon\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2010-10-09 18:57+0100\n"
+"POT-Creation-Date: 2010-10-16 00:05+0100\n"
 "PO-Revision-Date: 2008-11-22 12:38+0000\n"
 "Last-Translator: Kenneth Langdalen <Unknown>\n"
 "Language-Team: Norwegian Bokmal <nb@li.org>\n"
@@ -148,7 +148,7 @@ msgid "No Eff. Time / Frame"
 msgstr ""
 
 #: src/benchmarksManager.cpp:164 src/preferencesManager.cpp:248
-#: src/projectsManager.cpp:148
+#: src/projectsManager.cpp:172
 #, c-format
 msgid "Could not open file <%s> for writing!"
 msgstr "Kunne ikke åpne filen <%s> for skriving!"
@@ -1363,36 +1363,36 @@ msgstr ""
 msgid "There is no Preferences file, or it is not readable"
 msgstr "Det finnes ingen fil med instillninger, eller den kunne inte leses"
 
-#: src/projectsManager.cpp:109
+#: src/projectsManager.cpp:109 src/projectsManager.cpp:193
 msgid "There is no projects file, or it is not readable"
 msgstr "Det finns ingen prosjektfil, eller den kunne ikke åpnes"
 
-#: src/projectsManager.cpp:248
+#: src/projectsManager.cpp:297
 msgid "Updating projects database"
 msgstr "Oppdaterer prosjektdatabasen"
 
-#: src/projectsManager.cpp:252
+#: src/projectsManager.cpp:301
 msgid "Downloading new projects"
 msgstr "Henter nye prosjekt"
 
-#: src/projectsManager.cpp:277
+#: src/projectsManager.cpp:326
 msgid "Adding the new projects to the database"
 msgstr "Legger til det nye prosjektet i databasen"
 
-#: src/projectsManager.cpp:335
+#: src/projectsManager.cpp:384
 msgid "Local project update file doesn't exist!"
 msgstr ""
 
-#: src/projectsManager.cpp:344
+#: src/projectsManager.cpp:393
 msgid "Unable to copy local project update file to temporary location"
 msgstr ""
 
-#: src/projectsManager.cpp:403
+#: src/projectsManager.cpp:452
 #, c-format
 msgid "Line %u is not correctly formatted! %s"
 msgstr "Linjen %u er formatert feil! %s"
 
-#: src/projectsManager.cpp:414
+#: src/projectsManager.cpp:463
 msgid "Update aborted!"
 msgstr "Oppdatering avbrutt!"
 

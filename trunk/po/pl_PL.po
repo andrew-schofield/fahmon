@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl_PL\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2010-10-09 18:57+0100\n"
+"POT-Creation-Date: 2010-10-16 00:05+0100\n"
 "PO-Revision-Date: 2009-03-22 23:57+0100\n"
 "Last-Translator: Mariusz Pociask <mariusz-pociask@o2.pl>\n"
 "Language-Team: British English <en@li.org>\n"
@@ -151,7 +151,7 @@ msgid "No Eff. Time / Frame"
 msgstr "Efektywny czas / ramkę nieznany."
 
 #: src/benchmarksManager.cpp:164 src/preferencesManager.cpp:248
-#: src/projectsManager.cpp:148
+#: src/projectsManager.cpp:172
 #, c-format
 msgid "Could not open file <%s> for writing!"
 msgstr "Brak możliwości zapisu do pliku <%s>!"
@@ -1429,38 +1429,38 @@ msgstr "Wybierz szablon pliku tekstowego"
 msgid "There is no Preferences file, or it is not readable"
 msgstr "Brak pliku konfiguracyjnego lub jest on nieczytelny"
 
-#: src/projectsManager.cpp:109
+#: src/projectsManager.cpp:109 src/projectsManager.cpp:193
 msgid "There is no projects file, or it is not readable"
 msgstr "Brak bazy projektów lub jest ona nieczytelna"
 
-#: src/projectsManager.cpp:248
+#: src/projectsManager.cpp:297
 msgid "Updating projects database"
 msgstr "Aktualizacja bazy projektów"
 
-#: src/projectsManager.cpp:252
+#: src/projectsManager.cpp:301
 msgid "Downloading new projects"
 msgstr "Pobieranie nowych projektów"
 
-#: src/projectsManager.cpp:277
+#: src/projectsManager.cpp:326
 msgid "Adding the new projects to the database"
 msgstr "Dodawanie nowych projektów do bazy"
 
-#: src/projectsManager.cpp:335
+#: src/projectsManager.cpp:384
 msgid "Local project update file doesn't exist!"
 msgstr "Brak lokalnego pliku aktualnych projektów!"
 
-#: src/projectsManager.cpp:344
+#: src/projectsManager.cpp:393
 msgid "Unable to copy local project update file to temporary location"
 msgstr ""
 "Nie można skopiować lokalnego pliku aktualnych projektów do katalogu "
 "tymczasowego"
 
-#: src/projectsManager.cpp:403
+#: src/projectsManager.cpp:452
 #, c-format
 msgid "Line %u is not correctly formatted! %s"
 msgstr "Linia %u ma nieprawidłowy format! %s"
 
-#: src/projectsManager.cpp:414
+#: src/projectsManager.cpp:463
 msgid "Update aborted!"
 msgstr "Aktualizacja przerwana!"
 

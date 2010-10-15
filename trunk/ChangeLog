@@ -17,6 +17,8 @@ SVN
         and generally undesirable behaviour.
       * Added Simplified Chinese translation.
       * Added Slovak translation.
+      * Projects database now stored in xml, and will migrate from old format
+        automagically.
 
     Linux
 

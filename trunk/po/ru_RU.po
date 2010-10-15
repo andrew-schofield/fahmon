@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru_RU\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2010-10-09 18:57+0100\n"
+"POT-Creation-Date: 2010-10-16 00:05+0100\n"
 "PO-Revision-Date: 2009-03-20 23:16+0300\n"
 "Last-Translator: Evgeniy aka Behc <tsc.behc@gmail.com>\n"
 "Language-Team: Russian\n"
@@ -149,7 +149,7 @@ msgid "No Eff. Time / Frame"
 msgstr "Нет Эфф. Времени / Шага"
 
 #: src/benchmarksManager.cpp:164 src/preferencesManager.cpp:248
-#: src/projectsManager.cpp:148
+#: src/projectsManager.cpp:172
 #, c-format
 msgid "Could not open file <%s> for writing!"
 msgstr "Невозможно открыть файл <%s> для записи!"
@@ -1417,37 +1417,37 @@ msgstr "Выберите куда сохранить простой тексто
 msgid "There is no Preferences file, or it is not readable"
 msgstr "Это не файл с Настройками или его не прочитать"
 
-#: src/projectsManager.cpp:109
+#: src/projectsManager.cpp:109 src/projectsManager.cpp:193
 msgid "There is no projects file, or it is not readable"
 msgstr "Это не файл с заданиями или его не прочитать"
 
-#: src/projectsManager.cpp:248
+#: src/projectsManager.cpp:297
 msgid "Updating projects database"
 msgstr "Обновляется база заданий"
 
-#: src/projectsManager.cpp:252
+#: src/projectsManager.cpp:301
 msgid "Downloading new projects"
 msgstr "Загружается информация о новых задания"
 
-#: src/projectsManager.cpp:277
+#: src/projectsManager.cpp:326
 msgid "Adding the new projects to the database"
 msgstr "Добавление информации о новых заданий в базу"
 
-#: src/projectsManager.cpp:335
+#: src/projectsManager.cpp:384
 msgid "Local project update file doesn't exist!"
 msgstr "Обновлённого файла базы данных заданий не существует!"
 
-#: src/projectsManager.cpp:344
+#: src/projectsManager.cpp:393
 msgid "Unable to copy local project update file to temporary location"
 msgstr ""
 "Невозможно скопировать локальный файл с данными заданий во временную папку."
 
-#: src/projectsManager.cpp:403
+#: src/projectsManager.cpp:452
 #, c-format
 msgid "Line %u is not correctly formatted! %s"
 msgstr "Линия %u имеет неправильный формат! %s"
 
-#: src/projectsManager.cpp:414
+#: src/projectsManager.cpp:463
 msgid "Update aborted!"
 msgstr "Обновление прервано!"
 

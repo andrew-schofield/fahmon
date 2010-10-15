@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sk_SK\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2010-10-09 18:57+0100\n"
+"POT-Creation-Date: 2010-10-16 00:05+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Vladimír Záhradník <vladimir.zahradnik@gmail.com>\n"
 "Language-Team: Slovak <vladimir.zahradnik@gmail.com>\n"
@@ -145,7 +145,7 @@ msgid "No Eff. Time / Frame"
 msgstr "Žiadny skutočný čas / snímok"
 
 #: src/benchmarksManager.cpp:164 src/preferencesManager.cpp:248
-#: src/projectsManager.cpp:148
+#: src/projectsManager.cpp:172
 #, c-format
 msgid "Could not open file <%s> for writing!"
 msgstr "Nie je možné otvoriť súbor <%s> pre zápis!"
@@ -1419,38 +1419,38 @@ msgstr "Vyberte si šablónu pre jednoduchý textový súbor"
 msgid "There is no Preferences file, or it is not readable"
 msgstr "Nie je možné nájsť žiadny súbor Nastavení, alebo ho nie je možné čítať"
 
-#: src/projectsManager.cpp:109
+#: src/projectsManager.cpp:109 src/projectsManager.cpp:193
 msgid "There is no projects file, or it is not readable"
 msgstr "Nie je možné nájsť žiadny súbor projektov, alebo ho nie je možné čítať"
 
-#: src/projectsManager.cpp:248
+#: src/projectsManager.cpp:297
 msgid "Updating projects database"
 msgstr "Aktualizuje sa databáza projektov"
 
-#: src/projectsManager.cpp:252
+#: src/projectsManager.cpp:301
 msgid "Downloading new projects"
 msgstr "Sťahujú sa nové projekty"
 
-#: src/projectsManager.cpp:277
+#: src/projectsManager.cpp:326
 msgid "Adding the new projects to the database"
 msgstr "Pridávajú sa nové projekty do databázy"
 
-#: src/projectsManager.cpp:335
+#: src/projectsManager.cpp:384
 msgid "Local project update file doesn't exist!"
 msgstr "Miestny súbor aktualizácie projektu neexistuje!"
 
-#: src/projectsManager.cpp:344
+#: src/projectsManager.cpp:393
 msgid "Unable to copy local project update file to temporary location"
 msgstr ""
 "Nie je možné kopírovať miestny súbor aktualizácie projektu do dočasného "
 "umiestnenia"
 
-#: src/projectsManager.cpp:403
+#: src/projectsManager.cpp:452
 #, c-format
 msgid "Line %u is not correctly formatted! %s"
 msgstr "Riadok %u nie je správne formátovaný! %s"
 
-#: src/projectsManager.cpp:414
+#: src/projectsManager.cpp:463
 msgid "Update aborted!"
 msgstr "Aktualizácia bola prerušená!"
 

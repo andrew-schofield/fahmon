@@ -67,6 +67,11 @@ protected:
 	void Load(void);
 
 	/**
+	 * Load the list of projects from the disk.
+	 **/
+	void LoadOld(void);
+
+	/**
 	 * Update an unversioned database to version 2.
 	 * Updates all deadlines to be deadline*100 to allow storing of non integer deadlines.
 	 **/

@@ -10,5 +10,5 @@
 
 SUBDIRS = include lib
 
-EXTRA_DIST = curl.sln curl.vcproj
+EXTRA_DIST = curl.sln curl.vcxproj
 

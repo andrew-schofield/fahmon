@@ -81,7 +81,7 @@
 // --- Files
 #define FMC_FILE_PREFS      "prefs.dat" /**< Name of preferences file */
 #define FMC_FILE_CLIENTS    "clientstab.txt" /**< Name of clients list table file */
-#define FMC_FILE_PROJECTS   "projects.dat" /**< Name of projects database file */
+#define FMC_FILE_PROJECTS   "projects.xml" /**< Name of projects database file */
 #define FMC_FILE_BENCHMARKS "benchmarks.dat" /**< Name of benchmarks database file */
 
 #define FMC_FILE_IMG_ABOUT             "main_icon.png" /**< Name of main program icon */
