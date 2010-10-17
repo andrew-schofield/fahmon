@@ -6,6 +6,12 @@ See the end for copying conditions.
 
 Please send FahMon bug reports to andrew_s@fahmon.net.
 
+Version 2.3.99.2
+
+* New core support.
+* Fixed thread-safety issues.
+* Projects database now stored in xml format.
+
 Version 2.3.99.1
 
 * Fixed nasty crash-bug on Windows when monitoring Linux clients.
