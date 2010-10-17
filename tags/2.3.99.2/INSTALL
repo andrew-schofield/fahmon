@@ -1,0 +1,36 @@
+Please make sure you have read the REQUIRES file before installing FahMon.
+
+Windows
+=======
+
+If you have the installer, the process is self explanatory.
+
+If you have the zip file, it can be extracted wherever you want.
+
+Linux
+=====
+
+If your distro is supported by the binary builds on the website, the easiest way
+to install FahMon is to use one of them. Installation is as simple as double-
+clicking the package and entering your root password.
+
+If you need to build from source, follow the instructions below.
+
+FahMon uses the familiar ./configure; make method for software building. Under
+normal circumstances these are the only commands you will need to run. Configure
+will detect and setup the necessary software and files, and make will compile
+the software for you.
+
+Full installation instructions:
+
+ cd <fahmon source folder>
+ ./configure
+ make
+ sudo make install
+
+Depending on your Linux distribution, you may not have (or use) sudo. In which
+case you need to login as root with `su`, run `make install`, then `exit`
+To run FahMon, either run "fahmon" from a shell (it will work from anywhere in
+the system, no more need for shell scripts), or launch it from your Desktop
+Environment's Applications menu (if supported). You can add a shortcut item
+manually if your DE is not supported.
