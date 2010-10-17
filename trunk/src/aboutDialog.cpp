@@ -85,6 +85,8 @@ AboutDialog::AboutDialog(wxWindow* parent) : wxDialog(parent, wxID_ANY, wxString
 
 	infoSizer->Add(new StaticBoldedText(this, wxID_ANY, _T(FMC_PRODUCT)), 0, wxALIGN_CENTER);
 	infoSizer->AddSpacer(FMC_GUI_SPACING_HIGH);
+	infoSizer->Add(new wxStaticText(this, wxID_ANY, _T(FMC_QUOTE)), 0, wxALIGN_CENTER);
+	infoSizer->AddSpacer(FMC_GUI_SPACING_HIGH);
 	infoSizer->Add(new wxStaticLine(this, wxID_ANY, wxDefaultPosition, wxSize(65, -1)), 0, wxALIGN_CENTER);
 	infoSizer->AddSpacer(FMC_GUI_SPACING_HIGH);
 	infoSizer->Add(authorHomepageSizer);

@@ -44,6 +44,7 @@
 #define FMC_VERSION 	"2.3.99.1" /**< Current program version */
 #define FMC_PRODUCT 	"FahMon 2.3.99.1" /**< Concatenation of FahMon and Version number, required by MSVC++ */
 #define FMC_UID         ".FahMon__LOCK__" /**< Name used for lockfile */
+#define FMC_QUOTE       "Better late than never"
 
 
 // --- URLs
