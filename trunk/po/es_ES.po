@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es_ES\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2010-10-19 21:15+0100\n"
+"POT-Creation-Date: 2010-10-19 22:33+0100\n"
 "PO-Revision-Date: 2008-10-30 00:13+0000\n"
 "Last-Translator: Antonio Lucendo <alt_alm@hotmail.com>\n"
 "Language-Team: Spanish\n"
@@ -150,7 +150,7 @@ msgid "No Eff. Time / Frame"
 msgstr "No Tiempo / Cuadro Efectivo"
 
 #: src/benchmarksManager.cpp:164 src/preferencesManager.cpp:248
-#: src/projectsManager.cpp:172
+#: src/projectsManager.cpp:171
 #, c-format
 msgid "Could not open file <%s> for writing!"
 msgstr "¡No se puede abrir el archivo <%s> para escritura!"

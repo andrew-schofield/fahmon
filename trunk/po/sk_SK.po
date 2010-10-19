@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sk_SK\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2010-10-19 21:15+0100\n"
+"POT-Creation-Date: 2010-10-19 22:33+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Vladimír Záhradník <vladimir.zahradnik@gmail.com>\n"
 "Language-Team: Slovak <vladimir.zahradnik@gmail.com>\n"
@@ -145,7 +145,7 @@ msgid "No Eff. Time / Frame"
 msgstr "Žiadny skutočný čas / snímok"
 
 #: src/benchmarksManager.cpp:164 src/preferencesManager.cpp:248
-#: src/projectsManager.cpp:172
+#: src/projectsManager.cpp:171
 #, c-format
 msgid "Could not open file <%s> for writing!"
 msgstr "Nie je možné otvoriť súbor <%s> pre zápis!"

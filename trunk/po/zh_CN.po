@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FahMon 2.3.99.1\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2010-10-19 21:15+0100\n"
+"POT-Creation-Date: 2010-10-19 22:33+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: qiyuwanjia,lucksc,金鹏 <qiyuwanjia@gmail.com>\n"
 "Language-Team: www.equn.com\n"
@@ -148,7 +148,7 @@ msgid "No Eff. Time / Frame"
 msgstr "没找到 每帧有效用时"
 
 #: src/benchmarksManager.cpp:164 src/preferencesManager.cpp:248
-#: src/projectsManager.cpp:172
+#: src/projectsManager.cpp:171
 #, c-format
 msgid "Could not open file <%s> for writing!"
 msgstr "打开文件失败 <%s> !"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cs_CZ\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2010-10-19 21:15+0100\n"
+"POT-Creation-Date: 2010-10-19 22:33+0100\n"
 "PO-Revision-Date: 2009-03-28 13:41+0100\n"
 "Last-Translator: Martin Bednar <serafean@gmail.com>\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
@@ -149,7 +149,7 @@ msgid "No Eff. Time / Frame"
 msgstr "Žádný skutečný čas / Snímek"
 
 #: src/benchmarksManager.cpp:164 src/preferencesManager.cpp:248
-#: src/projectsManager.cpp:172
+#: src/projectsManager.cpp:171
 #, c-format
 msgid "Could not open file <%s> for writing!"
 msgstr "Nelze otevřít soubor <%s> pro zapisováni"

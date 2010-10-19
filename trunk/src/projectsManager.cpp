@@ -135,7 +135,6 @@ void ProjectsManager::LoadOld(void)
 		UpdateToV3();
 		version = 3;
 	}
-	wxRemoveFile(PathManager::GetCfgPath() + _T("projects.dat"));
 }
 
 
@@ -180,6 +179,7 @@ void ProjectsManager::Load(void)
     if(wxFileExists(PathManager::GetCfgPath() + _T("projects.dat")))
     {
         LoadOld();
+	    wxRemoveFile(PathManager::GetCfgPath() + _T("projects.dat"));
         return;
     }
     TiXmlDocument  doc((PathManager::GetCfgPath() + _T(FMC_FILE_PROJECTS)).mb_str( wxConvUTF8 ));
