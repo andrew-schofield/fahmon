@@ -10,8 +10,7 @@ Setting up the build environment
 ================================
 
 Download the following software (free)
-* Microsoft Visual C++ 2008 Express Edition (MSVC)
-* Microsoft Windows SDK v6.1 (Installed automatically with MSVC)
+* Microsoft Visual C++ 2010 Express Edition (MSVC)
 * wxWidgets >= 2.8.7
 
 The total size of the required installations sources is >500MB
@@ -37,7 +36,7 @@ sources.
 Compiling wxWidgets
 ===================
 
-* Navigate to c:\wxMSW-2.8.x\build\msw and open wx.dsw.
+* Navigate to c:\wxwidgets-2.8.x\build\msw and open wx.dsw.
 * When prompted to open and convert the files, click "yes to all".
 * Change the build type to "Unicode Release" by default this is set to "Debug".
   This can be altered by selecting the option from the drop-down list between
@@ -58,28 +57,31 @@ Compiling wxWidgets
    need to make any changes to wxWidgets, just open wx.sln (not wx.dsw) and
    recompile.
 
-Configuring MSVC
-================
-
-* Open MSVC and click Tools->Options.
-* Goto "Projects and Solutions->VCC++ Directories"
-* Change "Show directories for:" to "Include files"
-* Add the following directories to the list:
-  "c:\program files\microsoft platform sdk\include"
-  "c:\wxMSW-2.8.x\include"
-  "c:\wxMSW-2.8.x\include\msvc"
-* Change "Show directories for:" to "Library files"
-* Add the following directories to the list:
-  "c:\program files\microsoft platform sdk\lib"
-  "c:\wxSW-2.8.x\lib\vc_lib"
-* Close the options dialog (with OK).
-
 Compiling libcurl
 =================
 
 * Open wxcurl\win32_libcurl\curl.sln
 * Make sure the build type is set to "DLL Release"
 * Go to the build menu and hit "Build Solution"
+
+
+Configuring FahMon
+================
+
+* If you having installed wxwidgets 2.8.11 to c:\wxwidgets-2.8.11 you do not
+  need to configure FahMon further.
+* Open fahmon.sln
+* Change build type to "Release"
+* For fahmon and wxcurl, Right click and go to properties.
+* Goto "Configuration properties->VCC++ Directories"
+* Select "Include Directories"
+* Add the following directories to the list:
+  "c:\wxMSW-2.8.x\include"
+  "c:\wxMSW-2.8.x\include\msvc"
+* Select "Library Directories"
+* Add the following directories to the list:
+  "c:\wxSW-2.8.x\lib\vc_lib"
+* Close the options dialog (with OK).
 
 Compiling FahMon
 ================

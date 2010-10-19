@@ -41,7 +41,6 @@ version of wxGTK you will need to comment out the "--unicode" inside configure.
 Software for building FahMon on MS Windows
 REQUIRED
 * Microsoft Visual Studio (or Visual C++ Express)
-* Microsoft Windows SDK
 * wxWidgets 2.8.7
 
 OPTIONAL
