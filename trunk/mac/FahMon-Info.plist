@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>FahMon</string>
 	<key>CFBundleGetInfoString</key>
-	<string>FahMon 2.3.99.2</string>
+	<string>FahMon 2.3.99.3</string>
 	<key>CFBundleIconFile</key>
 	<string>fahmon.icns</string>
 	<key>CFBundleIdentifier</key>
@@ -15,17 +15,17 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleLongVersionString</key>
-	<string>2.3.99.2, (c) 2005-2008 Andrew Schofield</string>
+	<string>2.3.99.3, (c) 2005-2008 Andrew Schofield</string>
 	<key>CFBundleName</key>
 	<string>FahMon</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.3.99.2</string>
+	<string>2.3.99.3</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>2.3.99.2</string>
+	<string>2.3.99.3</string>
 	<key>CSResourcesFileMapped</key>
 	<true/>
 	<key>LSRequiresCarbon</key>

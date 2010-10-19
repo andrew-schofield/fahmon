@@ -41,8 +41,8 @@
 
 // --- Strings
 #define FMC_APPNAME 	"FahMon" /**< The program name, i.e. FahMon */
-#define FMC_VERSION 	"2.3.99.2" /**< Current program version */
-#define FMC_PRODUCT 	"FahMon 2.3.99.2" /**< Concatenation of FahMon and Version number, required by MSVC++ */
+#define FMC_VERSION 	"2.3.99.3" /**< Current program version */
+#define FMC_PRODUCT 	"FahMon 2.3.99.3" /**< Concatenation of FahMon and Version number, required by MSVC++ */
 #define FMC_UID         ".FahMon__LOCK__" /**< Name used for lockfile */
 #define FMC_QUOTE       "Better late than never"
 
