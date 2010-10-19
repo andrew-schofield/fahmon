@@ -1,0 +1,117 @@
+/*
+*  This program is free software; you can redistribute it and/or modify
+*  it under the terms of the GNU General Public License as published by
+*  the Free Software Foundation; either version 2 of the License, or
+*  (at your option) any later version.
+*
+*  This program is distributed in the hope that it will be useful,
+*  but WITHOUT ANY WARRANTY; without even the implied warranty of
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*  GNU Library General Public License for more details.
+*
+*  You should have received a copy of the GNU General Public License
+*  along with this program; if not, write to the Free Software
+*  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+*/
+
+/**
+ * \file fahmonConsts.h
+ * Contains various constants used by FahMon.
+ * \author François Ingelrest
+ * \author Andrew Schofield
+ **/
+
+#ifndef _FAHMONCONSTS_H
+#define _FAHMONCONSTS_H
+
+// --- Versions
+#define FMC_PROJECTS_VERSION 3 /**< The current projects database version */
+
+
+// --- Limits
+#define FMC_INTMAX  2147483647l
+#define FMC_INTMAX2 2147483646l
+#define FMC_INTMAX3 2147483645l
+#define FMC_INTMAX4 2147483644l
+#define FMC_INTMAX5 2147483643l
+#define FMC_INTMAX6 2147483642l
+#define FMC_CLIENTSTAB_FIELDS 4 /**< The number of fields in current clientstab format*/
+#define FMC_MAX_LOG_LENGTH 16384 /**< Limit in bytes for loading FAHlog.txt */
+
+
+// --- Strings
+#define FMC_APPNAME 	"FahMon" /**< The program name, i.e. FahMon */
+#define FMC_VERSION 	"2.3.99.3" /**< Current program version */
+#define FMC_PRODUCT 	"FahMon 2.3.99.3" /**< Concatenation of FahMon and Version number, required by MSVC++ */
+#define FMC_UID         ".FahMon__LOCK__" /**< Name used for lockfile */
+#define FMC_QUOTE       "Better late than never"
+
+
+// --- URLs
+#define FMC_URL_MYSTATS           "http://fah-web.stanford.edu/cgi-bin/main.py?qtype=userpage"  /**< URL for userstats */
+#define FMC_URL_TEAMSTATS         "http://fah-web.stanford.edu/cgi-bin/main.py?qtype=teampage" /**< URL for teamstats */
+#define FMC_URL_JMOL              "http://www.jmol.org/fah/?project=" /**< URL for jmol protein viewer */
+#define FMC_URL_FAHINFO           "http://fahinfo.org/?WULookup=true&project=" /**< URL for fahinfo.org project info */
+#define FMC_URL_FOLDING           "http://folding.stanford.edu" /**< Folding\@home website */
+#define FMC_URL_FCORG             "http://foldingforum.org" /**< Folding\@home support forum */
+#define FMC_URL_SERVERS           "http://fah-web.stanford.edu/serverstat.html" /**< URL for server status */
+#define FMC_URL_PROJECTS          "http://fah-web.stanford.edu/psummary.html" /**< URL for stanford project info */
+#define FMC_URL_HELP              "http://trac.fahmon.net" /**< URL for FahMon development site */
+#define FMC_URL_FAHMON            "http://fahmon.net" /**< URL for FahMon homepage */
+#define FMC_URL_QD                "http://linuxminded.nl/?target=software-qd-tools.plc" /**< URL for qd homepage */
+#define FMC_URL_LICENCE           "http://trac.fahmon.net/browser/trunk/COPYING?format=raw" /**< URL to FahMon licence (GPLv2) */
+#define FMC_URL_WXWIDGETS         "http://www.wxwidgets.org" /**< URL to wxwidgets website */
+#define FMC_URL_FAHMON_IRC        "http://widget.mibbit.com/?server=irc.freenode.net&channel=%23fahmon" /**< URL for FahMon IRC channel mibbit client */
+
+
+// --- Dates format
+#define FMC_DATE_MAIN_FORMAT      "%B %d, %H:%M" /**< Standard data format */
+
+
+// --- Colors
+#define FMC_COLOR_LIST_ODD_LINES  wxColour(228, 228, 228) /**< Unused */
+#define FMC_COLOR_INNACURATE_PPD  wxColour(255, 221, 129) /**< Unused */
+
+
+// --- Directories
+#define FMC_DIR_XYZ         "./xyz/" /**< Name of xyz directory */
+#define FMC_DIR_IMAGES      "./images/" /**< Name of images directory */
+#define FMC_DIR_CONFIG      "./config/" /**< Name of config directory */
+
+
+// --- Files
+#define FMC_FILE_PREFS      "prefs.dat" /**< Name of preferences file */
+#define FMC_FILE_CLIENTS    "clientstab.txt" /**< Name of clients list table file */
+#define FMC_FILE_PROJECTS   "projects.xml" /**< Name of projects database file */
+#define FMC_FILE_BENCHMARKS "benchmarks.dat" /**< Name of benchmarks database file */
+
+#define FMC_FILE_IMG_ABOUT             "main_icon.png" /**< Name of main program icon */
+#define FMC_FILE_IMG_DIALOG            "dialog_icon.png" /**< Name of main dialog icon */
+
+#define FMC_FILE_IMG_LIST_OK           "list_client_ok.png" /**< Name of OK status image */
+#define FMC_FILE_IMG_LIST_STOPPED      "list_client_stopped.png" /**< Name of stopped status image */
+#define FMC_FILE_IMG_LIST_INACTIVE     "list_client_inactive.png" /**< Name of inactive status image */
+#define FMC_FILE_IMG_LIST_INACCESSIBLE "list_client_inaccessible.png" /**< Name of inaccesible status image */
+#define FMC_FILE_IMG_LIST_ASYNCH       "list_client_asynch.png" /**< Name of asynchronous status image */
+#define FMC_FILE_IMG_LIST_PAUSED       "list_client_paused.png" /**< Name of paused status image */
+
+#define FMC_FILE_IMG_LIST_ARROW_UP   "list_up_arrow.png" /**< Name of up arrow image */
+#define FMC_FILE_IMG_LIST_ARROW_DOWN "list_down_arrow.png" /**< Name of down arrow image */
+
+
+// --- GUI
+#ifdef __WXGTK__
+#define FMC_GUI_BORDER 2 /**< GTK already has some borders */
+#elif _FAHMON_WIN32_
+#define FMC_GUI_BORDER 5 /**< Windows does not have default borders, so we use ours */
+#elif __WXMAC__
+#define FMC_GUI_BORDER 5
+#endif
+
+#define FMC_GUI_SPACING_LOW          5       /**< (Low) Spacing used bewteen controls */
+#define FMC_GUI_SPACING_HIGH         10      /**< (High) Spacing used bewteen controls */
+#define FMC_GUI_TEXTCTRL_MIN_LENGTH  200     /**< Min length of wxTextCtrl */
+#define FMC_GUI_LOG_HEIGHT           350     /**< Min height of log viewer */
+
+
+#endif /* _FAHMONCONSTS_H */
