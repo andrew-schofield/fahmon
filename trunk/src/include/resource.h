@@ -105,6 +105,8 @@
 #ifndef _AGGRESSIVEOPTIMIZE_H_
 #define _AGGRESSIVEOPTIMIZE_H_
 
+#ifdef (_MSC_VER<1600)
+
 #pragma warning(disable:4711)
 
 #ifdef NDEBUG
@@ -161,6 +163,8 @@
 #endif // _MSC_VER >= 1000
 
 #endif // NDEBUG
+
+#endif // _MSC_VER < 1600
 
 #endif //  _AGGRESSIVEOPTIMIZE_H_
  
