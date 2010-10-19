@@ -2,6 +2,12 @@ FahMon: The Folding@home client monitoring program
 
 SVN
 
+    General
+
+      Monitoring
+      
+      * Added fermi core support.
+
     Windows
 
       * Removed agressive exe stripping options when using MSVC 10.

@@ -49,7 +49,8 @@ wxString const Core::mCoreLongName[CORE_ID_COUNT] = {
 	_T("GPU2 NV MT"),
 	_T("SMP2 Gromacs"),
 	_T("Protomol"),
-	_T("GPU2 OpenMM")
+	_T("GPU3 OpenMM"),
+	_T("GPU3 OpenMM Fermi")
 };
 wxString const Core::mCoreShortName[CORE_ID_COUNT] = {
 	_T("tinker"),
@@ -75,7 +76,8 @@ wxString const Core::mCoreShortName[CORE_ID_COUNT] = {
 	_T("grogpu2-mt"),
 	_T("gro-a3"),
 	_T("protomol"),
-	_T("openmmgpu")
+	_T("openmmgpu"),
+	_T("openmmfermi")
 };
 
 

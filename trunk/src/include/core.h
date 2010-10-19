@@ -70,6 +70,7 @@ public:
 		GROA3, /**< Threaded SMP Gromacs (a3) */
 		PROTOB4, /**< Protomol (b4) */
 		OPENMMGPU, /**< OpenMM GPU (15) */
+		OPENMMFERMI, /**< OpenMM Fermi (16) */
 		CORE_ID_COUNT /**<  */
 	};
 
