@@ -26,6 +26,11 @@ v2.3.99.2 (17/10/10)
         compiliation. Removes the scary output from 2.3.99.1.
       * Fixed RPM .spec file. Thanks to "error".
 
+    Windows
+
+      * Now built against wxWidgets 2.8.11
+      * Updated MSVC project to version 10.
+      
 v2.3.99.1 (06/04/09)
 
     General
