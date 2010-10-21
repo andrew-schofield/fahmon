@@ -151,6 +151,7 @@ wxString const Core::IdToClientType(CoreId identifier)
 		case NVDEV:
 		case GROGPU2MT:
 		case OPENMMGPU:
+		case OPENMMFERMI:
 			clientType = _("GPU");
 			break;
 		case UNKNOWN:
