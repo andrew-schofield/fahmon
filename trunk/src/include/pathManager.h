@@ -36,7 +36,6 @@ class PathManager
 protected:
 	static PathManager* mInstance; /**< The single instance of the Path Manager */
 
-	wxString mXYZPath; /**< The path to store xyz coordinate files */
 	wxString mImgPath; /**< The path to load images from */
 	wxString mCfgPath; /**< The path where the config file is located */
 	wxString mMsgPath; /**< The path where the message log is located */
@@ -64,12 +63,6 @@ protected:
 
 
 public:
-	/**
-	 * Get the xyz path.
-	 * @return The xyz path.
-	 **/
-	static wxString GetXYZPath(void)       {return GetInstance()->mXYZPath;}
-
 	/**
 	 * Get the img path.
 	 * @return The img path.

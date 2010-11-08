@@ -200,8 +200,6 @@ wxPanel* PreferencesDialog::CreateGeneralTab(wxBookCtrlBase* parent)
 	mGeneralEnableTrayIcon              = new wxCheckBox(panel, wxID_ANY, _("Enable system tray icon"));
 	#endif
 	mGeneralStartMinimised              = new wxCheckBox(panel, wxID_ANY, _("Start minimized"));
-	mGeneralCollectXYZFiles             = new wxCheckBox(panel, wxID_ANY, _("Collect .xyz files"));
-	mGeneralCollectXYZFiles->SetToolTip(_("By collecting xyz files you can help the jmol project by submitting missing projects."));
 	mGeneralAutoUpdateProjectsDatabase  = new wxCheckBox(panel, wxID_ANY, _("Auto update projects database when needed"));
 	mGeneralAutoUpdateProjectsDatabase->SetToolTip(_("This allows FahMon to keep up to date with any new projects you might download automatically."));
 	mGeneralKeepInaccessibleClientsLast = new wxCheckBox(panel, wxID_ANY, _("Always list inaccessible clients last"));
@@ -212,8 +210,6 @@ wxPanel* PreferencesDialog::CreateGeneralTab(wxBookCtrlBase* parent)
 	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	sizer->Add(mGeneralEnableTrayIcon, 0, wxALIGN_LEFT | wxALIGN_TOP);
 	#endif
-	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
-	sizer->Add(mGeneralCollectXYZFiles, 0, wxALIGN_LEFT | wxALIGN_TOP );
 	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
 	sizer->Add(mGeneralAutoUpdateProjectsDatabase, 0, wxALIGN_LEFT | wxALIGN_TOP);
 	sizer->AddSpacer(FMC_GUI_SPACING_LOW);
@@ -743,7 +739,6 @@ void PreferencesDialog::LoadPreferences(void)
 {
 	bool     useHTTPProxy;
 	bool     useFTPProxy;
-	bool     isCollectingXYZFiles;
 	bool     autoUpdateProjects;
 	bool     keepInaccessibleLast;
 	bool     useHTTPProxyAuthentication;
@@ -777,7 +772,6 @@ void PreferencesDialog::LoadPreferences(void)
 	wxString simpleTextTemplateLocation;
 
 	// -----===== General preferences =====-----
-	_PrefsGetBool(PREF_FAHCLIENT_COLLECTXYZFILES,     isCollectingXYZFiles);
 	_PrefsGetBool(PREF_MAINDIALOG_AUTOUPDATEPROJECTS, autoUpdateProjects);
 	#ifndef __WXMAC__
 	_PrefsGetBool(PREF_MAINDIALOG_ENABLE_TRAY_ICON,   mInitEnableTrayIcon);
@@ -787,7 +781,6 @@ void PreferencesDialog::LoadPreferences(void)
 	_PrefsGetBool(PREF_MAINDIALOG_UPDATE_CHECK,       updateCheck);
 
 
-	mGeneralCollectXYZFiles->SetValue(isCollectingXYZFiles);
 	#ifndef __WXMAC__
 	mGeneralEnableTrayIcon->SetValue(mInitEnableTrayIcon);
 	#endif
@@ -1061,7 +1054,6 @@ void PreferencesDialog::SavePreferences(void)
 	wxUint32 FTPproxyPort;
 
 	// -----===== General preferences =====-----
-	_PrefsSetBool(PREF_FAHCLIENT_COLLECTXYZFILES,     mGeneralCollectXYZFiles->GetValue());
 	_PrefsSetBool(PREF_MAINDIALOG_START_MINIMISED,    mGeneralStartMinimised->GetValue());
 	#ifndef __WXMAC__
 	_PrefsSetBool(PREF_MAINDIALOG_ENABLE_TRAY_ICON,   mGeneralEnableTrayIcon->GetValue());

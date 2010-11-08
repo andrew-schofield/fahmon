@@ -74,7 +74,6 @@
 
 
 // --- Directories
-#define FMC_DIR_XYZ         "./xyz/" /**< Name of xyz directory */
 #define FMC_DIR_IMAGES      "./images/" /**< Name of images directory */
 #define FMC_DIR_CONFIG      "./config/" /**< Name of config directory */
 

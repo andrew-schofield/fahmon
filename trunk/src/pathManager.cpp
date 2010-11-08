@@ -53,7 +53,6 @@ PathManager::PathManager(void)
 	mGlobalTplPath = wxString::Format(_T("%s/fahmon/templates/"), _T(DATADIR));
 	mUserTplPath = homeDir + _T(".fahmon/templates/");
 	mCfgPath = homeDir + _T(".fahmon/");
-	mXYZPath = homeDir + _T(".fahmon/xyz/");
 	mMsgPath = homeDir + _T(".fahmon/");
 
 #elif _FAHMON_WIN32_
@@ -73,7 +72,6 @@ PathManager::PathManager(void)
 		homeDir = wxFileName(wxTheApp->argv[0]).GetPath(wxPATH_GET_VOLUME);
 	}
 
-	mXYZPath = homeDir + (_T("\\xyz\\"));
 	mImgPath = wxString::Format(_T("%s\\images\\"), wxFileName(wxTheApp->argv[0]).GetPath(wxPATH_GET_VOLUME));
 	mCfgPath = homeDir + (_T("\\config\\"));
 	mGlobalTplPath = wxString::Format(_T("%s\\templates\\"), wxFileName(wxTheApp->argv[0]).GetPath(wxPATH_GET_VOLUME));
@@ -100,7 +98,6 @@ PathManager::PathManager(void)
 
 	mImgPath = resourcesPath;
 	mCfgPath = homeDir + _T("Library/Application Support/FahMon/config/");
-	mXYZPath = homeDir + _T("Library/Application Support/FahMon/xyz/");
 	mMsgPath = homeDir + _T("Library/Application Support/FahMon/");
 	mGlobalTplPath = resourcesPath;
 	mUserTplPath = homeDir + _T("Library/Application Support/FahMon/templates/");

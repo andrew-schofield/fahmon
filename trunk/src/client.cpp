@@ -41,7 +41,6 @@
 #include "wx/textfile.h"
 
 // This mutex is used to ensure that two threads won't try to overwite the same file at the same time
-wxMutex Client::mMutexXYZFiles;
 
 wxMutex Client::mMutexReadWrite;
 
@@ -123,7 +122,6 @@ bool Client::ReloadNeeded(void) const
 
 void Client::Reload(void)
 {
-	bool              collectXYZFiles;
 	WorkUnitFrame    *lastFrame;
 	wxUint32	      nbBenchmarks;
 	wxUint32	      i;
@@ -238,14 +236,6 @@ void Client::Reload(void)
 	else
 	{
 		frameCount = 100;
-	}
-
-	// Should we collect .xyz files?
-	_PrefsGetBool(PREF_FAHCLIENT_COLLECTXYZFILES, collectXYZFiles);
-	// lastFrame->GetId() is needed to make sure we dont save current.xyz file from previous WU
-	if(collectXYZFiles == true && mProjectId != INVALID_PROJECT_ID && project != 0 && lastFrame != NULL && lastFrame->GetId() > 0)
-	{
-		SaveXYZFile();
 	}
 
 	// Add this duration to the benchmarks for valid projects, but don't store the same frame twice
@@ -553,53 +543,6 @@ bool Client::LoadQueueFile(wxString const &filename)
 		qf = NULL;
 	}
 	return false;
-}
-
-
-void Client::SaveXYZFile(void) const
-{
-	// ----- Access Lock -----
-	wxMutexLocker lock(mMutexXYZFiles);
-	// ----- Access Lock -----
-
-	wxString xyzInFile;
-	wxString xyzOutFile;
-
-	// Cosmetic issue so Windows users see the \ they expect
-#ifdef _FAHMON_WIN32_
-	if(multiProtocolFile::GetFileProtocol(mLocation) != multiProtocolFile::HTTP && multiProtocolFile::GetFileProtocol(mLocation) != multiProtocolFile::FTP)
-		xyzInFile  = wxString::Format(wxT("%swork\\current.xyz"), mLocation.c_str());
-	else
-#endif
-		xyzInFile  = wxString::Format(wxT("%swork/current.xyz"), mLocation.c_str());
-	// Create the complete path of the files
-	xyzOutFile = PathManager::GetXYZPath() + wxString::Format(_T("%i"), mProjectId) + _T(".xyz");
-
-	// Check that the file to save exists
-	if(!multiProtocolFile::FileExists(xyzInFile))
-	{
-		_LogMsgWarning(wxString::Format(_("Unable to save %s because it does not exist"), xyzInFile.c_str()), false);
-		return;
-	}
-
-	// Create the ouput directory if needed
-	if(!multiProtocolFile::DirExists(PathManager::GetXYZPath()) && !wxMkdir(PathManager::GetXYZPath(), 0777))
-	{
-		_LogMsgWarning(wxString::Format(_("Unable to create directory %s"), PathManager::GetXYZPath().c_str()), false);
-		return;
-	}
-
-	// Check that the file does not already exist
-	if(multiProtocolFile::FileExists(xyzOutFile))
-	{
-		return;
-	}
-
-	// Ok, we can finally copy the file
-	if(!multiProtocolFile::CopyFile(xyzInFile, xyzOutFile))
-	{
-		_LogMsgWarning(wxString::Format(_("Unable to copy %s to %s"), xyzInFile.c_str(), xyzOutFile.c_str()), false);
-	}
 }
 
 

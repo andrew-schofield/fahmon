@@ -52,7 +52,6 @@ protected:
 	// Widgets for the general tab
 	wxCheckBox *mGeneralEnableTrayIcon; /**< Checkbox for tray icon option */
 	wxCheckBox *mGeneralAutoUpdateProjectsDatabase; /**< Checkbox for auto updating projects database */
-	wxCheckBox *mGeneralCollectXYZFiles; /**< Checkbox for collecting xyz files */
 	wxCheckBox *mGeneralKeepInaccessibleClientsLast; /**< Checkbox for listing dead clients last */
 	wxCheckBox *mGeneralStartMinimised; /**< Checkbox for starting minimised */
 	wxCheckBox *mGeneralUpdateCheck; /**< Checkbox for update checking */

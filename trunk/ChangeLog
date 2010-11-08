@@ -1,5 +1,14 @@
 FahMon: The Folding@home client monitoring program
 
+SVN
+
+    General
+    
+      Other
+      
+      * Removed option to save xyz files as new cores don't save this anymore
+        anyway.
+
 v2.3.99.3 (19/10/10)
 
     General

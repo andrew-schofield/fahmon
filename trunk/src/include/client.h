@@ -32,12 +32,6 @@
 
 
 /**
-* Preferences used by this class
-**/
-#define PREF_FAHCLIENT_COLLECTXYZFILES    wxT("FahClient.CollectXYZFiles") /**< Preference setting for collection of current.xyz files */
-#define PREF_FAHCLIENT_COLLECTXYZFILES_DV false /**< Default value for collecting xyz files */
-
-/**
  * Client class.
  * This class is created for every client and stores information about it's state,
  * current project etc.
@@ -59,8 +53,6 @@ protected:
 		ST_PAUSED, /** Client is paused */
 		ST_HUNG, /** Client is hung */
 	} State;
-
-	static wxMutex mMutexXYZFiles; /**< Access lock for saving xyz files */
 
 	static wxMutex mMutexReadWrite; /**< Make read/write variables thread-safe */
 
@@ -134,13 +126,6 @@ protected:
 	 * @param filename queue file to load
 	 */
 	bool LoadQueueFile(wxString const &filename);
-
-	/**
-	 * Save xyz file.
-	 * Save the file 'current.xyz' to the appropriate directory with the approppriate name
-	 * This method is thread-safe, two files won't be overwritten at the same time by two different threads
-	 **/
-	void SaveXYZFile(void) const;
 
 	/**
 	 * Provide thread-safe method for setting client state.
