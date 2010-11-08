@@ -1469,7 +1469,7 @@ void MainDialog::CheckForUpdates(bool silent)
 	if(updateAvailable == true)
 	{
 		_LogMsgInfo(_("Update available"), false);
-		if(Tools::QuestionMsgBox(_("A newer version of FahMon is available\nDo you want to go to the FahMon website?")) == true)
+		if(Tools::QuestionMsgBox(wxString::Format(_("A newer version of FahMon is available!\nYour version: %s; New version: %s\nDo you want to go to the FahMon website?"), _T(FMC_VERSION), versionInfo.c_str())) == true)
 		{
 			Tools::OpenURLInBrowser(_T("http://fahmon.net/download.html"));
 		}
