@@ -179,6 +179,7 @@ void ProjectsManager::Load(void)
     if(wxFileExists(PathManager::GetCfgPath() + _T("projects.dat")))
     {
         LoadOld();
+        Save();
 	    wxRemoveFile(PathManager::GetCfgPath() + _T("projects.dat"));
         return;
     }
