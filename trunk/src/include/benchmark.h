@@ -27,7 +27,7 @@
 
 #include "fahmonTypes.h"
 #include "dataInputStream.h"
-#include "dataOutputStream.h"
+#include "tinyxml.h"
 
 
 // We use a byte to store the number of samples
@@ -73,14 +73,16 @@ public:
 	 * Writes the benchmark data into the given data stream.
 	 * @param out The output data stream.
 	 **/
-	void Write(DataOutputStream& out) const;
+	void Write(TiXmlElement* out) const;
 
 	/**
 	 * Read benchmark.
 	 * Reads benchmark data from a given data stream.
 	 * @param in The input data stream.
 	 **/
-	void Read(DataInputStream& in);
+	void ReadOld(DataInputStream& in);
+	
+	void Read(TiXmlElement* in);
 
 	/**
 	 * Add a frame duration to the benchmark class.

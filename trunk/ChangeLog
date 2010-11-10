@@ -11,6 +11,8 @@ SVN
       * Added version info to update available message box.
       * Projects database saves immediately after migration to prevent data
         loss.
+      * Benchmarks database now stored in xml, and will migrate from old format
+        automatically.
 
 v2.3.99.3 (19/10/10)
 

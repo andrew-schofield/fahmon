@@ -77,6 +77,8 @@ protected:
 	 * Load the benchmarks from the disk
 	 **/
 	void Load(void);
+	
+	void LoadOld(void);
 
 
 public:

@@ -43,15 +43,27 @@ Benchmark::~Benchmark(void)
 }
 
 
-void Benchmark::Write(DataOutputStream& out) const
+void Benchmark::Write(TiXmlElement* out) const
 {
-	out.Write(&mNbSamples, sizeof(mNbSamples));
-	out.Write(&mMinDuration, sizeof(mMinDuration));
-	out.Write(&mAvgDuration, sizeof(mAvgDuration));
+    out->SetAttribute( "NbSamples", wxString::Format(wxT("%i"), mNbSamples).mb_str( wxConvUTF8 ) );
+    out->SetAttribute( "NbMinDuration", wxString::Format(wxT("%i"), mMinDuration).mb_str( wxConvUTF8 ) );
+    out->SetAttribute( "NbAvgDuration", wxString::Format(wxT("%i"), mAvgDuration).mb_str( wxConvUTF8 ) );
 }
 
 
-void Benchmark::Read(DataInputStream& in)
+void Benchmark::Read(TiXmlElement* in)
+{
+    int val;
+	in->QueryIntAttribute("NbSamples", &val);
+	mNbSamples = val;
+	in->QueryIntAttribute("MinDuration", &val);
+	mMinDuration = val;
+	in->QueryIntAttribute("AvgDuration", &val);
+	mAvgDuration = val;
+}
+
+
+void Benchmark::ReadOld(DataInputStream& in)
 {
 	in.Read(&mNbSamples, sizeof(mNbSamples));
 	in.Read(&mMinDuration, sizeof(mMinDuration));

@@ -29,7 +29,6 @@
 #include "clientsManager.h"
 #include "messagesManager.h"
 #include "dataInputStream.h"
-#include "dataOutputStream.h"
 
 
 // The single instance of BenchmarksManager accross the application
@@ -152,45 +151,155 @@ BenchmarksManager* BenchmarksManager::GetInstance(void)
 
 void BenchmarksManager::Save(void)
 {
-	DataOutputStream                 out(PathManager::GetCfgPath() + _T(FMC_FILE_BENCHMARKS));
+/*
 	BenchmarkHashMap                *listOfBenchmarks;
 	ClientIdHashMap::iterator        iteratorClientId;
 	BenchmarkHashMap::iterator       iteratorBenchmark;
 	BenchmarksListHashMap::iterator  iteratorBenchmarksList;
 
 
-	if(out.Ok() == false)
+    TiXmlDocument doc;
+	TiXmlComment * comment;
+
+
+	TiXmlDeclaration* decl = new TiXmlDeclaration("1.0", "UTF-8", "yes");
+	doc.LinkEndChild( decl );
+	
+	comment = new TiXmlComment();
+	comment->SetValue(wxString::Format(_T(" %s Benchmarks Database "), _T(FMC_APPNAME)).mb_str( wxConvUTF8 ));
+	doc.LinkEndChild( comment );
+	
+	TiXmlElement * root = new TiXmlElement( "Database" );
+	doc.LinkEndChild( root );
+	wxString Version = wxString::Format(wxT("%i"), FMC_BENCHMARKS_VERSION);
+	root->SetAttribute( "Version", Version.mb_str( wxConvUTF8 ) );
+	
+	TiXmlElement * benchmarks = new TiXmlElement( "Benchmarks" );
+	root->LinkEndChild( benchmarks );
+	
+	TiXmlElement * slots = new TiXmlElement( "Slots" );
+	benchmarks->LinkEndChild(slots);
+
+	for(iteratorClientId=mClientLocationToClientId.begin(); iteratorClientId!=mClientLocationToClientId.end(); ++iteratorClientId)
+	{
+    	TiXmlElement * slot = new TiXmlElement( "Slot" );
+    	slot->SetAttribute( "Location", iteratorClientId->first.mb_str( wxConvUTF8 ) );
+    	slot->SetAttribute( "Id", wxString::Format(wxT("%i"), iteratorClientId->second).mb_str( wxConvUTF8 ) );
+		slots->LinkEndChild( slot );
+	}
+	
+	TiXmlElement * projects = new TiXmlElement( "Projects" );
+	benchmarks->LinkEndChild(projects);
+	
+	for(iteratorBenchmarksList=mProjectIdToBenchmarks.begin(); iteratorBenchmarksList!=mProjectIdToBenchmarks.end(); ++iteratorBenchmarksList)
+	{
+    	TiXmlElement * project = new TiXmlElement( "Project" );
+    	project->SetAttribute( "Id", wxString::Format(wxT("%i"), iteratorBenchmarksList->first).mb_str( wxConvUTF8 ) );
+		projects->LinkEndChild( project );
+		
+		listOfBenchmarks = iteratorBenchmarksList->second;
+		for(iteratorBenchmark=listOfBenchmarks->begin(); iteratorBenchmark!=listOfBenchmarks->end(); ++iteratorBenchmark)
+		{
+        	TiXmlElement * benchmark = new TiXmlElement( "Benchmark" );
+        	benchmark->SetAttribute( "SlotId", wxString::Format(wxT("%i"), iteratorBenchmark->first).mb_str( wxConvUTF8 ) );
+			iteratorBenchmark->second->Write(benchmark);
+			project->LinkEndChild( benchmark );
+		}
+	}
+	if( doc.SaveFile( (PathManager::GetCfgPath() + _T(FMC_FILE_BENCHMARKS)).mb_str( wxConvUTF8 ) ) == false )
 	{
 		Tools::ErrorMsgBox(wxString::Format(_("Could not open file <%s> for writing!"), (PathManager::GetCfgPath() + _T(FMC_FILE_BENCHMARKS)).c_str()));
 		return;
-	}
-
-	// First, write all the 'registered' clients
-	out.WriteUint(mClientLocationToClientId.size());
-	for(iteratorClientId=mClientLocationToClientId.begin(); iteratorClientId!=mClientLocationToClientId.end(); ++iteratorClientId)
-	{
-		out.WriteString(iteratorClientId->first);
-		out.Write(&iteratorClientId->second, sizeof(ClientId));
-	}
-
-	// Then for all projects, and all clients, the associated benchmark
-	out.WriteUint(mProjectIdToBenchmarks.size());
-	for(iteratorBenchmarksList=mProjectIdToBenchmarks.begin(); iteratorBenchmarksList!=mProjectIdToBenchmarks.end(); ++iteratorBenchmarksList)
-	{
-		out.Write(&iteratorBenchmarksList->first, sizeof(ProjectId));
-		listOfBenchmarks = iteratorBenchmarksList->second;
-
-		out.WriteUint(listOfBenchmarks->size());
-		for(iteratorBenchmark=listOfBenchmarks->begin(); iteratorBenchmark!=listOfBenchmarks->end(); ++iteratorBenchmark)
-		{
-			out.Write(&iteratorBenchmark->first, sizeof(ClientId));
-			iteratorBenchmark->second->Write(out);
-		}
-	}
+	}*/
 }
 
 
 void BenchmarksManager::Load(void)
+{
+    if(wxFileExists(PathManager::GetCfgPath() + _T("benchmarks.dat")))
+    {
+        LoadOld();
+        Save();
+	    wxRemoveFile(PathManager::GetCfgPath() + _T("benchmarks.dat"));
+        return;
+    }
+
+    TiXmlDocument  doc((PathManager::GetCfgPath() + _T(FMC_FILE_BENCHMARKS)).mb_str( wxConvUTF8 ));
+	TiXmlElement*  elem;
+	TiXmlElement* subelem;
+	wxString          clientLocation;
+	ClientId          clientId;
+	int            version;
+	BenchmarkHashMap *listOfBenchmarks;
+	ProjectId         projectId;
+	Benchmark        *benchmark;
+	
+	bool loadOkay = doc.LoadFile();
+	if(loadOkay == false)
+		return;
+    
+	TiXmlHandle docHandle( &doc );
+	TiXmlElement* root = docHandle.FirstChild( "Database" ).ToElement();
+	root->QueryIntAttribute("Version", &version); //for future changes
+	if( root )
+	{
+	    elem = docHandle.FirstChild( "Database" ).FirstChild( "Benchmarks" ).FirstChild( "Slots" ).FirstChild( "Slot" ).ToElement();
+		while( elem )
+		{
+		    int val;
+	        elem->QueryIntAttribute("Id", &val);
+            clientId = val;
+            clientLocation = wxString::FromUTF8(elem->Attribute("Location"));
+            
+		    // And insert it in the hashmaps
+		    mClientLocationToClientId[clientLocation] = clientId;
+		    mClientIdToClientLocation[clientId]       = clientLocation;
+
+		    // Update the next available new client identifier if needed
+		    if(clientId >= mNextAvailableClientId)
+		    {
+			    if(clientId < MAX_CLIENT_ID)
+			    {
+				    mNextAvailableClientId = clientId + 1;
+			    }
+			    else
+			    {
+				    mNextAvailableClientId = MAX_CLIENT_ID;
+			    }
+		    }
+			elem=elem->NextSiblingElement();
+		}
+
+	    elem = docHandle.FirstChild( "Database" ).FirstChild( "Benchmarks" ).FirstChild( "Projects" ).FirstChild( "Project" ).ToElement();
+	    while( elem )
+	    {
+		    listOfBenchmarks = new BenchmarkHashMap;
+		    int val;
+	        elem->QueryIntAttribute("Id", &val);
+            projectId = val;
+            
+            subelem = elem->FirstChild( "Benchmark" )->ToElement();
+            while( subelem )
+		    {
+		        int val;
+	            subelem->QueryIntAttribute("SlotId", &val);
+	            clientId = val;
+	            
+			    benchmark = new Benchmark(clientId);
+			    benchmark->Read(subelem);
+
+			    (*listOfBenchmarks)[clientId] = benchmark;
+    			subelem=subelem->NextSiblingElement();
+		    }
+            
+		    mProjectIdToBenchmarks[projectId] = listOfBenchmarks;
+			elem=elem->NextSiblingElement();
+	    }
+	}
+}
+
+
+void BenchmarksManager::LoadOld(void)
 {
 	wxUint32          i;
 	wxUint32          j;
@@ -201,7 +310,7 @@ void BenchmarksManager::Load(void)
 	ClientId          clientId;
 	ProjectId         projectId;
 	Benchmark        *benchmark;
-	DataInputStream   in(PathManager::GetCfgPath() + _T(FMC_FILE_BENCHMARKS));
+	DataInputStream   in(PathManager::GetCfgPath() + _T("benchmarks.dat"));
 	BenchmarkHashMap *listOfBenchmarks;
 
 	// Could the file be opened ?
@@ -249,7 +358,7 @@ void BenchmarksManager::Load(void)
 		{
 			in.Read(&clientId, sizeof(clientId));
 			benchmark = new Benchmark(clientId);
-			benchmark->Read(in);
+			benchmark->ReadOld(in);
 
 			(*listOfBenchmarks)[clientId] = benchmark;
 		}
