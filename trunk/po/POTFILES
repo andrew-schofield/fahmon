@@ -10,9 +10,11 @@
      .././src/core.cpp \
      .././src/dataInputStream.cpp \
      .././src/dataOutputStream.cpp \
+     .././src/debug_new.cpp \
      .././src/eta.cpp \
      .././src/fahlogAnalyzer.cpp \
      .././src/firstTimeDialog.cpp \
+     .././src/ftpConnection.cpp \
      .././src/htmlParser.cpp \
      .././src/httpDownloader.cpp \
      .././src/listViewClients.cpp \
@@ -20,6 +22,7 @@
      .././src/mainDialog.cpp \
      .././src/messagesFrame.cpp \
      .././src/messagesManager.cpp \
+     .././src/multiProtocolFile.cpp \
      .././src/pathManager.cpp \
      .././src/preference.cpp \
      .././src/preferencesDialog.cpp \
@@ -28,8 +31,8 @@
      .././src/project.cpp \
      .././src/projectHelperThread.cpp \
      .././src/projectsManager.cpp \
+     .././src/queue.cpp \
      .././src/staticBoldedText.cpp \
-     .././src/staticUrl.cpp \
      .././src/tools.cpp \
      .././src/trayManager.cpp \
      .././src/webMonitor.cpp \
