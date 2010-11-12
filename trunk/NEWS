@@ -6,6 +6,13 @@ See the end for copying conditions.
 
 Please send FahMon bug reports to andrew_s@fahmon.net.
 
+Version 2.3.99.4
+
+* New core support and fixed parsing of others.
+* Pause detection works properly now.
+* Update available window will show version numbers on subsequent updates.
+* Benchmarks database now stored in xml format. 
+
 Version 2.3.99.2
 
 * New core support.
