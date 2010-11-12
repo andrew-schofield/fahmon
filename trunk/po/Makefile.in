@@ -11,7 +11,7 @@
 # Origin: gettext-0.16
 
 PACKAGE = FahMon
-VERSION = 2.3.99.3
+VERSION = 2.3.99.4
 PACKAGE_BUGREPORT = Andrew Schofield andrew_s@fahmon.net
 
 SHELL = /bin/sh

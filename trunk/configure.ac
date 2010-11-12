@@ -12,7 +12,7 @@ m4_include(m4/libcurl.m4)
 m4_define([wxcurl_lt_current], [1])
 
 AC_INIT([FahMon],
-        [2.3.99.3],
+        [2.3.99.4],
         [Andrew Schofield andrew_s@fahmon.net],
         [FahMon])
 AC_PREFIX
