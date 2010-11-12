@@ -45,7 +45,7 @@
 #define FMC_VERSION 	"2.3.99.4" /**< Current program version */
 #define FMC_PRODUCT 	"FahMon 2.3.99.4" /**< Concatenation of FahMon and Version number, required by MSVC++ */
 #define FMC_UID         ".FahMon__LOCK__" /**< Name used for lockfile */
-#define FMC_QUOTE       "Better late than never"
+#define FMC_QUOTE       "Mmm, regexs. Crunchy."
 
 
 // --- URLs
