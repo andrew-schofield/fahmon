@@ -27,6 +27,7 @@
 #include "messagesManager.h"
 #include "preferencesManager.h"
 #include "mainDialog.h"
+#include "wx/regex.h"
 
 
 WorkUnitFrame* FahLogAnalyzer::AnalyzeLastFrame(wxString const &fahlogComplete, bool VM)
@@ -291,10 +292,9 @@ WorkUnitFrame* FahLogAnalyzer::AnalyzeLastFrame(wxString const &fahlogComplete, 
 
 void FahLogAnalyzer::ParseLogLine(wxString& lineToParse, LogLine& logLine)
 {
-	wxInt32       position, compPos, stepsPos, outOfPos;
 	wxString      timestamp;
 	unsigned long convertedNumber;
-	bool          gpustyleWU = false;
+	wxRegEx       message;
 
 	// If the line is empty, we don't do anything
 	if(lineToParse.IsEmpty() == true)
@@ -362,55 +362,42 @@ void FahLogAnalyzer::ParseLogLine(wxString& lineToParse, LogLine& logLine)
 	{
 		// Trim the excess whitespace
 		lineToParse = lineToParse.Trim();
+		_LogMsgInfo(lineToParse,false);
 		// Extract the frame identifier
 		// We can't pass logLine.frameId to ToULong() because it's too short : the next bytes would be modified
 
-		// For regular log messages of the type "Completed xxx of yyy steps (1)"
-		// or "Finished frame (1)"
-		position = lineToParse.Find(_T("("));
-		if(position != -1)
-		{
-			lineToParse.Right(lineToParse.Len()-position-1).ToULong(&convertedNumber);
-			logLine.frameId = (FrameId)convertedNumber;
-		}
-		// Extra bit for GPU1 cores
-		// core_10 writes "Completed 1"
-		else if(lineToParse.Mid(10, lineToParse.Len()-10).ToULong(&convertedNumber) == true)
-		{
-			logLine.frameId = (FrameId)convertedNumber;
-			gpustyleWU = true;
-		}
-		// Extra bit for early versions of 7b core and GPU2 cores
-		// These cores write "Completed 1%"
-		else if(lineToParse.Mid(10, lineToParse.Len()-11).ToULong(&convertedNumber) == true)
-		{
-			logLine.frameId = (FrameId)convertedNumber;
-			gpustyleWU = true;
-		}
+		//Regexs modified slightly from fci rev 132
+		//http://fci.linuxminded.nl/cgi-bin/viewvc.cgi/fci/trunk/scripts/fci-update-xml-files.pl?view=markup&pathrev=132
+		//GPL code
 
-		compPos = lineToParse.Find(_T("Completed "));
-		outOfPos = lineToParse.Find(_T(" out of "));
-		stepsPos = lineToParse.Find(_T(" steps"));
-		if (!(compPos == wxNOT_FOUND && outOfPos == wxNOT_FOUND && stepsPos == wxNOT_FOUND))
+		message.Compile(wxT("^Completed\\s+(\\d+) out of (\\d+) steps\\s+\\((\\d+).*?\\)\\.?$"),wxRE_ADVANCED);
+		if(message.Matches(lineToParse))
 		{
-			if(lineToParse.Mid(compPos+10, outOfPos-(compPos+10)).ToULong(&convertedNumber) == true)
-			{
-				logLine.completedSteps = (wxUint32)convertedNumber;
-			}
-			if(lineToParse.Mid(outOfPos+8, stepsPos-(outOfPos+8)).ToULong(&convertedNumber) == true)
-			{
-				logLine.totalSteps = (wxUint32)convertedNumber;
-			}
+			_LogMsgInfo(wxT("Regex match for GROMACS log"),false);
+			message.GetMatch(lineToParse,1).ToULong(&convertedNumber);
+			logLine.completedSteps = (wxUint32)convertedNumber;
+			message.GetMatch(lineToParse,2).ToULong(&convertedNumber);
+			logLine.totalSteps = (wxUint32)convertedNumber;
+			message.GetMatch(lineToParse,3).ToULong(&convertedNumber);
+			logLine.frameId = (FrameId)convertedNumber;
 		}
-		else if (gpustyleWU == true)
-		{ //this isn't really the best way to do things, but it'll have to do for now.
-			logLine.completedSteps = logLine.frameId;
+		message.Compile(wxT("Completed (\\d+)\\(\\%|"),wxRE_ADVANCED);
+		if(message.Matches(lineToParse))
+		{
+			_LogMsgInfo(wxT("Regex match for GPU log"),false);
+			message.GetMatch(lineToParse,1).ToULong(&convertedNumber);
+			logLine.completedSteps = (wxUint32)convertedNumber;
 			logLine.totalSteps = 100;
+			logLine.frameId = (FrameId)logLine.completedSteps;
 		}
-		else
+		message.Compile(wxT("Finished a frame \\((\\d+)\\)"),wxRE_ADVANCED);
+		if(message.Matches(lineToParse))
 		{
-			logLine.completedSteps = 0;
-			logLine.totalSteps = 0;
+			_LogMsgInfo(wxT("Regex match for Tinker log"),false);
+			message.GetMatch(lineToParse,1).ToULong(&convertedNumber);
+			logLine.completedSteps = (wxUint32)convertedNumber;
+			logLine.totalSteps = 400;
+			logLine.frameId = (FrameId)logLine.completedSteps;
 		}
 		// Extract the timestamp (it is in UTC format)
 		logLine.timestamp.SetToCurrent();

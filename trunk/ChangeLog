@@ -4,6 +4,12 @@ SVN
 
     General
     
+      Monitoring
+      
+      * Fixed FAHlog.txt parsing on Fermi WUs.
+      * Regular expressions for FAHlog.txt parsing imported from fci svn rev132
+        (thanks to smoking2000).
+    
       Other
       
       * Removed option to save xyz files as new cores don't save this anymore
