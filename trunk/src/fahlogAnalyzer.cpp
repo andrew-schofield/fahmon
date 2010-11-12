@@ -363,7 +363,6 @@ void FahLogAnalyzer::ParseLogLine(wxString& lineToParse, LogLine& logLine)
 	{
 		// Trim the excess whitespace
 		lineToParse = lineToParse.Trim();
-		_LogMsgInfo(lineToParse,false);
 		// Extract the frame identifier
 		// We can't pass logLine.frameId to ToULong() because it's too short : the next bytes would be modified
 
@@ -374,7 +373,6 @@ void FahLogAnalyzer::ParseLogLine(wxString& lineToParse, LogLine& logLine)
 		message.Compile(wxT("^Completed\\s+(\\d+) out of (\\d+) steps\\s+\\((\\d+).*?\\)\\.?$"),wxRE_ADVANCED);
 		if(message.Matches(lineToParse))
 		{
-			_LogMsgInfo(wxT("Regex match for GROMACS log"),false);
 			message.GetMatch(lineToParse,1).ToULong(&convertedNumber);
 			logLine.completedSteps = (wxUint32)convertedNumber;
 			message.GetMatch(lineToParse,2).ToULong(&convertedNumber);
@@ -382,23 +380,27 @@ void FahLogAnalyzer::ParseLogLine(wxString& lineToParse, LogLine& logLine)
 			message.GetMatch(lineToParse,3).ToULong(&convertedNumber);
 			logLine.frameId = (FrameId)convertedNumber;
 		}
-		message.Compile(wxT("Completed (\\d+)\\(\\%|"),wxRE_ADVANCED);
-		if(message.Matches(lineToParse))
+		else
 		{
-			_LogMsgInfo(wxT("Regex match for GPU log"),false);
-			message.GetMatch(lineToParse,1).ToULong(&convertedNumber);
-			logLine.completedSteps = (wxUint32)convertedNumber;
-			logLine.totalSteps = 100;
-			logLine.frameId = (FrameId)logLine.completedSteps;
-		}
-		message.Compile(wxT("Finished a frame \\((\\d+)\\)"),wxRE_ADVANCED);
-		if(message.Matches(lineToParse))
-		{
-			_LogMsgInfo(wxT("Regex match for Tinker log"),false);
-			message.GetMatch(lineToParse,1).ToULong(&convertedNumber);
-			logLine.completedSteps = (wxUint32)convertedNumber;
-			logLine.totalSteps = 400;
-			logLine.frameId = (FrameId)logLine.completedSteps;
+			message.Compile(wxT("Completed (\\d+)\\(\\%|"),wxRE_ADVANCED);
+			if(message.Matches(lineToParse))
+			{
+				message.GetMatch(lineToParse,1).ToULong(&convertedNumber);
+				logLine.completedSteps = (wxUint32)convertedNumber;
+				logLine.totalSteps = 100;
+				logLine.frameId = (FrameId)logLine.completedSteps;
+			}
+			else
+			{
+				message.Compile(wxT("Finished a frame \\((\\d+)\\)"),wxRE_ADVANCED);
+				if(message.Matches(lineToParse))
+				{
+					message.GetMatch(lineToParse,1).ToULong(&convertedNumber);
+					logLine.completedSteps = (wxUint32)convertedNumber;
+					logLine.totalSteps = 400;
+					logLine.frameId = (FrameId)logLine.completedSteps;
+				}
+			}
 		}
 		// Extract the timestamp (it is in UTC format)
 		logLine.timestamp.SetToCurrent();
