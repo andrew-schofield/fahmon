@@ -1,0 +1,57 @@
+Running FahMon
+==============
+
+Software for running FahMon on Linux
+REQUIRED
+* wxGTK >=2.8.0 (Unicode build)
+* libcurl >= 7.15.0
+
+Software for running FahMon on Windows
+REQUIRED
+* None
+
+Software for running FahMon on OS X
+REQUIRED
+* None
+
+Building FahMon from source
+===========================
+
+Software for building FahMon on Linux
+REQUIRED
+* gcc-c++
+* wxGTK >=2.8.0 (unicode build)
+* wxGTK-Devel >=2.8.0 (unicode build)
+* m4
+* libcurl >= 7.15.0
+
+OPTIONAL
+* gettext (required to edit or create new translations)
+* automake 1.8 (required to make new translations)
+* autoconf 2.5 (required to make new translations)
+* a gettext catalog editor like poEdit or KBabel (required to edit or create new
+  translations)
+
+NOTE
+It is possible to compile FahMon with the non-unicode versions of wxGTK, however
+for full compatibility with language files unicode is required. If you ony
+require languages that can use ansi codepages, and want to use the non-unicode
+version of wxGTK you will need to comment out the "--unicode" inside configure.
+
+Software for building FahMon on MS Windows
+REQUIRED
+* Microsoft Visual Studio (or Visual C++ Express)
+* wxWidgets 2.8.7
+
+OPTIONAL
+* a gettext catalog editor like poEdit (required to edit or create new
+  translations)
+
+NOTE
+It may be possible to compile for Windows using ming32w, however it won't work
+with the makefiles provided.
+
+Software for building FahMon on Mac OS X
+REQUIRED
+* Xcode
+* wxWidgets 2.8.0 (available from MacPorts, or compile from source)

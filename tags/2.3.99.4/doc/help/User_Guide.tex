@@ -1,0 +1,82 @@
+% *****************************************************************************
+% Preamble
+% *****************************************************************************
+
+\documentclass[12pt]{article}
+
+% Use some packages
+%
+\usepackage[headings]{fullpage}
+\usepackage{url,fancyhdr}
+\ifx\pdfoutput\undefined
+\usepackage[dvips]{color}
+\else
+\usepackage[pdftex]{color}
+\fi
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage[bookmarks=true,pdftex,urlbordercolor={1 1 1},linkbordercolor={1 1
+1}]{hyperref}
+
+% Setup the page characteristics.
+%
+\pagestyle{fancy}
+\setlength\topmargin{-0.50in}
+\setlength\textheight{8.75in}
+\parindent=0pt
+\parskip=12pt
+
+% Setuup header and footer using the fancyhdr package.
+%
+\renewcommand\headrulewidth{0.4pt}
+\fancyhead{}
+\fancyhead[R]{\thepage}
+\fancyhead[L]{\nouppercase{\leftmark}}
+\renewcommand\footrulewidth{0.4pt}
+\fancyfoot{}
+\fancyfoot[R]{\thepage}
+\fancyfoot[L]{FahMon 2.3.99.4}
+\footskip=48pt
+
+% Sans serif typeface is the default.
+%
+\renewcommand\familydefault{\sfdefault}
+
+% These colors are intended for listing use.
+%
+\definecolor{lightblue}{rgb}{0.80,0.80,1.00}
+\definecolor{lightgray}{rgb}{0.90,0.90,0.90}
+\definecolor{darkgray}{rgb}{0.40,0.40,0.40}
+
+% Setup listings package.
+%
+\lstset{language=ksh} % Doesn't know bash nor sh.
+\lstset{rulesepcolor=\color{darkgray}}
+\lstset{aboveskip=12pt}
+\lstset{belowskip=0pt}
+\lstset{basicstyle=\ttfamily\small}
+
+\title{FahMon Version 2.3.99.4\\User Guide}
+\author{Andrew Schofield}
+
+% *****************************************************************************
+% Body
+% *****************************************************************************
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+\newpage
+
+\tableofcontents
+\newpage
+
+% *****************************************************************************
+%
+% *****************************************************************************
+
+\input{content.tex}
+
+\end{document}
+

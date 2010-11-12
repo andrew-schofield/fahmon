@@ -1,0 +1,12 @@
+#!/bin/bash
+echo "Arranging filestructure for translations on OS X"
+cd po
+for lang in *.gmo
+do
+	language=${lang%\.*}
+	echo "Creating folder for: " ${language}
+	mkdir -p ../lang/${language}
+	echo "Copying translation for: " ${language}
+	cp -f ${language}.gmo ../lang/${language}/fahmon.mo
+done
+echo "Done."
