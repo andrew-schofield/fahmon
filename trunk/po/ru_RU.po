@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru_RU\n"
 "Report-Msgid-Bugs-To: andrew_s@fahmon.net\n"
-"POT-Creation-Date: 2010-10-19 22:33+0100\n"
+"POT-Creation-Date: 2010-11-12 18:10+0000\n"
 "PO-Revision-Date: 2009-03-20 23:16+0300\n"
 "Last-Translator: Evgeniy aka Behc <tsc.behc@gmail.com>\n"
 "Language-Team: Russian\n"
@@ -148,37 +148,37 @@ msgstr "Нет П3Ш Времени / Шага"
 msgid "No Eff. Time / Frame"
 msgstr "Нет Эфф. Времени / Шага"
 
-#: src/benchmarksManager.cpp:164 src/preferencesManager.cpp:248
+#: src/benchmarksManager.cpp:210 src/preferencesManager.cpp:248
 #: src/projectsManager.cpp:171
 #, c-format
 msgid "Could not open file <%s> for writing!"
 msgstr "Невозможно открыть файл <%s> для записи!"
 
-#: src/benchmarksManager.cpp:319
+#: src/benchmarksManager.cpp:427
 msgid "(Benchmarks) The maximum number of known clients has been reached!"
 msgstr ""
 "(Производительность) Максимальная скорость расчетов, достигнутая клиентами!"
 
-#: src/benchmarksManager.cpp:449
+#: src/benchmarksManager.cpp:557
 msgid "Unknown client"
 msgstr "Неизвестный клиент"
 
-#: src/client.cpp:58 src/client.cpp:106 src/core.cpp:159
+#: src/client.cpp:57 src/client.cpp:105 src/core.cpp:160
 #: src/listViewClients.cpp:674 src/listViewClients.cpp:708
 #: src/mainDialog.cpp:533 src/mainDialog.cpp:534 src/mainDialog.cpp:535
 #: src/mainDialog.cpp:536
 msgid "Unknown"
 msgstr "Неизвестно"
 
-#: src/client.cpp:93
+#: src/client.cpp:92
 msgid "Log not loaded!"
 msgstr "Лог не загружен!"
 
-#: src/client.cpp:96
+#: src/client.cpp:95
 msgid "anonymous"
 msgstr "аноним"
 
-#: src/client.cpp:101 src/listViewClients.cpp:732 src/listViewClients.cpp:736
+#: src/client.cpp:100 src/listViewClients.cpp:732 src/listViewClients.cpp:736
 #: src/mainDialog.cpp:501 src/mainDialog.cpp:506 src/mainDialog.cpp:507
 #: src/mainDialog.cpp:508 src/mainDialog.cpp:509 src/mainDialog.cpp:510
 #: src/mainDialog.cpp:581 src/mainDialog.cpp:618 src/webMonitor.cpp:133
@@ -190,98 +190,83 @@ msgstr "аноним"
 msgid "N/A"
 msgstr "Н/А"
 
-#: src/client.cpp:151
+#: src/client.cpp:149
 #, c-format
 msgid "Directory %s does not exist or cannot be read!"
 msgstr "Папка %s отсутствует или не может быть прочитана!"
 
-#: src/client.cpp:164
+#: src/client.cpp:162
 #, c-format
 msgid "%s cannot be reloaded! (FAHlog.txt does not exist)"
 msgstr "%s невозможно перечитать! (FAHlog.txt не существует)"
 
-#: src/client.cpp:167
+#: src/client.cpp:165
 #, c-format
 msgid "Reloading %s"
 msgstr "Обновить %s"
 
-#: src/client.cpp:174
+#: src/client.cpp:172
 #, c-format
 msgid "Error while reading %sFAHlog.txt!"
 msgstr "Ошибка чтения %sFAHlog.txt!"
 
-#: src/client.cpp:182
+#: src/client.cpp:180
 #, c-format
 msgid "Error while reading %squeue.dat"
 msgstr "Ошибка чтения %squeue.dat!"
 
-#: src/client.cpp:193
+#: src/client.cpp:191
 #, c-format
 msgid "Error while reading %s"
 msgstr "Ошибка чтения %s"
 
-#: src/client.cpp:199
+#: src/client.cpp:197
 #, c-format
 msgid "Error while reading %sunitinfo.txt!"
 msgstr "Ошибка чтения %sunitinfo.txt!"
 
-#: src/client.cpp:398
+#: src/client.cpp:388
 #, c-format
 msgid "Finished Reloading %s"
 msgstr "Обновить %s"
 
-#: src/client.cpp:463
+#: src/client.cpp:453
 #, c-format
 msgid "The progress value in file %s could not be found/parsed"
 msgstr "Значение прогресса в файле %s не найдено/обработано"
 
-#: src/client.cpp:516
+#: src/client.cpp:506
 #, c-format
 msgid "The core version in file %s could not be found/parsed"
 msgstr "Значение прогресса в файле %s не найдено/не обработано"
 
-#: src/client.cpp:581
-#, c-format
-msgid "Unable to save %s because it does not exist"
-msgstr "Невозможно сохранить %s потому что он не создан."
-
-#: src/client.cpp:588
-#, c-format
-msgid "Unable to create directory %s"
-msgstr "Невозможно создать папку %s"
-
-#: src/client.cpp:601
-#, c-format
-msgid "Unable to copy %s to %s"
-msgstr "Невозможно скопировать %s в %s"
-
-#: src/client.cpp:626
+#: src/client.cpp:569
 #, c-format
 msgid "%s is on frame %u"
 msgstr "%s находится на шаге %u"
 
-#: src/client.cpp:630
+#: src/client.cpp:573
 #, c-format
 msgid "Cannot determine frame number for %s (this isn't a problem)"
 msgstr ""
 "Невозможно определить количество шагов для %s (это не является проблемой)"
 
-#: src/client.cpp:814
+#: src/client.cpp:757
 #, c-format
 msgid "%s has an unknown state (Unable to find a complete frame)"
 msgstr "%s неизвестный статус (Невозможно найти законченный шаг)"
 
-#: src/client.cpp:823
+#: src/client.cpp:766
 #, c-format
 msgid "%s is stopped (The line \"Folding@Home Client Shutdown.\" was found)"
 msgstr "%s остановлен (Найдена строка \"Folding@Home Client Shutdown.\" )"
 
-#: src/client.cpp:831
+#: src/client.cpp:774
 #, c-format
 msgid "%s has been paused"
 msgstr "%s приостановлен"
 
-#: src/client.cpp:840
+#: src/client.cpp:783
 #, c-format
 msgid ""
 "%s has an unknown state (Unable to extract a valid elapsed time since the "
@@ -290,17 +275,17 @@ msgstr ""
 "%s имеет неизвестный статус (Невозможно определить время окончания расчетов "
 "по последнему выполненному шагу)"
 
-#: src/client.cpp:848
+#: src/client.cpp:791
 #, c-format
 msgid "%s has been marked as having a asynchronous clock."
 msgstr "%s отмечен как работающих с асинхронной настройкой часов."
 
-#: src/client.cpp:883
+#: src/client.cpp:826
 #, c-format
 msgid "%s seems to have hung : Elapsed time is %um and limit is %um"
 msgstr "%s возможно завис: Время окончания расчета %um и лимит времени %um"
 
-#: src/client.cpp:888
+#: src/client.cpp:831
 #, c-format
 msgid "%s seems to be inactive : Elapsed time is %um and limit is %um"
 msgstr ""
@@ -335,10 +320,10 @@ msgstr "Клиент в Виртуальной Машине"
 msgid "Location:"
 msgstr "Расположение:"
 
-#: src/clientDialog.cpp:99 src/preferencesDialog.cpp:426
-#: src/preferencesDialog.cpp:581 src/preferencesDialog.cpp:592
-#: src/preferencesDialog.cpp:603 src/preferencesDialog.cpp:671
-#: src/preferencesDialog.cpp:681 src/preferencesDialog.cpp:691
+#: src/clientDialog.cpp:99 src/preferencesDialog.cpp:422
+#: src/preferencesDialog.cpp:577 src/preferencesDialog.cpp:588
+#: src/preferencesDialog.cpp:599 src/preferencesDialog.cpp:667
+#: src/preferencesDialog.cpp:677 src/preferencesDialog.cpp:687
 msgid "Choose"
 msgstr "Выбрать"
 
@@ -390,11 +375,11 @@ msgstr "CPU"
 msgid "SMP"
 msgstr "SMP"
 
-#: src/core.cpp:154
+#: src/core.cpp:155
 msgid "GPU"
 msgstr "GPU"
 
-#: src/fahlogAnalyzer.cpp:250
+#: src/fahlogAnalyzer.cpp:252
 msgid "Possible clock asynchrony detected!"
 msgstr "Возможно асинхронность часов!"
 
@@ -1002,8 +987,10 @@ msgid "Update available"
 msgstr "Доступно обновление"
 
 #: src/mainDialog.cpp:1472
+#, fuzzy, c-format
 msgid ""
-"A newer version of FahMon is available\n"
+"A newer version of FahMon is available!\n"
+"Your version: %s; New version: %s\n"
 "Do you want to go to the FahMon website?"
 msgstr ""
 "Вышла новая версия FahMon\n"
@@ -1080,82 +1067,70 @@ msgid "Start minimized"
 msgstr "Запускать свёрнутым в трей"
 
 #: src/preferencesDialog.cpp:203
-msgid "Collect .xyz files"
-msgstr "Сохранять файлы .xyz в базу"
-
-#: src/preferencesDialog.cpp:204
-msgid ""
-"By collecting xyz files you can help the jmol project by submitting missing "
-"projects."
-msgstr ""
-"Собирая .xyz файлы, Вы можете помочь проекту Jmol, высылая информацию по "
-"отсутствующим проектам."
-
-#: src/preferencesDialog.cpp:205
 msgid "Auto update projects database when needed"
 msgstr "Автообновлять базу заданий по необходимости"
 
-#: src/preferencesDialog.cpp:206
+#: src/preferencesDialog.cpp:204
 msgid ""
 "This allows FahMon to keep up to date with any new projects you might "
 "download automatically."
 msgstr ""
 "Это разрешит FahMon автоматически обновлять информацию о новых заданиях."
 
-#: src/preferencesDialog.cpp:207
+#: src/preferencesDialog.cpp:205
 msgid "Always list inaccessible clients last"
 msgstr "Всегда показывать неактивных клиентов в конце"
 
-#: src/preferencesDialog.cpp:208
+#: src/preferencesDialog.cpp:206
 msgid "Keeps inaccessible clients at the bottom of the clients list."
 msgstr "Перемещать неактивных клиентов в нижнюю часть списка."
 
-#: src/preferencesDialog.cpp:209
+#: src/preferencesDialog.cpp:207
 msgid "Check for FahMon updates on startup"
 msgstr "Проверять обновления FahMon при запуске"
 
-#: src/preferencesDialog.cpp:245
+#: src/preferencesDialog.cpp:241
 msgid "A date (dd/mm)"
 msgstr "Дата (дд/мм)"
 
-#: src/preferencesDialog.cpp:245
+#: src/preferencesDialog.cpp:241
 msgid "A date (mm/dd)"
 msgstr "Дата (мм/дд)"
 
-#: src/preferencesDialog.cpp:245
+#: src/preferencesDialog.cpp:241
 msgid "Time left"
 msgstr "Осталось времени"
 
-#: src/preferencesDialog.cpp:246
+#: src/preferencesDialog.cpp:242
 msgid "All frames"
 msgstr "Всех шагах"
 
-#: src/preferencesDialog.cpp:246
+#: src/preferencesDialog.cpp:242
 msgid "Last frame only"
 msgstr "Только последнем шаге"
 
-#: src/preferencesDialog.cpp:246
+#: src/preferencesDialog.cpp:242
 msgid "Last 3 frames"
 msgstr "Последних 3 шагах"
 
-#: src/preferencesDialog.cpp:246
+#: src/preferencesDialog.cpp:242
 msgid "Effective rate"
 msgstr "Эффективной скорости"
 
-#: src/preferencesDialog.cpp:258
+#: src/preferencesDialog.cpp:254
 msgid "Auto reload clients"
 msgstr "Автоматически обновлять статус"
 
-#: src/preferencesDialog.cpp:259
+#: src/preferencesDialog.cpp:255
 msgid "Local client reload interval (mn)"
 msgstr "Интервал обновления (мин.)"
 
-#: src/preferencesDialog.cpp:260
+#: src/preferencesDialog.cpp:256
 msgid "Use experimental reload system (local only)"
 msgstr ""
 "Использовать экспериментальную систему обновления данных (только локально)"
 
-#: src/preferencesDialog.cpp:261
+#: src/preferencesDialog.cpp:257
 msgid ""
 "Check when the log was last modified before deciding to reload the client. "
 "This can prevent unecessary reloads and gives a more timely response to "
@@ -1165,15 +1140,15 @@ msgstr ""
 "избежать лишних обновлений и даст большее время для контроля изменений в "
 "логе."
 
-#: src/preferencesDialog.cpp:262
+#: src/preferencesDialog.cpp:258
 msgid "HTTP/FTP client reload interval (mn)"
 msgstr "Интервал обновления (мин.)"
 
-#: src/preferencesDialog.cpp:263
+#: src/preferencesDialog.cpp:259
 msgid "Reload clients in series"
 msgstr "Обновить информацию о клиенте"
 
-#: src/preferencesDialog.cpp:264
+#: src/preferencesDialog.cpp:260
 msgid ""
 "This option can reduce memory consumption if monitoring a large number of "
 "clients. Clients are reloaded sequentially in a single thread."
@@ -1181,7 +1156,7 @@ msgstr ""
 "Это опция снижает потребление памяти при большом количестве наблюдаемых "
 "клиентов. Информация по клиентам обновляется в один поток."
 
-#: src/preferencesDialog.cpp:269
+#: src/preferencesDialog.cpp:265
 msgid ""
 "PPD Calculation formats\n"
 "All frames: 255 stored datapoints used\n"
@@ -1196,11 +1171,11 @@ msgstr ""
 "Эффективная скорость: Отношение времени с момента получения задания к "
 "текущему шагу"
 
-#: src/preferencesDialog.cpp:270
+#: src/preferencesDialog.cpp:266
 msgid "Ignore asynchronous clocks"
 msgstr "Игнорировать асинхронность часов"
 
-#: src/preferencesDialog.cpp:271
+#: src/preferencesDialog.cpp:267
 msgid ""
 "Prevents clients from being reported as *hung* if their local clocks are out "
 "of sync with this machine."
@@ -1208,71 +1183,71 @@ msgstr ""
 "Убирает показ *Завис* для компьютеров, часы которых идут несинхронно с "
 "часами этого компьютера."
 
-#: src/preferencesDialog.cpp:273
+#: src/preferencesDialog.cpp:269
 msgid "Display dates as"
 msgstr "Показывать Расчетное Время Окончания как"
 
-#: src/preferencesDialog.cpp:282
+#: src/preferencesDialog.cpp:278
 msgid "Calculate PPD based on"
 msgstr "Расчет PPD основан на"
 
-#: src/preferencesDialog.cpp:332
+#: src/preferencesDialog.cpp:328
 msgid "Use a proxy for HTTP connections"
 msgstr "Использовать прокси для HTTP соединений"
 
-#: src/preferencesDialog.cpp:335 src/preferencesDialog.cpp:346
+#: src/preferencesDialog.cpp:331 src/preferencesDialog.cpp:342
 msgid "Proxy requires authentication"
 msgstr "Прокси требует авторизации"
 
-#: src/preferencesDialog.cpp:338 src/preferencesDialog.cpp:349
-#: src/preferencesDialog.cpp:419
+#: src/preferencesDialog.cpp:334 src/preferencesDialog.cpp:345
+#: src/preferencesDialog.cpp:415
 msgid "Address:"
 msgstr "Адрес:"
 
-#: src/preferencesDialog.cpp:339 src/preferencesDialog.cpp:350
+#: src/preferencesDialog.cpp:335 src/preferencesDialog.cpp:346
 msgid "Port:"
 msgstr "Порт:"
 
-#: src/preferencesDialog.cpp:340 src/preferencesDialog.cpp:351
+#: src/preferencesDialog.cpp:336 src/preferencesDialog.cpp:347
 msgid ""
 "Proxy\n"
 "Username:"
 msgstr "Пользователь:"
 
-#: src/preferencesDialog.cpp:341 src/preferencesDialog.cpp:352
+#: src/preferencesDialog.cpp:337 src/preferencesDialog.cpp:348
 msgid ""
 "Proxy\n"
 "Password:"
 msgstr "Пароль:"
 
-#: src/preferencesDialog.cpp:343
+#: src/preferencesDialog.cpp:339
 msgid "Use a proxy for FTP connections"
 msgstr "Использовать прокси для FTP соединений"
 
-#: src/preferencesDialog.cpp:417
+#: src/preferencesDialog.cpp:413
 msgid "Use the following settings for new project downloads"
 msgstr "Настройки для скачивания информации о новых заданиях"
 
-#: src/preferencesDialog.cpp:420
+#: src/preferencesDialog.cpp:416
 msgid "Use a local file for project data"
 msgstr "Использовать локальный файл для данных заданий"
 
-#: src/preferencesDialog.cpp:422 src/preferencesDialog.cpp:577
-#: src/preferencesDialog.cpp:588 src/preferencesDialog.cpp:599
-#: src/preferencesDialog.cpp:667 src/preferencesDialog.cpp:677
-#: src/preferencesDialog.cpp:687
+#: src/preferencesDialog.cpp:418 src/preferencesDialog.cpp:573
+#: src/preferencesDialog.cpp:584 src/preferencesDialog.cpp:595
+#: src/preferencesDialog.cpp:663 src/preferencesDialog.cpp:673
+#: src/preferencesDialog.cpp:683
 msgid "Filename:"
 msgstr "Имя файла:"
 
-#: src/preferencesDialog.cpp:428
+#: src/preferencesDialog.cpp:424
 msgid "Log error messages only"
 msgstr "Окно сообщений мониторинга FahMon"
 
-#: src/preferencesDialog.cpp:474
+#: src/preferencesDialog.cpp:470
 msgid "Web Browser:"
 msgstr "Обозреватель:"
 
-#: src/preferencesDialog.cpp:475
+#: src/preferencesDialog.cpp:471
 msgid ""
 "Enter the location of your preferred web browser. In most cases \"firefox\" "
 "should suffice."
@@ -1280,52 +1255,52 @@ msgstr ""
 "Напишите расположение Вашего любимого интернет-обозревателя. В большинстве "
 "случаев записи вида \"opera\" будет достаточно."
 
-#: src/preferencesDialog.cpp:476
+#: src/preferencesDialog.cpp:472
 msgid "File Manager:"
 msgstr "Менеджер файлов:"
 
-#: src/preferencesDialog.cpp:478
+#: src/preferencesDialog.cpp:474
 msgid "File Manager Command:"
 msgstr "Команда запуска файлового менеджера:"
 
-#: src/preferencesDialog.cpp:479
+#: src/preferencesDialog.cpp:475
 msgid "Provide any modifications to the file manager command."
 msgstr "Разрешены любые ключи в команде запуска менеджера файлов"
 
-#: src/preferencesDialog.cpp:480
+#: src/preferencesDialog.cpp:476
 msgid "Manually set timezone to UTC +"
 msgstr "Установить часовую зону вручную как UTC + "
 
-#: src/preferencesDialog.cpp:481
+#: src/preferencesDialog.cpp:477
 msgid ""
 "Set this option if you find that FahMon isn't detecting your timezone "
 "correctly."
 msgstr "Выберите эту опцию, если FahMon неправильно определяет часовой пояс"
 
-#: src/preferencesDialog.cpp:485
+#: src/preferencesDialog.cpp:481
 msgid "Windows Explorer"
 msgstr "Проводник"
 
-#: src/preferencesDialog.cpp:485 src/preferencesDialog.cpp:488
-#: src/preferencesDialog.cpp:491
+#: src/preferencesDialog.cpp:481 src/preferencesDialog.cpp:484
+#: src/preferencesDialog.cpp:487
 msgid "Other"
 msgstr "Прочее"
 
-#: src/preferencesDialog.cpp:491
+#: src/preferencesDialog.cpp:487
 msgid "Finder"
 msgstr "Finder"
 
-#: src/preferencesDialog.cpp:494
+#: src/preferencesDialog.cpp:490
 msgid "Select your preferred file manager. Used for opening client folders."
 msgstr ""
 "Выберите предпочтительный менеджер файлов. Используется для открытия папки с "
 "клиентом."
 
-#: src/preferencesDialog.cpp:573
+#: src/preferencesDialog.cpp:569
 msgid "Export Web Application"
 msgstr "Экспорт Web приложения"
 
-#: src/preferencesDialog.cpp:574
+#: src/preferencesDialog.cpp:570
 msgid ""
 "Enables the creation of a fancy web page that mimics the old FahMon layout "
 "showing current client data."
@@ -1333,83 +1308,83 @@ msgstr ""
 "Создает Web страницу со стилем старого FahMon и текущей информацией о "
 "клиентах."
 
-#: src/preferencesDialog.cpp:576 src/preferencesDialog.cpp:587
-#: src/preferencesDialog.cpp:598
+#: src/preferencesDialog.cpp:572 src/preferencesDialog.cpp:583
+#: src/preferencesDialog.cpp:594
 msgid ""
 "Enter the location where the output should be saved. This can be a local "
 "file, or an ftp url."
 msgstr ""
 "Введите путь сохранения. Это может быть локальная папка или сервер ftp."
 
-#: src/preferencesDialog.cpp:584
+#: src/preferencesDialog.cpp:580
 msgid "Export Simple Web page"
 msgstr "Экспорт простой Web страницы"
 
-#: src/preferencesDialog.cpp:585
+#: src/preferencesDialog.cpp:581
 msgid "Enables the creation of a compact web page showing current client data."
 msgstr ""
 "Разрешает создание простой Web страницы с текущей информацией о клиентах."
 
-#: src/preferencesDialog.cpp:595
+#: src/preferencesDialog.cpp:591
 msgid "Export Simple Text file"
 msgstr "Экспорт простого текстового файла"
 
-#: src/preferencesDialog.cpp:596
+#: src/preferencesDialog.cpp:592
 msgid ""
 "Enables the creation of a compact text file showing current client data."
 msgstr ""
 "Разрешает создание простого текстового файла с текущей информацией о "
 "клиентах."
 
-#: src/preferencesDialog.cpp:664
+#: src/preferencesDialog.cpp:660
 msgid "Custom Web Application Template"
 msgstr "Экспорт Web приложения"
 
-#: src/preferencesDialog.cpp:666
+#: src/preferencesDialog.cpp:662
 msgid "Enter the location of the web application template."
 msgstr "Выберите куда сохранить Web приложение"
 
-#: src/preferencesDialog.cpp:674
+#: src/preferencesDialog.cpp:670
 msgid "Custom Simple Web Template"
 msgstr "Экспорт простой Web страницы"
 
-#: src/preferencesDialog.cpp:676
+#: src/preferencesDialog.cpp:672
 msgid "Enter the location of the simple web template."
 msgstr "Выберите куда сохранить простую Web страницу"
 
-#: src/preferencesDialog.cpp:684
+#: src/preferencesDialog.cpp:680
 msgid "Custom Simple Text Template"
 msgstr "Экспорт простого текстового файла"
 
-#: src/preferencesDialog.cpp:686
+#: src/preferencesDialog.cpp:682
 msgid "Enter the location of the simple text template."
 msgstr "Выберите куда сохранить простой текстовый файл"
 
-#: src/preferencesDialog.cpp:1186
+#: src/preferencesDialog.cpp:1178
 msgid "Choose a local project data file"
 msgstr "Выбрать локальный файл для данных заданий"
 
-#: src/preferencesDialog.cpp:1201
+#: src/preferencesDialog.cpp:1193
 msgid "Choose where to save the Web Application"
 msgstr "Выберите куда сохранить Web приложение"
 
-#: src/preferencesDialog.cpp:1216
+#: src/preferencesDialog.cpp:1208
 msgid "Choose where to save the simple web page"
 msgstr "Выберите куда сохранить простую Web страницу"
 
-#: src/preferencesDialog.cpp:1231
+#: src/preferencesDialog.cpp:1223
 msgid "Choose where to save the simple text file"
 msgstr "Выберите куда сохранить простой текстовый файл"
 
-#: src/preferencesDialog.cpp:1246
+#: src/preferencesDialog.cpp:1238
 msgid "Choose the Web Application Template"
 msgstr "Выберите куда сохранить Web приложение"
 
-#: src/preferencesDialog.cpp:1261
+#: src/preferencesDialog.cpp:1253
 msgid "Choose the Simple Web Page Template"
 msgstr "Выберите куда сохранить простую Web страницу"
 
-#: src/preferencesDialog.cpp:1276
+#: src/preferencesDialog.cpp:1268
 msgid "Choose the Simple Text File Template"
 msgstr "Выберите куда сохранить простой текстовый файл"
 
@@ -1417,37 +1392,37 @@ msgstr "Выберите куда сохранить простой тексто
 msgid "There is no Preferences file, or it is not readable"
 msgstr "Это не файл с Настройками или его не прочитать"
 
-#: src/projectsManager.cpp:109 src/projectsManager.cpp:193
+#: src/projectsManager.cpp:109 src/projectsManager.cpp:194
 msgid "There is no projects file, or it is not readable"
 msgstr "Это не файл с заданиями или его не прочитать"
 
-#: src/projectsManager.cpp:297
+#: src/projectsManager.cpp:298
 msgid "Updating projects database"
 msgstr "Обновляется база заданий"
 
-#: src/projectsManager.cpp:301
+#: src/projectsManager.cpp:302
 msgid "Downloading new projects"
 msgstr "Загружается информация о новых задания"
 
-#: src/projectsManager.cpp:326
+#: src/projectsManager.cpp:327
 msgid "Adding the new projects to the database"
 msgstr "Добавление информации о новых заданий в базу"
 
-#: src/projectsManager.cpp:384
+#: src/projectsManager.cpp:385
 msgid "Local project update file doesn't exist!"
 msgstr "Обновлённого файла базы данных заданий не существует!"
 
-#: src/projectsManager.cpp:393
+#: src/projectsManager.cpp:394
 msgid "Unable to copy local project update file to temporary location"
 msgstr ""
 "Невозможно скопировать локальный файл с данными заданий во временную папку."
 
-#: src/projectsManager.cpp:452
+#: src/projectsManager.cpp:453
 #, c-format
 msgid "Line %u is not correctly formatted! %s"
 msgstr "Линия %u имеет неправильный формат! %s"
 
-#: src/projectsManager.cpp:463
+#: src/projectsManager.cpp:464
 msgid "Update aborted!"
 msgstr "Обновление прервано!"
 
@@ -1558,6 +1533,25 @@ msgstr "Простой текстовый файл"
 #: src/webMonitor.cpp:580
 msgid "Last updated:"
 msgstr "Последнее обновление:"
+
+#~ msgid "Unable to save %s because it does not exist"
+#~ msgstr "Невозможно сохранить %s потому что он не создан."
+
+#~ msgid "Unable to create directory %s"
+#~ msgstr "Невозможно создать папку %s"
+
+#~ msgid "Unable to copy %s to %s"
+#~ msgstr "Невозможно скопировать %s в %s"
+
+#~ msgid "Collect .xyz files"
+#~ msgstr "Сохранять файлы .xyz в базу"
+
+#~ msgid ""
+#~ "By collecting xyz files you can help the jmol project by submitting "
+#~ "missing projects."
+#~ msgstr ""
+#~ "Собирая .xyz файлы, Вы можете помочь проекту Jmol, высылая информацию по "
+#~ "отсутствующим проектам."
 
 #~ msgid "%.1f KB/s"
 #~ msgstr "%.1f кБ/с"

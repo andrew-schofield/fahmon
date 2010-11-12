@@ -10,7 +10,6 @@
 ./src/core.cpp
 ./src/dataInputStream.cpp
 ./src/dataOutputStream.cpp
-./src/debug_new.cpp
 ./src/eta.cpp
 ./src/fahlogAnalyzer.cpp
 ./src/firstTimeDialog.cpp
