@@ -9,6 +9,7 @@ SVN
       * Fixed FAHlog.txt parsing on Fermi WUs.
       * Regular expressions for FAHlog.txt parsing imported from fci svn rev132
         (thanks to smoking2000).
+      * Fixed broken pause detection.
     
       Other
       

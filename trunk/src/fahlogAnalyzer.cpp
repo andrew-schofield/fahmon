@@ -103,7 +103,8 @@ WorkUnitFrame* FahLogAnalyzer::AnalyzeLastFrame(wxString const &fahlogComplete, 
 				break;
 
 			case LLT_PAUSED:
-				clientIsPaused = true;
+				if (endFrame1Found == false)
+					clientIsPaused = true;
 				break;
 
 			case LLT_EMPTY:
