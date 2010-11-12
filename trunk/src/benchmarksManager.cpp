@@ -151,7 +151,6 @@ BenchmarksManager* BenchmarksManager::GetInstance(void)
 
 void BenchmarksManager::Save(void)
 {
-/*
 	BenchmarkHashMap                *listOfBenchmarks;
 	ClientIdHashMap::iterator        iteratorClientId;
 	BenchmarkHashMap::iterator       iteratorBenchmark;
@@ -210,7 +209,7 @@ void BenchmarksManager::Save(void)
 	{
 		Tools::ErrorMsgBox(wxString::Format(_("Could not open file <%s> for writing!"), (PathManager::GetCfgPath() + _T(FMC_FILE_BENCHMARKS)).c_str()));
 		return;
-	}*/
+	}
 }
 
 
